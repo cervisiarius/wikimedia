@@ -1,0 +1,57 @@
+hostname                string                  from deserializer   
+sequence                bigint                  from deserializer   
+dt                      string                  from deserializer   
+time_firstbyte          double                  from deserializer   
+ip                      string                  from deserializer   
+cache_status            string                  from deserializer   
+http_status             string                  from deserializer   
+response_size           bigint                  from deserializer   
+http_method             string                  from deserializer   
+uri_host                string                  from deserializer   
+uri_path                string                  from deserializer   
+uri_query               string                  from deserializer   
+content_type            string                  from deserializer   
+referer                 string                  from deserializer   
+x_forwarded_for         string                  from deserializer   
+user_agent              string                  from deserializer   
+accept_language         string                  from deserializer   
+x_analytics             string                  from deserializer   
+range                   string                  from deserializer   
+webrequest_source       string                  Source cluster      
+year                    int                     Unpadded year of request
+month                   int                     Unpadded month of request
+day                     int                     Unpadded day of request
+hour                    int                     Unpadded hour of request
+
+cp4001.ulsfo.wmnet      551964489       2014-11-11T16:50:10     0.145972967     119.74.83.173   pass    200     19230   GET     bits.wikimedia.org      /en.wikipedia.org/load.php      ?debug=false&lang=en&modules=ext.gadget.DRN-wizard%2CReferenceTooltips%2Ccharinsert%2Cfeatured-articles-links%2CrefToolbar%2Cteahouse%7Cext.rtlcite%2Cwikihiero%2CwikimediaBadges%7Cext.uls.nojs%7Cext.visualEditor.viewPageTarget.noscript%7Cmediawiki.legacy.commonPrint%2Cshared%7Cmediawiki.skinning.interface%7Cmediawiki.ui.button%7Cskins.vector.styles%7Cwikibase.client.init%2Cnolanglinks&only=styles&skin=vector&*   text/css; charset=utf-8     http://en.wikipedia.org/wiki/List_of_notable_David_Letterman_episodes   -       Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/38.0.2125.111 Safari/537.36       en-GB,en-US;q=0.8,en;q=0.6      php=zend        -       bits    2014    11      11      16
+cp4001.ulsfo.wmnet      551964494       2014-11-11T16:50:10     8.0585E-5       54.244.57.12    hit     200     17398   GET     bits.wikimedia.org      /pt.wikipedia.org/load.php      ?debug=false&lang=pt&modules=mediawiki.ui.button%7Cmobile.pagelist.styles%7Cskins.minerva.chrome.styles%7Cskins.minerva.content.styles%7Cskins.minerva.drawers.styles%7Cskins.minerva.tablet.styles&only=styles&skin=minerva&target=mobile&*    text/css; charset=utf-8 http://pt.m.wikipedia.org/wiki/Her%C3%A1clito   186.235.158.18  Mozilla/5.0 (Series40; Nokia501/14.0.4/java_runtime_version=Nokia_Asha_1_2; Profile/MIDP-2.1 Configuration/CLDC-1.1) Gecko/20100401 S40OviBrowser/3.0.0.0.73        pt-BR   php=zend        -       bits    2014    11      11      16
+cp4001.ulsfo.wmnet      551964500       2014-11-11T16:50:10     5.8889E-5       67.136.139.214  hit     200     2426    GET     bits.wikimedia.org      /images/wikimedia-button.png            image/png  http://en.wikipedia.org/wiki/Mackinac_Bridge     -       Mozilla/5.0 (Windows NT 6.1; WOW64; Trident/7.0; rv:11.0) like Gecko    en-US   php=zend        -       bits    2014    11      11      16
+cp4001.ulsfo.wmnet      551964502       2014-11-11T16:50:10     6.7949E-5       119.83.112.18   hit     200     17208   GET     bits.wikimedia.org      /ja.wikipedia.org/load.php      ?debug=false&lang=ja&modules=startup&only=scripts&skin=vector&*     text/javascript; charset=utf-8  http://ja.wikipedia.org/wiki/%E3%83%9E%E3%83%84%E3%83%80%E3%83%BB%E3%82%A2%E3%83%86%E3%83%B3%E3%82%B6   -       Mozilla/5.0 (Windows NT 6.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/38.0.2125.111 Safari/537.36      ja,en-US;q=0.8,en;q=0.6 php=zend        -       bits    2014    11      11      16
+cp4001.ulsfo.wmnet      551964504       2014-11-11T16:50:10     6.3658E-5       118.4.245.249   hit     200     3525    GET     bits.wikimedia.org      /static-1.25wmf6/resources/assets/poweredby_mediawiki_88x31.png             image/png       http://ja.wikipedia.org/wiki/%E3%82%AA%E3%82%AA%E3%82%AB%E3%83%9F%E5%B0%91%E5%A5%B3%E3%81%A8%E9%BB%92%E7%8E%8B%E5%AD%90 -       Mozilla/5.0 (Windows NT 6.3; WOW64; Trident/7.0; MASPJS; rv:11.0) like Gecko        ja-JP   php=zend        -       bits    2014    11      11      16
+cp4001.ulsfo.wmnet      551964506       2014-11-11T16:50:10     8.2493E-5       183.89.223.180  hit     200     16726   GET     bits.wikimedia.org      /en.wikipedia.org/load.php      ?debug=false&lang=en&modules=ext.cite%7Cext.eventLogging.subscriber%7Cext.gadget.DRN-wizard%2CReferenceTooltips%2Cfeatured-articles-links%2CrefToolbar%2Cteahouse%7Cjquery.makeCollapsible%2Cplaceholder%7Cmediawiki.action.view.postEdit%7Cmediawiki.searchSuggest%2Ctoc%7Cmediawiki.ui.icon%7Cmmv.Config%2Cbootstrap&skin=vector&version=20141111T145210Z&*   text/javascript; charset=utf-8  http://en.wikipedia.org/wiki/Brotherhood_of_the_Wolf        -       Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/38.0.2125.111 Safari/537.36   th,en-US;q=0.8,en;q=0.6 php=zend        -       bits    2014    11 11       16
+
+
+SELECT
+    ip
+  , dt
+  , SUBSTR(uri_path, 7) AS uri_path
+  , uri_query       -- needed?
+  , referer
+  , user_agent
+FROM
+  webrequest
+WHERE
+  http_status = 200
+  AND YEAR = 2014
+  AND MONTH = 12
+  AND DAY = 1
+  AND HOUR = 12
+  AND uri_host = "pt.wikipedia.org"
+  AND uri_path LIKE "/wiki/%"
+ORDER BY
+  ip, user_agent, dt
+LIMIT 50;
+
+
+
+hive  -e "USE wmf_raw; select * from webrequest TABLESAMPLE(BUCKET 1 OUT OF 1000 ON rand()) WHERE http_status = 200 AND uri_host LIKE '%.wikipedia.org' AND YEAR = 2014 AND MONTH = 12 AND DAY = 1 AND HOUR = 12 LIMIT 10000;" > ./sample.tsv
