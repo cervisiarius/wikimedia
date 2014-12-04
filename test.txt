@@ -1,5 +1,0 @@
-this is a test for push and pull.
-
-bob
-
-what if you don't do pull?
