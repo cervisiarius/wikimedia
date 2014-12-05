@@ -38,10 +38,14 @@ SELECT
   , uri_query       -- needed?
   , referer
   , user_agent
+  --, uri_host --for later, when we consider more projects
+  --, content_type -- do we care about this?
+  --, referer -- we may need this for figuring out https requests
+  --, x_forwarded_for -- same as referer
 FROM
   webrequest
 WHERE
-  http_status = 200
+  http_status = 200 -- should we consider 400 as well? as an attempt to "search" for a page that can't be found?
   AND YEAR = 2014
   AND MONTH = 12
   AND DAY = 1
