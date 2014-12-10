@@ -52,3 +52,22 @@ LIMIT 50;
 
 
 hive  -e "USE wmf_raw; select * from webrequest TABLESAMPLE(BUCKET 1 OUT OF 1000 ON rand()) WHERE http_status = 200 AND uri_host LIKE '%.wikipedia.org' AND YEAR = 2014 AND MONTH = 12 AND DAY = 1 AND HOUR = 12 LIMIT 10000;" > ./sample.tsv
+
+
+TODO:
+
+keep searches
+
+filter mobile
+
+filter apps
+content_type: application/json
+
+filter language
+
+traces
+
+
+
+x_forwarded_for: sometimes several in same entry -> take last
+
