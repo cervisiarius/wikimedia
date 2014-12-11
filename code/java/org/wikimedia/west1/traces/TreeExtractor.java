@@ -1,72 +1,80 @@
 package org.wikimedia.west1.traces;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.PriorityQueue;
-import java.util.Set;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class TreeExtractor {
 
-	public static class Node {
-		// private long time;
-		// private String url;
-		// private String referer;
-		private int id;
-		private List<Node> successors = new ArrayList<Node>();
-		private PriorityQueue<Node> parents = new PriorityQueue<Node>(256, new NodeComparator());
+  public static class Pageview {
+    public JSONObject json;
+    public long time;
 
-		public Node(int id, List<Node> successors) {
-			this.id = id;
-			this.successors = successors;
-			for (Node succ : successors) {
-				succ.parents.offer(this);
-			}
-		}
+    public static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
 
-		public static class NodeComparator implements Comparator<Node> {
-			@Override
-			public int compare(Node a, Node b) {
-				// TODO: check if this order is right. use time
-				return a.id - b.id;
-			}
-		}
+    public Pageview(JSONObject json) throws JSONException, ParseException {
+      this.json = json;
+      this.time = DATE_FORMAT.parse(json.getString("dt")).getTime();
+    }
 
-		public boolean equals(Node other) {
-			// TODO: implement
-			return this.equals(other);
-		}
+    public String toString() {
+      return json.toString();
+    }
 
-		public int hashCode() {
-			// TODO: implement
-			return this.hashCode();
-		}
+    public String toString(int indentFactor) {
+      try {
+        return json.toString(indentFactor);
+      } catch (JSONException e) {
+        System.err.println(json);
+        return "[JSONException]";
+      }
+    }
+  }
 
-		// Set rather than List because it's a DAG, so several parents can have the same successor,
-		// and we want to list it only once.
-		public void listSubgraph(Set<Node> result) {
-			result.add(this);
-			for (Node succ : successors) {
-				succ.listSubgraph(result);
-			}
-		}
-	}
+  // Input: the list of session pageviews in temporal order.
+  // Output: the list of tree roots.
+  public List<Pageview> getMinimumSpanningForest(List<Pageview> session) throws JSONException {
+    List<Pageview> roots = new ArrayList<Pageview>();
+    Map<String, Pageview> urlToLastPageview = new HashMap<String, Pageview>();
+    // Iterate over all pageviews in temporal order.
+    for (Pageview pv : session) {
+      Pageview parent = urlToLastPageview.get(pv.json.getString("referer"));
+      if (parent == null) {
+        roots.add(pv);
+      } else {
+        parent.json.append("z_children", pv.json);
+      }
+      // Remember this pageview as the last pageview for its URL.
+      urlToLastPageview.put(pv.json.getString("url"), pv);
+    }
+    return roots;
+  }
 
-	public List<Node> getMinSpanningForest(Node root) {
-		Map<Node, List<Node>> children = new HashMap<Node, List<Node>>();
-		Set<Node> currentRoots = new HashSet<Node>();
-		root.listSubgraph(currentRoots);
-		for (Node currentRoot : )
+  private void test() throws Exception {
+    List<Pageview> session = new ArrayList<Pageview>();
+    session.add(new Pageview(new JSONObject("{\"dt\":\"10\",\"url\":\"a\",\"referer\":\"-\"}")));
+    session.add(new Pageview(new JSONObject("{\"dt\":\"15\",\"url\":\"c\",\"referer\":\"a\"}")));
+    session.add(new Pageview(new JSONObject("{\"dt\":\"20\",\"url\":\"b\",\"referer\":\"a\"}")));
+    session.add(new Pageview(new JSONObject("{\"dt\":\"25\",\"url\":\"a\",\"referer\":\"b\"}")));
+    session.add(new Pageview(new JSONObject("{\"dt\":\"30\",\"url\":\"b\",\"referer\":\"a\"}")));
+    session.add(new Pageview(new JSONObject("{\"dt\":\"40\",\"url\":\"c\",\"referer\":\"b\"}")));
+    session.add(new Pageview(new JSONObject("{\"dt\":\"50\",\"url\":\"d\",\"referer\":\"c\"}")));
 
-		return null;
-	}
+    List<Pageview> roots = getMinimumSpanningForest(session);
+    for (Pageview root : roots) {
+      System.out.println(root.toString(2));
+    }
+  }
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
-	}
+  public static void main(String[] args) throws Exception {
+    TreeExtractor ex = new TreeExtractor();
+    ex.test();
+  }
 
 }
