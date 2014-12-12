@@ -21,7 +21,6 @@ import org.json.JSONObject;
 
 public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
 
-	private TreeExtractor treeExtractor = new TreeExtractor();
 	// Having 3600 pageviews in a day would mean one every 24 seconds, a lot...
 	private static final int MAX_NUM_PAGEVIEWS = 3600;
 	// If we see this much time between pageviews, we start a new session; we use one hour.
@@ -29,14 +28,6 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
 
 	private static Text makeSessionId(Text uidAndDay) {
 		return new Text(DigestUtils.md5Hex(uidAndDay.toString()));
-	}
-
-	@Override
-	public void configure(JobConf conf) {
-	}
-
-	@Override
-	public void close() throws IOException {
 	}
 
 	// Input: the list of session pageviews in temporal order.
@@ -48,7 +39,7 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
 		Map<String, Pageview> urlToLastPageview = new HashMap<String, Pageview>();
 		// Iterate over all pageviews in temporal order.
 		for (Pageview pv : session) {
-			String url = pv.json.getString("url");
+			String url = pv.url;
 			String referer = pv.json.getString("referer");
 			Pageview parent = urlToLastPageview.get(referer);
 			if (parent == null) {
@@ -98,6 +89,14 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
 	}
 
 	@Override
+	public void configure(JobConf conf) {
+	}
+
+	@Override
+	public void close() throws IOException {
+	}
+
+	@Override
 	public void reduce(Text uidAndDay, Iterator<Text> pageviewIterator,
 	    OutputCollector<Text, Text> out, Reporter reporter) throws IOException {
 		try {
@@ -132,27 +131,27 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
 		session
 		    .add(new Pageview(
 		        new JSONObject(
-		            "{\"sequence\":2,\"dt\":\"2014-12-04T01:00:15\",\"uri_path\":\"c\",\"uri_host\":\"\",\"uri_query\":\"\",\"referer\":\"a\"}")));
+		            "{\"sequence\":2,\"dt\":\"2014-12-04T01:00:15\",\"uri_path\":\"c\",\"uri_host\":\"\",\"uri_query\":\"\",\"referer\":\"http://a\"}")));
 		session
 		    .add(new Pageview(
 		        new JSONObject(
-		            "{\"sequence\":3,\"dt\":\"2014-12-04T01:00:20\",\"uri_path\":\"b\",\"uri_host\":\"\",\"uri_query\":\"\",\"referer\":\"a\"}")));
+		            "{\"sequence\":3,\"dt\":\"2014-12-04T01:00:20\",\"uri_path\":\"b\",\"uri_host\":\"\",\"uri_query\":\"\",\"referer\":\"http://a\"}")));
 		session
 		    .add(new Pageview(
 		        new JSONObject(
-		            "{\"sequence\":4,\"dt\":\"2014-12-04T01:00:25\",\"uri_path\":\"a\",\"uri_host\":\"\",\"uri_query\":\"\",\"referer\":\"b\"}")));
+		            "{\"sequence\":4,\"dt\":\"2014-12-04T01:00:25\",\"uri_path\":\"a\",\"uri_host\":\"\",\"uri_query\":\"\",\"referer\":\"http://b\"}")));
 		session
 		    .add(new Pageview(
 		        new JSONObject(
-		            "{\"sequence\":5,\"dt\":\"2014-12-04T01:00:30\",\"uri_path\":\"b\",\"uri_host\":\"\",\"uri_query\":\"\",\"referer\":\"a\"}")));
+		            "{\"sequence\":5,\"dt\":\"2014-12-04T01:00:30\",\"uri_path\":\"b\",\"uri_host\":\"\",\"uri_query\":\"\",\"referer\":\"http://a\"}")));
 		session
 		    .add(new Pageview(
 		        new JSONObject(
-		            "{\"sequence\":6,\"dt\":\"2014-12-04T01:00:40\",\"uri_path\":\"c\",\"uri_host\":\"\",\"uri_query\":\"\",\"referer\":\"b\"}")));
+		            "{\"sequence\":6,\"dt\":\"2014-12-04T01:00:40\",\"uri_path\":\"c\",\"uri_host\":\"\",\"uri_query\":\"\",\"referer\":\"http://b\"}")));
 		session
 		    .add(new Pageview(
 		        new JSONObject(
-		            "{\"sequence\":7,\"dt\":\"2014-12-04T01:00:50\",\"uri_path\":\"d\",\"uri_host\":\"\",\"uri_query\":\"\",\"referer\":\"c\"}")));
+		            "{\"sequence\":7,\"dt\":\"2014-12-04T01:00:50\",\"uri_path\":\"d\",\"uri_host\":\"\",\"uri_query\":\"\",\"referer\":\"http://c\"}")));
 		for (Pageview root : sequenceToTrees(session)) {
 			System.out.println(root.toString(2));
 		}
