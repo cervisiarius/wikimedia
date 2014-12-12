@@ -58,13 +58,13 @@ public class TreeExtractor {
 
   private void test() throws Exception {
     List<Pageview> session = new ArrayList<Pageview>();
-    session.add(new Pageview(new JSONObject("{\"dt\":\"10\",\"url\":\"a\",\"referer\":\"-\"}")));
-    session.add(new Pageview(new JSONObject("{\"dt\":\"15\",\"url\":\"c\",\"referer\":\"a\"}")));
-    session.add(new Pageview(new JSONObject("{\"dt\":\"20\",\"url\":\"b\",\"referer\":\"a\"}")));
-    session.add(new Pageview(new JSONObject("{\"dt\":\"25\",\"url\":\"a\",\"referer\":\"b\"}")));
-    session.add(new Pageview(new JSONObject("{\"dt\":\"30\",\"url\":\"b\",\"referer\":\"a\"}")));
-    session.add(new Pageview(new JSONObject("{\"dt\":\"40\",\"url\":\"c\",\"referer\":\"b\"}")));
-    session.add(new Pageview(new JSONObject("{\"dt\":\"50\",\"url\":\"d\",\"referer\":\"c\"}")));
+    session.add(new Pageview(new JSONObject("{\"dt\":\"2014-12-04T01:00:10\",\"url\":\"a\",\"referer\":\"-\"}")));
+    session.add(new Pageview(new JSONObject("{\"dt\":\"2014-12-04T01:00:15\",\"url\":\"c\",\"referer\":\"a\"}")));
+    session.add(new Pageview(new JSONObject("{\"dt\":\"2014-12-04T01:00:20\",\"url\":\"b\",\"referer\":\"a\"}")));
+    session.add(new Pageview(new JSONObject("{\"dt\":\"2014-12-04T01:00:25\",\"url\":\"a\",\"referer\":\"b\"}")));
+    session.add(new Pageview(new JSONObject("{\"dt\":\"2014-12-04T01:00:30\",\"url\":\"b\",\"referer\":\"a\"}")));
+    session.add(new Pageview(new JSONObject("{\"dt\":\"2014-12-04T01:00:40\",\"url\":\"c\",\"referer\":\"b\"}")));
+    session.add(new Pageview(new JSONObject("{\"dt\":\"2014-12-04T01:00:50\",\"url\":\"d\",\"referer\":\"c\"}")));
 
     List<Pageview> roots = getMinimumSpanningForest(session);
     for (Pageview root : roots) {
