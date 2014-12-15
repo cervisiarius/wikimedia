@@ -26,8 +26,8 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
 	// If we see this much time between pageviews, we start a new session; we use one hour.
 	private static final long INTER_SESSION_TIME = 3600 * 1000;
 
-	private static Text makeSessionId(Text uidAndDay) {
-		return new Text(DigestUtils.md5Hex(uidAndDay.toString()));
+	private static Text makeTreeId(Text uidAndDay, int seqNum) {
+		return new Text(DigestUtils.md5Hex(uidAndDay.toString() + seqNum));
 	}
 
 	// Input: the list of session pageviews in temporal order.
@@ -114,8 +114,10 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
 			}
 			// Extract trees and output them.
 			List<Pageview> roots = sequenceToTrees(pageviews);
+			int i = 0;
 			for (Pageview root : roots) {
-				out.collect(makeSessionId(uidAndDay), new Text(root.toString()));
+				out.collect(makeTreeId(uidAndDay, i), new Text(root.toString()));
+				++i;
 			}
 		} catch (Exception e) {
 			System.out.format("%s\n", e.getMessage());
