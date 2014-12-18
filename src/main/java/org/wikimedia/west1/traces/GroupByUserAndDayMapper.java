@@ -13,8 +13,10 @@ import org.json.JSONObject;
 public class GroupByUserAndDayMapper implements Mapper<Text, Text, Text, Text> {
 
 	@Override
-	public void configure(JobConf arg0) {
-	}
+	public void configure(JobConf conf) {
+	  conf.setMapOutputKeyClass(Text.class); 
+	  conf.setMapOutputValueClass(Text.class); 
+}
 
 	@Override
 	public void close() throws IOException {
