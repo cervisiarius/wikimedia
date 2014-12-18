@@ -2,7 +2,7 @@
 
 echo "Running hadoop job"
 hadoop jar /usr/lib/hadoop-mapreduce/hadoop-streaming.jar \
-    -libjars     ~/TreeExtractor-0.0.1-SNAPSHOT.jar \
+    -libjars     ~/wikimedia/trunk/target/TreeExtractor-0.0.1-SNAPSHOT-jar-with-dependencies.jar \
     -D           mapreduce.output.fileoutputformat.compress=false \
     -D           mapreduce.input.fileinputformat.split.minsize=300000000 \
     -D           mapreduce.task.timeout=6000000 \
