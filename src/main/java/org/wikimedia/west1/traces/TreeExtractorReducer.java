@@ -9,6 +9,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Pattern;
 
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.hadoop.io.Text;
@@ -28,6 +29,14 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
 	private static final long INTER_SESSION_TIME = 3600 * 1000;
 	private static final String JSON_CHILDREN = "children";
 	private static final String JSON_PARENT_AMBIGUOUS = "parent_ambiguous";
+	private static final String JSON_BAD_TREE = "bad_tree";
+	private static final String CONF_URI_HOST_PATTERN = "org.wikimedia.west1.traces.uriHostPattern";
+	private static final String CONF_KEEP_AMBIGUOUS_TREES = "org.wikimedia.west1.traces.keepAmbiguousTrees";
+	private static final String CONF_KEEP_BAD_TREES = "org.wikimedia.west1.traces.keepBadTrees";
+
+	private Pattern uriHostPattern;
+	private boolean keepAmbiguousTrees;
+	private boolean keepBadTrees;
 
 	private static Text makeTreeId(Text dayAndUid, int seqNum) {
 		String[] day_uid = dayAndUid.toString().split(GroupByUserAndDayMapper.UID_SEPARATOR, 2);
@@ -38,13 +47,14 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
 		return new Text(String.format("%s_%s_%04d", day, uidHash, seqNum));
 	}
 
-	protected static boolean isGoodPageview(JSONObject json, boolean isRoot) throws JSONException {
+	protected boolean isGoodPageview(JSONObject json, boolean isRoot) throws JSONException {
+		////////////////
+		json.put("___________g___________", uriHostPattern);
 		boolean isLeaf = !json.has(JSON_CHILDREN);
 		return
 		// Internal nodes must be from the specified language versions (leaves may be things such as
 		// image loads)
-		// TODO: make language versions a parameter
-		(isLeaf || json.getString("uri_host").matches("pt\\.wikipedia\\.org"))
+		(isLeaf || uriHostPattern.matcher(json.getString("uri_host")).matches())
 		// Internal nodes must be article pages (leaves may be things such as image loads)
 		    && (isLeaf || json.getString("uri_path").matches("/wiki/.*"))
 		    // No node can be from the last hour of the day, so we discard sessions spanning the day
@@ -54,11 +64,13 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
 		    // previous session (after a break of more than INTER_SESSION_TIME, or because it's the
 		    // second part of a session that starts the day boundary and whose first part was excluded
 		    // via the "T23:" rule.
-		    && (!isRoot || !json.getString("referer").matches("[a-z]+://[^/]*wiki.*"));
+		    && (!isRoot || !json.getString("referer").matches("[a-z]+://[^/]*wiki.*"))
+		    // If we don't want to keep ambiguous trees, discard them.
+		    && (keepAmbiguousTrees || !json.getBoolean(JSON_PARENT_AMBIGUOUS));
 	}
 
-	// Deapth-first search, failing as soon as a node fails.
-	protected static boolean isGoodTree(JSONObject json, boolean isRoot) throws JSONException {
+	// Depth-first search, failing as soon as a node fails.
+	protected boolean isGoodTree(JSONObject json, boolean isRoot) throws JSONException {
 		if (!isGoodPageview(json, isRoot)) {
 			return false;
 		}
@@ -73,16 +85,14 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
 		return true;
 	}
 
-	// If discard==true, we discard filtered trees, otherwise we merely label them as bad by setting
-	// the field "bad_tree" to true in the root.
-	private static List<Pageview> filterTrees(List<Pageview> roots, boolean discard) {
+	private List<Pageview> filterTrees(List<Pageview> roots) {
 		List<Pageview> filtered = new ArrayList<Pageview>();
 		for (Pageview root : roots) {
 			try {
 				if (isGoodTree(root.json, true)) {
 					filtered.add(root);
-				} else if (!discard) {
-					root.json.put("bad_tree", true);
+				} else if (keepBadTrees) {
+					root.json.put(JSON_BAD_TREE, true);
 					filtered.add(root);
 				}
 			} catch (JSONException e) {
@@ -145,11 +155,14 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
 		// Store the last set of trees.
 		roots.addAll(getMinimumSpanningForest(session));
 		// Return the list of valid trees.
-		return filterTrees(roots, false);
+		return filterTrees(roots);
 	}
 
 	@Override
 	public void configure(JobConf conf) {
+		uriHostPattern = Pattern.compile(conf.get(CONF_URI_HOST_PATTERN));
+		keepAmbiguousTrees = conf.getBoolean(CONF_KEEP_AMBIGUOUS_TREES, true);
+		keepBadTrees = conf.getBoolean(CONF_KEEP_BAD_TREES, false);
 	}
 
 	@Override
