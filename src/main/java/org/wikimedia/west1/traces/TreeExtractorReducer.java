@@ -47,35 +47,38 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
 		return new Text(String.format("%s_%s_%04d", day, uidHash, seqNum));
 	}
 
-	protected boolean isGoodPageview(JSONObject json, boolean isRoot) throws JSONException {
-		////////////////
-		json.put("___________g___________", uriHostPattern);
-		boolean isLeaf = !json.has(JSON_CHILDREN);
+	// If leavesAreSpecial == true, a leaf is considered ok even if it's not a valid article view
+	// (such as image loads etc.); use this setting when calling the method from isGoodTree.
+	// If leavesAreSpecial == false, leaves receive no special treatment.
+	protected boolean isGoodPageview(JSONObject root, boolean isGlobalRoot, boolean leavesAreSpecial)
+	    throws JSONException {
+		boolean isLeaf = !root.has(JSON_CHILDREN);
+		boolean leafCase = leavesAreSpecial && isLeaf;
 		return
 		// Internal nodes must be from the specified language versions (leaves may be things such as
 		// image loads)
-		(isLeaf || uriHostPattern.matcher(json.getString("uri_host")).matches())
+		(leafCase || uriHostPattern.matcher(root.getString("uri_host")).matches())
 		// Internal nodes must be article pages (leaves may be things such as image loads)
-		    && (isLeaf || json.getString("uri_path").matches("/wiki/.*"))
+		    && (leafCase || root.getString("uri_path").matches("/wiki/.*"))
 		    // No node can be from the last hour of the day, so we discard sessions spanning the day
 		    // boundary.
-		    && !json.getString("dt").contains("T23:")
+		    && !root.getString("dt").contains("T23:")
 		    // The root must not be a Wikimedia page; this will discard traces that in fact continue a
 		    // previous session (after a break of more than INTER_SESSION_TIME, or because it's the
 		    // second part of a session that starts the day boundary and whose first part was excluded
 		    // via the "T23:" rule.
-		    && (!isRoot || !json.getString("referer").matches("[a-z]+://[^/]*wiki.*"))
+		    && (!isGlobalRoot || !root.getString("referer").matches("[a-z]+://[^/]*wiki.*"))
 		    // If we don't want to keep ambiguous trees, discard them.
-		    && (keepAmbiguousTrees || !json.getBoolean(JSON_PARENT_AMBIGUOUS));
+		    && (keepAmbiguousTrees || !root.getBoolean(JSON_PARENT_AMBIGUOUS));
 	}
 
 	// Depth-first search, failing as soon as a node fails.
-	protected boolean isGoodTree(JSONObject json, boolean isRoot) throws JSONException {
-		if (!isGoodPageview(json, isRoot)) {
+	protected boolean isGoodTree(JSONObject root, boolean isGlobalRoot) throws JSONException {
+		if (!isGoodPageview(root, isGlobalRoot, true)) {
 			return false;
 		}
-		if (json.has(JSON_CHILDREN)) {
-			JSONArray children = json.getJSONArray(JSON_CHILDREN);
+		if (root.has(JSON_CHILDREN)) {
+			JSONArray children = root.getJSONArray(JSON_CHILDREN);
 			for (int i = 0; i < children.length(); ++i) {
 				if (!isGoodTree(children.getJSONObject(i), false)) {
 					return false;
@@ -85,14 +88,38 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
 		return true;
 	}
 
-	private List<Pageview> filterTrees(List<Pageview> roots) {
+	private JSONObject pruneBadLeaves(JSONObject root, boolean isGlobalRoot) throws JSONException {
+		// If the current root is a leaf, it needs to be checked.
+		if (!root.has(JSON_CHILDREN)) {
+			return isGoodPageview(root, isGlobalRoot, false) ? root : null;
+		}
+		// Otherwise, prune the children recursively and return.
+		else {
+			JSONArray children = root.getJSONArray(JSON_CHILDREN);
+			for (int i = 0; i < children.length(); ++i) {
+				JSONObject pruned = pruneBadLeaves(children.getJSONObject(i), false);
+				if (pruned == null) {
+					children.remove(i);
+				}
+			}
+			return root;
+		}
+	}
+
+	private List<Pageview> pruneAndFilterTrees(List<Pageview> roots) {
 		List<Pageview> filtered = new ArrayList<Pageview>();
 		for (Pageview root : roots) {
 			try {
 				if (isGoodTree(root.json, true)) {
-					filtered.add(root);
+					root.json = pruneBadLeaves(root.json, true);
+					if (root.json != null) {
+						filtered.add(root);
+					} else if (keepBadTrees) {
+						root.json.put(JSON_BAD_TREE, 1);
+						filtered.add(root);
+					}
 				} else if (keepBadTrees) {
-					root.json.put(JSON_BAD_TREE, true);
+					root.json.put(JSON_BAD_TREE, 2);
 					filtered.add(root);
 				}
 			} catch (JSONException e) {
@@ -155,7 +182,7 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
 		// Store the last set of trees.
 		roots.addAll(getMinimumSpanningForest(session));
 		// Return the list of valid trees.
-		return filterTrees(roots);
+		return pruneAndFilterTrees(roots);
 	}
 
 	@Override

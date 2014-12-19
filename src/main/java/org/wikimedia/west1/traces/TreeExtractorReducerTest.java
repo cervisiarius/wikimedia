@@ -53,7 +53,7 @@ public class TreeExtractorReducerTest {
 		    + "\"content_type\":\"text/html; charset=UTF-8\",\"parent_ambiguous\":false}";
 		JSONObject json = new JSONObject(pvString);
 		System.out.println(json.toString(2));
-		System.out.println(reducer.isGoodPageview(json, false));
+		System.out.println(reducer.isGoodPageview(json, false, true));
 	}
 
 	public static void testIsGoodTree() throws Exception {
