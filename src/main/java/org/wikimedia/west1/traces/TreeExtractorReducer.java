@@ -16,6 +16,7 @@ import org.apache.hadoop.mapred.JobConf;
 import org.apache.hadoop.mapred.OutputCollector;
 import org.apache.hadoop.mapred.Reducer;
 import org.apache.hadoop.mapred.Reporter;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -25,9 +26,61 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
 	private static final int MAX_NUM_PAGEVIEWS = 3600;
 	// If we see this much time between pageviews, we start a new session; we use one hour.
 	private static final long INTER_SESSION_TIME = 3600 * 1000;
+	private static final String JSON_CHILDREN = "children";
+	private static final String JSON_PARENT_AMBIGUOUS = "parent_ambiguous";
 
-	private static Text makeTreeId(Text uidAndDay, int seqNum) {
-		return new Text(DigestUtils.md5Hex(uidAndDay.toString() + seqNum));
+	private static Text makeTreeId(Text dayAndUid, int seqNum) {
+		String[] day_uid = dayAndUid.toString().split(GroupByUserAndDayMapper.UID_SEPARATOR, 2);
+		String day = day_uid[0];
+		String uidHash = DigestUtils.md5Hex(day_uid[1]);
+		// seqNum is zero-padded to fixed length 4: we allow at most MAX_NUM_PAGEVIEWS = 3600 pageviews
+		// per day, and in the worst case, each pageview is its own tree, so seqNum <= 3600.
+		return new Text(String.format("%s_%s_%04d", day, uidHash, seqNum));
+	}
+
+	protected static boolean isGoodPageview(JSONObject json, boolean isRoot) {
+		try {
+			boolean isLeaf = !json.has(JSON_CHILDREN);
+			return
+			// Internal nodes must be from the specified language versions (leaves may be things such as
+			// image loads)
+			// TODO: make language versions a parameter
+			(isLeaf || json.getString("uri_host").matches("pt\\.wikipedia\\.org"))
+			// Internal nodes must be article pages (leaves may be things such as image loads)
+			    && (isLeaf || json.getString("uri_path").matches("/wiki/.*"))
+			    // No node can be from the last hour of the day, so we discard sessions spanning the day
+			    // boundary.
+			    && !json.getString("dt").contains("T23:")
+			    // The root must not be a Wikimedia page; this will discard traces that in fact continue a
+			    // previous session (after a break of more than INTER_SESSION_TIME, or because it's the
+			    // second part of a session that starts the day boundary and whose first part was excluded
+			    // via the "T23:" rule.
+			    && (!isRoot || !json.getString("referer").matches("[a-z]+://[^/]*wiki.*"));
+		} catch (JSONException e) {
+			System.out.format("%s\n", e.getMessage());
+			return false;
+		}
+	}
+
+	// Deapth-first search, failing as soon as a node fails.
+	protected static boolean isGoodTree(JSONObject json, boolean isRoot) {
+		try {
+			if (!isGoodPageview(json, isRoot)) {
+				return false;
+			}
+			if (json.has(JSON_CHILDREN)) {
+				JSONArray children = json.getJSONArray(JSON_CHILDREN);
+				for (int i = 0; i < children.length(); ++i) {
+					if (!isGoodTree(children.getJSONObject(i), false)) {
+						return false;
+					}
+				}
+			}
+			return true;
+		} catch (JSONException e) {
+			System.out.format("%s\n", e.getMessage());
+			return false;
+		}
 	}
 
 	// Input: the list of session pageviews in temporal order.
@@ -39,26 +92,24 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
 		Map<String, Pageview> urlToLastPageview = new HashMap<String, Pageview>();
 		// Iterate over all pageviews in temporal order.
 		for (Pageview pv : session) {
-			String url = pv.url;
-			String referer = pv.json.getString("referer");
-			Pageview parent = urlToLastPageview.get(referer);
+			Pageview parent = urlToLastPageview.get(pv.referer);
 			if (parent == null) {
 				roots.add(pv);
-				pv.json.put("parent_ambiguous", false);
+				pv.json.put(JSON_PARENT_AMBIGUOUS, false);
 			} else {
-				parent.json.append("z_children", pv.json);
-				pv.json.put("parent_ambiguous", urlCounts.get(referer) > 1);
+				parent.json.append(JSON_CHILDREN, pv.json);
+				pv.json.put(JSON_PARENT_AMBIGUOUS, urlCounts.get(pv.referer) > 1);
 			}
 			// Remember this pageview as the last pageview for its URL.
-			urlToLastPageview.put(url, pv);
+			urlToLastPageview.put(pv.url, pv);
 			// Update the counter for this URL.
-			Integer c = urlCounts.get(url);
-			urlCounts.put(url, c == null ? 1 : c + 1);
+			Integer c = urlCounts.get(pv.url);
+			urlCounts.put(pv.url, c == null ? 1 : c + 1);
 		}
 		return roots;
 	}
 
-	private List<Pageview> sequenceToTrees(List<Pageview> pageviews) throws JSONException,
+	public List<Pageview> sequenceToTrees(List<Pageview> pageviews) throws JSONException,
 	    ParseException {
 		// Sort all pageviews by time; this sort is stable, so requests that have the same timestamp
 		// will stay in the original order.
@@ -97,7 +148,7 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
 	}
 
 	@Override
-	public void reduce(Text uidAndDay, Iterator<Text> pageviewIterator,
+	public void reduce(Text dayAndUid, Iterator<Text> pageviewIterator,
 	    OutputCollector<Text, Text> out, Reporter reporter) throws IOException {
 		try {
 			List<Pageview> pageviews = new ArrayList<Pageview>();
@@ -116,7 +167,7 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
 			List<Pageview> roots = sequenceToTrees(pageviews);
 			int i = 0;
 			for (Pageview root : roots) {
-				out.collect(makeTreeId(uidAndDay, i), new Text(root.toString()));
+				out.collect(makeTreeId(dayAndUid, i), new Text(root.toString()));
 				++i;
 			}
 		} catch (Exception e) {
@@ -124,54 +175,7 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
 		}
 	}
 
-	private void test() throws Exception {
-		List<Pageview> session = new ArrayList<Pageview>();
-		session
-		    .add(new Pageview(
-		        new JSONObject(
-		            "{\"sequence\":1,\"dt\":\"2014-12-04T01:00:10\",\"uri_path\":\"a\",\"uri_host\":\"\",\"uri_query\":\"\",\"referer\":\"-\"}")));
-		session
-		    .add(new Pageview(
-		        new JSONObject(
-		            "{\"sequence\":2,\"dt\":\"2014-12-04T01:00:15\",\"uri_path\":\"c\",\"uri_host\":\"\",\"uri_query\":\"\",\"referer\":\"http://a\"}")));
-		session
-		    .add(new Pageview(
-		        new JSONObject(
-		            "{\"sequence\":3,\"dt\":\"2014-12-04T01:00:20\",\"uri_path\":\"b\",\"uri_host\":\"\",\"uri_query\":\"\",\"referer\":\"http://a\"}")));
-		session
-		    .add(new Pageview(
-		        new JSONObject(
-		            "{\"sequence\":4,\"dt\":\"2014-12-04T01:00:25\",\"uri_path\":\"a\",\"uri_host\":\"\",\"uri_query\":\"\",\"referer\":\"http://b\"}")));
-		session
-		    .add(new Pageview(
-		        new JSONObject(
-		            "{\"sequence\":5,\"dt\":\"2014-12-04T01:00:30\",\"uri_path\":\"b\",\"uri_host\":\"\",\"uri_query\":\"\",\"referer\":\"http://a\"}")));
-		session
-		    .add(new Pageview(
-		        new JSONObject(
-		            "{\"sequence\":6,\"dt\":\"2014-12-04T01:00:40\",\"uri_path\":\"c\",\"uri_host\":\"\",\"uri_query\":\"\",\"referer\":\"http://b\"}")));
-		session
-		    .add(new Pageview(
-		        new JSONObject(
-		            "{\"sequence\":7,\"dt\":\"2014-12-04T01:00:50\",\"uri_path\":\"d\",\"uri_host\":\"\",\"uri_query\":\"\",\"referer\":\"http://c\"}")));
-		for (Pageview root : sequenceToTrees(session)) {
-			System.out.println(root.toString(2));
-		}
-	}
-
 	public static void main(String[] args) throws Exception {
-		String pvString = "{\"hostname\":\"cp1066.eqiad.wmnet\",\"sequence\":1470486742,"
-		    + "\"dt\":\"2014-12-04T01:00:00\",\"time_firstbyte\":0.000128984,\"ip\":\"0.0.0.0\","
-		    + "\"cache_status\":\"hit\",\"http_status\":\"200\",\"response_size\":3185,"
-		    + "\"http_method\":\"GET\",\"uri_host\":\"en.wikipedia.org\",\"uri_path\":\"/w/index.php\","
-		    + "\"uri_query\":\"?title=MediaWiki:Gadget-refToolbarBase.js&action=raw&ctype=text/javascript\","
-		    + "\"content_type\":\"text/javascript; charset=UTF-8\","
-		    + "\"referer\":\"http://es.wikipedia.org/wiki/Jos%C3%A9_Mar%C3%ADa_Yazpik\","
-		    + "\"x_forwarded_for\":\"-\","
-		    + "\"user_agent\":\"Mozilla/5.0 (Windows NT 6.1; WOW64; Trident/7.0; rv:11.0) like Gecko\","
-		    + "\"accept_language\":\"es-MX\",\"x_analytics\":\"php=hhvm\",\"range\":\"-\"}";
-		TreeExtractorReducer reducer = new TreeExtractorReducer();
-		reducer.test();
 	}
 
 }

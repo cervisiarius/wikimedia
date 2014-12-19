@@ -11,6 +11,7 @@ public class Pageview {
 	public long time;
 	public long seq;
 	public String url;
+	public String referer;
 
 	public static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
 
@@ -18,8 +19,9 @@ public class Pageview {
 		this.json = json;
 		this.time = DATE_FORMAT.parse(json.getString("dt")).getTime();
 		this.seq = json.getLong("sequence");
-		this.url = String.format("http://%s%s%s", json.getString("uri_host"),
+		this.url = String.format("%s%s%s", json.getString("uri_host"),
 		    json.getString("uri_path"), json.getString("uri_query"));
+		this.referer = json.getString("referer").split("://")[1];
 	}
 
 	public String toString() {
