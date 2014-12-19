@@ -96,12 +96,14 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
 		// Otherwise, prune the children recursively and return.
 		else {
 			JSONArray children = root.getJSONArray(JSON_CHILDREN);
+			JSONArray prunedChildren = new JSONArray();
 			for (int i = 0; i < children.length(); ++i) {
 				JSONObject pruned = pruneBadLeaves(children.getJSONObject(i), false);
-				if (pruned == null) {
-					children.remove(i);
+				if (pruned != null) {
+					prunedChildren.put(pruned);
 				}
 			}
+			root.put(JSON_CHILDREN, prunedChildren);
 			return root;
 		}
 	}
@@ -119,7 +121,7 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
 						filtered.add(root);
 					}
 				} else if (keepBadTrees) {
-					root.json.put(JSON_BAD_TREE, 2);
+					root.json.put(JSON_BAD_TREE, 3);
 					filtered.add(root);
 				}
 			} catch (JSONException e) {
@@ -187,7 +189,7 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
 
 	@Override
 	public void configure(JobConf conf) {
-		uriHostPattern = Pattern.compile(conf.get(CONF_URI_HOST_PATTERN));
+		uriHostPattern = Pattern.compile(conf.get(CONF_URI_HOST_PATTERN, ".*"));
 		keepAmbiguousTrees = conf.getBoolean(CONF_KEEP_AMBIGUOUS_TREES, true);
 		keepBadTrees = conf.getBoolean(CONF_KEEP_BAD_TREES, false);
 	}
