@@ -151,8 +151,11 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
 						filtered.add(root);
 					}
 				} else if (keepBadTrees) {
-					root.json.put(JSON_BAD_TREE, true);
-					filtered.add(root);
+					root.json = pruneBadLeaves(root.json, true);
+					if (root.json != null) {
+						root.json.put(JSON_BAD_TREE, true);
+						filtered.add(root);
+					}
 				}
 			} catch (JSONException e) {
 				System.out.format("%s\n", e.getMessage());
