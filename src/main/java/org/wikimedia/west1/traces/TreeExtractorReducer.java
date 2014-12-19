@@ -38,49 +38,58 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
 		return new Text(String.format("%s_%s_%04d", day, uidHash, seqNum));
 	}
 
-	protected static boolean isGoodPageview(JSONObject json, boolean isRoot) {
-		try {
-			boolean isLeaf = !json.has(JSON_CHILDREN);
-			return
-			// Internal nodes must be from the specified language versions (leaves may be things such as
-			// image loads)
-			// TODO: make language versions a parameter
-			(isLeaf || json.getString("uri_host").matches("pt\\.wikipedia\\.org"))
-			// Internal nodes must be article pages (leaves may be things such as image loads)
-			    && (isLeaf || json.getString("uri_path").matches("/wiki/.*"))
-			    // No node can be from the last hour of the day, so we discard sessions spanning the day
-			    // boundary.
-			    && !json.getString("dt").contains("T23:")
-			    // The root must not be a Wikimedia page; this will discard traces that in fact continue a
-			    // previous session (after a break of more than INTER_SESSION_TIME, or because it's the
-			    // second part of a session that starts the day boundary and whose first part was excluded
-			    // via the "T23:" rule.
-			    && (!isRoot || !json.getString("referer").matches("[a-z]+://[^/]*wiki.*"));
-		} catch (JSONException e) {
-			System.out.format("%s\n", e.getMessage());
-			return false;
-		}
+	protected static boolean isGoodPageview(JSONObject json, boolean isRoot) throws JSONException {
+		boolean isLeaf = !json.has(JSON_CHILDREN);
+		return
+		// Internal nodes must be from the specified language versions (leaves may be things such as
+		// image loads)
+		// TODO: make language versions a parameter
+		(isLeaf || json.getString("uri_host").matches("pt\\.wikipedia\\.org"))
+		// Internal nodes must be article pages (leaves may be things such as image loads)
+		    && (isLeaf || json.getString("uri_path").matches("/wiki/.*"))
+		    // No node can be from the last hour of the day, so we discard sessions spanning the day
+		    // boundary.
+		    && !json.getString("dt").contains("T23:")
+		    // The root must not be a Wikimedia page; this will discard traces that in fact continue a
+		    // previous session (after a break of more than INTER_SESSION_TIME, or because it's the
+		    // second part of a session that starts the day boundary and whose first part was excluded
+		    // via the "T23:" rule.
+		    && (!isRoot || !json.getString("referer").matches("[a-z]+://[^/]*wiki.*"));
 	}
 
 	// Deapth-first search, failing as soon as a node fails.
-	protected static boolean isGoodTree(JSONObject json, boolean isRoot) {
-		try {
-			if (!isGoodPageview(json, isRoot)) {
-				return false;
-			}
-			if (json.has(JSON_CHILDREN)) {
-				JSONArray children = json.getJSONArray(JSON_CHILDREN);
-				for (int i = 0; i < children.length(); ++i) {
-					if (!isGoodTree(children.getJSONObject(i), false)) {
-						return false;
-					}
-				}
-			}
-			return true;
-		} catch (JSONException e) {
-			System.out.format("%s\n", e.getMessage());
+	protected static boolean isGoodTree(JSONObject json, boolean isRoot) throws JSONException {
+		if (!isGoodPageview(json, isRoot)) {
 			return false;
 		}
+		if (json.has(JSON_CHILDREN)) {
+			JSONArray children = json.getJSONArray(JSON_CHILDREN);
+			for (int i = 0; i < children.length(); ++i) {
+				if (!isGoodTree(children.getJSONObject(i), false)) {
+					return false;
+				}
+			}
+		}
+		return true;
+	}
+
+	// If discard==true, we discard filtered trees, otherwise we merely label them as bad by setting
+	// the field "bad_tree" to true in the root.
+	private static List<Pageview> filterTrees(List<Pageview> roots, boolean discard) {
+		List<Pageview> filtered = new ArrayList<Pageview>();
+		for (Pageview root : roots) {
+			try {
+				if (isGoodTree(root.json, true)) {
+					filtered.add(root);
+				} else if (!discard) {
+					root.json.put("bad_tree", true);
+					filtered.add(root);
+				}
+			} catch (JSONException e) {
+				System.out.format("%s\n", e.getMessage());
+			}
+		}
+		return filtered;
 	}
 
 	// Input: the list of session pageviews in temporal order.
@@ -135,8 +144,8 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
 		}
 		// Store the last set of trees.
 		roots.addAll(getMinimumSpanningForest(session));
-
-		return roots;
+		// Return the list of valid trees.
+		return filterTrees(roots, false);
 	}
 
 	@Override
