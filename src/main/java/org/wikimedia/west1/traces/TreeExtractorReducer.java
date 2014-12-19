@@ -88,14 +88,15 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
 		return true;
 	}
 
-	private JSONObject pruneBadLeaves(JSONObject root, boolean isGlobalRoot) throws JSONException {
+	protected JSONObject pruneBadLeaves(JSONObject root, boolean isGlobalRoot) throws JSONException {
 		// If the current root is a leaf, it needs to be checked.
 		if (!root.has(JSON_CHILDREN)) {
 			return isGoodPageview(root, isGlobalRoot, false) ? root : null;
 		}
 		// Otherwise, prune the children recursively and return.
 		else {
-			JSONArray children = root.getJSONArray(JSON_CHILDREN);
+			//JSONArray children = root.getJSONArray(JSON_CHILDREN);
+			JSONArray children = (JSONArray) root.remove(JSON_CHILDREN);
 			JSONArray prunedChildren = new JSONArray();
 			for (int i = 0; i < children.length(); ++i) {
 				JSONObject pruned = pruneBadLeaves(children.getJSONObject(i), false);
@@ -103,7 +104,9 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
 					prunedChildren.put(pruned);
 				}
 			}
-			root.put(JSON_CHILDREN, prunedChildren);
+			if (prunedChildren.length() > 0) {
+				root.put(JSON_CHILDREN, prunedChildren);
+			}
 			return root;
 		}
 	}
@@ -116,12 +119,9 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
 					root.json = pruneBadLeaves(root.json, true);
 					if (root.json != null) {
 						filtered.add(root);
-					} else if (keepBadTrees) {
-						root.json.put(JSON_BAD_TREE, 1);
-						filtered.add(root);
 					}
 				} else if (keepBadTrees) {
-					root.json.put(JSON_BAD_TREE, 3);
+					root.json.put(JSON_BAD_TREE, true);
 					filtered.add(root);
 				}
 			} catch (JSONException e) {
@@ -187,11 +187,21 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
 		return pruneAndFilterTrees(roots);
 	}
 
+	private void setDefaultConfig() {
+		uriHostPattern = Pattern.compile("pt\\.wikipedia\\.org");
+		keepAmbiguousTrees = true;
+		keepBadTrees = true;
+	}
+
 	@Override
 	public void configure(JobConf conf) {
-		uriHostPattern = Pattern.compile(conf.get(CONF_URI_HOST_PATTERN, ".*"));
-		keepAmbiguousTrees = conf.getBoolean(CONF_KEEP_AMBIGUOUS_TREES, true);
-		keepBadTrees = conf.getBoolean(CONF_KEEP_BAD_TREES, false);
+		if (conf == null) {
+			setDefaultConfig();
+		} else {
+			uriHostPattern = Pattern.compile(conf.get(CONF_URI_HOST_PATTERN, ".*"));
+			keepAmbiguousTrees = conf.getBoolean(CONF_KEEP_AMBIGUOUS_TREES, true);
+			keepBadTrees = conf.getBoolean(CONF_KEEP_BAD_TREES, false);
+		}
 	}
 
 	@Override
