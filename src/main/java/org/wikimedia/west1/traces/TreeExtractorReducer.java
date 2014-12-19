@@ -3,12 +3,15 @@ package org.wikimedia.west1.traces;
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.regex.Pattern;
 
 import org.apache.commons.codec.digest.DigestUtils;
@@ -34,6 +37,24 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
 	private static final String CONF_KEEP_AMBIGUOUS_TREES = "org.wikimedia.west1.traces.keepAmbiguousTrees";
 	private static final String CONF_KEEP_BAD_TREES = "org.wikimedia.west1.traces.keepBadTrees";
 
+	private static final Set<String> FIELDS_TO_KEEP = new HashSet<String>(Arrays.asList(
+	// "x_analytics",
+	// "range",
+	// "accept_language",
+	// "x_forwarded_for",
+	// "cache_status",
+	// "hostname",
+	// "response_size",
+	// "uri_host",
+	// "ip",
+	// "http_method",
+	// "time_firstbyte",
+	// "sequence",
+	// "user_agent",
+	    "content_type", "dt", "uri_path", "uri_query", "http_status", "referer",
+	    // The fields we added.
+	    JSON_CHILDREN, JSON_PARENT_AMBIGUOUS, JSON_BAD_TREE));
+
 	private Pattern uriHostPattern;
 	private boolean keepAmbiguousTrees;
 	private boolean keepBadTrees;
@@ -45,6 +66,16 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
 		// seqNum is zero-padded to fixed length 4: we allow at most MAX_NUM_PAGEVIEWS = 3600 pageviews
 		// per day, and in the worst case, each pageview is its own tree, so seqNum <= 3600.
 		return new Text(String.format("%s_%s_%04d", day, uidHash, seqNum));
+	}
+
+	private static JSONObject sparsifyJson(JSONObject json) {
+		JSONObject sparse = new JSONObject();
+		for (String field : JSONObject.getNames(json)) {
+			if (FIELDS_TO_KEEP.contains(field)) {
+				sparse.put(field, json.get(field));
+			}
+		}
+		return sparse;
 	}
 
 	// If leavesAreSpecial == true, a leaf is considered ok even if it's not a valid article view
@@ -91,11 +122,10 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
 	protected JSONObject pruneBadLeaves(JSONObject root, boolean isGlobalRoot) throws JSONException {
 		// If the current root is a leaf, it needs to be checked.
 		if (!root.has(JSON_CHILDREN)) {
-			return isGoodPageview(root, isGlobalRoot, false) ? root : null;
+			return isGoodPageview(root, isGlobalRoot, false) ? sparsifyJson(root) : null;
 		}
 		// Otherwise, prune the children recursively and return.
 		else {
-			//JSONArray children = root.getJSONArray(JSON_CHILDREN);
 			JSONArray children = (JSONArray) root.remove(JSON_CHILDREN);
 			JSONArray prunedChildren = new JSONArray();
 			for (int i = 0; i < children.length(); ++i) {
@@ -107,7 +137,7 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
 			if (prunedChildren.length() > 0) {
 				root.put(JSON_CHILDREN, prunedChildren);
 			}
-			return root;
+			return sparsifyJson(root);
 		}
 	}
 
