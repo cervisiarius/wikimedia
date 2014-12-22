@@ -3,7 +3,7 @@
 echo "Running hadoop job"
 hadoop jar /usr/lib/hadoop-mapreduce/hadoop-streaming.jar \
     -libjars     ~/wikimedia/trunk/target/TreeExtractor-0.0.1-SNAPSHOT-jar-with-dependencies.jar \
-    -D           mapred.child.java.opts=-Xss10m
+    -D           mapred.child.java.opts=-Xss10m \
     -D           mapreduce.output.fileoutputformat.compress=false \
     -D           mapreduce.input.fileinputformat.split.minsize=300000000 \
     -D           mapreduce.task.timeout=6000000 \
