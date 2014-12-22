@@ -29,13 +29,13 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
 	// Having 3600 pageviews in a day would mean one every 24 seconds, a lot...
 	private static final int MAX_NUM_PAGEVIEWS = 3600;
 	// If we see this much time between pageviews, we start a new session; we use one hour.
-	private static final long INTER_SESSION_TIME = 3600 * 1000;
+	//private static final long INTER_SESSION_TIME = 3600 * 1000;
 	private static final String JSON_CHILDREN = "children";
 	private static final String JSON_PARENT_AMBIGUOUS = "parent_ambiguous";
 	private static final String JSON_BAD_TREE = "bad_tree";
-	private static final String CONF_URI_HOST_PATTERN = "org.wikimedia.west1.traces.uriHostPattern";
 	private static final String CONF_KEEP_AMBIGUOUS_TREES = "org.wikimedia.west1.traces.keepAmbiguousTrees";
 	private static final String CONF_KEEP_BAD_TREES = "org.wikimedia.west1.traces.keepBadTrees";
+	private static final Pattern WIKI_HOST_PATTERN = Pattern.compile("[a-z]+://[^/]*wiki.*");
 
 	private static final Set<String> FIELDS_TO_KEEP = new HashSet<String>(Arrays.asList(
 	// "x_analytics",
@@ -55,12 +55,11 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
 	    // The fields we added.
 	    JSON_CHILDREN, JSON_PARENT_AMBIGUOUS, JSON_BAD_TREE));
 
-	private Pattern uriHostPattern;
 	private boolean keepAmbiguousTrees;
 	private boolean keepBadTrees;
 
 	private static Text makeTreeId(Text dayAndUid, int seqNum) {
-		String[] day_uid = dayAndUid.toString().split(GroupByUserAndDayMapper.UID_SEPARATOR, 2);
+		String[] day_uid = dayAndUid.toString().split(GroupAndFilterMapper.UID_SEPARATOR, 2);
 		String day = day_uid[0];
 		String uidHash = DigestUtils.md5Hex(day_uid[1]);
 		// seqNum is zero-padded to fixed length 4: we allow at most MAX_NUM_PAGEVIEWS = 3600 pageviews
@@ -78,37 +77,26 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
 		return sparse;
 	}
 
-	// If leavesAreSpecial == true, a leaf is considered ok even if it's not a valid article view
-	// (such as image loads etc.); use this setting when calling the method from isGoodTree.
-	// If leavesAreSpecial == false, leaves receive no special treatment.
-	protected boolean isGoodPageview(JSONObject root, boolean isGlobalRoot, boolean leavesAreSpecial)
-	    throws JSONException {
-		boolean isLeaf = !root.has(JSON_CHILDREN);
-		boolean leafCase = leavesAreSpecial && isLeaf;
+	protected boolean isGoodPageview(JSONObject root, boolean isGlobalRoot) throws JSONException {
 		return
-		// Internal nodes must be from the specified language versions (leaves may be things such as
-		// image loads)
-		(leafCase || uriHostPattern.matcher(root.getString("uri_host")).matches())
-		// Internal nodes must be article pages (leaves may be things such as image loads)
-		    && (leafCase || root.getString("uri_path").matches("/wiki/.*"))
-		    // No node can be from the last hour of the day, so we discard sessions spanning the day
-		    // boundary.
-		    && !root.getString("dt").contains("T23:")
-		    // The root must not be a Wikimedia page; this will discard traces that in fact continue a
-		    // previous session (after a break of more than INTER_SESSION_TIME, or because it's the
-		    // second part of a session that starts the day boundary and whose first part was excluded
-		    // via the "T23:" rule.
-		    && (!isGlobalRoot || !root.getString("referer").matches("[a-z]+://[^/]*wiki.*"))
+		// No node can be from the last hour of the day, so we discard sessions spanning the day
+		// boundary.
+		!root.getString("dt").contains("T23:")
+		// The root must not be a Wikimedia page; this will discard traces that in fact continue a
+		// previous session (after a break of more than INTER_SESSION_TIME, or because it's the
+		// second part of a session that starts the day boundary and whose first part was excluded
+		// via the "T23:" rule.
+		    && (!isGlobalRoot || !WIKI_HOST_PATTERN.matcher(root.getString("referer")).matches())
 		    // If we don't want to keep ambiguous trees, discard them.
 		    && (keepAmbiguousTrees || !root.getBoolean(JSON_PARENT_AMBIGUOUS));
 	}
 
+	/////////////////////// StackOverflowError?
 	// Depth-first search, failing as soon as a node fails.
 	protected boolean isGoodTree(JSONObject root, boolean isGlobalRoot) throws JSONException {
-		if (!isGoodPageview(root, isGlobalRoot, true)) {
+		if (!isGoodPageview(root, isGlobalRoot)) {
 			return false;
-		}
-		if (root.has(JSON_CHILDREN)) {
+		} else if (root.has(JSON_CHILDREN)) {
 			JSONArray children = root.getJSONArray(JSON_CHILDREN);
 			for (int i = 0; i < children.length(); ++i) {
 				if (!isGoodTree(children.getJSONObject(i), false)) {
@@ -119,43 +107,16 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
 		return true;
 	}
 
-	protected JSONObject pruneBadLeaves(JSONObject root, boolean isGlobalRoot) throws JSONException {
-		// If the current root is a leaf, it needs to be checked.
-		if (!root.has(JSON_CHILDREN)) {
-			return isGoodPageview(root, isGlobalRoot, false) ? sparsifyJson(root) : null;
-		}
-		// Otherwise, prune the children recursively and return.
-		else {
-			JSONArray children = (JSONArray) root.remove(JSON_CHILDREN);
-			JSONArray prunedChildren = new JSONArray();
-			for (int i = 0; i < children.length(); ++i) {
-				JSONObject pruned = pruneBadLeaves(children.getJSONObject(i), false);
-				if (pruned != null) {
-					prunedChildren.put(pruned);
-				}
-			}
-			if (prunedChildren.length() > 0) {
-				root.put(JSON_CHILDREN, prunedChildren);
-			}
-			return sparsifyJson(root);
-		}
-	}
-
-	private List<Pageview> pruneAndFilterTrees(List<Pageview> roots) {
+	private List<Pageview> filterTrees(List<Pageview> roots) {
 		List<Pageview> filtered = new ArrayList<Pageview>();
 		for (Pageview root : roots) {
 			try {
+				root.json = sparsifyJson(root.json);
 				if (isGoodTree(root.json, true)) {
-					root.json = pruneBadLeaves(root.json, true);
-					if (root.json != null) {
-						filtered.add(root);
-					}
+					filtered.add(root);
 				} else if (keepBadTrees) {
-					root.json = pruneBadLeaves(root.json, true);
-					if (root.json != null) {
-						root.json.put(JSON_BAD_TREE, true);
-						filtered.add(root);
-					}
+					root.json.put(JSON_BAD_TREE, true);
+					filtered.add(root);
 				}
 			} catch (JSONException e) {
 				System.out.format("%s\n", e.getMessage());
@@ -204,24 +165,23 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
 		// Iterate over all pageviews in temporal order and split into sessions.
 		List<Pageview> roots = new ArrayList<Pageview>();
 		List<Pageview> session = new ArrayList<Pageview>();
-		long prevTime = 0;
+		// long prevTime = 0;
 		for (Pageview pv : pageviews) {
-			long curTime = pv.time;
-			if (curTime - prevTime > INTER_SESSION_TIME) {
-				roots.addAll(getMinimumSpanningForest(session));
-				session.clear();
-			}
-			prevTime = curTime;
+			// long curTime = pv.time;
+			// if (curTime - prevTime > INTER_SESSION_TIME) {
+			// roots.addAll(getMinimumSpanningForest(session));
+			// session.clear();
+			// }
+			// prevTime = curTime;
 			session.add(pv);
 		}
 		// Store the last set of trees.
 		roots.addAll(getMinimumSpanningForest(session));
 		// Return the list of valid trees.
-		return pruneAndFilterTrees(roots);
+		return filterTrees(roots);
 	}
 
 	private void setDefaultConfig() {
-		uriHostPattern = Pattern.compile("pt\\.wikipedia\\.org");
 		keepAmbiguousTrees = true;
 		keepBadTrees = true;
 	}
@@ -231,7 +191,6 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
 		if (conf == null) {
 			setDefaultConfig();
 		} else {
-			uriHostPattern = Pattern.compile(conf.get(CONF_URI_HOST_PATTERN, ".*"));
 			keepAmbiguousTrees = conf.getBoolean(CONF_KEEP_AMBIGUOUS_TREES, true);
 			keepBadTrees = conf.getBoolean(CONF_KEEP_BAD_TREES, false);
 		}
@@ -267,9 +226,6 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
 		} catch (Exception e) {
 			System.out.format("%s\n", e.getMessage());
 		}
-	}
-
-	public static void main(String[] args) throws Exception {
 	}
 
 }

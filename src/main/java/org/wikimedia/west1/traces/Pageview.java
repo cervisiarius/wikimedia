@@ -21,6 +21,7 @@ public class Pageview {
 		this.seq = json.getLong("sequence");
 		this.url = String.format("%s%s%s", json.getString("uri_host"),
 		    json.getString("uri_path"), json.getString("uri_query"));
+		// Strip the protocol from the referer so it's comparable to the URL.
 		this.referer = json.getString("referer").split("://")[1];
 	}
 

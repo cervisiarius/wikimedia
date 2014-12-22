@@ -56,7 +56,7 @@ public class TreeExtractorReducerTest {
 		    + "\"content_type\":\"text/html; charset=UTF-8\",\"parent_ambiguous\":false}";
 		JSONObject json = new JSONObject(pvString);
 		System.out.println(json.toString(2));
-		System.out.println(reducer.isGoodPageview(json, false, true));
+		System.out.println(reducer.isGoodPageview(json, false));
 	}
 
 	public static void testIsGoodTree() throws Exception {
@@ -83,17 +83,8 @@ public class TreeExtractorReducerTest {
 		System.out.println(reducer.isGoodTree(json, true));
 	}
 
-	public static void testPruneBadLeaves() throws Exception {
-		//String pvString = "{\"x_analytics\":\"php=hhvm\",\"dt\":\"2014-12-04T01:23:54\",\"uri_path\":\"/wiki/Cl%C3%A1udio_Manuel_da_Costa\",\"range\":\"-\",\"accept_language\":\"pt-BR,pt;q=0.8,en-US;q=0.6,en;q=0.4\",\"x_forwarded_for\":\"-\",\"cache_status\":\"hit\",\"children\":[{\"x_analytics\":\"php=hhvm\",\"dt\":\"2014-12-04T01:24:01\",\"uri_path\":\"/w/index.php\",\"range\":\"-\",\"accept_language\":\"pt-BR,pt;q=0.8,en-US;q=0.6,en;q=0.4\",\"x_forwarded_for\":\"-\",\"cache_status\":\"hit\",\"hostname\":\"cp1068.eqiad.wmnet\",\"response_size\":0,\"uri_query\":\"?title=MediaWiki:Gadget-featured-articles-links.js&action=raw&ctype=text/javascript\",\"uri_host\":\"en.wikipedia.org\",\"ip\":\"179.185.83.66\",\"http_method\":\"GET\",\"http_status\":\"304\",\"time_firstbyte\":1.72853E-4,\"sequence\":1468582733,\"user_agent\":\"Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.71 Safari/537.36\",\"referer\":\"http://pt.wikipedia.org/wiki/Cl%C3%A1udio_Manuel_da_Costa\",\"content_type\":\"text/javascript; charset=UTF-8\",\"parent_ambiguous\":false}],\"hostname\":\"cp1068.eqiad.wmnet\",\"response_size\":27918,\"uri_query\":\"\",\"uri_host\":\"pt.wikipedia.org\",\"ip\":\"179.185.83.66\",\"http_method\":\"GET\",\"http_status\":\"200\",\"time_firstbyte\":1.84536E-4,\"sequence\":1468572810,\"user_agent\":\"Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.71 Safari/537.36\",\"referer\":\"https://www.google.com.br/\",\"content_type\":\"text/html; charset=UTF-8\",\"parent_ambiguous\":false}";
-		String pvString = "{\"x_analytics\":\"php=hhvm\",\"dt\":\"2014-12-04T01:23:54\",\"uri_path\":\"/wiki/Cl%C3%A1udio_Manuel_da_Costa\",\"range\":\"-\",\"accept_language\":\"pt-BR,pt;q=0.8,en-US;q=0.6,en;q=0.4\",\"x_forwarded_for\":\"-\",\"cache_status\":\"hit\","
-				+ "\"hostname\":\"cp1068.eqiad.wmnet\",\"response_size\":27918,\"uri_query\":\"\",\"uri_host\":\"pt.wikipedia.org\",\"ip\":\"179.185.83.66\",\"http_method\":\"GET\",\"http_status\":\"200\",\"time_firstbyte\":1.84536E-4,\"sequence\":1468572810,\"user_agent\":\"Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.71 Safari/537.36\",\"referer\":\"https://www.google.com.br/\",\"content_type\":\"text/html; charset=UTF-8\",\"parent_ambiguous\":false}";
-		JSONObject json = new JSONObject(pvString);
-		System.out.println(json.toString(2));
-		System.out.println(reducer.pruneBadLeaves(json, true).toString(2));
-	}
-
 	public static void main(String[] args) throws Exception {
-		testPruneBadLeaves();
+		testIsGoodTree();
 	}
 
 }
