@@ -13,13 +13,12 @@ hadoop jar /usr/lib/hadoop-mapreduce/hadoop-streaming.jar \
     -D           mapreduce.job.output.value.class=org.apache.hadoop.io.Text \
     -D           org.wikimedia.west1.traces.uriHostPattern='pt\.wikipedia\.org' \
     -D           org.wikimedia.west1.traces.keepAmbiguousTrees=true \
-    -D           org.wikimedia.west1.traces.keepBadTrees=false \
+    -D           org.wikimedia.west1.traces.keepBadTrees=true \
     -inputformat SequenceFileAsTextInputFormat \
-    -input       /wmf/data/raw/webrequest/webrequest_text/hourly/2014/12/04/*/webrequest* \
+    -input       /wmf/data/raw/webrequest/webrequest_text/hourly/2014/12/04/07/webrequest_text.22.0.* \
     -output      "/user/west1/tree_extractor_test" \
     -mapper      org.wikimedia.west1.traces.GroupAndFilterMapper \
     -reducer     org.wikimedia.west1.traces.TreeExtractorReducer \
     -numReduceTasks 100
 
-#    
-#    -input       /wmf/data/raw/webrequest/webrequest_text/hourly/2014/12/04/07/webrequest_text.22.0.* \
+#     -input       /wmf/data/raw/webrequest/webrequest_text/hourly/2014/12/04/*/webrequest* \

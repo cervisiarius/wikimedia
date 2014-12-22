@@ -82,9 +82,25 @@ public class TreeExtractorReducerTest {
 		System.out.println(json.toString(2));
 		System.out.println(reducer.isGoodTree(json, true));
 	}
+	
+	public static void testPageview() throws Exception {
+		String pvString = "{\"x_analytics\":\"php=hhvm\",\"dt\":\"2014-12-04T01:18:34\","
+		    + "\"uri_path\":\"/wiki/Indonesia___%C3%A1\",\"range\":\"-\",\"accept_language\":\"en-US,en;q=0.5\","
+		    + "\"x_forwarded_for\":\"-\",\"cache_status\":\"hit\",\"hostname\":\"cp4016.ulsfo.wmnet\","
+		    + "\"response_size\":90662,\"uri_query\":\"\",\"uri_host\":\"pt.wikipedia.org\","
+		    + "\"ip\":\"1.10.195.119\",\"http_method\":\"GET\",\"http_status\":\"200\","
+		    + "\"time_firstbyte\":1.26839E-4,\"sequence\":1261697215,"
+		    + "\"user_agent\":\"Mozilla/5.0 (Windows NT 5.1; rv:33.0) Gecko/20100101 Firefox/33.0\","
+		    + "\"referer\":\"http://pt.wikipedia.org/wiki/Jos%C3%A9_Mar%C3%ADa_Yazpik?qqq#rrr\","
+		    + "\"content_type\":\"text/html; charset=UTF-8\",\"parent_ambiguous\":false}";
+		Pageview pv = new Pageview(new JSONObject(pvString));
+		System.out.println(pv.toString(2));
+		System.out.println(pv.url);
+		System.out.println(pv.referer);
+	}
 
 	public static void main(String[] args) throws Exception {
-		testIsGoodTree();
+		testPageview();
 	}
 
 }
