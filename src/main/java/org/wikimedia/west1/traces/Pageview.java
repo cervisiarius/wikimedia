@@ -42,7 +42,12 @@ public class Pageview {
 				this.referer = String.format("%s%s%s", ref.getAuthority().replace("//", ""),
 				    URLDecoder.decode(ref.getPath(), UTF8), q);
 			} catch (MalformedURLException e) {
-				this.referer = URLDecoder.decode(json.getString("referer").split("://")[1], UTF8);
+				String[] tokens = json.getString("referer").split("://");
+				if (tokens.length > 1) {
+					this.referer = URLDecoder.decode(tokens[1], UTF8);
+				} else {
+					this.referer = tokens[0];
+				}
 			}
 		} catch (UnsupportedEncodingException e) {
 			// This should never happen, since the encoding is hard-coded as "UTF-8".

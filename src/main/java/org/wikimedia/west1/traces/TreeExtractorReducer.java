@@ -28,11 +28,10 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
 
 	// Having 3600 pageviews in a day would mean one every 24 seconds, a lot...
 	private static final int MAX_NUM_PAGEVIEWS = 3600;
-	// If we see this much time between pageviews, we start a new session; we use one hour.
-	//private static final long INTER_SESSION_TIME = 3600 * 1000;
 	private static final String JSON_CHILDREN = "children";
 	private static final String JSON_PARENT_AMBIGUOUS = "parent_ambiguous";
 	private static final String JSON_BAD_TREE = "bad_tree";
+	private static final String CONF_URI_HOST_PATTERN = "org.wikimedia.west1.traces.uriHostPattern";
 	private static final String CONF_KEEP_AMBIGUOUS_TREES = "org.wikimedia.west1.traces.keepAmbiguousTrees";
 	private static final String CONF_KEEP_BAD_TREES = "org.wikimedia.west1.traces.keepBadTrees";
 	private static final Pattern WIKI_HOST_PATTERN = Pattern.compile("[a-z]+://[^/]*wiki.*");
@@ -55,6 +54,7 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
 	    // The fields we added.
 	    JSON_CHILDREN, JSON_PARENT_AMBIGUOUS, JSON_BAD_TREE));
 
+	private Pattern mainPagePattern;
 	private boolean keepAmbiguousTrees;
 	private boolean keepBadTrees;
 
@@ -92,7 +92,8 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
 		// previous session (after a break of more than INTER_SESSION_TIME, or because it's the
 		// second part of a session that starts the day boundary and whose first part was excluded
 		// via the "T23:" rule.
-		    && (!isGlobalRoot || !WIKI_HOST_PATTERN.matcher(root.getString("referer")).matches())
+		    && (!isGlobalRoot || !WIKI_HOST_PATTERN.matcher(root.getString("referer")).matches() || mainPagePattern
+		        .matcher(root.getString("referer")).matches())
 		    // If we don't want to keep ambiguous trees, discard them.
 		    && (keepAmbiguousTrees || !root.getBoolean(JSON_PARENT_AMBIGUOUS));
 	}
@@ -168,26 +169,12 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
 			}
 		});
 
-		// Iterate over all pageviews in temporal order and split into sessions.
-		List<Pageview> roots = new ArrayList<Pageview>();
-		List<Pageview> session = new ArrayList<Pageview>();
-		// long prevTime = 0;
-		for (Pageview pv : pageviews) {
-			// long curTime = pv.time;
-			// if (curTime - prevTime > INTER_SESSION_TIME) {
-			// roots.addAll(getMinimumSpanningForest(session));
-			// session.clear();
-			// }
-			// prevTime = curTime;
-			session.add(pv);
-		}
-		// Store the last set of trees.
-		roots.addAll(getMinimumSpanningForest(session));
 		// Return the list of valid trees.
-		return filterTrees(roots);
+		return filterTrees(getMinimumSpanningForest(pageviews));
 	}
 
 	private void setDefaultConfig() {
+		mainPagePattern = Pattern.compile("http.?://pt\\.wikipedia\\.org/");
 		keepAmbiguousTrees = true;
 		keepBadTrees = true;
 	}
@@ -197,6 +184,7 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
 		if (conf == null) {
 			setDefaultConfig();
 		} else {
+			mainPagePattern = Pattern.compile("http.?://(" + conf.get(CONF_URI_HOST_PATTERN, "") + ")/");
 			keepAmbiguousTrees = conf.getBoolean(CONF_KEEP_AMBIGUOUS_TREES, true);
 			keepBadTrees = conf.getBoolean(CONF_KEEP_BAD_TREES, false);
 		}
