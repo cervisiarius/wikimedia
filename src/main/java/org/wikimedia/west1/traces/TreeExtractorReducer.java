@@ -67,14 +67,20 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
 		return new Text(String.format("%s_%s_%04d", day, uidHash, seqNum));
 	}
 
-	private static JSONObject sparsifyJson(JSONObject json) {
-		JSONObject sparse = new JSONObject();
-		for (String field : JSONObject.getNames(json)) {
-			if (FIELDS_TO_KEEP.contains(field)) {
-				sparse.put(field, json.get(field));
+	private static void sparsifyJson(JSONObject json) {
+		// First process children recursively.
+		if (json.has(JSON_CHILDREN)) {
+			JSONArray children = json.getJSONArray(JSON_CHILDREN);
+			for (int i = 0; i < children.length(); ++i) {
+				sparsifyJson((JSONObject) children.get(i));
 			}
 		}
-		return sparse;
+		// Then process the root itself.
+		for (String field : JSONObject.getNames(json)) {
+			if (!FIELDS_TO_KEEP.contains(field)) {
+				json.remove(field);
+			}
+		}
 	}
 
 	protected boolean isGoodPageview(JSONObject root, boolean isGlobalRoot) throws JSONException {
@@ -91,7 +97,6 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
 		    && (keepAmbiguousTrees || !root.getBoolean(JSON_PARENT_AMBIGUOUS));
 	}
 
-	/////////////////////// StackOverflowError?
 	// Depth-first search, failing as soon as a node fails.
 	protected boolean isGoodTree(JSONObject root, boolean isGlobalRoot) throws JSONException {
 		if (!isGoodPageview(root, isGlobalRoot)) {
@@ -111,10 +116,11 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
 		List<Pageview> filtered = new ArrayList<Pageview>();
 		for (Pageview root : roots) {
 			try {
-				root.json = sparsifyJson(root.json);
 				if (isGoodTree(root.json, true)) {
+					sparsifyJson(root.json);
 					filtered.add(root);
 				} else if (keepBadTrees) {
+					sparsifyJson(root.json);
 					root.json.put(JSON_BAD_TREE, true);
 					filtered.add(root);
 				}
