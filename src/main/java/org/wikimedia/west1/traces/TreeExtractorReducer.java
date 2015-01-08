@@ -58,13 +58,13 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
 	private boolean keepAmbiguousTrees;
 	private boolean keepBadTrees;
 
-	private static Text makeTreeId(Text dayAndUid, int seqNum) {
+	private Text makeTreeId(Text dayAndUid, int seqNum) {
 		String[] day_uid = dayAndUid.toString().split(GroupAndFilterMapper.UID_SEPARATOR, 2);
 		String day = day_uid[0];
 		String uidHash = DigestUtils.md5Hex(day_uid[1]);
 		// seqNum is zero-padded to fixed length 4: we allow at most MAX_NUM_PAGEVIEWS = 3600 pageviews
 		// per day, and in the worst case, each pageview is its own tree, so seqNum <= 3600.
-		return new Text(String.format("%s_%s_%04d", day, uidHash, seqNum));
+		return new Text(String.format("%s_%s_%04d", day.replace("-", ""), uidHash, seqNum));
 	}
 
 	private static void sparsifyJson(JSONObject json) {
