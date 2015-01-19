@@ -15,8 +15,8 @@ hadoop jar /usr/lib/hadoop-mapreduce/hadoop-streaming.jar \
     -D           org.wikimedia.west1.traces.keepAmbiguousTrees=true \
     -D           org.wikimedia.west1.traces.keepBadTrees=true \
     -inputformat SequenceFileAsTextInputFormat \
-    -input       /wmf/data/raw/webrequest/webrequest_text/hourly/2014/12/16/*/webrequest* \
-    -output      "/user/west1/tree_extractor_test" \
+    -input       /wmf/data/raw/webrequest/webrequest_text/hourly/2014/12/04/07/webrequest_text.22.0.* \
+    -output      "/user/west1/tree_extractor_test_BOT-TEST" \
     -mapper      org.wikimedia.west1.traces.GroupAndFilterMapper \
     -reducer     org.wikimedia.west1.traces.TreeExtractorReducer \
     -numReduceTasks 100

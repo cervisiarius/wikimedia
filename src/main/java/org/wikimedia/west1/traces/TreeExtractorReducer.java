@@ -31,6 +31,7 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
 	private static final String JSON_CHILDREN = "children";
 	private static final String JSON_PARENT_AMBIGUOUS = "parent_ambiguous";
 	private static final String JSON_BAD_TREE = "bad_tree";
+	private static final String JSON_UA = "user_agent";
 	private static final String CONF_URI_HOST_PATTERN = "org.wikimedia.west1.traces.uriHostPattern";
 	private static final String CONF_KEEP_AMBIGUOUS_TREES = "org.wikimedia.west1.traces.keepAmbiguousTrees";
 	private static final String CONF_KEEP_BAD_TREES = "org.wikimedia.west1.traces.keepBadTrees";
@@ -67,17 +68,18 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
 		return new Text(String.format("%s_%s_%04d", day.replace("-", ""), uidHash, seqNum));
 	}
 
-	private static void sparsifyJson(JSONObject json) {
+	private static void sparsifyJson(JSONObject json, boolean isGlobalRoot) {
 		// First process children recursively.
 		if (json.has(JSON_CHILDREN)) {
 			JSONArray children = json.getJSONArray(JSON_CHILDREN);
 			for (int i = 0; i < children.length(); ++i) {
-				sparsifyJson((JSONObject) children.get(i));
+				sparsifyJson((JSONObject) children.get(i), false);
 			}
 		}
 		// Then process the root itself.
 		for (String field : JSONObject.getNames(json)) {
-			if (!FIELDS_TO_KEEP.contains(field)) {
+			// Remove all superfluous fields. Keep the user agent for the root only.
+			if (!FIELDS_TO_KEEP.contains(field) && !(field.equals(JSON_UA) && isGlobalRoot)) {
 				json.remove(field);
 			}
 		}
@@ -118,10 +120,10 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
 		for (Pageview root : roots) {
 			try {
 				if (isGoodTree(root.json, true)) {
-					sparsifyJson(root.json);
+					sparsifyJson(root.json, true);
 					filtered.add(root);
 				} else if (keepBadTrees) {
-					sparsifyJson(root.json);
+					sparsifyJson(root.json, true);
 					root.json.put(JSON_BAD_TREE, true);
 					filtered.add(root);
 				}

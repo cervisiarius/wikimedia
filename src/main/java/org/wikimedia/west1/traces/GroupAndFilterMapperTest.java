@@ -2,7 +2,14 @@ package org.wikimedia.west1.traces;
 
 import org.json.JSONObject;
 
+import ua_parser.Parser;
+
 public class GroupAndFilterMapperTest {
+	
+	private static void testUAParser() throws Exception {
+		Parser p = new Parser();
+		System.out.println(p.parseDevice("Googlebot-Image/1.0").family);
+	}	
 	
 	private static void testMakeKey() throws Exception {
 		String pvString = "{\"hostname\":\"cp1066.eqiad.wmnet\",\"sequence\":1470486742,"
@@ -19,7 +26,7 @@ public class GroupAndFilterMapperTest {
 	}
 
 	public static void main(String[] args) throws Exception {
-		testMakeKey();
+		testUAParser();
 	}
 
 }
