@@ -68,8 +68,8 @@ public class GroupAndFilterMapper implements Mapper<Text, Text, Text, Text> {
 					uriHostPattern.matcher(json.getString("uri_host")).matches()
 					// It must be to an article page, i.e., the path must start with "/wiki/".
 			    && WIKI_PATTERN.matcher(json.getString("uri_path")).matches()
-			    // It can't be from a bot. ///////////////////////////////////////
-			    && uaParser.parseDevice(json.getString("user_agent")).equals("Spider")) {
+			    // It can't be from a bot.///////////////////////////////////////////////////
+			    && !uaParser.parseDevice(json.getString("user_agent")).equals("Spider")) {
 				out.collect(new Text(makeKey(json)), jsonString);
 			}
 		} catch (JSONException e) {
