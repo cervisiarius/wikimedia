@@ -14,6 +14,7 @@ hadoop jar /usr/lib/hadoop-mapreduce/hadoop-streaming.jar \
     -D           org.wikimedia.west1.traces.uriHostPattern='pt\.wikipedia\.org' \
     -D           org.wikimedia.west1.traces.keepAmbiguousTrees=true \
     -D           org.wikimedia.west1.traces.keepBadTrees=true \
+    -D           org.wikimedia.west1.traces.hashSalt=jhfsdkf \
     -inputformat SequenceFileAsTextInputFormat \
     -input       /wmf/data/raw/webrequest/webrequest_text/hourly/2015/01/18/09/webrequest_text.22.8.* \
     -output      "/user/west1/tree_extractor_test_BOT-TEST" \

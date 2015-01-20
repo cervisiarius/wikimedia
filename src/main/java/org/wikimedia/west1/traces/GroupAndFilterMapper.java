@@ -19,14 +19,14 @@ public class GroupAndFilterMapper implements Mapper<Text, Text, Text, Text> {
 	private static final String CONF_URI_HOST_PATTERN = "org.wikimedia.west1.traces.uriHostPattern";
 	private static final Pattern WIKI_PATTERN = Pattern.compile("/wiki/.*");
 	private static final String JSON_IP = "ip";
-	private static final String JSON_DATETIME = "dt";
-	private static final String JSON_USERAGENT = "user_agent";
+	private static final String JSON_DT = "dt";
+	private static final String JSON_UA = "user_agent";
 	private static final String JSON_XFF = "x_forwarded_for";
-	private static final String JSON_URIPATH = "uri_path";
-	private static final String JSON_URIHOST = "uri_host";
+	private static final String JSON_URI_PATH = "uri_path";
+	private static final String JSON_URI_HOST = "uri_host";
 
-	public static enum HADOOP_COUNTERS {
-		SKIPPED_BAD_HOST, SKIPPED_BAD_PATH, SKIPPED_BOT
+	private static enum HADOOP_COUNTERS {
+		SKIPPED_BAD_HOST, SKIPPED_BAD_PATH, SKIPPED_BOT, OK_REQUESTS, MAP_ERROR
 	}
 
 	// A regex of the Wikimedia sites we're interested in, e.g., "(pt|es)\\.wikipedia\\.org".
@@ -63,12 +63,12 @@ public class GroupAndFilterMapper implements Mapper<Text, Text, Text, Text> {
 	}
 
 	// We want to send everything the same user did on the same day to the same reducer.
-	// Users are represented as the tripe (ip, x_forwarded_for, user_agent).
+	// Users are represented as the triple (ip, x_forwarded_for, user_agent).
 	protected static String makeKey(JSONObject json) throws JSONException {
 		String ip = json.getString(JSON_IP);
-		String ua = json.getString(JSON_USERAGENT);
+		String ua = json.getString(JSON_UA);
 		String xff = processXForwardedFor(json.getString(JSON_XFF));
-		String day = extractDayFromDate(json.getString(JSON_DATETIME));
+		String day = extractDayFromDate(json.getString(JSON_DT));
 		// Just in case, replace tabs, so we don't mess with the key/value split.
 		return String.format("%s%s%s%s%s%s%s", day, UID_SEPARATOR, ip, UID_SEPARATOR, xff,
 		    UID_SEPARATOR, ua).replace('\t', ' ');
@@ -80,23 +80,25 @@ public class GroupAndFilterMapper implements Mapper<Text, Text, Text, Text> {
 		try {
 			JSONObject json = new JSONObject(jsonString.toString());
 			// The request must be for one of the whitelisted Wikimedia sites.
-			if (!uriHostPattern.matcher(json.getString(JSON_URIHOST)).matches()) {
+			if (!uriHostPattern.matcher(json.getString(JSON_URI_HOST)).matches()) {
 				reporter.incrCounter(HADOOP_COUNTERS.SKIPPED_BAD_HOST, 1);
 				return;
 			}
 			// It must be to an article page, i.e., the path must start with "/wiki/".
-			else if (!WIKI_PATTERN.matcher(json.getString(JSON_URIPATH)).matches()) {
+			else if (!WIKI_PATTERN.matcher(json.getString(JSON_URI_PATH)).matches()) {
 				reporter.incrCounter(HADOOP_COUNTERS.SKIPPED_BAD_PATH, 1);
 				return;
 			}
 			// It can't be from a bot.
-			else if (isBot(json.getString(JSON_USERAGENT))) {
+			else if (isBot(json.getString(JSON_UA))) {
 				reporter.incrCounter(HADOOP_COUNTERS.SKIPPED_BOT, 1);
 				return;
 			} else {
 				out.collect(new Text(makeKey(json)), jsonString);
+				reporter.incrCounter(HADOOP_COUNTERS.OK_REQUESTS, 1);
 			}
 		} catch (JSONException e) {
+			reporter.incrCounter(HADOOP_COUNTERS.MAP_ERROR, 1);
 			System.err.format("%s\n", e.getMessage());
 		}
 	}

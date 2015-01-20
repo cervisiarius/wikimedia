@@ -28,46 +28,63 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
 
 	// Having 3600 pageviews in a day would mean one every 24 seconds, a lot...
 	private static final int MAX_NUM_PAGEVIEWS = 3600;
+	// JSON field names.
 	private static final String JSON_CHILDREN = "children";
 	private static final String JSON_PARENT_AMBIGUOUS = "parent_ambiguous";
 	private static final String JSON_BAD_TREE = "bad_tree";
+	private static final String JSON_DT = "dt";
 	private static final String JSON_UA = "user_agent";
+	private static final String JSON_URI_PATH = "uri_path";
+	private static final String JSON_URI_HOST = "uri_host";
+	private static final String JSON_CONTENT_TYPE = "content_type";
+	private static final String JSON_URI_QUERY = "uri_query";
+	private static final String JSON_HTTP_STATUS = "http_status";
+	private static final String JSON_REFERER = "referer";
+	// Job config parameters specifying which Wikipedia versions we're interested in, e.g.,
+	// "(pt|es)\\.wikipedia\\.org".
 	private static final String CONF_URI_HOST_PATTERN = "org.wikimedia.west1.traces.uriHostPattern";
+	// Job config parameters specifying if we want to keep trees in which at least one node has an
+	// ambiguous parent (the algorithm will always pick the temporally closest one).
 	private static final String CONF_KEEP_AMBIGUOUS_TREES = "org.wikimedia.west1.traces.keepAmbiguousTrees";
+	// Job config parameters specifying if we want to keep trees whose root is from a Wikimedia site.
 	private static final String CONF_KEEP_BAD_TREES = "org.wikimedia.west1.traces.keepBadTrees";
+	// Job config parameters specifying a string for salting UID hashes, so it's very hard to get the
+	// hash value for a given UID.
+	private static final String CONF_HASH_SALT = "org.wikimedia.west1.traces.hashSalt";
+	// A pattern matching Wikimedia host names.
 	private static final Pattern WIKI_HOST_PATTERN = Pattern.compile("[a-z]+://[^/]*wiki.*");
 
+	// The fields you want to store for every pageview.
 	private static final Set<String> FIELDS_TO_KEEP = new HashSet<String>(Arrays.asList(
-	// "x_analytics",
-	// "range",
-	// "accept_language",
-	// "x_forwarded_for",
-	// "cache_status",
-	// "hostname",
-	// "response_size",
-	// "uri_host",
-	// "ip",
-	// "http_method",
-	// "time_firstbyte",
-	// "sequence",
-	// "user_agent",
-	    "content_type", "dt", "uri_path", "uri_query", "http_status", "referer",
+	    JSON_CONTENT_TYPE, JSON_DT, JSON_URI_PATH, JSON_URI_QUERY, JSON_HTTP_STATUS, JSON_REFERER,
 	    // The fields we added.
 	    JSON_CHILDREN, JSON_PARENT_AMBIGUOUS, JSON_BAD_TREE));
+	// The fields you want to store only for the root (because they're identical for all pageviews in
+	// the same tree).
+	private static final Set<String> FIELDS_TO_KEEP_IN_ROOT = new HashSet<String>(Arrays.asList(
+	    JSON_URI_HOST, JSON_UA));
+
+	private static enum HADOOP_COUNTERS {
+		OK_TREES, FILTERED_TREES, REDUCE_ERROR
+	}
 
 	private Pattern mainPagePattern;
 	private boolean keepAmbiguousTrees;
 	private boolean keepBadTrees;
+	private String hashSalt;
 
+	// Tree ids consist of the day, a salted hash of the UID, and a sequential number (in order of
+	// time), e.g., 20150118_5ca697716da3203201f56d09b41c954d_0004.
 	private Text makeTreeId(Text dayAndUid, int seqNum) {
 		String[] day_uid = dayAndUid.toString().split(GroupAndFilterMapper.UID_SEPARATOR, 2);
 		String day = day_uid[0];
-		String uidHash = DigestUtils.md5Hex(day_uid[1]);
+		String uidHash = DigestUtils.md5Hex(day_uid[1] + hashSalt);
 		// seqNum is zero-padded to fixed length 4: we allow at most MAX_NUM_PAGEVIEWS = 3600 pageviews
 		// per day, and in the worst case, each pageview is its own tree, so seqNum <= 3600.
 		return new Text(String.format("%s_%s_%04d", day.replace("-", ""), uidHash, seqNum));
 	}
 
+	// We don't want to keep all info from the original pageview objects, and we discard it here.
 	private static void sparsifyJson(JSONObject json, boolean isGlobalRoot) {
 		// First process children recursively.
 		if (json.has(JSON_CHILDREN)) {
@@ -78,8 +95,9 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
 		}
 		// Then process the root itself.
 		for (String field : JSONObject.getNames(json)) {
-			// Remove all superfluous fields. Keep the user agent for the root only.
-			if (!FIELDS_TO_KEEP.contains(field) && !(field.equals(JSON_UA) && isGlobalRoot)) {
+			// Remove all superfluous fields. Certain fields are only removed for non-root nodes.
+			if (!FIELDS_TO_KEEP.contains(field)
+			    && !(isGlobalRoot && FIELDS_TO_KEEP_IN_ROOT.contains(field))) {
 				json.remove(field);
 			}
 		}
@@ -87,13 +105,15 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
 
 	protected boolean isGoodPageview(JSONObject root, boolean isGlobalRoot) throws JSONException {
 		return
-		// No node can be from the last hour of the day, so we discard sessions spanning the day
-		// boundary.
+		// No node can be from the last hour of the day, such that we make trees spanning the day
+		// boundary extremely unlikely (they'd have to include an idle-time of at least one hour; if
+		// that ever happens, we consider the part before the idle-time a complete tree).
 		!root.getString("dt").contains("T23:")
 		// The root must not be a Wikimedia page; this will discard traces that in fact continue a
-		// previous session (after a break of more than INTER_SESSION_TIME, or because it's the
-		// second part of a session that starts the day boundary and whose first part was excluded
-		// via the "T23:" rule.
+		// previous tree (e.g., one that starts before the day boundary and whose first part was
+		// excluded via the "T23:" rule; or one whose parent was discarded in the mapper because it
+		// doesn't match the required URL pattern). As an exception, we do allow trees that start with
+		// the main page of one of the specified Wikipedia versions.
 		    && (!isGlobalRoot || !WIKI_HOST_PATTERN.matcher(root.getString("referer")).matches() || mainPagePattern
 		        .matcher(root.getString("referer")).matches())
 		    // If we don't want to keep ambiguous trees, discard them.
@@ -115,6 +135,7 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
 		return true;
 	}
 
+	// Keep only the good trees.
 	private List<Pageview> filterTrees(List<Pageview> roots) {
 		List<Pageview> filtered = new ArrayList<Pageview>();
 		for (Pageview root : roots) {
@@ -138,17 +159,26 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
 	// Output: the list of tree roots.
 	private static List<Pageview> getMinimumSpanningForest(List<Pageview> session)
 	    throws JSONException {
+		// The list of all trees contained in the session.
 		List<Pageview> roots = new ArrayList<Pageview>();
+		// Count for all URLs how often they were seen in this session.
 		Map<String, Integer> urlCounts = new HashMap<String, Integer>();
+		// Remember, for each URL, the last pageview of it.
 		Map<String, Pageview> urlToLastPageview = new HashMap<String, Pageview>();
 		// Iterate over all pageviews in temporal order.
 		for (Pageview pv : session) {
 			Pageview parent = urlToLastPageview.get(pv.referer);
+			// If we haven't seen the referer of this pageview in the current session, make the pageview a
+			// root.
 			if (parent == null) {
 				roots.add(pv);
 				pv.json.put(JSON_PARENT_AMBIGUOUS, false);
-			} else {
+			}
+			// Otherwise, append it as a child to the latest pageview of the referer.
+			else {
 				parent.json.append(JSON_CHILDREN, pv.json);
+				// A parent is ambiguous if we have seen the referer URL several times in this session
+				// before the current pageview.
 				pv.json.put(JSON_PARENT_AMBIGUOUS, urlCounts.get(pv.referer) > 1);
 			}
 			// Remember this pageview as the last pageview for its URL.
@@ -160,25 +190,25 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
 		return roots;
 	}
 
+	// Takes a list of pageviews, orders them by time, and extracts a set of trees via the
+	// minimum-spanning-forest heuristic.
 	public List<Pageview> sequenceToTrees(List<Pageview> pageviews) throws JSONException,
 	    ParseException {
-		// Sort all pageviews by time; this sort is stable, so requests that have the same timestamp
-		// will stay in the original order.
+		// This sort is stable, so requests having the same timestamp will stay in the original order.
 		Collections.sort(pageviews, new Comparator<Pageview>() {
 			@Override
 			public int compare(Pageview pv1, Pageview pv2) {
 				return (int) (pv1.time - pv2.time);
 			}
 		});
-
-		// Return the list of valid trees.
-		return filterTrees(getMinimumSpanningForest(pageviews));
+		return getMinimumSpanningForest(pageviews);
 	}
 
 	private void setDefaultConfig() {
 		mainPagePattern = Pattern.compile("http.?://pt\\.wikipedia\\.org/");
 		keepAmbiguousTrees = true;
 		keepBadTrees = true;
+		hashSalt = "sdsdsafdsfdsfs";
 	}
 
 	@Override
@@ -189,6 +219,7 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
 			mainPagePattern = Pattern.compile("http.?://(" + conf.get(CONF_URI_HOST_PATTERN, "") + ")/");
 			keepAmbiguousTrees = conf.getBoolean(CONF_KEEP_AMBIGUOUS_TREES, true);
 			keepBadTrees = conf.getBoolean(CONF_KEEP_BAD_TREES, false);
+			hashSalt = conf.get(CONF_HASH_SALT);
 		}
 	}
 
@@ -213,13 +244,17 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
 				}
 			}
 			// Extract trees and output them.
-			List<Pageview> roots = sequenceToTrees(pageviews);
+			List<Pageview> allRoots = sequenceToTrees(pageviews);
+			List<Pageview> goodRoots = filterTrees(allRoots);
+			reporter.incrCounter(HADOOP_COUNTERS.FILTERED_TREES, allRoots.size() - goodRoots.size());
 			int i = 0;
-			for (Pageview root : roots) {
+			for (Pageview root : goodRoots) {
 				out.collect(makeTreeId(dayAndUid, i), new Text(root.toString()));
+				reporter.incrCounter(HADOOP_COUNTERS.OK_TREES, 1);
 				++i;
 			}
 		} catch (Exception e) {
+			reporter.incrCounter(HADOOP_COUNTERS.REDUCE_ERROR, 1);
 			System.err.format("%s\n", e.getMessage());
 		}
 	}
