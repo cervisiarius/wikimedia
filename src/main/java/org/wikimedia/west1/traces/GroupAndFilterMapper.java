@@ -99,7 +99,7 @@ public class GroupAndFilterMapper implements Mapper<Text, Text, Text, Text> {
 			}
 		} catch (JSONException e) {
 			reporter.incrCounter(HADOOP_COUNTERS.MAP_EXCEPTIONS, 1);
-			System.err.format("%s\n", e.getMessage());
+			System.err.format("MAP_EXCEPTION: %s\n", e.getMessage());
 		}
 	}
 
