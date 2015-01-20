@@ -25,7 +25,12 @@ public class GroupAndFilterMapper implements Mapper<Text, Text, Text, Text> {
 	private static final String JSON_URIPATH = "uri_path";
 	private static final String JSON_URIHOST = "uri_host";
 
+	public static enum HADOOP_COUNTERS {
+		SKIPPED_BAD_HOST, SKIPPED_BAD_PATH, SKIPPED_BOT
+	}
+
 	// A regex of the Wikimedia sites we're interested in, e.g., "(pt|es)\\.wikipedia\\.org".
+	// This is set via the job config.
 	private Pattern uriHostPattern;
 	// A parser for determining whether requests come from a bot.
 	private Parser uaParser;
@@ -52,7 +57,7 @@ public class GroupAndFilterMapper implements Mapper<Text, Text, Text, Text> {
 	private static String extractDayFromDate(String date) {
 		return date.substring(0, date.indexOf('T'));
 	}
-	
+
 	private boolean isBot(String userAgent) {
 		return uaParser.parseDevice(userAgent).family.equals("Spider");
 	}
@@ -74,16 +79,25 @@ public class GroupAndFilterMapper implements Mapper<Text, Text, Text, Text> {
 	    throws IOException {
 		try {
 			JSONObject json = new JSONObject(jsonString.toString());
-			if (// The request must be for one of the whitelisted Wikimedia sites.
-					uriHostPattern.matcher(json.getString(JSON_URIHOST)).matches()
-					// It must be to an article page, i.e., the path must start with "/wiki/".
-			    && WIKI_PATTERN.matcher(json.getString(JSON_URIPATH)).matches()
-			    // It can't be from a bot.
-			    && isBot(json.getString(JSON_USERAGENT))) {
+			// The request must be for one of the whitelisted Wikimedia sites.
+			if (!uriHostPattern.matcher(json.getString(JSON_URIHOST)).matches()) {
+				reporter.incrCounter(HADOOP_COUNTERS.SKIPPED_BAD_HOST, 1);
+				return;
+			}
+			// It must be to an article page, i.e., the path must start with "/wiki/".
+			else if (!WIKI_PATTERN.matcher(json.getString(JSON_URIPATH)).matches()) {
+				reporter.incrCounter(HADOOP_COUNTERS.SKIPPED_BAD_PATH, 1);
+				return;
+			}
+			// It can't be from a bot.
+			else if (isBot(json.getString(JSON_USERAGENT))) {
+				reporter.incrCounter(HADOOP_COUNTERS.SKIPPED_BOT, 1);
+				return;
+			} else {
 				out.collect(new Text(makeKey(json)), jsonString);
 			}
 		} catch (JSONException e) {
-			System.out.format("%s\n", e.getMessage());
+			System.err.format("%s\n", e.getMessage());
 		}
 	}
 

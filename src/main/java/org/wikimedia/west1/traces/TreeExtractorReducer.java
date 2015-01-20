@@ -220,7 +220,7 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
 				++i;
 			}
 		} catch (Exception e) {
-			System.out.format("%s\n", e.getMessage());
+			System.err.format("%s\n", e.getMessage());
 		}
 	}
 
