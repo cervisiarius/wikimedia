@@ -26,7 +26,7 @@ public class GroupAndFilterMapper implements Mapper<Text, Text, Text, Text> {
 	private static final String JSON_URI_HOST = "uri_host";
 
 	private static enum HADOOP_COUNTERS {
-		SKIPPED_BAD_HOST, SKIPPED_BAD_PATH, SKIPPED_BOT, OK_REQUESTS, MAP_ERROR
+		SKIPPED_BAD_HOST, SKIPPED_BAD_PATH, SKIPPED_BOT, OK_REQUESTS, MAP_EXCEPTIONS
 	}
 
 	// A regex of the Wikimedia sites we're interested in, e.g., "(pt|es)\\.wikipedia\\.org".
@@ -98,7 +98,7 @@ public class GroupAndFilterMapper implements Mapper<Text, Text, Text, Text> {
 				reporter.incrCounter(HADOOP_COUNTERS.OK_REQUESTS, 1);
 			}
 		} catch (JSONException e) {
-			reporter.incrCounter(HADOOP_COUNTERS.MAP_ERROR, 1);
+			reporter.incrCounter(HADOOP_COUNTERS.MAP_EXCEPTIONS, 1);
 			System.err.format("%s\n", e.getMessage());
 		}
 	}
