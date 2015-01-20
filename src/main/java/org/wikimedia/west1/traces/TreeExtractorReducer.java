@@ -78,7 +78,8 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
 	private Text makeTreeId(Text dayAndUid, int seqNum) {
 		String[] day_uid = dayAndUid.toString().split(GroupAndFilterMapper.UID_SEPARATOR, 2);
 		String day = day_uid[0];
-		String uidHash = DigestUtils.md5Hex(day_uid[1] + hashSalt);
+		//String uidHash = DigestUtils.md5Hex(day_uid[1] + hashSalt);
+		String uidHash = day_uid[1] + hashSalt;
 		// seqNum is zero-padded to fixed length 4: we allow at most MAX_NUM_PAGEVIEWS = 3600 pageviews
 		// per day, and in the worst case, each pageview is its own tree, so seqNum <= 3600.
 		return new Text(String.format("%s_%s_%04d", day.replace("-", ""), uidHash, seqNum));
