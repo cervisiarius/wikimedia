@@ -18,6 +18,12 @@ public class GroupAndFilterMapper implements Mapper<Text, Text, Text, Text> {
 	public static final String UID_SEPARATOR = "###";
 	private static final String CONF_URI_HOST_PATTERN = "org.wikimedia.west1.traces.uriHostPattern";
 	private static final Pattern WIKI_PATTERN = Pattern.compile("/wiki/.*");
+	private static final String JSON_IP = "ip";
+	private static final String JSON_DATETIME = "dt";
+	private static final String JSON_USERAGENT = "user_agent";
+	private static final String JSON_XFF = "x_forwarded_for";
+	private static final String JSON_URIPATH = "uri_path";
+	private static final String JSON_URIHOST = "uri_host";
 
 	// A regex of the Wikimedia sites we're interested in, e.g., "(pt|es)\\.wikipedia\\.org".
 	private Pattern uriHostPattern;
@@ -46,14 +52,18 @@ public class GroupAndFilterMapper implements Mapper<Text, Text, Text, Text> {
 	private static String extractDayFromDate(String date) {
 		return date.substring(0, date.indexOf('T'));
 	}
+	
+	private boolean isBot(String userAgent) {
+		return uaParser.parseDevice(userAgent).family.equals("Spider");
+	}
 
 	// We want to send everything the same user did on the same day to the same reducer.
 	// Users are represented as the tripe (ip, x_forwarded_for, user_agent).
 	protected static String makeKey(JSONObject json) throws JSONException {
-		String ip = json.getString("ip");
-		String ua = json.getString("user_agent");
-		String xff = processXForwardedFor(json.getString("x_forwarded_for"));
-		String day = extractDayFromDate(json.getString("dt"));
+		String ip = json.getString(JSON_IP);
+		String ua = json.getString(JSON_USERAGENT);
+		String xff = processXForwardedFor(json.getString(JSON_XFF));
+		String day = extractDayFromDate(json.getString(JSON_DATETIME));
 		// Just in case, replace tabs, so we don't mess with the key/value split.
 		return String.format("%s%s%s%s%s%s%s", day, UID_SEPARATOR, ip, UID_SEPARATOR, xff,
 		    UID_SEPARATOR, ua).replace('\t', ' ');
@@ -65,11 +75,11 @@ public class GroupAndFilterMapper implements Mapper<Text, Text, Text, Text> {
 		try {
 			JSONObject json = new JSONObject(jsonString.toString());
 			if (// The request must be for one of the whitelisted Wikimedia sites.
-					uriHostPattern.matcher(json.getString("uri_host")).matches()
+					uriHostPattern.matcher(json.getString(JSON_URIHOST)).matches()
 					// It must be to an article page, i.e., the path must start with "/wiki/".
-			    && WIKI_PATTERN.matcher(json.getString("uri_path")).matches()
-			    // It can't be from a bot.///////////////////////////////////////////////////
-			    && !uaParser.parseDevice(json.getString("user_agent")).equals("Spider")) {
+			    && WIKI_PATTERN.matcher(json.getString(JSON_URIPATH)).matches()
+			    // It can't be from a bot.
+			    && isBot(json.getString(JSON_USERAGENT))) {
 				out.collect(new Text(makeKey(json)), jsonString);
 			}
 		} catch (JSONException e) {
