@@ -65,7 +65,7 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
 	    JSON_URI_HOST, JSON_UA));
 
 	private static enum HADOOP_COUNTERS {
-		OK_TREES, FILTERED_TREES, REDUCE_ERROR
+		NUM_TREES, FILTERED_TREES, BAD_TREES, REDUCE_ERROR
 	}
 
 	private Pattern mainPagePattern;
@@ -250,7 +250,10 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
 			int i = 0;
 			for (Pageview root : goodRoots) {
 				out.collect(makeTreeId(dayAndUid, i), new Text(root.toString()));
-				reporter.incrCounter(HADOOP_COUNTERS.OK_TREES, 1);
+				reporter.incrCounter(HADOOP_COUNTERS.NUM_TREES, 1);
+				if (root.json.getBoolean(JSON_BAD_TREE)) {
+					reporter.incrCounter(HADOOP_COUNTERS.BAD_TREES, 1);
+				}
 				++i;
 			}
 		} catch (Exception e) {
