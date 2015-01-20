@@ -259,7 +259,7 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
 			}
 		} catch (Exception e) {
 			reporter.incrCounter(HADOOP_COUNTERS.REDUCE_EXCEPTIONS, 1);
-			System.err.format("%s\n", e.getMessage());
+			System.err.format("EXCEPTWEST1%s\n", e.getMessage());
 		}
 	}
 
