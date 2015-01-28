@@ -78,15 +78,16 @@ public class GroupAndFilterMapper implements Mapper<Text, Text, Text, Text> {
 	// We want to send everything the same user did on the same day to the same reducer.
 	// Users are represented as the triple (ip, x_forwarded_for, user_agent).
 	protected static String makeKey(JSONObject json) throws JSONException {
-		String xff = processXForwardedFor(json.getString(JSON_XFF));
+		String ip = json.getString(JSON_IP);
 		String ua = json.getString(JSON_UA);
+		String xff = processXForwardedFor(json.getString(JSON_XFF));
+		String day = extractDayFromDate(json.getString(JSON_DT));
 		// If x_forwarded_for contains an IP address, use that address, otherwise use the address from
 		// from the ip field.
-		String ip = (xff == null) ? json.getString(JSON_IP) : xff;
-		String day = extractDayFromDate(json.getString(JSON_DT));
+		String ipForKey = (xff == null) ? ip : xff;
 		// Just in case, replace tabs, so we don't mess with the key/value split.
-		return String.format("%s%s%s%s%s%s%s", day, UID_SEPARATOR, ip, UID_SEPARATOR, xff,
-		    UID_SEPARATOR, ua).replace('\t', ' ');
+		return String.format("%s%s%s%s%s%s%s", day, UID_SEPARATOR, ipForKey, UID_SEPARATOR, ua)
+		    .replace('\t', ' ');
 	}
 
 	@Override

@@ -51,8 +51,11 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
 	// Job config parameters specifying a string for salting UID hashes, so it's very hard to get the
 	// hash value for a given UID.
 	private static final String CONF_HASH_SALT = "org.wikimedia.west1.traces.hashSalt";
-	// A pattern matching Wikimedia host names.
-	private static final Pattern WIKI_HOST_PATTERN = Pattern.compile("[a-z]+://[^/]*wiki.*");
+	// A pattern matching Wikimedia host names; adapted from
+	// https://github.com/wikimedia/analytics-refinery-source/blob/master/refinery-core/src/main/...
+	// .../java/org/wikimedia/analytics/refinery/core/Pageview.java.
+	private static final Pattern WIKI_HOST_PATTERN = Pattern.compile("[a-z]+://[^/]*"
+	    + "(wik(ibooks|idata|inews|imedia|ipedia|iquote|isource|tionary|iversity|ivoyage))\\.org.*");
 
 	// The fields you want to store for every pageview.
 	private static final Set<String> FIELDS_TO_KEEP = new HashSet<String>(Arrays.asList(
@@ -122,7 +125,11 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
 
 	// Depth-first search, failing as soon as a node fails.
 	protected boolean isGoodTree(JSONObject root, boolean isGlobalRoot) throws JSONException {
-		if (!isGoodPageview(root, isGlobalRoot)) {
+		// If the root of the tree has no children, we don't know if this browser sends referer info, so
+		// we exclude the tree (also, single-pageview trees aren't very interesting).
+		if (isGlobalRoot && !root.has(JSON_CHILDREN)) {
+			return false;
+		} else if (!isGoodPageview(root, isGlobalRoot)) {
 			return false;
 		} else if (root.has(JSON_CHILDREN)) {
 			JSONArray children = root.getJSONArray(JSON_CHILDREN);
