@@ -25,8 +25,15 @@ public class GroupAndFilterMapper implements Mapper<Text, Text, Text, Text> {
 	private static final String JSON_URI_PATH = "uri_path";
 	private static final String JSON_URI_HOST = "uri_host";
 
+	// NB: Special pages can have different names in different languages; as of now, we cover only
+	// English, Portuguese, Spanish, and German.
+	private static final Pattern NON_ARTICLE_PAGE_PATTERN = Pattern
+	    .compile("(?i)/wiki/(Image|Media|Special|Especial|Spezial|Talk|User|Wikipedia|File"
+	        + "|MediaWiki|Template|Help|Book|Draft|Education[_ ]Program|TimedText|Module|Wikt)"
+	        + "([_ ]talk)?:.*");
+
 	private static enum HADOOP_COUNTERS {
-		SKIPPED_BAD_HOST, SKIPPED_BAD_PATH, SKIPPED_BOT, OK_REQUESTS, MAP_EXCEPTIONS
+		SKIPPED_BAD_HOST, SKIPPED_BAD_PATH, SKIPPED_NON_ARTICLE_PAGE, SKIPPED_BOT, OK_REQUESTS, MAP_EXCEPTIONS
 	}
 
 	// A regex of the Wikimedia sites we're interested in, e.g., "(pt|es)\\.wikipedia\\.org".
@@ -49,9 +56,15 @@ public class GroupAndFilterMapper implements Mapper<Text, Text, Text, Text> {
 	public void close() throws IOException {
 	}
 
-	// Extract the last IP address from the x_forwarded_for string.
+	// Extract the last IP address from the x_forwarded_for string. If the result doesn't look like
+	// an IP address (because it contains no "."), return null.
 	private static String processXForwardedFor(String xff) {
-		return xff.substring(xff.lastIndexOf(", ") + 2);
+		String ip = xff.substring(xff.lastIndexOf(", ") + 2);
+		if (ip.contains(".")) {
+			return ip;
+		} else {
+			return null;
+		}
 	}
 
 	private static String extractDayFromDate(String date) {
@@ -65,9 +78,11 @@ public class GroupAndFilterMapper implements Mapper<Text, Text, Text, Text> {
 	// We want to send everything the same user did on the same day to the same reducer.
 	// Users are represented as the triple (ip, x_forwarded_for, user_agent).
 	protected static String makeKey(JSONObject json) throws JSONException {
-		String ip = json.getString(JSON_IP);
-		String ua = json.getString(JSON_UA);
 		String xff = processXForwardedFor(json.getString(JSON_XFF));
+		String ua = json.getString(JSON_UA);
+		// If x_forwarded_for contains an IP address, use that address, otherwise use the address from
+		// from the ip field.
+		String ip = (xff == null) ? json.getString(JSON_IP) : xff;
 		String day = extractDayFromDate(json.getString(JSON_DT));
 		// Just in case, replace tabs, so we don't mess with the key/value split.
 		return String.format("%s%s%s%s%s%s%s", day, UID_SEPARATOR, ip, UID_SEPARATOR, xff,
@@ -87,6 +102,11 @@ public class GroupAndFilterMapper implements Mapper<Text, Text, Text, Text> {
 			// It must be to an article page, i.e., the path must start with "/wiki/".
 			else if (!WIKI_PATTERN.matcher(json.getString(JSON_URI_PATH)).matches()) {
 				reporter.incrCounter(HADOOP_COUNTERS.SKIPPED_BAD_PATH, 1);
+				return;
+			}
+			// Certain page types such as "Special:" and "User:" pages aren't allowed.
+			else if (NON_ARTICLE_PAGE_PATTERN.matcher(json.getString(JSON_URI_PATH)).matches()) {
+				reporter.incrCounter(HADOOP_COUNTERS.SKIPPED_NON_ARTICLE_PAGE, 1);
 				return;
 			}
 			// It can't be from a bot.

@@ -1,16 +1,29 @@
 package org.wikimedia.west1.traces;
 
+import java.util.regex.Pattern;
+
 import org.json.JSONObject;
 
 import ua_parser.Parser;
 
 public class GroupAndFilterMapperTest {
-	
+
 	private static void testUAParser() throws Exception {
 		Parser p = new Parser();
 		System.out.println(p.parseDevice("Googlebot-Image/1.0").family);
-	}	
-	
+	}
+
+	private static void testNonArticlePagePattern() {
+		final Pattern NON_ARTICLE_PAGE_PATTERN = Pattern
+		    .compile("(?i)/wiki/(Image|Media|Special|Especial|Spezial|Talk|User|Wikipedia|File"
+		        + "|MediaWiki|Template|Help|Book|Draft|Education[_ ]Program|TimedText|Module|Wikt)"
+		        + "([_ ]talk)?:.*");
+		System.out.println(NON_ARTICLE_PAGE_PATTERN.matcher("/wiki/file:test").matches());
+		System.out.println(NON_ARTICLE_PAGE_PATTERN.matcher("/wiki/User talk:test").matches());
+		System.out.println(NON_ARTICLE_PAGE_PATTERN.matcher("/wiki/User_talk:test").matches());
+		System.out.println(NON_ARTICLE_PAGE_PATTERN.matcher("/wiki/test").matches());
+	}
+
 	private static void testMakeKey() throws Exception {
 		String pvString = "{\"hostname\":\"cp1066.eqiad.wmnet\",\"sequence\":1470486742,"
 		    + "\"dt\":\"2014-12-04T01:00:00\",\"time_firstbyte\":0.000128984,\"ip\":\"0.0.0.0\","
@@ -26,7 +39,7 @@ public class GroupAndFilterMapperTest {
 	}
 
 	public static void main(String[] args) throws Exception {
-		testUAParser();
+		testNonArticlePagePattern();
 	}
 
 }
