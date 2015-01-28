@@ -10,6 +10,7 @@ while (my $line = <STDIN>) {
     if ($title ne '' && $target ne '') {
       $title =~ s/\s/_/g;
       $target =~ s/\s/_/g;
+      $target =~ s/\\"/"/g;
       print "$title\t$target\n";
     }
   }
