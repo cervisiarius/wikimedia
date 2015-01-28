@@ -107,29 +107,42 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
 	}
 
 	protected boolean isGoodPageview(JSONObject root, boolean isGlobalRoot) throws JSONException {
-		return
+		// If the root of the tree has no children, we don't know if this browser sends referer info, so
+		// we exclude the tree (also, single-pageview trees aren't very interesting).
+		if (isGlobalRoot && !root.has(JSON_CHILDREN)) {
+			return false;
+		}
 		// No node can be from the last hour of the day, such that we make trees spanning the day
 		// boundary extremely unlikely (they'd have to include an idle-time of at least one hour; if
 		// that ever happens, we consider the part before the idle-time a complete tree).
-		!root.getString("dt").contains("T23:")
+		if (root.getString("dt").contains("T23:")) {
+			return false;
+		}
 		// The root must not be a Wikimedia page; this will discard traces that in fact continue a
 		// previous tree (e.g., one that starts before the day boundary and whose first part was
 		// excluded via the "T23:" rule; or one whose parent was discarded in the mapper because it
 		// doesn't match the required URL pattern). As an exception, we do allow trees that start with
 		// the main page of one of the specified Wikipedia versions.
-		    && (!isGlobalRoot || !WIKI_HOST_PATTERN.matcher(root.getString("referer")).matches() || mainPagePattern
-		        .matcher(root.getString("referer")).matches())
-		    // If we don't want to keep ambiguous trees, discard them.
-		    && (keepAmbiguousTrees || !root.getBoolean(JSON_PARENT_AMBIGUOUS));
+		if (isGlobalRoot && WIKI_HOST_PATTERN.matcher(root.getString("referer")).matches()
+		    && !mainPagePattern.matcher(root.getString("referer")).matches()) {
+			return false;
+		}
+		// If we don't want to keep ambiguous trees, discard them.
+		if (!keepAmbiguousTrees && root.getBoolean(JSON_PARENT_AMBIGUOUS)) {
+			return false;
+		}
+		return true;
+		/*
+		 * return !root.getString("dt").contains("T23:") && (!isGlobalRoot ||
+		 * !WIKI_HOST_PATTERN.matcher(root.getString("referer")).matches() || mainPagePattern
+		 * .matcher(root.getString("referer")).matches()) && (keepAmbiguousTrees ||
+		 * !root.getBoolean(JSON_PARENT_AMBIGUOUS));
+		 */
 	}
 
 	// Depth-first search, failing as soon as a node fails.
 	protected boolean isGoodTree(JSONObject root, boolean isGlobalRoot) throws JSONException {
-		// If the root of the tree has no children, we don't know if this browser sends referer info, so
-		// we exclude the tree (also, single-pageview trees aren't very interesting).
-		if (isGlobalRoot && !root.has(JSON_CHILDREN)) {
-			return false;
-		} else if (!isGoodPageview(root, isGlobalRoot)) {
+		if (!isGoodPageview(root, isGlobalRoot)) {
 			return false;
 		} else if (root.has(JSON_CHILDREN)) {
 			JSONArray children = root.getJSONArray(JSON_CHILDREN);
