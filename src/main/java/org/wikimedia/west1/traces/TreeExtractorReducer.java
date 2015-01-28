@@ -37,7 +37,6 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
 	private static final String JSON_URI_PATH = "uri_path";
 	private static final String JSON_URI_HOST = "uri_host";
 	private static final String JSON_CONTENT_TYPE = "content_type";
-	private static final String JSON_URI_QUERY = "uri_query";
 	private static final String JSON_HTTP_STATUS = "http_status";
 	private static final String JSON_REFERER = "referer";
 	// Job config parameters specifying which Wikipedia versions we're interested in, e.g.,
