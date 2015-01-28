@@ -109,7 +109,7 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
 		// If the root of the tree has no children, we don't know if this browser sends referer info, so
 		// we exclude the tree (also, single-pageview trees aren't very interesting).
 		if (isGlobalRoot && !root.has(JSON_CHILDREN)) {
-			//....................................................return false;
+			return false;
 		}
 		// No node can be from the last hour of the day, such that we make trees spanning the day
 		// boundary extremely unlikely (they'd have to include an idle-time of at least one hour; if
@@ -131,12 +131,6 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
 			return false;
 		}
 		return true;
-		/*
-		 * return !root.getString("dt").contains("T23:") && (!isGlobalRoot ||
-		 * !WIKI_HOST_PATTERN.matcher(root.getString("referer")).matches() || mainPagePattern
-		 * .matcher(root.getString("referer")).matches()) && (keepAmbiguousTrees ||
-		 * !root.getBoolean(JSON_PARENT_AMBIGUOUS));
-		 */
 	}
 
 	// Depth-first search, failing as soon as a node fails.
