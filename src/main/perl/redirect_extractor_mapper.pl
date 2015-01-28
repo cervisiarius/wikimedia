@@ -8,7 +8,7 @@ while (my $line = <STDIN>) {
   if ($line =~ m{^\s*<text xml:space="preserve">\s*#REDIRECT\s*\[\[(.*?)(\||\]\])}) {
     my $target = $1;
     if ($title ne '' && $target ne '') {
-      print "$title\n$target\n";
+      print "$title\t$target\n";
     }
   }
   if ($line =~ m{^\s*</page>\s*$}) {
