@@ -8,6 +8,8 @@ while (my $line = <STDIN>) {
   if ($line =~ m{^\s*<text xml:space="preserve">\s*#REDIRECT\s*\[\[(.*?)(\||\]\])}) {
     my $target = $1;
     if ($title ne '' && $target ne '') {
+      $title =~ s/\s/_/g;
+      $target =~ s/\s/_/g;
       print "$title\t$target\n";
     }
   }
