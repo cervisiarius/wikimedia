@@ -59,7 +59,7 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
 
 	// The fields you want to store for every pageview.
 	private static final Set<String> FIELDS_TO_KEEP = new HashSet<String>(Arrays.asList(
-	    JSON_CONTENT_TYPE, JSON_DT, JSON_URI_PATH, JSON_URI_QUERY, JSON_HTTP_STATUS, JSON_REFERER,
+	    JSON_CONTENT_TYPE, JSON_DT, JSON_URI_PATH, JSON_HTTP_STATUS, JSON_REFERER,
 	    // The fields we added.
 	    JSON_CHILDREN, JSON_PARENT_AMBIGUOUS, JSON_BAD_TREE));
 	// The fields you want to store only for the root (because they're identical for all pageviews in
