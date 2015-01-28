@@ -5,7 +5,7 @@ while (my $line = <STDIN>) {
   if ($line =~ m{^\s*<title>(.*)</title>\s*$}) {
     $title = $1;
   }
-  if ($line =~ m{^\s*<text xml:space="preserve">\s*#REDIRECT\s*\[\[(.*?)(\||\]\])}) {
+  if ($line =~ m{^\s*<redirect title="(.*)"\s*/>}) {
     my $target = $1;
     if ($title ne '' && $target ne '') {
       $title =~ s/\s/_/g;
