@@ -36,7 +36,6 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
 	private static final String JSON_UA = "user_agent";
 	private static final String JSON_URI_PATH = "uri_path";
 	private static final String JSON_URI_HOST = "uri_host";
-	private static final String JSON_CONTENT_TYPE = "content_type";
 	private static final String JSON_HTTP_STATUS = "http_status";
 	private static final String JSON_REFERER = "referer";
 	// Job config parameters specifying which Wikipedia versions we're interested in, e.g.,
@@ -58,13 +57,13 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
 
 	// The fields you want to store for every pageview.
 	private static final Set<String> FIELDS_TO_KEEP = new HashSet<String>(Arrays.asList(
-	    JSON_CONTENT_TYPE, JSON_DT, JSON_URI_PATH, JSON_HTTP_STATUS, JSON_REFERER,
+	    JSON_DT, JSON_URI_PATH, JSON_HTTP_STATUS,
 	    // The fields we added.
 	    JSON_CHILDREN, JSON_PARENT_AMBIGUOUS, JSON_BAD_TREE));
 	// The fields you want to store only for the root (because they're identical for all pageviews in
 	// the same tree).
 	private static final Set<String> FIELDS_TO_KEEP_IN_ROOT = new HashSet<String>(Arrays.asList(
-	    JSON_URI_HOST, JSON_UA));
+	    JSON_URI_HOST, JSON_UA, JSON_REFERER));
 
 	private static enum HADOOP_COUNTERS {
 		OK_TREES, FILTERED_TREES, BAD_TREES, REDUCE_EXCEPTIONS
