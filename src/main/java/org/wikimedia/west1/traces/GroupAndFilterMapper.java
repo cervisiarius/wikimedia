@@ -86,7 +86,7 @@ public class GroupAndFilterMapper implements Mapper<Text, Text, Text, Text> {
 		// from the ip field.
 		String ipForKey = (xff == null) ? ip : xff;
 		// Just in case, replace tabs, so we don't mess with the key/value split.
-		return String.format("%s%s%s%s%s%s%s", day, UID_SEPARATOR, ipForKey, UID_SEPARATOR, ua)
+		return String.format("%s%s%s%s%s", day, UID_SEPARATOR, ipForKey, UID_SEPARATOR, ua)
 		    .replace('\t', ' ');
 	}
 
