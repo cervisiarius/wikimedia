@@ -56,8 +56,8 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
 	    + "(wik(ibooks|idata|inews|imedia|ipedia|iquote|isource|tionary|iversity|ivoyage))\\.org.*");
 
 	// The fields you want to store for every pageview.
-	private static final Set<String> FIELDS_TO_KEEP = new HashSet<String>(Arrays.asList(
-	    JSON_DT, JSON_URI_PATH, JSON_HTTP_STATUS,
+	private static final Set<String> FIELDS_TO_KEEP = new HashSet<String>(Arrays.asList(JSON_DT,
+	    JSON_URI_PATH, JSON_HTTP_STATUS,
 	    // The fields we added.
 	    JSON_CHILDREN, JSON_PARENT_AMBIGUOUS, JSON_BAD_TREE));
 	// The fields you want to store only for the root (because they're identical for all pageviews in
@@ -66,7 +66,8 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
 	    JSON_URI_HOST, JSON_UA, JSON_REFERER));
 
 	private static enum HADOOP_COUNTERS {
-		OK_TREES, FILTERED_TREES, BAD_TREES, REDUCE_EXCEPTIONS
+		OK_TREE, BAD_TREE, REDUCE_EXCEPTION, SKIPPED_SINGLETON_WITHOUT_REFERER, SKIPPED_HOUR_23,
+		SKIPPED_WIKIMEDIA_REFERER_IN_ROOT, SKIPPED_AMBIGUOUS
 	}
 
 	private Pattern mainPagePattern;
@@ -104,16 +105,20 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
 		}
 	}
 
-	protected boolean isGoodPageview(JSONObject root, boolean isGlobalRoot) throws JSONException {
-		// If the root of the tree has no children, we don't know if this browser sends referer info, so
-		// we exclude the tree (also, single-pageview trees aren't very interesting).
-		if (isGlobalRoot && !root.has(JSON_CHILDREN)) {
+	protected boolean isGoodPageview(JSONObject root, boolean isGlobalRoot, Reporter reporter)
+	    throws JSONException {
+		// If the root of the tree has no referer and no children, we don't know if this browser sends
+		// referer info, so we exclude the tree.
+		if (isGlobalRoot && !root.getString(JSON_REFERER).startsWith("http")
+		    && !root.has(JSON_CHILDREN)) {
+			reporter.incrCounter(HADOOP_COUNTERS.SKIPPED_SINGLETON_WITHOUT_REFERER, 1);
 			return false;
 		}
 		// No node can be from the last hour of the day, such that we make trees spanning the day
 		// boundary extremely unlikely (they'd have to include an idle-time of at least one hour; if
 		// that ever happens, we consider the part before the idle-time a complete tree).
-		if (root.getString("dt").contains("T23:")) {
+		if (root.getString(JSON_DT).contains("T23:")) {
+			reporter.incrCounter(HADOOP_COUNTERS.SKIPPED_HOUR_23, 1);
 			return false;
 		}
 		// The root must not be a Wikimedia page; this will discard traces that in fact continue a
@@ -121,25 +126,28 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
 		// excluded via the "T23:" rule; or one whose parent was discarded in the mapper because it
 		// doesn't match the required URL pattern). As an exception, we do allow trees that start with
 		// the main page of one of the specified Wikipedia versions.
-		if (isGlobalRoot && WIKI_HOST_PATTERN.matcher(root.getString("referer")).matches()
-		    && !mainPagePattern.matcher(root.getString("referer")).matches()) {
+		if (isGlobalRoot && WIKI_HOST_PATTERN.matcher(root.getString(JSON_REFERER)).matches()
+		    && !mainPagePattern.matcher(root.getString(JSON_REFERER)).matches()) {
+			reporter.incrCounter(HADOOP_COUNTERS.SKIPPED_WIKIMEDIA_REFERER_IN_ROOT, 1);
 			return false;
 		}
 		// If we don't want to keep ambiguous trees, discard them.
 		if (!keepAmbiguousTrees && root.getBoolean(JSON_PARENT_AMBIGUOUS)) {
+			reporter.incrCounter(HADOOP_COUNTERS.SKIPPED_AMBIGUOUS, 1);
 			return false;
 		}
 		return true;
 	}
 
 	// Depth-first search, failing as soon as a node fails.
-	protected boolean isGoodTree(JSONObject root, boolean isGlobalRoot) throws JSONException {
-		if (!isGoodPageview(root, isGlobalRoot)) {
+	protected boolean isGoodTree(JSONObject root, boolean isGlobalRoot, Reporter reporter)
+	    throws JSONException {
+		if (!isGoodPageview(root, isGlobalRoot, reporter)) {
 			return false;
 		} else if (root.has(JSON_CHILDREN)) {
 			JSONArray children = root.getJSONArray(JSON_CHILDREN);
 			for (int i = 0; i < children.length(); ++i) {
-				if (!isGoodTree(children.getJSONObject(i), false)) {
+				if (!isGoodTree(children.getJSONObject(i), false, reporter)) {
 					return false;
 				}
 			}
@@ -148,11 +156,11 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
 	}
 
 	// Keep only the good trees.
-	private List<Pageview> filterTrees(List<Pageview> roots) {
+	private List<Pageview> filterTrees(List<Pageview> roots, Reporter reporter) {
 		List<Pageview> filtered = new ArrayList<Pageview>();
 		for (Pageview root : roots) {
 			try {
-				if (isGoodTree(root.json, true)) {
+				if (isGoodTree(root.json, true, reporter)) {
 					sparsifyJson(root.json, true);
 					filtered.add(root);
 				} else if (keepBadTrees) {
@@ -257,19 +265,19 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
 			}
 			// Extract trees and output them.
 			List<Pageview> allRoots = sequenceToTrees(pageviews);
-			List<Pageview> goodRoots = filterTrees(allRoots);
-			reporter.incrCounter(HADOOP_COUNTERS.FILTERED_TREES, allRoots.size() - goodRoots.size());
+			List<Pageview> goodRoots = filterTrees(allRoots, reporter);
 			int i = 0;
 			for (Pageview root : goodRoots) {
 				out.collect(makeTreeId(dayAndUid, i), new Text(root.toString()));
-				reporter.incrCounter(HADOOP_COUNTERS.OK_TREES, 1);
 				if (root.json.has(JSON_BAD_TREE) && root.json.getBoolean(JSON_BAD_TREE)) {
-					reporter.incrCounter(HADOOP_COUNTERS.BAD_TREES, 1);
+					reporter.incrCounter(HADOOP_COUNTERS.BAD_TREE, 1);
+				} else {
+					reporter.incrCounter(HADOOP_COUNTERS.OK_TREE, 1);
 				}
 				++i;
 			}
 		} catch (Exception e) {
-			reporter.incrCounter(HADOOP_COUNTERS.REDUCE_EXCEPTIONS, 1);
+			reporter.incrCounter(HADOOP_COUNTERS.REDUCE_EXCEPTION, 1);
 			System.err.format("REDUCE_EXCEPTION: %s\n", e.getMessage());
 		}
 	}

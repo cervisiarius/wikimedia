@@ -33,7 +33,7 @@ public class GroupAndFilterMapper implements Mapper<Text, Text, Text, Text> {
 	        + "([_ ]talk)?:.*");
 
 	private static enum HADOOP_COUNTERS {
-		SKIPPED_BAD_HOST, SKIPPED_BAD_PATH, SKIPPED_NON_ARTICLE_PAGE, SKIPPED_BOT, OK_REQUESTS, MAP_EXCEPTIONS
+		SKIPPED_BAD_HOST, SKIPPED_BAD_PATH, SKIPPED_NON_ARTICLE_PAGE, SKIPPED_BOT, OK_REQUEST, MAP_EXCEPTION
 	}
 
 	// A regex of the Wikimedia sites we're interested in, e.g., "(pt|es)\\.wikipedia\\.org".
@@ -86,8 +86,8 @@ public class GroupAndFilterMapper implements Mapper<Text, Text, Text, Text> {
 		// from the ip field.
 		String ipForKey = (xff == null) ? ip : xff;
 		// Just in case, replace tabs, so we don't mess with the key/value split.
-		return String.format("%s%s%s%s%s", day, UID_SEPARATOR, ipForKey, UID_SEPARATOR, ua)
-		    .replace('\t', ' ');
+		return String.format("%s%s%s%s%s", day, UID_SEPARATOR, ipForKey, UID_SEPARATOR, ua).replace(
+		    '\t', ' ');
 	}
 
 	@Override
@@ -116,10 +116,10 @@ public class GroupAndFilterMapper implements Mapper<Text, Text, Text, Text> {
 				return;
 			} else {
 				out.collect(new Text(makeKey(json)), jsonString);
-				reporter.incrCounter(HADOOP_COUNTERS.OK_REQUESTS, 1);
+				reporter.incrCounter(HADOOP_COUNTERS.OK_REQUEST, 1);
 			}
 		} catch (JSONException e) {
-			reporter.incrCounter(HADOOP_COUNTERS.MAP_EXCEPTIONS, 1);
+			reporter.incrCounter(HADOOP_COUNTERS.MAP_EXCEPTION, 1);
 			System.err.format("MAP_EXCEPTION: %s\n", e.getMessage());
 		}
 	}
