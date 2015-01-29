@@ -25,12 +25,14 @@ public class GroupAndFilterMapper implements Mapper<Text, Text, Text, Text> {
 	private static final String JSON_URI_PATH = "uri_path";
 	private static final String JSON_URI_HOST = "uri_host";
 
-	// NB: Special pages can have different names in different languages; as of now, we cover only
-	// English, Portuguese, Spanish, and German.
+	// NB: Special pages can have different names in different languages.
 	private static final Pattern NON_ARTICLE_PAGE_PATTERN = Pattern
-	    .compile("(?i)/wiki/(Image|Media|Special|Especial|Spezial|Talk|User|Wikipedia|File"
-	        + "|MediaWiki|Template|Help|Book|Draft|Education[_ ]Program|TimedText|Module|Wikt)"
-	        + "([_ ]talk)?:.*");
+	    .compile("(?i)/wiki/(Image|Media|Special|Talk|User|Wikipedia|File|MediaWiki"
+	        + "|Template|Help|Book|Draft|Education[_ ]Program|TimedText|Module|Wikt"
+	    		// Portuguese-specific.
+	    		+ "|Especial|Discuss\u00E3o|Usu\u00E1rio\\(a\\)|Wikip\u00E9dia|Ficheiro"
+	    		+ "|Predefini\u00E7\u00E3o|Ajuda|Livro|M\u00F3dulo)"
+	        + "([_ ](talk|Discuss\u00E3o))?:.*");
 
 	private static enum HADOOP_COUNTERS {
 		SKIPPED_BAD_HOST, SKIPPED_BAD_PATH, SKIPPED_NON_ARTICLE_PAGE, SKIPPED_BOT, OK_REQUEST, MAP_EXCEPTION
