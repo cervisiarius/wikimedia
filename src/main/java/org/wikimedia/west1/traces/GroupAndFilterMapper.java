@@ -31,6 +31,7 @@ public class GroupAndFilterMapper implements Mapper<Text, Text, Text, Text> {
 	    .compile("(?i)/wiki/(Image|Media|Special|Talk|User|Wikipedia|File|MediaWiki"
 	        + "|Template|Help|Book|Draft|Education[_ ]Program|TimedText|Module|Wikt"
 	        // Portuguese-specific.
+	        // TODO: unicode chars don't get filtered here ---- FIX!
 	        + "|Especial|Discuss(\u00E3|%E3)o|Usu(\u00E1|%E1)rio\\(a\\)|Wikip(\u00E9|%E9)dia|Ficheiro"
 	        + "|Predefini(\u00E7|%E7)(\u00E3|%E3)o|Ajuda|Livro|M(\u00F3|%F3)dulo)"
 	        + "([_ ](talk|Discuss(\u00E3|%E3)o))?:.*");
