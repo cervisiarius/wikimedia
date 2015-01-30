@@ -1,6 +1,8 @@
 package org.wikimedia.west1.traces;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.io.PrintStream;
 import java.util.regex.Pattern;
 
 import org.apache.hadoop.io.Text;
@@ -121,7 +123,9 @@ public class GroupAndFilterMapper implements Mapper<Text, Text, Text, Text> {
 			}
 		} catch (JSONException e) {
 			reporter.incrCounter(HADOOP_COUNTERS.MAP_EXCEPTION, 1);
-			System.err.format("MAP_EXCEPTION: %s\n", e.getMessage());
+			ByteArrayOutputStream baos = new ByteArrayOutputStream();
+			e.printStackTrace(new PrintStream(baos));
+			System.err.format("MAP_EXCEPTION: %s\n", baos.toString("UTF-8"));
 		}
 	}
 

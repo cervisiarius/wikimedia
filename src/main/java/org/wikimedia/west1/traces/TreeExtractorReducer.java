@@ -1,7 +1,9 @@
 package org.wikimedia.west1.traces;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.PrintStream;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -317,7 +319,9 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
 			}
 		} catch (Exception e) {
 			reporter.incrCounter(HADOOP_COUNTERS.REDUCE_EXCEPTION, 1);
-			System.err.format("REDUCE_EXCEPTION: %s\n", e.getStackTrace().toString());
+			ByteArrayOutputStream baos = new ByteArrayOutputStream();
+			e.printStackTrace(new PrintStream(baos));
+			System.err.format("REDUCE_EXCEPTION: %s\n", baos.toString("UTF-8"));
 		}
 	}
 
