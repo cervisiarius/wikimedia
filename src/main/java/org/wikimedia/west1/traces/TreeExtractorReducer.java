@@ -86,10 +86,10 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
 	private boolean keepBadTrees;
 	private String hashSalt;
 	// The redirects; they're read from file when this Mapper instance is created.
-	private Map<String, List<String>> reverseRedirects;
+	private Map<String, String> redirects  = new HashMap<String, String>();
+	private Map<String, List<String>> reverseRedirects = new HashMap<String, List<String>>();
 
-	private static Map<String, List<String>> readReverseRedirectsFromFile(String file) {
-		Map<String, List<String>> map = new HashMap<String, List<String>>();
+	private void readReverseRedirectsFromFile(String file) {
 		InputStream is = ClassLoader.getSystemResourceAsStream(file);
 		if (file.endsWith(".gz")) {
 			try {
@@ -102,15 +102,15 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
 			String[] tokens = sc.next().split("\t", 2);
 			String src = tokens[0];
 			String tgt = tokens[1];
-			List<String> srcForTgt = map.get(tgt);
+			List<String> srcForTgt = reverseRedirects.get(tgt);
 			if (srcForTgt == null) {
 				srcForTgt = new ArrayList<String>();
-				map.put(tgt, srcForTgt);
+				reverseRedirects.put(tgt, srcForTgt);
 			}
 			srcForTgt.add(src);
+			redirects.put(src, tgt);
 		}
 		sc.close();
-		return map;
 	}
 
 	// Tree ids consist of the day, a salted hash of the UID, and a sequential number (in order of
@@ -225,10 +225,15 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
 		Map<String, Pageview> articleToLastPageview = new HashMap<String, Pageview>();
 		// Iterate over all pageviews in temporal order.
 		for (Pageview pv : session) {
+			String tgt = redirects.get(pv.article);
+			if (tgt != null) pv.article = tgt;
+			tgt = redirects.get(pv.refererArticle);
+			if (tgt != null) pv.refererArticle = tgt;
 			Pageview parent = articleToLastPageview.get(pv.refererArticle);
 			// If we haven't seen the referer of this pageview in the current session, check if this is
 			// because the page the user saw redirected to another page (the name of which we'll see in
 			// the referer field).
+			/*
 			if (pv.refererArticle != null && parent == null) {
 				List<String> srcForTgt = reverseRedirects.get(pv.refererArticle);
 				if (srcForTgt != null) {
@@ -243,6 +248,7 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
 					}
 				}
 			}
+			*/
 			// If even after redirect resolution we don't see the referer of this pageview in the current
 			// session, make the pageview a root.
 			if (parent == null) {
@@ -296,7 +302,7 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
 			keepAmbiguousTrees = conf.getBoolean(CONF_KEEP_AMBIGUOUS_TREES, true);
 			keepBadTrees = conf.getBoolean(CONF_KEEP_BAD_TREES, false);
 			hashSalt = conf.get(CONF_HASH_SALT);
-			reverseRedirects = readReverseRedirectsFromFile(conf.get(CONF_REDIRECT_FILE));
+			readReverseRedirectsFromFile(conf.get(CONF_REDIRECT_FILE));
 		}
 	}
 
