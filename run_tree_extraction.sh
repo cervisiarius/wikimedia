@@ -14,7 +14,7 @@ export KEEP_AMBIGUOUS_TREES=true
 # Regular expression of the uri_hosts you want to include.
 export URI_HOST_PATTERN='pt\.wikipedia\.org'
 # The page-redirect file. Make sure this corresponds to URI_HOST_PATTERN.
-export REDIRECT_FILE=~/wikimedia/trunk/data/ptwiki_20141104_redirects.tsv.gz
+export REDIRECT_FILE=ptwiki_20141104_redirects.tsv.gz
 
 echo "Running hadoop job"
 hadoop jar /usr/lib/hadoop-mapreduce/hadoop-streaming.jar \
