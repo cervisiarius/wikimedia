@@ -25,6 +25,7 @@ public class GroupAndFilterMapper implements Mapper<Text, Text, Text, Text> {
 	private static final String JSON_XFF = "x_forwarded_for";
 	private static final String JSON_URI_PATH = "uri_path";
 	private static final String JSON_URI_HOST = "uri_host";
+	private static final String JSON_HTTP_STATUS = "http_status";
 
 	// NB: Special pages can have different names in different languages.
 	private static final Pattern NON_ARTICLE_PAGE_PATTERN = Pattern
@@ -39,7 +40,7 @@ public class GroupAndFilterMapper implements Mapper<Text, Text, Text, Text> {
 	    .compile("(?i)/wiki/(Main_Page|Wikip(\u00E9|%C3%A9)dia:P(\u00E1|%C3%A1)gina_principal)");
 
 	private static enum HADOOP_COUNTERS {
-		SKIPPED_BAD_HOST, SKIPPED_BAD_PATH, SKIPPED_NON_ARTICLE_PAGE, SKIPPED_BOT, OK_REQUEST, MAP_EXCEPTION
+		SKIPPED_BAD_HOST, SKIPPED_BAD_PATH, SKIPPED_NON_ARTICLE_PAGE, SKIPPED_BOT, SKIPPED_BAD_HTTP_STATUS, OK_REQUEST, MAP_EXCEPTION
 	}
 
 	// A regex of the Wikimedia sites we're interested in, e.g., "(pt|es)\\.wikipedia\\.org".
@@ -121,6 +122,12 @@ public class GroupAndFilterMapper implements Mapper<Text, Text, Text, Text> {
 			// It can't be from a bot.
 			else if (isBot(json.getString(JSON_UA))) {
 				reporter.incrCounter(HADOOP_COUNTERS.SKIPPED_BOT, 1);
+				return;
+			}
+			// We only accept HTTP statuses 200 (OK) and 304 (Not Modified).
+			else if (!json.getString(JSON_HTTP_STATUS).equals("200")
+			    && !json.getString(JSON_HTTP_STATUS).equals("304")) {
+				reporter.incrCounter(HADOOP_COUNTERS.SKIPPED_BAD_HTTP_STATUS, 1);
 				return;
 			}
 			// Only if all those filters were passed do we output the row.

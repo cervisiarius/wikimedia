@@ -40,7 +40,6 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
 	private static final String JSON_DT = "dt";
 	private static final String JSON_UA = "user_agent";
 	private static final String JSON_URI_PATH = "uri_path";
-	private static final String JSON_URI_HOST = "uri_host";
 	private static final String JSON_HTTP_STATUS = "http_status";
 	private static final String JSON_REFERER = "referer";
 	// Job config parameters specifying which Wikipedia versions we're interested in, e.g.,
@@ -51,6 +50,10 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
 	private static final String CONF_KEEP_AMBIGUOUS_TREES = "org.wikimedia.west1.traces.keepAmbiguousTrees";
 	// Job config parameters specifying if we want to keep trees whose root is from a Wikimedia site.
 	private static final String CONF_KEEP_BAD_TREES = "org.wikimedia.west1.traces.keepBadTrees";
+	// Job config parameters specifying if we want to keep trees consisting of a single pageview (even
+	// if this is true, we keep only the singletons that have a non-empty referer, so we can be sure
+	// the user's browser sends referer information).
+	private static final String CONF_KEEP_SINGLETON_TREES = "org.wikimedia.west1.traces.keepSingletonTrees";
 	// Job config parameters specifying a string for salting UID hashes, so it's very hard to get the
 	// hash value for a given UID.
 	private static final String CONF_HASH_SALT = "org.wikimedia.west1.traces.hashSalt";
@@ -70,13 +73,13 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
 	// The fields you want to store only for the root (because they're identical for all pageviews in
 	// the same tree).
 	private static final Set<String> FIELDS_TO_KEEP_IN_ROOT = new HashSet<String>(Arrays.asList(
-	    JSON_URI_HOST, JSON_UA, JSON_REFERER));
+	    JSON_UA, JSON_REFERER));
 
 	private static enum HADOOP_COUNTERS {
 		// In order to have an idea what the big reasons are for dismissing trees. Note that these don't
 		// add up to the number of trees we start with before filtering, since filtering fails fast (cf.
 		// isGoodPageview).
-		SKIPPED_SINGLETON_WITHOUT_REFERER, SKIPPED_HOUR_23, SKIPPED_WIKIMEDIA_REFERER_IN_ROOT, SKIPPED_AMBIGUOUS,
+		SKIPPED_SINGLETON, SKIPPED_HOUR_23, SKIPPED_WIKIMEDIA_REFERER_IN_ROOT, SKIPPED_AMBIGUOUS,
 		// OK_TREE and BAD_TREE add to the number of trees we started with before filtering.
 		OK_TREE, BAD_TREE, REDUCE_EXCEPTION, REDIRECT_RESOLVED,
 		// Timers.
@@ -86,6 +89,7 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
 	private Pattern mainPagePattern;
 	private boolean keepAmbiguousTrees;
 	private boolean keepBadTrees;
+	private boolean keepSingletonTrees;
 	private String hashSalt;
 	// The redirects; they're read from file when this Mapper instance is created.
 	private Map<String, String> redirects = new HashMap<String, String>();
@@ -149,9 +153,9 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
 	    throws JSONException {
 		// If the root of the tree has no referer and no children, we don't know if this browser sends
 		// referer info, so we exclude the tree.
-		if (isGlobalRoot && !root.getString(JSON_REFERER).startsWith("http")
-		    && !root.has(JSON_CHILDREN)) {
-			reporter.incrCounter(HADOOP_COUNTERS.SKIPPED_SINGLETON_WITHOUT_REFERER, 1);
+		if (isGlobalRoot && !root.has(JSON_CHILDREN)
+		    && (!keepSingletonTrees || !root.getString(JSON_REFERER).startsWith("http"))) {
+			reporter.incrCounter(HADOOP_COUNTERS.SKIPPED_SINGLETON, 1);
 			return false;
 		}
 		// No node can be from the last hour of the day, such that we make trees spanning the day
@@ -268,6 +272,7 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
 		mainPagePattern = Pattern.compile("http.?://pt\\.wikipedia\\.org/");
 		keepAmbiguousTrees = true;
 		keepBadTrees = true;
+		keepSingletonTrees = true;
 		hashSalt = "sdsdsafdsfdsfs";
 		reverseRedirects = null;
 	}
@@ -280,6 +285,7 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
 			mainPagePattern = Pattern.compile("http.?://(" + conf.get(CONF_URI_HOST_PATTERN, "") + ")/");
 			keepAmbiguousTrees = conf.getBoolean(CONF_KEEP_AMBIGUOUS_TREES, true);
 			keepBadTrees = conf.getBoolean(CONF_KEEP_BAD_TREES, false);
+			keepSingletonTrees = conf.getBoolean(CONF_KEEP_SINGLETON_TREES, false);
 			hashSalt = conf.get(CONF_HASH_SALT);
 			readReverseRedirectsFromFile(conf.get(CONF_REDIRECT_FILE));
 		}

@@ -9,14 +9,14 @@ export IN_DIR=/wmf/data/raw/webrequest/webrequest_text/hourly/2015/01/18/09/webr
 export OUT_DIR=/user/west1/tree_extractor_test
 # Cf. org.wikimedia.west1.traces.TreeExtractorReducer.isGoodPageview().
 export KEEP_BAD_TREES=false
+# Cf. org.wikimedia.west1.traces.TreeExtractorReducer.isGoodPageview().
+export KEEP_SINGLETON_TREES=false
 # Cf. org.wikimedia.west1.traces.TreeExtractorReducer.getMinimumSpanningForest().
 export KEEP_AMBIGUOUS_TREES=true
 # Regular expression of the uri_hosts you want to include.
 export URI_HOST_PATTERN='pt\.wikipedia\.org'
 # The page-redirect file. Make sure this corresponds to URI_HOST_PATTERN.
 export REDIRECT_FILE=ptwiki_20141104_redirects.tsv.gz
-
-#    -D           mapreduce.reduce.java.opts=-Xmx512m \
 
 echo "Running hadoop job"
 hadoop jar /usr/lib/hadoop-mapreduce/hadoop-streaming.jar \
@@ -33,6 +33,7 @@ hadoop jar /usr/lib/hadoop-mapreduce/hadoop-streaming.jar \
     -D           org.wikimedia.west1.traces.redirectFile=$REDIRECT_FILE \
     -D           org.wikimedia.west1.traces.keepAmbiguousTrees=$KEEP_AMBIGUOUS_TREES \
     -D           org.wikimedia.west1.traces.keepBadTrees=$KEEP_BAD_TREES \
+    -D           org.wikimedia.west1.traces.keepSingletonTrees=$KEEP_SINGLETON_TREES \
     -D           org.wikimedia.west1.traces.hashSalt=`date +%s | sha256sum | base64 | head -c 64` \
     -inputformat SequenceFileAsTextInputFormat \
     -input       $IN_DIR \
