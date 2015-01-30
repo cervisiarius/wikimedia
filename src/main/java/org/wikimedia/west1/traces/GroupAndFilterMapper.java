@@ -31,13 +31,12 @@ public class GroupAndFilterMapper implements Mapper<Text, Text, Text, Text> {
 	    .compile("(?i)/wiki/(Image|Media|Special|Talk|User|Wikipedia|File|MediaWiki"
 	        + "|Template|Help|Book|Draft|Education[_ ]Program|TimedText|Module|Wikt"
 	        // Portuguese-specific.
-	        // TODO: unicode chars don't get filtered here ---- FIX!
-	        + "|Especial|Discuss(\u00E3|%E3)o|Usu(\u00E1|%E1)rio\\(a\\)|Wikip(\u00E9|%E9)dia|Ficheiro"
-	        + "|Predefini(\u00E7|%E7)(\u00E3|%E3)o|Ajuda|Livro|M(\u00F3|%F3)dulo)"
-	        + "([_ ](talk|Discuss(\u00E3|%E3)o))?:.*");
+	        + "|Especial|Discuss(\u00E3|%C3A3)o|Usu(\u00E1|%C3%A1)rio\\(a\\)|Wikip(\u00E9|%C3%A9)dia"
+	        + "|Ficheiro|Predefini(\u00E7|%C3A7)(\u00E3|%C3A3)o|Ajuda|Livro|M(\u00F3|%C3B3)dulo)"
+	        + "([_ ](talk|Discuss(\u00E3|%C3A3)o))?:.*");
 
 	private static final Pattern MAIN_PAGE_PATTERN = Pattern
-	    .compile("(?i)/wiki/(Main_Page|Wikip(\u00E9|%E9)dia:P(\u00E1|%E1)gina_principal)");
+	    .compile("(?i)/wiki/(Main_Page|Wikip(\u00E9|%C3%A9)dia:P(\u00E1|%C3%A1)gina_principal)");
 
 	private static enum HADOOP_COUNTERS {
 		SKIPPED_BAD_HOST, SKIPPED_BAD_PATH, SKIPPED_NON_ARTICLE_PAGE, SKIPPED_BOT, OK_REQUEST, MAP_EXCEPTION
@@ -75,7 +74,7 @@ public class GroupAndFilterMapper implements Mapper<Text, Text, Text, Text> {
 	}
 
 	private static String extractDayFromDate(String date) {
-		return date.substring(0, date.indexOf('T'));
+		return date.substring(0, date.indexOf('T')).replace("-", "");
 	}
 
 	private boolean isBot(String userAgent) {
@@ -123,7 +122,9 @@ public class GroupAndFilterMapper implements Mapper<Text, Text, Text, Text> {
 			else if (isBot(json.getString(JSON_UA))) {
 				reporter.incrCounter(HADOOP_COUNTERS.SKIPPED_BOT, 1);
 				return;
-			} else {
+			}
+			// Only if all those filters were passed do we output the row.
+			else {
 				out.collect(new Text(makeKey(json)), jsonString);
 				reporter.incrCounter(HADOOP_COUNTERS.OK_REQUEST, 1);
 			}

@@ -16,11 +16,12 @@ export URI_HOST_PATTERN='pt\.wikipedia\.org'
 # The page-redirect file. Make sure this corresponds to URI_HOST_PATTERN.
 export REDIRECT_FILE=ptwiki_20141104_redirects.tsv.gz
 
+#    -D           mapreduce.reduce.java.opts=-Xmx512m \
+
 echo "Running hadoop job"
 hadoop jar /usr/lib/hadoop-mapreduce/hadoop-streaming.jar \
     -libjars     $TARGET_DIR/TreeExtractor-0.0.1-SNAPSHOT-jar-with-dependencies.jar \
-    -D           mapred.child.java.opts=-Xss10m \
-    -D           mapreduce.reduce.java.opts=-Xmx512m \
+    -D           mapred.child.java.opts="-Xss10m -Xmx512m" \
     -D           mapreduce.output.fileoutputformat.compress=false \
     -D           mapreduce.input.fileinputformat.split.minsize=300000000 \
     -D           mapreduce.task.timeout=6000000 \

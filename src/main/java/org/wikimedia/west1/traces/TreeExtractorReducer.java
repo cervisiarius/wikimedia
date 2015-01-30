@@ -78,7 +78,9 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
 		// isGoodPageview).
 		SKIPPED_SINGLETON_WITHOUT_REFERER, SKIPPED_HOUR_23, SKIPPED_WIKIMEDIA_REFERER_IN_ROOT, SKIPPED_AMBIGUOUS,
 		// OK_TREE and BAD_TREE add to the number of trees we started with before filtering.
-		OK_TREE, BAD_TREE, REDUCE_EXCEPTION, REDIRECT_RESOLVED
+		OK_TREE, BAD_TREE, REDUCE_EXCEPTION, REDIRECT_RESOLVED,
+		// Timers.
+		MSEC_PAGEVIEW_CONSTRUCTOR
 	}
 
 	private Pattern mainPagePattern;
@@ -121,7 +123,7 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
 		String uidHash = DigestUtils.md5Hex(day_uid[1] + hashSalt);
 		// seqNum is zero-padded to fixed length 4: we allow at most MAX_NUM_PAGEVIEWS = 3600 pageviews
 		// per day, and in the worst case, each pageview is its own tree, so seqNum <= 3600.
-		return new Text(String.format("%s_%s_%04d", day.replace("-", ""), uidHash, seqNum));
+		return new Text(String.format("%s_%s_%04d", day, uidHash, seqNum));
 	}
 
 	// We don't want to keep all info from the original pageview objects, and we discard it here.
@@ -301,7 +303,10 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
 					return;
 				} else {
 					JSONObject json = new JSONObject(pageviewIterator.next().toString());
+					long before = System.currentTimeMillis();
 					Pageview pv = new Pageview(json, redirects);
+					long after = System.currentTimeMillis();
+					reporter.getCounter(HADOOP_COUNTERS.MSEC_PAGEVIEW_CONSTRUCTOR).increment(after - before);
 					pageviews.add(pv);
 					if (!json.getString(JSON_URI_PATH).equals("/wiki/" + pv.article)) {
 						reporter.incrCounter(HADOOP_COUNTERS.REDIRECT_RESOLVED, 1);
