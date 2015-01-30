@@ -6,7 +6,7 @@ export TARGET_DIR=~/wikimedia/trunk/target
 # The part of the server logs you want to process.
 export IN_DIR=/wmf/data/raw/webrequest/webrequest_text/hourly/2015/01/18/09/webrequest_text.22.0.*
 # The output directory.
-export OUT_DIR=/user/west1/tree_extractor_test_BOT-TEST
+export OUT_DIR=/user/west1/tree_extractor_test
 # Cf. org.wikimedia.west1.traces.TreeExtractorReducer.isGoodPageview().
 export KEEP_BAD_TREES=false
 # Cf. org.wikimedia.west1.traces.TreeExtractorReducer.getMinimumSpanningForest().
