@@ -19,7 +19,6 @@ public class GroupAndFilterMapper implements Mapper<Text, Text, Text, Text> {
 
 	public static final String UID_SEPARATOR = "###";
 	private static final String CONF_URI_HOST_PATTERN = "org.wikimedia.west1.traces.uriHostPattern";
-	private static final Pattern WIKI_PATTERN = Pattern.compile("/wiki/.*");
 	private static final String JSON_IP = "ip";
 	private static final String JSON_DT = "dt";
 	private static final String JSON_UA = "user_agent";
@@ -104,7 +103,7 @@ public class GroupAndFilterMapper implements Mapper<Text, Text, Text, Text> {
 				return;
 			}
 			// It must be to an article page, i.e., the path must start with "/wiki/".
-			else if (!WIKI_PATTERN.matcher(json.getString(JSON_URI_PATH)).matches()) {
+			else if (!json.getString(JSON_URI_PATH).startsWith("/wiki/")) {
 				reporter.incrCounter(HADOOP_COUNTERS.SKIPPED_BAD_PATH, 1);
 				return;
 			}

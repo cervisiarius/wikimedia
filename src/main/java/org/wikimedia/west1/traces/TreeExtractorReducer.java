@@ -78,7 +78,7 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
 		// isGoodPageview).
 		SKIPPED_SINGLETON_WITHOUT_REFERER, SKIPPED_HOUR_23, SKIPPED_WIKIMEDIA_REFERER_IN_ROOT, SKIPPED_AMBIGUOUS,
 		// OK_TREE and BAD_TREE add to the number of trees we started with before filtering.
-		OK_TREE, BAD_TREE, REDUCE_EXCEPTION, REDIRECT_IN_URL
+		OK_TREE, BAD_TREE, REDUCE_EXCEPTION, REDIRECT_RESOLVED
 	}
 
 	private Pattern mainPagePattern;
@@ -86,10 +86,10 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
 	private boolean keepBadTrees;
 	private String hashSalt;
 	// The redirects; they're read from file when this Mapper instance is created.
-	private Map<String, String> redirects;
+	private Map<String, List<String>> reverseRedirects;
 
-	private static Map<String, String> readMapFromFile(String file) {
-		Map<String, String> map = new HashMap<String, String>();
+	private static Map<String, List<String>> readReverseRedirectsFromFile(String file) {
+		Map<String, List<String>> map = new HashMap<String, List<String>>();
 		InputStream is = ClassLoader.getSystemResourceAsStream(file);
 		if (file.endsWith(".gz")) {
 			try {
@@ -100,7 +100,14 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
 		Scanner sc = new Scanner(is, "UTF-8").useDelimiter("\n");
 		while (sc.hasNext()) {
 			String[] tokens = sc.next().split("\t", 2);
-			map.put(tokens[0], tokens[1]);
+			String src = tokens[0];
+			String tgt = tokens[1];
+			List<String> srcForTgt = map.get(tgt);
+			if (srcForTgt == null) {
+				srcForTgt = new ArrayList<String>();
+				map.put(tgt, srcForTgt);
+			}
+			srcForTgt.add(src);
 		}
 		sc.close();
 		return map;
@@ -208,19 +215,36 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
 
 	// Input: the list of session pageviews in temporal order.
 	// Output: the list of tree roots.
-	private static List<Pageview> getMinimumSpanningForest(List<Pageview> session)
+	private List<Pageview> getMinimumSpanningForest(List<Pageview> session, Reporter reporter)
 	    throws JSONException {
 		// The list of all trees contained in the session.
 		List<Pageview> roots = new ArrayList<Pageview>();
 		// Count for all URLs how often they were seen in this session.
-		Map<String, Integer> urlCounts = new HashMap<String, Integer>();
+		Map<String, Integer> articleCounts = new HashMap<String, Integer>();
 		// Remember, for each URL, the last pageview of it.
-		Map<String, Pageview> urlToLastPageview = new HashMap<String, Pageview>();
+		Map<String, Pageview> articleToLastPageview = new HashMap<String, Pageview>();
 		// Iterate over all pageviews in temporal order.
 		for (Pageview pv : session) {
-			Pageview parent = urlToLastPageview.get(pv.referer);
-			// If we haven't seen the referer of this pageview in the current session, make the pageview a
-			// root.
+			Pageview parent = articleToLastPageview.get(pv.refererArticle);
+			// If we haven't seen the referer of this pageview in the current session, check if this is
+			// because the page the user saw redirected to another page (the name of which we'll see in
+			// the referer field).
+			if (pv.refererArticle != null && parent == null) {
+				List<String> srcForTgt = reverseRedirects.get(pv.refererArticle);
+				if (srcForTgt != null) {
+					for (String src : srcForTgt) {
+						Pageview candidate = articleToLastPageview.get(src);
+						if (candidate != null && (parent == null || candidate.time > parent.time)) {
+							parent = candidate;
+						}
+					}
+					if (parent != null && reporter != null) {
+						reporter.incrCounter(HADOOP_COUNTERS.REDIRECT_RESOLVED, 1);
+					}
+				}
+			}
+			// If even after redirect resolution we don't see the referer of this pageview in the current
+			// session, make the pageview a root.
 			if (parent == null) {
 				roots.add(pv);
 				pv.json.put(JSON_PARENT_AMBIGUOUS, false);
@@ -230,20 +254,20 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
 				parent.json.append(JSON_CHILDREN, pv.json);
 				// A parent is ambiguous if we have seen the referer URL several times in this session
 				// before the current pageview.
-				pv.json.put(JSON_PARENT_AMBIGUOUS, urlCounts.get(pv.referer) > 1);
+				pv.json.put(JSON_PARENT_AMBIGUOUS, articleCounts.get(pv.refererArticle) > 1);
 			}
 			// Remember this pageview as the last pageview for its URL.
-			urlToLastPageview.put(pv.url, pv);
+			articleToLastPageview.put(pv.article, pv);
 			// Update the counter for this URL.
-			Integer c = urlCounts.get(pv.url);
-			urlCounts.put(pv.url, c == null ? 1 : c + 1);
+			Integer c = articleCounts.get(pv.article);
+			articleCounts.put(pv.article, c == null ? 1 : c + 1);
 		}
 		return roots;
 	}
 
 	// Takes a list of pageviews, orders them by time, and extracts a set of trees via the
 	// minimum-spanning-forest heuristic.
-	public List<Pageview> sequenceToTrees(List<Pageview> pageviews) throws JSONException,
+	public List<Pageview> sequenceToTrees(List<Pageview> pageviews, Reporter reporter) throws JSONException,
 	    ParseException {
 		// This sort is stable, so requests having the same timestamp will stay in the original order.
 		Collections.sort(pageviews, new Comparator<Pageview>() {
@@ -252,7 +276,7 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
 				return (int) (pv1.time - pv2.time);
 			}
 		});
-		return getMinimumSpanningForest(pageviews);
+		return getMinimumSpanningForest(pageviews, reporter);
 	}
 
 	private void setDefaultConfig() {
@@ -260,7 +284,7 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
 		keepAmbiguousTrees = true;
 		keepBadTrees = true;
 		hashSalt = "sdsdsafdsfdsfs";
-		redirects = null;
+		reverseRedirects = null;
 	}
 
 	@Override
@@ -272,7 +296,7 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
 			keepAmbiguousTrees = conf.getBoolean(CONF_KEEP_AMBIGUOUS_TREES, true);
 			keepBadTrees = conf.getBoolean(CONF_KEEP_BAD_TREES, false);
 			hashSalt = conf.get(CONF_HASH_SALT);
-			redirects = readMapFromFile(conf.get(CONF_REDIRECT_FILE));
+			reverseRedirects = readReverseRedirectsFromFile(conf.get(CONF_REDIRECT_FILE));
 		}
 	}
 
@@ -294,18 +318,11 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
 					return;
 				} else {
 					JSONObject json = new JSONObject(pageviewIterator.next().toString());
-					Pageview pv = new Pageview(json, redirects);
-					String origPath = json.getString(JSON_URI_PATH);
-					pageviews.add(pv);
-					// pv.url is of the format "pt.wikipedia.org/wiki/...", while origPath is of the format
-					// "/wiki/...", so we check only the suffix for equality, rather than the full path.
-					if (!pv.url.endsWith(origPath)) {
-						reporter.incrCounter(HADOOP_COUNTERS.REDIRECT_IN_URL, 1);
-					}
+					pageviews.add(new Pageview(json));
 				}
 			}
 			// Extract trees and output them.
-			List<Pageview> allRoots = sequenceToTrees(pageviews);
+			List<Pageview> allRoots = sequenceToTrees(pageviews, reporter);
 			List<Pageview> goodRoots = filterTrees(allRoots, reporter);
 			int i = 0;
 			for (Pageview root : goodRoots) {

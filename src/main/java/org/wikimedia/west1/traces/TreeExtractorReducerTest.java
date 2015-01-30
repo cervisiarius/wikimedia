@@ -24,8 +24,8 @@ public class TreeExtractorReducerTest {
 		reducer.configure(null);
 	}
 
-	private static Map<String, String> readMapFromFile(String file) throws FileNotFoundException {
-		Map<String, String> map = new HashMap<String, String>();
+	private static Map<String, List<String>> readReverseRedirectsFromFile(String file) throws IOException {
+		Map<String, List<String>> map = new HashMap<String, List<String>>();
 		InputStream is = new FileInputStream(new File(file));
 		if (file.endsWith(".gz")) {
 			try {
@@ -36,7 +36,14 @@ public class TreeExtractorReducerTest {
 		Scanner sc = new Scanner(is, "UTF-8").useDelimiter("\n");
 		while (sc.hasNext()) {
 			String[] tokens = sc.next().split("\t", 2);
-			map.put(tokens[0], tokens[1]);
+			String src = tokens[0];
+			String tgt = tokens[1];
+			List<String> srcForTgt = map.get(tgt);
+			if (srcForTgt == null) {
+				srcForTgt = new ArrayList<String>();
+				map.put(tgt, srcForTgt);
+			}
+			srcForTgt.add(src);
 		}
 		sc.close();
 		return map;
@@ -58,7 +65,7 @@ public class TreeExtractorReducerTest {
 		session.add(makePageview(5, 30, "b", "http://a"));
 		session.add(makePageview(6, 40, "c", "http://b"));
 		session.add(makePageview(7, 50, "d", "http://c"));
-		for (Pageview root : reducer.sequenceToTrees(session)) {
+		for (Pageview root : reducer.sequenceToTrees(session, null)) {
 			System.out.println(root.toString(2));
 		}
 	}
@@ -112,7 +119,7 @@ public class TreeExtractorReducerTest {
 	}
 
 	public static void testPageview() throws Exception {
-		Map<String, String> redirects = readMapFromFile(System.getenv("HOME")
+		Map<String, List<String>> revRdirects = readReverseRedirectsFromFile(System.getenv("HOME")
 		    + "/wikimedia/trunk/data/ptwiki_20141104_redirects.tsv.gz");
 		String pvString = "{\"x_analytics\":\"php=hhvm\",\"dt\":\"2014-12-04T01:18:34\","
 		    + "\"uri_path\":\"/wiki/Antraz\",\"range\":\"-\",\"accept_language\":\"en-US,en;q=0.5\","
@@ -123,10 +130,11 @@ public class TreeExtractorReducerTest {
 		    + "\"user_agent\":\"Mozilla/5.0 (Windows NT 5.1; rv:33.0) Gecko/20100101 Firefox/33.0\","
 		    + "\"referer\":\"http://pt.wikipedia.org/wiki/Caf%C3%A9-do-bugre\","
 		    + "\"content_type\":\"text/html; charset=UTF-8\",\"parent_ambiguous\":false}";
-		Pageview pv = new Pageview(new JSONObject(pvString), redirects);
+		Pageview pv = new Pageview(new JSONObject(pvString));
 		System.out.println(pv.toString(2));
-		System.out.println(pv.url);
-		System.out.println(pv.referer);
+		System.out.println(pv.article);
+		System.out.println(pv.refererArticle);
+		System.out.println(revRdirects.get("Macaxeira"));
 	}
 
 	public static void main(String[] args) throws Exception {
