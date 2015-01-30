@@ -20,6 +20,7 @@ import java.util.regex.Pattern;
 import java.util.zip.GZIPInputStream;
 
 import org.apache.commons.codec.digest.DigestUtils;
+import org.apache.hadoop.io.NullWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapred.JobConf;
 import org.apache.hadoop.mapred.OutputCollector;
@@ -29,11 +30,12 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
+public class TreeExtractorReducer implements Reducer<Text, Text, NullWritable, Text> {
 
 	// Having 3600 pageviews in a day would mean one every 24 seconds, a lot...
 	private static final int MAX_NUM_PAGEVIEWS = 3600;
 	// JSON field names.
+	private static final String JSON_TREE_ID = "id";
 	private static final String JSON_CHILDREN = "children";
 	private static final String JSON_PARENT_AMBIGUOUS = "parent_ambiguous";
 	private static final String JSON_BAD_TREE = "bad_tree";
@@ -73,7 +75,9 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
 	// The fields you want to store only for the root (because they're identical for all pageviews in
 	// the same tree).
 	private static final Set<String> FIELDS_TO_KEEP_IN_ROOT = new HashSet<String>(Arrays.asList(
-	    JSON_UA, JSON_REFERER));
+	    JSON_UA, JSON_REFERER, JSON_TREE_ID));
+	
+	private static NullWritable NULL_KEY = NullWritable.get();
 
 	private static enum HADOOP_COUNTERS {
 		// In order to have an idea what the big reasons are for dismissing trees. Note that these don't
@@ -127,7 +131,7 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
 		String uidHash = DigestUtils.md5Hex(day_uid[1] + hashSalt);
 		// seqNum is zero-padded to fixed length 4: we allow at most MAX_NUM_PAGEVIEWS = 3600 pageviews
 		// per day, and in the worst case, each pageview is its own tree, so seqNum <= 3600.
-		return new Text(String.format("%s_%s_%04d", day, uidHash, seqNum));
+		return new Text(String.format("%s_%s_%04d", uidHash, day, seqNum));
 	}
 
 	// We don't want to keep all info from the original pageview objects, and we discard it here.
@@ -297,7 +301,7 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
 
 	@Override
 	public void reduce(Text dayAndUid, Iterator<Text> pageviewIterator,
-	    OutputCollector<Text, Text> out, Reporter reporter) throws IOException {
+	    OutputCollector<NullWritable, Text> out, Reporter reporter) throws IOException {
 		try {
 			List<Pageview> pageviews = new ArrayList<Pageview>();
 			int n = 0;
@@ -324,7 +328,8 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
 			List<Pageview> goodRoots = filterTrees(allRoots, reporter);
 			int i = 0;
 			for (Pageview root : goodRoots) {
-				out.collect(makeTreeId(dayAndUid, i), new Text(root.toString()));
+				root.json.put(JSON_TREE_ID, makeTreeId(dayAndUid, i));
+				out.collect(NULL_KEY, new Text(root.toString()));
 				if (root.json.has(JSON_BAD_TREE) && root.json.getBoolean(JSON_BAD_TREE)) {
 					reporter.incrCounter(HADOOP_COUNTERS.BAD_TREE, 1);
 				} else {
