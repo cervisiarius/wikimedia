@@ -1,6 +1,7 @@
 package org.wikimedia.west1.traces;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -11,8 +12,10 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Scanner;
 import java.util.Set;
 import java.util.regex.Pattern;
+import java.util.zip.GZIPInputStream;
 
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.hadoop.io.Text;
@@ -49,6 +52,8 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
 	// Job config parameters specifying a string for salting UID hashes, so it's very hard to get the
 	// hash value for a given UID.
 	private static final String CONF_HASH_SALT = "org.wikimedia.west1.traces.hashSalt";
+	// The name of the file that has the page redirects.
+	private static final String CONF_REDIRECT_FILE = "org.wikimedia.west1.traces.redirectFile";
 	// A pattern matching Wikimedia host names; adapted from
 	// https://github.com/wikimedia/analytics-refinery-source/blob/master/refinery-core/src/main/...
 	// .../java/org/wikimedia/analytics/refinery/core/Pageview.java.
@@ -66,14 +71,38 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
 	    JSON_URI_HOST, JSON_UA, JSON_REFERER));
 
 	private static enum HADOOP_COUNTERS {
-		OK_TREE, BAD_TREE, REDUCE_EXCEPTION, SKIPPED_SINGLETON_WITHOUT_REFERER, SKIPPED_HOUR_23,
-		SKIPPED_WIKIMEDIA_REFERER_IN_ROOT, SKIPPED_AMBIGUOUS
+		// In order to have an idea what the big reasons are for dismissing trees. Note that these don't
+		// add up to the number of trees we start with before filtering, since filtering fails fast (cf.
+		// isGoodPageview).
+		SKIPPED_SINGLETON_WITHOUT_REFERER, SKIPPED_HOUR_23, SKIPPED_WIKIMEDIA_REFERER_IN_ROOT, SKIPPED_AMBIGUOUS,
+		// OK_TREE and BAD_TREE add to the number of trees we started with before filtering.
+		OK_TREE, BAD_TREE, REDUCE_EXCEPTION, REDIRECT_IN_URL
 	}
 
 	private Pattern mainPagePattern;
 	private boolean keepAmbiguousTrees;
 	private boolean keepBadTrees;
 	private String hashSalt;
+	// The redirects; they're read from file when this Mapper instance is created.
+	private Map<String, String> redirects;
+
+	private static Map<String, String> readMapFromFile(String file) {
+		Map<String, String> map = new HashMap<String, String>();
+		InputStream is = ClassLoader.getSystemResourceAsStream(file);
+		if (file.endsWith(".gz")) {
+			try {
+				is = new GZIPInputStream(is);
+			} catch (IOException e) {
+			}
+		}
+		Scanner sc = new Scanner(is, "UTF-8").useDelimiter("\n");
+		while (sc.hasNext()) {
+			String[] tokens = sc.next().split("\t", 2);
+			map.put(tokens[0], tokens[1]);
+		}
+		sc.close();
+		return map;
+	}
 
 	// Tree ids consist of the day, a salted hash of the UID, and a sequential number (in order of
 	// time), e.g., 20150118_5ca697716da3203201f56d09b41c954d_0004.
@@ -229,6 +258,7 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
 		keepAmbiguousTrees = true;
 		keepBadTrees = true;
 		hashSalt = "sdsdsafdsfdsfs";
+		redirects = null;
 	}
 
 	@Override
@@ -240,6 +270,7 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
 			keepAmbiguousTrees = conf.getBoolean(CONF_KEEP_AMBIGUOUS_TREES, true);
 			keepBadTrees = conf.getBoolean(CONF_KEEP_BAD_TREES, false);
 			hashSalt = conf.get(CONF_HASH_SALT);
+			redirects = readMapFromFile(conf.get(CONF_REDIRECT_FILE));
 		}
 	}
 
@@ -260,7 +291,15 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
 				if (++n > MAX_NUM_PAGEVIEWS) {
 					return;
 				} else {
-					pageviews.add(new Pageview(new JSONObject(pageviewIterator.next().toString())));
+					JSONObject json = new JSONObject(pageviewIterator.next().toString());
+					Pageview pv = new Pageview(json, redirects);
+					String origPath = json.getString(JSON_URI_PATH);
+					pageviews.add(pv);
+					// pv.url is of the format "pt.wikipedia.org/wiki/...", while origPath is of the format
+					// "/wiki/...", so we check only the suffix for equality, rather than the full path.
+					if (!pv.url.endsWith(origPath)) {
+						reporter.incrCounter(HADOOP_COUNTERS.REDIRECT_IN_URL, 1);
+					}
 				}
 			}
 			// Extract trees and output them.

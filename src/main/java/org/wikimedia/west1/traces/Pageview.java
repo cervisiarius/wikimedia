@@ -5,6 +5,7 @@ import java.net.URL;
 import java.net.URLDecoder;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Map;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -27,12 +28,38 @@ public class Pageview {
 		}
 	}
 
+	// URL-decode and resolve redirects.
+	private static String normalizePath(String uriPath, Map<String, String> redirects) {
+		// URL-decode the path. It's important to do this first, since it might change character
+		// indices.
+		uriPath = decode(uriPath);
+		// Valid paths contain '/wiki/' before the article name.
+		int nameStartIdx = uriPath.indexOf("/wiki/") + 6;
+		if (nameStartIdx < 0) {
+			return uriPath;
+		}
+		String prefix = uriPath.substring(0, nameStartIdx);
+		String name = uriPath.substring(nameStartIdx);
+		if (redirects != null) {
+			String redirectTarget = redirects.get(name);
+			if (redirectTarget != null) {
+				uriPath = prefix + redirectTarget;
+			}
+		}
+		return uriPath;
+	}
+
 	public Pageview(JSONObject json) throws JSONException, ParseException {
+		this(json, null);
+	}
+
+	public Pageview(JSONObject json, Map<String, String> redirects) throws JSONException,
+	    ParseException {
 		this.json = json;
 		this.time = DATE_FORMAT.parse(json.getString("dt")).getTime();
 		this.seq = json.getLong("sequence");
-		// URL-decode the URI path. It is stored as modified in the JSON object.
-		json.put("uri_path", decode(json.getString("uri_path")));
+		// Normalize the URI path. It is stored as modified in the JSON object.
+		json.put("uri_path", normalizePath(json.getString("uri_path"), redirects));
 		this.url = String.format("%s%s%s", json.getString("uri_host"), json.getString("uri_path"),
 		    json.getString("uri_query"));
 		// Strip the protocol from the referer and URL decode the path, so it's comparable to the URL.
@@ -42,11 +69,11 @@ public class Pageview {
 			q = q == null ? "" : "?" + q;
 			// NB: anchor info ("#...") is omitted.
 			this.referer = String.format("%s%s%s", ref.getAuthority().replace("//", ""),
-			    decode(ref.getPath()), q);
+			    normalizePath(ref.getPath(), redirects), q);
 		} catch (MalformedURLException e) {
 			String[] tokens = json.getString("referer").split("://");
 			if (tokens.length > 1) {
-				this.referer = decode(tokens[1]);
+				this.referer = normalizePath(tokens[1], redirects);
 			} else {
 				this.referer = tokens[0];
 			}

@@ -13,6 +13,8 @@ export KEEP_BAD_TREES=false
 export KEEP_AMBIGUOUS_TREES=true
 # Regular expression of the uri_hosts you want to include.
 export URI_HOST_PATTERN='pt\.wikipedia\.org'
+# The page-redirect file. Make sure this corresponds to URI_HOST_PATTERN.
+export REDIRECT_FILE=~/wikimedia/trunk/data/ptwiki_20141104_redirects.tsv.gz
 
 echo "Running hadoop job"
 hadoop jar /usr/lib/hadoop-mapreduce/hadoop-streaming.jar \
@@ -26,6 +28,7 @@ hadoop jar /usr/lib/hadoop-mapreduce/hadoop-streaming.jar \
     -D           mapreduce.job.output.key.class=org.apache.hadoop.io.Text \
     -D           mapreduce.job.output.value.class=org.apache.hadoop.io.Text \
     -D           org.wikimedia.west1.traces.uriHostPattern=$URI_HOST_PATTERN \
+    -D           org.wikimedia.west1.traces.redirectFile=$REDIRECT_FILE \
     -D           org.wikimedia.west1.traces.keepAmbiguousTrees=$KEEP_AMBIGUOUS_TREES \
     -D           org.wikimedia.west1.traces.keepBadTrees=$KEEP_BAD_TREES \
     -D           org.wikimedia.west1.traces.hashSalt=`date +%s | sha256sum | base64 | head -c 64` \

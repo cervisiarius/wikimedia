@@ -1,8 +1,18 @@
 package org.wikimedia.west1.traces;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
 import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Scanner;
+import java.util.zip.GZIPInputStream;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -12,6 +22,24 @@ public class TreeExtractorReducerTest {
 
 	static {
 		reducer.configure(null);
+	}
+
+	private static Map<String, String> readMapFromFile(String file) throws FileNotFoundException {
+		Map<String, String> map = new HashMap<String, String>();
+		InputStream is = new FileInputStream(new File(file));
+		if (file.endsWith(".gz")) {
+			try {
+				is = new GZIPInputStream(is);
+			} catch (IOException e) {
+			}
+		}
+		Scanner sc = new Scanner(is, "UTF-8").useDelimiter("\n");
+		while (sc.hasNext()) {
+			String[] tokens = sc.next().split("\t", 2);
+			map.put(tokens[0], tokens[1]);
+		}
+		sc.close();
+		return map;
 	}
 
 	private static Pageview makePageview(int seqNum, int time, String url, String referer)
@@ -56,7 +84,7 @@ public class TreeExtractorReducerTest {
 		    + "\"content_type\":\"text/html; charset=UTF-8\",\"parent_ambiguous\":false}";
 		JSONObject json = new JSONObject(pvString);
 		System.out.println(json.toString(2));
-		System.out.println(reducer.isGoodPageview(json, false));
+		System.out.println(reducer.isGoodPageview(json, false, null));
 	}
 
 	public static void testIsGoodTree() throws Exception {
@@ -80,20 +108,22 @@ public class TreeExtractorReducerTest {
 		    + "\"content_type\":\"text/html; charset=UTF-8\",\"parent_ambiguous\":false}";
 		JSONObject json = new JSONObject(pvString);
 		System.out.println(json.toString(2));
-		System.out.println(reducer.isGoodTree(json, true));
+		System.out.println(reducer.isGoodTree(json, true, null));
 	}
-	
+
 	public static void testPageview() throws Exception {
+		Map<String, String> redirects = readMapFromFile(System.getenv("HOME")
+		    + "/wikimedia/trunk/data/ptwiki_20141104_redirects.tsv.gz");
 		String pvString = "{\"x_analytics\":\"php=hhvm\",\"dt\":\"2014-12-04T01:18:34\","
-		    + "\"uri_path\":\"/wiki/Indonesia___%C3%A1\",\"range\":\"-\",\"accept_language\":\"en-US,en;q=0.5\","
+		    + "\"uri_path\":\"/wiki/Antraz\",\"range\":\"-\",\"accept_language\":\"en-US,en;q=0.5\","
 		    + "\"x_forwarded_for\":\"-\",\"cache_status\":\"hit\",\"hostname\":\"cp4016.ulsfo.wmnet\","
 		    + "\"response_size\":90662,\"uri_query\":\"\",\"uri_host\":\"pt.wikipedia.org\","
 		    + "\"ip\":\"1.10.195.119\",\"http_method\":\"GET\",\"http_status\":\"200\","
 		    + "\"time_firstbyte\":1.26839E-4,\"sequence\":1261697215,"
 		    + "\"user_agent\":\"Mozilla/5.0 (Windows NT 5.1; rv:33.0) Gecko/20100101 Firefox/33.0\","
-		    + "\"referer\":\"http://pt.wikipedia.org/wiki/Jos%C3%A9_Mar%C3%ADa_Yazpik?qqq#rrr\","
+		    + "\"referer\":\"http://pt.wikipedia.org/wiki/Caf%C3%A9-do-bugre\","
 		    + "\"content_type\":\"text/html; charset=UTF-8\",\"parent_ambiguous\":false}";
-		Pageview pv = new Pageview(new JSONObject(pvString));
+		Pageview pv = new Pageview(new JSONObject(pvString), redirects);
 		System.out.println(pv.toString(2));
 		System.out.println(pv.url);
 		System.out.println(pv.referer);

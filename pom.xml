@@ -169,6 +169,12 @@
     </plugins>
 
     <resources>
+      <resource>
+        <directory>.</directory>
+        <includes>
+          <include>ptwiki_20141104_redirects.tsv.gz</include>
+        </includes>
+      </resource>
     </resources>
   </build>
 
