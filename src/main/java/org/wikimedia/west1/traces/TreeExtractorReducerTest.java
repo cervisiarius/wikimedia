@@ -52,7 +52,7 @@ public class TreeExtractorReducerTest {
 	    throws JSONException, ParseException {
 		String format = "{\"sequence\":%d,\"dt\":\"2014-12-04T01:00:%02d\",\"uri_path\":\"%s\","
 		    + "\"uri_host\":\"\",\"uri_query\":\"\",\"referer\":\"%s\"}";
-		return new Pageview(new JSONObject(String.format(format, seqNum, time, url, referer)));
+		return new Pageview(new JSONObject(String.format(format, seqNum, time, url, referer)), null);
 	}
 
 	public static void testSequenceToTrees() throws Exception {
@@ -129,7 +129,7 @@ public class TreeExtractorReducerTest {
 		    + "\"user_agent\":\"Mozilla/5.0 (Windows NT 5.1; rv:33.0) Gecko/20100101 Firefox/33.0\","
 		    + "\"referer\":\"http://pt.wikipedia.org/wiki/Caf%C3%A9-do-bugre\","
 		    + "\"content_type\":\"text/html; charset=UTF-8\",\"parent_ambiguous\":false}";
-		Pageview pv = new Pageview(new JSONObject(pvString));
+		Pageview pv = new Pageview(new JSONObject(pvString), null);
 		System.out.println(pv.toString(2));
 		System.out.println(pv.article);
 		System.out.println(pv.refererArticle);

@@ -5,6 +5,7 @@ import java.net.URL;
 import java.net.URLDecoder;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Map;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -36,17 +37,26 @@ public class Pageview {
 		}
 	}
 
-	public Pageview(JSONObject json) throws JSONException, ParseException {
+	public Pageview(JSONObject json, Map<String, String> redirects) throws JSONException,
+	    ParseException {
 		this.json = json;
 		this.time = DATE_FORMAT.parse(json.getString("dt")).getTime();
 		this.seq = json.getLong("sequence");
 		// Normalize the URI path. It is stored as modified in the JSON object.
 		json.put("uri_path", decode(json.getString("uri_path")));
 		this.article = extractArticleFromPath(json.getString("uri_path"));
+		String articleRedirect = redirects.get(this.article);
+		if (articleRedirect != null) {
+			this.article = articleRedirect;
+		}
 		try {
 			URL ref = new URL(json.getString("referer"));
 			if (ref.getAuthority().endsWith(".wikipedia.org") && ref.getPath().startsWith("/wiki/")) {
 				this.refererArticle = extractArticleFromPath(decode(ref.getPath()));
+				String refererRedirect = redirects.get(this.refererArticle);
+				if (refererRedirect != null) {
+					this.refererArticle = refererRedirect;
+				}
 			}
 		} catch (MalformedURLException e) {
 		}
