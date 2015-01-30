@@ -45,6 +45,7 @@ public class Pageview {
 		// Normalize the URI path. It is stored as modified in the JSON object.
 		json.put("uri_path", decode(json.getString("uri_path")));
 		this.article = extractArticleFromPath(json.getString("uri_path"));
+		// Resolve redirects in article.
 		String articleRedirect = redirects.get(this.article);
 		if (articleRedirect != null) {
 			this.article = articleRedirect;
@@ -53,6 +54,7 @@ public class Pageview {
 			URL ref = new URL(json.getString("referer"));
 			if (ref.getAuthority().endsWith(".wikipedia.org") && ref.getPath().startsWith("/wiki/")) {
 				this.refererArticle = extractArticleFromPath(decode(ref.getPath()));
+				// Resolve redirects in referer.
 				String refererRedirect = redirects.get(this.refererArticle);
 				if (refererRedirect != null) {
 					this.refererArticle = refererRedirect;

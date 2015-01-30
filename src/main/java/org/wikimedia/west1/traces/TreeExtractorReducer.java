@@ -303,8 +303,7 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
 					JSONObject json = new JSONObject(pageviewIterator.next().toString());
 					Pageview pv = new Pageview(json, redirects);
 					pageviews.add(pv);
-					// TODO: prob better to disable this check.
-					if (!json.getString(JSON_URI_PATH).endsWith("/wiki/" + pv.article)) {
+					if (!json.getString(JSON_URI_PATH).equals("/wiki/" + pv.article)) {
 						reporter.incrCounter(HADOOP_COUNTERS.REDIRECT_RESOLVED, 1);
 					}
 				}

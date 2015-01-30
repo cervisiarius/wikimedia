@@ -31,8 +31,12 @@ public class GroupAndFilterMapper implements Mapper<Text, Text, Text, Text> {
 	    .compile("(?i)/wiki/(Image|Media|Special|Talk|User|Wikipedia|File|MediaWiki"
 	        + "|Template|Help|Book|Draft|Education[_ ]Program|TimedText|Module|Wikt"
 	        // Portuguese-specific.
-	        + "|Especial|Discuss\u00E3o|Usu\u00E1rio\\(a\\)|Wikip\u00E9dia|Ficheiro"
-	        + "|Predefini\u00E7\u00E3o|Ajuda|Livro|M\u00F3dulo)" + "([_ ](talk|Discuss\u00E3o))?:.*");
+	        + "|Especial|Discuss(\u00E3|%E3)o|Usu(\u00E1|%E1)rio\\(a\\)|Wikip(\u00E9|%E9)dia|Ficheiro"
+	        + "|Predefini(\u00E7|%E7)(\u00E3|%E3)o|Ajuda|Livro|M(\u00F3|%F3)dulo)"
+	        + "([_ ](talk|Discuss(\u00E3|%E3)o))?:.*");
+
+	private static final Pattern MAIN_PAGE_PATTERN = Pattern
+	    .compile("(?i)/wiki/(Main_Page|Wikip(\u00E9|%E9)dia:P(\u00E1|%E1)gina_principal)");
 
 	private static enum HADOOP_COUNTERS {
 		SKIPPED_BAD_HOST, SKIPPED_BAD_PATH, SKIPPED_NON_ARTICLE_PAGE, SKIPPED_BOT, OK_REQUEST, MAP_EXCEPTION
@@ -107,8 +111,10 @@ public class GroupAndFilterMapper implements Mapper<Text, Text, Text, Text> {
 				reporter.incrCounter(HADOOP_COUNTERS.SKIPPED_BAD_PATH, 1);
 				return;
 			}
-			// Certain page types such as "Special:" and "User:" pages aren't allowed.
-			else if (NON_ARTICLE_PAGE_PATTERN.matcher(json.getString(JSON_URI_PATH)).matches()) {
+			// Certain page types such as "Special:" and "User:" pages aren't allowed (but we must make
+			// sure we're not also banning the main page).
+			else if (NON_ARTICLE_PAGE_PATTERN.matcher(json.getString(JSON_URI_PATH)).matches()
+			    && !MAIN_PAGE_PATTERN.matcher(json.getString(JSON_URI_PATH)).matches()) {
 				reporter.incrCounter(HADOOP_COUNTERS.SKIPPED_NON_ARTICLE_PAGE, 1);
 				return;
 			}
