@@ -28,17 +28,17 @@ hadoop jar /usr/lib/hadoop-mapreduce/hadoop-streaming.jar \
     -D           mapreduce.input.fileinputformat.split.minsize=300000000 \
     -D           parquet.read.support.class=net.iponweb.hadoop.streaming.parquet.GroupReadSupport \
     -D           parquet.read.schema="message webrequest_schema {
-    optional binary dt; 
-    optional binary ip;
-    optional binary http_status;
-    optional binary uri_host;
-    optional binary uri_path;
-    optional binary content_type;
-    optional binary referer;
-    optional binary x_forwarded_for;
-    optional binary user_agent;
-    optional binary accept_language;
-  }" \
+                                        optional binary dt; 
+                                        optional binary ip;
+                                        optional binary http_status;
+                                        optional binary uri_host;
+                                        optional binary uri_path;
+                                        optional binary content_type;
+                                        optional binary referer;
+                                        optional binary x_forwarded_for;
+                                        optional binary user_agent;
+                                        optional binary accept_language;
+                                      }" \
     -D           mapreduce.task.timeout=6000000 \
     -D           mapreduce.map.output.key.class=org.apache.hadoop.io.Text \
     -D           mapreduce.map.output.value.class=org.apache.hadoop.io.Text \
@@ -53,8 +53,6 @@ hadoop jar /usr/lib/hadoop-mapreduce/hadoop-streaming.jar \
     -inputformat net.iponweb.hadoop.streaming.parquet.ParquetAsJsonInputFormat \
     -input       $IN_DIR \
     -output      $OUT_DIR \
-    -mapper      /bin/cat \
+    -mapper      org.wikimedia.west1.traces.GroupAndFilterMapper \
+    -reducer     org.wikimedia.west1.traces.TreeExtractorReducer \
     -numReduceTasks 1
-
-#    -mapper      org.wikimedia.west1.traces.GroupAndFilterMapper \
-#    -reducer     org.wikimedia.west1.traces.TreeExtractorReducer \
