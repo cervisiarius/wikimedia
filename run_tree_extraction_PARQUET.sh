@@ -6,7 +6,7 @@ export TARGET_DIR=~/wikimedia/trunk/target
 # This is where additional JARs reside.
 export LIB_DIR=~/wikimedia/trunk/lib
 # The part of the server logs you want to process.
-export IN_DIR=/wmf/data/wmf/webrequest/webrequest_source=text/year=2015/month=1/day=31/hour=0/000000_0
+export IN_DIR=/wmf/data/wmf/webrequest/webrequest_source=text/year=2015/month=1/day=31/*/*
 # The output directory.
 export OUT_DIR=/user/west1/tree_extractor_test_PARQUET
 # Cf. org.wikimedia.west1.traces.TreeExtractorReducer.isGoodPageview().
@@ -54,6 +54,4 @@ hadoop jar /usr/lib/hadoop-mapreduce/hadoop-streaming.jar \
     -output      $OUT_DIR \
     -mapper      org.wikimedia.west1.traces.GroupAndFilterMapper \
     -reducer     org.wikimedia.west1.traces.TreeExtractorReducer \
-    -numReduceTasks 1
-
-#    -D           mapreduce.input.fileinputformat.split.minsize=300000000 \
+    -numReduceTasks 100
