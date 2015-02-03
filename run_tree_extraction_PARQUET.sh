@@ -20,17 +20,28 @@ export URI_HOST_PATTERN='pt\.wikipedia\.org'
 # The page-redirect file. Make sure this corresponds to URI_HOST_PATTERN.
 export REDIRECT_FILE=ptwiki_20141104_redirects.tsv.gz
 
+export SCHEMA="message webrequest_schema {
+    optional binary dt; 
+    optional binary ip;
+    optional binary http_status;
+    optional binary uri_host;
+    optional binary uri_path;
+    optional binary content_type;
+    optional binary referer;
+    optional binary x_forwarded_for;
+    optional binary user_agent;
+    optional binary accept_language;
+  }"
+
 echo "Running hadoop job"
 hadoop jar /usr/lib/hadoop-mapreduce/hadoop-streaming.jar \
-    -libjars     $TARGET_DIR/TreeExtractor-0.0.1-SNAPSHOT-jar-with-dependencies.jar,$LIB_DIR/iow-hadoop-streaming-1.0.jar \
+    -libjars     $TARGET_DIR/TreeExtractor-0.0.1-SNAPSHOT-jar-with-dependencies.jar, \
+                 $LIB_DIR/net/iponweb/hadoop/mr2/hadoop2-iow-lib/1.0/iow-hadoop-streaming-1.0.jar \
     -D           mapred.child.java.opts="-Xss10m -Xmx512m" \
     -D           mapreduce.output.fileoutputformat.compress=false \
     -D           mapreduce.input.fileinputformat.split.minsize=300000000 \
     -D           parquet.read.support.class=net.iponweb.hadoop.streaming.parquet.GroupReadSupport \
-    -D           parquet.read.schema="message Webrequest {
-  optional binary uri_host;
-  optional boolean is_pageview;
-}" \
+    -D           parquet.read.schema=$SCHEMA \
     -D           mapreduce.task.timeout=6000000 \
     -D           mapreduce.map.output.key.class=org.apache.hadoop.io.Text \
     -D           mapreduce.map.output.value.class=org.apache.hadoop.io.Text \
@@ -45,8 +56,7 @@ hadoop jar /usr/lib/hadoop-mapreduce/hadoop-streaming.jar \
     -inputformat net.iponweb.hadoop.streaming.parquet.ParquetAsJsonInputFormat \
     -input       $IN_DIR \
     -output      $OUT_DIR \
-    -mapper      /bin/cat \
-    -numReduceTasks 100
+    -mapper      org.wikimedia.west1.traces.GroupAndFilterMapper \
+    -reducer     org.wikimedia.west1.traces.TreeExtractorReducer \
+    -numReduceTasks 1
 
-#    -mapper      org.wikimedia.west1.traces.GroupAndFilterMapper \
-#    -reducer     org.wikimedia.west1.traces.TreeExtractorReducer \

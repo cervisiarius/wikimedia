@@ -3,11 +3,7 @@ package org.wikimedia.west1.traces;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.PrintStream;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.regex.Pattern;
-
-import net.iponweb.hadoop.streaming.parquet.GroupReadSupport;
 
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapred.JobConf;
@@ -17,9 +13,6 @@ import org.apache.hadoop.mapred.Reporter;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import parquet.hadoop.api.ReadSupport;
-import parquet.schema.MessageType;
-import parquet.schema.MessageTypeParser;
 import ua_parser.Parser;
 
 public class GroupAndFilterMapper implements Mapper<Text, Text, Text, Text> {
@@ -44,21 +37,6 @@ public class GroupAndFilterMapper implements Mapper<Text, Text, Text, Text> {
 	        + "|Ficheiro|Predefini(\u00E7|%C3A7)(\u00E3|%C3A3)o|Ajuda|Livro|M(\u00F3|%C3B3)dulo)"
 	        + "([_ ](talk|Discuss(\u00E3|%C3A3)o))?:.*");
 
-	private static final String FULL_SCHEMA = "message full_schema {\n"
-	    + "optional binary hostname;\n" + "optional int64 sequence;\n" + "optional binary dt;\n"
-	    + "optional double time_firstbyte;\n" + "optional binary ip;\n"
-	    + "optional binary cache_status;\n" + "optional binary http_status;\n"
-	    + "optional int64 response_size;\n" + "optional binary http_method;\n"
-	    + "optional binary uri_host;\n" + "optional binary uri_path;\n"
-	    + "optional binary uri_query;\n" + "optional binary content_type;\n"
-	    + "optional binary referer;\n" + "optional binary x_forwarded_for;\n"
-	    + "optional binary user_agent;\n" + "optional binary accept_language;\n"
-	    + "optional binary x_analytics;\n" + "optional binary range;\n"
-	    + "optional boolean is_pageview;\n" + "}";
-
-	private static final String PARTIAL_SCHEMA = "message full_schema {\n"
-	    + "optional binary hostname;\n" + "}";
-
 	private static final Pattern MAIN_PAGE_PATTERN = Pattern
 	    .compile("(?i)/wiki/(Main_Page|Wikip(\u00E9|%C3%A9)dia:P(\u00E1|%C3%A1)gina_principal)");
 
@@ -77,14 +55,6 @@ public class GroupAndFilterMapper implements Mapper<Text, Text, Text, Text> {
 		uriHostPattern = Pattern.compile(conf.get(CONF_URI_HOST_PATTERN, ".*"));
 		try {
 			uaParser = new Parser();
-			/*
-			MessageType fileSchema = MessageTypeParser.parseMessageType(FULL_SCHEMA);
-			MessageType partialSchema = MessageTypeParser.parseMessageType(PARTIAL_SCHEMA);
-			conf.set("parquet.read.schema", PARTIAL_SCHEMA);
-			GroupReadSupport s = new GroupReadSupport();
-			Map<String, String> keyValueMetaData = new HashMap<String, String>();
-			ReadSupport.ReadContext context = s.init(conf, keyValueMetaData, fileSchema);
-			*/
 		} catch (IOException e) {
 			throw new RuntimeException(e);
 		}
@@ -132,9 +102,6 @@ public class GroupAndFilterMapper implements Mapper<Text, Text, Text, Text> {
 	@Override
 	public void map(Text key, Text jsonString, OutputCollector<Text, Text> out, Reporter reporter)
 	    throws IOException {
-		out.collect(jsonString, jsonString);
-		if (true)
-			return;
 		try {
 			JSONObject json = new JSONObject(jsonString.toString());
 			// The request must be for one of the whitelisted Wikimedia sites.

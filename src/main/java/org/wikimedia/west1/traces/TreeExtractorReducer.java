@@ -320,7 +320,7 @@ public class TreeExtractorReducer implements Reducer<Text, Text, NullWritable, T
 					long before = System.currentTimeMillis();
 					Pageview pv = new Pageview(json, redirects);
 					long after = System.currentTimeMillis();
-					reporter.getCounter(HADOOP_COUNTERS.MSEC_PAGEVIEW_CONSTRUCTOR).increment(after - before);
+					reporter.incrCounter(HADOOP_COUNTERS.MSEC_PAGEVIEW_CONSTRUCTOR, after - before);
 					pageviews.add(pv);
 					if (!json.getString(JSON_URI_PATH).equals(pv.resolvedArticle)) {
 						reporter.incrCounter(HADOOP_COUNTERS.REDIRECT_RESOLVED, 1);
