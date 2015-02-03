@@ -55,6 +55,9 @@ public class GroupAndFilterMapper implements Mapper<Text, Text, Text, Text> {
     uriHostPattern = Pattern.compile(conf.get(CONF_URI_HOST_PATTERN, ".*"));
     try {
       uaParser = new Parser();
+      conf.set("parquet.read.schema", "message request {\n" +
+          "required binary hostname;\n" +
+          "}");
     } catch (IOException e) {
       throw new RuntimeException(e);
     }
@@ -102,6 +105,8 @@ public class GroupAndFilterMapper implements Mapper<Text, Text, Text, Text> {
   @Override
   public void map(Text key, Text jsonString, OutputCollector<Text, Text> out, Reporter reporter)
       throws IOException {
+    out.collect(new Text(), jsonString);
+    if(true) return;
     try {
       JSONObject json = new JSONObject(jsonString.toString());
       // The request must be for one of the whitelisted Wikimedia sites.
