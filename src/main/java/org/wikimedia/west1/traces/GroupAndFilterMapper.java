@@ -16,7 +16,7 @@ import org.json.JSONObject;
 
 import ua_parser.Parser;
 
-public class GroupAndFilterMapper implements Mapper<Text, NullWritable, Text, Text> {
+public class GroupAndFilterMapper implements Mapper<NullWritable, Text, Text, Text> {
 
 	public static final String UID_SEPARATOR = "###";
 	private static final String CONF_URI_HOST_PATTERN = "org.wikimedia.west1.traces.uriHostPattern";
@@ -101,7 +101,7 @@ public class GroupAndFilterMapper implements Mapper<Text, NullWritable, Text, Te
 	}
 
 	@Override
-	public void map(Text jsonString, NullWritable value, OutputCollector<Text, Text> out, Reporter reporter)
+	public void map(NullWritable key, Text jsonString, OutputCollector<Text, Text> out, Reporter reporter)
 	    throws IOException {
 		try {
 			JSONObject json = new JSONObject(jsonString.toString());
