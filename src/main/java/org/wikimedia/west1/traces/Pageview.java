@@ -13,7 +13,6 @@ import org.json.JSONObject;
 public class Pageview {
   public JSONObject json;
   public long time;
-  public long seq;
   // The article after redirect resolution.
   public String resolvedArticle;
   public String refererArticle;
@@ -42,7 +41,6 @@ public class Pageview {
       ParseException {
     this.json = json;
     this.time = DATE_FORMAT.parse(json.getString("dt")).getTime();
-    this.seq = json.getLong("sequence");
     // Normalize the URI path. It is stored as modified in the JSON object.
     String article = extractArticleFromPath(json.getString("uri_path"));
     json.put("uri_path", article);
