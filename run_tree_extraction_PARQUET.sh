@@ -52,9 +52,8 @@ hadoop jar /usr/lib/hadoop-mapreduce/hadoop-streaming.jar \
     -inputformat net.iponweb.hadoop.streaming.parquet.ParquetAsJsonInputFormat \
     -input       $IN_DIR \
     -output      $OUT_DIR \
--mapper /bin/cat
-    -numReduceTasks 0
+    -mapper      org.wikimedia.west1.traces.GroupAndFilterMapper \
+    -reducer     org.wikimedia.west1.traces.TreeExtractorReducer \
+    -numReduceTasks 1
 
-#    -mapper      org.wikimedia.west1.traces.GroupAndFilterMapper \
-#    -reducer     org.wikimedia.west1.traces.TreeExtractorReducer \
 #    -D           mapreduce.input.fileinputformat.split.minsize=300000000 \

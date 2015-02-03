@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.PrintStream;
 import java.util.regex.Pattern;
 
+import org.apache.hadoop.io.NullWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapred.JobConf;
 import org.apache.hadoop.mapred.Mapper;
@@ -15,7 +16,7 @@ import org.json.JSONObject;
 
 import ua_parser.Parser;
 
-public class GroupAndFilterMapper implements Mapper<Text, Text, Text, Text> {
+public class GroupAndFilterMapper implements Mapper<Text, NullWritable, Text, Text> {
 
 	public static final String UID_SEPARATOR = "###";
 	private static final String CONF_URI_HOST_PATTERN = "org.wikimedia.west1.traces.uriHostPattern";
@@ -100,7 +101,7 @@ public class GroupAndFilterMapper implements Mapper<Text, Text, Text, Text> {
 	}
 
 	@Override
-	public void map(Text key, Text jsonString, OutputCollector<Text, Text> out, Reporter reporter)
+	public void map(Text jsonString, NullWritable value, OutputCollector<Text, Text> out, Reporter reporter)
 	    throws IOException {
 		try {
 			JSONObject json = new JSONObject(jsonString.toString());
