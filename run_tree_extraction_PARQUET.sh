@@ -20,7 +20,7 @@ export URI_HOST_PATTERN='pt\.wikipedia\.org'
 # The page-redirect file. Make sure this corresponds to URI_HOST_PATTERN.
 export REDIRECT_FILE=ptwiki_20141104_redirects.tsv.gz
 
-export SCHEMA='message { required string hostname }'
+export SCHEMA='message { required string hostname; }'
 
 echo "Running hadoop job"
 hadoop jar /usr/lib/hadoop-mapreduce/hadoop-streaming.jar \
