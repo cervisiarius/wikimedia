@@ -131,7 +131,7 @@ public class TreeExtractorReducerTest {
 		    + "\"content_type\":\"text/html; charset=UTF-8\",\"parent_ambiguous\":false}";
 		Pageview pv = new Pageview(new JSONObject(pvString), null);
 		System.out.println(pv.toString(2));
-		System.out.println(pv.article);
+		System.out.println(pv.resolvedArticle);
 		System.out.println(pv.refererArticle);
 		System.out.println(revRdirects.get("Macaxeira"));
 	}

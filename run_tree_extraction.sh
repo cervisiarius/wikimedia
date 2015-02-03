@@ -10,7 +10,7 @@ export OUT_DIR=/user/west1/tree_extractor_test
 # Cf. org.wikimedia.west1.traces.TreeExtractorReducer.isGoodPageview().
 export KEEP_BAD_TREES=false
 # Cf. org.wikimedia.west1.traces.TreeExtractorReducer.isGoodPageview().
-export KEEP_SINGLETON_TREES=false
+export KEEP_SINGLETON_TREES=true
 # Cf. org.wikimedia.west1.traces.TreeExtractorReducer.getMinimumSpanningForest().
 export KEEP_AMBIGUOUS_TREES=true
 # Regular expression of the uri_hosts you want to include.

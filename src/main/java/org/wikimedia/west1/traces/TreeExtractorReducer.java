@@ -247,13 +247,17 @@ public class TreeExtractorReducer implements Reducer<Text, Text, NullWritable, T
 				parent.json.append(JSON_CHILDREN, pv.json);
 				// A parent is ambiguous if we have seen the referer URL several times in this session
 				// before the current pageview.
-				pv.json.put(JSON_PARENT_AMBIGUOUS, articleCounts.get(pv.refererArticle) > 1);
+				Integer refererCount = articleCounts.get(pv.refererArticle);
+				if (refererCount == null) {
+				  refererCount = 0;
+				}
+				pv.json.put(JSON_PARENT_AMBIGUOUS, refererCount > 1);
 			}
 			// Remember this pageview as the last pageview for its URL.
-			articleToLastPageview.put(pv.article, pv);
+			articleToLastPageview.put(pv.resolvedArticle, pv);
 			// Update the counter for this URL.
-			Integer c = articleCounts.get(pv.article);
-			articleCounts.put(pv.article, c == null ? 1 : c + 1);
+			Integer c = articleCounts.get(pv.resolvedArticle);
+			articleCounts.put(pv.resolvedArticle, c == null ? 1 : c + 1);
 		}
 		return roots;
 	}
@@ -318,7 +322,7 @@ public class TreeExtractorReducer implements Reducer<Text, Text, NullWritable, T
 					long after = System.currentTimeMillis();
 					reporter.getCounter(HADOOP_COUNTERS.MSEC_PAGEVIEW_CONSTRUCTOR).increment(after - before);
 					pageviews.add(pv);
-					if (!json.getString(JSON_URI_PATH).equals("/wiki/" + pv.article)) {
+					if (!json.getString(JSON_URI_PATH).equals(pv.resolvedArticle)) {
 						reporter.incrCounter(HADOOP_COUNTERS.REDIRECT_RESOLVED, 1);
 					}
 				}
