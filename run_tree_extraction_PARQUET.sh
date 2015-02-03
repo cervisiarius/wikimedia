@@ -22,8 +22,7 @@ export REDIRECT_FILE=ptwiki_20141104_redirects.tsv.gz
 
 echo "Running hadoop job"
 hadoop jar /usr/lib/hadoop-mapreduce/hadoop-streaming.jar \
-    -libjars     $TARGET_DIR/TreeExtractor-0.0.1-SNAPSHOT-jar-with-dependencies.jar, \
-                 $LIB_DIR/net/iponweb/hadoop/mr2/hadoop2-iow-lib/1.0/iow-hadoop-streaming-1.0.jar \
+    -libjars     $TARGET_DIR/TreeExtractor-0.0.1-SNAPSHOT-jar-with-dependencies.jar,$LIB_DIR/net/iponweb/hadoop/mr2/hadoop2-iow-lib/1.0/iow-hadoop-streaming-1.0.jar \
     -D           mapred.child.java.opts="-Xss10m -Xmx512m" \
     -D           mapreduce.output.fileoutputformat.compress=false \
     -D           mapreduce.input.fileinputformat.split.minsize=300000000 \
