@@ -27,6 +27,10 @@ hadoop jar /usr/lib/hadoop-mapreduce/hadoop-streaming.jar \
     -D           mapreduce.output.fileoutputformat.compress=false \
     -D           mapreduce.input.fileinputformat.split.minsize=300000000 \
     -D           parquet.read.support.class=net.iponweb.hadoop.streaming.parquet.GroupReadSupport \
+    -D           parquet.read.schema="message Webrequest {
+  optional binary uri_host;
+  optional boolean is_pageview;
+}" \
     -D           mapreduce.task.timeout=6000000 \
     -D           mapreduce.map.output.key.class=org.apache.hadoop.io.Text \
     -D           mapreduce.map.output.value.class=org.apache.hadoop.io.Text \
@@ -41,7 +45,8 @@ hadoop jar /usr/lib/hadoop-mapreduce/hadoop-streaming.jar \
     -inputformat net.iponweb.hadoop.streaming.parquet.ParquetAsJsonInputFormat \
     -input       $IN_DIR \
     -output      $OUT_DIR \
-    -mapper      org.wikimedia.west1.traces.GroupAndFilterMapper \
+    -mapper      /bin/cat \
     -numReduceTasks 100
 
+#    -mapper      org.wikimedia.west1.traces.GroupAndFilterMapper \
 #    -reducer     org.wikimedia.west1.traces.TreeExtractorReducer \

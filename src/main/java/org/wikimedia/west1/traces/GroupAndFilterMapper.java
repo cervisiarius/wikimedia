@@ -77,12 +77,14 @@ public class GroupAndFilterMapper implements Mapper<Text, Text, Text, Text> {
 		uriHostPattern = Pattern.compile(conf.get(CONF_URI_HOST_PATTERN, ".*"));
 		try {
 			uaParser = new Parser();
+			/*
 			MessageType fileSchema = MessageTypeParser.parseMessageType(FULL_SCHEMA);
 			MessageType partialSchema = MessageTypeParser.parseMessageType(PARTIAL_SCHEMA);
 			conf.set("parquet.read.schema", PARTIAL_SCHEMA);
 			GroupReadSupport s = new GroupReadSupport();
 			Map<String, String> keyValueMetaData = new HashMap<String, String>();
 			ReadSupport.ReadContext context = s.init(conf, keyValueMetaData, fileSchema);
+			*/
 		} catch (IOException e) {
 			throw new RuntimeException(e);
 		}

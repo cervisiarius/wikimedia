@@ -192,7 +192,8 @@
         <enabled>false</enabled>
       </snapshots>
     </repository>
-    <!-- From the following local repository, we read the ua_parser library -->
+    <!-- From the following local repository, we read the ua_parser library etc.
+         cf. http://stackoverflow.com/questions/3765903/how-to-include-local-jar-files-in-maven-project -->
     <repository>
       <id>local-repo</id>
       <name>local-repo</name>
