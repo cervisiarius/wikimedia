@@ -62,7 +62,8 @@ public class GroupAndFilterMapper implements Mapper<Text, Text, Text, Text> {
 	// Extract the last IP address from the x_forwarded_for string. If the result doesn't look like
 	// an IP address (because it contains no "."), return null.
 	private static String processXForwardedFor(String xff) {
-		String ip = xff.substring(xff.lastIndexOf(", ") + 2);
+		int lastCommaIdx = xff.lastIndexOf(", ");
+		String ip = lastCommaIdx >= 0 ? xff.substring(lastCommaIdx + 2) : xff;
 		if (ip.contains(".")) {
 			return ip;
 		} else {
