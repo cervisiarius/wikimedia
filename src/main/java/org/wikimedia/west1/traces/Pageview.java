@@ -11,6 +11,12 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class Pageview {
+  
+  private static final String JSON_URI_PATH = "uri_path";
+  private static final String JSON_DT = "dt";
+  private static final String JSON_REFERER = "referer";
+  private static final String JSON_RESOLVED_URI_PATH = "resolved_uri_path";
+
   public JSONObject json;
   public long time;
   // The article after redirect resolution.
@@ -40,15 +46,20 @@ public class Pageview {
   public Pageview(JSONObject json, Map<String, String> redirects) throws JSONException,
       ParseException {
     this.json = json;
-    this.time = DATE_FORMAT.parse(json.getString("dt")).getTime();
+    this.time = DATE_FORMAT.parse(json.getString(JSON_DT)).getTime();
     // Normalize the URI path. It is stored as modified in the JSON object.
-    String article = extractArticleFromPath(json.getString("uri_path"));
-    json.put("uri_path", article);
+    String article = extractArticleFromPath(json.getString(JSON_URI_PATH));
+    json.put(JSON_URI_PATH, article);
     // Resolve redirects in article.
     String articleRedirect = redirects.get(article);
-    this.resolvedArticle = (articleRedirect != null) ? articleRedirect : article;
+    if (articleRedirect != null) {
+      this.resolvedArticle = articleRedirect;
+      json.put(JSON_RESOLVED_URI_PATH, articleRedirect);
+    } else {
+      this.resolvedArticle = article;
+    }
     try {
-      URL ref = new URL(json.getString("referer"));
+      URL ref = new URL(json.getString(JSON_REFERER));
       if (ref.getAuthority().endsWith(".wikipedia.org") && ref.getPath().startsWith("/wiki/")) {
         this.refererArticle = extractArticleFromPath(ref.getPath());
         // Resolve redirects in referer.

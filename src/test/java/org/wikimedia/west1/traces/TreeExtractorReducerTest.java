@@ -90,7 +90,7 @@ public class TreeExtractorReducerTest {
 		    + "\"content_type\":\"text/html; charset=UTF-8\",\"parent_ambiguous\":false}";
 		JSONObject json = new JSONObject(pvString);
 		System.out.println(json.toString(2));
-		System.out.println(reducer.isGoodPageview(json, false, null));
+		System.out.println(reducer.isGoodPageview(json, false, null, null));
 	}
 
 	public static void testIsGoodTree() throws Exception {
@@ -114,7 +114,7 @@ public class TreeExtractorReducerTest {
 		    + "\"content_type\":\"text/html; charset=UTF-8\",\"parent_ambiguous\":false}";
 		JSONObject json = new JSONObject(pvString);
 		System.out.println(json.toString(2));
-		System.out.println(reducer.isGoodTree(json, true, null));
+		System.out.println(reducer.isGoodTree(json, true, null, null));
 	}
 
 	public static void testPageview() throws Exception {
