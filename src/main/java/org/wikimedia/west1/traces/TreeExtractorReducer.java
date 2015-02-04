@@ -20,7 +20,6 @@ import java.util.regex.Pattern;
 import java.util.zip.GZIPInputStream;
 
 import org.apache.commons.codec.digest.DigestUtils;
-import org.apache.hadoop.io.NullWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapred.JobConf;
 import org.apache.hadoop.mapred.OutputCollector;
@@ -30,7 +29,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class TreeExtractorReducer implements Reducer<Text, Text, NullWritable, Text> {
+public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
 
 	// Having 3600 pageviews in a day would mean one every 24 seconds, a lot...
 	private static final int MAX_NUM_PAGEVIEWS = 3600;
@@ -75,7 +74,7 @@ public class TreeExtractorReducer implements Reducer<Text, Text, NullWritable, T
 	private static final Set<String> FIELDS_TO_KEEP_IN_ROOT = new HashSet<String>(Arrays.asList(
 	    JSON_UA, JSON_REFERER, JSON_TREE_ID));
 
-	private static NullWritable NULL_KEY = NullWritable.get();
+	//private static NullWritable NULL_KEY = NullWritable.get();
 
 	private static enum HADOOP_COUNTERS {
 		// In order to have an idea what the big reasons are for dismissing trees. Note that these don't
@@ -304,7 +303,7 @@ public class TreeExtractorReducer implements Reducer<Text, Text, NullWritable, T
 
 	@Override
 	public void reduce(Text key, Iterator<Text> pageviewIterator,
-	    OutputCollector<NullWritable, Text> out, Reporter reporter) throws IOException {
+	    OutputCollector<Text, Text> out, Reporter reporter) throws IOException {
 		try {
 			List<Pageview> pageviews = new ArrayList<Pageview>();
 			int n = 0;
@@ -336,7 +335,7 @@ public class TreeExtractorReducer implements Reducer<Text, Text, NullWritable, T
 			int i = 0;
 			for (Pageview root : goodRoots) {
 				root.json.put(JSON_TREE_ID, makeTreeId(day, uid, i));
-				out.collect(NULL_KEY, new Text(root.toString()));
+				out.collect(new Text(lang), new Text(root.toString()));
 				if (root.json.has(JSON_BAD_TREE) && root.json.getBoolean(JSON_BAD_TREE)) {
 					reporter.incrCounter(HADOOP_COUNTERS.BAD_TREE, 1);
 				} else {

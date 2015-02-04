@@ -47,8 +47,10 @@ hadoop jar /usr/lib/hadoop-mapreduce/hadoop-streaming.jar \
     -D           org.wikimedia.west1.traces.keepSingletonTrees=$KEEP_SINGLETON_TREES \
     -D           org.wikimedia.west1.traces.hashSalt=`date +%s | sha256sum | base64 | head -c 64` \
     -inputformat net.iponweb.hadoop.streaming.parquet.ParquetAsJsonInputFormat \
+    -outputformat org.wikimedia.west1.traces.MultiLanguageOutputFormat \
     -input       $IN_DIR \
     -output      $OUT_DIR \
     -mapper      org.wikimedia.west1.traces.GroupAndFilterMapper \
-#    -reducer     org.wikimedia.west1.traces.TreeExtractorReducer \
-    -numReduceTasks 0
+    -reducer     org.wikimedia.west1.traces.TreeExtractorReducer \
+    -numReduceTasks 1
+
