@@ -124,7 +124,7 @@ public class TreeExtractorReducer implements Reducer<Text, Text, NullWritable, T
 	}
 
 	// Tree ids consist of the day, a salted hash of the UID, and a sequential number (in order of
-	// time), e.g., 20150118_5ca697716da3203201f56d09b41c954d_0004.
+	// time), e.g., 5ca697716da3203201f56d09b41c954d_20150118_0004.
 	private Text makeTreeId(Text dayAndUid, int seqNum) {
 		String[] day_uid = dayAndUid.toString().split(GroupAndFilterMapper.UID_SEPARATOR, 2);
 		String day = day_uid[0];
