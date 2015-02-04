@@ -26,7 +26,7 @@ public class GroupAndFilterMapper implements Mapper<Text, Text, Text, Text> {
   private static final String JSON_URI_HOST = "uri_host";
   private static final String JSON_HTTP_STATUS = "http_status";
   private static final String JSON_ACCEPT_LANG = "accept_language";
-  
+
   // NB: Special pages can have different names in different languages.
   private static final Pattern SPECIAL_NAMESPACE_PATTERN = Pattern
       .compile("(?i)/wiki/("
@@ -57,7 +57,7 @@ public class GroupAndFilterMapper implements Mapper<Text, Text, Text, Text> {
   @Override
   public void close() throws IOException {
   }
-  
+
   // Extract the last IP address from the x_forwarded_for string. If the result doesn't look like
   // an IP address (because it contains no "."), return null.
   private static String processXForwardedFor(String xff) {
@@ -69,10 +69,6 @@ public class GroupAndFilterMapper implements Mapper<Text, Text, Text, Text> {
       return null;
     }
   }
-
-  // private static String extractDayFromDate(String date) {
-  // return date.substring(0, date.indexOf('T')).replace("-", "");
-  // }
 
   private boolean isBot(String userAgent) {
     return uaParser.parseDevice(userAgent).family.equals("Spider");

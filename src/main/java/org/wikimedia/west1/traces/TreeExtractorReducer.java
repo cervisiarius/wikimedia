@@ -86,7 +86,7 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
     REDUCE_MSEC_PAGEVIEW_CONSTRUCTOR
   }
 
-  private Pattern mainPagePattern;
+  private Pattern homePagePattern;
   private boolean keepAmbiguousTrees;
   private boolean keepBadTrees;
   private boolean keepSingletonTrees;
@@ -120,7 +120,7 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
       }
     }
   }
-  
+
   // Tree ids consist of the day, a salted hash of the UID, and a sequential number (in order of
   // time), e.g., 5ca697716da3203201f56d09b41c954d_20150118_0004.
   private Text makeTreeId(String lang, String uid, int seqNum) {
@@ -164,8 +164,9 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
     // doesn't match the required URL pattern). As an exception, we do allow trees that start with
     // the main page of one of the specified Wikipedia versions.
     if (isGlobalRoot && WIKI_HOST_PATTERN.matcher(root.getString(JSON_REFERER)).matches()
-        && !mainPagePattern.matcher(root.getString(JSON_REFERER)).matches()) {
-      reporter.incrCounter(lang, HADOOP_COUNTERS.REDUCE_SKIPPED_WIKIMEDIA_REFERER_IN_ROOT.toString(), 1);
+        && !homePagePattern.matcher(root.getString(JSON_REFERER)).matches()) {
+      reporter.incrCounter(lang,
+          HADOOP_COUNTERS.REDUCE_SKIPPED_WIKIMEDIA_REFERER_IN_ROOT.toString(), 1);
       return false;
     }
     // If we don't want to keep ambiguous trees, discard them.
@@ -273,7 +274,7 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
   }
 
   private void setDefaultConfig() {
-    mainPagePattern = Pattern.compile("http.?://pt\\.wikipedia\\.org/");
+    homePagePattern = Pattern.compile("http.?://pt\\.wikipedia\\.org/");
     keepAmbiguousTrees = true;
     keepBadTrees = true;
     keepSingletonTrees = true;
@@ -287,7 +288,7 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
     if (conf == null) {
       setDefaultConfig();
     } else {
-      mainPagePattern = Pattern.compile("http.?://(" + conf.get(CONF_LANGUAGE_PATTERN, "")
+      homePagePattern = Pattern.compile("http.?://(" + conf.get(CONF_LANGUAGE_PATTERN, "")
           + ")\\.wikipedia\\.org/");
       keepAmbiguousTrees = conf.getBoolean(CONF_KEEP_AMBIGUOUS_TREES, true);
       keepBadTrees = conf.getBoolean(CONF_KEEP_BAD_TREES, false);
@@ -310,7 +311,7 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
       Reporter reporter) throws IOException {
     if (!memoryCounterSet) {
       Runtime runtime = Runtime.getRuntime();
-      //long usedMemory = (runtime.totalMemory() - runtime.freeMemory()) / (1024 * 1024);
+      // long usedMemory = (runtime.totalMemory() - runtime.freeMemory()) / (1024 * 1024);
       // Max memory is 4GB.
       reporter.incrCounter("Global counters", "REDUCE_MAX_MEMORY", runtime.maxMemory());
       memoryCounterSet = true;
@@ -333,8 +334,8 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
           long before = System.currentTimeMillis();
           Pageview pv = new Pageview(json, redirects.get(lang));
           long after = System.currentTimeMillis();
-          reporter.incrCounter(lang, HADOOP_COUNTERS.REDUCE_MSEC_PAGEVIEW_CONSTRUCTOR.toString(), after
-              - before);
+          reporter.incrCounter(lang, HADOOP_COUNTERS.REDUCE_MSEC_PAGEVIEW_CONSTRUCTOR.toString(),
+              after - before);
           pageviews.add(pv);
           if (!json.getString(JSON_URI_PATH).equals(pv.resolvedArticle)) {
             reporter.incrCounter(lang, HADOOP_COUNTERS.REDUCE_REDIRECT_RESOLVED.toString(), 1);
