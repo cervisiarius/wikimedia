@@ -46,7 +46,7 @@ public class TreeExtractorReducer implements Reducer<Text, Text, NullWritable, T
 	private static final String JSON_REFERER = "referer";
 	// Job config parameters specifying which Wikipedia versions we're interested in, e.g.,
 	// "(pt|es)\\.wikipedia\\.org".
-	private static final String CONF_URI_HOST_PATTERN = "org.wikimedia.west1.traces.uriHostPattern";
+	private static final String CONF_LANGUAGE_PATTERN = "org.wikimedia.west1.traces.languagePattern";
 	// Job config parameters specifying if we want to keep trees in which at least one node has an
 	// ambiguous parent (the algorithm will always pick the temporally closest one).
 	private static final String CONF_KEEP_AMBIGUOUS_TREES = "org.wikimedia.west1.traces.keepAmbiguousTrees";
@@ -59,8 +59,6 @@ public class TreeExtractorReducer implements Reducer<Text, Text, NullWritable, T
 	// Job config parameters specifying a string for salting UID hashes, so it's very hard to get the
 	// hash value for a given UID.
 	private static final String CONF_HASH_SALT = "org.wikimedia.west1.traces.hashSalt";
-	// The name of the file that has the page redirects.
-	private static final String CONF_REDIRECT_FILE = "org.wikimedia.west1.traces.redirectFile";
 	// A pattern matching Wikimedia host names; adapted from
 	// https://github.com/wikimedia/analytics-refinery-source/blob/master/refinery-core/src/main/...
 	// .../java/org/wikimedia/analytics/refinery/core/Pageview.java.
@@ -76,7 +74,7 @@ public class TreeExtractorReducer implements Reducer<Text, Text, NullWritable, T
 	// the same tree).
 	private static final Set<String> FIELDS_TO_KEEP_IN_ROOT = new HashSet<String>(Arrays.asList(
 	    JSON_UA, JSON_REFERER, JSON_TREE_ID));
-	
+
 	private static NullWritable NULL_KEY = NullWritable.get();
 
 	private static enum HADOOP_COUNTERS {
@@ -95,40 +93,39 @@ public class TreeExtractorReducer implements Reducer<Text, Text, NullWritable, T
 	private boolean keepBadTrees;
 	private boolean keepSingletonTrees;
 	private String hashSalt;
+	private String[] languages;
 	// The redirects; they're read from file when this Mapper instance is created.
-	private Map<String, String> redirects = new HashMap<String, String>();
-	private Map<String, List<String>> reverseRedirects = new HashMap<String, List<String>>();
+	private Map<String, Map<String, String>> redirects = new HashMap<String, Map<String, String>>();
 
-	private void readReverseRedirectsFromFile(String file) {
-		InputStream is = ClassLoader.getSystemResourceAsStream(file);
-		if (file.endsWith(".gz")) {
-			try {
-				is = new GZIPInputStream(is);
-			} catch (IOException e) {
-			}
-		}
+	private void readRedirectsFromInputStream(String lang, InputStream is) {
 		Scanner sc = new Scanner(is, "UTF-8").useDelimiter("\n");
+		Map<String, String> redirectsForLang = new HashMap<String, String>();
+		redirects.put(lang, redirectsForLang);
 		while (sc.hasNext()) {
 			String[] tokens = sc.next().split("\t", 2);
 			String src = tokens[0];
 			String tgt = tokens[1];
-			List<String> srcForTgt = reverseRedirects.get(tgt);
-			if (srcForTgt == null) {
-				srcForTgt = new ArrayList<String>();
-				reverseRedirects.put(tgt, srcForTgt);
-			}
-			srcForTgt.add(src);
-			redirects.put(src, tgt);
+			redirectsForLang.put(src, tgt);
 		}
 		sc.close();
 	}
 
+	private void readAllRedirects() {
+		for (String lang : languages) {
+			String file = lang + "_redirects.tsv.gz";
+			try {
+				InputStream is = new GZIPInputStream(ClassLoader.getSystemResourceAsStream(file));
+				readRedirectsFromInputStream(lang, is);
+			} catch (IOException e) {
+				throw new RuntimeException(e);
+			}
+		}
+	}
+
 	// Tree ids consist of the day, a salted hash of the UID, and a sequential number (in order of
 	// time), e.g., 5ca697716da3203201f56d09b41c954d_20150118_0004.
-	private Text makeTreeId(Text dayAndUid, int seqNum) {
-		String[] day_uid = dayAndUid.toString().split(GroupAndFilterMapper.UID_SEPARATOR, 2);
-		String day = day_uid[0];
-		String uidHash = DigestUtils.md5Hex(day_uid[1] + hashSalt);
+	private Text makeTreeId(String day, String uid, int seqNum) {
+		String uidHash = DigestUtils.md5Hex(uid + hashSalt);
 		// seqNum is zero-padded to fixed length 4: we allow at most MAX_NUM_PAGEVIEWS = 3600 pageviews
 		// per day, and in the worst case, each pageview is its own tree, so seqNum <= 3600.
 		return new Text(String.format("%s_%s_%04d", uidHash, day, seqNum));
@@ -249,7 +246,7 @@ public class TreeExtractorReducer implements Reducer<Text, Text, NullWritable, T
 				// before the current pageview.
 				Integer refererCount = articleCounts.get(pv.refererArticle);
 				if (refererCount == null) {
-				  refererCount = 0;
+					refererCount = 0;
 				}
 				pv.json.put(JSON_PARENT_AMBIGUOUS, refererCount > 1);
 			}
@@ -282,7 +279,7 @@ public class TreeExtractorReducer implements Reducer<Text, Text, NullWritable, T
 		keepBadTrees = true;
 		keepSingletonTrees = true;
 		hashSalt = "sdsdsafdsfdsfs";
-		reverseRedirects = null;
+		languages = new String[] { "pt" };
 	}
 
 	@Override
@@ -290,12 +287,14 @@ public class TreeExtractorReducer implements Reducer<Text, Text, NullWritable, T
 		if (conf == null) {
 			setDefaultConfig();
 		} else {
-			mainPagePattern = Pattern.compile("http.?://(" + conf.get(CONF_URI_HOST_PATTERN, "") + ")/");
+			mainPagePattern = Pattern.compile("http.?://(" + conf.get(CONF_LANGUAGE_PATTERN, "")
+			    + ")\\.wikipedia\\.org/");
 			keepAmbiguousTrees = conf.getBoolean(CONF_KEEP_AMBIGUOUS_TREES, true);
 			keepBadTrees = conf.getBoolean(CONF_KEEP_BAD_TREES, false);
 			keepSingletonTrees = conf.getBoolean(CONF_KEEP_SINGLETON_TREES, false);
 			hashSalt = conf.get(CONF_HASH_SALT);
-			readReverseRedirectsFromFile(conf.get(CONF_REDIRECT_FILE));
+			languages = conf.get(CONF_LANGUAGE_PATTERN, "").split("\\|");
+			readAllRedirects();
 		}
 	}
 
@@ -304,11 +303,15 @@ public class TreeExtractorReducer implements Reducer<Text, Text, NullWritable, T
 	}
 
 	@Override
-	public void reduce(Text dayAndUid, Iterator<Text> pageviewIterator,
+	public void reduce(Text key, Iterator<Text> pageviewIterator,
 	    OutputCollector<NullWritable, Text> out, Reporter reporter) throws IOException {
 		try {
 			List<Pageview> pageviews = new ArrayList<Pageview>();
 			int n = 0;
+			String[] lang_day_uid = key.toString().split(GroupAndFilterMapper.UID_SEPARATOR, 3);
+			String lang = lang_day_uid[0];
+			String day = lang_day_uid[1];
+			String uid = lang_day_uid[2];
 
 			// Collect all pageviews for this user on this day.
 			while (pageviewIterator.hasNext()) {
@@ -318,7 +321,7 @@ public class TreeExtractorReducer implements Reducer<Text, Text, NullWritable, T
 				} else {
 					JSONObject json = new JSONObject(pageviewIterator.next().toString());
 					long before = System.currentTimeMillis();
-					Pageview pv = new Pageview(json, redirects);
+					Pageview pv = new Pageview(json, redirects.get(lang));
 					long after = System.currentTimeMillis();
 					reporter.incrCounter(HADOOP_COUNTERS.MSEC_PAGEVIEW_CONSTRUCTOR, after - before);
 					pageviews.add(pv);
@@ -332,7 +335,7 @@ public class TreeExtractorReducer implements Reducer<Text, Text, NullWritable, T
 			List<Pageview> goodRoots = filterTrees(allRoots, reporter);
 			int i = 0;
 			for (Pageview root : goodRoots) {
-				root.json.put(JSON_TREE_ID, makeTreeId(dayAndUid, i));
+				root.json.put(JSON_TREE_ID, makeTreeId(day, uid, i));
 				out.collect(NULL_KEY, new Text(root.toString()));
 				if (root.json.has(JSON_BAD_TREE) && root.json.getBoolean(JSON_BAD_TREE)) {
 					reporter.incrCounter(HADOOP_COUNTERS.BAD_TREE, 1);

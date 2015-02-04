@@ -8,7 +8,7 @@ export LIB_DIR=~/wikimedia/trunk/lib
 # The part of the server logs you want to process.
 export IN_DIR=/wmf/data/wmf/webrequest/webrequest_source=text/year=2015/month=1/day=31/*/*
 # The output directory.
-export OUT_DIR=/user/west1/tree_extractor_test_PARQUET
+export OUT_DIR=/user/west1/tree_extractor_test_PARQUET_2
 # Cf. org.wikimedia.west1.traces.TreeExtractorReducer.isGoodPageview().
 export KEEP_BAD_TREES=false
 # Cf. org.wikimedia.west1.traces.TreeExtractorReducer.isGoodPageview().
@@ -16,9 +16,7 @@ export KEEP_SINGLETON_TREES=true
 # Cf. org.wikimedia.west1.traces.TreeExtractorReducer.getMinimumSpanningForest().
 export KEEP_AMBIGUOUS_TREES=true
 # Regular expression of the uri_hosts you want to include.
-export URI_HOST_PATTERN='pt\.wikipedia\.org'
-# The page-redirect file. Make sure this corresponds to URI_HOST_PATTERN.
-export REDIRECT_FILE=ptwiki_20141104_redirects.tsv.gz
+export LANGUAGE_PATTERN='pt'
 
 echo "Running hadoop job"
 hadoop jar /usr/lib/hadoop-mapreduce/hadoop-streaming.jar \
@@ -43,8 +41,7 @@ hadoop jar /usr/lib/hadoop-mapreduce/hadoop-streaming.jar \
     -D           mapreduce.map.output.value.class=org.apache.hadoop.io.Text \
     -D           mapreduce.job.output.key.class=org.apache.hadoop.io.Text \
     -D           mapreduce.job.output.value.class=org.apache.hadoop.io.Text \
-    -D           org.wikimedia.west1.traces.uriHostPattern=$URI_HOST_PATTERN \
-    -D           org.wikimedia.west1.traces.redirectFile=$REDIRECT_FILE \
+    -D           org.wikimedia.west1.traces.languagePattern=$LANGUAGE_PATTERN \
     -D           org.wikimedia.west1.traces.keepAmbiguousTrees=$KEEP_AMBIGUOUS_TREES \
     -D           org.wikimedia.west1.traces.keepBadTrees=$KEEP_BAD_TREES \
     -D           org.wikimedia.west1.traces.keepSingletonTrees=$KEEP_SINGLETON_TREES \
@@ -53,5 +50,5 @@ hadoop jar /usr/lib/hadoop-mapreduce/hadoop-streaming.jar \
     -input       $IN_DIR \
     -output      $OUT_DIR \
     -mapper      org.wikimedia.west1.traces.GroupAndFilterMapper \
-    -reducer     org.wikimedia.west1.traces.TreeExtractorReducer \
-    -numReduceTasks 100
+#    -reducer     org.wikimedia.west1.traces.TreeExtractorReducer \
+    -numReduceTasks 0
