@@ -59,11 +59,13 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
   private static final String CONF_HASH_SALT = "org.wikimedia.west1.traces.hashSalt";
   // If a user has more than this many pageviews, we ignore her.
   private static final String CONF_MAX_NUM_PAGEVIEWS = "org.wikimedia.west1.traces.maxNumPageviews";
-  // A pattern matching Wikimedia host names; adapted from
-  // https://github.com/wikimedia/analytics-refinery-source/blob/master/refinery-core/src/main/...
-  // .../java/org/wikimedia/analytics/refinery/core/Pageview.java.
+  // A pattern matching Wikimedia host names.
   private static final Pattern WIKI_HOST_PATTERN = Pattern.compile("[a-z]+://[^/]*"
-      + "(wik(ibooks|idata|inews|imedia|ipedia|iquote|isource|tionary|iversity|ivoyage))\\.org.*");
+  // Adapted from
+  // https://github.com/wikimedia/analytics-refinery-source/blob/master/refinery-core/src/...
+  // .../main/java/org/wikimedia/analytics/refinery/core/Pageview.java.
+  // + "wik(ibooks|idata|inews|imedia|ipedia|iquote|isource|tionary|iversity|ivoyage)\\.org.*";
+      + "wiki(data|media|pedia)\\.org.*");
 
   // The fields you want to store for every pageview.
   private static final Set<String> FIELDS_TO_KEEP = new HashSet<String>(Arrays.asList(JSON_DT,
