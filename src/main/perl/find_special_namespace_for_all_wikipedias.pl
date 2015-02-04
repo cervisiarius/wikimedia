@@ -9,7 +9,9 @@ while (my $line = <HTML>) {
     my $url = "http://$lang.wikipedia.org/w/api.php?action=query&meta=siteinfo&format=json&siprop=namespaces%7Cnamespacealiases";
     my $json = `wget -q -O - '$url'`;
     if ($json =~ /{"id":-1,"case":"first-letter","\*":"(.*?)","canonical":"Special"}/) {
-      print "$lang\t$1\n";
+      my $ns = $1;
+      $ns =~ s/ /_/g;
+      print "$lang\t$ns\n";
     }
   }
 }
