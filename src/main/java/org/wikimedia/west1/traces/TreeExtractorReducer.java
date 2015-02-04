@@ -31,8 +31,6 @@ import org.json.JSONObject;
 
 public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
 
-	// Having 3600 pageviews in a day would mean one every 24 seconds, a lot...
-	private static final int MAX_NUM_PAGEVIEWS = 3600;
 	// JSON field names.
 	private static final String JSON_TREE_ID = "id";
 	private static final String JSON_CHILDREN = "children";
@@ -58,6 +56,8 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
 	// Job config parameters specifying a string for salting UID hashes, so it's very hard to get the
 	// hash value for a given UID.
 	private static final String CONF_HASH_SALT = "org.wikimedia.west1.traces.hashSalt";
+	// If a user has more than this many pageviews, we ignore her.
+	private static final String CONF_MAX_NUM_PAGEVIEWS = "org.wikimedia.west1.traces.maxNumPageviews";
 	// A pattern matching Wikimedia host names; adapted from
 	// https://github.com/wikimedia/analytics-refinery-source/blob/master/refinery-core/src/main/...
 	// .../java/org/wikimedia/analytics/refinery/core/Pageview.java.
@@ -74,13 +74,11 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
 	private static final Set<String> FIELDS_TO_KEEP_IN_ROOT = new HashSet<String>(Arrays.asList(
 	    JSON_UA, JSON_REFERER, JSON_TREE_ID));
 
-	//private static NullWritable NULL_KEY = NullWritable.get();
-
 	private static enum HADOOP_COUNTERS {
 		// In order to have an idea what the big reasons are for dismissing trees. Note that these don't
 		// add up to the number of trees we start with before filtering, since filtering fails fast (cf.
 		// isGoodPageview).
-		SKIPPED_SINGLETON, SKIPPED_HOUR_23, SKIPPED_WIKIMEDIA_REFERER_IN_ROOT, SKIPPED_AMBIGUOUS,
+		SKIPPED_SINGLETON, SKIPPED_HOUR_23, SKIPPED_WIKIMEDIA_REFERER_IN_ROOT, SKIPPED_AMBIGUOUS, TOO_MANY_PAGEVIEWS,
 		// OK_TREE and BAD_TREE add to the number of trees we started with before filtering.
 		OK_TREE, BAD_TREE, REDUCE_EXCEPTION, REDIRECT_RESOLVED,
 		// Timers.
@@ -92,6 +90,7 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
 	private boolean keepBadTrees;
 	private boolean keepSingletonTrees;
 	private String hashSalt;
+	private int maxNumPageviews;
 	private String[] languages;
 	// The redirects; they're read from file when this Mapper instance is created.
 	private Map<String, Map<String, String>> redirects = new HashMap<String, Map<String, String>>();
@@ -123,11 +122,11 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
 
 	// Tree ids consist of the day, a salted hash of the UID, and a sequential number (in order of
 	// time), e.g., 5ca697716da3203201f56d09b41c954d_20150118_0004.
-	private Text makeTreeId(String day, String uid, int seqNum) {
+	private Text makeTreeId(String uid, int seqNum) {
 		String uidHash = DigestUtils.md5Hex(uid + hashSalt);
-		// seqNum is zero-padded to fixed length 4: we allow at most MAX_NUM_PAGEVIEWS = 3600 pageviews
-		// per day, and in the worst case, each pageview is its own tree, so seqNum <= 3600.
-		return new Text(String.format("%s_%s_%04d", uidHash, day, seqNum));
+		// seqNum is zero-padded to fixed length 5: we allow at most MAX_NUM_PAGEVIEWS = 100K pageviews
+		// per day, and in the worst case, each pageview is its own tree, so seqNum <= 99999.
+		return new Text(String.format("%s_%05d", uidHash, seqNum));
 	}
 
 	// We don't want to keep all info from the original pageview objects, and we discard it here.
@@ -158,13 +157,6 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
 			reporter.incrCounter(HADOOP_COUNTERS.SKIPPED_SINGLETON, 1);
 			return false;
 		}
-		// No node can be from the last hour of the day, such that we make trees spanning the day
-		// boundary extremely unlikely (they'd have to include an idle-time of at least one hour; if
-		// that ever happens, we consider the part before the idle-time a complete tree).
-		if (root.getString(JSON_DT).contains("T23:")) {
-			reporter.incrCounter(HADOOP_COUNTERS.SKIPPED_HOUR_23, 1);
-			return false;
-		}
 		// The root must not be a Wikimedia page; this will discard traces that in fact continue a
 		// previous tree (e.g., one that starts before the day boundary and whose first part was
 		// excluded via the "T23:" rule; or one whose parent was discarded in the mapper because it
@@ -180,6 +172,13 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
 			reporter.incrCounter(HADOOP_COUNTERS.SKIPPED_AMBIGUOUS, 1);
 			return false;
 		}
+		// No node can be from the last hour of the day, such that we make trees spanning the day
+		// boundary extremely unlikely (they'd have to include an idle-time of at least one hour; if
+		// that ever happens, we consider the part before the idle-time a complete tree).
+		// if (root.getString(JSON_DT).contains("T23:")) {
+		// reporter.incrCounter(HADOOP_COUNTERS.SKIPPED_HOUR_23, 1);
+		// return false;
+		// }
 		return true;
 	}
 
@@ -278,6 +277,7 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
 		keepBadTrees = true;
 		keepSingletonTrees = true;
 		hashSalt = "sdsdsafdsfdsfs";
+		maxNumPageviews = 3600;
 		languages = new String[] { "pt" };
 	}
 
@@ -292,6 +292,7 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
 			keepBadTrees = conf.getBoolean(CONF_KEEP_BAD_TREES, false);
 			keepSingletonTrees = conf.getBoolean(CONF_KEEP_SINGLETON_TREES, false);
 			hashSalt = conf.get(CONF_HASH_SALT);
+			maxNumPageviews = conf.getInt(CONF_MAX_NUM_PAGEVIEWS, 100000);
 			languages = conf.get(CONF_LANGUAGE_PATTERN, "").split("\\|");
 			readAllRedirects();
 		}
@@ -302,20 +303,20 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
 	}
 
 	@Override
-	public void reduce(Text key, Iterator<Text> pageviewIterator,
-	    OutputCollector<Text, Text> out, Reporter reporter) throws IOException {
+	public void reduce(Text key, Iterator<Text> pageviewIterator, OutputCollector<Text, Text> out,
+	    Reporter reporter) throws IOException {
 		try {
 			List<Pageview> pageviews = new ArrayList<Pageview>();
 			int n = 0;
-			String[] lang_day_uid = key.toString().split(GroupAndFilterMapper.UID_SEPARATOR, 3);
+			String[] lang_day_uid = key.toString().split(GroupAndFilterMapper.UID_SEPARATOR, 2);
 			String lang = lang_day_uid[0];
-			String day = lang_day_uid[1];
-			String uid = lang_day_uid[2];
+			String uid = lang_day_uid[1];
 
 			// Collect all pageviews for this user on this day.
 			while (pageviewIterator.hasNext()) {
 				// If there are too many pageview events, output nothing.
-				if (++n > MAX_NUM_PAGEVIEWS) {
+				if (++n > maxNumPageviews) {
+					reporter.incrCounter(HADOOP_COUNTERS.TOO_MANY_PAGEVIEWS, 1);
 					return;
 				} else {
 					JSONObject json = new JSONObject(pageviewIterator.next().toString());
@@ -334,7 +335,7 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
 			List<Pageview> goodRoots = filterTrees(allRoots, reporter);
 			int i = 0;
 			for (Pageview root : goodRoots) {
-				root.json.put(JSON_TREE_ID, makeTreeId(day, uid, i));
+				root.json.put(JSON_TREE_ID, makeTreeId(uid, i));
 				out.collect(new Text(lang), new Text(root.toString()));
 				if (root.json.has(JSON_BAD_TREE) && root.json.getBoolean(JSON_BAD_TREE)) {
 					reporter.incrCounter(HADOOP_COUNTERS.BAD_TREE, 1);

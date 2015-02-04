@@ -20,7 +20,6 @@ public class GroupAndFilterMapper implements Mapper<Text, Text, Text, Text> {
 	public static final String UID_SEPARATOR = "###";
 	private static final String CONF_LANGUAGE_PATTERN = "org.wikimedia.west1.traces.languagePattern";
 	private static final String JSON_IP = "ip";
-	private static final String JSON_DT = "dt";
 	private static final String JSON_UA = "user_agent";
 	private static final String JSON_XFF = "x_forwarded_for";
 	private static final String JSON_URI_PATH = "uri_path";
@@ -39,7 +38,7 @@ public class GroupAndFilterMapper implements Mapper<Text, Text, Text, Text> {
 	}
 
 	// A regex of the Wikimedia sites we're interested in, e.g., "(pt|es)\\.wikipedia\\.org".
-	// This is set via the job config.
+	// Produced from the languagePattern configuration parameter.
 	private Pattern uriHostPattern;
 	// A parser for determining whether requests come from a bot.
 	private Parser uaParser;
@@ -47,7 +46,7 @@ public class GroupAndFilterMapper implements Mapper<Text, Text, Text, Text> {
 	@Override
 	public void configure(JobConf conf) {
 		uriHostPattern = Pattern.compile(String.format("(%s)\\.wikipedia\\.org",
-		    conf.get(CONF_LANGUAGE_PATTERN, "pt")));
+		    conf.get(CONF_LANGUAGE_PATTERN, "")));
 		try {
 			uaParser = new Parser();
 		} catch (IOException e) {
@@ -71,9 +70,9 @@ public class GroupAndFilterMapper implements Mapper<Text, Text, Text, Text> {
 		}
 	}
 
-	private static String extractDayFromDate(String date) {
-		return date.substring(0, date.indexOf('T')).replace("-", "");
-	}
+	// private static String extractDayFromDate(String date) {
+	// return date.substring(0, date.indexOf('T')).replace("-", "");
+	// }
 
 	private boolean isBot(String userAgent) {
 		return uaParser.parseDevice(userAgent).family.equals("Spider");
@@ -86,15 +85,14 @@ public class GroupAndFilterMapper implements Mapper<Text, Text, Text, Text> {
 		String ua = json.getString(JSON_UA);
 		String acceptLang = json.getString(JSON_ACCEPT_LANG);
 		String xff = processXForwardedFor(json.getString(JSON_XFF));
-		String day = extractDayFromDate(json.getString(JSON_DT));
 		String uriHost = json.getString(JSON_URI_HOST);
 		String lang = uriHost.substring(0, uriHost.indexOf('.'));
 		// If x_forwarded_for contains an IP address, use that address, otherwise use the address from
 		// from the ip field.
 		String ipForKey = (xff == null) ? ip : xff;
 		// Just in case, replace tabs, so we don't mess with the key/value split.
-		return String.format("%s%s%s%s%s%s%s%s%s", lang, UID_SEPARATOR, day, UID_SEPARATOR, ipForKey,
-		    UID_SEPARATOR, ua, UID_SEPARATOR, acceptLang).replace('\t', ' ');
+		return String.format("%s%s%s%s%s%s%s", lang, UID_SEPARATOR, ipForKey, UID_SEPARATOR, ua,
+		    UID_SEPARATOR, acceptLang).replace('\t', ' ');
 	}
 
 	@Override
