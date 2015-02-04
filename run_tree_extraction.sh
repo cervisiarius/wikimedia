@@ -18,9 +18,10 @@ export KEEP_AMBIGUOUS_TREES=true
 # Regular expression of the uri_hosts you want to include.
 export LANGUAGE_PATTERN='pt|nl'
 # If a user has more than this many pageviews, we ignore her.
-# Having 100K pageviews in a month would mean one every 26 seconds, a lot...
+# Having 100K pageviews in a month would mean one every 26 seconds.
+# Having 10K pageviews in a month would mean one every 4 minutes.
 # Having 3600 pageviews in a day would mean one every 24 seconds.
-export MAX_NUM_PAGEVIEWS=100000
+export MAX_NUM_PAGEVIEWS=10000
 
 echo "Running hadoop job"
 hadoop jar /usr/lib/hadoop-mapreduce/hadoop-streaming.jar \

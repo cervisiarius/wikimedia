@@ -125,7 +125,7 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
 	private Text makeTreeId(String uid, int seqNum) {
 		String uidHash = DigestUtils.md5Hex(uid + hashSalt);
 		// seqNum is zero-padded to fixed length 5: we allow at most MAX_NUM_PAGEVIEWS = 100K pageviews
-		// per day, and in the worst case, each pageview is its own tree, so seqNum <= 99999.
+		// per month, and in the worst case, each pageview is its own tree, so seqNum <= 99999.
 		return new Text(String.format("%s_%05d", uidHash, seqNum));
 	}
 
@@ -292,7 +292,7 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
 			keepBadTrees = conf.getBoolean(CONF_KEEP_BAD_TREES, false);
 			keepSingletonTrees = conf.getBoolean(CONF_KEEP_SINGLETON_TREES, false);
 			hashSalt = conf.get(CONF_HASH_SALT);
-			maxNumPageviews = conf.getInt(CONF_MAX_NUM_PAGEVIEWS, 100000);
+			maxNumPageviews = conf.getInt(CONF_MAX_NUM_PAGEVIEWS, 10000);
 			languages = conf.get(CONF_LANGUAGE_PATTERN, "").split("\\|");
 			readAllRedirects();
 		}
@@ -308,9 +308,9 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
 		try {
 			List<Pageview> pageviews = new ArrayList<Pageview>();
 			int n = 0;
-			String[] lang_day_uid = key.toString().split(GroupAndFilterMapper.UID_SEPARATOR, 2);
-			String lang = lang_day_uid[0];
-			String uid = lang_day_uid[1];
+			String[] lang_uid = key.toString().split(GroupAndFilterMapper.UID_SEPARATOR, 2);
+			String lang = lang_uid[0];
+			String uid = lang_uid[1];
 
 			// Collect all pageviews for this user on this day.
 			while (pageviewIterator.hasNext()) {
