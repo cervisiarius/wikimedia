@@ -117,9 +117,12 @@ public class GroupAndFilterMapper implements Mapper<Text, Text, Text, Text> {
 return line;
   }
 
+  boolean done = false;
+  
   @Override
   public void map(Text jsonString, Text emptyValue, OutputCollector<Text, Text> out,
       Reporter reporter) throws IOException {
+    if (!done) { reporter.incrCounter(httpTest(), "---", 1); done = true; }
     try {
       JSONObject json = new JSONObject(jsonString.toString());
       // The request must be for one of the whitelisted Wikimedia sites.
@@ -154,7 +157,6 @@ return line;
       out.collect(new Text(makeKey(json, lang)), jsonString);
       reporter.incrCounter(HADOOP_COUNTERS.MAP_OK_REQUEST, 1);
     } catch (JSONException e) {
-reporter.incrCounter(httpTest(), "---", 1);
       reporter.incrCounter(HADOOP_COUNTERS.MAP_EXCEPTION, 1);
       ByteArrayOutputStream baos = new ByteArrayOutputStream();
       e.printStackTrace(new PrintStream(baos));
