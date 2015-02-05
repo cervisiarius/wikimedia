@@ -100,37 +100,37 @@ public class GroupAndFilterMapper implements Mapper<Text, Text, Text, Text> {
       JSONObject json = new JSONObject(jsonString.toString());
       // The request must be for one of the whitelisted Wikimedia sites.
       if (!uriHostPattern.matcher(json.getString(JSON_URI_HOST)).matches()) {
-        reporter.incrCounter("Global counters", HADOOP_COUNTERS.MAP_SKIPPED_BAD_HOST.toString(), 1);
+        reporter.incrCounter(HADOOP_COUNTERS.MAP_SKIPPED_BAD_HOST, 1);
         return;
       }
       String lang = extractLanguage(json.getString(JSON_URI_HOST));
       // It must be to an article page, i.e., the path must start with "/wiki/".
       if (!json.getString(JSON_URI_PATH).startsWith("/wiki/")) {
-        reporter.incrCounter(lang, HADOOP_COUNTERS.MAP_SKIPPED_BAD_PATH.toString(), 1);
+        reporter.incrCounter(HADOOP_COUNTERS.MAP_SKIPPED_BAD_PATH, 1);
         return;
       }
       // Certain page types such as "Special:" and "User:" pages aren't allowed (but we must make
       // sure we're not also banning the main page).
       if (SPECIAL_NAMESPACE_PATTERN.matcher(json.getString(JSON_URI_PATH)).matches()) {
-        reporter.incrCounter(lang, HADOOP_COUNTERS.MAP_SKIPPED_SPECIAL_PAGE.toString(), 1);
+        reporter.incrCounter(HADOOP_COUNTERS.MAP_SKIPPED_SPECIAL_PAGE, 1);
         return;
       }
       // It can't be from a bot.
       if (isBot(json.getString(JSON_UA))) {
-        reporter.incrCounter(lang, HADOOP_COUNTERS.MAP_SKIPPED_BOT.toString(), 1);
+        reporter.incrCounter(HADOOP_COUNTERS.MAP_SKIPPED_BOT, 1);
         return;
       }
       // We only accept HTTP statuses 200 (OK) and 304 (Not Modified).
       if (!json.getString(JSON_HTTP_STATUS).equals("200")
           && !json.getString(JSON_HTTP_STATUS).equals("304")) {
-        reporter.incrCounter(lang, HADOOP_COUNTERS.MAP_SKIPPED_BAD_HTTP_STATUS.toString(), 1);
+        reporter.incrCounter(HADOOP_COUNTERS.MAP_SKIPPED_BAD_HTTP_STATUS, 1);
         return;
       }
       // Only if all those filters were passed do we output the row.
       out.collect(new Text(makeKey(json, lang)), jsonString);
-      reporter.incrCounter(lang, HADOOP_COUNTERS.MAP_OK_REQUEST.toString(), 1);
+      reporter.incrCounter(HADOOP_COUNTERS.MAP_OK_REQUEST, 1);
     } catch (JSONException e) {
-      reporter.incrCounter("Global counters", HADOOP_COUNTERS.MAP_EXCEPTION.toString(), 1);
+      reporter.incrCounter(HADOOP_COUNTERS.MAP_EXCEPTION, 1);
       ByteArrayOutputStream baos = new ByteArrayOutputStream();
       e.printStackTrace(new PrintStream(baos));
       System.err.format("MAP_EXCEPTION: %s\n", baos.toString("UTF-8"));

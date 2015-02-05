@@ -84,8 +84,8 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
     REDUCE_SKIPPED_SINGLETON, REDUCE_SKIPPED_HOUR_23, REDUCE_SKIPPED_WIKIMEDIA_REFERER_IN_ROOT, REDUCE_SKIPPED_AMBIGUOUS, REDUCE_TOO_MANY_PAGEVIEWS,
     // OK_TREE and BAD_TREE add to the number of trees we started with before filtering.
     REDUCE_OK_TREE, REDUCE_BAD_TREE, REDUCE_EXCEPTION, REDUCE_REDIRECT_RESOLVED,
-    // Timers.
-    REDUCE_MSEC_PAGEVIEW_CONSTRUCTOR
+    // Timers etc.
+    REDUCE_MSEC_PAGEVIEW_CONSTRUCTOR, REDUCE_MAX_MEMORY
   }
 
   private Pattern homePagePattern;
@@ -157,7 +157,7 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
     // referer info, so we exclude the tree.
     if (isGlobalRoot && !root.has(JSON_CHILDREN)
         && (!keepSingletonTrees || !root.getString(JSON_REFERER).startsWith("http"))) {
-      reporter.incrCounter(lang, HADOOP_COUNTERS.REDUCE_SKIPPED_SINGLETON.toString(), 1);
+      reporter.incrCounter(HADOOP_COUNTERS.REDUCE_SKIPPED_SINGLETON, 1);
       return false;
     }
     // The root must not be a Wikimedia page; this will discard traces that in fact continue a
@@ -167,20 +167,19 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
     // the main page of one of the specified Wikipedia versions.
     if (isGlobalRoot && WIKI_HOST_PATTERN.matcher(root.getString(JSON_REFERER)).matches()
         && !homePagePattern.matcher(root.getString(JSON_REFERER)).matches()) {
-      reporter.incrCounter(lang,
-          HADOOP_COUNTERS.REDUCE_SKIPPED_WIKIMEDIA_REFERER_IN_ROOT.toString(), 1);
+      reporter.incrCounter(HADOOP_COUNTERS.REDUCE_SKIPPED_WIKIMEDIA_REFERER_IN_ROOT, 1);
       return false;
     }
     // If we don't want to keep ambiguous trees, discard them.
     if (!keepAmbiguousTrees && root.getBoolean(JSON_PARENT_AMBIGUOUS)) {
-      reporter.incrCounter(lang, HADOOP_COUNTERS.REDUCE_SKIPPED_AMBIGUOUS.toString(), 1);
+      reporter.incrCounter(HADOOP_COUNTERS.REDUCE_SKIPPED_AMBIGUOUS, 1);
       return false;
     }
     // No node can be from the last hour of the day, such that we make trees spanning the day
     // boundary extremely unlikely (they'd have to include an idle-time of at least one hour; if
     // that ever happens, we consider the part before the idle-time a complete tree).
     // if (root.getString(JSON_DT).contains("T23:")) {
-    // reporter.incrCounter(lang, HADOOP_COUNTERS.SKIPPED_HOUR_23.toString(), 1);
+    // reporter.incrCounter(HADOOP_COUNTERS.SKIPPED_HOUR_23, 1);
     // return false;
     // }
     return true;
@@ -315,7 +314,7 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
       Runtime runtime = Runtime.getRuntime();
       // long usedMemory = (runtime.totalMemory() - runtime.freeMemory()) / (1024 * 1024);
       // Max memory is 4GB.
-      reporter.incrCounter("Global counters", "REDUCE_MAX_MEMORY", runtime.maxMemory());
+      reporter.incrCounter(HADOOP_COUNTERS.REDUCE_MAX_MEMORY, runtime.maxMemory());
       memoryCounterSet = true;
     }
     try {
@@ -329,18 +328,17 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
       while (pageviewIterator.hasNext()) {
         // If there are too many pageview events, output nothing.
         if (++n > maxNumPageviews) {
-          reporter.incrCounter(lang, HADOOP_COUNTERS.REDUCE_TOO_MANY_PAGEVIEWS.toString(), 1);
+          reporter.incrCounter(HADOOP_COUNTERS.REDUCE_TOO_MANY_PAGEVIEWS, 1);
           return;
         } else {
           JSONObject json = new JSONObject(pageviewIterator.next().toString());
           long before = System.currentTimeMillis();
           Pageview pv = new Pageview(json, redirects.get(lang));
           long after = System.currentTimeMillis();
-          reporter.incrCounter(lang, HADOOP_COUNTERS.REDUCE_MSEC_PAGEVIEW_CONSTRUCTOR.toString(),
-              after - before);
+          reporter.incrCounter(HADOOP_COUNTERS.REDUCE_MSEC_PAGEVIEW_CONSTRUCTOR, after - before);
           pageviews.add(pv);
           if (!json.getString(JSON_URI_PATH).equals(pv.resolvedArticle)) {
-            reporter.incrCounter(lang, HADOOP_COUNTERS.REDUCE_REDIRECT_RESOLVED.toString(), 1);
+            reporter.incrCounter(HADOOP_COUNTERS.REDUCE_REDIRECT_RESOLVED, 1);
           }
         }
       }
@@ -352,14 +350,14 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
         root.json.put(JSON_TREE_ID, makeTreeId(lang, uid, i));
         out.collect(new Text(lang), new Text(root.toString()));
         if (root.json.has(JSON_BAD_TREE) && root.json.getBoolean(JSON_BAD_TREE)) {
-          reporter.incrCounter(lang, HADOOP_COUNTERS.REDUCE_BAD_TREE.toString(), 1);
+          reporter.incrCounter(HADOOP_COUNTERS.REDUCE_BAD_TREE, 1);
         } else {
-          reporter.incrCounter(lang, HADOOP_COUNTERS.REDUCE_OK_TREE.toString(), 1);
+          reporter.incrCounter(HADOOP_COUNTERS.REDUCE_OK_TREE, 1);
         }
         ++i;
       }
     } catch (Exception e) {
-      reporter.incrCounter("Global counters", HADOOP_COUNTERS.REDUCE_EXCEPTION.toString(), 1);
+      reporter.incrCounter(HADOOP_COUNTERS.REDUCE_EXCEPTION, 1);
       ByteArrayOutputStream baos = new ByteArrayOutputStream();
       e.printStackTrace(new PrintStream(baos));
       System.err.format("REDUCE_EXCEPTION: %s\n", baos.toString("UTF-8"));

@@ -46,6 +46,7 @@ hadoop jar /usr/lib/hadoop-mapreduce/hadoop-streaming.jar \
     -D            mapreduce.map.output.value.class=org.apache.hadoop.io.Text \
     -D            mapreduce.job.output.key.class=org.apache.hadoop.io.Text \
     -D            mapreduce.job.output.value.class=org.apache.hadoop.io.Text \
+    -D            mapreduce.job.counters.limit=1000 \
     -D            org.wikimedia.west1.traces.languagePattern=$LANGUAGE_PATTERN \
     -D            org.wikimedia.west1.traces.keepAmbiguousTrees=$KEEP_AMBIGUOUS_TREES \
     -D            org.wikimedia.west1.traces.keepBadTrees=$KEEP_BAD_TREES \
