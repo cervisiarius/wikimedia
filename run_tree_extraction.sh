@@ -26,7 +26,7 @@ export MAX_NUM_PAGEVIEWS=10000
 echo "Running hadoop job"
 hadoop jar /usr/lib/hadoop-mapreduce/hadoop-streaming.jar \
     -libjars      $TARGET_DIR/TreeExtractor-0.0.1-SNAPSHOT-jar-with-dependencies.jar,$LIB_DIR/iow-hadoop-streaming-1.0.jar \
-    -D            mapred.child.java.opts="-Xss10m -Xmx512m" \
+    -D            mapred.child.java.opts="-Xss10m -Xmx2048m" \
     -D            mapreduce.output.fileoutputformat.compress=false \
     -D            parquet.read.support.class=net.iponweb.hadoop.streaming.parquet.GroupReadSupport \
     -D            parquet.read.schema="message webrequest_schema {

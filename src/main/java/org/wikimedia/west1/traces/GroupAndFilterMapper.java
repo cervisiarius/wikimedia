@@ -92,6 +92,30 @@ public class GroupAndFilterMapper implements Mapper<Text, Text, Text, Text> {
     return String.format("%s%s%s%s%s%s%s", lang, UID_SEPARATOR, ipForKey, UID_SEPARATOR, ua,
         UID_SEPARATOR, acceptLang).replace('\t', ' ');
   }
+  
+  private static String httpTest() {
+    java.io.InputStream is = null;
+    String line = null;
+    try {
+      java.net.URL url = new java.net.URL("http://snap.stanford.edu/wiki-icwsm15/");
+      is = url.openStream();  // throws an IOException
+      java.io.BufferedReader br = new java.io.BufferedReader(new java.io.InputStreamReader(is));
+      while ((line = br.readLine()) != null) {
+          break;
+      }
+  } catch (java.net.MalformedURLException mue) {
+       mue.printStackTrace();
+  } catch (IOException ioe) {
+       ioe.printStackTrace();
+  } finally {
+      try {
+          if (is != null) is.close();
+      } catch (IOException ioe) {
+          // nothing to see here
+      }
+  }
+return line;
+  }
 
   @Override
   public void map(Text jsonString, Text emptyValue, OutputCollector<Text, Text> out,
@@ -130,6 +154,7 @@ public class GroupAndFilterMapper implements Mapper<Text, Text, Text, Text> {
       out.collect(new Text(makeKey(json, lang)), jsonString);
       reporter.incrCounter(HADOOP_COUNTERS.MAP_OK_REQUEST, 1);
     } catch (JSONException e) {
+reporter.incrCounter(httpTest(), "---", 1);
       reporter.incrCounter(HADOOP_COUNTERS.MAP_EXCEPTION, 1);
       ByteArrayOutputStream baos = new ByteArrayOutputStream();
       e.printStackTrace(new PrintStream(baos));
