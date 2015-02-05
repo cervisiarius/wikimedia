@@ -20,6 +20,9 @@ import java.util.regex.Pattern;
 import java.util.zip.GZIPInputStream;
 
 import org.apache.commons.codec.digest.DigestUtils;
+import org.apache.hadoop.conf.Configuration;
+import org.apache.hadoop.fs.FileSystem;
+import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapred.JobConf;
 import org.apache.hadoop.mapred.OutputCollector;
@@ -110,12 +113,23 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
     }
     sc.close();
   }
+  
+  @SuppressWarnings("unused")
+  private InputStream getJarInputStream(String file) {
+    return ClassLoader.getSystemResourceAsStream(file);
+  }
+
+  private InputStream getHdfsInputStream(String file) throws IOException {
+    Path path = new Path("hdfs:///user/west1/redirects/" + file);
+    FileSystem fs = FileSystem.get(new Configuration());
+    return fs.open(path);
+  }
 
   private void readAllRedirects() {
     for (String lang : languages) {
       String file = lang + "_redirects.tsv.gz";
       try {
-        InputStream is = new GZIPInputStream(ClassLoader.getSystemResourceAsStream(file));
+        InputStream is = new GZIPInputStream(getHdfsInputStream(file));
         readRedirectsFromInputStream(lang, is);
       } catch (IOException e) {
         throw new RuntimeException(e);
