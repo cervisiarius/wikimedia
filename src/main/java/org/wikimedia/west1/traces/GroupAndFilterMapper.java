@@ -93,36 +93,9 @@ public class GroupAndFilterMapper implements Mapper<Text, Text, Text, Text> {
         UID_SEPARATOR, acceptLang).replace('\t', ' ');
   }
   
-  private static String httpTest() {
-    java.io.InputStream is = null;
-    String line = null;
-    try {
-      java.net.URL url = new java.net.URL("http://snap.stanford.edu/wiki-icwsm15/");
-      is = url.openStream();  // throws an IOException
-      java.io.BufferedReader br = new java.io.BufferedReader(new java.io.InputStreamReader(is));
-      while ((line = br.readLine()) != null) {
-          break;
-      }
-  } catch (java.net.MalformedURLException mue) {
-       mue.printStackTrace();
-  } catch (IOException ioe) {
-       ioe.printStackTrace();
-  } finally {
-      try {
-          if (is != null) is.close();
-      } catch (IOException ioe) {
-          // nothing to see here
-      }
-  }
-return line;
-  }
-
-  boolean done = false;
-  
   @Override
   public void map(Text jsonString, Text emptyValue, OutputCollector<Text, Text> out,
       Reporter reporter) throws IOException {
-    if (!done) { reporter.incrCounter(httpTest(), "---", 1); done = true; }
     try {
       JSONObject json = new JSONObject(jsonString.toString());
       // The request must be for one of the whitelisted Wikimedia sites.

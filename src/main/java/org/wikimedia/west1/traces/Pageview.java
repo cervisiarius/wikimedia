@@ -1,21 +1,28 @@
 package org.wikimedia.west1.traces;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.PrintStream;
 import java.net.MalformedURLException;
+import java.net.Socket;
 import java.net.URL;
 import java.net.URLDecoder;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Map;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class Pageview {
-  
+
   private static final String JSON_URI_PATH = "uri_path";
   private static final String JSON_DT = "dt";
   private static final String JSON_REFERER = "referer";
   private static final String JSON_RESOLVED_URI_PATH = "resolved_uri_path";
+  private static final String SERVER_HOST = "stat1002.eqiad.wmnet";
+  private static final int SERVER_PORT = 8080;
 
   public JSONObject json;
   public long time;
@@ -25,6 +32,29 @@ public class Pageview {
 
   public static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
   private static final String UTF8 = "UTF-8";
+
+  private String resolveRedirect(String lang, String article) {
+    try {
+      Socket sock = new Socket(SERVER_HOST, SERVER_PORT);
+      ObjectOutputStream outToServer = new ObjectOutputStream(sock.getOutputStream());
+      ObjectInputStream inFromServer = new ObjectInputStream(sock.getInputStream());
+      outToServer.writeObject(lang);
+      outToServer.writeObject(article);
+      String result = (String) inFromServer.readObject();
+      inFromServer.close();
+      outToServer.close();
+      sock.close();
+      return result;
+    } catch (Exception e) {
+      ByteArrayOutputStream baos = new ByteArrayOutputStream();
+      e.printStackTrace(new PrintStream(baos));
+      try {
+        System.err.format("PAGEVIEW_EXCEPTION: %s\n", baos.toString("UTF-8"));
+      } catch (IOException ioe) {
+      }
+    }
+    return null;
+  }
 
   private static final String decode(String s) {
     try {
@@ -43,7 +73,7 @@ public class Pageview {
     }
   }
 
-  public Pageview(JSONObject json, Map<String, String> redirects) throws JSONException,
+  public Pageview(JSONObject json, String lang) throws JSONException,
       ParseException {
     this.json = json;
     this.time = DATE_FORMAT.parse(json.getString(JSON_DT)).getTime();
@@ -51,7 +81,7 @@ public class Pageview {
     String article = extractArticleFromPath(json.getString(JSON_URI_PATH));
     json.put(JSON_URI_PATH, article);
     // Resolve redirects in article.
-    String articleRedirect = redirects.get(article);
+    String articleRedirect = resolveRedirect(lang, article);
     if (articleRedirect != null) {
       this.resolvedArticle = articleRedirect;
       json.put(JSON_RESOLVED_URI_PATH, articleRedirect);
@@ -63,7 +93,7 @@ public class Pageview {
       if (ref.getAuthority().endsWith(".wikipedia.org") && ref.getPath().startsWith("/wiki/")) {
         this.refererArticle = extractArticleFromPath(ref.getPath());
         // Resolve redirects in referer.
-        String refererRedirect = redirects.get(this.refererArticle);
+        String refererRedirect = resolveRedirect(lang, this.refererArticle);
         if (refererRedirect != null) {
           this.refererArticle = refererRedirect;
         }
