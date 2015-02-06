@@ -4,7 +4,6 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintStream;
-import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -178,10 +177,9 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
       return false;
     }
     // The root must not be a Wikimedia page; this will discard traces that in fact continue a
-    // previous tree (e.g., one that starts before the day boundary and whose first part was
-    // excluded via the "T23:" rule; or one whose parent was discarded in the mapper because it
-    // doesn't match the required URL pattern). As an exception, we do allow trees that start with
-    // the main page of one of the specified Wikipedia versions.
+    // previous tree (e.g., one whose parent was discarded in the mapper because it doesn't match
+    // the required URL pattern). As an exception, we do allow trees that start with the home page
+    // of one of the specified Wikipedia versions.
     if (isGlobalRoot && WIKI_HOST_PATTERN.matcher(root.getString(JSON_REFERER)).matches()
         && !homePagePattern.matcher(root.getString(JSON_REFERER)).matches()) {
       reporter.incrCounter(HADOOP_COUNTERS.REDUCE_SKIPPED_WIKIMEDIA_REFERER_IN_ROOT, 1);
@@ -193,13 +191,6 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
       reporter.incrCounter(HADOOP_COUNTERS.REDUCE_SKIPPED_AMBIGUOUS, 1);
       return false;
     }
-    // No node can be from the last hour of the day, such that we make trees spanning the day
-    // boundary extremely unlikely (they'd have to include an idle-time of at least one hour; if
-    // that ever happens, we consider the part before the idle-time a complete tree).
-    // if (root.getString(JSON_DT).contains("T23:")) {
-    // reporter.incrCounter(HADOOP_COUNTERS.SKIPPED_HOUR_23, 1);
-    // return false;
-    // }
     return true;
   }
 
@@ -282,12 +273,17 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
   // Takes a list of pageviews, orders them by time, and extracts a set of trees via the
   // minimum-spanning-forest heuristic.
   public List<Pageview> sequenceToTrees(List<Pageview> pageviews, Reporter reporter)
-      throws JSONException, ParseException {
+      throws JSONException {
     // This sort is stable, so requests having the same timestamp will stay in the original order.
     Collections.sort(pageviews, new Comparator<Pageview>() {
       @Override
       public int compare(Pageview pv1, Pageview pv2) {
-        return (int) (pv1.time - pv2.time);
+      	long t1 = pv1.time;
+      	long t2 = pv2.time;
+      	// NB: Don't use subtraction-based comparison, since overflow may cause errors!
+        if (t1 > t2) return 1;
+        else if (t1 < t2) return -1;
+        else return 0;
       }
     });
     return getMinimumSpanningForest(pageviews, reporter);

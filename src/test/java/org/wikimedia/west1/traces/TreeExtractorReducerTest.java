@@ -6,6 +6,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -135,10 +138,26 @@ public class TreeExtractorReducerTest {
 		System.out.println(pv.refererArticle);
 		System.out.println(revRdirects.get("Macaxeira"));
 	}
+	
+	public static void testComparison() {
+		List<Long> l = Arrays.asList(Long.MIN_VALUE, 0L, Long.MAX_VALUE, Long.MIN_VALUE, 0L, Long.MAX_VALUE);
+		//List<Long> l = Arrays.asList(2L, 400L, 1L, 3L);
+    Collections.sort(l, new Comparator<Long>() {
+      @Override
+      public int compare(Long pv1, Long pv2) {
+      	// Faulty because of overflows.
+        //return (int) (pv1 - pv2);
+        if (pv1 > pv2) return 1;
+        else if (pv1 < pv2) return -1;
+        else return 0;
+      }
+    });
+    System.out.println(l);
+	}
 
 	public static void main(String[] args) throws Exception {
 		//System.out.println(GroupAndFilterMapper.NON_ARTICLE_PAGE_PATTERN.matcher("/wiki/Wikipédia:Página_principal").matches());
-		testPageview();
+		testComparison();
 	}
 
 }
