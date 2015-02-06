@@ -8,7 +8,7 @@ export LIB_DIR=~/wikimedia/trunk/lib
 # The part of the server logs you want to process.
 export IN_DIR=/wmf/data/wmf/webrequest/webrequest_source=text/year=2015/*/*/*/*
 # The output directory.
-export OUT_DIR=/user/west1/navigation_trees_2
+export OUT_DIR=/user/west1/navigation_trees_`date +%Y-%m-%d`
 # Cf. org.wikimedia.west1.traces.TreeExtractorReducer.isGoodPageview().
 export KEEP_BAD_TREES=false
 # Cf. org.wikimedia.west1.traces.TreeExtractorReducer.isGoodPageview().
