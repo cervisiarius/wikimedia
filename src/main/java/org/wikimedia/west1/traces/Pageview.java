@@ -26,34 +26,6 @@ public class Pageview {
   public static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
   private static final String UTF8 = "UTF-8";
 
-  /*
-  private static final String SERVER_HOST = "stat1002.eqiad.wmnet";
-  private static final int SERVER_PORT = 8080;
-  private String resolveRedirect(String lang, String article) {
-    try {
-      Socket sock = new Socket(SERVER_HOST, SERVER_PORT);
-      ObjectOutputStream outToServer = new ObjectOutputStream(sock.getOutputStream());
-      ObjectInputStream inFromServer = new ObjectInputStream(sock.getInputStream());
-      outToServer.writeObject(lang);
-      outToServer.writeObject(article);
-      String result = (String) inFromServer.readObject();
-      inFromServer.close();
-      outToServer.close();
-      sock.close();
-      return result;
-    } catch (Exception e) {
-      ByteArrayOutputStream baos = new ByteArrayOutputStream();
-      e.printStackTrace(new PrintStream(baos));
-      try {
-        System.err.format("PAGEVIEW_EXCEPTION: %s\n", baos.toString("UTF-8"));
-      } catch (UnsupportedEncodingException uee) {
-        // This should never happen because the encoding is hard-coded to "UTF-8".
-      }
-    }
-    return null;
-  }
-  */
-
   private static final String decode(String s) {
     try {
       return URLDecoder.decode(s, UTF8);
@@ -97,6 +69,8 @@ public class Pageview {
         }
       }
     } catch (MalformedURLException e) {
+    } catch (NullPointerException e) {
+      // This may happen if ref.getAuthority() or ref.getPath() returns null.
     }
   }
 

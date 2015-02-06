@@ -6,9 +6,9 @@ export TARGET_DIR=~/wikimedia/trunk/target
 # This is where additional JARs reside.
 export LIB_DIR=~/wikimedia/trunk/lib
 # The part of the server logs you want to process.
-export IN_DIR=/wmf/data/wmf/webrequest/webrequest_source=text/year=2015/month=1/day=31/*/*
+export IN_DIR=/wmf/data/wmf/webrequest/webrequest_source=text/year=2015/*/*/*/*
 # The output directory.
-export OUT_DIR=/user/west1/tree_extractor_test_PARQUET_2
+export OUT_DIR=/user/west1/navigation_trees_2
 # Cf. org.wikimedia.west1.traces.TreeExtractorReducer.isGoodPageview().
 export KEEP_BAD_TREES=false
 # Cf. org.wikimedia.west1.traces.TreeExtractorReducer.isGoodPageview().
@@ -19,8 +19,8 @@ export KEEP_AMBIGUOUS_TREES=true
 # languages into 3 sets was chosen such that the cumulative sizes of their redirect tables are
 # approximately equal.
 #export LANGUAGE_PATTERN='en'
-export LANGUAGE_PATTERN='es|fr|ru|de|sh|fa|pt'
-#export LANGUAGE_PATTERN='sv|zh|ja|nl|it|ceb|war|sr|pl|uk|ar|ca|id|ro|tr|ko|no|fi|uz|cs|hu|vi|he|hy|eo|da|bg|et|lt|el|vo|sk|sl|eu|nn|kk|hr|hi|simple|ms|gl|min'
+export LANGUAGE_PATTERN='es|fr|ru|de|fa|sv|simple|zh|ja'
+#export LANGUAGE_PATTERN='sh|pt|ar|nl|it|ceb|war|sr|pl|uk|ca|id|ro|tr|ko|no|fi|uz|cs|hu|vi|he|hy|eo|da|bg|et|lt|el|vo|sk|sl|eu|nn|kk|hr|hi|ms|gl|min'
 # If a user has more than this many pageviews, we ignore her.
 # Having 100K pageviews in a month would mean one every 26 seconds.
 # Having 10K pageviews in a month would mean one every 4 minutes.
@@ -32,6 +32,7 @@ hadoop jar /usr/lib/hadoop-mapreduce/hadoop-streaming.jar \
     -libjars      $TARGET_DIR/TreeExtractor-0.0.1-SNAPSHOT-jar-with-dependencies.jar,$LIB_DIR/iow-hadoop-streaming-1.0.jar \
     -D            mapred.child.java.opts="-Xss10m -Xmx3g" \
     -D            mapreduce.output.fileoutputformat.compress=false \
+    -D            mapreduce.output.fileoutputformat.compress.codec=com.hadoop.compression.lzo.LzopCodec \
     -D            parquet.read.support.class=net.iponweb.hadoop.streaming.parquet.GroupReadSupport \
     -D            parquet.read.schema="message webrequest_schema {
                                          optional binary dt; 

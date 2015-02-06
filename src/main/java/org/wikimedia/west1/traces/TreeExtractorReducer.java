@@ -62,6 +62,8 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
   private static final String CONF_HASH_SALT = "org.wikimedia.west1.traces.hashSalt";
   // If a user has more than this many pageviews, we ignore her.
   private static final String CONF_MAX_NUM_PAGEVIEWS = "org.wikimedia.west1.traces.maxNumPageviews";
+  // To avoid StackOverflowErrors, we set a maximum depth for the recursive method isGoodTree.
+  private static final int MAX_RECURSION_DEPTH = 100;
   // A pattern matching Wikimedia host names.
   private static final Pattern WIKI_HOST_PATTERN = Pattern.compile("[a-z]+://[^/]*"
   // Adapted from
@@ -84,7 +86,7 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
     // In order to have an idea what the big reasons are for dismissing trees. Note that these don't
     // add up to the number of trees we start with before filtering, since filtering fails fast (cf.
     // isGoodPageview).
-    REDUCE_SKIPPED_SINGLETON, REDUCE_SKIPPED_HOUR_23, REDUCE_SKIPPED_WIKIMEDIA_REFERER_IN_ROOT, REDUCE_SKIPPED_AMBIGUOUS, REDUCE_TOO_MANY_PAGEVIEWS,
+    REDUCE_SKIPPED_SINGLETON, REDUCE_SKIPPED_HOUR_23, REDUCE_SKIPPED_WIKIMEDIA_REFERER_IN_ROOT, REDUCE_SKIPPED_AMBIGUOUS, REDUCE_TOO_MANY_PAGEVIEWS, REDUCE_STACKOVERFLOW,
     // OK_TREE and BAD_TREE add to the number of trees we started with before filtering.
     REDUCE_OK_TREE, REDUCE_BAD_TREE, REDUCE_EXCEPTION, REDUCE_REDIRECT_RESOLVED,
     // Timers etc.
@@ -101,6 +103,7 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
   private String[] languages;
   // The redirects; they're read from file when this Mapper instance is created.
   private Map<String, Map<String, String>> redirects = new HashMap<String, Map<String, String>>();
+
   private void readRedirectsFromInputStream(String lang, InputStream is) {
     Scanner sc = new Scanner(is, "UTF-8").useDelimiter("\n");
     Map<String, String> redirectsForLang = new HashMap<String, String>();
@@ -113,16 +116,18 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
     }
     sc.close();
   }
-  
+
   @SuppressWarnings("unused")
   private InputStream getJarInputStream(String file) {
     return ClassLoader.getSystemResourceAsStream(file);
   }
+
   private InputStream getHdfsInputStream(String file) throws IOException {
     Path path = new Path("hdfs:///user/west1/redirects/" + file);
     FileSystem fs = FileSystem.get(new Configuration());
     return fs.open(path);
   }
+
   private void readAllRedirects() {
     for (String lang : languages) {
       String file = lang + "_redirects.tsv.gz";
@@ -183,7 +188,8 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
       return false;
     }
     // If we don't want to keep ambiguous trees, discard them.
-    if (!keepAmbiguousTrees && root.getBoolean(JSON_PARENT_AMBIGUOUS)) {
+    if (!keepAmbiguousTrees && root.has(JSON_PARENT_AMBIGUOUS)
+        && root.getBoolean(JSON_PARENT_AMBIGUOUS)) {
       reporter.incrCounter(HADOOP_COUNTERS.REDUCE_SKIPPED_AMBIGUOUS, 1);
       return false;
     }
@@ -198,14 +204,17 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
   }
 
   // Depth-first search, failing as soon as a node fails.
-  protected boolean isGoodTree(JSONObject root, boolean isGlobalRoot, Reporter reporter, String lang)
+  protected boolean isGoodTree(JSONObject root, int recursionDepth, Reporter reporter, String lang)
       throws JSONException {
-    if (!isGoodPageview(root, isGlobalRoot, reporter, lang)) {
+    if (recursionDepth > MAX_RECURSION_DEPTH) {
+      reporter.incrCounter(HADOOP_COUNTERS.REDUCE_STACKOVERFLOW, 1);
+      return false;
+    } else if (!isGoodPageview(root, recursionDepth == 0, reporter, lang)) {
       return false;
     } else if (root.has(JSON_CHILDREN)) {
       JSONArray children = root.getJSONArray(JSON_CHILDREN);
       for (int i = 0; i < children.length(); ++i) {
-        if (!isGoodTree(children.getJSONObject(i), false, reporter, lang)) {
+        if (!isGoodTree(children.getJSONObject(i), recursionDepth + 1, reporter, lang)) {
           return false;
         }
       }
@@ -218,7 +227,7 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
     List<Pageview> filtered = new ArrayList<Pageview>();
     for (Pageview root : roots) {
       try {
-        if (isGoodTree(root.json, true, reporter, lang)) {
+        if (isGoodTree(root.json, 0, reporter, lang)) {
           sparsifyJson(root.json, true);
           filtered.add(root);
         } else if (keepBadTrees) {
@@ -250,18 +259,16 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
       // root.
       if (parent == null) {
         roots.add(pv);
-        pv.json.put(JSON_PARENT_AMBIGUOUS, false);
       }
       // Otherwise, append it as a child to the latest pageview of the referer.
       else {
         parent.json.append(JSON_CHILDREN, pv.json);
+        Integer refererCount = articleCounts.get(pv.refererArticle);
         // A parent is ambiguous if we have seen the referer URL several times in this session
         // before the current pageview.
-        Integer refererCount = articleCounts.get(pv.refererArticle);
-        if (refererCount == null) {
-          refererCount = 0;
+        if (refererCount != null && refererCount > 1) {
+          pv.json.put(JSON_PARENT_AMBIGUOUS, true);
         }
-        pv.json.put(JSON_PARENT_AMBIGUOUS, refererCount > 1);
       }
       // Remember this pageview as the last pageview for its URL.
       articleToLastPageview.put(pv.resolvedArticle, pv);
@@ -317,18 +324,9 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
   public void close() throws IOException {
   }
 
-  private boolean memoryCounterSet = false;
-
   @Override
   public void reduce(Text key, Iterator<Text> pageviewIterator, OutputCollector<Text, Text> out,
       Reporter reporter) throws IOException {
-    if (!memoryCounterSet) {
-      Runtime runtime = Runtime.getRuntime();
-      // long usedMemory = (runtime.totalMemory() - runtime.freeMemory()) / (1024 * 1024);
-      // Max memory is 4GB.
-      reporter.incrCounter(HADOOP_COUNTERS.REDUCE_MAX_MEMORY, runtime.maxMemory());
-      memoryCounterSet = true;
-    }
     try {
       List<Pageview> pageviews = new ArrayList<Pageview>();
       int n = 0;
