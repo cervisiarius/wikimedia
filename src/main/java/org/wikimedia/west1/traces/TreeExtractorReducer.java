@@ -99,7 +99,6 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
   private String hashSalt;
   private int maxNumPageviews;
 
-  private String[] languages;
   // The redirects; they're read from file when this Mapper instance is created.
   private Map<String, Map<String, String>> redirects = new HashMap<String, Map<String, String>>();
 
@@ -127,7 +126,7 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
     return fs.open(path);
   }
 
-  private void readAllRedirects() {
+  private void readAllRedirects(String[] languages) {
     for (String lang : languages) {
       String file = lang + "_redirects.tsv.gz";
       try {
@@ -296,7 +295,6 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
     keepSingletonTrees = true;
     hashSalt = "sdsdsafdsfdsfs";
     maxNumPageviews = 3600;
-    languages = new String[] { "pt" };
   }
 
   @Override
@@ -311,8 +309,8 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
       keepSingletonTrees = conf.getBoolean(CONF_KEEP_SINGLETON_TREES, false);
       hashSalt = conf.get(CONF_HASH_SALT);
       maxNumPageviews = conf.getInt(CONF_MAX_NUM_PAGEVIEWS, 100000);
-      languages = conf.get(CONF_LANGUAGE_PATTERN, "").split("\\|");
-      readAllRedirects();
+      String[] languages = conf.get(CONF_LANGUAGE_PATTERN, "").split("\\|");
+      readAllRedirects(languages);
     }
   }
 
