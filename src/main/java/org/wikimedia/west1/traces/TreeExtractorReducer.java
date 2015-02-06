@@ -98,11 +98,9 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
   private String hashSalt;
   private int maxNumPageviews;
 
-  /*
   private String[] languages;
   // The redirects; they're read from file when this Mapper instance is created.
   private Map<String, Map<String, String>> redirects = new HashMap<String, Map<String, String>>();
-
   private void readRedirectsFromInputStream(String lang, InputStream is) {
     Scanner sc = new Scanner(is, "UTF-8").useDelimiter("\n");
     Map<String, String> redirectsForLang = new HashMap<String, String>();
@@ -120,13 +118,11 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
   private InputStream getJarInputStream(String file) {
     return ClassLoader.getSystemResourceAsStream(file);
   }
-
   private InputStream getHdfsInputStream(String file) throws IOException {
     Path path = new Path("hdfs:///user/west1/redirects/" + file);
     FileSystem fs = FileSystem.get(new Configuration());
     return fs.open(path);
   }
-
   private void readAllRedirects() {
     for (String lang : languages) {
       String file = lang + "_redirects.tsv.gz";
@@ -138,8 +134,7 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
       }
     }
   }
-  */
-  
+
   // Tree ids consist of the day, a salted hash of the UID, and a sequential number (in order of
   // time), e.g., 5ca697716da3203201f56d09b41c954d_20150118_0004.
   private Text makeTreeId(String lang, String uid, int seqNum) {
@@ -298,7 +293,7 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
     keepSingletonTrees = true;
     hashSalt = "sdsdsafdsfdsfs";
     maxNumPageviews = 3600;
-//    languages = new String[] { "pt" };
+    languages = new String[] { "pt" };
   }
 
   @Override
@@ -313,8 +308,8 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
       keepSingletonTrees = conf.getBoolean(CONF_KEEP_SINGLETON_TREES, false);
       hashSalt = conf.get(CONF_HASH_SALT);
       maxNumPageviews = conf.getInt(CONF_MAX_NUM_PAGEVIEWS, 100000);
-//      languages = conf.get(CONF_LANGUAGE_PATTERN, "").split("\\|");
-//      readAllRedirects();
+      languages = conf.get(CONF_LANGUAGE_PATTERN, "").split("\\|");
+      readAllRedirects();
     }
   }
 
@@ -350,7 +345,7 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
         } else {
           JSONObject json = new JSONObject(pageviewIterator.next().toString());
           long before = System.currentTimeMillis();
-          Pageview pv = new Pageview(json, lang);
+          Pageview pv = new Pageview(json, redirects.get(lang));
           long after = System.currentTimeMillis();
           reporter.incrCounter(HADOOP_COUNTERS.REDUCE_MSEC_PAGEVIEW_CONSTRUCTOR, after - before);
           pageviews.add(pv);

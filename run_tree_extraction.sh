@@ -15,8 +15,12 @@ export KEEP_BAD_TREES=false
 export KEEP_SINGLETON_TREES=true
 # Cf. org.wikimedia.west1.traces.TreeExtractorReducer.getMinimumSpanningForest().
 export KEEP_AMBIGUOUS_TREES=true
-# Regular expression of the uri_hosts you want to include.
-export LANGUAGE_PATTERN='en|sv|nl|de|fr|war|ceb|ru|it|es|vi|pl|ja|pt|zh|uk|ca|fa|no|fi|id|ar|sr|cs|ko|hu|sh|ms|ro|tr|min|kk|eo|eu|sk|da|bg|lt|he|hr|hy|sl|et|uz|simple|gl|vo|nn|hi|el'
+# Regular expression of the languages you want to include. The following partition of the top 50
+# languages into 3 sets was chosen such that the cumulative sizes of their redirect tables are
+# approximately equal.
+#export LANGUAGE_PATTERN='en'
+export LANGUAGE_PATTERN='es|fr|ru|de|sh|fa|pt'
+#export LANGUAGE_PATTERN='sv|zh|ja|nl|it|ceb|war|sr|pl|uk|ar|ca|id|ro|tr|ko|no|fi|uz|cs|hu|vi|he|hy|eo|da|bg|et|lt|el|vo|sk|sl|eu|nn|kk|hr|hi|simple|ms|gl|min'
 # If a user has more than this many pageviews, we ignore her.
 # Having 100K pageviews in a month would mean one every 26 seconds.
 # Having 10K pageviews in a month would mean one every 4 minutes.
@@ -26,7 +30,7 @@ export MAX_NUM_PAGEVIEWS=10000
 echo "Running hadoop job"
 hadoop jar /usr/lib/hadoop-mapreduce/hadoop-streaming.jar \
     -libjars      $TARGET_DIR/TreeExtractor-0.0.1-SNAPSHOT-jar-with-dependencies.jar,$LIB_DIR/iow-hadoop-streaming-1.0.jar \
-    -D            mapred.child.java.opts="-Xss10m -Xmx2048m" \
+    -D            mapred.child.java.opts="-Xss10m -Xmx3g" \
     -D            mapreduce.output.fileoutputformat.compress=false \
     -D            parquet.read.support.class=net.iponweb.hadoop.streaming.parquet.GroupReadSupport \
     -D            parquet.read.schema="message webrequest_schema {

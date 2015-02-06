@@ -24,7 +24,6 @@ public class RedirectResolutionServer implements Runnable {
   protected boolean isStopped = false;
   protected Thread runningThread = null;
 
-  private String[] languages;
   // The redirects; they're read from file when this Mapper instance is created.
   private Map<String, Map<String, String>> redirects = new HashMap<String, Map<String, String>>();
 
@@ -41,7 +40,7 @@ public class RedirectResolutionServer implements Runnable {
     sc.close();
   }
 
-  private void readAllRedirects() {
+  private void readAllRedirects(String[] languages) {
     for (String lang : languages) {
       String file = System.getenv("HOME") + "/wikimedia/trunk/data/redirects/no_date/" + lang
           + "_redirects.tsv.gz";
@@ -78,10 +77,11 @@ public class RedirectResolutionServer implements Runnable {
       throws Exception {
     this.serverPort = serverPort;
     this.threadPool = Executors.newFixedThreadPool(numThreads);
-    this.languages = languageString.split("\\|");
+    String[] languages = languageString.split("\\|");
     System.out.print("Reading redirects ...");
-    readAllRedirects();
-    System.out.println("DONE");
+    long before = System.currentTimeMillis();
+    readAllRedirects(languages);
+    System.out.println("DONE" + ((System.currentTimeMillis()-before)/1000));
   }
 
   private void openServerSocket() {
@@ -98,6 +98,7 @@ public class RedirectResolutionServer implements Runnable {
       this.runningThread = Thread.currentThread();
     }
     openServerSocket();
+    int i = 0;
     System.err.println("TCP server waiting for client on port " + serverPort);
     while (!isStopped) {
       Socket connected = null;
@@ -110,7 +111,9 @@ public class RedirectResolutionServer implements Runnable {
         }
         throw new RuntimeException("Error accepting client connection", e);
       }
-      System.err.print(".");
+      if (++i % 1e5 == 0) {
+        System.err.print(".");
+      }
       this.threadPool.execute(new WorkerRunnable(connected));
     }
     threadPool.shutdown();
@@ -145,8 +148,10 @@ public class RedirectResolutionServer implements Runnable {
    * @param args
    */
   public static void main(String[] args) throws Exception {
-    String languageString = args[0];
-    int numThreads = Integer.parseInt(args[1]);
+    //String languageString = args[0];
+    //int numThreads = Integer.parseInt(args[1]);
+    String languageString = "en";
+    int numThreads = 10;
     RedirectResolutionServer server = new RedirectResolutionServer(languageString, 8080, numThreads);
     new Thread(server).start();
     Scanner console = new Scanner(System.in);
