@@ -72,7 +72,7 @@ SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further detail
 15/02/07 20:18:47 INFO mapreduce.Job:  map 35% reduce 2%
 15/02/07 20:25:23 INFO mapreduce.Job:  map 36% reduce 2%
 15/02/07 20:25:52 INFO mapreduce.Job:  map 36% reduce 3%
-stat115/02/07 20:26:52 INFO mapreduce.Job:  map 36% reduce 4%
+15/02/07 20:26:52 INFO mapreduce.Job:  map 36% reduce 4%
 15/02/07 20:28:15 INFO mapreduce.Job:  map 36% reduce 2%
 15/02/07 20:37:30 INFO mapreduce.Job:  map 37% reduce 2%
 15/02/07 20:39:38 INFO mapreduce.Job:  map 37% reduce 3%
@@ -269,7 +269,7 @@ stat115/02/07 20:26:52 INFO mapreduce.Job:  map 36% reduce 4%
 15/02/08 03:27:34 INFO mapreduce.Job:  map 86% reduce 17%
 15/02/08 03:28:57 INFO mapreduce.Job:  map 87% reduce 17%
 15/02/08 03:32:01 INFO mapreduce.Job:  map 88% reduce 17%
-s15/02/08 03:34:52 INFO mapreduce.Job:  map 89% reduce 17%
+15/02/08 03:34:52 INFO mapreduce.Job:  map 89% reduce 17%
 15/02/08 03:37:29 INFO mapreduce.Job:  map 90% reduce 17%
 15/02/08 03:40:04 INFO mapreduce.Job:  map 91% reduce 17%
 15/02/08 03:40:15 INFO mapreduce.Job:  map 91% reduce 18%
@@ -401,7 +401,7 @@ s15/02/08 03:34:52 INFO mapreduce.Job:  map 89% reduce 17%
                 Killed map tasks=2
                 Killed reduce tasks=735
                 Launched map tasks=56770
-st                Launched reduce tasks=835
+                Launched reduce tasks=835
                 Other local map tasks=48
                 Data-local map tasks=56691
                 Rack-local map tasks=31
