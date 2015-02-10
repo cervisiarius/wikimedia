@@ -12,13 +12,15 @@ WIKI_PATTERN = re.compile(r'^(.*)wiki$')
 PARSER = HTMLParser.HTMLParser()
 
 for line in sys.stdin:
-	match = JSON_PATTERN.match(line)
-	if match:
-		line = PARSER.unescape(match.group(1))
-		obj = json.loads(line)
-		links = obj['sitelinks']
-		for wiki in sorted(links.keys()):
-			m = WIKI_PATTERN.match(wiki)
-			if m:
-				lang = m.group(1)
-				print '\t'.join([obj['id'], lang, links[wiki]['title']])
+  match = JSON_PATTERN.match(line)
+  if match:
+    line = PARSER.unescape(match.group(1))
+    obj = json.loads(line)
+    links = obj['sitelinks']
+    if len(links) == 0:
+      links = dict()
+    for wiki in sorted(links.keys()):
+      m = WIKI_PATTERN.match(wiki)
+      if m:
+        lang = m.group(1)
+        print '\t'.join([obj['id'], lang, links[wiki]['title']])
