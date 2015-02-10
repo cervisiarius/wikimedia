@@ -2,7 +2,7 @@
 
 # Read input from data/missing_articles/interwiki_links.tsv.
 
-import re, codecs, sys, os
+import re, codecs, sys, os, gzip
 
 #sys.stdin = codecs.getreader('utf8')(sys.stdin)
 sys.stdout = codecs.getwriter('utf8')(sys.stdout)
@@ -18,7 +18,7 @@ lang_order = ['en', 'de', 'fr', 'es', 'pt', 'ca', 'it', 'nl', 'sv', 'da', 'pl', 
 lang_order += list(langs - set(lang_order))
 
 def find_representative_title(titles_for_concept):
-  repr_title = None
+  repr_title = ''
   for l in lang_order:
     if l in titles_for_concept:
       repr_title = l + ':' + titles_for_concept[l]
