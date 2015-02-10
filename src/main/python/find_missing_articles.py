@@ -51,6 +51,7 @@ for line in codecs.getreader('utf8')(f):
   prev_concept = concept
   if (lang in langs):
     langs_for_concept.add(lang)
+    titles_for_concept[lang] = title
 
 # Flush the last concept.
 print '\t'.join([
