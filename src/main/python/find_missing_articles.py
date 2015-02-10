@@ -1,6 +1,6 @@
 #!/usr/bin/python
 
-# Read input from /lfs/1/data/wikidumps/wikidatawiki-20150113-pages-articles.xml.bz2
+# Read input from data/missing_articles/interwiki_links.tsv.
 
 import re, codecs, sys, os
 
@@ -12,12 +12,25 @@ DATA_DIR = os.environ['HOME'] + '/wikimedia/trunk/data/'
 
 langs = {x.strip() for x in open(DATA_DIR + 'largest_wikipedias.txt')}
 
-#f = open(DATA_DIR + 'missing_articles/interwiki_links.tsv')
-f = sys.stdin
+# This is the order of languages in which we pick a representative name for a concept.
+lang_order = ['en', 'de', 'fr', 'es', 'pt', 'ca', 'it', 'nl', 'sv', 'da', 'pl', 'no', 'fi', 'cs', 
+  'ro', 'hu', 'tr', 'eo', 'simple']
+lang_order += list(langs - set(lang_order))
+
+def find_representative_title(titles_for_concept):
+  repr_title = None
+  for l in lang_order:
+    if l in titles_for_concept:
+      repr_title = l + ':' + titles_for_concept[l]
+      break
+  return repr_title
+
+f = gzip.open(DATA_DIR + 'missing_articles/interlanguage_links.tsv.gz', 'rb')
+#f = sys.stdin
 
 prev_concept = None
 langs_for_concept = set()
-en_title = None
+titles_for_concept = dict()
 
 for line in codecs.getreader('utf8')(f):
   concept, lang, title = line.strip().split('\t')
@@ -27,19 +40,24 @@ for line in codecs.getreader('utf8')(f):
         prev_concept,
         str(len(langs_for_concept)),
         str(len(langs - langs_for_concept)),
-        en_title if en_title is not None else '',
+        find_representative_title(titles_for_concept),
         ','.join(sorted(langs_for_concept)),
         ','.join(sorted(langs - langs_for_concept))
         ])
       langs_for_concept.clear()
-      en_title = None
+      titles_for_concept.clear()
     except UnicodeEncodeError:
       print '------------- UnicodeEncodeError: ' + prev_concept
   prev_concept = concept
   if (lang in langs):
     langs_for_concept.add(lang)
-  if (lang == 'en'):
-    en_title = title
 
 # Flush the last concept.
-print '{}\t{}'.format(concept, ','.join(sorted(langs - langs_for_concept)))
+print '\t'.join([
+  concept,
+  str(len(langs_for_concept)),
+  str(len(langs - langs_for_concept)),
+  find_representative_title(titles_for_concept),
+  ','.join(sorted(langs_for_concept)),
+  ','.join(sorted(langs - langs_for_concept))
+  ])

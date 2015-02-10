@@ -1,6 +1,7 @@
 #!/usr/bin/python
 
 # Read input from /lfs/1/data/wikidumps/wikidatawiki-20150113-pages-articles.xml.bz2
+# This took about 5 hours on a single machine (ilws6).
 
 import json, re, codecs, sys, HTMLParser
 
