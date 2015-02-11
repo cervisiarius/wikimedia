@@ -53,7 +53,7 @@ def dfs(tree):
       metrics['depth_sum'] += child_metrics['depth_sum']
       metrics['degree_max'] = max(metrics['degree_max'], child_metrics['degree_max'])
       metrics['degree_sum'] += child_metrics['degree_sum']
-      metrics['timediff_sum'] += timediff
+      metrics['timediff_sum'] += child_metrics['timediff_sum'] + timediff
       metrics['timediff_min'] = min(metrics['timediff_min'], timediff)
       metrics['timediff_max'] = max(metrics['timediff_min'], timediff)
       metrics['ambiguous_max'] = max(metrics['ambiguous_max'], child_metrics['ambiguous_max'])
