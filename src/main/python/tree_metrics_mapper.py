@@ -94,7 +94,7 @@ if __name__ == '__main__':
       print 2*n/(n-1) * (metrics['size_sum']/n - metrics['size_sq_sum']/(n*n)) if n > 1 else float('NaN'), '\t',
       print metrics['timediff_min'], '\t',
       print metrics['timediff_max'], '\t',
-      print metrics['timediff_sum'] / n_internal if n_internal > 0 else float('NaN'), '\t',
+      print metrics['timediff_sum'] / (n-1) if n > 1 else float('NaN'), '\t',
       print metrics['ambiguous_max'], '\t',
       print metrics['ambiguous_sum'] / n, '\t',
       print ''
