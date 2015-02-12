@@ -1,6 +1,7 @@
 #!/usr/bin/python
 
-import json, sys, errno, codecs, datetime, heapq
+import json, sys, errno, codecs, datetime
+from heapq import heappop, heappush
 from pprint import pprint
 
 # We want to read and write unicode.
@@ -8,6 +9,21 @@ sys.stdout = codecs.getwriter('utf8')(sys.stdout)
 sys.stdin = codecs.getreader('utf8')(sys.stdin)
 
 DATE_FORMAT = '%Y-%m-%dT%H:%M:%S'
+
+def traversal_metric(root):
+  heap = [(root['dt'], 0, 0, root)]
+  pos = []
+  i = 0
+  while len(heap) > 0:
+    i += 1
+    (time_next, i_next, j_next, node_next) = heappop(heap)
+    pos += [i_next] ######################
+    j = 0
+    if 'children' in node_next:
+      for ch in node_next['children']:
+        heappush(heap, (ch['dt'], i, j, ch))
+        j += 1
+  return pos
 
 def dfs(tree):
   metrics = dict()
