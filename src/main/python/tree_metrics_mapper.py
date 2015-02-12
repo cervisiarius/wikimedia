@@ -10,20 +10,24 @@ sys.stdin = codecs.getreader('utf8')(sys.stdin)
 
 DATE_FORMAT = '%Y-%m-%dT%H:%M:%S'
 
-def traversal_metric(root):
+def traversal_metric(root): ###############################################
   heap = [(root['dt'], 0, 0, root)]
   pos = []
-  i = 0
   while len(heap) > 0:
-    i += 1
-    (time_next, i_next, j_next, node_next) = heappop(heap)
-    pos += [i_next] ######################
-    j = 0
+    unique_phases = sorted(set([x[1] for x in heap]))
+    phase_dict = dict(zip(unique_phases, range(len(unique_phases))))
+    heap = [(x[0], phase_dict[x[1]], x[2], x[3]) for x in heap]
+    (time_next, phase_next, tb_next, node_next) = heappop(heap)
+    phase = len(unique_phases)
+    pos += [phase_next / (phase - 1.0) if phase > 1 else float('NaN')] ############# normalize to [0,1]
+    # tb stands for 'tie-breaker'.
+    tb = 0
     if 'children' in node_next:
       for ch in node_next['children']:
-        heappush(heap, (ch['dt'], i, j, ch))
-        j += 1
+        heappush(heap, (ch['dt'], phase, tb, ch))
+        tb += 1
   return pos
+  #return sum(pos)/len(pos) if len(pos) > 0 else float('NaN')
 
 def dfs(tree):
   metrics = dict()
@@ -95,7 +99,8 @@ if __name__ == '__main__':
     'degree_max', 'degree_mean',
     'wiener_index',
     'timediff_min', 'timediff_max', 'timediff_mean',
-    'ambiguous_max', 'ambiguous_mean'])
+    'ambiguous_max', 'ambiguous_mean',
+    'traversal_metric'])
   for line in sys.stdin:
     i += 1
     try:
@@ -113,6 +118,7 @@ if __name__ == '__main__':
       print metrics['timediff_sum'] / (n-1) if n > 1 else float('NaN'), '\t',
       print metrics['ambiguous_max'], '\t',
       print metrics['ambiguous_sum'] / n, '\t',
+      print traversal_metric(tree), '\t',
       print ''
     except IOError as e:
       if e.errno == errno.EPIPE: break
