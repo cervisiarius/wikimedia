@@ -93,10 +93,14 @@ plot(sort(metric), rev(1:length(metric))/length(metric), log='xy',
 
 For a tree consisting of a single click, the Wiener index is 1. Since single-click trees are most likely, a Wiener index of 1 is necessarily most likely. So what if we fix the size $s$ of the tree to some larger value?
 
-The following boxplot shows the distribution of the Wiener index for different values of $s$ (on the $x$-axis). We observe that the Wiener index stays below 5 even as we increase the tree size to $s=30$. This is noteworthy because the theoretical maximum grows linearly and equals $s$ for each value of $s$. This means that the fraction of very long paths (approximately linear chains) decreases with the tree size.
+The following boxplot shows the distribution of the Wiener index for different values of $s$ (on the $x$-axis). We observe that the Wiener index stays below 5 even as we increase the tree size to $s=30$. This is noteworthy because the theoretical maximum grows linearly and equals roughly $s/3$. This means that the fraction of very long paths (approximately linear chains) decreases with the tree size.
 
 ```{r}
-small_trees <- data[data$size %in% 3:30,]
+range <- 3:30
+small_trees <- data[data$size %in% range,]
 boxplot(split(small_trees$wiener_index, small_trees$size),
         xlab='Tree size s', ylab='Wiener index')
+abline(1, 1/3, col='green', lty=2)
+lines(range-min(range)+1, 2*(1-1/range), col='green', lty=3)
+legend('topleft', legend=c('Theoretical max', 'Theoretical min'), col='green', lty=c(2,3))
 ```
