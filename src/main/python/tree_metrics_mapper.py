@@ -1,6 +1,7 @@
 #!/usr/bin/python
 
-import json, sys, errno, codecs, datetime, numpy
+import json, sys, errno, codecs, datetime
+import numpy as np
 from heapq import heappop, heappush
 from pprint import pprint
 
@@ -10,7 +11,13 @@ sys.stdin = codecs.getreader('utf8')(sys.stdin)
 
 DATE_FORMAT = '%Y-%m-%dT%H:%M:%S'
 
-def traversal_metric(root):
+# This function measures the "DFS-likeness" of a tree:
+# If a tree has a structure for which all valid traversals are identical, it returns NaN.
+# If a tree allows for several distinct traversals, the function returns a value between 0 and 1
+# capturing from where in the open-list (a.k.a. fringe) of nodes the navigator picked the next node
+# to be visited. A BFS will have a value of 0, a DFS, a value of 1. Intermediate values arise when
+# the navigator behaves sometimes in a BFS, and sometimes in a DFS, way.
+def dfsness(root):
   heap = [(root['dt'], 0, 0, root)]
   pos = []
   while len(heap) > 0:
@@ -20,15 +27,14 @@ def traversal_metric(root):
     #print [(x[1],x[3]['uri_path']) for x in heap]
     (time_next, phase_next, tb_next, node_next) = heappop(heap)
     phase = len(unique_phases)
-    pos += [phase_next / (phase - 1.0) if phase > 1 else float('NaN')]
+    pos += [phase_next / (phase - 1.0) if phase > 1 else np.nan]
     # tb stands for 'tie-breaker'.
     tb = 0
     if 'children' in node_next:
       for ch in node_next['children']:
         heappush(heap, (ch['dt'], phase, tb, ch))
         tb += 1
-  return numpy.nansum(pos) / (len(pos) - sum(numpy.isnan(pos)))
-  #return sum(pos)/len(pos) if len(pos) > 0 else float('NaN')
+  return np.nansum(pos) / (len(pos) - sum(np.isnan(pos)))
 
 def dfs(tree):
   metrics = dict()
@@ -42,8 +48,8 @@ def dfs(tree):
     metrics['degree_max'] = 0
     metrics['degree_sum'] = 0
     metrics['timediff_sum'] = 0
-    metrics['timediff_min'] = None
-    metrics['timediff_max'] = None
+    metrics['timediff_min'] = np.nan
+    metrics['timediff_max'] = np.nan
     metrics['ambiguous_max'] = 1 if 'parent_ambiguous' in tree.keys() else 0
     metrics['ambiguous_sum'] = 1 if 'parent_ambiguous' in tree.keys() else 0
   else:
@@ -58,8 +64,8 @@ def dfs(tree):
     metrics['degree_max'] = 0
     metrics['degree_sum'] = 0
     metrics['timediff_sum'] = 0
-    metrics['timediff_min'] = float('inf')
-    metrics['timediff_max'] = float('-inf')
+    metrics['timediff_min'] = np.inf
+    metrics['timediff_max'] = -np.inf
     metrics['ambiguous_max'] = 0
     metrics['ambiguous_sum'] = 0
     for ch in tree['children']:
@@ -101,7 +107,7 @@ if __name__ == '__main__':
     'wiener_index',
     'timediff_min', 'timediff_max', 'timediff_mean',
     'ambiguous_max', 'ambiguous_mean',
-    'traversal_metric'])
+    'dfsness'])
   for line in sys.stdin:
     i += 1
     #print '====={}====='.format(i)
@@ -112,15 +118,15 @@ if __name__ == '__main__':
       n_internal = float(metrics['size'] - metrics['num_leafs'])
       print metrics['size'], '\t',
       print metrics['depth_max'], '\t',
-      print metrics['degree_max'], '\t',
-      print metrics['degree_sum'] / n_internal if n_internal > 0 else float('NaN'), '\t',
-      print 2*n/(n-1) * (metrics['size_sum']/n - metrics['size_sq_sum']/(n*n)) if n > 1 else float('NaN'), '\t',
+      print metrics['degree_max'] if n_internal > 0 else np.nan, '\t',
+      print metrics['degree_sum'] / n_internal if n_internal > 0 else np.nan, '\t',
+      print 2*n/(n-1) * (metrics['size_sum']/n - metrics['size_sq_sum']/(n*n)) if n > 1 else np.nan, '\t',
       print metrics['timediff_min'], '\t',
       print metrics['timediff_max'], '\t',
-      print metrics['timediff_sum'] / (n-1) if n > 1 else float('NaN'), '\t',
+      print metrics['timediff_sum'] / (n-1) if n > 1 else np.nan, '\t',
       print metrics['ambiguous_max'], '\t',
       print metrics['ambiguous_sum'] / n, '\t',
-      print traversal_metric(tree), '\t',
+      print dfsness(tree), '\t',
       print ''
     except IOError as e:
       if e.errno == errno.EPIPE: break
