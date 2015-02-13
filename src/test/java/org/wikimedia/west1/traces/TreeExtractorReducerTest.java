@@ -158,6 +158,7 @@ public class TreeExtractorReducerTest {
 	public static void main(String[] args) throws Exception {
 		//System.out.println(GroupAndFilterMapper.NON_ARTICLE_PAGE_PATTERN.matcher("/wiki/Wikipédia:Página_principal").matches());
 		testComparison();
+		System.in.read();
 	}
 
 }
