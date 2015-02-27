@@ -1,10 +1,7 @@
 #!/usr/bin/python
 
-# Read input from data/missing_articles/interwiki_links.tsv.
-
 import re, codecs, sys, os, gzip
 
-#sys.stdin = codecs.getreader('utf8')(sys.stdin)
 sys.stdout = codecs.getwriter('utf8')(sys.stdout)
 sys.stderr = codecs.getwriter('utf8')(sys.stderr)
 
@@ -25,8 +22,8 @@ def find_representative_title(titles_for_concept):
       break
   return repr_title
 
+# Read input from data/missing_articles/interlanguage_links.tsv.
 f = gzip.open(DATA_DIR + 'missing_articles/interlanguage_links.tsv.gz', 'rb')
-#f = sys.stdin
 
 prev_concept = None
 langs_for_concept = set()
@@ -43,8 +40,7 @@ for line in codecs.getreader('utf8')(f):
         find_representative_title(titles_for_concept),
         '|'.join(sorted(langs_for_concept)),
         '|'.join(sorted(langs - langs_for_concept)),
-        '|'.join([titles_for_concept[l] for l in sorted(langs_for_concept)]),
-        '|'.join([titles_for_concept[l] for l in sorted(langs - langs_for_concept)])
+        '|'.join([titles_for_concept[l] for l in sorted(langs_for_concept)])
         ])
       langs_for_concept.clear()
       titles_for_concept.clear()
