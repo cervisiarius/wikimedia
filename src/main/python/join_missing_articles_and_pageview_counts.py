@@ -22,14 +22,11 @@ counts = defaultdict(int)
 f = gzip.open(DATA_DIR + 'pageview_counts/pageview_counts_enwiki.tsv.gz', 'rb')
 for line in codecs.getreader('utf8')(f):
   title, count = line.split('\t')
-  title = PARSER.unescape(title)
+  title = PARSER.unescape(title).replace('_', ' ')
   count = int(count)
-  # Pages that were viewed less than 15 times get a count of 0.
-  # TODO: Remove after testing.
-  if count < 100:
-    break
-  else:
-    counts[title.replace('_', ' ')] += count
+  # Pages that were viewed less than a minimum number of times get a count of 0.
+  #if count < 100: break
+  counts[title] += count
 f.close()
 
 # Iteratate over missing articles and add count info.
