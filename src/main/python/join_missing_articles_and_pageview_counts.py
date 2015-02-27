@@ -25,10 +25,10 @@ for line in codecs.getreader('utf8')(f):
   title = PARSER.unescape(title).replace('_', ' ')
   try:
     count = int(count)
+    # Pages that were viewed less than a minimum number of times get a count of 0.
+    if count < 5: break
   except ValueError:
     count = 0
-  # Pages that were viewed less than a minimum number of times get a count of 0.
-  if count < 5: break
   counts[title] += count
 f.close()
 
