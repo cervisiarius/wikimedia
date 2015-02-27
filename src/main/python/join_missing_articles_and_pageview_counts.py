@@ -23,10 +23,10 @@ for line in codecs.getreader('utf8')(f):
   count = int(count)
   # Pages that were viewed less than 15 times get a count of 0.
   # TODO: Remove after testing.
-  if count < 15:
+  if count < 100:
     break
   else:
-    counts[title] = count
+    counts[title.replace('_', ' ')] = count
 f.close()
 
 # Iteratate over missing articles and add count info.
@@ -34,6 +34,6 @@ f = gzip.open(DATA_DIR + 'missing_articles/missing_and_exisiting_for_top_50_lang
 for line in codecs.getreader('utf8')(f):
   tokens = line.split('\t')
   title = tokens[3].split(':')[1]
-  tokens = tokens[0:4] + [counts[title]] + tokens[4:]
+  tokens = tokens[0:4] + [str(counts[title])] + tokens[4:]
   print '\t'.join(tokens)
 f.close()
