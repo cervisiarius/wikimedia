@@ -41,8 +41,10 @@ for line in codecs.getreader('utf8')(f):
         str(len(langs_for_concept)),
         str(len(langs - langs_for_concept)),
         find_representative_title(titles_for_concept),
-        ','.join(sorted(langs_for_concept)),
-        ','.join(sorted(langs - langs_for_concept))
+        '|'.join(sorted(langs_for_concept)),
+        '|'.join(sorted(langs - langs_for_concept)),
+        '|'.join([titles_for_concept[l] for l in sorted(langs_for_concept)]),
+        '|'.join([titles_for_concept[l] for l in sorted(langs - langs_for_concept)])
         ])
       langs_for_concept.clear()
       titles_for_concept.clear()
