@@ -5,7 +5,7 @@
 # This is very rudimentary, e.g., no title normalization is done (URL-decoding and redirect
 # resolution)
 
-import codecs, gzip, HTMLParser
+import codecs, sys, gzip, HTMLParser
 from collections import defaultdict
 
 sys.stdout = codecs.getwriter('utf8')(sys.stdout)
