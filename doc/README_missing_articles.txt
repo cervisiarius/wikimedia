@@ -4,4 +4,5 @@ PHASE A: Identify missing articles in Wikidata.
 
 PHASE B: Rank missing articles.
 (1) count_enwiki_pageviews.sql
-NEXT: resolve en redirects in output of A2 and B1
+(2) join_missing_articles_and_pageview_counts.py
+    TODO: normalize article titles: URL-decode and resolve redirects

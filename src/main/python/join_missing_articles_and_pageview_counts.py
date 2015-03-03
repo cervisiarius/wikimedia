@@ -13,6 +13,7 @@ sys.stderr = codecs.getwriter('utf8')(sys.stderr)
 
 DATA_DIR = os.environ['HOME'] + '/wikimedia/trunk/data/'
 
+########################## URL-decode instead!
 PARSER = HTMLParser.HTMLParser()
 
 counts = defaultdict(int)
@@ -36,6 +37,7 @@ f.close()
 f = gzip.open(DATA_DIR + 'missing_articles/missing_and_exisiting_for_top_50_langs.tsv.gz', 'rb')
 for line in codecs.getreader('utf8')(f):
   tokens = line.split('\t')
+  ########### IndexError
   title = tokens[3].split(':')[1]
   tokens = tokens[0:4] + [str(counts[title])] + tokens[4:]
   print '\t'.join(tokens)
