@@ -41,8 +41,8 @@ for line in codecs.getreader('utf8')(f):
   try:
     title = tokens[3].split(':')[1]
   except IndexError:
-    print line.replace('\t', '<TAB>')
-    raise IndexError(line.replace('\t', '<TAB>'))
+    # This happens if the concept has no article in any of the 50 languages considered.
+    title = ''
   tokens = tokens[0:4] + [str(counts[title])] + tokens[4:]
   print '\t'.join(tokens)
 f.close()
