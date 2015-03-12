@@ -21,8 +21,8 @@ f = gzip.open(DATA_DIR + 'pageview_counts/pageview_counts_enwiki.tsv.gz', 'rb')
 for line in codecs.getreader('utf8')(f):
   title, count = line.split('\t')
   _title = title
-  title = urllib.unquote(title).decode('utf8').replace('_', ' ')
-  if title != _title: print '-------- %s -> %s'.format(title, _title)
+  title = urllib.unquote(title).replace('_', ' ')
+  if title != _title: print '-------- {} -> {}'.format(title, _title)
   try:
     count = int(count)
     # Pages that were viewed less than a minimum number of times get a count of 0.
