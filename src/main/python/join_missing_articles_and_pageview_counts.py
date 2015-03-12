@@ -25,7 +25,7 @@ for line in codecs.getreader('utf8')(f):
     title = urllib.unquote(title)
   except UnicodeEncodeError:
     pass
-  if title != _title: print '-------- {} -> {}'.format(title, _title)
+  if title != _title: print u'-------- {} -> {}'.format(title, _title)
   title = title.replace('_', ' ')
   try:
     count = int(count)
