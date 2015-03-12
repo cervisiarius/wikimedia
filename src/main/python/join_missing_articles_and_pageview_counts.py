@@ -20,12 +20,10 @@ counts = defaultdict(int)
 f = gzip.open(DATA_DIR + 'pageview_counts/pageview_counts_enwiki.tsv.gz', 'rb')
 for line in codecs.getreader('utf8')(f):
   title, count = line.split('\t')
-  _title = title
   try:
     title = urllib.unquote(title)
   except UnicodeEncodeError:
     pass
-  if title != _title: print u'-------- {} -> {}'.format(title, _title)
   title = title.replace('_', ' ')
   try:
     count = int(count)
@@ -40,8 +38,11 @@ f.close()
 f = gzip.open(DATA_DIR + 'missing_articles/missing_and_exisiting_for_top_50_langs.tsv.gz', 'rb')
 for line in codecs.getreader('utf8')(f):
   tokens = line.split('\t')
-  ########### IndexError
-  title = tokens[3].split(':')[1]
+  try:
+    title = tokens[3].split(':')[1]
+  except IndexError:
+    print line.replace('\t', '<TAB>')
+    raise IndexError(line.replace('\t', '<TAB>'))
   tokens = tokens[0:4] + [str(counts[title])] + tokens[4:]
   print '\t'.join(tokens)
 f.close()
