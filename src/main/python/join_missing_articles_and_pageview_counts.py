@@ -5,7 +5,7 @@
 # This is very rudimentary, e.g., no title normalization is done (URL-decoding and redirect
 # resolution)
 
-import codecs, sys, os, gzip, HTMLParser
+import codecs, sys, os, gzip, urllib
 from collections import defaultdict
 
 sys.stdout = codecs.getwriter('utf8')(sys.stdout)
@@ -13,17 +13,16 @@ sys.stderr = codecs.getwriter('utf8')(sys.stderr)
 
 DATA_DIR = os.environ['HOME'] + '/wikimedia/trunk/data/'
 
-########################## URL-decode instead!
-PARSER = HTMLParser.HTMLParser()
-
 counts = defaultdict(int)
 
 # Load the pageview counts.
-# NB: No title normalization is done here!!!
+# NB: No redirect resolution is done here!!!
 f = gzip.open(DATA_DIR + 'pageview_counts/pageview_counts_enwiki.tsv.gz', 'rb')
 for line in codecs.getreader('utf8')(f):
   title, count = line.split('\t')
-  title = PARSER.unescape(title).replace('_', ' ')
+  _title = title
+  title = urllib.unquote(title).decode('utf8').replace('_', ' ')
+  if title != _title: print '-------- %s -> %s'.format(title, _title)
   try:
     count = int(count)
     # Pages that were viewed less than a minimum number of times get a count of 0.
