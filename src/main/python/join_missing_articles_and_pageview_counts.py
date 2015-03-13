@@ -37,9 +37,9 @@ f.close()
 # Iteratate over missing articles and add count info.
 f = gzip.open(DATA_DIR + 'missing_articles/missing_and_exisiting_for_top_50_langs.tsv.gz', 'rb')
 for line in codecs.getreader('utf8')(f):
-  tokens = line.split('\t', 1)
+  tokens = line.split('\t')
   try:
-    lang, title = tokens[3].split(':')
+    lang, title = tokens[3].split(':', 1)
     if lang == 'en':
       count = counts[title]
     else:
