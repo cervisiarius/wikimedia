@@ -39,10 +39,14 @@ f = gzip.open(DATA_DIR + 'missing_articles/missing_and_exisiting_for_top_50_lang
 for line in codecs.getreader('utf8')(f):
   tokens = line.split('\t')
   try:
-    title = tokens[3].split(':')[1]
+    lang, title = tokens[3].split(':')
+    if lang == 'en':
+      count = counts[title]
+    else:
+      count = 0
   except IndexError:
     # This happens if the concept has no article in any of the 50 languages considered.
-    title = ''
-  tokens = tokens[0:4] + [str(counts[title])] + tokens[4:]
+    count = 0
+  tokens = tokens[0:4] + [str(count)] + tokens[4:]
   print '\t'.join(tokens)
 f.close()
