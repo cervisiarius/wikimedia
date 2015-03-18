@@ -1,15 +1,21 @@
 set output.compression.enabled false;
 
---DEFINE UrlDecode InvokeForString('java.net.URLDecoder.decode', 'String String'); 
 REGISTER /home/west1/wikimedia/trunk/src/main/pig/udf/pigudf.jar;
 
+-- Running this script took 35 min.
+
+---------------------------------------------------------------------------------------------------
+-- Page counts
+---------------------------------------------------------------------------------------------------
+
 -- Load the pagecount data.
-Counts = LOAD '/wmf/data/archive/pagecounts-all-sites/*/*/*.gz' USING PigStorage(' ', '-tagFile')
+Counts = LOAD '/user/west1/test.gz' USING PigStorage(' ', '-tagFile')
 	AS (filename:chararray, domain:chararray, page_title:chararray,	count_views:long, total_response_size:chararray);
+--Counts = LOAD '/wmf/data/archive/pagecounts-all-sites/*/*/*.gz' USING PigStorage(' ', '-tagFile')
+--	AS (filename:chararray, domain:chararray, page_title:chararray,	count_views:long, total_response_size:chararray);
 
---Counts = LIMIT Counts 100;
-
--- Keep only entries corresponding to a Wikipedia domain in any language.
+-- Keep only entries corresponding to a Wikipedia domain in any language; since all domains except
+-- Wikipedia contain a dot in the name (e.g. "en.d"), we simply look for domains without a dot.
 Counts = FILTER Counts BY (INDEXOF(domain, '.', 0) < 0) AND page_title IS NOT NULL;
 
 -- Remove the unnecessary columns, lower-case the language code, and URL-decode all article names.
@@ -25,6 +31,11 @@ Counts = FOREACH Counts GENERATE
 	page_title,
 	count_views;
 
+
+---------------------------------------------------------------------------------------------------
+-- Redirects
+---------------------------------------------------------------------------------------------------
+
 -- Load the redirects.
 Redir = LOAD '/user/west1/redirects/aggregated/redirects_for_all_languages.tsv' USING PigStorage('\t')
 	AS (lang:chararray, src:chararray, tgt:chararray);
@@ -35,6 +46,27 @@ Redir = FOREACH Redir GENERATE
 	lang,
 	src,
 	tgt;
+
+
+---------------------------------------------------------------------------------------------------
+-- Wikidata
+---------------------------------------------------------------------------------------------------
+
+-- Read the Wikidata file that maps Wikidata entries to Wikipedia articles.
+Wikidata = LOAD '/user/west1/interlanguage_links.tsv'
+	AS (mid:chararray, lang:chararray, page_title:chararray);
+
+-- Add the key for joining with pagecounts.
+Wikidata = FOREACH  Wikidata GENERATE
+	CONCAT(CONCAT(lang, ' '), page_title) AS key,
+	mid,
+	lang,
+	page_title;
+
+
+---------------------------------------------------------------------------------------------------
+-- Join the three tables
+---------------------------------------------------------------------------------------------------
 
 -- Join pagecounts and redirects.
 CRJoined = JOIN Counts BY key LEFT OUTER, Redir BY key;
@@ -54,24 +86,13 @@ CRAggr = FOREACH  CRAggr GENERATE
 	MIN(CRJoined.page_title) AS page_title,
 	SUM(CRJoined.count_views) AS count_views;
 
--- Read the Wikidata file that maps Wikidata entries to Wikipedia articles.
-Wikidata = LOAD '/user/west1/interlanguage_links.tsv'
-	AS (mid:chararray, lang:chararray, page_title:chararray);
-
--- Add the key for joining with pagecounts.
-Wikidata = FOREACH  Wikidata GENERATE
-	CONCAT(CONCAT(lang, ' '), page_title) AS key,
-	mid,
-	lang,
-	page_title;
-
 -- Join WikiData and CRAggr.
-Joined = JOIN CRAggr BY key LEFT OUTER, Wikidata BY key;
+CRWJoined = JOIN CRAggr BY key LEFT OUTER, Wikidata BY key;
 
-Joined = FOREACH Joined GENERATE
+CRWJoined = FOREACH Joined GENERATE
 	Wikidata::mid AS mid,
 	CRAggr::lang AS lang,
 	CRAggr::page_title AS page_title,
 	CRAggr::count_views AS count_views;
 
-STORE Joined INTO '/user/west1/pagecounts';
+STORE CRWJoined INTO '/user/west1/pagecounts_test';
