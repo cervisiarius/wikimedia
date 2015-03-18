@@ -9,10 +9,10 @@ REGISTER /home/west1/wikimedia/trunk/src/main/pig/udf/pigudf.jar;
 ---------------------------------------------------------------------------------------------------
 
 -- Load the pagecount data.
-Counts = LOAD '/user/west1/test.gz' USING PigStorage(' ', '-tagFile')
-	AS (filename:chararray, domain:chararray, page_title:chararray,	count_views:long, total_response_size:chararray);
---Counts = LOAD '/wmf/data/archive/pagecounts-all-sites/*/*/*.gz' USING PigStorage(' ', '-tagFile')
---	AS (filename:chararray, domain:chararray, page_title:chararray,	count_views:long, total_response_size:chararray);
+-- NB: the '-tagfile' flag seems to be buggy and throw the indices off: Both the filename and the
+-- domain field contain the file name in that case.
+Counts = LOAD '/wmf/data/archive/pagecounts-all-sites/*/*/*.gz' USING PigStorage(' ')
+	AS (domain:chararray, page_title:chararray,	count_views:long, total_response_size:chararray);
 
 -- Keep only entries corresponding to a Wikipedia domain in any language; since all domains except
 -- Wikipedia contain a dot in the name (e.g. "en.d"), we simply look for domains without a dot.
@@ -95,4 +95,4 @@ CRWJoined = FOREACH CRWJoined GENERATE
 	CRAggr::page_title AS page_title,
 	CRAggr::count_views AS count_views;
 
-STORE CRWJoined INTO '/user/west1/pagecounts_test';
+STORE CRWJoined INTO '/user/west1/pagecounts';
