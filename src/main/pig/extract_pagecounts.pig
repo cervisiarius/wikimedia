@@ -1,3 +1,5 @@
+set output.compression.enabled false;
+
 DEFINE UrlDecode InvokeForString('java.net.URLDecoder.decode', 'String String'); 
 
 -- Load the pagecount data.
