@@ -5,7 +5,10 @@ my $DATADIR = $ENV{'HOME'} . '/wikimedia/trunk/data/';
 my @langs = split(/\n/, `cut -f1 $DATADIR/list_of_wikipedias.tsv`);
 
 foreach my $lang (@langs) {
-  print STDERR "Importing $lang\n";
+  print STDERR "
+    =========================================
+    === Importing $lang
+    =========================================\n";
   my $sqoop_cmd =
     "sqoop import                                                     \\
     -Dmapreduce.output.fileoutputformat.compress=false                \\
@@ -37,5 +40,5 @@ foreach my $lang (@langs) {
     WHERE \$CONDITIONS
     LIMIT 1000
     '";
-  `$sqoop_cmd`;
+  print STDERR `$sqoop_cmd`;
 }
