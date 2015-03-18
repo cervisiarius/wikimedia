@@ -15,7 +15,7 @@ Counts = FILTER Counts BY (INDEXOF(domain, '.', 0) < 0) AND page_title IS NOT NU
 -- Remove the unnecessary columns, lower-case the language code, and URL-decode all article names.
 Counts = FOREACH Counts GENERATE
 	LOWER(domain) AS lang,
-	org.wikimedia.west1.pigudf.DECODE(page_title) AS page_title,
+	org.wikimedia.west1.pigudf.URLDECODE(page_title) AS page_title,
 	count_views;
 
 -- Add the key for joining with redirects.
