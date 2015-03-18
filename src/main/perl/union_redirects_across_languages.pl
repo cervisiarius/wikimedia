@@ -1,5 +1,8 @@
 #!/usr/bin/perl
 
+# Takes the redirect tables for the separate languages and unions them.
+# Each entry also gets the language code it belongs to.
+
 $DATADIR = $ENV{'HOME'} . '/wikimedia/trunk/data/redirects/';
 
 my @files = split(/\s/, `ls $DATADIR`);
