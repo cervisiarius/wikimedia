@@ -89,7 +89,7 @@ CRAggr = FOREACH  CRAggr GENERATE
 -- Join WikiData and CRAggr.
 CRWJoined = JOIN CRAggr BY key LEFT OUTER, Wikidata BY key;
 
-CRWJoined = FOREACH Joined GENERATE
+CRWJoined = FOREACH CRWJoined GENERATE
 	Wikidata::mid AS mid,
 	CRAggr::lang AS lang,
 	CRAggr::page_title AS page_title,
