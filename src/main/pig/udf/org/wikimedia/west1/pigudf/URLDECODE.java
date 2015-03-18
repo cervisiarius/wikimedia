@@ -2,6 +2,7 @@ package org.wikimedia.west1.pigudf;
 
 import java.io.IOException;
 import java.net.URLDecoder;
+import org.apache.hadoop.io.WritableComparable;
 import org.apache.pig.EvalFunc;
 import org.apache.pig.data.Tuple;
 import org.apache.pig.impl.util.WrappedIOException;
@@ -14,7 +15,7 @@ public class URLDECODE extends EvalFunc<String> {
     try {
       String str = (String) input.get(0);
       try {
-        return decode(str, "UTF-8");
+        return URLDecoder.decode(str, "UTF-8");
       } catch (Exception e) {
         return str;
       }
