@@ -4,7 +4,7 @@ DEFINE UrlDecode InvokeForString('java.net.URLDecoder.decode', 'String String');
 Counts = LOAD '/wmf/data/archive/pagecounts-all-sites/*/*/*.gz' USING PigStorage(' ') AS (domain:chararray, page_title:chararray,
 	count_views:long, total_response_size:chararray);
 
-Counts = LIMIT Counts 100;
+--Counts = LIMIT Counts 100;
 
 -- Keep only entries corresponding to a Wikipedia domain in any language.
 Counts = FILTER Counts BY (INDEXOF(domain, '.', 0) < 0);
