@@ -1,8 +1,6 @@
-set output.compression.enabled false;
+SET output.compression.enabled false;
 
 REGISTER /home/west1/wikimedia/trunk/src/main/pig/udf/pigudf.jar;
-
--- Running this script took 35 min.
 
 ---------------------------------------------------------------------------------------------------
 -- Page counts
