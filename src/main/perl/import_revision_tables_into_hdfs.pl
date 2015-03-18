@@ -45,7 +45,7 @@ foreach my $lang (@langs) {
     FROM revision AS a
     WHERE \$CONDITIONS
     '";
-  print ERR `$sqoop_cmd`;
+  print ERR `$sqoop_cmd 2>&1`;
 }
 
 close(ERR);
