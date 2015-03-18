@@ -6,7 +6,7 @@ my $DATADIR = $ENV{'HOME'} . '/wikimedia/trunk/data/';
 
 my @langs = split(/\n/, `cut -f1 $DATADIR/list_of_wikipedias.tsv`);
 
-open(ERR, 'sqoop.log') or die $!;
+open(ERR, '> sqoop.log') or die $!;
 
 foreach my $lang (@langs) {
   print STDERR "Importing $lang\n";
