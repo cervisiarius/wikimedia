@@ -1,11 +1,16 @@
 #!/usr/bin/perl
 
+# cf. http://www.mediawiki.org/wiki/Manual:Revision_table
+
 my $DATADIR = $ENV{'HOME'} . '/wikimedia/trunk/data/';
 
 my @langs = split(/\n/, `cut -f1 $DATADIR/list_of_wikipedias.tsv`);
 
+open(ERR, 'sqoop.log') or die $!;
+
 foreach my $lang (@langs) {
-  print STDERR "
+  print STDERR "Importing $lang\n";
+  print ERR "
     =========================================
     === Importing $lang
     =========================================\n";
@@ -28,17 +33,19 @@ foreach my $lang (@langs) {
       a.rev_id,
       a.rev_page,
       a.rev_text_id,
-      CAST(a.rev_comment AS CHAR(255) CHARSET utf8) AS rev_comment,
+      ----
       a.rev_user,
       CAST(a.rev_user_text AS CHAR(255) CHARSET utf8) AS rev_user_text,
       CAST(a.rev_timestamp AS CHAR(255) CHARSET utf8) AS rev_timestamp,
       a.rev_minor_edit,
       a.rev_deleted,
       a.rev_len,
-      a.rev_parent_id
+      a.rev_parent_id,
+      CAST(a.rev_comment AS CHAR(255) CHARSET utf8) AS rev_comment
     FROM revision AS a
     WHERE \$CONDITIONS
-    LIMIT 1000
     '";
-  print STDERR `$sqoop_cmd`;
+  print ERR `$sqoop_cmd`;
 }
+
+close(ERR);
