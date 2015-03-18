@@ -3,8 +3,8 @@ set output.compression.enabled false;
 DEFINE UrlDecode InvokeForString('java.net.URLDecoder.decode', 'String String'); 
 
 -- Load the pagecount data.
-Counts = LOAD '/wmf/data/archive/pagecounts-all-sites/*/*/*.gz' USING PigStorage(' ')
-	AS (domain:chararray, page_title:chararray,	count_views:long, total_response_size:chararray);
+Counts = LOAD '/wmf/data/archive/pagecounts-all-sites/*/*/*.gz' USING PigStorage(' ', '-tagFile')
+	AS (filename:chararray, domain:chararray, page_title:chararray,	count_views:long, total_response_size:chararray);
 
 --Counts = LIMIT Counts 100;
 
