@@ -30,6 +30,6 @@
     FROM revision AS a
     WHERE \$CONDITIONS
     '";
-  print ERR `$sqoop_cmd 2>&1`;
+  `$sqoop_cmd`;
 
 close(ERR);
