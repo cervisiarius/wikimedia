@@ -74,7 +74,7 @@ CRJoined = JOIN Counts BY key LEFT OUTER, Redir BY key;
 
 -- Remove unnecessary columns. Also regenerate the keys to reflect redirects.
 CRJoined = FOREACH CRJoined GENERATE
-	CONCAT(CONCAT(lang, ' '), (Redir::tgt IS NOT NULL ? Redir::tgt : Counts::page_title)) AS key,
+	CONCAT(CONCAT(Counts::lang, ' '), (Redir::tgt IS NOT NULL ? Redir::tgt : Counts::page_title)) AS key,
 	Counts::lang AS lang,
 	(Redir::tgt IS NOT NULL ? Redir::tgt : Counts::page_title) AS page_title,
 	Counts::count_views AS count_views;
