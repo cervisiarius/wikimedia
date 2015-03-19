@@ -1,12 +1,12 @@
 #!/usr/bin/perl
 
-# cf. http://www.mediawiki.org/wiki/Manual:Revision_table
+# cf. http://www.mediawiki.org/wiki/Manual:Page_table
 
 my $DATADIR = $ENV{'HOME'} . '/wikimedia/trunk/data/';
 
 my @langs = split(/\n/, `cut -f1 $DATADIR/list_of_wikipedias.tsv`);
 
-open(ERR, '> sqoop.log') or die $!;
+open(ERR, '> sqoop_page.log') or die $!;
 
 foreach my $lang (@langs) {
   print STDERR "Importing $lang\n";
@@ -19,7 +19,7 @@ foreach my $lang (@langs) {
     -Dmapreduce.output.fileoutputformat.compress=false                \\
     --connect jdbc:mysql://analytics-store.eqiad.wmnet/$lang\wiki     \\
     --verbose                                                         \\
-    --target-dir /user/west1/revision_history/$lang                   \\
+    --target-dir /user/west1/pages/$lang                              \\
     --delete-target-dir                                               \\
     --as-textfile                                                     \\
     --null-string ''                                                  \\
@@ -27,21 +27,14 @@ foreach my $lang (@langs) {
     --fields-terminated-by '\\t'                                      \\
     --escaped-by \\\\                                                 \\
     --username=research --password HGY3DhGoYhxF                       \\
-    --split-by a.rev_id                                               \\
+    --split-by page_id                                                \\
+    --where 'page_namespace = 0'                                      \\
     --query '
     SELECT
-      a.rev_id,
-      a.rev_page,
-      a.rev_text_id,
-      a.rev_user,
-      CAST(a.rev_user_text AS CHAR(255) CHARSET utf8) AS rev_user_text,
-      CAST(a.rev_timestamp AS CHAR(255) CHARSET utf8) AS rev_timestamp,
-      a.rev_minor_edit,
-      a.rev_deleted,
-      a.rev_len,
-      a.rev_parent_id,
-      CAST(a.rev_comment AS CHAR(255) CHARSET utf8) AS rev_comment
-    FROM revision AS a
+      page_id,
+      CAST(page_title AS CHAR(255) CHARSET utf8) AS page_title,
+      page_is_redirect
+    FROM page
     WHERE \$CONDITIONS
     '";
   print ERR `$sqoop_cmd 2>&1`;
