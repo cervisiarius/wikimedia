@@ -96,4 +96,4 @@ CRWJoined = FOREACH CRWJoined GENERATE
 	CRAggr::page_title AS page_title,
 	CRAggr::count_views AS count_views;
 
-STORE CRWJoined INTO '/user/west1/pagecounts';
+STORE CRWJoined INTO '/user/west1/pagecounts/raw';
