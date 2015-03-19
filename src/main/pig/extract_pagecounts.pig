@@ -1,6 +1,8 @@
-SET output.compression.enabled false;
+SET mapreduce.output.fileoutputformat.compress false;
 
 REGISTER /home/west1/wikimedia/trunk/src/main/pig/udf/pigudf.jar;
+
+-- This script took 5 hours to run.
 
 ---------------------------------------------------------------------------------------------------
 -- Page counts
@@ -17,9 +19,10 @@ Counts = LOAD '/wmf/data/archive/pagecounts-all-sites/*/*/*.gz' USING PigStorage
 Counts = FILTER Counts BY (INDEXOF(domain, '.', 0) < 0) AND page_title IS NOT NULL;
 
 -- Remove the unnecessary columns, lower-case the language code, and URL-decode all article names.
+-- Also replace spaces with underscores.
 Counts = FOREACH Counts GENERATE
 	LOWER(domain) AS lang,
-	org.wikimedia.west1.pigudf.URLDECODE(page_title) AS page_title,
+	REPLACE(org.wikimedia.west1.pigudf.URLDECODE(page_title), ' ', '_') AS page_title,
 	count_views;
 
 -- Add the key for joining with redirects.
@@ -51,15 +54,15 @@ Redir = FOREACH Redir GENERATE
 ---------------------------------------------------------------------------------------------------
 
 -- Read the Wikidata file that maps Wikidata entries to Wikipedia articles.
-Wikidata = LOAD '/user/west1/interlanguage_links.tsv'
+Wikidata = LOAD '/user/west1/interlanguage_links.tsv' USING PigStorage('\t')
 	AS (mid:chararray, lang:chararray, page_title:chararray);
 
--- Add the key for joining with pagecounts.
+-- Add the key for joining with pagecounts and replace spaces with underscores in titles.
 Wikidata = FOREACH  Wikidata GENERATE
-	CONCAT(CONCAT(lang, ' '), page_title) AS key,
+	CONCAT(CONCAT(lang, ' '), REPLACE(page_title, ' ', '_')) AS key,
 	mid,
 	lang,
-	page_title;
+	REPLACE(page_title, ' ', '_') AS page_title;
 
 
 ---------------------------------------------------------------------------------------------------
@@ -69,16 +72,16 @@ Wikidata = FOREACH  Wikidata GENERATE
 -- Join pagecounts and redirects.
 CRJoined = JOIN Counts BY key LEFT OUTER, Redir BY key;
 
--- Remove unnecessary columns.
+-- Remove unnecessary columns. Also regenerate the keys to reflect redirects.
 CRJoined = FOREACH CRJoined GENERATE
-	Counts::key AS key,
+	CONCAT(CONCAT(lang, ' '), (Redir::tgt IS NOT NULL ? Redir::tgt : Counts::page_title)) AS key,
 	Counts::lang AS lang,
 	(Redir::tgt IS NOT NULL ? Redir::tgt : Counts::page_title) AS page_title,
 	Counts::count_views AS count_views;
 
 -- Sum counts for the same article across all days.
 CRAggr = GROUP CRJoined BY key;
-CRAggr = FOREACH  CRAggr GENERATE
+CRAggr = FOREACH CRAggr GENERATE
 	group AS key,
 	MIN(CRJoined.lang) AS lang,
 	MIN(CRJoined.page_title) AS page_title,
