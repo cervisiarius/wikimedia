@@ -9,7 +9,7 @@ my @langs = split(/\n/, `cut -f1 $DATADIR/list_of_wikipedias.tsv`);
 open(ERR, '> sqoop_page.log') or die $!;
 
 foreach my $lang (@langs) {
-  print STDERR "Importing $lang\n";
+  print STDERR "Importing pages for $lang\n";
   print ERR "
     =========================================
     === Importing $lang
@@ -28,18 +28,15 @@ foreach my $lang (@langs) {
     --escaped-by \\\\                                                 \\
     --username=research --password HGY3DhGoYhxF                       \\
     --split-by page_id                                                \\
-    --where 'page_namespace = 0'                                      \\
     --query '
     SELECT
       page_id,
       CAST(page_title AS CHAR(255) CHARSET utf8) AS page_title,
       page_is_redirect
     FROM page
-    WHERE \$CONDITIONS
+    WHERE page_namespace = 0 AND \$CONDITIONS
     '";
   print ERR `$sqoop_cmd 2>&1`;
-
-  last;
 }
 
 close(ERR);
