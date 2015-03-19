@@ -38,6 +38,8 @@ foreach my $lang (@langs) {
     WHERE \$CONDITIONS
     '";
   print ERR `$sqoop_cmd 2>&1`;
+
+  last;
 }
 
 close(ERR);
