@@ -107,11 +107,13 @@ RPWPJoined = FOREACH RPWPJoined GENERATE
 -- Aggregate by user/mid.
 -- TODO: Compute number of days on which editors was active on the article, and the number of days
 -- between the first and last edits.
+-- TODO: Remove bots!
 Grouped = GROUP RPWPJoined BY (user_id, mid);
 Grouped = FOREACH Grouped GENERATE
     MIN(RPWPJoined.user_id) AS user_id,
     MIN(RPWPJoined.user) AS user,
     MIN(RPWPJoined.mid) AS mid,
+    MIN(RPWPJoined.page_title) AS page_title,
 	COUNT(RPWPJoined) AS num_edits,
 	SUM(RPWPJoined.bytes_added) AS bytes_added;
 
