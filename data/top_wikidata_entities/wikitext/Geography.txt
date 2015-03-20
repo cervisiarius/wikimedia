@@ -1,0 +1,1179 @@
+<noinclude>'''Return to [[List of articles every Wikipedia should have/Expanded]]'''</noinclude>
+== Geography, 1000 ==
+::''Transcluded from [[List of articles every Wikipedia should have/Expanded/Geography]]''.
+<small>See also Physical sciences/Earth science.</small>
+=== Basics, 48 ===
+{{Div col|cols=4}}
+# '''[[d:Q1071|Geography]]'''
+# [[d:Q5119|Capital city]]
+# '''[[d:Q515|City]]'''
+# [[d:Q6256|Country]]
+# [[d:Q6502154|Exploration]]
+# [[d:Q161243|Dependent territory]]
+# [[d:Q133346|Border]]
+# [[d:Q175185|Rural area]]
+# [[d:Q188509|Suburb]]
+# [[d:Q532|Village]]
+
+;Cartography, 13
+# [[d:Q162827|Atlas]]
+# [[d:Q6653802|Contour line]]
+# [[d:Q1502887|Geodetic datum]]
+# [[d:Q22664|Geographic coordinate system]]
+## [[d:Q34027|Latitude]]
+## [[d:Q36477|Longitude]]
+# [[d:Q185969|Geoid]]
+# [[d:Q133792|Globe]]
+# [[d:Q146657|Great circle]]
+# [[d:Q186386|Map projection]]
+## [[d:Q309372|Mercator projection]]
+# [[d:Q1335878|Reference ellipsoid]]
+# [[d:Q193642|Scale (map)]]
+
+;Direction, 5
+# [[d:Q23718|Cardinal direction]]
+# [[d:Q659|North]]
+# [[d:Q684|East]]
+# [[d:Q667|South]]
+# [[d:Q679|West]]
+
+;Earth, 10
+# [[d:Q182657|Antarctic Circle]]
+# [[d:Q176609|Arctic Circle]]
+# [[d:Q146591|Circle of latitude]]
+# [[d:Q23538|Equator]]
+# [[d:Q32099|Meridian (geography)]]
+# '''[[d:Q934|North Pole]]'''
+# [[d:Q3401774|Prime meridian]]
+# '''[[d:Q933|South Pole]]'''
+# [[d:Q176635|Tropic of Cancer]]
+# [[d:Q177440|Tropic of Capricorn]]
+
+;Continent, 10
+# '''[[d:Q5107|Continent]]'''
+# '''[[d:Q15|Africa]]'''
+# [[d:Q828|America]]
+# '''[[d:Q51|Antarctica]]'''
+# '''[[d:Q48|Asia]]'''
+# [[d:Q3960|Australia]]
+# [[d:Q5401|Eurasia]]
+# '''[[d:Q46|Europe]]'''
+# '''[[d:Q49|North America]]'''
+# '''[[d:Q18|South America]]'''
+{{Div col end}}
+
+=== Physical geography, 385 ===
+
+==== Bodies of water, 207 ====
+
+===== Oceans and seas, 67 =====
+{{Div col|cols=4}}
+# '''[[d:Q788|Arctic Ocean]]'''
+## [[d:Q37040|Baffin Bay]]
+## [[d:Q45823|Barents Sea]]
+## [[d:Q131274|Beaufort Sea]]
+## [[d:Q159252|Chukchi Sea]]
+## [[d:Q163434|East Siberian Sea]]
+## [[d:Q132868|Greenland Sea]]
+## [[d:Q3040|Hudson Bay]]
+## [[d:Q33629|Kara Sea]]
+## [[d:Q7988|Laptev Sea]]
+## [[d:Q44133|White Sea]]
+# '''[[d:Q97|Atlantic Ocean]]'''
+## '''[[d:Q545|Baltic Sea]]'''
+### [[d:Q122574|Gulf of Bothnia]]
+## [[d:Q41573|Bay of Biscay]]
+## [[d:Q41430|Gulf of Guinea]]
+## [[d:Q41735|Irish Sea]]
+## [[d:Q184189|Labrador Sea]]
+## [[d:Q1693|North Sea]]
+## [[d:Q47545|Norwegian Sea]]
+## [[d:Q169274|Sargasso Sea]]
+# '''[[d:Q166|Black Sea]]'''
+## [[d:Q35000|Sea of Azov]]
+# '''[[d:Q1247|Caribbean Sea]]'''
+## [[d:Q12630|Gulf of Mexico]]
+## [[d:Q169523|Gulf of Saint Lawrence]]
+# '''[[d:Q4918|Mediterranean Sea]]'''
+## [[d:Q13924|Adriatic Sea]]
+## [[d:Q34575|Aegean Sea]]
+## [[d:Q37495|Ionian Sea]]
+## [[d:Q42820|Ligurian Sea]]
+## [[d:Q35367|Sea of Marmara]]
+## [[d:Q38882|Tyrrhenian Sea]]
+# '''[[d:Q1239|Indian Ocean]]'''
+## [[d:Q47632|Andaman Sea]]
+## [[d:Q58705|Arabian Sea]]
+## [[d:Q38684|Bay of Bengal]]
+## [[d:Q34675|Persian Gulf]]
+## [[d:Q23406|Red Sea]]
+## [[d:Q131418|Timor Sea]]
+# '''[[d:Q98|Pacific Ocean]]'''
+## [[d:Q128880|Arafura Sea]]
+## [[d:Q44725|Bering Sea]]
+## [[d:Q19270|Celebes Sea]]
+## [[d:Q82931|Coral Sea]]
+## [[d:Q45341|East China Sea]]
+## [[d:Q150370|Flores Sea]]
+## [[d:Q180531|Gulf of Alaska]]
+## [[d:Q132811|Gulf of California]]
+## [[d:Q180844|Gulf of Carpentaria]]
+## [[d:Q131217|Gulf of Thailand]]
+## [[d:Q49364|Java Sea]]
+## [[d:Q185291|Molucca Sea]]
+## [[d:Q159183|Philippine Sea]]
+## [[d:Q27092|Sea of Japan]]
+## [[d:Q41602|Sea of Okhotsk]]
+## [[d:Q199479|Solomon Sea]]
+## [[d:Q37660|South China Sea]]
+## [[d:Q160194|Sulu Sea]]
+## [[d:Q33254|Tasman Sea]]
+## [[d:Q37960|Yellow Sea]]
+# '''[[d:Q7354|Southern Ocean]]'''
+## [[d:Q72154|Amundsen Sea]]
+## [[d:Q186733|Great Australian Bight]]
+## [[d:Q164466|Ross Sea]]
+## [[d:Q204703|Scotia Sea]]
+## [[d:Q173343|Weddell Sea]]
+{{Div col end}}
+
+===== Straits, 29 =====
+{{Div col|cols=4}}
+# [[d:Q83318|Bab-el-Mandeb]]
+# [[d:Q171846|Bass Strait]]
+# [[d:Q11769|Bering Strait]]
+# [[d:Q35958|Bosphorus]]
+# [[d:Q5023|Cook Strait]]
+# [[d:Q189262|Davis Strait]]
+# [[d:Q152058|Denmark Strait]]
+# [[d:Q6514|Dardanelles]]
+# [[d:Q159898|Strait of Dover]]
+# [[d:Q143650|Drake Passage]]
+# [[d:Q34640|English Channel]]
+# [[d:Q232912|Straits of Florida]]
+# [[d:Q36124|Strait of Gibraltar]]
+# [[d:Q79883|Strait of Hormuz]]
+# [[d:Q207702|Hudson Strait]]
+# [[d:Q131716|Kattegat]]
+# [[d:Q52052|Korea Strait]]
+# [[d:Q48365|Strait of Magellan]]
+# [[d:Q48359|Strait of Malacca]]
+# [[d:Q165100|Mozambique Channel]]
+# [[d:Q164070|Strait of Otranto]]
+# [[d:Q186299|Palk Strait]]
+# [[d:Q1695|Skagerrak]]
+# [[d:Q192790|Sunda Strait]]
+# [[d:Q127031|Taiwan Strait]]
+# [[d:Q179188|Torres Strait]]
+# [[d:Q271521|Tsugaru Strait]]
+# [[d:Q193260|Yucatán Channel]]
+# [[d:Q104662|Øresund]]
+{{Div col end}}
+
+===== Rivers, 71 =====
+{{Div col|cols=4}}
+======Africa, 12======
+# '''[[d:Q3503|Congo River]]'''
+## [[d:Q186541|Kasai River]]
+## [[d:Q171649|Ubangi River]]
+# [[d:Q173017|Limpopo River]]
+# '''[[d:Q3542|Niger River]]'''
+## [[d:Q204806|Benue River]]
+# '''[[d:Q3392|Nile]]'''
+## [[d:Q882739|Blue Nile]]
+## [[d:Q4814791|White Nile]]
+# [[d:Q181475|Orange River]]
+# [[d:Q3569|Senegal River]]
+# [[d:Q43106|Zambezi]] 
+
+======North America, 9======
+# [[d:Q1265|Colorado River]]
+# [[d:Q2251|Columbia River]]
+# [[d:Q3411|Mackenzie River]]
+# '''[[d:Q1497|Mississippi River]]'''
+## [[d:Q5419|Missouri River]]
+## [[d:Q4915|Ohio River]]
+# [[d:Q160636|Rio Grande]]
+# [[d:Q134750|Saint Lawrence River]]
+# [[d:Q104437|Yukon River]]
+
+======South America, 9======
+# '''[[d:Q3783|Amazon River]]'''
+## [[d:Q118251|Madeira River]]
+## [[d:Q118771|Rio Negro (Amazon)]]
+## [[d:Q156054|Tocantins River]]
+# [[d:Q191829|Magdalena River]]
+# [[d:Q131792|Orinoco]]
+# [[d:Q127892|Paraná River]]
+# [[d:Q18278|Uruguay River]]
+# [[d:Q142148|São Francisco River]]
+
+======Asia, 27======
+# '''[[d:Q5413|Yangtze River]]'''
+# '''[[d:Q7355|Yellow River]]''' (Huang He)
+# [[d:Q41179|Mekong]]
+# [[d:Q46841|Lena River]]
+# [[d:Q78707|Yenisei River]]
+## [[d:Q162737|Angara River]]
+# [[d:Q973|Ob River]]
+## [[d:Q128102|Irtysh River]]
+# '''[[d:Q7348|Indus River]]'''
+# [[d:Q45403|Brahmaputra River]]
+# [[d:Q6862|Amur River]]
+## [[d:Q210326|Songhua River]]
+# [[d:Q34589|Euphrates]]
+# [[d:Q8493|Amu Darya]]
+# '''[[d:Q5089|Ganges]]'''
+## [[d:Q132726|Yamuna]]
+# [[d:Q26422|Salween River]]
+# [[d:Q80240|Ural River]]
+# [[d:Q483159|Syr Darya]]
+# [[d:Q26076|Irrawaddy River]]
+# [[d:Q78879|Kolyma River]]
+# [[d:Q201463|Pearl River (China)]]
+# [[d:Q35591|Tigris]]
+# [[d:Q82207|Indigirka River]]
+# [[d:Q191314|Godavari River]]
+# [[d:Q193499|Krishna River]]
+# [[d:Q559661|Liao River]]
+
+====== Europe, 13 ======
+<!-- listed in another section: Ural River -->
+# '''[[d:Q626|Volga River]]'''
+# '''[[d:Q1653|Danube]]'''
+# [[d:Q40855|Dnieper River]]
+# [[d:Q1229|Don River (Russia)]]
+# [[d:Q8168|Pechora River]]
+# [[d:Q8187|Northern Dvina River]]
+# '''[[d:Q584|Rhine]]'''
+# [[d:Q1644|Elbe]]
+# [[d:Q548|Vistula]]
+# [[d:Q14294|Tagus]]
+# [[d:Q8197|Daugava River]]
+# [[d:Q1469|Loire]]
+# [[d:Q552|Oder]]
+
+======Oceania, 1======
+# [[d:Q183078|Murray River]]
+{{Div col end}}
+
+===== Lakes, 37 =====
+{{Div col|cols=4}}
+======Africa, 8======
+# [[d:Q87982|African Great Lakes]]
+## '''[[d:Q5505|Lake Victoria]]'''
+## '''[[d:Q5511|Lake Tanganyika]]'''
+## [[d:Q5532|Lake Malawi]]
+## [[d:Q182719|Lake Turkana]]
+## [[d:Q125888|Lake Albert (Africa)]]
+# [[d:Q504433|Lake Mweru]]
+# [[d:Q125309|Lake Chad]]
+
+======North America, 10======
+# '''[[d:Q7347|Great Lakes]]'''
+## [[d:Q1066|Lake Superior]]
+## [[d:Q1169|Lake Michigan]]
+## [[d:Q1383|Lake Huron]]
+## [[d:Q5492|Lake Erie]]
+## [[d:Q1062|Lake Ontario]]
+# [[d:Q5525|Great Bear Lake]]
+# [[d:Q5539|Great Slave Lake]]
+# [[d:Q3272|Lake Winnipeg]]
+# [[d:Q173862|Lake Nicaragua]]
+
+======South America, 2======
+# [[d:Q182137|Lake Maracaibo]]
+# [[d:Q35342|Lake Titicaca]]
+
+======Antarctica, 1======
+# [[d:Q152044|Lake Vostok]]
+
+======Asia, 11======
+# '''[[d:Q5484|Caspian Sea]]'''
+# '''[[d:Q5513|Lake Baikal]]'''
+# [[d:Q134485|Lake Balkhash]]
+# [[d:Q42191|Issyk Kul]]
+# [[d:Q199551|Lake Urmia]]
+# [[d:Q126307|Lake Van]]
+# [[d:Q201294|Qinghai Lake]]
+# [[d:Q207690|Poyang Lake]]
+# [[d:Q35883|Aral Sea]]
+# [[d:Q23883|Dead Sea]]
+
+======Europe, 5======
+# [[d:Q15288|Lake Ladoga]]
+# [[d:Q166162|Lake Onega]]
+# [[d:Q173596|Vänern]]
+# [[d:Q192770|Saimaa]]
+# [[d:Q19253|Lake Peipus]] 
+
+======Oceania, 1======
+# [[d:Q179970|Lake Eyre]]
+{{Div col end}}
+
+===== Canals, 3 =====
+{{Div col|cols=4}}
+# [[d:Q459578|Erie Canal]]
+# '''[[d:Q7350|Panama Canal]]'''
+# '''[[d:Q899|Suez Canal]]'''
+{{Div col end}}
+
+==== Islands, 60 ====
+{{Div col|cols=3}}
+
+===== Africa, 3 =====
+<!-- listed in another section: Madagascar -->
+# [[d:Q5813|Canary Islands]]
+# [[d:Q205695|Mascarene Islands]]
+# [[d:Q1774|Zanzibar]]
+
+===== Americas, 21 =====
+;Central America and Caribbean, 3
+<!-- listed in another section: Cuba -->
+# [[d:Q128011|Greater Antilles]]
+## [[d:Q25277|Hispaniola]]
+# [[d:Q93259|Lesser Antilles]]
+
+;North America, 13
+# [[d:Q223|Greenland]]
+# [[d:Q85377|Canadian Arctic Archipelago]]
+## [[d:Q216533|Queen Elizabeth Islands]]
+### [[d:Q146841|Ellesmere Island]]
+## [[d:Q200226|Banks Island]]
+## [[d:Q81178|Baffin Island]]
+## [[d:Q158129|Victoria Island (Canada)]]
+## [[d:Q207666|Axel Heiberg Island]]
+## [[d:Q134116|Melville Island (Northwest Territories and Nunavut)]]
+## [[d:Q207751|Southampton Island]]
+## [[d:Q207925|Prince of Wales Island (Nunavut)]]
+# [[d:Q48335|Newfoundland (island)]]
+# [[d:Q170479|Vancouver Island]]
+
+;South America, 5
+# [[d:Q14452|Easter Island]]
+# [[d:Q38095|Galápagos Islands]]
+# [[d:Q82601|Tierra del Fuego]]
+# [[d:Q193264|Marajó]]
+# [[d:Q9648|Falkland Islands]]
+
+=====Asia, 19 =====
+<!-- listed in another section: Sri Lanka -->
+# [[d:Q208643|Malay Archipelago]]
+## [[d:Q3827|Maluku Islands]]
+## [[d:Q125384|Luzon]]
+## [[d:Q124873|Mindanao]]
+## [[d:Q154190|Sunda Islands]]
+### [[d:Q36117|Borneo]]
+### [[d:Q3492|Sumatra]]
+### [[d:Q3812|Sulawesi]]
+### [[d:Q3757|Java]]
+### [[d:Q3803|Lesser Sunda Islands]]
+#### [[d:Q83067|Timor]]
+# [[d:Q13989|Honshu]]
+# [[d:Q35581|Hokkaido]]
+# [[d:Q7792|Sakhalin]]
+# [[d:Q13987|Kyushu]]
+# [[d:Q192281|Severnaya Zemlya]]
+# [[d:Q201012|New Siberian Islands]]
+# [[d:Q13991|Shikoku]]
+# [[d:Q22502|Taiwan]]
+
+=====Europe, 10 =====
+<!-- listed in another section: Iceland -->
+# [[d:Q38272|British Isles]]
+## [[d:Q23666|Great Britain]]
+## [[d:Q22890|Ireland]]
+# [[d:Q80413|Novaya Zemlya]]
+# [[d:Q21162|Spitsbergen]]
+# [[d:Q1460|Sicily]]
+# [[d:Q1462|Sardinia]]
+# [[d:Q185018|Franz Josef Land]]
+# [[d:Q14112|Corsica]]
+# [[d:Q25535|Zealand]]
+
+=====Oceania, 6=====
+# [[d:Q192626|Hawaiian Islands]]
+# [[d:Q59771|New Britain]]
+# [[d:Q40285|New Guinea]]
+# [[d:Q118863|North Island]]
+# [[d:Q120755|South Island]]
+# [[d:Q34366|Tasmania]]
+
+=====Antarctica, 1=====
+# [[d:Q200223|Alexander Island]]
+{{Div col end}}
+
+==== Peninsulas, 23 ====
+{{Div col|cols=4}}
+;Africa, 1
+# [[d:Q40556|Horn of Africa]]
+
+;Americas, 4
+# [[d:Q178543|Baja California peninsula]]
+# [[d:Q60064|Alaska Peninsula]]
+# [[d:Q84170|Labrador Peninsula]]
+# [[d:Q130978|Yucatán Peninsula]]
+
+;Asia, 10
+# [[d:Q60140|Indian subcontinent]]
+# [[d:Q12824780|Asia Minor]]
+# [[d:Q31945|Arabian Peninsula]]
+# [[d:Q43467|Indochina]]
+# [[d:Q483134|Korean Peninsula]]
+# [[d:Q18758|Malay Peninsula]]
+# [[d:Q1002|Chukchi Peninsula]]
+# [[d:Q993|Kamchatka Peninsula]]
+# [[d:Q36755|Sinai Peninsula]]
+# [[d:Q37056|Taymyr Peninsula]]
+
+;Europe, 5
+# [[d:Q23522|Balkans]]
+# [[d:Q12837|Iberian Peninsula]]
+# [[d:Q145694|Italian Peninsula]]
+# [[d:Q25389|Jutland]]
+# [[d:Q165608|Kola Peninsula]]
+# [[d:Q73169|Scandinavian Peninsula]]
+
+;Oceania, 1
+# [[d:Q233770|Cape York Peninsula]]
+
+;Antarctica, 1
+# [[d:Q185605|Antarctic Peninsula]]
+
+{{Div col end}}
+
+==== Land relief, 75 ====
+{{Div col|cols=4}}
+
+=====Africa, 4=====
+# [[d:Q130135|Atlas Mountains]]
+# [[d:Q183295|Drakensberg]]
+# [[d:Q319288|Ethiopian Highlands]]
+# [[d:Q81591|Great Rift Valley (geographical concept)]]
+
+=====Americas, 16=====
+# [[d:Q605761|American Cordillera]]
+
+;North America, 11
+# [[d:Q357546|Adirondack Mountains]]
+# [[d:Q93332|Appalachian Mountains]]
+# [[d:Q250937|Black Hills]]
+# [[d:Q219562|Bryce Canyon National Park]]
+# [[d:Q76034|Canadian Shield]]
+# [[d:Q118841|Grand Canyon]]
+# [[d:Q12707|Great Plains]]
+# [[d:Q401815|Columbia Plateau]]
+# [[d:Q660304|Pacific Coast Ranges]]
+## [[d:Q26777|Sierra Nevada (U.S.)]]
+# '''[[d:Q5463|Rocky Mountains]]'''
+
+;South America, 4
+# '''[[d:Q5456|Andes]]'''
+## [[d:Q118574|Altiplano]]
+# [[d:Q118899|Brazilian Highlands]]
+# [[d:Q208807|Guiana Shield]]
+
+=====Asia, 26=====
+;Central Asia, Caucasus, Iran, Afghanistan, 7
+# [[d:Q237660|Iranian plateau]]
+# [[d:Q167021|Zagros Mountains]]
+# [[d:Q5472|Hindu Kush]]
+# [[d:Q5477|Caucasus Mountains]]
+# [[d:Q5474|Tian Shan]]
+# [[d:Q484725|Alborz]]
+# [[d:Q575516|Turan Depression]]
+
+;Eastern Asia, 5
+# [[d:Q147304|North China Plain]]
+# [[d:Q179842|Tibetan Plateau]]
+# [[d:Q187871|Kunlun Mountains]]
+# [[d:Q604329|Yunnan-Guizhou Plateau]]
+# [[d:Q560198|Mongolian Plateau]]
+
+;Northern Asia, 6
+# [[d:Q191566|West Siberian Plain]]
+# [[d:Q155197|Central Siberian Plateau]]
+# [[d:Q5955|Altai Mountains]]
+# [[d:Q203239|Sayan Mountains]]
+# [[d:Q215917|Verkhoyansk Range]]
+# [[d:Q155322|Sikhote-Alin]]
+
+;Southern Asia, 5
+# [[d:Q169966|Deccan Plateau]]
+# '''[[d:Q5451|Himalayas]]'''
+# [[d:Q5469|Karakoram]]
+# [[d:Q192305|Indo-Gangetic Plain]]
+# [[d:Q4527|Western Ghats]]
+
+;Southeastern Asia, 0
+
+;Western Asia, 3
+# [[d:Q519263|Pontic Mountains]]
+# [[d:Q172556|Taurus Mountains]]
+# [[d:Q208154|Najd]]
+
+=====Europe, 9=====
+# '''[[d:Q1286|Alps]]'''
+# [[d:Q1285|Apennine Mountains]]
+# [[d:Q170427|Balkan Mountains]]
+# [[d:Q1288|Carpathian Mountains]]
+# [[d:Q191862|East European Plain]]
+# [[d:Q560549|North European Plain]]
+# [[d:Q12431|Pyrenees]]
+# [[d:Q186547|Scandinavian Mountains]]
+# [[d:Q35600|Ural Mountains]]
+
+=====Oceania, 2=====
+# [[d:Q192583|Great Dividing Range]]
+# [[d:Q206650|Southern Alps]]
+
+=====Antarctica, 1=====
+# [[d:Q319671|Transantarctic Mountains]]
+{{Div col end}}
+
+=====Mountain peaks, 17=====
+{{Div col|cols=4}}
+# [[d:Q39739|Aconcagua]]
+# [[d:Q159762|Mauna Loa]]
+# [[d:Q43105|Mount Elbrus]]
+# [[d:Q16990|Mount Etna]]
+# '''[[d:Q513|Mount Everest]]'''
+# [[d:Q43512|K2]]
+# [[d:Q172070|Mount Kenya]]
+# '''[[d:Q7296|Mount Kilimanjaro]]'''
+# [[d:Q178167|Mount Kosciuszko]]
+# [[d:Q120306|Mount Logan]]
+# [[d:Q130018|Mount McKinley]]
+# [[d:Q80344|Mount Olympus]]
+# [[d:Q105261|Mount Parnassus]]
+# [[d:Q4675|Mount St. Helens]]
+# [[d:Q524|Mount Vesuvius]]
+# [[d:Q235539|Mount Whitney]]
+# [[d:Q163758|Vinson Massif]]
+{{Div col end}}
+
+==== Ocean floor, 7 ====
+{{Div col|cols=4}}
+# [[d:Q603531|Chile Rise]]
+# [[d:Q604529|East Pacific Rise]]
+# [[d:Q207313|Mid-Atlantic Ridge]]
+# [[d:Q558800|Pacific-Antarctic Ridge]]
+# [[d:Q190604|Central Indian Ridge]]
+# [[d:Q153840|Southwest Indian Ridge]]
+# [[d:Q510|Mariana Trench]]
+{{Div col end}}
+
+==== Deserts, 10 ====
+{{Div col|cols=4}}
+# [[d:Q42070|Gobi Desert]]
+# '''[[d:Q6583|Sahara]]'''
+# [[d:Q208299|Arabian Desert]]
+# [[d:Q47700|Kalahari Desert]]
+# [[d:Q162843|Negev]]
+# [[d:Q132956|Taklamakan Desert]]
+# [[d:Q145165|Great Victoria Desert]]
+# [[d:Q47141|Atacama Desert]]
+# [[d:Q1061324|Patagonian Desert]]
+# [[d:Q273446|Great Basin Desert]]
+{{Div col end}}
+
+==== Others, 3====
+{{Div col|cols=4}}
+# '''[[d:Q7343|Great Barrier Reef]]'''
+# [[d:Q36332|Iguaçu Falls]]<!-- New Seven Wonders of Nature -->
+# [[d:Q34221|Niagara Falls]]
+{{Div col end}}
+
+=== Parks and preserves, 39 ===
+{{Div col|cols=4}}
+==== World Heritage Sites, 33 ====
+# [[d:Q9259|World Heritage Site]]
+;;Africa, 10
+# [[d:Q170383|Aïr Mountains]]
+# [[d:Q190048|Tassili n'Ajjer]]
+# [[d:Q2268839|Selous Game Reserve]]
+# [[d:Q328488|Salonga National Park]]
+# [[d:Q503835|Manovo-Gounda St. Floris National Park]]
+# [[d:Q11812902|Serengeti National Park]]
+# [[d:Q457304|Okapi Wildlife Reserve]]
+# [[d:Q539518|Banc d'Arguin National Park]]
+# [[d:Q501344|Comoé National Park]]
+# [[d:Q1217726|Ngorongoro Conservation Area]]
+;;Asia, 4
+# [[d:Q532440|Sundarbans National Park]]
+# [[d:Q192764|Kaziranga National Park]]
+# [[d:Q4516|Lorentz National Park]]
+# [[d:Q4521|Tropical Rainforest Heritage of Sumatra]]
+;;Europe, 3
+# [[d:Q192666|Białowieża Forest]]
+# [[d:Q593870|Virgin Komi Forests]]
+# [[d:Q106187|Giant's Causeway]]
+;;North America, 12
+# [[d:Q351|Yellowstone National Park]]
+# [[d:Q191824|Redwood National and State Parks]]
+# [[d:Q732463|Chaco Culture National Historical Park]]
+# [[d:Q237128|Mesa Verde National Park]]
+# [[d:Q180402|Yosemite National Park]]
+# [[d:Q372093|Olympic National Park]]
+# [[d:Q274131|Everglades National Park]]
+# [[d:Q604604|Kluane / Wrangell – St. Elias / Glacier Bay / Tatshenshini-Alsek]]
+# [[d:Q379217|La Amistad International Park]]
+# [[d:Q559789|Sian Ka'an]]
+# [[d:Q464004|Great Smoky Mountains National Park]]
+# [[d:Q787425|Papahānaumokuākea Marine National Monument]]
+;;Oceania, 1
+# [[d:Q575398|Te Wahipounamu]]
+;;South America, 2
+# [[d:Q559784|Serra do Mar]]
+# [[d:Q332381|Jaú National Park]]
+
+==== Protected areas, 6 ====
+# [[d:Q309276|Northeast Greenland National Park]]
+# [[d:Q604422|Great Limpopo Transfrontier Park]]
+# [[d:Q194732|Central Kalahari Game Reserve]]
+# [[d:Q391338|Wood Buffalo National Park]]
+# [[d:Q605657|Gates of the Arctic National Park and Preserve]]
+# [[d:Q575822|Tumucumaque National Park]]
+{{Div col end}}
+
+=== Cities, 300 ===
+{{Div col|cols=4}}
+# [[d:Q1519|Abu Dhabi]]
+# [[d:Q3787|Abuja]]
+# [[d:Q3761|Accra]]<!--Ghana capital-->
+# [[d:Q3624|Addis Ababa]]<!--Ethiopia-->
+# [[d:Q1070|Ahmedabad]]
+# [[d:Q87|Alexandria]]
+# [[d:Q3561|Algiers]]
+# [[d:Q35493|Almaty]]
+# [[d:Q3805|Amman]]<!--Jordan capital-->
+# '''[[d:Q727|Amsterdam]]'''
+# [[d:Q3640|Ankara]]<!--Turkey capital-->
+# [[d:Q3915|Antananarivo]]<!--Madagascar capital-->
+# [[d:Q23438|Ashgabat]]
+# [[d:Q1520|Astana]]
+# [[d:Q2933|Asunción]]
+# '''[[d:Q1524|Athens]]'''
+# [[d:Q23556|Atlanta]]
+# '''[[d:Q1530|Baghdad]]'''
+# [[d:Q9248|Baku]]
+# [[d:Q3703|Bamako]]
+# [[d:Q1355|Bangalore]]
+# '''[[d:Q1861|Bangkok]]'''
+# [[d:Q1492|Barcelona]]<!--Spain-->
+# '''[[d:Q956|Beijing]]'''
+# [[d:Q3820|Beirut]]<!--Lebanon capital-->
+# [[d:Q3711|Belgrade]]
+# '''[[d:Q64|Berlin]]'''
+# [[d:Q70|Bern]]
+# [[d:Q2256|Birmingham]]
+# [[d:Q9361|Bishkek]]<!--Kyrgyzstan capital 874.000-->  
+# [[d:Q3739|Bissau]]
+# '''[[d:Q2841|Bogotá]]'''
+# [[d:Q1479|Bordeaux]]
+# [[d:Q100|Boston]]
+# [[d:Q2844|Brasília]]<!--Brazil capital-->
+# [[d:Q1780|Bratislava]]
+# [[d:Q3844|Brazzaville]]<!--Republic of the Congo capital-->
+# [[d:Q36168|Bridgetown]]<!--Barbados capital 110.000-->
+# '''[[d:Q240|Brussels]]'''
+# [[d:Q19660|Bucharest]]
+# [[d:Q1781|Budapest]]
+# '''[[d:Q1486|Buenos Aires]]'''
+# [[d:Q3854|Bujumbura]]<!--Burundi capital 800.000-->
+# [[d:Q16520|Busan]]
+# '''[[d:Q85|Cairo]]'''
+# [[d:Q3114|Canberra]]<!--Australia capital-->
+# '''[[d:Q5465|Cape Town]]'''
+# [[d:Q1533|Caracas]]<!--Venezuela capital-->
+# [[d:Q7903|Casablanca]]
+# [[d:Q41699|Castries]]<!--Saint Lucia capital 20-70.000-->
+# [[d:Q30002|Chengdu]]<!--SW China 7.677.100-->
+# [[d:Q1352|Chennai]]
+# [[d:Q1297|Chicago]]
+# [[d:Q21197|Chișinău]]
+# [[d:Q11725|Chongqing]] <!--one of the largest cities in China-->
+# [[d:Q365|Cologne]]
+# [[d:Q35381|Colombo]] <!--Sri Lanka capital-->
+# [[d:Q3733|Conakry]]<!--Guinea capital-->
+# [[d:Q1748|Copenhagen]]<!--Denmark capital-->
+# [[d:Q4361|Curitiba]]
+# '''[[d:Q3766|Damascus]]'''
+# [[d:Q3718|Dakar]]
+# [[d:Q16557|Dallas]]
+# [[d:Q1960|Dar es Salaam]]
+# '''[[d:Q1353|Delhi]]'''
+# [[d:Q16554|Denver]]
+# [[d:Q12439|Detroit]]
+# '''[[d:Q1354|Dhaka]]'''
+# [[d:Q9310|Dili]]<!--East Timor capital 193.000-->
+# [[d:Q3861|Doha]]
+# [[d:Q1731|Dresden]]
+# '''[[d:Q613|Dubai]]'''
+# [[d:Q1761|Dublin]]
+# [[d:Q5468|Durban]]
+# [[d:Q9365|Dushanbe]]
+# [[d:Q1718|D&#252;sseldorf]]
+# [[d:Q23436|Edinburgh]]
+# [[d:Q42053|Isfahan]] <!--Iran-->
+# [[d:Q2044|Florence]]<!--Italy/Renaissance-->
+# [[d:Q1794|Frankfurt]]
+# [[d:Q34126|Funafuti]]<!--Tuvalu Capital 6.194 -->
+# [[d:Q3919|Gaborone]]<!--Botswana Capital 231.000 -->
+# [[d:Q47492|Gaza]]
+# [[d:Q71|Geneva]]
+# [[d:Q1449|Genoa]]
+# [[d:Q10717|Georgetown, Guyana]]
+# [[d:Q1792|Gdańsk]]
+# [[d:Q4093|Glasgow]]
+# [[d:Q9022|Guadalajara]]
+# [[d:Q16572|Guangzhou]]
+# [[d:Q1555|Guatemala City]] <!--Needed a Central American city-->
+# [[d:Q36600|The Hague]]
+# [[d:Q1055|Hamburg]]
+# [[d:Q1715|Hanover]]
+# [[d:Q1858|Hanoi]]
+# [[d:Q3921|Harare]]<!--Zimbabwe capital-->
+# [[d:Q1563|Havana]]
+# [[d:Q1757|Helsinki]]
+# [[d:Q1854|Ho Chi Minh City]]
+# '''[[d:Q8646|Hong Kong]]'''
+# [[d:Q40921|Honiara]]<!--Solomon islands capital 64.000-->
+# [[d:Q18094|Honolulu]]
+# [[d:Q16555|Houston]]
+# [[d:Q1361|Hyperabad]]
+# [[d:Q1362|Islamabad]]
+# '''[[d:Q406|Istanbul]]'''
+# [[d:Q35997|Izmir]]
+# [[d:Q66485|Jaipur]]
+# '''[[d:Q3630|Jakarta]]'''
+# [[d:Q374365|Jeddah]]
+# '''[[d:Q1218|Jerusalem]]'''
+# [[d:Q34647|Johannesburg]]<!--S.Africa-->
+# [[d:Q5838|Kabul]]
+# [[d:Q3894|Kampala]] <!--Ugandan capital-->
+# '''[[d:Q8660|Karachi]]'''
+# [[d:Q3037|Kathmandu]]
+# [[d:Q42308|Kharkiv]]
+# [[d:Q1963|Khartoum]]
+# [[d:Q1899|Kiev]]
+# [[d:Q34692|Kingston, Jamaica]]
+# [[d:Q41474|Kingstown]]<!--Saint Vincent and the Grenadines capital 25.000-->
+# '''[[d:Q3838|Kinshasa]]'''
+# '''[[d:Q1348|Kolkata]]'''
+# [[d:Q31487|Kraków]]
+# [[d:Q1865|Kuala Lumpur]]
+# [[d:Q35178|Kuwait City]]
+# [[d:Q34600|Kyoto]]<!--Japan/pre-WWII-->
+# [[d:Q1491|La Paz]]<!--Bolivia capital-->
+# '''[[d:Q8673|Lagos]]'''
+# [[d:Q11739|Lahore]]
+# [[d:Q23768|Las Vegas]]
+# [[d:Q39121|Leeds]]
+# [[d:Q5869|Lhasa]]
+# [[d:Q3825|Libreville]]
+# [[d:Q3876|Lilongwe]]
+# [[d:Q2868|Lima]]
+# [[d:Q597|Lisbon]]
+# [[d:Q24826|Liverpool]]
+# [[d:Q437|Ljubljana]]
+# [[d:Q3792|Lomé]]
+# '''[[d:Q84|London]]'''
+# '''[[d:Q65|Los Angeles]]'''
+# [[d:Q3897|Luanda]]<!--Angola capital-->
+# [[d:Q3881|Lusaka]]<!--Zambia capital-->
+# [[d:Q36036|Lviv]]
+# [[d:Q456|Lyon]]
+# '''[[d:Q2807|Madrid]]'''<!--Spain-->
+# [[d:Q12919|Majuro]]
+# [[d:Q3818|Malabo]]
+# [[d:Q9347|Malé]]
+# [[d:Q18125|Manchester]]
+# [[d:Q3274|Managua]]
+# [[d:Q3882|Manama]]
+# [[d:Q1461|Manila]]
+# [[d:Q3889|Maputo]]<!--Mozambique capital-->
+# [[d:Q23482|Marseille]]
+# [[d:Q3909|Maseru]]<!--Lesotho capital-->
+# [[d:Q3904|Mbabane]]
+# '''[[d:Q5806|Mecca]]'''
+# [[d:Q3141|Melbourne]]
+# '''[[d:Q1489|Mexico City]]'''
+# [[d:Q8652|Miami]]
+# [[d:Q490|Milan]]
+# [[d:Q2280|Minsk]]
+# [[d:Q2449|Mogadishu]]
+# [[d:Q3748|Monrovia]]<!--Liberia capital-->
+# [[d:Q81033|Monterrey]]
+# [[d:Q1335|Montevideo]]
+# [[d:Q340|Montreal]]
+# [[d:Q3901|Moroni, Comoros]]
+# '''[[d:Q649|Moscow]]'''
+# '''[[d:Q1156|Mumbai]]'''<!--Bombay-->
+# [[d:Q1726|Munich]]
+# [[d:Q3826|Muscat, Oman]]
+# [[d:Q11751|Nagoya]]
+# '''[[d:Q3870|Nairobi]]'''<!--Kenya-->
+# [[d:Q16666|Nanjing]]
+# [[d:Q2634|Naples]]
+# [[d:Q2467|Nassau, Bahamas]]
+# [[d:Q37400|Naypyidaw]]
+# [[d:Q3659|N'Djamena]]
+# [[d:Q987|New Delhi]]
+# [[d:Q34404|New Orleans]]
+# '''[[d:Q60|New York City]]'''
+# [[d:Q3674|Niamey]]
+# [[d:Q3856|Nicosia]]
+# [[d:Q891|Nizhny Novgorod]]<!--Russia-->
+# [[d:Q3688|Nouakchott]]
+# [[d:Q883|Novosibirsk]]
+# [[d:Q38834|Nukuʻalofa]]<!--Tonga capital 25.000-->
+# [[d:Q2090|Nuremberg]]
+# [[d:Q3777|Ouagadougou]]
+# [[d:Q1874|Odessa]]
+# [[d:Q35765|Osaka]]
+# [[d:Q585|Oslo]]
+# [[d:Q1930|Ottawa]]
+# [[d:Q2656|Palermo]]
+# [[d:Q42751|Palikir]]<!--Micronesia capital 25.000-->
+# [[d:Q3306|Panama City]]<!--Panama capital-->
+# [[d:Q3001|Paramaribo]]
+# '''[[d:Q90|Paris]]'''
+# [[d:Q3183|Perth]]<!--Australia-->
+# [[d:Q1345|Philadelphia]]
+# [[d:Q1850|Phnom Penh]]
+# [[d:Q16556|Phoenix]]
+# [[d:Q23564|Podgorica]]
+# [[d:Q34261|Port-au-Prince]]
+# [[d:Q39178|Port of Spain]]
+# [[d:Q3929|Port Louis]]<!--Mauritius capital 148.000-->
+# [[d:Q37806|Port Vila]]<!--Vanuatu capital 44.000-->
+# [[d:Q3799|Porto-Novo]]<!--Benin capital 223.000 -->
+# [[d:Q1085|Prague]]
+# [[d:Q3751|Praia]]<!--Cape Verde capital 130.000 -->
+# [[d:Q3926|Pretoria]]
+# [[d:Q1538|Pune]]<!--India 5.000.000 former capital of the Maratha Empire-->
+# [[d:Q18808|Pyongyang]]
+# [[d:Q2900|Quito]]<!--Ecuador capital-->
+# [[d:Q3551|Rabat]]
+# [[d:Q158119|Ramallah]]
+# [[d:Q48344|Recife]]
+# [[d:Q1764|Reykjavík]]
+# [[d:Q1773|Riga]]<!--Latvia capital-->
+# '''[[d:Q8678|Rio de Janeiro]]'''
+# [[d:Q3692|Riyadh]]
+# '''[[d:Q220|Rome]]'''
+# [[d:Q36281|Roseau]]<!--Dominica capital 16.000 -->
+# [[d:Q38022|St. Louis]]
+# '''[[d:Q656|Saint Petersburg]]'''
+# [[d:Q5753|Samarkand]]
+# [[d:Q2471|Sana'a]]<!--Yemen capital-->
+# [[d:Q62|San Francisco]]
+# [[d:Q41211|San Juan, Puerto Rico]]
+# [[d:Q3070|San José, Costa Rica]]
+# [[d:Q3110|San Salvador]]
+# [[d:Q2887|Santiago]]
+# [[d:Q34820|Santo Domingo]]
+# '''[[d:Q174|São Paulo]]'''
+# [[d:Q3932|São Tomé]]
+# [[d:Q37951|Sapporo]]<!--Japan 1,9m Winter Olympics 1972-->
+# [[d:Q11194|Sarajevo]]
+# [[d:Q5083|Seattle]]
+# '''[[d:Q8684|Seoul]]'''
+# [[d:Q8717|Seville]]
+# '''[[d:Q8686|Shanghai]]'''
+# [[d:Q15174|Shenzhen]]
+# '''[[d:Q334|Singapore]]'''
+# [[d:Q384|Skopje]]
+# [[d:Q472|Sofia]]
+# [[d:Q41547|St. George's, Grenada]]
+# [[d:Q36262|St. John's, Antigua and Barbuda]]
+# [[d:Q1754|Stockholm]]
+# [[d:Q6602|Strasbourg]]
+# [[d:Q1022|Stuttgart]]
+# [[d:Q2907|Sucre]]
+# [[d:Q11462|Surabaya]]
+# [[d:Q4629|Surat]]
+# [[d:Q38807|Suva]]
+# '''[[d:Q3130|Sydney]]'''
+# [[d:Q1867|Taipei]]
+# [[d:Q1770|Tallinn]]
+# [[d:Q269|Tashkent]]<!--Uzbekistan capital-->
+# [[d:Q994|Tbilisi]]<!--Georgia capital-->
+# [[d:Q3238|Tegucigalpa]]<!--Honduras capital-->
+# '''[[d:Q3616|Tehran]]'''
+# [[d:Q33935|Tel Aviv]]
+# [[d:Q17151|Thessaloniki]] <!-- second city of Greece -->
+# [[d:Q9270|Thimphu]]<!--Bhutan capital 79.000-->
+# [[d:Q11736|Tianjin]]
+# [[d:Q19689|Tirana]]
+# '''[[d:Q1490|Tokyo]]'''
+# [[d:Q172|Toronto]]
+# [[d:Q7880|Toulouse]]
+# [[d:Q3579|Tripoli]]<!--Libya capital-->
+# [[d:Q3572|Tunis]]
+# [[d:Q495|Turin]]
+# [[d:Q23430|Ulan Bator]]<!--Mongolia capital-->
+# [[d:Q8818|Valencia]]
+# [[d:Q23800|Valletta]]
+# [[d:Q33986|Valpara&#237;so]]
+# [[d:Q24639|Vancouver]]
+# [[d:Q641|Venice]]<!--Italy/canals-->
+# [[d:Q3940|Victoria, Seychelles]]
+# '''[[d:Q1741|Vienna]]'''
+# [[d:Q9326|Vientiane]]
+# [[d:Q216|Vilnius]]<!--Lithuania capital-->
+# [[d:Q959|Vladivostok]]
+# [[d:Q914|Volgograd]]
+# [[d:Q270|Warsaw]]
+# '''[[d:Q61|Washington, D.C.]]'''
+# [[d:Q23661|Wellington]]
+# [[d:Q3935|Windhoek]]
+# [[d:Q11746|Wuhan]]
+# [[d:Q5826|Xi'an]]
+# [[d:Q37995|Yangon]]
+# [[d:Q3808|Yaoundé]]<!--Cameroon capital-->
+# [[d:Q887|Yekaterinburg]]<!--Russia-->
+# [[d:Q1953|Yerevan]]<!--Armenia capital-->
+# [[d:Q38283|Yokohama]]
+# [[d:Q1435|Zagreb]]<!--Croatia capital-->
+# [[d:Q72|Zurich]]
+{{Div col end}}
+
+=== Countries/territories, 209 ===
+{{Div col|cols=4}}
+# [[d:Q11750|List of countries]].
+# [[d:Q23334|Abkhazia]]
+# '''[[d:Q889|Afghanistan]]'''
+# [[d:Q222|Albania]]
+# '''[[d:Q262|Algeria]]'''
+# [[d:Q16641|American Samoa]]
+# [[d:Q228|Andorra]]
+# [[d:Q916|Angola]]
+# [[d:Q781|Antigua and Barbuda]]
+# '''[[d:Q414|Argentina]]'''
+# [[d:Q399|Armenia]]
+# [[d:Q21203|Aruba]]
+# '''[[d:Q408|Australia]]'''
+# '''[[d:Q40|Austria]]'''
+# [[d:Q227|Azerbaijan]]
+# [[d:Q778|The Bahamas]]
+# [[d:Q398|Bahrain]]
+# '''[[d:Q902|Bangladesh]]'''
+# [[d:Q244|Barbados]]
+# [[d:Q184|Belarus]]
+# [[d:Q31|Belgium]]
+# [[d:Q242|Belize]]
+# [[d:Q962|Benin]]
+# [[d:Q23635|Bermuda]]
+# [[d:Q917|Bhutan]]
+# [[d:Q750|Bolivia]]
+# [[d:Q225|Bosnia and Herzegovina]]
+# [[d:Q963|Botswana]]
+# '''[[d:Q155|Brazil]]'''
+# [[d:Q921|Brunei]]
+# [[d:Q219|Bulgaria]]
+# [[d:Q965|Burkina Faso]]
+# [[d:Q836|Burma]]
+# [[d:Q967|Burundi]]
+# [[d:Q424|Cambodia]]
+# [[d:Q1009|Cameroon]]
+# '''[[d:Q16|Canada]]'''
+# [[d:Q1011|Cape Verde]]
+# [[d:Q929|Central African Republic]]
+# [[d:Q657|Chad]]
+# [[d:Q298|Chile]]
+# '''[[d:Q148|China]]'''
+# [[d:Q739|Colombia]]
+# [[d:Q970|Comoros]]
+# [[d:Q971|Republic of the Congo]]
+# '''[[d:Q974|Democratic Republic of the Congo]]'''
+# [[d:Q26988|Cook Islands]]
+# [[d:Q800|Costa Rica]]
+# [[d:Q1008|Ivory Coast]]
+# [[d:Q224|Croatia]]
+# '''[[d:Q241|Cuba]]'''
+# [[d:Q229|Cyprus]]
+# [[d:Q213|Czech Republic]]
+# [[d:Q35|Denmark]]
+# [[d:Q977|Djibouti]]
+# [[d:Q784|Dominica]]
+# [[d:Q786|Dominican Republic]]
+# [[d:Q574|East Timor]]
+# [[d:Q736|Ecuador]]
+# '''[[d:Q79|Egypt]]'''
+# [[d:Q792|El Salvador]]
+# [[d:Q983|Equatorial Guinea]]
+# [[d:Q986|Eritrea]]
+# [[d:Q191|Estonia]]
+# '''[[d:Q115|Ethiopia]]'''
+# [[d:Q4628|Faroe Islands]]
+# [[d:Q712|Fiji]]
+# [[d:Q33|Finland]]
+# '''[[d:Q142|France]]'''
+# [[d:Q1000|Gabon]]
+# [[d:Q1005|The Gambia]]
+# [[d:Q230|Georgia]]
+# '''[[d:Q183|Germany]]'''
+# [[d:Q117|Ghana]]
+# [[d:Q1410|Gibraltar]]
+# [[d:Q41|Greece]]
+# [[d:Q769|Grenada]]
+# [[d:Q16635|Guam]]
+# [[d:Q774|Guatemala]]
+# [[d:Q1006|Guinea]]
+# [[d:Q1007|Guinea-Bissau]]
+# [[d:Q734|Guyana]]
+# [[d:Q790|Haiti]]
+# [[d:Q783|Honduras]]
+# [[d:Q28|Hungary]]
+# [[d:Q189|Iceland]]
+# '''[[d:Q668|India]]'''
+# '''[[d:Q252|Indonesia]]'''
+# '''[[d:Q794|Iran]]'''
+# '''[[d:Q796|Iraq]]'''
+# [[d:Q27|Ireland]]
+# '''[[d:Q801|Israel]]'''
+# '''[[d:Q38|Italy]]'''
+# [[d:Q766|Jamaica]]
+# '''[[d:Q17|Japan]]'''
+# [[d:Q810|Jordan]]
+# [[d:Q232|Kazakhstan]]
+# [[d:Q114|Kenya]]
+# [[d:Q710|Kiribati]]
+# '''[[d:Q884|South Korea]]'''
+# [[d:Q423|North Korea]]
+# [[d:Q1246|Kosovo]]
+# [[d:Q817|Kuwait]]
+# [[d:Q813|Kyrgyzstan]]
+# [[d:Q819|Laos]]
+# [[d:Q211|Latvia]]
+# [[d:Q822|Lebanon]]
+# [[d:Q1013|Lesotho]]
+# [[d:Q1014|Liberia]]
+# [[d:Q1016|Libya]]
+# [[d:Q347|Liechtenstein]]
+# [[d:Q37|Lithuania]]
+# [[d:Q32|Luxembourg]]
+# [[d:Q221|Macedonia]]
+# [[d:Q1019|Madagascar]]
+# [[d:Q1020|Malawi]]
+# [[d:Q833|Malaysia]]
+# [[d:Q826|Maldives]]
+# [[d:Q912|Mali]]
+# [[d:Q233|Malta]]
+# [[d:Q709|Marshall Islands]]
+# [[d:Q1025|Mauritania]]
+# [[d:Q1027|Mauritius]]
+# '''[[d:Q96|Mexico]]'''
+# [[d:Q702|Micronesia, Federated States of]]
+# [[d:Q217|Moldova]]
+# [[d:Q235|Monaco]]
+# [[d:Q711|Mongolia]]
+# [[d:Q236|Montenegro]]
+# [[d:Q1028|Morocco]]
+# [[d:Q1029|Mozambique]]
+# [[d:Q1030|Namibia]]
+# [[d:Q697|Nauru]]
+# [[d:Q837|Nepal]]
+# '''[[d:Q55|Netherlands]]'''
+# '''[[d:Q664|New Zealand]]'''
+# [[d:Q811|Nicaragua]]
+# [[d:Q1032|Niger]]
+# '''[[d:Q1033|Nigeria]]'''
+# [[d:Q23681|Northern Cyprus]]
+# [[d:Q20|Norway]]
+# [[d:Q842|Oman]]
+# '''[[d:Q843|Pakistan]]'''
+# [[d:Q695|Palau]]
+# [[d:Q23792|Palestine]]
+# [[d:Q804|Panama]]
+# [[d:Q691|Papua New Guinea]]
+# [[d:Q733|Paraguay]]
+# [[d:Q419|Peru]]
+# [[d:Q928|Philippines]]
+# '''[[d:Q36|Poland]]'''
+# '''[[d:Q45|Portugal]]'''
+# [[d:Q1183|Puerto Rico]]
+# [[d:Q846|Qatar]]
+# [[d:Q218|Romania]]
+# '''[[d:Q159|Russia]]'''
+# [[d:Q1037|Rwanda]]
+# [[d:Q763|Saint Kitts and Nevis]]
+# [[d:Q760|Saint Lucia]]
+# [[d:Q757|Saint Vincent and the Grenadines]]
+# [[d:Q683|Samoa]]
+# [[d:Q238|San Marino]]
+# [[d:Q1039|São Tomé and Príncipe]]
+# '''[[d:Q851|Saudi Arabia]]'''
+# [[d:Q1041|Senegal]]
+# [[d:Q403|Serbia]]
+# [[d:Q1042|Seychelles]]
+# [[d:Q1044|Sierra Leone]]
+# [[d:Q214|Slovakia]]
+# [[d:Q215|Slovenia]]
+# [[d:Q685|Solomon Islands]]
+# [[d:Q1045|Somalia]]
+# '''[[d:Q258|South Africa]]'''
+# [[d:Q23427|South Ossetia]]
+# [[d:Q958|South Sudan]]
+# '''[[d:Q29|Spain]]'''
+# [[d:Q854|Sri Lanka]]
+# '''[[d:Q1049|Sudan]]'''
+# [[d:Q730|Suriname]]
+# [[d:Q1050|Swaziland]]
+# [[d:Q34|Sweden]]
+# '''[[d:Q39|Switzerland]]'''
+# [[d:Q858|Syria]]
+# [[d:Q865|Taiwan]]
+# [[d:Q863|Tajikistan]]
+# '''[[d:Q924|Tanzania]]'''
+# '''[[d:Q869|Thailand]]'''
+# [[d:Q945|Togo]]
+# [[d:Q678|Tonga]]
+# [[d:Q754|Trinidad and Tobago]]
+# [[d:Q948|Tunisia]]
+# '''[[d:Q43|Turkey]]'''
+# [[d:Q874|Turkmenistan]]
+# [[d:Q672|Tuvalu]]
+# [[d:Q1036|Uganda]]
+# '''[[d:Q212|Ukraine]]'''
+# [[d:Q878|United Arab Emirates]]
+# '''[[d:Q145|United Kingdom]]'''
+# '''[[d:Q30|United States]]'''
+# [[d:Q77|Uruguay]]
+# [[d:Q265|Uzbekistan]]
+# [[d:Q686|Vanuatu]]
+# '''[[d:Q237|Vatican City]]'''
+# '''[[d:Q717|Venezuela]]'''
+# '''[[d:Q881|Vietnam]]'''
+# [[d:Q6250|Western Sahara]]
+# [[d:Q805|Yemen]]
+# [[d:Q953|Zambia]]
+# [[d:Q954|Zimbabwe]]
+{{Div col end}}
+
+=== Regions, 19 ===
+{{Div col|cols=4}}
+# [[d:Q27611|Central America]]
+# '''[[d:Q7204|Middle East]]'''
+# '''[[d:Q538|Oceania]]'''
+# [[d:Q21195|Scandinavia]]
+# [[d:Q11708|Southeast Asia]]
+
+==== Country subdivisions, 16 ====
+# [[d:Q797|Alaska]]
+# [[d:Q980|Bavaria]]
+# [[d:Q99|California]]
+# [[d:Q5705|Catalonia]] <!-- autonomous region of Spain --> 
+# [[d:Q21|England]]
+# [[d:Q812|Florida]]
+# [[d:Q26|Northern Ireland]]
+# [[d:Q1904|Ontario]]
+# [[d:Q176|Quebec]]
+# [[d:Q22|Scotland]]
+# [[d:Q5428|Siberia]]
+# [[d:Q1439|Texas]]
+# [[d:Q1273|Tuscany]]
+# [[d:Q25|Wales]] <!-- country of United Kingdom -->
+{{Div col end}}

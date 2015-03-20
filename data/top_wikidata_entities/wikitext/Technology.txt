@@ -1,0 +1,1003 @@
+<noinclude>'''Return to [[List of articles every Wikipedia should have/Expanded]]'''</noinclude>
+== Technology, 800 ==
+::''Transcluded from [[List of articles every Wikipedia should have/Expanded/Technology]]''.
+
+=== Basics, 45 ===
+{{Div col|cols=4}}
+# '''[[d:Q11016|Technology]]'''
+# '''[[d:Q11023|Engineering]]'''
+# '''[[d:Q11660|Artificial intelligence]]'''
+# '''[[d:Q7108|Biotechnology]]'''
+## [[d:Q120877|Cloning]]
+## [[d:Q182726|Genetically modified organism]]
+# [[d:Q159236|Genetic engineering]]
+# '''[[d:Q11468|Nanotechnology]]'''
+# [[d:Q348091|Nuclear technology]]
+# [[d:Q194100|Transhumanism]]
+<!-- these need to be sorted -->
+# [[d:Q4917288|Control engineering]]
+# [[d:Q369577|Standardization]]
+# [[d:Q1192297|Disruptive innovation]]
+# [[d:Q775325|Transport engineering]]
+# [[d:Q2674423|Construction engineering]]
+# [[d:Q1273174|Petroleum engineering]]
+# [[d:Q1136352|Naval architecture]]
+# [[d:Q174165|Innovation]]
+# [[d:Q1042900|Technophobia]]
+# [[d:Q1484779|Microtechnology]]
+# [[d:Q1788588|Engineering drawing]]
+# [[d:Q184199|Automation]]
+# [[d:Q2207328|Technological convergence]]
+# [[d:Q1332231|Science studies]]
+# [[d:Q2445082|Science, technology and society]]
+# [[d:Q466410|High tech]]
+# [[d:Q6314146|Engineering management]]
+# [[d:Q6631525|Food engineering]]
+# [[d:Q762702|Technological change]]
+# [[d:Q186289|Human reliability]]
+# [[d:Q605434|Technological determinism]]
+# [[d:Q1380395|Municipal or urban engineering]]
+# [[d:Q909789|Earthquake engineering]]
+# [[d:Q1316027|Coastal management]]
+# [[d:Q1936199|Ceramic engineering]]
+# [[d:Q1133029|Engineering ethics]]
+# [[d:Q194118|Agricultural engineering]]
+
+; Disciplines, 8
+# [[d:Q3798668|Aerospace engineering]]
+# [[d:Q327092|Biomedical engineering]]
+# [[d:Q77590|Civil engineering]]
+# [[d:Q43035|Electrical engineering]]
+# [[d:Q4489420|Industrial engineering]]
+# [[d:Q158797|Military engineering]]
+# [[d:Q83504|Nuclear engineering]]
+# [[d:Q80993|Software engineering]]
+{{Div col end}}
+
+=== Agriculture, 49 ===
+{{Div col|cols=4}}
+
+;Basics, 8
+# [[d:Q3606845|Agricultural science]]
+# [[d:Q173113|Agronomy]]
+# '''[[d:Q11395|Domestication]]'''
+# [[d:Q131596|Farm]]
+# [[d:Q131512|Farmer]]
+# [[d:Q186050|Green Revolution]]
+# [[d:Q995745|Selective breeding]]
+# [[d:Q485016|Kolkhoz]]
+
+;Agricultural buildings and infrastructure, 5
+# [[d:Q1303167|Barn]]
+# [[d:Q114768|Granary]]
+# [[d:Q1520009|Grain elevator]]
+# [[d:Q214252|Stable]]
+# [[d:Q165044|Greenhouse]]
+
+;Agricultural techniques, 12
+# [[d:Q26886|Combine harvester]]
+# [[d:Q4886|Cultivar]]
+# [[d:Q83323|Fertilizer]]
+# [[d:Q124946|Gardening]]
+# [[d:Q213753|Harvest]]
+# [[d:Q181322|Insecticide]]
+# '''[[d:Q11453|Irrigation]]'''
+# [[d:Q131656|Pesticide]]
+## [[d:Q178266|Herbicide]]
+# [[d:Q788558|Plant breeding]]
+# [[d:Q878333|Tillage]]
+# [[d:Q961751|Winnowing]]
+
+;Livestock, 5
+# [[d:Q80962|Animal husbandry]]
+# [[d:Q176353|Beekeeping]]
+# [[d:Q103459|Livestock]]
+# [[d:Q38829|Breed]]
+# [[d:Q178559|Poultry]]
+
+;Crops, 6
+# [[d:Q1107656|Garden]]
+# [[d:Q235352|Crop]]
+# '''[[d:Q11457|Cotton]]'''
+# [[d:Q7150699|Hemp]]
+# [[d:Q336989|Hay]]
+# [[d:Q101879|Weed]]
+
+;Methods, 12
+# [[d:Q637776|Dairy]]
+# [[d:Q1643366|Extensive farming]]
+# [[d:Q209894|Fish farming]]
+# [[d:Q1347753|Industrial agriculture]]
+# [[d:Q1148482|Intensive farming]]
+# [[d:Q236371|Orchard]]
+# [[d:Q165647|Organic farming]]
+# [[d:Q4572|Permaculture]]
+# [[d:Q864650|Sericulture]]
+# [[d:Q2787508|Subsistence agriculture]]
+# [[d:Q2751054|Sustainable agriculture]]
+# [[d:Q1194826|Urban agriculture]]
+
+;Policy, 1
+# [[d:Q396198|Agricultural policy]]
+{{Div col end}}
+
+=== Construction, 98 ===
+<small>See also Arts>Architecture section</small>
+{{Div col|cols=4}}
+# [[d:Q167510|Asphalt]]
+# [[d:Q183496|Adobe]]
+# [[d:Q12570|Suspension bridge]]
+# [[d:Q184190|Reinforced concrete]]
+# [[d:Q88480|Moat]]
+# [[d:Q170449|Mud]]
+# [[d:Q131677|Bulldozer]]
+# [[d:Q189566|Mortar (masonry)]]
+# [[d:Q274988|Plaster]]
+# [[d:Q468402|Tile]]
+# [[d:Q206615|Building material]]
+# [[d:Q191360|Foundation (engineering)]]
+# [[d:Q190247|Numerical control]]
+# [[d:Q33526|Stucco]]
+# [[d:Q215635|Breakwater (structure)]]
+
+====Basics, 5====
+# [[d:Q41176|Building]]
+# [[d:Q150737|Architectural engineering]]
+# [[d:Q2333573|Building code]]
+# [[d:Q121359|Infrastructure]]
+# [[d:Q633538|Structural engineering]]
+
+==== Building materials, 6 ====
+# [[d:Q37077|Nail (fastener)]]
+# [[d:Q40089|Brick]]
+# [[d:Q45190|Cement]]
+# [[d:Q22657|Concrete]]
+# [[d:Q272999|Masonry]]
+# [[d:Q233320|Scaffolding]]
+
+==== Buildings and structures by type, 40 ====
+
+;Architectural elements, 12
+# '''[[d:Q12277|Arch]]'''
+# [[d:Q221706|Ceiling]]
+# [[d:Q4817|Column]]
+# '''[[d:Q12493|Dome]]'''
+# [[d:Q36794|Door]]
+# [[d:Q183061|Facade]]
+# [[d:Q217164|Floor]]
+# [[d:Q83180|Roof]]
+# [[d:Q180516|Room]]
+# [[d:Q12511|Stairs]]
+# [[d:Q42948|Wall]]
+# [[d:Q35473|Window]]
+
+;Coastal construction, 3
+# [[d:Q283202|Harbor]]
+# [[d:Q39715|Lighthouse]]
+# [[d:Q863454|Pier]]
+
+;Commercial buildings, 2
+# [[d:Q182060|Office]]
+# [[d:Q181623|Warehouse]]
+
+;Industrial buildings, 0
+
+;Residential buildings and housing units, 13
+# [[d:Q188507|Apartment]]
+# [[d:Q131263|Barracks]]
+# '''[[d:Q3947|House]]'''
+# [[d:Q199451|Pagoda]]
+# [[d:Q16560|Palace]]
+# [[d:Q2069469|Penthouse apartment]]
+# '''[[d:Q12516|Pyramid]]'''
+# [[d:Q11303|Skyscraper]]
+# '''[[d:Q12518|Tower]]'''
+# [[d:Q18142|Tower block]]
+# [[d:Q3950|Villa]]
+# [[d:Q5784097|Hut (dwelling)]]
+# [[d:Q101805|Igloo]]
+
+;Rooms and spaces, 8
+# [[d:Q234852|Basement]]
+# [[d:Q190771|Bathroom]]
+# [[d:Q193837|Bedroom]]
+# [[d:Q661199|Dining room]]
+# [[d:Q22733|Garage (house)]]
+# [[d:Q43164|Kitchen]]
+# [[d:Q475018|Living room]]
+# [[d:Q258313|Pantry]]
+
+;Portable buildings and shelters, 2
+# [[d:Q170544|Tent]]
+# [[d:Q15680|Yurt]]
+
+==== Urban studies and planning, 11 ====
+# [[d:Q69883|Urban planning]]
+# [[d:Q63100|Urban design]]
+# [[d:Q209465|Campus]]
+# [[d:Q1348006|City block]]
+# [[d:Q1050303|Downtown]]
+# [[d:Q152018|Ghetto]]
+# [[d:Q329683|Industrial park]]
+# [[d:Q22698|Park]]
+# [[d:Q79007|Street]]
+# [[d:Q174782|Town square]]
+# [[d:Q702232|Zoning]]
+
+==== Hydraulic structure, 3 ====
+# '''[[d:Q12323|Dam]]'''s
+## [[d:Q172822|Hoover Dam]]
+## '''[[d:Q12514|Three Gorges Dam]]'''
+
+==== Transport buildings and structures, 18 ====
+# '''[[d:Q12280|Bridge]]'''
+## [[d:Q184213|Akashi Kaikyō Bridge]]
+## [[d:Q806452|Bang Na Expressway]]
+## [[d:Q125006|Brooklyn Bridge]]
+## [[d:Q18541|Fehmarn Belt Fixed Link]]
+## [[d:Q125821|George Washington Bridge]]
+## [[d:Q44440|Golden Gate Bridge]]
+## [[d:Q213962|Great Belt Fixed Link]]
+## [[d:Q326249|Hangzhou Bay Bridge]]
+## [[d:Q1132510|Lake Pontchartrain Causeway]]
+## [[d:Q130206|London Bridge]]
+## [[d:Q297871|Øresund connection]]
+## [[d:Q2302271|Sunshine Skyway Bridge]]
+## [[d:Q83125|Tower Bridge]]
+## [[d:Q125673|Verrazano-Narrows Bridge]]
+# [[d:Q44377|Tunnel]]
+## [[d:Q10257|Channel Tunnel]]
+## [[d:Q99250|Seikan Tunnel]]
+{{Div col end}}
+
+=== Industry, 72 ===
+{{Div col|cols=4}}
+# [[d:Q1128980|Industrial robot]]
+# [[d:Q215768|Mass production]]
+# [[d:Q1160362|Mechanization]]
+# [[d:Q45701|Waste]]
+## [[d:Q152810|Landfill]]
+## [[d:Q132580|Recycling]]
+## [[d:Q180388|Waste management]]
+# [[d:Q816871|Woodworking]]
+
+==== Energy and Fuel, 25 ====
+;Energy, 10
+# [[d:Q3215493|Geothermal electricity]]
+# [[d:Q80638|Hydroelectricity]]
+# '''[[d:Q12739|Nuclear power]]'''
+# [[d:Q40015|Solar energy]]
+# [[d:Q1483757|Solar power]]
+# '''[[d:Q12705|Renewable energy]]'''
+# [[d:Q43302|Wind power]]
+# [[d:Q79746|Candle]]
+# [[d:Q38720|Windmill]]
+# [[d:Q170196|Hydropower]]
+
+;Electricity generation, 6
+# [[d:Q383973|Electricity generation]]
+# [[d:Q159719|Power station]]
+# [[d:Q193886|Cooling tower]]
+# [[d:Q58803|Solar cell]]
+# [[d:Q130760|Turbine]]
+# [[d:Q49833|Wind turbine]]
+
+;Electric power distribution, 3
+# [[d:Q1096907|Electrical grid]]
+# [[d:Q200928|Electric power transmission]]
+# [[d:Q844861|Electric power distribution]]
+
+;Fuel, 6
+# '''[[d:Q12748|Fossil fuel]]'''
+# [[d:Q24489|Coal]]
+# [[d:Q39558|Gasoline]]
+# [[d:Q76904|Kerosene]]
+# [[d:Q40858|Natural gas]]
+# [[d:Q22656|Petroleum]]
+{{Div col end}}
+
+==== Food and health, 17 ====
+{{Div col|cols=4}}
+# [[d:Q127956|Microwave oven]]
+# [[d:Q58148|Pasteurization]]
+# [[d:Q37828|Refrigerator]]
+# [[d:Q34396|Soap]]
+# [[d:Q203789|Stove]]
+# [[d:Q2079255|Scuba set]]
+# [[d:Q23664|Vacuum flask]]
+# [[d:Q852100|Laundry]]
+# [[d:Q949149|Sanitation]]
+# [[d:Q156849|Sanitary sewer]]
+# [[d:Q221275|Sewage treatment]]
+# [[d:Q1463025|Water purification]]
+# [[d:Q474|Aqueduct (water supply)]]
+# [[d:Q3241671|Plumbing]]
+# [[d:Q446013|Pumping station]]
+# [[d:Q274153|Water tower]]
+# [[d:Q43483|Water well]]
+{{Div col end}}
+
+==== Material and chemical, 11 ====
+{{Div col|cols=4}}
+# '''[[d:Q12870|Explosive material]]'''
+## [[d:Q80728|Dynamite]]
+# '''[[d:Q11467|Metallurgy]]'''
+# '''[[d:Q11474|Plastic]]'''
+# [[d:Q131877|Natural rubber]]
+# [[d:Q131790|Adhesive]]
+# [[d:Q102798|Ore]]
+# '''[[d:Q11472|Paper]]'''
+# [[d:Q125576|Papyrus]]
+# [[d:Q1370714|Lumber]]
+# [[d:Q1364904|Petrochemical]]
+
+==== Metalworking, 11 ====
+# [[d:Q953045|Metalworking]]
+# [[d:Q1639825|Blacksmith]]
+# [[d:Q7397685|Die casting]]
+# [[d:Q890886|Drilling]]
+# [[d:Q139143|Extrusion]]
+# [[d:Q593053|Laser cutting]]
+# [[d:Q674484|Machine press]]
+# [[d:Q871335|Quenching]]
+# [[d:Q452648|Rolling (metalworking)]]
+# [[d:Q211387|Soldering]]
+# [[d:Q131172|Welding]]
+{{Div col end}}
+
+=== Machinery and tools, 89 ===
+{{Div col|cols=4}}
+====Basics, 20====
+# [[d:Q101333|Mechanical engineering]]
+# '''[[d:Q11019|Machine]]'''
+# [[d:Q191134|Centrifuge]]
+# [[d:Q44167|Engine]]
+## [[d:Q72313|Electric motor]]
+## '''[[d:Q12757|Internal combustion engine]]'''
+## [[d:Q178777|Jet engine]]
+## '''[[d:Q12760|Steam engine]]'''
+# '''[[d:Q11012|Robot]]'''
+# [[d:Q186713|Simple machine]]
+## [[d:Q161462|Inclined plane]]
+## [[d:Q40164|Lever]]
+## [[d:Q48378|Pulley]]
+## '''[[d:Q11022|Screw]]'''
+## [[d:Q131408|Wedge (mechanical device)]]
+## '''[[d:Q446|Wheel]]'''
+## [[d:Q592289|Wheel and axle]]
+# [[d:Q170978|Robotics]]
+# [[d:Q58778|System]]
+# [[d:Q178692|Crane (machine)]]
+
+==== Components, 21 ====
+# [[d:Q188209|Axle]]
+# [[d:Q190100|Bearing (mechanical)]]
+# [[d:Q194302|Clutch]]
+# [[d:Q143873|Gear]]
+# [[d:Q12529|Worm drive]]
+# [[d:Q188447|Cable]]
+# [[d:Q2397485|Chain]]
+# [[d:Q31029|Rope]]
+# [[d:Q504825|Net (textile)]]
+# [[d:Q762984|Twine]]
+# [[d:Q266328|Fastener]]
+# [[d:Q190977|Nut (hardware)]]
+# [[d:Q527395|Knot]]
+# [[d:Q212500|Rivet]]
+# [[d:Q637321|Washer (hardware)]]
+# [[d:Q526016|Kinematic pair]]
+# [[d:Q228039|Lock (device)]]
+# [[d:Q132041|Key (lock)]]
+# [[d:Q41551|Pipe (fluid conveyance)]]
+# [[d:Q1132541|Gasket]]
+# [[d:Q102836|Spring]]
+
+==== Machinery, 17 ====
+# [[d:Q208040|Chainsaw]]
+# [[d:Q1136790|Cotton gin]]
+# [[d:Q1273840|Cultivator]]
+# [[d:Q998539|Irrigation sprinkler]]
+# [[d:Q260521|Lawn mower]]
+# [[d:Q49013|Sewing machine]]
+# [[d:Q39495|Tractor]]
+# [[d:Q173725|Air conditioning]]
+# [[d:Q496334|Clothes dryer]]
+# [[d:Q211841|Coffeemaker]]
+# [[d:Q186263|Dishwasher]]
+# [[d:Q36539|Oven]]
+# [[d:Q140565|Sink]]
+# [[d:Q1211746|Electric stove]]
+# [[d:Q7857|Toilet]]
+# [[d:Q101674|Vacuum cleaner]]
+# [[d:Q124441|Washing machine]]
+
+====Tools, 31====
+# [[d:Q39546|Tool]]
+# [[d:Q189155|Archimedes' screw]]
+# [[d:Q39397|Axe]]
+# [[d:Q25294|Hammer]]
+# [[d:Q125356|Saw]]
+# [[d:Q474188|Chisel]]
+# [[d:Q846600|Clamp (tool)]]
+# [[d:Q187833|Lathe]]
+# [[d:Q204260|Plane (tool)]]
+# [[d:Q142274|Sandpaper]]
+# [[d:Q40847|Scissors]]
+# [[d:Q161071|Screwdriver]]
+# [[d:Q172833|Broom]]
+# [[d:Q104555|Ruler]]
+# [[d:Q168639|Ladder]]
+# [[d:Q134205|Toothbrush]]
+# [[d:Q58964|Drill]]
+# [[d:Q104363|Anvil]]
+# [[d:Q483634|Clothes iron]]
+# [[d:Q171888|Eraser]]
+
+;Garden tools, 11
+# [[d:Q209042|Harrow (tool)]]
+# [[d:Q131154|Hoe (tool)]]
+# [[d:Q230711|Machete]]
+# [[d:Q107293|Pitchfork]]
+# '''[[d:Q11464|Plough]]'''
+# [[d:Q200822|Rake (tool)]]
+# [[d:Q1334343|Roller (agricultural tool)]]
+# [[d:Q130912|Scythe]]
+# [[d:Q42233|Sickle]]
+# [[d:Q7220961|Shovel]]
+# [[d:Q50643|Watering can]]
+{{Div col end}}
+
+=== Optical, 30 ===
+{{Div col|cols=4}}
+# [[d:Q15328|Camera]]
+# [[d:Q37501|Glasses]]
+# [[d:Q38867|Laser]]
+# [[d:Q768575|Lens (optics)]]
+# [[d:Q196538|Microscope]]
+# [[d:Q165896|Prism (optics)]]
+# [[d:Q4213|Telescope]]
+# [[d:Q527628|Holography]]
+# [[d:Q162|Optical fiber]]
+# [[d:Q210765|Photodetector]]
+# [[d:Q174923|Optical illusion]]
+# [[d:Q101038|Albedo]]
+# [[d:Q215932|Depth of field]]
+# [[d:Q175943|Photodiode]]
+# [[d:Q183998|Camera obscura]]
+# [[d:Q183122|Periscope]]
+
+; Optics, 9
+# [[d:Q583040|Anti-reflective coating]]
+# [[d:Q653294|Diffraction grating]]
+# [[d:Q193540|Focal length]]
+# [[d:Q190909|Focus (optics)]]
+# [[d:Q14672|Fresnel lens]]
+# [[d:Q35197|Mirror]]
+# [[d:Q13361555|Polarizer]]
+# [[d:Q193709|Rayleigh scattering]]
+# [[d:Q182893|Dispersion (optics)]]
+
+; Optical instrument, 5
+# [[d:Q102626|Binoculars]]
+# [[d:Q850283|Interferometry]]
+# [[d:Q1142960|Catadioptric system]]
+# [[d:Q35221|Reflecting telescope]]
+# [[d:Q216778|Refracting telescope]]
+{{Div col end}}
+
+=== Electronics, 39 ===
+{{Div col|cols=4}}
+# '''[[d:Q11650|Electronics]]'''
+# [[d:Q124164|Alternating current]]
+# [[d:Q27094|Amplifier]]
+## [[d:Q178947|Operational amplifier]]
+# [[d:Q3245116|Circuit design]]
+# [[d:Q159241|Direct current]]
+# [[d:Q211554|Electronic amplifier]]
+# [[d:Q174320|Oscilloscope]]
+# [[d:Q174053|Relay]]
+# [[d:Q208163|Signal processing]]
+# [[d:Q180165|Mechatronics]]
+
+; Components, 28
+# [[d:Q11653|Electronic component]]
+# [[d:Q131214|Antenna]]
+# [[d:Q267298|Battery (electricity)]]
+# '''[[d:Q5322|Capacitor]]'''
+# '''[[d:Q11656|Diode]]'''
+## [[d:Q25504|Light-emitting diode]]
+# [[d:Q125171|Flat panel display]]
+# [[d:Q47616|Incandescent light bulb]]
+# '''[[d:Q5325|Inductor]]'''
+# [[d:Q80831|Integrated circuit]]
+# [[d:Q194154|Cavity magnetron]]
+# '''[[d:Q5321|Resistor]]'''
+# '''[[d:Q11456|Semiconductor]]'''
+# '''[[d:Q11658|Transformer]]'''
+# '''[[d:Q5339|Transistor]]'''
+# [[d:Q3574371|Vacuum tube]]
+# [[d:Q11233438|Waveguide]]
+# [[d:Q83913|Cathode ray tube]]
+# [[d:Q173350|Printed circuit board]]
+# [[d:Q2119531|Electrical connector]]
+# [[d:Q570|Loudspeaker]]
+# [[d:Q204157|Power supply]]
+# [[d:Q5320|Switch]]
+# [[d:Q211058|Circuit breaker]]
+# [[d:Q182221|Fuse (electrical)]]
+# [[d:Q551997|Wire]]
+# [[d:Q183406|Flip-flop (electronics)]]
+# [[d:Q180805|Thyristor]]
+{{Div col end}}
+
+=== Navigation and timekeeping, 20 ===
+{{Div col|cols=4}}
+# [[d:Q227467|Atomic clock]]
+# [[d:Q1063512|Celestial navigation]]
+# '''[[d:Q376|Clock]]'''
+# [[d:Q34735|Compass]]
+# [[d:Q152255|Dead reckoning]]
+# [[d:Q18822|Global Positioning System]] (GPS)
+# [[d:Q483400|Gyroscope]]
+# [[d:Q20702|Pendulum]]
+# [[d:Q47528|Radar]]
+# [[d:Q133220|Sonar]]
+# [[d:Q80793|Sundial]]
+# [[d:Q102066|Navigation]]
+# [[d:Q179430|Sextant]]
+# [[d:Q178794|Watch]]
+# [[d:Q124274|Azimuth]]
+# [[d:Q191747|Sidereal time]]
+# [[d:Q164992|Astrolabe]]
+# [[d:Q194173|Water clock]]
+# [[d:Q179435|Satellite navigation]]
+# [[d:Q179904|Hourglass]]
+{{Div col end}}
+
+=== Information technology, 89 ===
+{{Div col|cols=4}}
+
+====Basic, 7====
+# '''[[d:Q11661|Information technology]]'''
+# [[d:Q12806|Abacus]]
+# [[d:Q31087|Calculator]]
+# [[d:Q179310|Computing]]
+# [[d:Q494756|Data (computing)]]
+# [[d:Q184609|Expert system]]
+# [[d:Q41271|Internationalization and localization]]
+
+====Computer science, 17====
+# [[d:Q21198|Computer science]]
+# '''[[d:Q8366|Algorithm]]'''
+# [[d:Q47506|Compiler]]
+# [[d:Q2493|Data compression]]
+# [[d:Q175263|Data structure]]
+# [[d:Q1062839|Error detection and correction]]
+# [[d:Q753445|Numerical integration]]
+# [[d:Q19541|Search engine (computing)]]
+
+;Cryptography, 4
+# [[d:Q8789|Cryptography]]
+# [[d:Q212108|Authentication]]
+# [[d:Q141090|Encryption]]
+# [[d:Q161157|Password]]
+
+;Programming, 5
+# [[d:Q80006|Computer programming]]
+# [[d:Q188267|Programming paradigm]]
+# [[d:Q193076|Functional programming]]
+# [[d:Q79872|Object-oriented programming]]
+# [[d:Q223335|Structured programming]]
+
+====Computer hardware, 17====
+# '''[[d:Q68|Computer]]'''
+# [[d:Q180256|Booting]]
+# [[d:Q34467|Compact Disc]]
+# [[d:Q169399|ENIAC]]
+# '''[[d:Q4439|Hard disk drive]]'''
+# [[d:Q4321|Motherboard]]
+# '''[[d:Q5300|Central processing unit]]'''
+# [[d:Q5295|Random-access memory]]
+## [[d:Q189396|Dynamic random-access memory]]
+# [[d:Q160710|Read-only memory]]
+# [[d:Q178648|Peripheral]]
+
+;User interface, 6
+# [[d:Q47146|User interface]]
+# [[d:Q250|Computer keyboard]]
+# [[d:Q5290|Computer monitor]]
+## [[d:Q83341|Liquid crystal display]]
+# [[d:Q7987|Mouse (computing)]]
+# [[d:Q165970|Touchscreen]]
+
+====Computer software, 34====
+# '''[[d:Q7397|Software]]'''
+# [[d:Q40056|Computer program]]
+# [[d:Q485|Computer virus]]
+# [[d:Q8513|Database]]
+## [[d:Q193351|Data warehouse]]
+# [[d:Q782543|Graphical user interface]]
+# [[d:Q1130645|Open source software]]
+# [[d:Q183197|Spreadsheet]]
+# [[d:Q54277|Word processor]]
+# [[d:Q6368|Web browser]]
+# [[d:Q170519|Virtual reality]]
+
+;Operating systems, 9
+# '''[[d:Q9135|Operating system]]'''
+# [[d:Q34264|Berkeley Software Distribution]]
+# [[d:Q388|Linux]]
+# [[d:Q43627|Mac OS]]
+# [[d:Q1406|Microsoft Windows]]
+# [[d:Q47604|MS-DOS]]
+# [[d:Q739186|Multics]]
+# [[d:Q479882|OpenVMS]]
+# [[d:Q11368|Unix]]
+
+;Programming languages, 14
+# '''[[d:Q9143|Programming language]]'''
+# [[d:Q154755|Ada (programming language)]]
+# [[d:Q165436|Assembly language]]
+# [[d:Q42979|BASIC]]
+# [[d:Q15777|C (programming language)]]
+# [[d:Q2407|C++]]
+# [[d:Q131140|COBOL]]
+# [[d:Q83303|Fortran]]
+# [[d:Q251|Java (programming language)]]
+# [[d:Q2005|JavaScript]]
+# [[d:Q132874|Lisp (programming language)]]
+# [[d:Q59|PHP]]
+# [[d:Q28865|Python (programming language)]]
+# [[d:Q47607|SQL]]
+
+====Networks, 14====
+# [[d:Q1301371|Computer network]]
+# [[d:Q79984|Ethernet]]
+# [[d:Q5318|Router (computing)]]
+# [[d:Q29643|Wi-Fi]]
+
+;Internet, 10
+# '''[[d:Q75|Internet]]'''
+# '''[[d:Q9158|Email]]'''
+# [[d:Q8803|Transmission Control Protocol]]
+# '''[[d:Q466|World Wide Web]]'''
+# [[d:Q8777|Hypertext Transfer Protocol]]
+# [[d:Q8811|HTML]]
+# [[d:Q81414|Internet protocol suite]]
+# [[d:Q4182287|Web search engine]]
+# [[d:Q35127|Website]]
+# [[d:Q171|Wiki]]
+{{Div col end}}
+
+=== Media and communication, 40 ===
+{{Div col|cols=4}}
+# [[d:Q273623|Broadcasting]]
+# [[d:Q46384|Microphone]]
+# [[d:Q17517|Mobile phone]]
+# '''[[d:Q11633|Photography]]'''
+# '''[[d:Q11034|Printing]]'''
+## [[d:Q82|Printer]]
+## [[d:Q144334|Printing press]]
+# [[d:Q3972943|Publishing]]
+# '''[[d:Q872|Radio]]'''
+# [[d:Q418|Telecommunication]]
+# [[d:Q721587|telegraphy]]
+# '''[[d:Q11035|Telephone]]'''
+# '''[[d:Q289|Television]]'''
+## [[d:Q184452|Cable television]]
+# [[d:Q46335|Typewriter]]
+# [[d:Q34508|Video]]
+## [[d:Q747779|Videotape]]
+# [[d:Q149918|Communications satellite]]
+# [[d:Q193395|Data storage device]]
+# [[d:Q5293|Floppy disk]]
+# [[d:Q193663|Magnetic tape]]
+# [[d:Q183731|Memory card]]
+# [[d:Q234870|Optical disc]]
+# [[d:Q49845|Mail]]
+# [[d:Q848466|Courier]]
+# [[d:Q37930|Postage stamp]]
+# [[d:Q5082128|Mobile device]]
+# [[d:Q185369|Photocopier]]
+# [[d:Q185727|Amateur radio]]
+# [[d:Q14350|Radio broadcasting station]]
+# [[d:Q202833|Social media]]
+# [[d:Q30849|Blog]]
+# [[d:Q5057302|Sound recording and reproduction]]
+# [[d:Q16346|Speech synthesis]]
+# [[d:Q602136|Coding theory]]
+# [[d:Q389772|Data transmission]]
+# [[d:Q989220|Forward error correction]]
+# [[d:Q170474|Modulation]]
+# [[d:Q209588|Satellite television]]
+# [[d:Q313614|Video camera]]
+# [[d:Q8076|Video game console]]
+{{Div col end}}
+
+=== Space, 45 ===
+{{Div col|cols=4}}
+# [[d:Q725364|Atacama Large Millimeter Array]]
+# [[d:Q42262|European Space Agency]]
+# [[d:Q901553|Great Observatories program]]
+# [[d:Q209630|Herschel Space Observatory]]
+# [[d:Q2513|Hubble Space Telescope]]
+# [[d:Q25271|International Space Station]]
+# [[d:Q186447|James Webb Space Telescope]]
+# [[d:Q495307|Moon landing]]
+# [[d:Q23548|NASA]]
+# [[d:Q46611|Apollo program]]
+## [[d:Q43653|Apollo 11]]
+# [[d:Q41291|Rocket]]
+# [[d:Q26540|Satellite]]
+# [[d:Q579421|Soyuz (spacecraft)]]
+# '''[[d:Q5916|Spaceflight]]'''
+# [[d:Q48806|Space Shuttle]]
+# [[d:Q25956|Space station]]
+# [[d:Q201953|Spitzer Space Telescope]]
+# [[d:Q265628|Very Large Telescope]]
+# [[d:Q274106|Wilkinson Microwave Anisotropy Probe]]
+# [[d:Q11631|Astronaut]]
+# [[d:Q1353183|Launch pad]]
+# [[d:Q697175|Launch vehicle]]
+# [[d:Q335225|Rocket engine]]
+# [[d:Q957055|Space capsule]]
+# [[d:Q26529|Space probe]]
+# [[d:Q223571|Space suit]]
+# [[d:Q177477|Baikonur Cosmodrome]]
+# [[d:Q320644|China National Space Administration]]
+# [[d:Q179103|Japan Aerospace Exploration Agency]]
+# [[d:Q48821|Kennedy Space Center]]
+# [[d:Q472251|Geosynchronous orbit]]
+# [[d:Q80811|Sputnik 1]]
+# [[d:Q48469|Voyager 1]]
+# [[d:Q249231|Proton (rocket family)]]
+# [[d:Q54363|Saturn V]]
+# [[d:Q1056113|Cerro Tololo Inter-American Observatory]]
+# [[d:Q831790|Mauna Kea Observatories]]
+# [[d:Q466863|Mount Wilson Observatory]]
+# [[d:Q191684|Palomar Observatory]]
+# [[d:Q189325|Jet Propulsion Laboratory]]
+# [[d:Q205702|Ion thruster]]
+# [[d:Q22719|Astronautics]]
+# [[d:Q623873|Vostok programme]]
+## [[d:Q182524|Vostok 1]]
+{{Div col end}}
+
+=== Textiles, 3 ===
+{{Div col|cols=4}}
+====Fibers and fabrics, 3====
+# [[d:Q286|Leather]]
+# [[d:Q37681|Silk]]
+# [[d:Q42329|Wool]]
+{{Div col end}}
+
+=== Transportation, 100 ===
+{{Div col|cols=4}}
+
+====Basics, 13====
+# [[d:Q319224|Cargo]]
+# [[d:Q770135|Conveyor belt]]
+# [[d:Q132911|Elevator]]/Lift
+# [[d:Q15003|Escalator]]
+# [[d:Q187956|Intermodal container]]
+# [[d:Q177777|Logistics]]
+# [[d:Q319604|Passenger]]
+# [[d:Q725864|Pipeline transport]]
+# [[d:Q178512|Public transport]]
+# [[d:Q868252|Rush hour]]
+# '''[[d:Q7590|Transport]]'''
+# [[d:Q61509|Travel]]
+# [[d:Q42889|Vehicle]]
+
+====Aviation, 19====
+# [[d:Q67|Airbus]]
+# '''[[d:Q11436|Aircraft]]'''
+# [[d:Q46970|Airline]]
+# [[d:Q210932|Airliner]]
+# [[d:Q197|Airplane]]
+# [[d:Q1248784|Airport]]
+# [[d:Q133585|Airship]]
+# [[d:Q765633|Aviation]]
+# [[d:Q183951|Balloon (aircraft)]]
+# [[d:Q891779|Bombardier Aerospace]]
+# [[d:Q66|Boeing]]
+# [[d:Q19799|Cargo aircraft]]
+# [[d:Q105557|Embraer]]
+# [[d:Q214861|Hartsfield–Jackson Atlanta International Airport]]<!-- World's busiest -->
+# [[d:Q34486|Helicopter]]
+# [[d:Q42861|Kite]]
+# [[d:Q482816|Parachute]]
+# [[d:Q194009|Tupolev]]
+# [[d:Q484000|Unmanned aerial vehicle]]
+
+====Naval transport, 17====
+# [[d:Q16518|Barge]]
+# [[d:Q35872|Boat]]
+# [[d:Q171529|Canoe]]
+# [[d:Q169560|Caravel]] <!--15th century ship that can sail against wind-->
+# [[d:Q17210|Container ship]]
+# [[d:Q39804|Cruise ship]]
+# [[d:Q25653|Ferry]]
+# [[d:Q185757|Hovercraft]]
+# [[d:Q205011|Junk (ship)]]<!--chinese ship used from 2AD to present-->
+# [[d:Q44782|Port]]
+# [[d:Q200433|Raft]]
+# [[d:Q1195684|Rowing]]
+# [[d:Q25999|Sail]]
+# [[d:Q192520|Sailing]]
+# '''[[d:Q11446|Ship]]'''
+# [[d:Q14970|Tanker (ship)]]
+# [[d:Q1229765|Watercraft]]
+
+====Ground transport, 51====
+=====Rail transport, 16=====
+# [[d:Q964162|Express train]]
+# [[d:Q93301|Locomotive]]
+## [[d:Q171043|Steam locomotive]]
+# [[d:Q20075|London Underground]]
+# [[d:Q160047|Maglev train]]
+# [[d:Q5499|Moscow Metro]]
+# [[d:Q7733|New York City Subway]]
+# [[d:Q50716|Paris M&#233;tro]]
+# [[d:Q3565868|Rail transportation]]
+# [[d:Q862562|Railway signal]]
+# [[d:Q22667|Railway system]]
+# '''[[d:Q870|Train]]'''
+# [[d:Q55488|Train station]]
+# [[d:Q58767|Trans-Siberian Railway]]
+# [[d:Q5641|Tram]]
+# [[d:Q5503|Subterranean rapid transit]] (subway)
+
+=====Road transport, 35=====
+# [[d:Q59720|Auto rickshaw]]
+# '''[[d:Q11442|Bicycle]]'''
+# [[d:Q5638|Bus]]
+## [[d:Q5639|Trolleybus]]
+# [[d:Q494829|Bus station]]
+# [[d:Q235356|Carriage]]
+# [[d:Q34493|Motorcycle]]
+# [[d:Q34442|Road]]
+## [[d:Q46622|Controlled-access highway]]
+# [[d:Q192249|Saddle]]
+# [[d:Q191657|Stirrup]]
+# '''[[d:Q4323994|Traffic]]'''
+# [[d:Q9687|Traffic accident]]
+# [[d:Q170285|Traffic sign]]
+# [[d:Q628179|Trail]]
+# [[d:Q43193|Truck]]
+# [[d:Q193468|Van]]
+
+======Automobile, 18======
+# '''[[d:Q1420|Automobile]]''' (car)
+# [[d:Q190117|Automotive industry]]
+# [[d:Q193692|Electric car]]
+# [[d:Q82650|Taxicab]]
+
+; Groups, 10 <!-- Top ten in the World ranking of manufacturers (2012), http://www.oica.net/wp-content/uploads/2013/03/worldpro2012-modification-ranking.pdf -->
+# [[d:Q44294|Ford Motor Company]]
+# [[d:Q81965|General Motors]]
+# [[d:Q9584|Honda]]
+# [[d:Q55931|Hyundai Motor Company]]
+# [[d:Q20165|Nissan Motor Company]]
+# [[d:Q275623|PSA Peugeot Citroën]]
+# [[d:Q6686|Renault]]
+# [[d:Q181642|Suzuki]]
+# [[d:Q53268|Toyota]]
+# [[d:Q246|Volkswagen]]
+
+; Car models, 4 <!-- World's bestsellers from [[:en:List of best-selling automobiles]] -->
+# [[d:Q182323|Ford Model T]]
+# [[d:Q152946|Volkswagen Beetle]]
+# [[d:Q243543|Toyota Corolla]]
+# [[d:Q837297|VAZ-2101]]
+{{Div col end}}
+
+=== Weapons, 80 ===
+{{Div col|cols=4}}
+# '''[[d:Q728|Weapon]]'''
+# [[d:Q203788|Chariot]]
+# [[d:Q339042|Stealth technology]]
+# '''[[d:Q12876|Tank]]'''
+# [[d:Q165363|Torpedo]]
+# [[d:Q223694|War elephant]]
+
+;Ammunition, 6
+# [[d:Q185785|Ammunition]]
+# [[d:Q37144|Cartridge (firearms)]]
+# '''[[d:Q12861|Gunpowder]]'''
+# [[d:Q45922|Arrow]]
+# [[d:Q174583|Bullet]]
+## [[d:Q170417|Caliber]]
+
+;Armour, 7
+# [[d:Q485027|Armour]]
+# [[d:Q391752|Bulletproof vest]]
+# [[d:Q3579211|Combat helmet]]
+# [[d:Q173603|Helmet]]
+# [[d:Q659631|Mail (armour)]]
+# [[d:Q3391846|Plate armour]]
+# [[d:Q131559|Shield]]
+
+;Explosive weapons, 6
+# [[d:Q127197|Bomb]]
+# [[d:Q184158|Cluster munition]]
+# [[d:Q1249453|Improvised explosive device]]
+# [[d:Q173517|Hand grenade]]
+# [[d:Q178795|Land mine]]
+# [[d:Q974850|Missile]]
+
+;Incendiary weapons, 3
+# [[d:Q179537|Greek fire]]
+# [[d:Q167096|Molotov cocktail]]
+# [[d:Q181822|Napalm]]
+
+;Melee weapons, 13
+# [[d:Q204206|Nunchaku]]
+
+;;Blade weapons, 11
+# [[d:Q173366|Bayonet]]
+# [[d:Q852049|Battle axe]]
+# [[d:Q182780|Dagger]]
+# [[d:Q840419|Épée]]
+# [[d:Q172736|Katana]]
+# [[d:Q32489|Knife]]
+# [[d:Q816745|Rapier]]
+# [[d:Q231204|Sabre]]
+# [[d:Q44475|Spear]]
+# '''[[d:Q12791|Sword]]'''
+# [[d:Q86436|Tomahawk (axe)]]
+;;Blunt weapons, 1
+# [[d:Q392326|Club (weapon)]]
+
+;Firearm, 12
+# '''[[d:Q12796|Firearm]]'''
+# [[d:Q177456|Assault rifle]]
+## [[d:Q37116|AK-47]]
+# [[d:Q7816242|Handgun]]
+# '''[[d:Q12800|Machine gun]]'''
+## [[d:Q155644|Uzi]]
+# [[d:Q124072|Rifle]]
+
+;;Artillery, 5
+# [[d:Q64418|Artillery]]
+# [[d:Q208129|Battering ram]]
+# [[d:Q81103|Cannon]]
+# [[d:Q180126|Howitzer]]
+# [[d:Q7905205|Mortar (weapon)]]
+
+;Military aviation, 4
+# [[d:Q216916|Military aircraft]]
+# [[d:Q170877|Bomber]]
+# [[d:Q127771|Fighter aircraft]]
+# [[d:Q208187|Attack aircraft]]
+
+;Naval warfare, 10
+# [[d:Q182531|Battleship]]
+# [[d:Q17205|Aircraft carrier]]
+# [[d:Q847109|Dreadnought]]
+# [[d:Q731662|Dromon]]
+# [[d:Q188924|Galley]]
+# '''[[d:Q2811|Submarine]]'''
+# [[d:Q1194368|Capital ship]]
+# [[d:Q207452|Ship of the line]]
+# [[d:Q208420|Trireme]]
+# [[d:Q3114762|Warship]]
+
+;Projectile weapons, 8
+# [[d:Q219433|Ballista]]
+# [[d:Q131536|Boomerang]]
+# [[d:Q46311|Bow and arrow]]
+# [[d:Q184393|Catapult]]
+# [[d:Q181947|Crossbow]]
+# [[d:Q178243|Musket]]
+# [[d:Q486396|Shotgun]]
+# [[d:Q199771|Sling (weapon)]]
+
+;Weapon of mass destruction, 5
+# [[d:Q49394|Weapon of mass destruction]]
+# [[d:Q170907|Biological warfare]]
+# [[d:Q3639228|Chemical weapon]]
+# '''[[d:Q12802|Nuclear weapon]]'''
+## [[d:Q625107|Thermonuclear weapon]]
+
+{{Div col end}}

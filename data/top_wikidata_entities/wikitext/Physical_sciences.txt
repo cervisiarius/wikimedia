@@ -1,0 +1,1704 @@
+<noinclude>'''Return to [[List of articles every Wikipedia should have/Expanded]]'''</noinclude>
+== Physical sciences, 1350 ==
+::''Transcluded from [[List of articles every Wikipedia should have/Expanded/Physical sciences]]''.
+
+=== Science, 10 ===
+{{Div col|cols=4}}
+# '''[[d:Q336|Science]]'''
+# [[d:Q101965|Experiment]]
+# [[d:Q483242|Laboratory]]
+## [[d:Q834028|Laboratory equipment]]
+# '''[[d:Q7860|Nature]]'''
+# [[d:Q193181|Observation]]
+# [[d:Q42240|Research]]
+# [[d:Q46857|Scientific method]]
+# [[d:Q3239681|Scientific theory]]
+# [[d:Q901|Scientist]]
+{{Div col end}}
+
+=== Astronomy, 277 ===
+====Basics, 5====
+# '''[[d:Q333|Astronomy]]'''
+# [[d:Q411|Astrobiology]]
+# [[d:Q943247|Extinction (astronomy)]]
+# [[d:Q181508|Extraterrestrial life]]
+# [[d:Q2028919|Magnitude (astronomy)]]
+
+==== Astrometry, 88 ====
+{{Div col|cols=4}}
+# [[d:Q181505|Astrometry]]
+# [[d:Q740898|Angular resolution]]
+# [[d:Q618164|Cosmic distance ladder]]
+# [[d:Q165074|Parallax]]
+# [[d:Q1073340|Photometry (astronomy)]]
+
+;Celestial sphere, 83
+# [[d:Q86394|Celestial coordinate system]]
+## [[d:Q76287|Declination]]
+## [[d:Q13442|Right ascension]]
+# [[d:Q187646|Celestial equator]]
+# [[d:Q12134|Celestial sphere]]
+# [[d:Q1315|Equinox]]
+# [[d:Q79852|Ecliptic]]
+# [[d:Q43261|Horizon]]
+# [[d:Q145825|Nadir]]
+# [[d:Q123524|Solstice]]
+# [[d:Q842617|Star chart]]
+# [[d:Q82806|Zenith]]
+# [[d:Q40540|Zodiac]]
+
+;;Constellations, 70
+;;;''IAU constellations, 65''
+# [[d:Q8928|Constellation]]
+# [[d:Q9256|Andromeda (constellation)]]
+# [[d:Q10576|Aquarius (constellation)]]
+# [[d:Q10586|Aquila (constellation)]]
+# [[d:Q9253|Ara (constellation)]]
+# [[d:Q10584|Aries (constellation)]]
+# [[d:Q10476|Auriga (constellation)]]
+# [[d:Q8667|Boötes]]
+# [[d:Q8832|Camelopardalis]]
+# [[d:Q8849|Cancer (constellation)]]
+# [[d:Q10452|Canes Venatici]]
+# [[d:Q10538|Canis Major]]
+# [[d:Q9305|Canis Minor]]
+# [[d:Q10535|Capricornus]]
+# [[d:Q10470|Carina (constellation)]]
+# [[d:Q10464|Cassiopeia (constellation)]]
+# [[d:Q8844|Centaurus]]
+# [[d:Q10468|Cepheus (constellation)]]
+# [[d:Q8839|Cetus]]
+# [[d:Q10425|Columba (constellation)]]
+# [[d:Q9285|Coma Berenices]]
+# [[d:Q10413|Corona Australis]]
+# [[d:Q10406|Corona Borealis]]
+# [[d:Q10517|Corvus (constellation)]]
+# [[d:Q9282|Crater (constellation)]]
+# [[d:Q10542|Crux]]
+# [[d:Q8921|Cygnus (constellation)]]
+# [[d:Q9302|Delphinus]]
+# [[d:Q8675|Draco (constellation)]]
+# [[d:Q10438|Equuleus]]
+# [[d:Q10433|Eridanus (constellation)]]
+# [[d:Q8923|Gemini (constellation)]]
+# [[d:Q10448|Hercules (constellation)]]
+# [[d:Q10578|Hydra (constellation)]]
+# [[d:Q10430|Lacerta]]
+# [[d:Q8853|Leo (constellation)]]
+# [[d:Q10403|Leo Minor]]
+# [[d:Q10446|Lepus (constellation)]]
+# [[d:Q10580|Libra (constellation)]]
+# [[d:Q10571|Lupus (constellation)]]
+# [[d:Q10443|Lynx (constellation)]]
+# [[d:Q10484|Lyra]]
+# [[d:Q10428|Monoceros]]
+# [[d:Q8906|Ophiuchus]]
+# [[d:Q8860|Orion (constellation)]]
+# [[d:Q8864|Pegasus (constellation)]]
+# [[d:Q10511|Perseus (constellation)]]
+# [[d:Q8679|Pisces (constellation)]]
+# [[d:Q10409|Piscis Austrinus]]
+# [[d:Q9251|Puppis]]
+# [[d:Q10473|Pyxis]]
+# [[d:Q10513|Sagitta]]
+# [[d:Q8866|Sagittarius (constellation)]]
+# [[d:Q8865|Scorpius]]
+# [[d:Q10529|Scutum]]
+# [[d:Q8910|Serpens]]
+# [[d:Q10525|Sextans]]
+# [[d:Q10570|Taurus (constellation)]]
+# [[d:Q10565|Triangulum]]
+# [[d:Q10422|Triangulum Australe]]
+# [[d:Q8918|Ursa Major]]
+# [[d:Q10478|Ursa Minor]]
+# [[d:Q10521|Vela (constellation)]]
+# [[d:Q8842|Virgo (constellation)]]
+# [[d:Q10519|Vulpecula]]
+
+;;;''Chinese constellations, 5''
+# [[d:Q1074076|Chinese constellations]]
+## [[d:Q1059392|Vermilion Bird]]
+## [[d:Q1072455|White Tiger]]
+## [[d:Q125696|Black Tortoise]]
+## [[d:Q515882|Azure Dragon]]
+{{Div col end}}
+
+==== Astronomical objects, 74 ====
+{{Div col|cols=4}}
+
+;Basics, 13
+# [[d:Q6999|Astronomical object]]
+# [[d:Q487255|Centaurus A]]
+# [[d:Q332674|Cygnus X-1]]
+# [[d:Q12185|Eta Carinae]]
+# [[d:Q23054|Halley's Comet]]
+# [[d:Q13511|Hyades (star cluster)]]
+# [[d:Q49957|Large Magellanic Cloud]]
+# [[d:Q14041|Messier 87]]
+# [[d:Q12965|Mira]]
+# [[d:Q14275|Omega Centauri]]
+# [[d:Q13903|Orion Nebula]]
+# [[d:Q13423|Pleiades]]
+# [[d:Q237284|Sagittarius A*]]<!-- Black hole center of milky way -->
+
+;Galaxies, 5
+# [[d:Q3944|Local Group]]
+## [[d:Q50028|Magellanic Clouds]]
+## '''[[d:Q321|Milky Way]]'''
+## [[d:Q2469|Andromeda Galaxy]]
+## [[d:Q13724|Triangulum Galaxy]]
+
+;Solar System, 29
+# '''[[d:Q544|Solar System]]'''
+# '''[[d:Q525|Sun]]'''
+# '''[[d:Q308|Mercury (planet)]]'''
+# '''[[d:Q313|Venus]]'''
+# '''[[d:Q2|Earth]]'''
+## '''[[d:Q405|Moon]]'''
+# '''[[d:Q111|Mars]]'''
+##[[d:Q7548|Deimos]]
+##[[d:Q7547|Phobos]]
+# [[d:Q2179|Asteroid belt]]
+# [[d:Q596|Ceres (dwarf planet)]]
+# '''[[d:Q319|Jupiter]]'''
+## [[d:Q3123|Io (moon)]]
+## [[d:Q3143|Europa (moon)]]
+## [[d:Q3169|Ganymede (moon)]]
+## [[d:Q3134|Callisto (moon)]]
+# '''[[d:Q193|Saturn]]'''
+## [[d:Q3303|Enceladus (moon)]]
+## [[d:Q2565|Titan (moon)]]
+# '''[[d:Q324|Uranus]]'''
+# '''[[d:Q332|Neptune]]'''
+# [[d:Q3359|Triton (moon)]]
+# [[d:Q339|Pluto]]
+## [[d:Q6604|Charon]]
+# [[d:Q611|Eris (dwarf planet)]]
+# [[d:Q604|Makemake (dwarf planet)]]
+# [[d:Q601|Haumea (dwarf planet)]]
+# [[d:Q427|Kuiper belt]]
+# [[d:Q40864|Oort cloud]]
+
+;Extrasolar planets, 2
+# [[d:Q73561|PSR B1257+12 B]]<!--  first planet discovered outside the Solar System -->
+# [[d:Q242309|51 Pegasi b]]<!--   first planet discovered orbiting a main sequence star - marked a breakthrough in astronomical research-->
+
+;Stars, 23
+# [[d:Q3409|Sirius]]
+# [[d:Q12189|Canopus]]
+# [[d:Q12985|Arcturus]]
+# [[d:Q12176|Alpha Centauri]]
+# [[d:Q3427|Vega]]
+# [[d:Q12126|Rigel]]
+# [[d:Q13034|Procyon]]
+# [[d:Q12183|Achernar]]
+# [[d:Q12124|Betelgeuse]]
+# [[d:Q12970|Capella (star)]]
+# [[d:Q12975|Altair]]
+# [[d:Q12170|Aldebaran]]
+# [[d:Q13008|Spica]]
+# [[d:Q12166|Antares]]
+# [[d:Q13028|Pollux (star)]]
+# [[d:Q13169|Fomalhaut]]
+# [[d:Q12179|Deneb]]
+# [[d:Q370994|RR Lyrae]]
+# [[d:Q13102|Alpha Crucis]]
+# [[d:Q13175|Beta Centauri]]
+# [[d:Q13080|Algol]]
+# [[d:Q13024|Delta Cephei]]
+# [[d:Q12980|Polaris]]
+
+;Other objects, 2
+# [[d:Q229318|3C 273]]
+# [[d:Q10934|Crab Nebula]]
+{{Div col end}}
+
+==== Celestial mechanics, 20 ====
+{{Div col|cols=4}}
+# [[d:Q184274|Celestial mechanics]]
+# [[d:Q141022|Eclipse]]
+## [[d:Q44235|Lunar eclipse]]
+## [[d:Q3887|Solar eclipse]]
+# [[d:Q120200|Ephemeris]]
+# [[d:Q2703|Epoch (astronomy)]]
+# [[d:Q166530|Escape velocity]]
+# [[d:Q208617|Equatorial coordinate system]]
+# [[d:Q223776|Gravity assist]]
+# [[d:Q83219|Kepler's laws of planetary motion]]
+# [[d:Q190463|Lagrangian point]]
+# [[d:Q2537|Natural satellite]]
+# [[d:Q4130|Orbit]]
+## [[d:Q192316|Geostationary orbit]]
+## [[d:Q663611|Low Earth orbit]]
+# [[d:Q272626|Orbital elements]]
+# [[d:Q208474|Orbital eccentricity]]
+# [[d:Q842433|Orbital mechanics]]
+# [[d:Q202746|Occultation]]
+# [[d:Q232976|Two-body problem]]
+{{Div col end}}
+
+==== Galactic astronomy and Extragalactic astronomy, 32 ====
+{{Div col|cols=4}}
+
+;Basics, 16
+# '''[[d:Q589|Black hole]]'''
+## [[d:Q72755|Schwarzschild radius]]
+## [[d:Q40392|Supermassive black hole]]
+# [[d:Q11547|Cosmic ray]]
+# [[d:Q204194|Dark nebula]]
+# '''[[d:Q318|Galaxy]]'''
+# [[d:Q204107|Galaxy cluster]]
+# [[d:Q1491746|Galaxy group]]
+## [[d:Q27521|Supercluster]]
+# [[d:Q656857|Great Attractor]]
+# [[d:Q11282|H II region]]
+# [[d:Q41872|Interstellar medium]]
+# [[d:Q272447|Molecular cloud]]
+# [[d:Q42372|Nebula]]
+# [[d:Q4169|Outer space]]
+# [[d:Q79833|Solar wind]]
+
+;Star clusters, 4
+# [[d:Q168845|Star cluster]]
+# [[d:Q11276|Globular cluster]]
+# [[d:Q11387|Open cluster]]
+# [[d:Q736194|Stellar association]]
+
+;Galaxy morphological classification, 6
+# [[d:Q1648748|Galaxy morphological classification]]
+# [[d:Q190438|Dwarf galaxy]]
+# [[d:Q184348|Elliptical galaxy]]
+# [[d:Q190397|Irregular galaxy]]
+# [[d:Q192078|Lenticular galaxy]]
+# [[d:Q2488|Spiral galaxy]]
+
+;Active galactic nucleus, 6
+# [[d:Q46587|Active galactic nucleus]]
+# [[d:Q221221|Blazar]]
+# [[d:Q83373|Quasar]]
+# [[d:Q217012|Radio galaxy]]
+# [[d:Q213930|Seyfert galaxy]]
+# [[d:Q726611|Starburst galaxy]]
+{{Div col end}}
+
+==== Observational astronomy, 3 ==== 
+# [[d:Q159653|Absolute magnitude]]
+# [[d:Q124313|Apparent magnitude]]
+# [[d:Q62832|Observatory]]
+
+==== Physical cosmology, 14 ====
+{{Div col|cols=4}}
+# [[d:Q18346|Physical cosmology]]
+# [[d:Q500699|Age of the universe]]
+# '''[[d:Q323|Big Bang]]'''
+# [[d:Q15605|Cosmic microwave background radiation]]
+# [[d:Q18343|Dark energy]]
+# [[d:Q79925|Dark matter]]
+# [[d:Q3535|Formation and evolution of the Solar System]]
+# [[d:Q1995140|Galaxy formation and evolution]]
+# [[d:Q179916|Hubble's law]]
+# [[d:Q3400|Solar Nebula]]
+# [[d:Q13599969|Nebular hypothesis]]
+# [[d:Q76250|Redshift]]
+# '''[[d:Q1|Universe]]'''
+## [[d:Q221392|Observable universe]]
+{{Div col end}}
+
+==== Planetary science, 8 ====
+{{Div col|cols=4}}
+# '''[[d:Q3863|Asteroid]]'''
+# '''[[d:Q3559|Comet]]'''
+# [[d:Q44559|Extrasolar planet]]
+# [[d:Q1022867|Minor planet]]
+# '''[[d:Q634|Planet]]'''
+## [[d:Q2199|Dwarf planet]]
+## [[d:Q121750|Gas giant]]
+## [[d:Q128207|Terrestrial planet]]
+{{Div col end}}
+
+==== Stellar astronomy, 33 ====
+{{Div col|cols=4}}
+# '''[[d:Q523|Star]]'''
+# [[d:Q101600|Brown dwarf]]
+# [[d:Q215913|Circumstellar habitable zone]]
+# [[d:Q22247|Gamma-ray burst]]
+# [[d:Q3270143|Hertzsprung–Russell diagram]]
+# [[d:Q217030|Metallicity]]
+# [[d:Q206717|Planetary system]]
+# [[d:Q179600|Stellar classification]]
+# [[d:Q6472|Stellar evolution]]
+## [[d:Q13632|Planetary nebula]]
+## [[d:Q16744|Star formation]]
+## [[d:Q3450|Main sequence]]
+## [[d:Q204903|Protostar]]
+## [[d:Q50081|Red giant]]
+## [[d:Q5875|Giant star]]
+## [[d:Q193599|Supergiant]]
+## [[d:Q6251|Wolf&#8211;Rayet star]]
+## [[d:Q368442|Compact star]]
+### [[d:Q5871|White dwarf]]
+### [[d:Q4202|Neutron star]]
+### [[d:Q1047034|Stellar black hole]]
+# [[d:Q6440|Stellar kinematics]]
+# [[d:Q6449|Stellar magnetic field]]
+# [[d:Q1057093|Stellar nucleosynthesis]]
+# [[d:Q6464|Stellar rotation]]
+# [[d:Q595871|Star system]]
+## [[d:Q50053|Binary star]]
+## [[d:Q3235978|Circumstellar disk]]
+# [[d:Q6243|Variable star]]
+## [[d:Q188593|Cepheid variable]]
+## [[d:Q6458|Nova]]
+## [[d:Q4360|Pulsar]]
+## [[d:Q3937|Supernova]]
+{{Div col end}}
+
+=== Chemistry, 361 ===
+<!-- these need to be sorted -->
+{{Div col|cols=4}}
+# [[d:Q133948|Antioxidant]]
+# [[d:Q104567|Chalcogen]]
+# [[d:Q133895|Citric acid cycle]]
+# [[d:Q3686031|Concentration]]
+# [[d:Q101017|Distillation]]
+# [[d:Q78974|Electronegativity]]
+# [[d:Q170409|Functional group]]
+# [[d:Q191807|Fluorescence]]
+# [[d:Q162643|Glycolysis]]
+# [[d:Q199877|Hydroxide]]
+# [[d:Q219567|Hydrophobe]]
+# [[d:Q133516|Monosaccharide]]
+# [[d:Q181898|Polymerization]]
+## [[d:Q176996|Polymerase chain reaction]]
+# [[d:Q193353|Phlogiston theory]]
+# [[d:Q134219|Polysaccharide]]
+# [[d:Q213185|Stoichiometry]]
+# [[d:Q54389|Tritium]]
+# [[d:Q192900|Radionuclide]]
+# [[d:Q146505|Solvent]]
+# [[d:Q485360|Covalent radius]]
+# [[d:Q484152|Oxidation state]]
+# [[d:Q188631|Vulcanization]]
+# [[d:Q161764|Geochemistry]]
+# [[d:Q167751|Carbon cycle]]
+# [[d:Q156698|Eutrophication]]
+# [[d:Q186693|Phase diagram]]
+# [[d:Q166879|Van der Waals radius]]
+# [[d:Q19600|Nonmetal]]
+# [[d:Q178593|Macromolecule]]
+# [[d:Q191154|Surfactant]]
+# [[d:Q27084|Parts-per notation]]
+# [[d:Q585302|Noble metal]]
+# [[d:Q187126|Glycoprotein]]
+# [[d:Q187689|Oxidizing agent]]
+# [[d:Q190453|Poisson's ratio]]
+# [[d:Q176848|Pyrolysis]]
+# [[d:Q185098|Electrophoresis]]
+# [[d:Q107414|Valence electron]]
+# [[d:Q188666|Adhesion]]
+# [[d:Q190512|Tear gas]]
+# [[d:Q171407|Valence (chemistry)]]
+# [[d:Q193384|Cosmic dust]]
+# [[d:Q6503924|Chemical nomenclature]]
+# [[d:Q185056|Radical (chemistry)]]
+# [[d:Q127950|Isomer]]
+# [[d:Q185870|Group 11 element]]
+{{Div col end}}
+
+====Basics, 49====
+{{Div col|cols=4}}
+# '''[[d:Q2329|Chemistry]]'''
+# '''[[d:Q397334|Agricultural Chemistry]]'''
+# '''[[d:Q7094|Biochemistry]]'''
+# [[d:Q369472|Computational chemistry]]
+# [[d:Q7877|Electrochemistry]]
+## [[d:Q64403|Electrolysis]]
+# [[d:Q321355|Environmental chemistry]]
+# [[d:Q495304|Forensic science]]
+# '''[[d:Q11165|Inorganic chemistry]]'''
+# [[d:Q228736|Materials science]]
+# [[d:Q243455|Medicinal chemistry]]
+# [[d:Q243545|Nuclear chemistry]]
+## [[d:Q130399|Table of nuclides]]
+# '''[[d:Q11351|Organic chemistry]]'''
+# [[d:Q237200|Organometallic chemistry]]
+# [[d:Q188651|Photochemistry]]
+# '''[[d:Q11372|Physical chemistry]]'''
+# [[d:Q750446|Polymer chemistry]]
+# [[d:Q188403|Quantum chemistry]]
+# [[d:Q39689|Alchemy]]
+# [[d:Q44424|Chemical bond]]
+## [[d:Q62500|Ionic bond]]
+## [[d:Q127920|Covalent bond]]
+## [[d:Q191390|Metallic bond]]
+## [[d:Q169324|Hydrogen bond]]
+## [[d:Q245031|Intermolecular force]]
+## '''[[d:Q11369|Molecule]]'''
+# [[d:Q83588|Chemical engineering]]
+# [[d:Q207652|Chemical industry]]
+# [[d:Q36534|Chemical reaction]]
+## [[d:Q378751|Acid–base reaction]]
+## [[d:Q82264|Catalysis]]
+## [[d:Q182527|Chemical equation]]
+## [[d:Q189520|Chemical equilibrium]]
+## [[d:Q83147|Chemical formula]]
+## [[d:Q209082|Chemical kinetics]]
+## [[d:Q133235|Combustion]]
+### '''[[d:Q3196|Fire]]'''
+## [[d:Q13533728|Salt metathesis reaction]]
+## [[d:Q373406|Reaction mechanism]]
+## [[d:Q82682|Redox]]
+### [[d:Q137056|Corrosion]]
+## [[d:Q503396|Substitution reaction]]
+# [[d:Q79529|Chemical substance]]
+# [[d:Q273499|Chemical synthesis]]
+# [[d:Q593644|Chemist]]
+# [[d:Q483948|Conservation of mass]]
+# [[d:Q474100|Pyrotecnics]]
+# [[d:Q127933|Fireworks]]
+{{Div col end}}
+
+==== Analytical chemistry, 6 ====
+{{Div col|cols=4}}
+# '''[[d:Q2346|Analytical chemistry]]'''
+# [[d:Q170050|Chromatography]]
+# [[d:Q180809|Mass spectrometry]]
+# [[d:Q483666|Spectroscopy]]
+## [[d:Q865545|Absorption spectrum]]
+## [[d:Q13553575|Absorption spectroscopy]]
+{{Div col end}}
+
+==== Chemical substances, 257 ====
+{{Div col|cols=4}}
+# [[d:Q214609|Material]]
+## [[d:Q42302|Clay]]
+## '''[[d:Q11469|Glass]]'''
+## [[d:Q42962|Oil]]
+## [[d:Q81163|Polymer]]
+# '''[[d:Q7946|Mineral]]'''
+## [[d:Q82658|Gypsum]]
+## [[d:Q11254|Salt]]
+## [[d:Q7130787|Silicate]]
+# '''[[d:Q5283|Diamond]]'''
+# [[d:Q5309|Graphite]]
+# [[d:Q43010|Quartz]]
+# [[d:Q50690|Oxide]]
+# [[d:Q107429|Peroxide]]
+# [[d:Q36933|Ozone]]
+# [[d:Q181699|Carbonate]]
+# [[d:Q108200|Chloride]]
+# [[d:Q182168|Nitrate]]
+# [[d:Q172290|Sulfate]]
+# [[d:Q2182492|Organophosphorus]]
+# [[d:Q422789|Organosilicon]]
+# [[d:Q146439|Silicone]]
+# [[d:Q422785|Organosulfur compounds]]
+# [[d:Q220410|Thiol]]
+# [[d:Q101487|Ester]]
+# [[d:Q103230|Ether]]
+# [[d:Q43648|Hydrocarbon]]
+# [[d:Q230731|Aromatic hydrocarbon]]
+# [[d:Q159226|Alkyne]]
+{{Div col end}}
+
+===== Chemical elements, 144 =====
+{{Div col|cols=4}}
+
+;Basics, 6
+# '''[[d:Q11344|Chemical element]]'''
+# [[d:Q6102450|List of elements]]
+# [[d:Q23809|Atomic number]]
+# [[d:Q3840065|Atomic mass]]
+# '''[[d:Q10693|Periodic table]]'''
+# [[d:Q101843|Period (periodic table)]]
+
+;Chemical element groups, 20
+# '''[[d:Q11426|Metal]]'''
+# [[d:Q19557|Alkali metal]]
+# [[d:Q19563|Alkaline earth metal]]
+# [[d:Q19569|Lanthanide]]
+# [[d:Q19577|Actinide]]
+# [[d:Q19588|Transition metal]]
+# [[d:Q19596|Metalloid]]
+# [[d:Q19605|Halogen]]
+# [[d:Q19609|Noble gas]]
+# [[d:Q108307|Group 3 element]]
+# [[d:Q189302|Group 4 element]]
+# [[d:Q193276|Group 5 element]]
+# [[d:Q193280|Group 6 element]]
+# [[d:Q191875|Group 12 element]]
+# [[d:Q189294|Boron group]]
+# [[d:Q106693|Carbon group]]
+# [[d:Q106675|Pnictogen]]
+# [[d:Q191936|Period 1 element]]
+# [[d:Q207712|Period 2 element]]
+# [[d:Q211331|Period 3 element]]
+
+;Chemical elements, 118
+<!--  ;1-st period //-->
+# '''[[d:Q556|Hydrogen]]''' (H)
+# [[d:Q560|Helium]] (He)
+<!-- ;2-nd period //-->
+# [[d:Q568|Lithium]] (Li)
+# [[d:Q569|Beryllium]] (Be)
+# [[d:Q618|Boron]] (B)
+# '''[[d:Q623|Carbon]]''' (C)
+# '''[[d:Q627|Nitrogen]]''' (N)
+# '''[[d:Q629|Oxygen]]''' (O)
+# [[d:Q650|Fluorine]] (F)
+# [[d:Q654|Neon]] (Ne)
+<!-- ;3 period //-->
+# [[d:Q658|Sodium]] (Na)
+# [[d:Q660|Magnesium]] (Mg)
+# '''[[d:Q663|Aluminium]]''' (Al)
+# [[d:Q670|Silicon]] (Si)
+# [[d:Q674|Phosphorus]] (P)
+# [[d:Q682|Sulfur]] (S)
+# [[d:Q688|Chlorine]] (Cl)
+# [[d:Q696|Argon]] (Ar)
+<!-- ;4 period //-->
+# [[d:Q703|Potassium]] (K)
+# [[d:Q706|Calcium]] (Ca)
+# [[d:Q713|Scandium]] (Sc)
+# [[d:Q716|Titanium]] (Ti)
+# [[d:Q722|Vanadium]] (V)
+# [[d:Q725|Chromium]] (Cr)
+# [[d:Q731|Manganese]] (Mn)
+# '''[[d:Q677|Iron]]''' (Fe)
+# [[d:Q740|Cobalt]] (Co)
+# [[d:Q744|Nickel]] (Ni)
+# '''[[d:Q753|Copper]]''' (Cu)
+# [[d:Q758|Zinc]] (Zn)
+# [[d:Q861|Gallium]] (Ga)
+# [[d:Q867|Germanium]] (Ge)
+# [[d:Q871|Arsenic]] (As)
+# [[d:Q876|Selenium]] (Se)
+# [[d:Q879|Bromine]] (Br)
+# [[d:Q888|Krypton]] (Kr)
+<!-- ;5 period //-->
+# [[d:Q895|Rubidium]] (Rb)
+# [[d:Q938|Strontium]] (Sr)
+# [[d:Q941|Yttrium]] (Y)
+# [[d:Q1038|Zirconium]] (Zr)
+# [[d:Q1046|Niobium]] (Nb)
+# [[d:Q1053|Molybdenum]] (Mo)
+# [[d:Q1054|Technetium]] (Tc)
+# [[d:Q1086|Ruthenium]] (Ru)
+# [[d:Q1087|Rhodium]] (Rh)
+# [[d:Q1089|Palladium]] (Pd)
+# '''[[d:Q1090|Silver]]''' (Ag)
+# [[d:Q1091|Cadmium]] (Cd)
+# [[d:Q1094|Indium]] (In)
+# '''[[d:Q1096|Tin]]''' (Sn)
+# [[d:Q1099|Antimony]] (Sb)
+# [[d:Q1100|Tellurium]] (Te)
+# [[d:Q1103|Iodine]] (I)
+# [[d:Q1106|Xenon]] (Xe)
+<!-- ;6 period //-->
+# [[d:Q1108|Caesium]] (Cs)
+# [[d:Q1112|Barium]] (Ba)
+# [[d:Q1801|Lanthanum ]] (La)
+# [[d:Q1385|Cerium]] (Ce)
+# [[d:Q1386|Praseodymium]] (Pr)
+# [[d:Q1388|Neodymium]] (Nd)
+# [[d:Q1809|Promethium]] (Pm)
+# [[d:Q1819|Samarium]] (Sm)
+# [[d:Q1396|Europium]] (Eu)
+# [[d:Q1832|Gadolinium]] (Gd)
+# [[d:Q1838|Terbium]] (Tb)
+# [[d:Q1843|Dysprosium]] (Dy)
+# [[d:Q1846|Holmium]] (Ho)
+# [[d:Q1849|Erbium]] (Er)
+# [[d:Q1853|Thulium]] (Tm)
+# [[d:Q1855|Ytterbium]] (Yb)
+# [[d:Q1857|Lutetium]] (Lu)
+# [[d:Q1119|Hafnium]] (Hf)
+# [[d:Q1123|Tantalum]] (Ta)
+# [[d:Q743|Tungsten]] (W)
+# [[d:Q737|Rhenium]] (Re)
+# [[d:Q751|Osmium]] (Os)
+# [[d:Q877|Iridium]] (Ir)
+# [[d:Q880|Platinum]] (Pt)
+# '''[[d:Q897|Gold]]''' (Au)
+# [[d:Q925|Mercury (element)]] (Hg)
+# [[d:Q932|Thallium]] (Tl)
+# [[d:Q708|Lead]] (Pb)
+# [[d:Q942|Bismuth ]] (Bi)
+# [[d:Q979|Polonium]] (Po)
+# [[d:Q999|Astatine]] (At)
+# [[d:Q1133|Radon]] (Rn)
+<!-- ;7 period //-->
+# [[d:Q671|Francium]] (Fr)
+# [[d:Q1128|Radium]] (Ra)
+# [[d:Q1121|Actinium]] (Ac)
+# [[d:Q1115|Thorium]] (Th)
+# [[d:Q1109|Protactinium]] (Pa)
+# [[d:Q1098|Uranium]] (U)
+# [[d:Q1105|Neptunium]] (Np)
+# [[d:Q1102|Plutonium]] (Pu)
+# [[d:Q1872|Americium]] (Am)
+# [[d:Q1876|Curium]] (Cm)
+# [[d:Q1882|Berkelium]] (Bk)
+# [[d:Q1888|Californium]] (Cf)
+# [[d:Q1892|Einsteinium]] (Es)
+# [[d:Q1896|Fermium]] (Fm)
+# [[d:Q1898|Mendelevium]] (Md)
+# [[d:Q1901|Nobelium]] (No)
+# [[d:Q1905|Lawrencium]] (Lr)
+# [[d:Q1226|Rutherfordium]] (Rf)
+# [[d:Q1232|Dubnium]] (Db)
+# [[d:Q1234|Seaborgium]] (Sg)
+# [[d:Q1249|Bohrium]] (Bh)
+# [[d:Q1252|Hassium]] (Hs)
+# [[d:Q1258|Meitnerium]] (Mt)
+# [[d:Q1266|Darmstadtium]] (Ds)
+# [[d:Q1272|Roentgenium]] (Rg)
+# [[d:Q1278|Copernicium]] (Cn)
+# [[d:Q1301|Ununtrium]] (Uut)
+# [[d:Q1302|Flerovium]] (Uuq)
+# [[d:Q1303|Ununpentium]] (Uup)
+# [[d:Q1304|Livermorium]] (Uuh)
+# [[d:Q1306|Ununseptium]] (Uus)
+# [[d:Q1307|Ununoctium]] (Uuo)
+{{Div col end}}
+
+===== Chemical compounds, 65 =====
+{{Div col|cols=4}}
+# '''[[d:Q11173|Chemical compound]]'''
+## '''[[d:Q11158|Acid]]'''
+### [[d:Q47512|Acetic acid]]
+### [[d:Q187045|Boric acid]]
+### [[d:Q159683|Citric acid]]
+### [[d:Q2409|Hydrochloric acid]]
+### [[d:Q209569|Hydrofluoric acid]]
+### [[d:Q161249|Lactic acid]]
+### [[d:Q83320|Nitric acid]]
+### [[d:Q184782|Phosphoric acid]]
+### [[d:Q4118|Sulfuric acid]]
+### [[d:Q427956|Tannic acid]]
+## [[d:Q485742|Alkali]]
+## '''[[d:Q11193|Base (chemistry)]]'''
+## [[d:Q190065|Inorganic compound]]
+### [[d:Q4087|Ammonia]]
+### [[d:Q1997|Carbon dioxide]]
+### [[d:Q2025|Carbon monoxide]]
+### '''[[d:Q283|Water]]'''
+## [[d:Q174211|Organic compound]]
+### [[d:Q49546|Acetone]]
+### '''[[d:Q156|Alcohol]]'''
+### [[d:Q101497|Aldehyde]]
+### [[d:Q41581|Alkane]]
+### [[d:Q81406|Alkene]]
+### [[d:Q188777|Amide]]
+### [[d:Q167198|Amine]]
+### [[d:Q2270|Benzene]]
+### [[d:Q134192|Butane]]
+### [[d:Q52858|Ethane]]
+### [[d:Q60235|Caffeine]]
+### [[d:Q134856|Carboxylic acid]]
+### [[d:Q960800|Chlorofluorocarbon]]
+### [[d:Q41576|Cocaine]]
+### '''[[d:Q153|Ethanol]]'''
+### [[d:Q151313|Ethylene]]
+### [[d:Q161210|Formaldehyde]]
+### [[d:Q122043|Fructose]]
+### [[d:Q37525|Glucose]]
+### [[d:Q271026|Haloalkane]]
+### [[d:Q170744|Ketone]]
+### [[d:Q37129|Methane]]
+### [[d:Q14982|Methanol]]
+### '''[[d:Q12144|Nicotine]]'''
+### [[d:Q130336|Phenol]]
+### [[d:Q131189|Propane]]
+### [[d:Q151324|Propene]]
+### [[d:Q3273339|Syngas]]
+## '''[[d:Q12370|Salt (chemistry)]]'''
+### [[d:Q190527|Alum]]
+### [[d:Q182329|Ammonium nitrate]]
+### [[d:Q191831|Ammonium sulfate]]
+### [[d:Q23767|Calcium carbonate]]
+### [[d:Q208451|Calcium chloride]]
+### [[d:Q288266|Magnesium sulfate]]
+### [[d:Q132298|Potassium hydroxide]]
+### [[d:Q177836|Potassium nitrate]]
+### [[d:Q179731|Sodium bicarbonate]]
+### [[d:Q190227|Sodium carbonate]]
+### [[d:Q2314|Sodium chloride]]
+### [[d:Q102769|Sodium hydroxide]]
+### [[d:Q184373|Sodium nitrate]]
+### [[d:Q425397|Sodium silicate]]
+### [[d:Q211737|Sodium sulfate]]
+### [[d:Q193521|Titanium dioxide]]
+
+{{Div col end}}
+
+===== Chemical mixtures, 19 =====
+{{Div col|cols=4}}
+# [[d:Q169336|Mixture]]
+# [[d:Q104541|Aerosol]]
+# [[d:Q181780|Colloid]]
+# [[d:Q178697|Dispersion (chemistry)]]
+# [[d:Q187634|Emulsion]]
+# [[d:Q215414|Foam]]
+# [[d:Q185744|Gel]]
+# [[d:Q5447188|Solution]]
+# [[d:Q26100|Suspension (chemistry)]]
+# [[d:Q255722|Vapor]]
+
+;Alloys, 9
+# [[d:Q37756|Alloy]]
+# [[d:Q182574|Amalgam (chemistry)]]
+# [[d:Q39782|Brass]]
+# [[d:Q34095|Bronze]]
+# [[d:Q45621|Ceramic]]
+# [[d:Q483269|Cast iron]]
+# [[d:Q243558|Duralumin]]
+# '''[[d:Q11427|Steel]]'''
+# [[d:Q172587|Stainless steel]]
+{{Div col end}}
+
+==== Pharmacy, 2 ====
+{{Div col|cols=4}}
+# [[d:Q206077|Tablet (pharmacy)]]
+# [[d:Q269829|Placebo]]
+{{Div col end}}
+
+=== Earth science, 262 ===
+<small>For specific geographical objects see Geography</small>
+==== General, 1 ====
+{{Div col|cols=4}}
+# [[d:Q8008|Earth science]]
+{{Div col end}}
+
+==== Cartography, 2 ====
+# [[d:Q42515|Cartography]]
+# [[d:Q4006|Map]]
+
+==== Natural disasters, 6 ==== 
+{{Div col|cols=4}}
+# '''[[d:Q8065|Natural disaster]]'''
+# '''[[d:Q7935|Avalanche]]'''
+# [[d:Q43059|Drought]]
+# '''[[d:Q8068|Flood]]'''
+# '''[[d:Q7944|Earthquake]]'''
+# '''[[d:Q8070|Tsunami]]'''
+
+{{Div col end}}
+
+==== Earth, 165 ==== 
+{{Div col|cols=4}}
+# [[d:Q1664027|Structure of the Earth]]
+
+===== Geology, 52 =====
+# [[d:Q81659|Fold (geology)]]
+# [[d:Q736917|Formation (stratigraphy)]]
+# [[d:Q40614|Fossil]]
+# '''[[d:Q1069|Geology]]'''
+# [[d:Q55818|Impact crater]]
+# [[d:Q83296|Lithosphere]]
+## [[d:Q15316|Crust (geology)]]
+## [[d:Q47089|Fault (geology)]]
+## '''[[d:Q8063|Rock (geology)]]'''
+### [[d:Q43338|Basalt]]
+### [[d:Q83087|Flint]]
+### [[d:Q42045|Igneous rock]]
+### [[d:Q23757|Limestone]]
+### [[d:Q42278|Magma]]
+### [[d:Q47069|Metamorphic rock]]
+### [[d:Q82480|Sedimentary rock]]
+
+; Mineralogy, 20
+# [[d:Q83353|Mineralogy]]
+# '''[[d:Q7950|Plate tectonics]]'''
+# [[d:Q134783|Stratigraphy]]
+# [[d:Q12758989|Stratum]]
+# [[d:Q496325|Thrust fault]]
+# [[d:Q192880|Pyroxene]]
+# [[d:Q178977|Silicate minerals]]
+# [[d:Q170258|Feldspar]]
+# [[d:Q223197|Kaolinite]]
+# [[d:Q134583|Talc]]
+# [[d:Q114675|Mica]]
+# [[d:Q104085|Asbestos]]
+# [[d:Q103480|Beryl]]
+# [[d:Q43513|Emerald]]
+# [[d:Q127583|Sapphire]]
+# [[d:Q43088|Ruby]]
+# [[d:Q134985|Topaz]]
+# [[d:Q25381|Amber]]
+# [[d:Q82001|Ivory]]
+# [[d:Q43436|Pearl]]
+
+; Petrology, 16
+# [[d:Q163082|Petrology]]
+# [[d:Q191704|Conglomerate (geology)]]
+# [[d:Q133833|Gravel]]
+# [[d:Q41177|Granite]]
+# [[d:Q484924|Tuff]]
+# [[d:Q15315|Schist]]
+# [[d:Q40861|Marble]]
+# [[d:Q166409|Gneiss]]
+# [[d:Q36133|Soil]]
+# [[d:Q34679|Sand]]
+# [[d:Q13085|Sandstone]]
+# [[d:Q102078|Bauxite]]
+# [[d:Q184624|Peat]]
+# [[d:Q237883|Quartzite]]
+# [[d:Q207079|Slate]]
+# [[d:Q221378|Oil shale]]
+
+===== Geophysics, 7 =====
+# [[d:Q131089|Geodesy]]
+# [[d:Q46255|Geophysics]]
+# [[d:Q6500960|Earth's magnetic field]]
+# [[d:Q394352|Inner core]]
+# [[d:Q857867|Outer core]]
+# [[d:Q101949|Mantle (geology)]]
+# [[d:Q83371|Seismology]]
+
+===== Geological history, 18 =====
+# [[d:Q43521|Geologic time scale]]
+# [[d:Q4398|Pangaea]]
+# [[d:Q55814|Extinction event]]
+# [[d:Q141118|Permian&#8211;Triassic extinction event]]
+# [[d:Q55811|Cretaceous–Paleogene extinction event]]
+# [[d:Q49367|Ice age]]
+# [[d:Q103910|Precambrian]]
+# [[d:Q101313|Phanerozoic]]
+# [[d:Q75507|Paleozoic]]
+## [[d:Q79064|Cambrian]]
+## [[d:Q76402|Permian]]
+# [[d:Q83222|Mesozoic]]
+# [[d:Q47158|Triassic]]
+# [[d:Q45805|Jurassic]]
+# [[d:Q44626|Cretaceous]]
+# [[d:Q102416|Cenozoic]]
+# [[d:Q26185|Quaternary]]
+# [[d:Q25445|Holocene]]
+{{Div col end}}
+
+===== Geomorphology, 58 =====
+{{Div col|cols=4}}
+# [[d:Q52109|Geomorphology]]
+# [[d:Q80026|Erosion]]
+# [[d:Q623319|Mesa]]
+# [[d:Q747957|Stack (geology)]]
+# [[d:Q179177|Weathering]]
+
+;Landforms, 53
+# [[d:Q271669|Landform]]
+# '''[[d:Q8502|Mountain]]'''
+# [[d:Q46831|Mountain range]]
+# [[d:Q75520|Plateau]]
+# [[d:Q54050|Hill]]
+# [[d:Q39816|Valley]]
+# [[d:Q160091|Plain]]
+
+;;Fluvial landforms, 9
+# [[d:Q465088|Alluvial fan]]
+# [[d:Q40080|Beach]]
+# [[d:Q150784|Canyon]]
+# [[d:Q107679|Cliff]]
+# [[d:Q193110|Floodplain]]
+# [[d:Q180537|Meander]]
+# [[d:Q43742|Oasis]]
+# [[d:Q695793|Rapid]]
+# [[d:Q34038|Waterfall]]
+
+;;Glacial landforms, 3
+# [[d:Q184368|Cirque]]
+# [[d:Q332784|Esker]]
+# [[d:Q45776|Fjord]]
+
+;;Karst, 3
+# [[d:Q179132|Speleology]]
+# [[d:Q35509|Cave]]
+# [[d:Q16817|Karst]]
+
+;;Oceanic and coastal landforms, 11
+# [[d:Q42523|Atoll]]
+# [[d:Q39594|Bay]]
+# [[d:Q93352|Coast]]
+# [[d:Q134851|Continental shelf]]
+# [[d:Q11292|Coral reef]]
+# [[d:Q187223|Lagoon]]
+# [[d:Q119253|Oceanic trench]]
+# [[d:Q34763|Peninsula]]
+# [[d:Q93267|List of isthmuses]]
+# [[d:Q23442|Island]]
+# [[d:Q503269|Seamount]]
+
+;;Volcanic landforms, 10
+# '''[[d:Q8072|Volcano]]'''
+# [[d:Q159954|Caldera]]
+# [[d:Q83471|Geyser]]
+# [[d:Q105131|Hotspot (geology)]]
+# [[d:Q104698|Mid-ocean ridge]]
+# [[d:Q109391|Volcanic crater]]
+# [[d:Q653139|Volcanic plug]]
+# [[d:Q534282|Lava dome]]
+# [[d:Q674775|Submarine volcano]]
+# [[d:Q151957|Guyot]]
+
+;;Aeolian landforms, 2
+# [[d:Q215839|Aeolian processes]]
+# [[d:Q25391|Dune]]
+
+;;Artificial landforms, 8
+# '''[[d:Q12284|Canal]]'''
+# [[d:Q131681|Reservoir]]
+# [[d:Q106259|Polder]]
+# [[d:Q13691|Artificial island]]
+# [[d:Q105190|Levee]]
+# [[d:Q188040|Quarry]]
+# [[d:Q2048319|Ditch]]
+# [[d:Q1130322|Land reclamation]]
+{{Div col end}}
+
+===== Biomes, 26 =====
+{{Div col|cols=4}}
+# '''[[d:Q8514|Desert]]'''
+# [[d:Q43262|Tundra]]
+# [[d:Q27590|Heath]]
+
+;Forests, 8
+# '''[[d:Q4421|Forest]]'''
+# [[d:Q191086|Jungle]]
+# [[d:Q19756|Mangrove]]
+# [[d:Q69564|Taiga]]
+# [[d:Q9444|Rainforest]]
+## [[d:Q199403|Tropical rainforest]]
+### [[d:Q177567|Amazon rainforest]]
+# [[d:Q622896|Temperate broadleaf and mixed forest]]
+
+;Grasslands, 11
+# [[d:Q1006733|Grassland]]
+# [[d:Q278512|Cerrado]]
+# [[d:Q188869|Field (agriculture)]]
+# [[d:Q141501|Llanos]]
+# [[d:Q7777019|Meadow]]
+# [[d:Q184382|Pampas]]
+# [[d:Q30121|Pasture]]
+# [[d:Q194281|Prairie]]
+# [[d:Q66065|Sahel]]
+# [[d:Q42320|Savanna]]
+# [[d:Q123991|Steppe]]
+
+;Wetlands, 4
+# [[d:Q170321|Wetland]]
+# [[d:Q166735|Swamp]]
+# [[d:Q30198|Marsh]]
+# [[d:Q1681353|Bog]]
+{{Div col end}}
+
+===== Pedology (soil study), 3 =====
+{{Div col|cols=4}}
+# [[d:Q941094|Pedosphere]]
+# [[d:Q282070|Pedogenesis]]
+# [[d:Q9161265|Soil science]]
+{{Div col end}}
+
+==== Air, 61 ==== 
+{{Div col|cols=4}}
+
+;Atmosphere, 4
+# [[d:Q3230|Atmosphere of Earth]]
+# [[d:Q287919|Atmospheric chemistry]]
+# [[d:Q216823|Air mass]]
+# [[d:Q81809|Atmospheric pressure]]
+
+;;Atmospheric optics, 5
+# [[d:Q40609|Aurora (astronomy)]]
+# [[d:Q186310|Halo (optical phenomenon)]]
+# [[d:Q308762|Mirage]]
+# [[d:Q1052|Rainbow]]
+# [[d:Q527|Sky]]
+{{Div col end}}
+
+===== Climatology, 7 =====
+{{Div col|cols=4}}
+# [[d:Q52139|Climatology]]
+# '''[[d:Q7937|Climate]]'''
+# '''[[d:Q7939|El Niño–Southern Oscillation]]'''
+# '''[[d:Q7942|Global warming]]'''
+# [[d:Q124095|Köppen climate classification]]
+# [[d:Q167466|Temperateness]]
+# [[d:Q135712|Tropical climate]]
+
+{{Div col end}}
+
+===== Meteorology, 45 =====
+{{Div col|cols=4}}
+# [[d:Q25261|Meteorology]]
+# [[d:Q79757|Barometer]]
+# [[d:Q180600|Humidity]]
+# [[d:Q189796|Weather front]]
+# '''[[d:Q11663|Weather]]'''
+
+;Clouds, 5
+# '''[[d:Q8074|Cloud]]'''
+# [[d:Q185638|Cirrus cloud]]
+# [[d:Q182311|Cumulonimbus cloud]]
+# [[d:Q14189|Cumulus cloud]]
+# [[d:Q37477|Fog]]
+
+;Precipitations, 9
+# [[d:Q25257|Precipitation]]
+# [[d:Q40178|Acid rain]]
+# [[d:Q220604|Black ice]]
+# [[d:Q41097|Dew]]
+# [[d:Q4590598|Frost]]
+# [[d:Q161598|Groundwater]]
+# [[d:Q37602|Hail]]
+# '''[[d:Q7925|Rain]]'''
+# '''[[d:Q7561|Snow]]'''
+
+;Seasons, 7
+# [[d:Q24384|Season]]
+# [[d:Q1312|Spring (season)]]
+# [[d:Q1313|Summer]]
+# [[d:Q1314|Autumn]]
+# [[d:Q1311|Winter]]
+# [[d:Q3117517|Wet season]]
+# [[d:Q146575|Dry season]]
+
+;Atmospheric circulation, 19
+# [[d:Q2615451|Atmospheric circulation]]
+# [[d:Q177414|Anticyclone]]
+# [[d:Q79602|Cyclone]]
+# [[d:Q338589|Hadley cell]]
+# [[d:Q1197111|Polar vortex]]
+
+;;Storm, 8
+# [[d:Q81054|Storm]]
+# [[d:Q205418|Blizzard]]
+# [[d:Q182878|Dust storm]]
+# [[d:Q33741|Lightning]]
+# [[d:Q205801|Saffir–Simpson hurricane scale]]
+# [[d:Q2857578|Thunderstorm]]
+# '''[[d:Q8081|Tornado]]'''
+# '''[[d:Q8092|Tropical cyclone]]'''
+
+;;Winds, 6
+# '''[[d:Q8094|Wind]]'''
+# [[d:Q170464|Beaufort scale]]
+# [[d:Q202325|Jet stream]]
+# [[d:Q42967|Monsoon]]
+# [[d:Q81242|Sea breeze]]
+# [[d:Q160603|Trade wind]]
+
+{{Div col end}}
+
+==== Water, 27 ====
+{{Div col|cols=4}}
+# [[d:Q83169|Hydrosphere]]
+# [[d:Q493109|Cryosphere]]
+
+;Glaciology, 9
+# [[d:Q52120|Glaciology]]
+# [[d:Q828861|Firn]]
+# [[d:Q35666|Glacier]]
+# [[d:Q23392|Ice]]
+# [[d:Q12599|Ice sheet]]
+# [[d:Q46966|Ice shelf]]
+# [[d:Q47568|Iceberg]]
+# [[d:Q213926|Sea ice]]
+# [[d:Q179918|Permafrost]]
+
+;Hydrology, 10
+# [[d:Q42250|Hydrology]]
+# [[d:Q81041|Water cycle]]
+# [[d:Q182468|Hydrography]]
+# '''[[d:Q4022|River]]'''
+# [[d:Q47053|Estuary]]
+# [[d:Q43197|River delta]]
+# [[d:Q165838|Limnology]]
+# [[d:Q23397|Lake]]
+# [[d:Q3253281|Pond]]
+# [[d:Q23384|Tide]]
+
+;Oceanography, 6
+# [[d:Q43518|Oceanography]]
+# '''[[d:Q9430|Ocean]]'''
+# '''[[d:Q165|Sea]]'''
+# [[d:Q129558|Ocean current]]
+# [[d:Q125465|Sea level]]
+# [[d:Q463223|Thermohaline circulation]]
+
+{{Div col end}}
+
+=== Physics, 364 ===
+{{Div col|cols=4}}
+# '''[[d:Q413|Physics]]'''
+# [[d:Q81915|Allotropy]]
+# [[d:Q1648751|Geiger–Marsden experiment]]
+# [[d:Q54237|Osmosis]]
+# [[d:Q54505|Quantum field theory]]
+# [[d:Q199687|Remote sensing]]
+<!-- These need to be sorted -->
+# [[d:Q179856|Alpha decay]]
+# [[d:Q81182|Absolute zero]]
+# [[d:Q182453|Adiabatic process]]
+# [[d:Q187536|Butterfly effect]]
+# [[d:Q178036|Brownian motion]]
+# [[d:Q306786|Beta decay]]
+# [[d:Q188520|Classical element]]
+# [[d:Q170754|Corona]]
+# [[d:Q29539|Density]]
+# [[d:Q83327|Electronvolt]]
+# [[d:Q132560|Electron microscope]]
+# [[d:Q104934|Fundamental interaction]]
+# [[d:Q43116|Elementary particle]]
+# [[d:Q184207|Ferromagnetism]]
+# [[d:Q103585|Graviton]]
+# [[d:Q178185|Heat engine]]
+# [[d:Q155890|Heavy water]]
+# [[d:Q103135|Hydrolysis]]
+# [[d:Q178150|Insulator (electricity)]]
+# [[d:Q162219|Ionosphere]]
+# [[d:Q160669|Mach number]]
+# [[d:Q41472|Mohs scale of mineral hardness]]
+# [[d:Q6915|Magnetosphere]]
+# [[d:Q53754|Obsidian]]
+# [[d:Q107715|Physical quantity]]
+# [[d:Q134574|Pump]]
+# [[d:Q40936|PH]]
+# [[d:Q104225|Precession]]
+# [[d:Q176555|Quantum computer]]
+# [[d:Q72277|Refraction]]
+# [[d:Q102145|Standard conditions for temperature and pressure]]
+# [[d:Q8588|Schr&#246;dinger's cat]]
+# [[d:Q125953|Tunguska event]]
+# [[d:Q182154|Time travel]]
+# [[d:Q25428|Voltage]]
+# [[d:Q41364|Wavelength]]
+# [[d:Q7544|Wormhole]]
+# [[d:Q483538|Enthalpy of vaporization]]
+# [[d:Q179348|Ballistic missile]]
+# [[d:Q18373|Gravitational constant]]
+# [[d:Q2661322|Vapor pressure]]
+# [[d:Q161424|Black body]]
+# [[d:Q162908|Electrolyte]]
+# [[d:Q185243|Gravitational lens]]
+# [[d:Q483788|Atomic radius]]
+# [[d:Q5962|Boltzmann constant]]
+# [[d:Q7100|Biophysics]]
+# [[d:Q12623|Perpetual motion]]
+# [[d:Q178828|Dew point]]
+# [[d:Q171516|Compton scattering]]
+# [[d:Q487005|Thermal conductivity]]
+# [[d:Q170731|Solubility]]
+# [[d:Q483769|Ionization energy]]
+# [[d:Q188533|Van Allen radiation belt]]
+# [[d:Q177784|Hydraulics]]
+# [[d:Q177831|Magnetic flux]]
+# [[d:Q175974|Boyle's law]]
+# [[d:Q172280|Ideal gas]]
+# [[d:Q161635|Angular velocity]]
+# [[d:Q178841|Foucault pendulum]]
+# [[d:Q165800|Geocentric model]]
+# [[d:Q83481|Apsis]]
+# [[d:Q156424|Metronome]]
+# [[d:Q190120|Water vapor]]
+# [[d:Q178032|Electromagnet]]
+# [[d:Q177045|Second law of thermodynamics]]
+# [[d:Q37640|Orbital period]]
+# [[d:Q182925|Fluorescent lamp]]
+# [[d:Q179380|First law of thermodynamics]]
+# [[d:Q179635|Heat transfer]]
+# [[d:Q179388|Heat capacity]]
+# [[d:Q124291|Electrical conductor]]
+# [[d:Q180254|Adsorption]]
+# [[d:Q103983|Heliocentrism]]
+# [[d:Q120688|St. Elmo's fire]]
+# [[d:Q181404|Archimedes' principle]]
+# [[d:Q180241|Internal energy]]
+# [[d:Q37547|Astrophysics]]
+# [[d:Q165939|Reflection (physics)]]
+# [[d:Q165848|Wind wave]]
+# [[d:Q28352|Permeability (electromagnetism)]]
+# [[d:Q3236003|Hardness]]
+# [[d:Q178668|Atomism]]
+# [[d:Q133673|Spin (physics)]]
+# [[d:Q18362|Theoretical physics]]
+# [[d:Q171594|Semi-major axis]]
+# [[d:Q181741|Event horizon]]
+
+==== Fundamental physics concepts, 20 ====
+# [[d:Q159190|Amplitude]]
+# '''[[d:Q9121|Atom]]'''
+# '''[[d:Q11379|Energy]]'''
+## [[d:Q35875|Mass–energy equivalence]]
+## '''[[d:Q11382|Conservation of energy]]'''
+# [[d:Q185674|Field (physics)]]
+# '''[[d:Q11402|Force]]'''
+## '''[[d:Q11412|Gravitation]]'''
+## '''[[d:Q11415|Strong interaction]]'''
+## '''[[d:Q11418|Weak interaction]]'''
+# [[d:Q35758|Matter]]
+# [[d:Q25342|Power (physics)]]
+# [[d:Q18335|Radiation]]
+## [[d:Q186161|Ionizing radiation]]
+# [[d:Q107|Space]]
+# [[d:Q133327|Spacetime]]
+# '''[[d:Q11471|Time]]'''
+## [[d:Q202642|Planck time]]
+## [[d:Q468999|Planck units]]
+# '''[[d:Q11475|Vacuum]]'''
+
+{{Div col end}}
+
+==== Atomic, molecular, and optical physics, 28 ====
+{{Div col|cols=4}}
+;Atomic physics, 18
+# [[d:Q26383|Atomic physics]]
+# [[d:Q37147|Atomic nucleus]]
+# [[d:Q53860|Atomic orbital]]
+# [[d:Q210553|Atomic theory]]
+# [[d:Q719512|Auger effect]]
+# [[d:Q420754|Binding energy]]
+# [[d:Q172948|Bohr model]]
+# [[d:Q655904|Bremsstrahlung]]
+# [[d:Q53859|Electron configuration]]
+# [[d:Q193793|Electron shell]]
+# [[d:Q215328|Excited state]]
+# [[d:Q2333783|Hydrogen-like atom]]
+# [[d:Q1413102|Hyperfine structure]]
+# [[d:Q36496|Ion]]
+# [[d:Q274116|Plum pudding model]]
+# [[d:Q867448|Principal quantum number]]
+# [[d:Q853656|Stimulated emission]]
+
+;Molecular physics, 2
+# [[d:Q725417|Molecular orbital]]
+# [[d:Q898432|Molecular orbital theory]]
+
+;Optics, 9
+# [[d:Q14620|Optics]]
+# [[d:Q586386|Free-electron laser]]
+# [[d:Q883038|Kerr effect]]
+# [[d:Q105902|Luminosity]]
+# [[d:Q756033|Nonlinear optics]]
+# [[d:Q467054|Photonics]]
+# [[d:Q942347|Physical optics]]
+# [[d:Q193760|Polarization (waves)]]
+# [[d:Q174102|Refractive index]]
+{{Div col end}}
+
+==== Condensed matter physics, 30 ====
+{{Div col|cols=4}}
+# [[d:Q214781|Condensed matter physics]]
+# [[d:Q103382|Amorphous solid]]
+# [[d:Q715396|Solid-state physics]]
+
+;Crystallography, 5
+# [[d:Q160398|Crystallography]]
+# [[d:Q43533|Crystal]]
+# [[d:Q895901|Crystal structure]]
+# [[d:Q898786|Crystal system]]
+# [[d:Q284256|Crystallization]]
+
+;Phase transitions, 13
+# [[d:Q185357|Phase transition]]
+# [[d:Q104837|Phase (matter)]]
+# [[d:Q41716|Boiling]]
+# [[d:Q1003183|Boiling point]]
+# [[d:Q111059|Critical point (thermodynamics)]]
+# [[d:Q166583|Condensation]]
+# [[d:Q132814|Evaporation]]
+# [[d:Q108000|Freezing]]
+# [[d:Q190382|Ionization]]
+# [[d:Q106080|Melting]]
+# [[d:Q15318|Melting point]]
+# [[d:Q131800|Sublimation (phase transition)]]
+# [[d:Q106410|Triple point]]
+
+;States of matter, 9
+# '''[[d:Q11430|State of matter]]'''
+# [[d:Q46202|Bose–Einstein condensate]]
+# [[d:Q51368|Degenerate matter]]
+# '''[[d:Q11432|Gas]]'''
+# '''[[d:Q11435|Liquid]]'''
+# '''[[d:Q10251|Plasma (physics)]]'''
+# [[d:Q733096|Quark–gluon plasma]]
+# '''[[d:Q11438|Solid]]'''
+# [[d:Q106667|Superfluidity]]
+
+{{Div col end}}
+
+==== Electromagnetism, 47 ====
+{{Div col|cols=4}}
+# [[d:Q849919|Electromagnetic force]]
+# [[d:Q184996|Dielectric]]
+# [[d:Q649803|Oil drop experiment]]
+# '''[[d:Q12725|Electricity]]'''
+# '''[[d:Q11421|Magnet]]'''
+# [[d:Q3294789|Magnetism]]
+# [[d:Q497166|Metamaterial]]
+# [[d:Q83213|Photoelectric effect]]
+# [[d:Q124131|Superconductivity]]
+
+;;Electrostatics, 6
+# [[d:Q26336|Electrostatics]]
+# [[d:Q1111|Electric charge]] 
+# [[d:Q83152|Coulomb's law]] 
+# [[d:Q46221|Electric field]] 
+# [[d:Q173356|Gauss's law]] 
+# [[d:Q55451|Electric potential]] 
+
+;;Electrodynamics, 17
+# [[d:Q172137|Lorentz force]] 
+# [[d:Q185329|Electromotive force]] 
+# [[d:Q1266982|Magnetomotive force]] 
+# [[d:Q988780|Electromagnetic induction]] 
+# [[d:Q181465|Faraday's law of induction]] 
+# [[d:Q51501|Maxwell's equations]] 
+# [[d:Q177625|Electromagnetic field]] 
+# '''[[d:Q11386|Electromagnetic radiation]]'''
+## [[d:Q133139|Electromagnetic spectrum]]
+## [[d:Q4262|Radio waves]]
+## [[d:Q127995|Microwave]]
+## '''[[d:Q11388|Infrared]]'''
+## [[d:Q76299|Visible spectrum]]
+## '''[[d:Q11391|Ultraviolet]]'''
+## [[d:Q34777|X-ray]]
+## [[d:Q11523|Gamma ray]]
+# [[d:Q208598|Eddy current]] 
+
+;;Magnetostatics, 5
+# [[d:Q665093|Magnetostatics]]
+# '''[[d:Q11651|Electric current]]''' 
+# [[d:Q51500|Ampère's circuital law]] 
+# '''[[d:Q11408|Magnetic field]]''' 
+# [[d:Q242657|Magnetic moment]]
+
+;;Electrical circuits, 10
+# [[d:Q132629|Electrical network]]
+# [[d:Q108193|Electrical resistivity and conductivity]]
+# [[d:Q25358|Electrical resistance and conductance]]
+## [[d:Q41591|Ohm's law]]
+# [[d:Q854659|Gain]]
+# [[d:Q164399|Capacitance]] 
+# [[d:Q177897|Inductance]] 
+# [[d:Q179043|Electrical impedance]]
+# [[d:Q193972|Electrical reactance]]
+# [[d:Q187672|Kirchhoff's circuit laws]]
+
+{{Div col end}}
+
+==== Mechanics, 66 ====
+{{Div col|cols=4}}
+# [[d:Q41217|Mechanics]]
+## [[d:Q8424|Aerodynamics]]
+## [[d:Q193463|Continuum mechanics]]
+## [[d:Q128030|Dynamics (mechanics)]]
+## [[d:Q11476|Kinematics]]
+## [[d:Q471872|Soil mechanics]]
+## [[d:Q169019|Statics]]
+## [[d:Q271707|Rheology]]
+# [[d:Q170475|Oscillation]]
+## [[d:Q190070|Harmonic oscillator]]
+
+===== Classical mechanics, 24 =====
+# '''[[d:Q11397|Classical mechanics]]'''
+# [[d:Q184876|Frame of reference]]
+# [[d:Q82580|Friction]]
+# [[d:Q837940|Impulse (physics)]]
+# [[d:Q122508|Inertia]]
+# [[d:Q46276|Kinetic energy]]
+# '''[[d:Q11423|Mass]]'''
+# [[d:Q165618|Moment of inertia]]
+# [[d:Q41273|Momentum]]
+# [[d:Q79782|Motion (physics)]]
+## '''[[d:Q11376|Acceleration]]'''
+## [[d:Q38433|Newton's laws of motion]]
+## [[d:Q3711325|Speed]]
+## '''[[d:Q11465|Velocity]]'''
+# [[d:Q155640|Potential energy]]
+# [[d:Q107617|Rotation]]
+## [[d:Q161254|Angular momentum]]
+## [[d:Q178733|Centrifugal force]]
+## [[d:Q172881|Centripetal force]]
+## [[d:Q169973|Coriolis effect]]
+# [[d:Q134465|Newton's law of universal gravitation]]
+# [[d:Q48103|Torque]]
+# [[d:Q25288|Weight]]
+# [[d:Q42213|Work (physics)]]
+
+===== Solid mechanics, 9 =====
+# [[d:Q1080293|Solid mechanics]]
+# [[d:Q192005|Elastic modulus]]
+# [[d:Q507234|Fatigue (material)]]
+# [[d:Q62932|Elasticity (physics)]]
+# [[d:Q170282|Hooke's law]]
+# [[d:Q472074|Plasticity (physics)]]
+# [[d:Q569057|Stiffness]]
+# [[d:Q240553|Strength of materials]]
+# [[d:Q206175|Stress (mechanics)]]
+
+===== Fluid mechanics, 12 =====
+# [[d:Q172145|Fluid mechanics]]
+# [[d:Q181328|Bernoulli's principle]]
+# [[d:Q6497624|Buoyancy]]
+# [[d:Q160329|Convection]]
+# [[d:Q163214|Diffusion]]
+# [[d:Q216320|Fluid dynamics]]
+# [[d:Q177807|Fluid statics]]
+# [[d:Q201321|Navier–Stokes equations]]
+# [[d:Q178932|Reynolds number]]
+# [[d:Q170749|Surface tension]]
+# [[d:Q190132|Turbulence]]
+# [[d:Q128709|Viscosity]]
+
+===== Quantum mechanics, 10 =====
+# '''[[d:Q944|Quantum mechanics]]'''
+## [[d:Q238170|Quantum chromodynamics]]
+## [[d:Q234881|Quantum electrodynamics]]
+# [[d:Q215675|Quantum entanglement]]
+# [[d:Q175751|Quantum tunnelling]]
+# [[d:Q44746|Uncertainty principle]]
+# [[d:Q131594|Pauli exclusion principle]]
+# [[d:Q165498|Schrödinger equation]]
+# [[d:Q2362761|Wave function]]
+# [[d:Q193068|Wave–particle duality]]
+
+===== Statistical mechanics, 1 =====
+# [[d:Q188715|Statistical mechanics]]
+
+{{Div col end}}
+
+==== Nuclear physics, 9 ====
+{{Div col|cols=4}}
+# [[d:Q81197|Nuclear physics]]
+# [[d:Q25276|Isotope]]
+# '''[[d:Q11429|Nuclear fission]]'''
+# [[d:Q13082|Nuclear fusion]]
+## [[d:Q188589|Tokamak]]
+## [[d:Q641442|Fusion power]]
+# '''[[d:Q11448|Radioactive decay]]'''
+## [[d:Q103517|Alpha particle]]
+## [[d:Q103531|Beta Radiation]]
+
+{{Div col end}}
+
+==== Particle physics, 43 ====
+{{Div col|cols=4}}
+# [[d:Q18334|Particle physics]]
+# [[d:Q1621273|Particle]]
+# [[d:Q214634|Cloud chamber]]
+# [[d:Q18338|Standard Model]]
+# [[d:Q33198|String theory]]
+# [[d:Q736716|Spontaneous symmetry breaking]]
+# [[d:Q193442|Supersymmetry]]
+# [[d:Q130825|Particle accelerator]]
+## [[d:Q40605|Large Hadron Collider]]
+## [[d:Q689863|Synchrotron]]
+## [[d:Q212871|Synchrotron radiation]]
+## [[d:Q944533|Tevatron]]
+
+;Subatomic particles, 28
+# [[d:Q177013|Subatomic particle]]
+;;Fermions, 21
+# [[d:Q44363|Fermion]]
+# [[d:Q82586|Lepton]]
+## [[d:Q2225|Electron]]
+## [[d:Q3151|Muon]]
+## [[d:Q188392|Tau (particle)]]
+## [[d:Q2126|Neutrino]]
+# [[d:Q6718|Quark]]
+## [[d:Q6732|Up quark]]
+## [[d:Q6745|Down quark]]
+## [[d:Q6754|Charm quark]]
+## [[d:Q6763|Strange quark]]
+## [[d:Q6778|Top quark]]
+## [[d:Q6786|Bottom quark]]
+# [[d:Q101667|Hadron]]
+## [[d:Q159731|Baryon]]
+### [[d:Q2348|Neutron]]
+### [[d:Q2294|Proton]]
+## [[d:Q102742|Meson]]
+
+;;Bosons, 6
+# [[d:Q43101|Boson]]
+# [[d:Q105580|Gauge boson]]
+# [[d:Q3299|Gluon]]
+# [[d:Q3198|Photon]]
+# [[d:Q402|Higgs boson]]
+# [[d:Q211922|W and Z bosons]]
+
+;Antimatter, 6
+# [[d:Q83197|Antimatter]]
+# [[d:Q182717|Antiparticle]]
+# [[d:Q3229|Positron]]
+# [[d:Q216121|Antihydrogen]]
+# [[d:Q107575|Antiproton]]
+# [[d:Q156530|Antineutron]]
+
+{{Div col end}}
+
+==== Theory of relativity, 5 ====
+{{Div col|cols=4}}
+# [[d:Q43514|Theory of relativity]]
+# '''[[d:Q11452|General relativity]]'''
+# '''[[d:Q11455|Special relativity]]'''
+# [[d:Q836595|Length contraction]]
+# [[d:Q154844|Michelson–Morley experiment]]
+
+{{Div col end}}
+
+==== Thermodynamics, 10 ====
+{{Div col|cols=4}}
+# [[d:Q44432|Heat]]
+# '''[[d:Q11466|Temperature]]'''
+# '''[[d:Q11473|Thermodynamics]]'''
+# [[d:Q161064|Enthalpy]]
+# [[d:Q45003|Entropy]]
+# [[d:Q191785|Ideal gas law]]
+# [[d:Q39552|Pressure]]
+# [[d:Q230937|Functions of state]]
+# [[d:Q334631|Gibbs free energy]]
+# [[d:Q230875|Thermodynamic state]]
+{{Div col end}}
+
+==== Waves, 13 ====
+{{Div col|cols=4}}
+# [[d:Q37172|Wave]]
+# [[d:Q82811|Acoustics]]
+## '''[[d:Q11461|Sound]]'''
+## [[d:Q124003|Speed of sound]]
+## [[d:Q162564|Ultrasound]]
+# [[d:Q133900|Diffraction]]
+# '''[[d:Q11652|Frequency]]'''
+# [[d:Q136980|Interference (wave propagation)]]
+# '''[[d:Q9128|Light]]'''
+## '''[[d:Q2111|Speed of light]]'''
+# [[d:Q179448|Noise]]
+# [[d:Q172858|Resonance]]
+# [[d:Q76436|Doppler effect]]
+{{Div col end}}
+
+=== Measurement, 76 ===
+<small>This list contains units of measurement and articles on metrology. For the measured quantities see Science and Mathematics sections.</small>
+
+====Basics, 13====
+{{Div col|cols=4}}
+# '''[[d:Q12453|Measurement]]'''
+## [[d:Q2041172|Measuring instrument]]
+## [[d:Q216197|Altimeter]]
+## [[d:Q12458|Micrometer]]
+## [[d:Q167676|Sensor]]
+## [[d:Q188463|Spectrometer]]
+## [[d:Q181517|Theodolite]]
+## [[d:Q646|Thermometer]]
+## [[d:Q134566|Weighing scale]]
+# [[d:Q47574|Units of measurement]]
+## [[d:Q232405|Metric system]]
+## '''[[d:Q12457|International System of Units]]'''
+# [[d:Q394|Metrology]]
+{{Div col end}}
+
+====Angle, 3====
+# [[d:Q28390|Degree (angle)]]
+# [[d:Q33680|Radian]]
+# [[d:Q177612|Steradian]]
+
+====Dimension, 24 ====
+{{Div col|cols=4}}
+;Area, 3
+# [[d:Q25343|square metre]]
+# [[d:Q81292|Acre]]
+# [[d:Q35852|Hectare]]
+
+;Length, 10
+# [[d:Q81454|Angstrom]]
+# [[d:Q1811|Astronomical unit]]
+# [[d:Q3710|Foot (unit)]]
+# [[d:Q218593|Inch]]
+# [[d:Q531|Light-year]]
+# '''[[d:Q11573|Metre]]'''
+# [[d:Q253276|Mile]]
+# [[d:Q93318|Nautical mile]]
+# [[d:Q12129|Parsec]]
+# [[d:Q482798|yard]]
+
+;Time, 9
+# '''[[d:Q11574|Second]]'''
+# [[d:Q7727|Minute]]
+# [[d:Q25235|Hour]]
+# '''[[d:Q573|Day]]'''
+# [[d:Q23387|Week]]
+# [[d:Q5151|Month]]
+# '''[[d:Q577|Year]]'''
+# [[d:Q39911|Decade]]
+# [[d:Q36507|millennium]]
+
+;Volume, 2
+# [[d:Q178413|Gallon]]
+# '''[[d:Q11582|Litre]]'''
+{{Div col end}}
+
+====Electromagnetism, 10 ====
+{{Div col|cols=4}}
+# [[d:Q25250|Volt]]
+# [[d:Q47083|Ohm]]
+# [[d:Q39369|Hertz]]
+# [[d:Q131255|Farad]]
+# [[d:Q25406|Coulomb]]
+# [[d:Q163354|Henry (unit)]]
+# [[d:Q163343|Tesla (unit)]]
+# [[d:Q170804|Weber (unit)]]
+
+; Power & Electricity, 2
+# [[d:Q25236|Watt]]
+# [[d:Q25272|Ampere]]
+
+====Light, 3====
+# [[d:Q83216|Candela]]
+# [[d:Q484092|Lumen (unit)]]
+# [[d:Q179836|Lux]]
+{{Div col end}}
+
+====Mechanics, 11====
+{{Div col|cols=4}}
+; Energy, force, and pressure, 5
+# [[d:Q177974|Atmosphere (unit)]]
+# [[d:Q25269|Joule]]
+# [[d:Q12438|Newton (unit)]]
+# [[d:Q130964|Calorie]]
+# [[d:Q44395|Pascal (unit)]]
+
+; Mass, 5
+# '''[[d:Q11570|Kilogram]]'''
+# [[d:Q191118|Ton]]
+# [[d:Q100995|Pound (mass)]]
+# [[d:Q48013|Ounce]]
+# [[d:Q483261|Atomic mass unit]]
+
+; Velocity, 1
+# [[d:Q128822|Knot (unit)]]
+{{Div col end}}
+
+====Quantity, 5 ====
+{{Div col|cols=4}}
+;Amount of Substance, 2
+# [[d:Q104946|Amount of substance]]
+# [[d:Q41509|Mole (unit)]]
+
+;Data, 3
+# [[d:Q8799|Byte]]
+# [[d:Q8805|Bit]]
+# [[d:Q192027|Baud]]
+
+====Radioactivity, 3====
+# [[d:Q102573|Becquerel]]
+# [[d:Q190095|Gray (unit)]]
+# [[d:Q103246|Sievert]]
+
+====Temperature, 3====
+# [[d:Q25267|Celsius]]
+# [[d:Q42289|Fahrenheit]]
+# [[d:Q11579|Kelvin]]
+
+====Other, 1====
+# [[d:Q5329|Decibel]]
+{{Div col end}}

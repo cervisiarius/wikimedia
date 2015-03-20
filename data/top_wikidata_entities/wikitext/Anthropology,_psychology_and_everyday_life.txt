@@ -1,0 +1,953 @@
+<noinclude>'''Return to [[List of articles every Wikipedia should have/Expanded]]'''</noinclude>
+== Anthropology, psychology and everyday life, 800 ==
+::''Transcluded from [[List of articles every Wikipedia should have/Expanded/Anthropology, psychology and everyday life]]''.
+
+=== Anthropology, 40 ===
+{{Div col|cols=4}}
+# [[d:Q23404|Anthropology]]
+# '''[[d:Q11042|Culture]]'''
+# [[d:Q132241|Festival]]
+# [[d:Q1445650|Holiday]]
+# [[d:Q27172|Biological anthropology]]
+# [[d:Q3254959|Race (classification of humans)]]
+# [[d:Q28598|Cultural anthropology]]
+# [[d:Q772835|Linguistic anthropology]]
+# [[d:Q29051|Social anthropology]]
+# [[d:Q2472587|People]]
+{{Div col end}}
+
+==== Ethnology, 30 ====
+{{Div col|cols=4}}
+# [[d:Q43455|Ethnology]]
+# [[d:Q41710|Ethnic group]]
+# [[d:Q132151|Ethnography]]
+# [[d:Q103817|Indigenous peoples]]
+
+; Ethnic groups, 26
+# [[d:Q173371|Bantu peoples]]
+# [[d:Q126756|Basque people]]
+# [[d:Q172365|Bushmen]]
+# [[d:Q22633|Germanic peoples]]
+# [[d:Q170355|Indigenous Australians]]
+# [[d:Q36747|Indigenous peoples of the Americas]]
+## [[d:Q105405|Cherokee]]
+# [[d:Q189975|Inuit]]
+# [[d:Q7325|Jews]]
+# [[d:Q12223|Kurdish people]]
+# [[d:Q163022|Maasai people]]
+# [[d:Q41975|Mongols]]
+# [[d:Q8060|Romani people]]
+# [[d:Q40477|Slavic peoples]]
+# [[d:Q193092|Tutsi]]
+# [[d:Q35323|Arab people]]
+# [[d:Q861225|Austronesian peoples]]
+# [[d:Q45315|Berber people]]
+# [[d:Q498640|Creole peoples]]
+# [[d:Q42740|Han Chinese]]
+# [[d:Q1267987|Malayali]]
+# [[d:Q6122670|Māori people]]
+# [[d:Q1145774|Proto-Indo-Europeans]]
+# [[d:Q62928|Semitic]]
+# [[d:Q84072|Turkish people]]
+# [[d:Q46118|Uyghur people]]
+{{Div col end}}
+
+=== Family and kinship , 49 ===
+{{Div col|cols=4}}
+# [[d:Q171318|Kinship]]
+# '''[[d:Q8436|Family]]'''
+## [[d:Q259059|Household]]
+## [[d:Q720069|Nuclear family]]
+## [[d:Q721790|Extended family]]
+## [[d:Q927143|Stepfamily]]
+# [[d:Q954007|affinity (law)]] (In-laws)
+# [[d:Q211503|Clan]]
+# [[d:Q774347|Consanguinity]]
+# [[d:Q223973|Godparent]]
+# [[d:Q39201|Pet]]
+
+;Family members, 17
+# [[d:Q841509|Significant other]]s
+## [[d:Q212878|Husband]]
+## [[d:Q188830|Wife]]
+## [[d:Q622404|Boyfriend]]
+## [[d:Q49835|Girlfriend]]
+# [[d:Q7566|Parent]] and children
+## [[d:Q7565|Father]]
+## [[d:Q7560|Mother]]
+## [[d:Q308194|Daughter]]
+## [[d:Q177232|Son]]
+# [[d:Q31184|Sibling]]s
+## [[d:Q76477|Nephew and niece]]
+## [[d:Q159979|Twin]]
+# [[d:Q167918|Grandparent]]s and their descendants
+## [[d:Q76557|Uncle]]
+## [[d:Q76507|Aunt]]
+## [[d:Q76666|Cousin]]
+
+; Familial relation and their establishment, 21
+# [[d:Q376596|Courtship]]
+# [[d:Q1189047|Romance (love)]]
+# [[d:Q654810|Dating]]
+# [[d:Q223642|Interpersonal relationship]]
+## [[d:Q1471039|Casual relationship]]
+## [[d:Q736922|Intimate relationship]]
+## [[d:Q491|Friendship]]
+## [[d:Q49800|Cohabitation]]
+# [[d:Q49836|Wedding]]
+# '''[[d:Q8445|Marriage]]'''
+## [[d:Q205572|Civil marriage]]
+## [[d:Q41075|Civil union]]
+# [[d:Q184211|Monogamy]]
+# [[d:Q720243|Bigamy]]
+# [[d:Q170585|Polygamy]]
+# [[d:Q2914621|Infidelity]]
+## [[d:Q93190|Divorce]]
+# [[d:Q1280670|Family planning]]
+# [[d:Q34581|Childbirth]]
+# [[d:Q1326354|Parenting]]
+# [[d:Q180472|Adoption]]
+{{Div col end}}
+
+=== Cooking, food and drink, 150 ===
+<small>For fruits, vegetables, herbs and animals kept for food, see [[List of articles every Wikipedia should have/Expanded/Biology and health sciences|Biology/Organisms]]</small>
+{{Div col|cols=4}}
+<!-- this section is heavily biased towards western culture. Major changes should be done -->
+====Basic, 20====
+# [[d:Q38695|Cooking]]
+# [[d:Q1778821|Cuisine]]
+# '''[[d:Q2095|Food]]'''
+# [[d:Q40050|Drink]]
+# [[d:Q34956|Vitamin]]
+# [[d:Q6460735|Meal]]
+## [[d:Q80973|Breakfast]]
+## [[d:Q7560587|Lunch]]
+## [[d:Q657221|Dinner]]
+## [[d:Q245009|Tea (meal)]]
+# [[d:Q746549|Dish]]
+## [[d:Q6545590|Entrée]]
+## [[d:Q772630|Main course]]
+## [[d:Q182940|Dessert]]
+# [[d:Q427457|Cooking oil]]
+## [[d:Q93165|Olive oil]]
+## [[d:Q231458|Palm oil]]
+# [[d:Q81799|Fast food]]
+# [[d:Q11707|Restaurant]]
+# [[d:Q83364|Vegetarianism]]
+
+====Dairy and analogues, 14====
+# '''[[d:Q8495|Milk]]'''
+# [[d:Q34172|Butter]]
+## [[d:Q4287|Margarine]]
+# [[d:Q13228|Cream]]
+# '''[[d:Q10943|Cheese]]'''
+## [[d:Q746471|Blue cheese]]
+## [[d:Q217525|Cheddar cheese]]
+## [[d:Q14088|Mozzarella]]
+## [[d:Q155922|Parmigiano-Reggiano]] 
+# [[d:Q841779|Coconut milk]]
+# [[d:Q13233|Ice cream]]
+# [[d:Q192199|Soy milk]]
+## [[d:Q177378|Tofu]]
+# [[d:Q13317|Yogurt]]
+
+==== Grains, 3 ====
+# '''[[d:Q7802|Bread]]'''
+# '''[[d:Q12117|Cereal]]'''
+# [[d:Q36465|Flour]]
+
+====Sweet Things, 4====
+# [[d:Q185583|Candy]]
+# [[d:Q183440|Caramel]]
+# '''[[d:Q195|Chocolate]]''' 
+# '''[[d:Q10987|Honey]]'''
+
+==== Nuts, 3 ====
+# '''[[d:Q11009|Nut (fruit)]]'''
+# [[d:Q578307|Hazelnut]]
+# [[d:Q208021|Walnut]]
+
+====Meat and other animal products, 17====
+# [[d:Q93189|Egg (food)]]
+# '''[[d:Q10990|Meat]]'''
+## [[d:Q11106|Bacon]] 
+## [[d:Q192628|Beef]]
+## [[d:Q864693|Chicken (food)]]
+## [[d:Q170486|Ham]]
+## [[d:Q6663|Hamburger]] 
+## [[d:Q181055|Hot dog]]
+## [[d:Q643419|Lamb and mutton]]
+## [[d:Q191768|Pork]]
+# [[d:Q72827|Lard]]
+# [[d:Q157484|Offal]]
+## [[d:Q494268|Blood as food]]
+## [[d:Q1470283|Liver (food)]]
+# [[d:Q131419|Sausage]]
+# [[d:Q192935|Seafood]]
+## [[d:Q600396|Fish (food)]]
+
+====Herbs and condiments, 31 ====
+
+;Categories, 4
+# [[d:Q2596997|Condiment]]
+# [[d:Q207123|Herb]]
+# [[d:Q178359|Sauce]]
+# [[d:Q42527|Spice]]
+
+;Specific herbs, 16
+# [[d:Q28692|Anise]]
+# [[d:Q38859|Basil]]
+# [[d:Q43084|Black pepper]]
+# [[d:Q33466|Cardamom]]
+# [[d:Q28165|Cinnamon]]
+# [[d:Q43511|Fennel]]
+# [[d:Q23400|Garlic]]
+# [[d:Q35625|Ginger]]
+# [[d:Q26545|Horseradish]]
+# [[d:Q171892|Lavandula]]
+# [[d:Q5727732|Lemongrass]]
+# [[d:Q257106|Liquorice]]
+# [[d:Q47859|Mentha]]
+# [[d:Q23485|Onion]]
+# [[d:Q25284|Parsley]]
+# [[d:Q25434|Saffron]]
+
+;Specific condiments, 11
+# [[d:Q275650|Chutney]]
+# [[d:Q545985|Fish sauce]]
+# [[d:Q1269|Fruit preserves]]
+# [[d:Q178143|Ketchup]]
+# [[d:Q167893|Mayonnaise]]
+# [[d:Q131748|Mustard (condiment)]]
+# [[d:Q3127593|Paprika]]
+# [[d:Q9896|Pesto]]
+# [[d:Q229385|Soy sauce]]
+# [[d:Q348947|Tartar sauce]]
+# [[d:Q41354|Vinegar]]
+
+====Food and Dish types, 20====
+# [[d:Q13276|Cake]]
+# [[d:Q6501890|Casserole]]
+# [[d:Q164606|Curry]]
+# [[d:Q1854639|Dumpling]]
+# [[d:Q190531|Fondue]]
+# [[d:Q152088|French fries]]
+# [[d:Q1076874|Fried rice]]
+# [[d:Q179010|Kebab]]
+# [[d:Q192874|Noodle]]s
+# [[d:Q178|Pasta]]
+# [[d:Q477248|Pastry]]
+# [[d:Q13360264|Pie]]
+# [[d:Q177|Pizza]]
+# [[d:Q186817|Porridge]]
+# [[d:Q9266|Salad]]
+# [[d:Q491517|Samosa]]
+# [[d:Q28803|Sandwich]]
+# [[d:Q41415|Soup]]
+# [[d:Q2920963|Stew]]
+# [[d:Q46383|Sushi]]
+
+====Drinks, 18====
+; Drunk cool, 10
+# [[d:Q7892|Drinking water]]
+# [[d:Q348958|Iced tea]]
+# '''[[d:Q8492|Juice]]'''
+## [[d:Q219059|Orange juice]]
+# [[d:Q893|Lemonade]]
+# [[d:Q147538|Soft drink]]
+## [[d:Q134041|Cola]]
+### [[d:Q2813|Coca-Cola]]
+## [[d:Q215754|Energy drink]]
+## [[d:Q237315|Tonic water]]
+
+; Drunk heated, 8
+# '''[[d:Q6097|Tea]]'''
+## [[d:Q484083|Green tea]]
+## [[d:Q203415|Black tea]]
+# '''[[d:Q8486|Coffee]]'''
+## [[d:Q180289|Espresso]]
+## [[d:Q43022|Turkish coffee]]
+# [[d:Q13261|Hot chocolate]]
+# [[d:Q203540|Mate (beverage)]]
+
+====Alcohol, 20====
+# [[d:Q154|Alcoholic beverage]]
+# [[d:Q56139|Distilled beverage]]
+# '''[[d:Q44|Beer]]''' 
+# [[d:Q146470|Brandy]]
+# [[d:Q167296|Cider]]
+# [[d:Q959362|Gin]]
+# [[d:Q178780|Liqueur]]
+# [[d:Q83376|Rum]]
+# [[d:Q170219|Sake]]
+# [[d:Q122195|Tequila]]
+# [[d:Q374|Vodka]]
+# [[d:Q281|Whisky]]
+# '''[[d:Q282|Wine]]'''
+## [[d:Q1827|Red wine]]
+## [[d:Q10210|White wine]]
+## [[d:Q321263|Sparkling wine]]
+
+; Mixed drinks, 4
+# [[d:Q134768|Cocktail]]
+# [[d:Q273027|Martini]]
+# [[d:Q487338|Mojito]]
+# [[d:Q273296|Sangria]]
+
+
+{{Div col end}}
+
+=== Household items, 50 ===
+<small>For appliance, see under "Mechanical engineering and machinery"</small>
+{{Div col|cols=4}}
+
+==== Clothing and fashion, 26 ====
+# [[d:Q134560|Belt (clothing)]]
+# [[d:Q167884|Burqa]]
+# [[d:Q160464|Button]]
+# [[d:Q516992|Cloak]]
+# '''[[d:Q11460|Clothing]]'''
+# [[d:Q152574|Coat]]
+# [[d:Q200539|Dress]]
+# [[d:Q169031|Glove]]
+# [[d:Q80151|Hat]]
+# [[d:Q44416|Necktie]]
+# [[d:Q39908|Trousers]]
+# [[d:Q22676|Shoe]]
+# [[d:Q191022|Scarf]]
+# [[d:Q76768|Shirt]]
+# [[d:Q2160801|Skirt]]
+# [[d:Q212989|Swimsuit]]
+# [[d:Q43663|Sock]]
+# [[d:Q15411420|Hook and loop fastener]]
+# [[d:Q101761|Zipper]]
+# [[d:Q42804|Beard]]
+# [[d:Q13716|Brassiere]]
+# [[d:Q131207|Cosmetics]]
+# [[d:Q131746|Perfume]]
+# [[d:Q161439|Jewellery]]
+# [[d:Q161524|Mask]]
+# [[d:Q43006|Tattoo]]
+
+==== Furniture and decoration, 13 ====
+# [[d:Q152095|Bathtub]]
+# [[d:Q42177|Bed]]
+# [[d:Q204776|Bench (furniture)]]
+# [[d:Q2741056|Cabinetry]]
+# [[d:Q15026|Chair]]
+# [[d:Q622360|Commode]]
+# [[d:Q131514|Couch]]
+# [[d:Q106106|Cupboard]]
+# [[d:Q1064858|Desk]]
+# [[d:Q188669|Fireplace]]
+# [[d:Q14745|Furniture]]
+# [[d:Q212920|Home appliance]]
+# [[d:Q14748|Table (furniture)]]
+
+====Textile, 5 ====
+# [[d:Q28823|Textile]]
+# [[d:Q1762457|Bedding]]
+# [[d:Q163446|Carpet]]
+# [[d:Q49005|Curtain]]
+# [[d:Q99895|Pillow]]
+
+====Kitchen utensils, 6====
+# [[d:Q154038|Cookware]]
+# [[d:Q81944|Cutlery]]
+## [[d:Q81881|Fork]]
+## [[d:Q81895|Spoon]]
+# [[d:Q81980|Chopsticks]]
+# [[d:Q57216|Plate (dishware)]]
+
+{{Div col end}}
+
+=== Sexuality, 20 ===
+{{Div col|cols=4}}
+# [[d:Q154136|Human sexuality]]
+# '''[[d:Q8441|Man]]'''
+# '''[[d:Q467|Woman]]'''
+# [[d:Q1035954|Heterosexuality]]
+# [[d:Q6636|Homosexuality]]
+# [[d:Q5873|Sexual intercourse]]
+# [[d:Q318529|Safe sex]]
+# [[d:Q964401|Fertility]]
+# [[d:Q7307|Kiss]]
+# [[d:Q464859|Sexual attraction]]
+# [[d:Q17888|Sexual orientation]]
+# [[d:Q43200|Bisexuality]]
+# [[d:Q5139011|Foreplay]]
+# [[d:Q2122|Oral sex]]
+# [[d:Q5887|Orgasm]]
+# [[d:Q817281|Combined oral contraceptive pill]]
+# [[d:Q14076|Condom]]
+# [[d:Q8396|Masturbation]]
+# [[d:Q36633|Prostitution]]
+# [[d:Q291|Pornography]]
+{{Div col end}}
+
+=== Stages of life, 11 ===
+{{Div col|cols=4}}
+# [[d:Q276258|Childhood]]
+## [[d:Q576104|Newborn]]
+## [[d:Q998|Infant]]
+## '''[[d:Q7569|Child]]'''
+## [[d:Q3010|Boy]]
+## [[d:Q3031|Girl]]
+# [[d:Q190007|Youth]]
+# [[d:Q131774|Adolescence]]
+# [[d:Q80994|Adult]]
+# [[d:Q1202615|Middle age]]
+# [[d:Q191089|Old age]]
+{{Div col end}}
+
+=== Psychology, 87 ===
+{{Div col|cols=4}}
+# '''[[d:Q9418|Psychology]]'''
+# [[d:Q199906|Clinical psychology]]
+# [[d:Q23373|Cognitive psychology]]
+# [[d:Q219695|Evolutionary psychology]]
+# [[d:Q271716|Personality psychology]]
+# [[d:Q368498|Psychology of religion]]
+# [[d:Q183257|Psychotherapy]]
+<!-- The following items need to be sorted -->
+# [[d:Q185030|Genius]]
+# [[d:Q8609|Hypnosis]]
+# [[d:Q178066|Libido]]
+# [[d:Q175854|Phobia]]
+# [[d:Q484954|Pessimism]]
+# [[d:Q160402|Perception]]
+# [[d:Q161272|Social psychology]]
+# [[d:Q180242|Stockholm syndrome]]
+# [[d:Q2200417|Cognition]]
+# [[d:Q484275|Leadership]]
+# [[d:Q170658|Creativity]]
+# [[d:Q25107|Power]]
+# [[d:Q485446|Optimism]]
+# [[d:Q742609|Human nature]]
+# [[d:Q34516|Imagination]]
+# [[d:Q152247|Crying]]
+# [[d:Q201650|Hyprocrisy]]
+# [[d:Q131246|Oedipus complex]]
+# [[d:Q173253|Sense]]
+# [[d:Q492|Memory]]
+
+
+;Psychology schools, 6
+# [[d:Q245179|Analytical psychology]]
+# [[d:Q168338|Behaviorism]]
+# [[d:Q175002|Developmental psychology]]
+# [[d:Q272021|Gestalt psychology]]
+# [[d:Q23364|Humanistic psychology]]
+# [[d:Q41630|Psychoanalysis]]
+
+;Basic concepts, 13
+# [[d:Q7087|Consciousness]]
+## [[d:Q35831|Sleep]]
+## [[d:Q36348|Dream]]
+# [[d:Q18237|Instinct]]
+# '''[[d:Q450|Mind]]'''
+# [[d:Q331769|Mood]]
+# [[d:Q80157|Temperament]]
+# [[d:Q641118|Personality]]
+# [[d:Q644302|Motivation]]
+# [[d:Q167172|Stereotype]]
+# '''[[d:Q9420|Thought]]'''
+# '''[[d:Q9332|Behavior]]'''
+# '''[[d:Q9415|Emotion]]'''
+
+;Emotions, 23
+# [[d:Q79871|Anger]]
+# [[d:Q154430|Anxiety]]
+# [[d:Q1412160|Compassion]]
+# [[d:Q208160|Courage]]
+# [[d:Q366791|Curiosity]]
+# [[d:Q208351|Disgust]]
+# [[d:Q34302|Doubt]]
+# [[d:Q188739|Envy]]
+# [[d:Q44619|Fear]]
+# [[d:Q628939|Guilt (emotion)]]
+# [[d:Q8|Happiness]]
+# [[d:Q160232|Hatred]]
+# [[d:Q190507|Hope]]
+# [[d:Q6545811|Jealousy]]
+# '''[[d:Q316|Love]]'''
+# [[d:Q6498477|Lust]]
+# [[d:Q187234|Pride]]
+# [[d:Q169251|Sadness]]
+# [[d:Q152282|Shame]]
+# [[d:Q333173|Surprise (emotion)]]
+# [[d:Q35874|Humour]]
+# [[d:Q208195|Pleasure]]
+# [[d:Q5780945|Suffering]]
+
+; Interpersonal relations, 18
+# [[d:Q191797|Aggression]]
+# [[d:Q167323|Altruism]]
+# [[d:Q174834|Authority]]
+# [[d:Q2166722|Betrayal]]
+# [[d:Q240126|Bullying]]
+# [[d:Q118157|Charisma]]
+# [[d:Q476300|Competition]]
+# [[d:Q221284|Conformity]]
+# [[d:Q463910|Egocentrism]]
+# [[d:Q182263|Empathy]]
+# [[d:Q537963|Forgiveness]]
+# [[d:Q4925193|Lie]]
+# [[d:Q188728|Privacy]]
+# [[d:Q179742|Prejudice]]
+# [[d:Q186361|Punishment]]
+# [[d:Q28510|Respect]]
+# [[d:Q913668|Shyness]]
+# [[d:Q659974|Trust]]
+{{Div col end}}
+
+=== Language, 165 ===
+{{Div col|cols=4}}
+====Basic, 41====
+# '''[[d:Q315|Language]]'''
+# [[d:Q117364|Clause]]
+# [[d:Q33215|Constructed language]]
+# [[d:Q33384|Dialect]]
+# [[d:Q23622|Dictionary]]
+# '''[[d:Q8091|Grammar]]'''
+## [[d:Q34698|Adjective]]
+## [[d:Q380057|Adverb]]
+## [[d:Q36484|Conjunction]]
+## [[d:Q128234|Grammatical case]]
+## [[d:Q1084|Noun]]
+## [[d:Q134316|Adposition]]
+## [[d:Q36224|Pronoun]]
+## [[d:Q37437|Syntax]]
+## [[d:Q24905|Verb]]
+# '''[[d:Q8162|Linguistics]]'''
+## [[d:Q878226|Comparative linguistics]]
+## [[d:Q35245|Etymology]]
+## [[d:Q190375|Historical linguistics]]
+## [[d:Q35395|Phonetics]]
+### [[d:Q743569|Phonetic transcription]]
+## [[d:Q1411840|Transformational grammar]]
+# '''[[d:Q8236|Literacy]]'''
+# [[d:Q38311|Morphology]]
+# [[d:Q40634|Philology]]
+# [[d:Q184377|Pronunciation]]
+# [[d:Q81009|Rhetoric]]
+# '''[[d:Q7553|Translation]]'''
+# '''[[d:Q8171|Word]]'''
+## '''[[d:Q8183|Phoneme]]'''
+### [[d:Q38035|Consonant]]
+### [[d:Q36244|Vowel]]
+## '''[[d:Q8188|Syllable]]'''
+# [[d:Q37260|Writing]]
+## [[d:Q162940|Diacritic]]
+# '''[[d:Q8192|Writing system]]'''
+# [[d:Q82799|Name]]
+# [[d:Q40998|Phonology]]
+# [[d:Q39645|Semantics]]
+# [[d:Q60195|Semiotics]]
+# [[d:Q80071|Symbol]]
+
+====Language Family, 26====
+# [[d:Q25295|Language family]]
+## [[d:Q25268|Afroasiatic languages]]
+### [[d:Q34049|Semitic languages]]
+## [[d:Q721612|Algic languages]]
+## [[d:Q37845|Altaic languages]]
+## [[d:Q33199|Austro-Asiatic languages]]
+## [[d:Q49228|Austronesian languages]]
+## [[d:Q33311|Dravidian languages]]
+## [[d:Q25946|Eskimo–Aleut languages]]
+## [[d:Q19860|Indo-European languages]]
+### [[d:Q21200|Germanic languages]]
+### [[d:Q33527|Iranian languages]]
+### [[d:Q19814|Romance languages]]
+### [[d:Q23526|Slavic languages]]
+## [[d:Q33614|Khoisan languages]]
+## [[d:Q33838|Niger–Congo languages]]
+## [[d:Q33705|Nilo-Saharan languages]]
+## [[d:Q33732|North Caucasian]]
+## [[d:Q45961|Sino-Tibetan languages]]
+## [[d:Q34030|South Caucasian]]
+## [[d:Q34171|Tai–Kadai languages]]
+## [[d:Q34018|Trans–New Guinea languages]]
+## [[d:Q34230|Tungusic languages]]
+## [[d:Q34090|Turkic languages]]
+## [[d:Q34113|Uralic languages]]
+## [[d:Q34073|Uto-Aztecan languages]]
+
+====Alphabets and writing systems, 19====
+# [[d:Q9779|Alphabet]]
+# [[d:Q9788|Letter (alphabet)]]
+# [[d:Q79894|Braille]]
+# '''[[d:Q8196|Arabic alphabet]]'''
+# '''[[d:Q8201|Chinese characters]]'''
+# [[d:Q401|Cuneiform]]
+# '''[[d:Q8209|Cyrillic script]]'''
+# [[d:Q38592|Devanagari]]
+# [[d:Q132659|Egyptian hieroglyphs]]
+# [[d:Q161428|Georgian scripts]]
+# '''[[d:Q8216|Greek alphabet]]'''
+# '''[[d:Q8222|Hangul]]'''
+# '''[[d:Q8229|Latin script alphabet]]'''
+# [[d:Q26752|Phoenician alphabet]]
+# [[d:Q82996|Runes]]
+# [[d:Q48584|Rosetta Stone]]
+# [[d:Q21204|International Phonetic Alphabet]]
+# [[d:Q79897|Morse code]]
+# [[d:Q182133|Syllabary]]
+
+==== Specific languages, 77 ====
+# [[d:Q35497|Ancient Greek]]
+# [[d:Q28602|Aramaic language]]
+# '''[[d:Q13955|Arabic language]]'''
+# '''[[d:Q9610|Bengali language]]'''
+# '''[[d:Q7850|Chinese language]]'''
+# [[d:Q9035|Danish language]]
+# [[d:Q50868|Egyptian language]]
+# '''[[d:Q1860|English language]]'''
+# '''[[d:Q143|Esperanto]]''' 
+# '''[[d:Q150|French language]]'''
+# '''[[d:Q188|German language]]'''
+# '''[[d:Q9129|Greek language]]'''
+# [[d:Q5137|Gujarati language]]
+# '''[[d:Q9288|Hebrew language]]'''
+# '''[[d:Q11051|Hindi-Urdu]]'''
+## [[d:Q1568|Hindi]]
+# [[d:Q652|Italian language]]
+# '''[[d:Q5287|Japanese language]]'''
+# [[d:Q33549|Javanese language]]
+# [[d:Q9176|Korean language]]
+# '''[[d:Q397|Latin]]'''
+# [[d:Q9192|Mandarin Chinese]]
+# [[d:Q1571|Marathi language]]
+# [[d:Q56504|Min Chinese]]
+# [[d:Q809|Polish language]]
+# '''[[d:Q5146|Portuguese language]]'''
+# '''[[d:Q9168|Persian language]]'''
+# '''[[d:Q7737|Russian language]]'''
+# '''[[d:Q11059|Sanskrit]]'''
+# '''[[d:Q1321|Spanish language]]'''
+# '''[[d:Q7838|Swahili language]]'''
+# [[d:Q33538|Syriac language]]
+# [[d:Q5885|Tamil language]]
+# [[d:Q34057|Tagalog language]]
+# [[d:Q8097|Telugu language]]
+# '''[[d:Q256|Turkish language]]'''
+# [[d:Q58635|Punjabi language]]
+# [[d:Q8798|Ukrainian language]]
+# [[d:Q9199|Vietnamese language]]
+# [[d:Q34290|Wu Chinese]]
+# [[d:Q7033959|Yue Chinese]]
+# [[d:Q9228|Burmese language]]
+# [[d:Q9067|Hungarian language]]
+# [[d:Q5218|Quechua languages]]
+# [[d:Q9217|Thai language]]
+# [[d:Q35518|Akkadian language]]
+# [[d:Q28244|Amharic language]]
+# [[d:Q25448|Berber languages]]
+# [[d:Q36155|Coptic language]]
+# [[d:Q13275|Somali language]]
+# [[d:Q9240|Indonesian language]]
+# [[d:Q7930|Malagasy language]]
+# [[d:Q9237|Malay language]]
+# [[d:Q9205|Khmer language]]
+# [[d:Q8785|Armenian language]]
+# [[d:Q29401|Assamese language]]
+# [[d:Q1617|Urdu]]
+# [[d:Q33823|Nepali language]]
+# [[d:Q33810|Oriya language]]
+# [[d:Q36727|Pali]]
+# [[d:Q33997|Sindhi language]]
+# [[d:Q7026|Catalan language]]
+# [[d:Q7913|Romanian language]]
+# [[d:Q7411|Dutch language]]
+# [[d:Q9027|Swedish language]]
+# [[d:Q8641|Yiddish language]]
+# [[d:Q36368|Kurdish language]]
+# [[d:Q58680|Pashto language]]
+# [[d:Q7918|Bulgarian language]]
+# [[d:Q9056|Czech language]]
+# [[d:Q9301|Serbo-Croatian]]
+# [[d:Q33673|Kannada]]
+# [[d:Q36236|Malayalam]]
+# [[d:Q10179|Zulu language]]
+# [[d:Q9292|Azerbaijani language]]
+# [[d:Q9252|Kazakh language]]
+# [[d:Q9264|Uzbek language]]
+
+==== Visual/tactile language, 2 ====
+<!--# [[Braille]] above in alphabet-->
+# [[d:Q736748|Fingerspelling]]
+# [[d:Q34228|Sign language]]
+
+{{Div col end}}
+
+=== Recreation: games and sports, 181 ===
+<small>"Media"-based entertainment are in other categories: "Literature" (books, plays), "Performing arts" (theater, ballet etc.),  "Mass Media" (television), and "Visual arts" (movies and comics).</small>
+{{Div col|cols=4}}
+
+;Basic, 21
+# [[d:Q184872|Recreation]]
+# [[d:Q173799|Entertainment]]
+# '''[[d:Q11410|Game]]'''
+# [[d:Q194195|Amusement park]]
+# '''[[d:Q11416|Gambling]]'''
+## [[d:Q133215|Casino]]
+## [[d:Q45089|Dice]]
+## [[d:Q189409|Lottery]]
+## [[d:Q190975|Roulette]]
+## [[d:Q80131|Poker]]
+## [[d:Q228044|Blackjack]]
+## [[d:Q33972|Slot machine]]
+# [[d:Q180910|Leisure]]
+# [[d:Q200538|Party]]
+# [[d:Q1150958|Play (activity)]]
+# [[d:Q13698|Puzzle]]
+## [[d:Q83207|Crossword]]
+## [[d:Q44914|Sudoku]]
+# '''[[d:Q11422|Toy]]'''
+# [[d:Q45782|Aquarium]]
+# [[d:Q43501|Zoo]]
+
+;Games, 21
+# [[d:Q131436|Board game]]
+## '''[[d:Q11411|Backgammon]]'''
+## '''[[d:Q718|Chess]]'''
+## [[d:Q1293|Draughts]]
+## [[d:Q17245|Cluedo]]
+## '''[[d:Q11413|Go (game)]]'''
+## [[d:Q17243|Monopoly (game)]]
+## [[d:Q170436|Scrabble]]
+## [[d:Q796171|Pachisi]]
+## [[d:Q191448|Xiangqi]]
+# [[d:Q267989|Mancala]]
+# [[d:Q200199|Marble (toy)]]
+# [[d:Q47883|Playing card]]s
+# [[d:Q7889|Video game]]s
+## [[d:Q864|Pok&#233;mon]]
+## [[d:Q216293|Pong]]
+# [[d:Q192851|Arcade game]]
+# [[d:Q142714|Card game]]
+# [[d:Q188966|Contract bridge]]
+# [[d:Q131471|Darts]]
+# [[d:Q32907|Dominoes]]
+
+;Toys, 8
+# [[d:Q168658|Doll]]
+# [[d:Q131689|Flying disc]]
+# [[d:Q170484|Lego]]
+# [[d:Q474273|Modelling clay]]
+# [[d:Q47043|Rubik's Cube]]
+# [[d:Q1118802|Slinky]]
+# [[d:Q167447|Barbie]]
+# [[d:Q183621|Yo-yo]]
+{{Div col end}}
+
+====Sports, 131====
+{{Div col|cols=4}}
+;Basics, 11
+# '''[[d:Q349|Sport]]'''
+# [[d:Q877517|Ball game]]
+## [[d:Q18545|Ball]]
+# [[d:Q483110|Stadium]]
+# [[d:Q1501|Swimming pool]]
+# '''[[d:Q5389|Olympic Games]]'''
+## [[d:Q73633|Paralympic Games]]
+## [[d:Q159821|Summer Olympic Games]]
+## [[d:Q82414|Winter Olympic Games]]
+# [[d:Q166376|Doping in sport]]
+# [[d:Q204686|Winter sport]]
+
+;Team sports, 35
+# [[d:Q41323|American football]]
+## [[d:Q1215884|National Football League]]
+## [[d:Q32096|Super Bowl]]
+# [[d:Q50776|Australian rules football]]
+# '''[[d:Q5369|Baseball]]'''
+## [[d:Q1163715|Major League Baseball]]
+## [[d:Q265538|World Series]]
+# '''[[d:Q5372|Basketball]]'''
+## [[d:Q155223|National Basketball Association]]
+# [[d:Q212845|Basque pelota]]
+# '''[[d:Q5375|Cricket]]'''
+## [[d:Q192202|Cricket World Cup]]
+# [[d:Q136851|Curling]]
+# [[d:Q1050588|Fistball]]
+# [[d:Q206763|Floorball]]
+# '''[[d:Q2736|Association football]]'''
+## [[d:Q19317|FIFA World Cup]]
+## [[d:Q172964|Goalkeeper]]
+## [[d:Q260858|UEFA European Football Championship]]
+## [[d:Q9448|Premier League]]
+## [[d:Q18756|UEFA Champions League]]
+# [[d:Q8418|Team handball]]
+# [[d:Q1622659|Hockey]]
+## [[d:Q1455|Field hockey]]
+## [[d:Q41466|Ice hockey]]
+### [[d:Q1215892|National Hockey League]]
+# [[d:Q185851|Lacrosse]]
+# [[d:Q134211|Polo]]
+# [[d:Q1972786|Ringette]]
+# '''[[d:Q5378|Rugby football]]'''
+## [[d:Q10962|Rugby league]]
+## [[d:Q270102|Rugby sevens]]
+## [[d:Q5849|Rugby union]]
+# [[d:Q171038|Softball]]
+# [[d:Q1734|Volleyball]]
+## [[d:Q4543|Beach volleyball]]
+
+;Athletics, 11
+# '''[[d:Q542|Athletics (sport)]]'''
+## [[d:Q184654|Decathlon]]
+## [[d:Q182570|Discus throw]]
+## [[d:Q165704|High jump]]
+## [[d:Q537769|Hurdling]]
+## [[d:Q178108|Javelin throw]]
+## [[d:Q170737|Long jump]]
+## [[d:Q105674|Running]]
+### [[d:Q40244|Marathon]]
+## [[d:Q185027|Pole vault]]
+## [[d:Q180935|Shot put]]
+
+;Skating, 5
+# [[d:Q779272|Ice skating]]
+## [[d:Q38108|Figure skating]]
+## [[d:Q192431|Speed skating]]
+# [[d:Q1707432|Roller skating]]
+# [[d:Q842284|Skateboarding]]
+
+;Water sports, 5
+# [[d:Q213934|Canoeing]]
+# [[d:Q7735|Diving]]
+# [[d:Q159354|Rowing (sport)]]
+# [[d:Q6388|Human swimming]]
+# [[d:Q7707|Water polo]]
+
+;Other individual sports, 49
+# [[d:Q1194492|Angling]]
+# [[d:Q108429|Archery]]
+# '''[[d:Q5386|Auto racing]]'''
+## [[d:Q1968|Formula One]]
+## [[d:Q233929|NASCAR]]
+# [[d:Q7291|Badminton]]
+# [[d:Q124100|Bodybuilding]]
+# [[d:Q895471|Bowls]]
+## [[d:Q2258363|Bocce]]
+## [[d:Q172809|Bowling]]
+# [[d:Q3341285|Cue sports]]<!--Billards/pool-->
+# [[d:Q53121|Cycling]]
+## [[d:Q223705|Mountain bike]]
+## [[d:Q185948|Time trial]]
+## [[d:Q33881|Tour de France]]
+# [[d:Q179226|Equestrianism]]
+## [[d:Q216033|Dressage]]
+## [[d:Q187916|Horse racing]]
+## [[d:Q207703|Rodeo]]
+## [[d:Q211773|Show jumping]]
+# [[d:Q12100|Fencing]]
+## [[d:Q471447|Foil (fencing)]]
+## [[d:Q1156606|Sabre (fencing)]]
+# '''[[d:Q5377|Golf]]'''
+# [[d:Q43450|Gymnastics]]
+## [[d:Q828144|Floor (gymnastics)]]
+## [[d:Q767472|Somersault]]
+## [[d:Q327911|Trampoline]]
+## [[d:Q598168|Vault (gymnastics)]]
+# [[d:Q32485|Modern pentathlon]]
+# [[d:Q29358|Orienteering]]
+# [[d:Q130949|Skiing]]
+## [[d:Q186222|Alpine skiing]]
+## [[d:Q166788|Biathlon]]
+## [[d:Q216613|Nordic skiing]]
+## [[d:Q7718|Ski jumping]]
+## [[d:Q4117409|Slalom skiing]]
+## [[d:Q172226|Ski]]
+# [[d:Q181388|Sled]]
+## [[d:Q177275|Bobsleigh]]
+## [[d:Q273285|Luge]]
+# [[d:Q11015|Snooker]]
+# [[d:Q178131|Snowboarding]]
+# [[d:Q133201|Squash (sport)]]
+# [[d:Q159992|Surfing]]
+# [[d:Q3930|Table tennis]]
+# '''[[d:Q847|Tennis]]'''
+## [[d:Q240502|Racket (sports equipment)]]
+# [[d:Q83462|Olympic weightlifting]]
+
+;Fighting sport and martial arts, 14
+# '''[[d:Q11417|Martial arts]]'''
+# [[d:Q32112|Boxing]]
+## [[d:Q281678|Heavyweight]]
+## [[d:Q766904|Welterweight]]
+# '''[[d:Q11420|Judo]]'''
+# '''[[d:Q11419|Karate]]'''
+# [[d:Q178678|Kickboxing]]
+# [[d:Q114466|Mixed martial arts]]
+# [[d:Q36389|Taekwondo]]
+# [[d:Q42486|Wrestling]]
+## [[d:Q327223|Freestyle wrestling]]
+## [[d:Q389654|Greco-Roman wrestling]]
+## [[d:Q40561|Sumo]]
+# [[d:Q3479346|Wushu (sport)]]
+{{Div col end}}
+
+=== Timekeeping, 27 ===
+{{Div col|cols=4}}
+<small>For the units of time (hour, day, etc.), see under "measurements"</small>
+
+;Calendar and timekeeping, 8
+# '''[[d:Q12132|Calendar]]'''
+## [[d:Q134032|Chinese calendar]]
+## [[d:Q28892|Islamic calendar]]
+## '''[[d:Q12138|Gregorian calendar]]'''
+# [[d:Q19828|Leap year]]
+# [[d:Q36669|Daylight saving time]]
+# [[d:Q575|Night]]
+# '''[[d:Q12143|Time zone]]'''
+
+;Days of the week, 7
+# [[d:Q132|Sunday]] 
+# [[d:Q105|Monday]]
+# [[d:Q127|Tuesday]] 
+# [[d:Q128|Wednesday]]
+# [[d:Q129|Thursday]] 
+# [[d:Q130|Friday]]
+# [[d:Q131|Saturday]]
+
+;Months of the year, 12
+# [[d:Q108|January]] 
+# [[d:Q109|February]]
+# [[d:Q110|March]] 
+# [[d:Q118|April]]
+# [[d:Q119|May]] 
+# [[d:Q120|June]]
+# [[d:Q121|July]] 
+# [[d:Q122|August]]
+# [[d:Q123|September]] 
+# [[d:Q124|October]]
+# [[d:Q125|November]] 
+# [[d:Q126|December]]
+{{Div col end}}
+
+=== Colors, 20 ===
+{{Div col|cols=4}}
+# '''[[d:Q1075|Color]]'''
+## [[d:Q23445|Black]] 
+## [[d:Q1088|Blue]] 
+## [[d:Q47071|Brown]]
+## [[d:Q180778|Cyan]]
+## [[d:Q3133|Green]]
+## [[d:Q42519|Gray]]
+## [[d:Q3276756|Magenta]] 
+## [[d:Q39338|Orange (colour)]]
+## [[d:Q429220|Pink]]
+## [[d:Q3257809|Purple]]
+## [[d:Q3142|Red]] 
+## [[d:Q943|Yellow]] 
+## [[d:Q23444|White]]
+# [[d:Q166902|Primary color]]
+# [[d:Q221656|Brightness]]
+# [[d:Q27673|Colorfulness]]
+# [[d:Q374259|Color vision]]
+# [[d:Q900581|Gloss (material appearance)]]
+# [[d:Q372948|Hue]]
+{{Div col end}}

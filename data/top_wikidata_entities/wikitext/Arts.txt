@@ -1,0 +1,690 @@
+<noinclude>'''Return to [[List of articles every Wikipedia should have/Expanded]]'''</noinclude>
+== Arts, 600 ==
+::''Transcluded from [[List of articles every Wikipedia should have/Expanded/Arts]]''.
+
+=== Basics, 1 ===
+{{Div col|cols=4}}
+# '''[[d:Q735|Art]]'''
+{{Div col end}}
+
+=== Architecture, 124 ===
+<small>See also Tecnology>Construction section</small>
+<!--For styles, see under "Visual arts". For structures, see under "structural engineering"-->
+{{Div col|cols=4}}
+====Basics, 8 ====
+# '''[[d:Q12271|Architecture]]'''
+# [[d:Q47848|Sacred architecture]]
+# [[d:Q32880|Architectural style]]
+# [[d:Q47537|Architectural theory]]
+# [[d:Q47591|Byzantine architecture]]
+# [[d:Q176483|Gothic architecture]]
+# [[d:Q47694|Proportion (architecture)]]
+# [[d:Q47844|Landscape architecture]]
+
+====Specific structures and ensembles, 117====
+;Africa, 14
+# [[d:Q134140|Abu Simbel temples]]<!--Egypt-->
+# [[d:Q309436|Aït Benhaddou]]<!--Morocco-->
+# [[d:Q38891|Aswan Dam]]<!--Egypt-->
+# [[d:Q501851|Bibliotheca Alexandrina]]<!--Egypt-->
+# '''[[d:Q13217298|Giza Necropolis]]'''
+# [[d:Q683632|Great Mosque of Djenné]]<!--Mali-->
+# [[d:Q522862|Karnak Temple Complex]]<!--Egypt-->
+# [[d:Q177549|Krak des Chevaliers]]<!--Syria-->
+# [[d:Q319841|Luxor Temple]]<!--Egypt-->
+# [[d:Q207590|Rock-Hewn Churches, Lalibela]]<!--Ethiopia-->
+# [[d:Q185362|Saint Catherine's Monastery]]<!--Egypt-->
+# [[d:Q613037|Temple of Edfu]]<!--Egypt-->
+# [[d:Q183562|Umayyad Mosque]]<!--Syria-->
+# [[d:Q209217|Great Zimbabwe]]<!--Zimbabwe-->
+;Americas, 17
+# [[d:Q5859|Chichen Itza]]<!--Mexico-->
+# [[d:Q11274|Chrysler Building]]
+# '''[[d:Q9188|Empire State Building]]'''
+# [[d:Q463179|Fallingwater Residence]]<!--USA-->
+# [[d:Q220728|Flatiron Building]]<!--USA-->
+# [[d:Q29247|Getty Center]]<!--USA-->
+# [[d:Q201469|Guggenheim New York]]<!--USA-->
+# [[d:Q155174|Maracanã Stadium]]<!--Brazil-->
+# [[d:Q676203|Machu Picchu]] <!--Peru-->
+# [[d:Q610961|Mexico City Cathedral]]
+# [[d:Q4519|Naqsh-e Jahan Square]]<!--Iran-->
+# [[d:Q949699|National Congress of Brazil]]<!--Brazil-->
+# [[d:Q29294|Willis Tower]]<!--USA-->
+# '''[[d:Q9202|Statue of Liberty]]'''
+# [[d:Q29238|The Pyramid of the Sun]]<!--Mexico-->
+# [[d:Q213232|Uxmal]]<!--Mexico-->
+# [[d:Q11235|World Trade Center]]<!--USA-->
+;Asia, 30
+# '''[[d:Q43473|Angkor Wat]]'''<!--Cambodia-->
+# [[d:Q43277|Arg-é Bam]]<!--Iran-->
+# [[d:Q330872|Badshahi Mosque]]<!--Pakistan-->
+# [[d:Q29317|Bagan]]<!--Burma-->
+# [[d:Q42798|Borobudur]]<!--Indonesia-->
+# [[d:Q12495|Burj Khalifa]]<!--Dubai-->
+# [[d:Q62939|Burj Al Arab]]<!--Dubai-->
+# [[d:Q47692|Chinese_garden]]<!--China-->
+# [[d:Q4523|Chogha Zanbil]]<!--Iran-->
+# [[d:Q80290|Forbidden City]]<!--China-->
+# '''[[d:Q12501|Great Wall of China]]'''
+# '''[[d:Q12506|Hagia Sophia]]'''<!--Turkey-->
+# [[d:Q836531|Hawa Mahal]]<!--India-->
+# [[d:Q188754|Himeji Castle]]<!--Japan-->
+# [[d:Q261932|Hōryū-ji]]<!--Japan-->
+# [[d:Q191763|Itsukushima Shrine]]<!--Japan-->
+# [[d:Q178948|Khajuraho]]<!--India-->
+# [[d:Q428858|Masjid al-Haram]]<!--Saudi Arabia-->
+# [[d:Q41135|Ming Dynasty Tombs]]<!--China-->
+# [[d:Q43286|Mogao_Caves]]<!--China-->
+# [[d:Q5788|Petra]]<!--Jordan-->
+# [[d:Q71229|Potala Palace]]<!--Tibet-->
+# [[d:Q47721|Prambanan]]<!--Indonesia-->
+# [[d:Q45957|Red Fort]]<!--India-->
+# [[d:Q1373583|Registan]]<!--Uzbekistan-->
+# [[d:Q464535|Shwedagon Pagoda]]<!--Myanmar-->
+# '''[[d:Q9141|Taj Mahal]]'''<!--India-->
+# [[d:Q210287|Temple of Confucius]]<!--China-->
+# [[d:Q47672|Terracotta_Army]]<!--China-->
+# [[d:Q170495|Topkapı Palace]]<!--Turkey-->
+;Europe, 46
+# [[d:Q131013|Acropolis of Athens]]
+# [[d:Q47476|Alhambra]]<!--Spain-->
+# [[d:Q43282|Alexander Nevsky Cathedral, Sofia]]<!--Bulgaria-->
+# [[d:Q810684|Basilica of Our Lady of the Pillar]]<!--Spain-->
+# [[d:Q211818|Belvedere Palace]]<!--Austria-->
+# [[d:Q6373|British Museum]]<!--UK-->
+# [[d:Q42182|Buckingham Palace]]<!--UK-->
+# [[d:Q34925|Capitoline Hill]]<!--Italy-->
+# [[d:Q205136|Cathedral of Santiago de Compostela]]<!--Spain-->
+# [[d:Q2854543|Catherine Palace]]<!--Russia-->
+# [[d:Q133575|Cave of Altamira]]<!--Spain-->
+# [[d:Q180274|Chartres Cathedral]]<!--France-->
+# [[d:Q4176|Cologne Cathedral]]<!--Germany-->
+# '''[[d:Q10285|Colosseum]]'''<!--Italy-->
+# [[d:Q189883|Doge's Palace]]<!--Italy-->
+# '''[[d:Q243|Eiffel Tower]]'''<!--France-->
+# [[d:Q28471|El Escorial]]<!--Spain-->
+# [[d:Q191739|Florence Cathedral]]
+# [[d:Q179199|Guggenheim Bilbao]]<!--Spain-->
+# [[d:Q11819|Hungarian Parliament Building]]<!--Hungary-->
+# [[d:Q404571|Kazan Cathedral]]<!--Russia-->
+# [[d:Q39054|Leaning Tower of Pisa]]
+# [[d:Q18068|Milan Cathedral]]
+# [[d:Q20892|Mont Saint-Michel]]<!--France-->
+# [[d:Q133274|Moscow Kremlin]]
+# [[d:Q130321|Mount Athos Monasteries]]<!--Greece-->
+# [[d:Q764675|Mudéjar Architecture of Aragon]]<!--Spain-->
+# [[d:Q2981|Notre Dame de Paris]]<!-- France -->
+# [[d:Q4152|Neuschwanstein Castle]]<!--Germany-->
+# [[d:Q43280|Oslo Opera House]]<!--Norway-->
+# [[d:Q29286|Palazzo Pitti]]<!--Italy-->
+# '''[[d:Q10288|Parthenon]]'''
+# [[d:Q99309|Pantheon]]<!--Italy-->
+# [[d:Q1258473|Peterhof Palace]]<!--Russia-->
+# [[d:Q7709620|Sanctuary of Our Lady of Lourdes]]<!--France-->
+# [[d:Q48435|Sagrada Família]]<!--Spain-->
+# [[d:Q129846|Saint Basil's Cathedral]]<!--Russia-->
+# '''[[d:Q12512|St. Peter's Basilica]]'''<!--Italy/Vatican-->
+# [[d:Q2943|Sistine Chapel]]
+# [[d:Q39671|Stonehenge]]<!--UK-->
+# [[d:Q2946|Versailles Palace]]
+# [[d:Q41150|Way of St. James]]<!--Francia/Spain/Europe-->
+# [[d:Q43279|Wembley Stadium]]<!--UK-->
+# [[d:Q62408|Westminster Palace]]<!--UK-->
+# [[d:Q42646|Windsor Castle]]<!--UK-->
+# [[d:Q182147|Winter Palace]]<!--Russia-->
+;Oceania, 1
+# [[d:Q45178|Sydney Opera House]]
+
+; Seven Wonders of the World, 8
+# [[d:Q489772|Seven Wonders of the Ancient World]]
+## [[d:Q41553|Colossus of Rhodes]]
+## [[d:Q37200|Great Pyramid of Giza]]
+## [[d:Q41931|Hanging Gardens of Babylon]]
+## [[d:Q43244|Lighthouse of Alexandria]]
+## [[d:Q45368|Mausoleum at Halicarnassus]]
+## [[d:Q46239|Statue of Zeus at Olympia]]
+## [[d:Q43018|Temple of Artemis]]
+{{Div col end}}
+
+=== Literature, 133 ===
+<!--No need to italicize, as this list is about the articles, not the books themselves.-->
+{{Div col|cols=4}}
+# '''[[d:Q8242|Literature]]'''
+## [[d:Q541923|Ancient literature]]
+### [[d:Q2265137|Byzantine literature]]
+### [[d:Q184890|Latin literature]]
+## [[d:Q186579|English literature]]
+### [[d:Q233762|American literature]]
+### [[d:Q781919|Australian literature]]
+### [[d:Q764912|British literature]]
+### [[d:Q1723523|Canadian literature]]
+### [[d:Q683732|Irish literature]]
+## [[d:Q386319|African literature]]
+### [[d:Q3239427|Egyptian literature]]
+## [[d:Q149512|Asian literature]]
+### [[d:Q194380|Arabic literature]]
+### [[d:Q456012|Chinese literature]]
+### [[d:Q1057314|Hebrew literature]]
+### [[d:Q622237|Indian literature]]
+### [[d:Q231425|Japanese literature]]
+### [[d:Q365585|Persian literature]]
+### [[d:Q1328366|Turkish literature]]
+## [[d:Q282445|Czech literature]]
+## [[d:Q1853321|Dutch literature]]
+## [[d:Q181287|German literature]]
+### [[d:Q303779|Austrian literature]]
+## [[d:Q1089547|Greek literature]]
+## [[d:Q6689|French literature]]
+### [[d:Q792357|Belgian literature]]
+## [[d:Q74217|Italian literature]]
+## [[d:Q692327|Polish literature]]
+## [[d:Q548144|Portuguese literature]]
+## [[d:Q238499|Spanish literature]]
+### [[d:Q1147454|Latin American literature]]
+## [[d:Q2077256|Romanian literature]]
+## [[d:Q179161|Russian literature]]
+## [[d:Q971480|Modernist literature]]
+# '''[[d:Q8253|Fiction]]'''
+## '''[[d:Q676|Prose]]'''
+## [[d:Q44342|Legend]]
+## [[d:Q128758|Satire]]
+### '''[[d:Q8261|Novel]]'''
+### [[d:Q49084|Short story]]
+# '''[[d:Q571|Book]]'''
+# '''[[d:Q5292|Encyclopedia]]'''
+# '''[[d:Q482|Poetry]]'''
+## [[d:Q37484|Epic poetry]]
+## [[d:Q37707|Haiku]]
+## [[d:Q80056|Sonnet]]
+# [[d:Q459381|Literary theory]]
+## [[d:Q835023|Poetics]]
+## [[d:Q28856|Stylistics]]
+## [[d:Q742302|New Criticism]]
+# [[d:Q223393|Literary genre]]
+## [[d:Q131539|Children's literature]]
+## [[d:Q186424|Detective fiction]]
+## [[d:Q1194480|Genre fiction]]
+## [[d:Q24925|Science fiction]]
+## [[d:Q1233720|Young-adult fiction]]
+# [[d:Q693|Fable]]
+# [[d:Q699|Fairy tale]]
+# [[d:Q132311|Fantasy]]
+# [[d:Q179797|Thesaurus]]
+
+====Specific works of literature, 57====
+# '''[[d:Q8251|The Art of War]]'''
+# [[d:Q93304|Code of Hammurabi]]
+# [[d:Q172891|Euclid's Elements]]
+# [[d:Q50948|Eugene Onegin]]
+# [[d:Q41567|Hamlet]]
+# [[d:Q123397|Republic]]
+# [[d:Q131719|The Prince]]
+# '''[[d:Q8258|One Thousand and One Nights]]'''
+# '''[[d:Q8265|Dream of the Red Chamber]]'''
+# [[d:Q480|Don Quixote]]
+# [[d:Q15228|The Lord of the Rings]]
+# '''[[d:Q8269|The Tale of Genji]]'''
+# '''[[d:Q8272|Epic of Gilgamesh]]'''
+# '''[[d:Q8275|Iliad]]'''
+# [[d:Q70784|Journey to the West]]
+# '''[[d:Q8276|Mahabharata]]'''
+# [[d:Q35160|Odyssey]]
+# [[d:Q1247232|Parzival]]
+# [[d:Q70806|Romance of the Three Kingdoms]]
+# '''[[d:Q8279|Shahnameh]]'''
+# [[d:Q70827|Water Margin]]
+# [[d:Q145780|Dead Sea Scrolls]]
+# [[d:Q181937|I Ching]]
+# [[d:Q29334|Septuagint]]
+# [[d:Q131175|Vulgate]]
+# [[d:Q455|Encyclop&#230;dia Britannica]]
+# [[d:Q205921|Philosophi&#230; Naturalis Principia Mathematica]]
+# [[d:Q20124|On the Origin of Species]]
+# [[d:Q44996|Oxford English Dictionary]]
+# [[d:Q181488|Gulliver's Travels]]
+# [[d:Q181598|King Lear]]
+# [[d:Q130283|Macbeth]]
+# [[d:Q104871|A Midsummer Night's Dream]]
+# [[d:Q26833|Othello]]
+# [[d:Q483034|Robinson Crusoe]]
+# [[d:Q83186|Romeo and Juliet]]
+# [[d:Q92640|Alice's Adventures in Wonderland]]
+# [[d:Q147787|Anna Karenina]]
+# [[d:Q183157|The Brothers Karamazov]]
+# [[d:Q183883|The Catcher in the Rye]]
+# [[d:Q483412|The Chronicles of Narnia]]
+# [[d:Q165318|Crime and Punishment]]
+# [[d:Q150827|Frankenstein]]
+# [[d:Q180736|Les Mis&#233;rables]]
+# [[d:Q25338|The Little Prince]]
+# [[d:Q174596|Moby-Dick]]
+# [[d:Q208460|Nineteen Eighty-Four]]
+# [[d:Q26505|The Old Man and the Sea]]
+# [[d:Q178869|One Hundred Years of Solitude]]
+# [[d:Q170583|Pride and Prejudice]]
+# [[d:Q6511|Ulysses (novel)]]
+# [[d:Q19871|Waiting for Godot]]
+# [[d:Q161531|War and Peace]]
+# [[d:Q60220|Aeneid]]
+# [[d:Q184742|Metamorphoses]]
+# [[d:Q40185|Divine Comedy]]
+# [[d:Q42490|Asterix]]
+
+====Fictional worlds, 15====
+# [[d:Q83203|Centaur]]
+# [[d:Q182790|Chimera (mythology)]]
+# [[d:Q177413|Demon]]
+# [[d:Q7559|Dragon]]
+# [[d:Q8028|Fairy]]
+# [[d:Q45529|Ghost]]
+# [[d:Q3465|Jinn]]
+# [[d:Q49658|Loch Ness Monster]]
+# [[d:Q182559|Mermaid]]
+# [[d:Q162797|Pegasus]]
+# [[d:Q7246|Unicorn]]
+# [[d:Q46721|Vampire]]
+# [[d:Q9410|Werewolf]]
+# [[d:Q25373|Atlantis]]
+# [[d:Q131156|Utopia]]
+{{Div col end}}
+
+=== Music, 160 ===
+{{Div col|cols=4}}
+====Basics, 23 ====
+# '''[[d:Q638|Music]]'''
+## [[d:Q131186|Choir]]
+## [[d:Q189962|Interval]]
+## [[d:Q190812|Major]]
+## [[d:Q184567|Minor]]
+## [[d:Q1049625|Musical improvisation]]
+## [[d:Q179651|Scale (music)]]
+## [[d:Q42998|Orchestra]]
+## [[d:Q170406|Rhythm]]
+# [[d:Q27939|Singing]]
+# '''[[d:Q7366|Song]]'''
+# [[d:Q164204|Musicology]]
+## [[d:Q372923|Articulation]]
+## [[d:Q186393|Counterpoint]]
+## [[d:Q193544|Music theory]]
+## [[d:Q862597|Musical form]]
+## [[d:Q731978|Mode (music)]]
+## [[d:Q221686|Twelve-tone technique]]
+# [[d:Q193977|Music video]]
+# [[d:Q6010|Rapping]]
+# [[d:Q170412|Melody]]
+# [[d:Q184421|Harmony]]
+## [[d:Q170439|Chord]]
+
+====Music genres/forms, 65====
+# [[d:Q163775|Medieval music]]
+# [[d:Q201405|Renaissance music]]
+# [[d:Q8361|Baroque music]]
+# [[d:Q17723|Classical period]]
+# [[d:Q207591|Romantic music]]<!--Western music/1828 to 1911-->
+# [[d:Q1338153|20th-century classical music]]<!--Western music/1912 to present-->
+## [[d:Q837182|Impressionist music]]
+## [[d:Q613707|Expressionist music]]
+## [[d:Q535611|Neoclassicism]]
+# [[d:Q612024|Contemporary music]]
+## [[d:Q507246|Serialism]]
+## [[d:Q623715|Aleatoric music]]
+## [[d:Q572901|Minimal music]]
+# '''[[d:Q9730|Classical music]]'''
+## [[d:Q178122|Aria]]
+## [[d:Q53831|Canon]]
+## [[d:Q174873|Cantata]]
+## [[d:Q189201|Chamber music]]
+## [[d:Q724473|Chorale]]
+## [[d:Q9748|Concerto]]
+## [[d:Q207841|Étude]]
+## [[d:Q181014|Fugue]]
+## [[d:Q484692|Hymn]]
+## [[d:Q216860|Lied]]
+## [[d:Q193217|Madrigal]]
+## [[d:Q217295|Mass]]
+## '''[[d:Q1344|Opera]]'''
+## [[d:Q202287|Overture]]
+## [[d:Q212148|Prelude]]
+## [[d:Q51616|Requiem]]
+## [[d:Q131269|Sonata]]
+## [[d:Q203005|Suite]]
+## [[d:Q271802|Symphonic poem]]
+## '''[[d:Q9734|Symphony]]'''
+# '''[[d:Q9759|Blues]]'''
+# [[d:Q83440|Country]]
+# [[d:Q316930|Dance music]]
+# [[d:Q848399|Easy listening]]
+# '''[[d:Q9778|Electronic music]]'''
+# [[d:Q492264|Film music]]
+# [[d:Q43343|Folk music]]
+# [[d:Q194492|Gamelan]]
+# [[d:Q26473|Gregorian chant]]
+# '''[[d:Q11401|Hip hop music]]'''
+# '''[[d:Q8341|Jazz]]'''
+## [[d:Q105513|Bebop]]
+## [[d:Q906647|Dixieland]]
+## [[d:Q211781|Free jazz]]
+## [[d:Q203775|Swing music]]
+# [[d:Q212944|Klezmer]]
+# [[d:Q37073|Pop music]]
+# '''[[d:Q9794|Reggae]]'''
+# [[d:Q45981|Rhythm and blues]]
+## [[d:Q131272|Soul music]]
+# '''[[d:Q11399|Rock music]]'''
+## [[d:Q38848|Heavy metal music]]
+# [[d:Q959583|Schlager music]]
+# [[d:Q205049|World music]]
+# [[d:Q58339|Disco]]
+# [[d:Q164444|Funk]]
+# [[d:Q185652|Ragtime]]
+# [[d:Q11366|Alternative rock]]
+# [[d:Q3071|Punk rock]]
+# [[d:Q7749|Rock and roll]]
+# [[d:Q488205|Singer-songwriter]]
+
+====Musical instruments, 59====
+# [[d:Q34379|Musical instrument]]
+# [[d:Q79838|Accordion]]
+# [[d:Q180744|Brass instrument]]
+# [[d:Q445275|Alto_saxophone]]
+# [[d:Q46185|Bass guitar]]
+# [[d:Q211028|Bass drum]]
+# [[d:Q159998|Bassoon]]
+# [[d:Q101401|Bells]]
+# [[d:Q243998|Bongo]]
+# [[d:Q505174|Carillon]]
+# [[d:Q8371|Cello]]
+# [[d:Q320341|Celeste]]
+# [[d:Q178812|Tubular bells]]
+# [[d:Q8343|Clarinet]]
+# [[d:Q83513|Contrabassoon]]
+# [[d:Q202027|Cornet]]
+# '''[[d:Q11404|Drum]]'''
+# [[d:Q1327500|Electronic musical instrument]]
+## [[d:Q78987|Electric guitar]]
+## [[d:Q1136507|Electric piano]]
+## [[d:Q646683|Music sequencer]]
+## [[d:Q163829|Synthesizer]]
+# [[d:Q185041|Cor anglais]]
+# [[d:Q495529|Euphonium]]
+# [[d:Q382616|Flugelhorn]]
+# '''[[d:Q11405|Flute]]'''
+# [[d:Q163759|Horn (instrument)]]
+# '''[[d:Q6607|Guitar]]'''
+# [[d:Q51290|Harmonica]]
+# [[d:Q213461|Pump organ]]
+# [[d:Q47369|Harp]]
+# [[d:Q81982|Harpsichord]]
+# [[d:Q201129|Lyre]]
+# [[d:Q8377|Oboe]]
+# '''[[d:Q5994|Piano]]'''
+# [[d:Q83509|Piccolo]]
+# [[d:Q281460|Pipe organ]]
+# [[d:Q187851|Recorder]]
+# [[d:Q9798|Saxophone]]
+# [[d:Q208421|Snare drum]]
+# [[d:Q499387|Sousaphone]]
+# [[d:Q80019|Double bass]]
+# [[d:Q1798603|String instrument]]
+# [[d:Q189737|Timpani]]
+# [[d:Q8350|Trombone]]
+# '''[[d:Q8338|Trumpet]]'''
+# [[d:Q131168|Tuba]]
+# [[d:Q206987|Vibraphone]]
+# [[d:Q80284|Viola]]
+# '''[[d:Q8355|Violin]]'''
+# [[d:Q165666|Xylophone]]
+# [[d:Q76239|Zither]]
+# [[d:Q302497|Mandolin]]
+# [[d:Q180733|Lute]]
+# [[d:Q173453|Wind instrument]]
+# [[d:Q181247|Woodwind instrument]]
+# [[d:Q8347|Bagpipes]]
+# [[d:Q133163|Percussion instrument]]
+# [[d:Q190172|Cymbal]]
+
+====Specific musical works, 13====
+; Classical, 3
+# [[d:Q12016|The Four Seasons (Vivaldi)]]
+# [[d:Q188709|Symphony No. 5 (Beethoven)]]
+# [[d:Q11989|Symphony No. 9 (Beethoven)]]
+
+; Opera, 6
+# [[d:Q185968|Carmen]]
+# [[d:Q192039|Don Giovanni]]
+# [[d:Q19005|Madama Butterfly]]
+# [[d:Q5064|The Magic Flute]]
+# [[d:Q190237|Der Ring des Nibelungen]]
+# [[d:Q186162|La traviata]]
+
+; Ballet, 1
+# [[d:Q199786|Swan Lake]]
+
+; Modern, 3
+# [[d:Q150901|The Dark Side of the Moon]]
+# [[d:Q169226|Sgt. Pepper's Lonely Hearts Club Band]]
+# [[d:Q44320|Thriller (Michael Jackson album)]]
+{{Div col end}}
+
+=== Performing arts, 59 ===
+{{Div col|cols=4}}
+
+====Concepts, 5====
+# [[d:Q184485|Performing arts]]
+# [[d:Q211198|Audience]]
+# [[d:Q24354|Theater]]
+# [[d:Q131138|Joke]]
+# [[d:Q170539|Parody]]
+
+====Forms, 54====
+# [[d:Q193036|Acrobatics]]
+## [[d:Q219616|Tightrope walking]]
+## [[d:Q1200918|Trapeze]]
+# [[d:Q47928|Circus]]
+# [[d:Q148442|Magic]]
+## [[d:Q599568|Card manipulation]]
+## [[d:Q2293082|Escapology]]
+# [[d:Q2743|Musical theatre]]
+# [[d:Q170384|Operetta]]
+# [[d:Q861911|Oratory]]
+# [[d:Q213156|Performance art]]
+# [[d:Q7358|Clown]]
+
+;Dance, 20
+# '''[[d:Q11639|Dance]]'''
+# [[d:Q41425|Ballet]]
+# [[d:Q182863|Belly dance]]
+# [[d:Q180856|Choreography]]
+# [[d:Q486263|Bossa nova]]
+# [[d:Q169737|B-boying]]
+# '''[[d:Q9764|Flamenco]]'''
+# [[d:Q201022|Folk dance]]
+# [[d:Q245418|Foxtrot]]
+# [[d:Q1132127|Hip hop]]
+# [[d:Q950354|Jitterbug]]
+# [[d:Q17237|Jive]]
+# [[d:Q333002|Mambo]]
+# [[d:Q850130|Modern dance]]
+# [[d:Q208341|Pasodoble]]
+# [[d:Q663529|Quickstep]]
+# '''[[d:Q11403|Samba]]'''
+# [[d:Q338450|Tango]]
+# [[d:Q387916|Twist]]
+# [[d:Q193434|Waltz]]
+
+;Theatre, 22
+# '''[[d:Q11635|Theatre]]'''
+## [[d:Q189072|Theatre of ancient Greece]]
+## [[d:Q455695|Amateur theatre]]
+## [[d:Q1140700|Improvisational theatre]]
+# [[d:Q1292520|Audition]]
+# [[d:Q235065|Broadway theatre]]
+# [[d:Q131183|Cabaret]]
+# [[d:Q1206595|Corps de ballet]]
+# [[d:Q40831|Comedy]]
+# [[d:Q191890|Commedia dell'arte]]
+# [[d:Q131395|Dialogue]]
+# [[d:Q25372|Drama]]
+# [[d:Q240911|Mystery play]]
+# [[d:Q214917|Playwright]]
+# [[d:Q588750|Puppetry]]
+# [[d:Q184528|Soliloquy]]
+# [[d:Q199701|Kabuki]]<!--japanese theatre-->
+# [[d:Q335101|Peking opera]]<!--chinese theatre-->
+# [[d:Q226887|Noh]]<!--older japanese theatre-->
+# [[d:Q737201|Scenography]]
+# [[d:Q1078316|Wayang]]<!--indonesian shadow puppets-->
+# [[d:Q80930|Tragedy]]
+{{Div col end}}
+
+=== Visual arts, 123 ===
+{{Div col|cols=4}}
+# [[d:Q36649|Visual arts]]
+
+====History of art, 51====
+;Early art, 8
+# [[d:Q211884|Byzantine art]]
+# [[d:Q614082|Carolingian art]]
+# [[d:Q914395|Celtic art]]
+# [[d:Q830331|Etruscan art]]
+# [[d:Q8362|Miniature (illuminated manuscript)]]
+# [[d:Q1066218|Ottonian art]]
+# [[d:Q1133779|Renaissance art]]
+# [[d:Q1473346|Stained glass]]
+
+;Pre-modern art, 11
+# [[d:Q189458|Academic art]]
+# [[d:Q37853|Baroque]]
+# [[d:Q170292|Classicism]]
+# [[d:Q680559|Düsseldorf school of painting]]
+# [[d:Q2352880|Dutch Golden Age painting]]
+# [[d:Q191105|Empire style]]
+# [[d:Q46825|Gothic art]]
+# [[d:Q131808|Mannerism]]
+# [[d:Q10857409|Realism (arts)]]
+# [[d:Q46805|Romanesque art]]
+# [[d:Q122960|Rococo]]
+
+;Modern art, 20
+# [[d:Q38166|Modern art]]
+# [[d:Q128115|Abstract art]]
+# [[d:Q177725|Abstract expressionism]]
+# [[d:Q173782|Art Deco]]
+# [[d:Q34636|Art Nouveau]]
+# [[d:Q124354|Bauhaus]]
+# [[d:Q10822316|Concrete art]]
+# [[d:Q207103|Constructivism (art)]]
+# [[d:Q42934|Cubism]]
+# [[d:Q6034|Dada]]
+# [[d:Q80113|Expressionism]]
+# [[d:Q131221|Futurism]]
+# [[d:Q40415|Impressionism]]
+# [[d:Q131711|Kitsch]]
+# [[d:Q14378|Neoclassicism]]
+# [[d:Q184814|Pre-Raphaelite Brotherhood]]
+# [[d:Q166713|Post-Impressionism]]
+# [[d:Q191970|Suprematism]]
+# [[d:Q39427|Surrealism]]
+# [[d:Q164800|Symbolism (arts)]]
+
+;Contemporary art, 12
+# [[d:Q186030|Contemporary art]]
+# [[d:Q108908|Fluxus]]
+# [[d:Q466521|Kinetic art]]
+# [[d:Q326478|Land art]]
+# [[d:Q173436|Minimalism]]
+# [[d:Q589655|Neo-expressionism]]
+# [[d:Q203209|Conceptual art]]
+# [[d:Q182331|Op art]]
+# [[d:Q594150|Outsider art]]
+# [[d:Q134147|Pop art]]
+# [[d:Q3318563|Postmodern art]]
+# [[d:Q224885|Transavantgarde]]
+
+====Artist's tools, 6====
+# [[d:Q177463|Charcoal]]
+# [[d:Q127418|Ink]]
+# [[d:Q174219|Paint]]
+# [[d:Q14674|Pencil]]
+# [[d:Q161179|Pigment]]
+# [[d:Q165447|Pen]]
+
+====Design, 3====
+# [[d:Q82604|Design]]
+# [[d:Q185925|Graphic design]]
+# [[d:Q190637|Web design]]
+
+====Concepts and forms, 40====
+# [[d:Q678649|Body art]]
+# '''[[d:Q12681|Calligraphy]]'''
+# '''[[d:Q1004|Comics]]'''
+# [[d:Q93184|Drawing]]
+# [[d:Q787180|Environmental art]]
+# '''[[d:Q12684|Fashion]]'''
+# [[d:Q877729|Handicraft]]
+# '''[[d:Q11629|Painting]]'''
+# [[d:Q425548|Palette]]
+# [[d:Q282129|Portrait miniature]]
+# '''[[d:Q11642|Pottery]]'''
+# '''[[d:Q11634|Sculpture]]'''
+# [[d:Q682010|Video art]]
+# [[d:Q170593|Collage]]
+# [[d:Q8274|Manga]]
+# [[d:Q17514|Graffiti]]
+# [[d:Q178659|Illustration]]
+# [[d:Q133067|Mosaic]]
+# [[d:Q174705|Oil painting]]
+# [[d:Q83357|Origami]]
+# [[d:Q50030|Watercolor painting]]
+
+; Film, 19
+# '''[[d:Q11424|Film]]'''
+# [[d:Q41253|Movie theater]]
+# '''[[d:Q11425|Animation]]'''
+## '''[[d:Q1107|Anime]]'''
+## [[d:Q1401416|Computer animation]]
+# [[d:Q941530|Color motion picture film]]
+# [[d:Q24862|Short film]]
+# [[d:Q226730|Silent film]]
+# [[d:Q932586|Filmmaking]]
+## [[d:Q590870|Cinematography]]
+## [[d:Q237893|Film editing]]
+## [[d:Q762316|Foley (filmmaking)]]
+## [[d:Q1424726|Gaffer]]
+## [[d:Q381243|Special effect]]
+## [[d:Q11307668|Studio system]]
+## [[d:Q674564|Technicolor]]
+# [[d:Q93196|Bollywood]]
+# [[d:Q42369|Cannes Film Festival]]
+# [[d:Q19020|Academy Award]]
+
+====Specific works, 21====
+;Painting, 8
+# [[d:Q604761|The Blue Boy]]
+# [[d:Q1752990|The Death of Socrates]]
+# [[d:Q12418|Mona Lisa]]
+# [[d:Q219831|The Night Watch]]
+# [[d:Q471379|The Scream]]
+# [[d:Q128910|The Last Supper]]
+# [[d:Q45585|The Starry Night]]
+# [[d:Q175036|Guernica]]
+
+;Sculpture, 4
+# [[d:Q18003128|The Thinker]]
+# [[d:Q179900|David (Michelangelo)]]
+# [[d:Q152072|Manneken Pis]]
+# [[d:Q214619|The Little Mermaid (statue)]]
+# [[d:Q151952|Venus de Milo]]
+
+;Films, 9
+# [[d:Q134430|Snow White and the Seven Dwarfs]]
+# [[d:Q24815|Citizen Kane]]
+# [[d:Q228186|Lawrence of Arabia]]
+# [[d:Q60072|The Sound of Music]]
+# [[d:Q132689|Casablanca]]
+# [[d:Q2875|Gone with the Wind]]
+# [[d:Q103474|2001: A Space Odyssey]]
+# [[d:Q462|Star Wars]]
+# [[d:Q47703|The Godfather]]
+{{Div col end}}

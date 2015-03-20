@@ -1,0 +1,955 @@
+<noinclude>'''Return to [[List of articles every Wikipedia should have/Expanded]]'''</noinclude>
+== History, 800 ==
+::''Transcluded from [[List of articles every Wikipedia should have/Expanded/History]]''.
+
+=== Basics, 63 ===
+
+====General topics, 14====
+{{Div col|cols=4}}
+# '''[[d:Q309|History]]'''
+# '''[[d:Q8432|Civilization]]'''
+# [[d:Q156312|History of the Earth]] <!-- focused on the Earth itself -->
+# [[d:Q200325|History of the world]]
+# [[d:Q166118|Archive]]
+# [[d:Q36279|Biography]]
+# [[d:Q23413|Castle]]
+# [[d:Q657326|Estates of the realm]]
+## [[d:Q52090|Bourgeoisie]]
+## [[d:Q134737|Nobility]]
+# [[d:Q39018|Emperor]]
+# [[d:Q37739|Feudalism]]
+# [[d:Q28989|Graf]]
+# [[d:Q184664|Tithe]]
+{{Div col end}}
+
+====Auxiliary sciences of history, 15 ====
+{{Div col|cols=4}}
+# [[d:Q23498|Archaeology]]
+## [[d:Q465299|Archaeological culture]]
+## [[d:Q636489|Archaeogenetics]]
+# [[d:Q130788|Chronology]]
+# [[d:Q378426|Diplomatics]]
+# [[d:Q181260|Epigraphy]]
+# [[d:Q47307|Genealogy]]
+# [[d:Q18336|Heraldry]]
+## [[d:Q14659|Coat of arms]]
+# [[d:Q50675|Historiography]]
+## [[d:Q159535|Conspiracy theory]]
+# [[d:Q631286|Numismatics]]
+# [[d:Q179957|Palaeography]]
+# [[d:Q131026|Philately]]
+# [[d:Q190721|Philosophy of history]]
+{{Div col end}}
+
+==== History of science and technology, 18 ====
+{{Div col|cols=4}}
+# [[d:Q201486|History of science]]
+# [[d:Q952080|History of agriculture]]
+# [[d:Q50056|History of astronomy]]
+# [[d:Q471043|History of aviation]]
+# [[d:Q746656|History of biology]]
+# [[d:Q501353|History of chemistry]]
+# [[d:Q911070|History of geography]]
+# [[d:Q1779809|History of geology]]
+# [[d:Q212881|History of physics]]
+# [[d:Q185264|History of mathematics]]
+# [[d:Q268194|History of economic thought]]
+# [[d:Q1478235|History of linguistics]]
+# [[d:Q261215|History of psychology]]
+# [[d:Q932233|History of sociology]]
+# [[d:Q465352|History of technology]]
+# [[d:Q380274|History of medicine]]
+# [[d:Q186148|History of computing hardware]]
+# [[d:Q1340267|History of writing]]
+{{Div col end}}
+
+==== History of other topics, 16 ====
+{{Div col|cols=4}}
+# [[d:Q50637|Art history]]
+# [[d:Q50641|History of art]]
+# [[d:Q858517|Cultural history]]
+# [[d:Q8180985|History of architecture]]
+# [[d:Q107478|History of film]]
+# [[d:Q680004|Legal history]]
+# [[d:Q6497044|History of literature]]
+# [[d:Q192781|Military history]]
+# [[d:Q846047|History of music]]
+# [[d:Q27654|History of philosophy]]
+# [[d:Q846742|History of religions]]
+## [[d:Q464200|History of Buddhism]]
+## [[d:Q961603|Jewish history]]
+## [[d:Q235329|History of Christianity]]
+## [[d:Q1192933|History of Hinduism]]
+## [[d:Q642379|History of Islam]]
+{{Div col end}}
+
+=== History by continent, 8 ===
+{{Div col|cols=4}}
+# [[d:Q149813|History of Africa]]
+# [[d:Q690256|History of the Americas]]
+## [[d:Q149527|History of North America]]
+##  [[d:Q912852|History of South America]]
+# [[d:Q722537|History of Antarctica]]
+# [[d:Q627531|History of Asia]]
+# [[d:Q7787|History of Europe]]
+# [[d:Q149509|History of Oceania]]
+{{Div col end}}
+
+=== History by region, 5 ===
+<!-- Regions that don't fit neatly into the continental model. -->
+{{Div col|cols=4}}
+# [[d:Q1202140|History of Central America]]
+# [[d:Q457898|History of the Caribbean]]
+# [[d:Q1266338|History of the Balkans]]
+# [[d:Q51615|History of the Middle East]]
+# [[d:Q568251|History of Scandinavia]]
+
+{{Div col end}}
+
+=== History by country, 96 === 
+{{Div col|cols=4}}
+====Africa, 13====
+# [[d:Q185301|History of Egypt]]
+# [[d:Q1435211|History of Eritrea]]
+# [[d:Q273595|History of Ethiopia]]
+# [[d:Q524656|History of Ghana]]
+# [[d:Q28907|History of Libya]]
+# [[d:Q769743|History of Madagascar]]
+# [[d:Q472658|History of Morocco]]
+# [[d:Q1435215|History of Nigeria]]
+# [[d:Q1151513|History of Senegal]]
+# [[d:Q1477561|History of Sierra Leone]]
+# [[d:Q10862295|History of Somalia]]
+# [[d:Q217184|History of South Africa]]
+# [[d:Q246643|History of Sudan]]
+
+====Americas, 15====
+# [[d:Q243976|History of Argentina]]
+# [[d:Q876412|History of Bolivia]]
+# [[d:Q211967|History of Brazil]]
+# [[d:Q2945|History of Canada]]
+# [[d:Q472967|History of Chile]]
+# [[d:Q1044401|History of Colombia]]
+# [[d:Q473130|History of Cuba]]
+# [[d:Q926416|History of Ecuador]]
+# [[d:Q1516437|History of Guyana]]
+# [[d:Q846445|History of Haiti]]
+# [[d:Q212763|History of Mexico]]
+# [[d:Q1121772|History of Paraguay]]
+# [[d:Q316648|History of Peru]]
+# [[d:Q131110|History of the United States]]
+# [[d:Q8914|History of Venezuela]]
+
+==== Asia, 31 ====
+# [[d:Q188872|History of Afghanistan]]
+# [[d:Q188328|History of Azerbaijan]]
+# [[d:Q839809|History of Bangladesh]]
+# [[d:Q956615|History of Bhutan]]
+# [[d:Q216841|History of Burma]]
+# [[d:Q675630|History of Cambodia]]
+# [[d:Q82972|History of China]]
+# [[d:Q133136|History of India]]
+# [[d:Q331596|History of Indonesia]]
+# [[d:Q2696109|History of Israel]]
+# [[d:Q695980|History of Iraq]]
+# [[d:Q28926|History of Iran]]
+# [[d:Q130436|History of Japan]]
+# [[d:Q713414|History of Korea]]
+# [[d:Q234541|History of Lebanon]]
+# [[d:Q1064598|History of Malaysia]]
+# [[d:Q768502|History of Mongolia]]
+# [[d:Q1648546|History of Nepal]]
+# [[d:Q726994|History of Pakistan]]
+# [[d:Q556079|History of Palestine]]
+# [[d:Q830399|History of the Philippines]]
+# [[d:Q559915|History of Saudi Arabia]]
+# [[d:Q1969320|History of Singapore]]
+# [[d:Q1584837|History of Sri Lanka]]
+# [[d:Q943676|History of Syria]]
+# [[d:Q378008|History of Taiwan]]
+# [[d:Q379391|History of Thailand]]
+# [[d:Q521263|History of Tibet]]
+# [[d:Q190876|History of Turkey]]
+# [[d:Q212913|History of Vietnam]]
+# [[d:Q900498|History of Yemen]]
+
+==== Europe, 35 ====
+# [[d:Q213833|History of Albania]]
+# [[d:Q193688|History of Armenia]]
+# [[d:Q187830|History of Austria]]
+# [[d:Q205317|History of Belgium]]
+# [[d:Q7800|History of Bulgaria]]
+# [[d:Q210726|History of Croatia]]
+# [[d:Q204680|History of Denmark]]
+# [[d:Q11755949|History of England]]
+# [[d:Q949423|History of Estonia]]
+# [[d:Q202808|History of Finland]]
+# [[d:Q7778|History of France]]
+# [[d:Q238246|History of Georgia]]
+# [[d:Q122131|History of Germany]]
+# [[d:Q7794|History of Greece]]
+# [[d:Q199960|History of Hungary]]
+# [[d:Q151128|History of Iceland]]
+# [[d:Q1403781|History of the Republic of Ireland]]
+# [[d:Q7791|History of Italy]]
+# [[d:Q209655|History of Latvia]]
+# [[d:Q215063|History of Lithuania]]
+# [[d:Q243842|History of Malta]]
+# [[d:Q238533|History of the Netherlands]]
+# [[d:Q210725|History of Norway]]
+# [[d:Q199569|History of Poland]]
+# [[d:Q7790|History of Portugal]]
+# [[d:Q216672|History of Romania]]
+# [[d:Q161414|History of Russia]]
+# [[d:Q471148|History of Scotland]]
+# [[d:Q223195|History of Serbia]]
+# [[d:Q7781|History of Spain]]
+# [[d:Q201350|History of Sweden]]
+# [[d:Q208761|History of Switzerland]]
+# [[d:Q210701|History of Ukraine]]
+# [[d:Q113162|History of the United Kingdom]]
+# [[d:Q1063608|History of Wales]]
+
+====Oceania, 2====
+# [[d:Q174825|History of Australia]]
+# [[d:Q672551|History of New Zealand]]
+
+{{Div col end}}
+
+=== Prehistory and Ancient history, 171 ===
+{{Div col|cols=4}}
+
+==== Basic, 8 ====
+# '''[[d:Q11759|Stone Age]]'''
+# '''[[d:Q11761|Bronze Age]]'''
+# '''[[d:Q11764|Iron Age]]'''
+# [[d:Q130253|Chalcolithic]]
+# [[d:Q41493|Ancient history]]
+# [[d:Q486761|Classical antiquity]]
+# [[d:Q217050|Late Antiquity]]
+# [[d:Q428995|Hellenistic period]]
+
+==== Prehistory, 20 ====
+# '''[[d:Q11756|Prehistory]]'''
+# [[d:Q103237|Australopithecus]]
+# [[d:Q179234|Cro-Magnon]]
+# [[d:Q192993|Java Man]]
+# [[d:Q45931|Peking Man]]
+# [[d:Q101362|Homo erectus]]
+# [[d:Q83944|Human evolution]]
+# [[d:Q151055|Denisovan]]
+# [[d:Q40171|Neanderthal]]
+# [[d:Q111463|Paranthropus]]
+# [[d:Q858288|Early human migrations]]
+
+;Stone Age, 9
+# [[d:Q40203|Paleolithic]]
+## [[d:Q7463501|Lower Paleolithic]]
+## [[d:Q626270|Middle Paleolithic]]
+## [[d:Q479505|Upper Paleolithic]]
+# [[d:Q44155|Mesolithic]]
+# [[d:Q180548|Neolithic Revolution]]
+# [[d:Q36422|Neolithic]]
+# [[d:Q1207629|Cradle of civilization]]
+# [[d:Q912205|Control of fire by early humans]]
+
+==== Africa, 19 ====
+# '''[[d:Q11768|Ancient Egypt]]'''
+## [[d:Q721840|Naqada III]]
+## [[d:Q37110|Pharaoh]]
+## [[d:Q2320005|Ptolemaic Kingdom]]
+## [[d:Q101583|Thebes, Egypt]]
+## [[d:Q5715|Memphis, Egypt]]
+## [[d:Q177819|Old Kingdom of Egypt]]
+## [[d:Q191324|Middle Kingdom of Egypt]]
+## [[d:Q180568|New Kingdom of Egypt]]
+## [[d:Q133423|Valley of the Kings]]
+# [[d:Q927291|Nok culture]]
+# [[d:Q135028|Nubia]] 
+## [[d:Q241790|Kingdom of Kush]] 
+## [[d:Q5780|Meroë]]<!--Capital of Kush, covered in Kush article - Not important enough? Delete from list?-->
+# [[d:Q139377|Kingdom of Aksum]] 
+# [[d:Q2429397|Ancient Carthage]]
+## [[d:Q6343|Carthage]] 
+## [[d:Q124988|Punic Wars]]
+# [[d:Q282350|Land of Punt]]
+
+====Americas, 10====
+# [[d:Q3122657|Andean civilizations]]
+## [[d:Q13341477|Chavín culture]]
+## [[d:Q153836|Norte Chico civilization]]
+# [[d:Q13703|Mesoamerica]]
+# [[d:Q28567|Maya civilization]]
+# [[d:Q888099|Paleo-Indians]]
+# [[d:Q172613|Teotihuacan]]
+# [[d:Q135364|Olmec]]
+# [[d:Q13925462|Settlement of the Americas]]
+# [[d:Q844750|Zapotec civilization]]
+
+==== Asia, 69 ====
+# [[d:Q36288|Silk Road]]
+
+===== Central Asia, Iran, Caucasus, 15 =====
+# [[d:Q389688|Achaemenid Empire]]
+# [[d:Q260437|Atropatene]]
+# [[d:Q132646|Bactria]]
+# [[d:Q177076|Caucasian Albania]]
+# [[d:Q19083|Caucasian Iberia]]
+# [[d:Q128904|Elam]] 
+## [[d:Q180773|Susa]]
+# [[d:Q8735|Medes]]
+# [[d:Q1986139|Parthian Empire]] 
+# [[d:Q129072|Persepolis]]
+# [[d:Q500409|Roman–Persian Wars]]
+# [[d:Q673001|Saka]]
+# [[d:Q83891|Sassanid Empire]] 
+# [[d:Q486244|Sogdiana]]
+# [[d:Q192858|Tocharians]]
+
+===== Eastern Asia, 10 =====
+<!-- ancient China here; for Imperial China see middle ages -->
+# [[d:Q28405|Gojoseon]]
+# [[d:Q52824|Jōmon period]]
+# [[d:Q128938|Shang Dynasty]]
+# [[d:Q185047|Spring and Autumn period]]
+# [[d:Q165292|Three Kingdoms of Korea]]
+# [[d:Q185063|Warring States period]]
+# [[d:Q35216|Zhou Dynasty]]
+# [[d:Q207858|Yayoi period]]
+# [[d:Q201727|Three Sovereigns and Five Emperors]]
+# [[d:Q188836|Xiongnu]]
+
+===== Southern Asia, 11 =====
+# [[d:Q151148|Chola dynasty]]
+# '''[[d:Q11774|Gupta Empire]]'''
+# [[d:Q42534|Indus Valley Civilization]]
+## [[d:Q5725|Mohenjo-daro]]
+# [[d:Q215643|Indo-Greeks]]
+# [[d:Q240123|Indo-Scythians]]
+# [[d:Q25979|Kushan Empire]]
+# [[d:Q234009|Magadha]]
+# [[d:Q62943|Maurya Empire]]
+# [[d:Q5257|Satavahana dynasty]]
+# [[d:Q215262|Vedic period]]
+
+===== Southeastern Asia, 3 =====
+# [[d:Q827040|Nanyue]]
+# [[d:Q1627675|Pyu city-states]]
+# [[d:Q1209333|Hong Bang dynasty]]
+
+===== Western Asia, 29 =====
+# '''[[d:Q11767|Mesopotamia]]'''
+# [[d:Q4461035|Akkad]] 
+# [[d:Q203507|Amorite]]
+# [[d:Q2622868|Kingdom of Armenia]]
+# [[d:Q41137|Assyria]]
+## [[d:Q5680|Nineveh]]
+# [[d:Q47690|Babylonia]]
+## [[d:Q5684|Babylon]]
+## [[d:Q200969|Chaldea]]
+# [[d:Q5743|Ebla]]
+# [[d:Q193748|History of ancient Israel and Judah]]
+# [[d:Q5406|Hittites]] 
+# [[d:Q620765|Lydia]]
+# [[d:Q178665|Mitanni]]
+# [[d:Q5747|Palmyra]]
+# [[d:Q41642|Phoenicia]]
+## [[d:Q82070|Tyre, Lebanon]]
+# [[d:Q32579|Phrygia]]
+# [[d:Q93180|Seleucid Empire]]
+# [[d:Q940785|Sabaeans]]
+# [[d:Q35355|Sumer]]
+## [[d:Q5699|Ur]]
+# [[d:Q22647|Troy]]
+## [[d:Q42937|Trojan War]]
+# [[d:Q191369|Ugarit]]
+# [[d:Q185068|Urartu]]
+# [[d:Q170526|Fertile Crescent]]
+# [[d:Q208404|Kingdom of Armenia (antiquity)]]
+# [[d:Q1330607|Syrian Wars]]
+
+==== Europe, 45 ====
+<!-- see under "Cities, Europe" for Athens -->
+# [[d:Q134178|Minoan civilization]]
+## [[d:Q173527|Knossos]]
+# [[d:Q173082|Dacia]] 
+## [[d:Q212853|Dacians]]
+# [[d:Q17161|Etruscan civilization]]
+# '''[[d:Q11772|Ancient Greece]]'''
+## [[d:Q181264|Mycenaean Greece]]
+## [[d:Q76026|Greco-Persian Wars]]
+## [[d:Q184313|Magna Graecia]]
+## [[d:Q193235|Delian League]]
+## [[d:Q5690|Sparta]]
+# [[d:Q1747689|Ancient Rome]]
+## [[d:Q201038|Roman Kingdom]]
+## [[d:Q17167|Roman Republic]]
+## '''[[d:Q2277|Roman Empire]]'''
+### [[d:Q43332|Pompeii]]
+## [[d:Q42834|Western Roman Empire]]
+## [[d:Q689999|Decline of the Roman Empire]]
+## [[d:Q329838|Crisis of the Third Century]]
+## [[d:Q192841|Julio-Claudian dynasty]]
+## [[d:Q193254|Nerva&#8211;Antonine dynasty]]
+## [[d:Q202161|Gallic Wars]]
+## [[d:Q75813|Macedonian Wars]]
+## [[d:Q1747183|Roman civil wars]]
+# [[d:Q83958|Macedonia (ancient kingdom)]]
+# [[d:Q35966|Celts]]
+# [[d:Q192730|Cimmerians]]
+# [[d:Q162858|Sarmatians]]
+# [[d:Q101985|Saxons]]
+# [[d:Q845909|Scythia]]
+## [[d:Q131802|Scythians]]
+# [[d:Q41741|Thrace]]
+# [[d:Q131192|Migration Period]]
+## [[d:Q178054|Alans]]
+## [[d:Q104238|Angles]]
+## [[d:Q110117|Bulgars]]
+## [[d:Q150412|Burgundians]]
+## [[d:Q42193|Goths]]
+### [[d:Q103122|Ostrogoths]]
+### [[d:Q23693|Visigoths]]
+## [[d:Q45813|Huns]]
+## [[d:Q169260|Moors]]
+## [[d:Q914114|Rus' people]]
+## [[d:Q155085|Suebi]]
+## [[d:Q42211|Vandals]]
+
+{{Div col end}}
+
+=== Middle Ages, 150 ===
+{{Div col|cols=4}}
+# '''[[d:Q12554|Middle Ages]]'''
+# [[d:Q170161|Guild]]
+# [[d:Q203563|Boyar]]
+# [[d:Q102083|Knight]]
+# [[d:Q273613|Knyaz]]
+# [[d:Q38142|Samurai]]
+# [[d:Q103350|Serfdom]]
+# [[d:Q1056721|Chivalry]]
+
+====Africa, 8====
+# [[d:Q862532|Ajuran Sultanate]]
+# [[d:Q75613|Almoravid dynasty]]
+# [[d:Q206789|Ghana Empire]]
+# [[d:Q1537016|Kanem Empire]]
+# [[d:Q184536|Mali Empire]]
+# [[d:Q202687|Songhai Empire]]
+# [[d:Q9427|Timbuktu]]
+# [[d:Q465279|Trans-Saharan trade]]
+
+====Americas, 8====
+# '''[[d:Q12542|Aztec]]'''
+# [[d:Q28573|Inca Empire]]
+# [[d:Q202390|Pre-Columbian era]]
+# [[d:Q901198|Chimú culture]]
+# [[d:Q1052095|Mississippian culture]]
+# [[d:Q208188|Moche (culture)]]
+# [[d:Q61750|Tiwanaku]]
+# [[d:Q605340|Wari culture]]
+
+==== Asia, 50 ====
+# [[d:Q745799|Islamic Golden Age]]
+# [[d:Q947784|Mamluk]]
+
+=====  Central Asia and Iran, 9 =====
+# [[d:Q555994|Aq Qoyunlu]]
+# [[d:Q79965|Golden Horde]]
+# [[d:Q324470|Kara Koyunlu]]
+# [[d:Q887684|Muslim conquest of Persia]]
+# [[d:Q486918|Khwarazmian dynasty]]
+# [[d:Q205466|Göktürks]]
+# [[d:Q3708255|Seljuq dynasty]]
+## [[d:Q3708094|Great Seljuq Empire]]
+# [[d:Q831218|Uyghur Khaganate]]
+
+=====Eastern Asia, 19=====
+<!--for China this section is reserved for the whole Imperial period -->
+# [[d:Q28208|Goryeo]]
+# '''[[d:Q7209|Han Dynasty]]'''
+# [[d:Q193292|Heian period]]
+# [[d:Q7352|Jin Dynasty (265–420)]]
+# [[d:Q5066|Jin Dynasty (1115–1234)]]
+# [[d:Q4958|Liao Dynasty]]
+# '''[[d:Q12557|Mongol Empire]]'''
+# [[d:Q9402|Ninja]]
+# [[d:Q7183|Qin Dynasty]]
+# [[d:Q683551|Sixteen Kingdoms]]
+# [[d:Q7462|Song Dynasty]]
+# [[d:Q49696|Southern and Northern Dynasties]]
+# [[d:Q7405|Sui Dynasty]]
+# '''[[d:Q9683|Tang Dynasty]]'''
+# [[d:Q185043|Three Kingdoms]]
+# [[d:Q169705|Xia Dynasty]]
+# [[d:Q7313|Yuan Dynasty]]
+# [[d:Q242115|Five Dynasties and Ten Kingdoms period]]
+# [[d:Q218332|Khitan people]]
+
+=====Southern Asia, 3=====
+# [[d:Q229411|Delhi Sultanate]]
+# [[d:Q2566899|Muslim conquest in the Indian subcontinent]]
+# [[d:Q167639|Vijayanagara Empire]]
+
+=====Southeastern Asia, 7=====
+# [[d:Q216786|Champa]]
+# [[d:Q201705|Khmer Empire]]
+# [[d:Q49326|Majapahit]]
+# [[d:Q46652|Malacca sultanate]]
+# [[d:Q888574|Pagan Kingdom]]
+# [[d:Q234197|Srivijaya]]
+# [[d:Q3111454|Trần Dynasty]]
+
+=====Western Asia, 9=====
+# '''[[d:Q12536|Abbasid Caliphate]]'''
+# '''[[d:Q12546|Crusades]]'''
+## [[d:Q190967|Crusader states]]
+# [[d:Q181254|Empire of Nicaea]]
+# [[d:Q160307|Fatimid Caliphate]]
+# [[d:Q178897|Latin Empire]]
+# '''[[d:Q12560|Ottoman Empire]]'''
+# [[d:Q975405|Sultanate of Rum]]
+# [[d:Q8575586|Umayyad Caliphate]]
+
+====Europe, 77====
+# [[d:Q42005|Black Death]]
+# [[d:Q51648|East–West Schism]]
+# [[d:Q65968|House of Habsburg]]
+# [[d:Q170022|House of Medici]]
+# [[d:Q83418|Normans]]
+# '''[[d:Q4692|Renaissance]]'''
+
+===== Eastern Europe and Central, 26 =====
+# [[d:Q1035516|Cuman people]]
+# [[d:Q68962|Eurasian Avars]]
+# [[d:Q203817|First Bulgarian Empire]]
+# [[d:Q420759|Second Bulgarian Empire]]
+# '''[[d:Q12544|Byzantine Empire]]'''
+## [[d:Q29100|Arab–Byzantine Wars]]
+## [[d:Q2288144|Byzantine–Bulgarian wars]]
+## [[d:Q630259|Byzantine–Ottoman Wars]]
+## [[d:Q160077|Fall of Constantinople]]
+# [[d:Q239502|Kingdom of Galicia–Volhynia]]
+# [[d:Q49683|Grand Duchy of Lithuania]]
+# [[d:Q170770|Grand Duchy of Moscow]]
+# [[d:Q171150|Kingdom of Hungary]]
+# [[d:Q478301|Hussite Wars]]
+# [[d:Q173282|Khazars]]
+# [[d:Q1108445|Kievan Rus']]
+# [[d:Q193152|Great Moravia]]
+# [[d:Q151536|Novgorod Republic]]
+# [[d:Q699602|Cretan War (1645&#8211;69)]]
+# [[d:Q181752|Pechenegs]]
+# [[d:Q48189|Teutonic Knights]]
+# [[d:Q83546|Vladimir-Suzdal]]
+# [[d:Q185488|Volga Bulgaria]]
+# [[d:Q42585|Kingdom of Bohemia]]
+# [[d:Q937255|Polish–Lithuanian–Teutonic War]]
+# [[d:Q210398|Rurik Dynasty]]
+
+=====Western Europe, 45=====
+<!-- see also in another section: Venice -->
+# [[d:Q123559|Al-Andalus]]
+## [[d:Q171740|Caliphate of Córdoba]]
+## [[d:Q79791|Reconquista]]
+# [[d:Q199442|Kingdom of Aragon]]
+# [[d:Q4712|Duchy of Burgundy]]
+# [[d:Q179293|Kingdom of Castile]]
+# [[d:Q146246|Francia]]
+## [[d:Q153080|East Francia]]
+## [[d:Q46370|West Francia]]
+# [[d:Q70972|Kingdom of France]]
+# [[d:Q31929|Carolingian Empire]]
+## [[d:Q179544|Capetian dynasty]]
+## [[d:Q133602|Carolingian dynasty]]
+## [[d:Q59488|Merovingian dynasty]]
+# [[d:Q179876|Kingdom of England]]
+## [[d:Q32768|Anglo-Saxons]]
+## [[d:Q83224|Battle of Hastings]]
+## [[d:Q200485|Norman conquest of England]]
+## [[d:Q127751|Wars of the Roses]]
+# [[d:Q42908|Hanseatic League]]
+# [[d:Q62623|Kalmar Union]]
+# '''[[d:Q12548|Holy Roman Empire]]'''
+# [[d:Q106151|House of Plantagenet]]
+# '''[[d:Q12551|Hundred Years' War]]'''
+# [[d:Q43173|Inquisition]]
+# [[d:Q41300|Knights Templar]]
+# [[d:Q130900|Lombards]]
+# [[d:Q51662|Northern Crusades]]
+# [[d:Q170346|Ostsiedlung]]
+# [[d:Q170174|Papal States]]
+# [[d:Q174306|Republic of Genoa]]
+# [[d:Q188586|Kingdom of Sicily]]
+# [[d:Q4948|Republic of Venice]]
+# [[d:Q213649|Viking Age]]
+# '''[[d:Q12567|Vikings]]'''
+# [[d:Q126936|Visigothic Kingdom]]
+# [[d:Q105098|Austrasia]]
+# [[d:Q43482|Franks]]
+# [[d:Q154764|Investiture Controversy]]
+# [[d:Q175211|Kingdom of Germany]]
+# [[d:Q158281|Wends]]
+# [[d:Q477973|Gothic War (535–554)]]
+# [[d:Q187742|Guelphs and Ghibellines]]
+# [[d:Q106577|Neustria]]
+# [[d:Q152507|Salic law]]
+{{Div col end}}
+
+=== Early modern history, 93 ===
+{{Div col|cols=4}}
+==== Basics, 11 ====
+# [[d:Q5308718|Early modern period]]
+# [[d:Q133641|Age of Discovery]]
+# '''[[d:Q8680|British Empire]]'''
+# [[d:Q179023|French colonial empire]]
+# [[d:Q190530|Little Ice Age]]
+# [[d:Q200464|Portuguese Empire]]
+# [[d:Q80702|Spanish Empire]]
+# [[d:Q214078|Scientific revolution]]
+# [[d:Q33143|Seven Years' War]]
+# [[d:Q1147471|Treaty of Zaragoza]]
+# [[d:Q180897|Treaty of Tordesillas]]
+
+====Africa, 9====
+# [[d:Q3057915|African slave trade]]
+# [[d:Q12981967|Atlantic slave trade]]
+# [[d:Q894030|Bornu Empire]]
+# [[d:Q854468|Kingdom of Mutapa]]
+# [[d:Q722071|Ashanti Empire]]
+# [[d:Q796583|Kingdom of Kongo]]
+# [[d:Q849623|Oyo Empire]]
+# [[d:Q1475713|Sennar (sultanate)]]
+# [[d:Q1591030|Hausa Kingdoms]]
+
+==== Americas, 11 ====
+# [[d:Q40949|American Revolutionary War]]
+# [[d:Q184716|European colonization of the Americas]]
+## [[d:Q918254|British colonization of the Americas]]
+## [[d:Q1047607|Spanish colonization of the Americas]]
+### [[d:Q828435|Spanish conquest of the Aztec Empire]]
+### [[d:Q636771|Spanish conquest of the Inca Empire]]
+# [[d:Q681416|French and Indian Wars]]
+## [[d:Q154697|French and Indian War]]
+# [[d:Q108413|Wounded Knee Massacre]]
+# [[d:Q505802|Lewis and Clark Expedition]]
+# [[d:Q1123201|Spanish American wars of independence]]
+
+==== Asia, 23 ====
+# [[d:Q191293|1556 Shaanxi earthquake]]
+# [[d:Q2477522|Bengal famine of 1770]]
+# [[d:Q1183649|Deccan sultanates]]
+# [[d:Q159766|Dutch East India Company]]
+# [[d:Q83164|East India Company]]
+# [[d:Q184963|Edo period]]
+## [[d:Q205662|Tokugawa shogunate]]
+# [[d:Q576338|Japanese invasions of Korea]]
+# [[d:Q28179|Joseon]]
+# [[d:Q1433867|Kazakh Khanate]]
+# '''[[d:Q9903|Ming Dynasty]]'''
+# [[d:Q83618|Maratha Empire]]
+# [[d:Q33296|Mughal Empire]]
+# [[d:Q735349|Russian conquest of Siberia]]
+# [[d:Q161205|Safavid dynasty]]
+# [[d:Q83572|Sikh Empire]]
+# [[d:Q841364|Ayutthaya Kingdom]]
+# [[d:Q577668|Khanate of Bukhara]]
+# [[d:Q853477|Lan Xang]]
+# [[d:Q10800789|Lê Dynasty]]
+# [[d:Q190513|Khanate of Sibir]]
+# [[d:Q519718|Taungoo Dynasty]]
+# [[d:Q1923401|Zunghar Khanate]]
+
+==== Europe, 39 ====
+
+=====Basics, 4=====
+# '''[[d:Q12539|Age of Enlightenment]]'''
+# '''[[d:Q12562|Protestant Reformation]]'''
+# '''[[d:Q2487|Thirty Years' War]]'''
+# [[d:Q128168|Counter-Reformation]]
+
+=====Western Europe, 16 =====
+# [[d:Q191055|1755 Lisbon earthquake]]
+# [[d:Q755170|Anglo-Dutch Wars]]
+# [[d:Q151423|Congress of Berlin]]
+# [[d:Q164432|Eighty Years' War]]
+# [[d:Q80330|English Civil War]]
+# '''[[d:Q6534|French Revolution]]'''
+## [[d:Q207318|French Revolutionary Wars]]
+# [[d:Q673175|French Wars of Religion]]
+# [[d:Q101935|Huguenot]]
+# [[d:Q273348|Italian Wars]]
+# [[d:Q38872|Prussia]]
+# [[d:Q137073|Puritan]]
+# [[d:Q184725|Spanish Inquisition]]
+# [[d:Q32929|War of the Austrian Succession]]
+# [[d:Q150701|War of the Spanish Succession]]
+# [[d:Q792164|Enclosure]]
+
+=====Eastern Europe and Central, 19=====
+# [[d:Q47805|Cossacks]]
+## [[d:Q212439|Cossack Hetmanate]]
+# [[d:Q160440|Crimean Khanate]]
+# [[d:Q151616|Great Northern War]]
+# [[d:Q74623|Great Turkish War]]
+# [[d:Q112707|House of Romanov]]
+# [[d:Q186537|Khanate of Kazan]]
+# [[d:Q246863|Livonian War]]
+# [[d:Q152006|Partitions of Poland]]
+# [[d:Q172107|Polish–Lithuanian Commonwealth]]
+# [[d:Q216702|The Great Game]]
+# [[d:Q186096|Tsardom of Russia]]
+## [[d:Q611162|Oprichnina]]
+# [[d:Q743046|History of the Russo-Turkish wars]]
+# [[d:Q698985|Ottoman wars in Europe]]
+# [[d:Q963303|Union of Lublin]]
+# [[d:Q1567698|Muscovite–Lithuanian Wars]]
+# [[d:Q1044829|Polish&#8211;Muscovite War (1605&#8211;18)]]
+# [[d:Q631991|Russo-Polish War (1654–1667)]]
+{{Div col end}}
+
+=== Modern history, 213 ===
+{{Div col|cols=4}}
+
+==== Basics, 46 ====
+# [[d:Q3281534|Modern history]]
+# [[d:Q316817|1973 oil crisis]]
+# [[d:Q169390|Abolitionism]]
+# [[d:Q152195|Anti-Comintern Pact]]
+# [[d:Q13406660|Movements for civil rights]]
+# '''[[d:Q8683|Cold War]]'''
+# [[d:Q230533|Decolonization]]
+# [[d:Q896666|Financial crisis of 2007–2008]]
+# '''[[d:Q8698|Great Depression]]'''
+# '''[[d:Q2269|Industrial Revolution]]'''
+# [[d:Q956129|Information Age]]
+# [[d:Q154611|Interwar period]]
+# [[d:Q205073|Kellogg&#8211;Briand Pact]]
+# [[d:Q304121|New Imperialism]]
+# [[d:Q180046|Space exploration]]
+# [[d:Q1932|Space Race]]
+# [[d:Q178275|1918 flu pandemic]]
+# [[d:Q185729|War on Terror]]
+# [[d:Q205204|Women's suffrage]]
+# '''[[d:Q361|World War I]]'''
+## [[d:Q789406|Balkans Campaign]]
+## [[d:Q154573|Eastern Front]]
+## [[d:Q659745|Italian Campaign]]
+## [[d:Q1765465|Middle Eastern theatre of World War I]]
+## [[d:Q193258|Treaty of Lausanne]]
+## [[d:Q192924|Treaty of Saint-Germain-en-Laye (1919)]]
+## [[d:Q181902|Treaty of Trianon]]
+## [[d:Q152989|Western Front]]
+## [[d:Q199820|Paris Peace Conference]]
+# '''[[d:Q362|World War II]]'''
+## [[d:Q329888|Allies of World War II]]
+## [[d:Q488|Atomic bombings of Hiroshima and Nagasaki]]
+## [[d:Q52418|Attack on Pearl Harbor]]
+## [[d:Q43056|Axis powers]]
+## [[d:Q157627|Battle of the Atlantic]]
+## [[d:Q154720|Battle of Britain]]
+## [[d:Q189266|Eastern Front]]
+## [[d:Q150812|Invasion of Poland]]
+## [[d:Q696817|Mediterranean, Middle East and African theatres of World War II]]
+## [[d:Q130796|Molotov&#8211;Ribbentrop Pact]]
+## [[d:Q80130|Nuremberg trials]]
+## [[d:Q184425|Pacific War]]
+## [[d:Q216184|Western Front]]
+## [[d:Q134949|Winter War]]
+## [[d:Q161227|Yalta Conference]]
+# [[d:Q4314084|Collective farming]]
+
+==== Africa, 18 ====
+# [[d:Q33761|Arab Spring]]
+# [[d:Q200790|Algerian War]]
+# [[d:Q12055176|Angolan Civil War]]
+# [[d:Q228911|Anglo–Zulu War]]
+# '''[[d:Q11409|Apartheid in South Africa]]'''
+# [[d:Q178469|Biafra]]
+# [[d:Q76048|Congo Free State]]
+# [[d:Q257724|Ethiopian Civil War]]
+# [[d:Q329203|First Boer War]]
+# [[d:Q81545|Libyan civil war]]
+# [[d:Q31944|Mahdist War]]
+# [[d:Q829875|Nigerian Civil War]]
+# [[d:Q131297|Rwandan Genocide]]
+# [[d:Q179848|Scramble for Africa]]
+# [[d:Q215112|Second Boer War]]
+# [[d:Q75756|Second Congo War]]
+# [[d:Q94916|Second Italo–Ethiopian War]]
+# [[d:Q600524|Sokoto Caliphate]]
+
+==== Americas, 23 ====
+# [[d:Q43777|2010 Haiti earthquake]]
+# [[d:Q48537|African-American Civil Rights Movement]]
+# '''[[d:Q8676|American Civil War]]'''
+# [[d:Q849680|American Indian Wars]]
+# [[d:Q81931|Confederate States of America]]
+# [[d:Q128160|Cuban missile crisis]]
+# [[d:Q11264|Cuban revolution]]
+# [[d:Q726501|Dust Bowl]]
+# [[d:Q217230|Empire of Brazil]]
+# [[d:Q199821|Gran Colombia]]
+# [[d:Q689128|Haitian Revolution]]
+# [[d:Q127050|Manhattan Project]]
+# [[d:Q68750|Mexican War of Independence]]
+# [[d:Q214426|Mexican Revolution]]
+# [[d:Q6683|Mexican–American War]]
+# [[d:Q10806|September 11 attacks]]
+# [[d:Q12583|Spanish–American War]]
+# [[d:Q201684|Wall Street Crash of 1929]]
+# [[d:Q26013|War of 1812]]
+# [[d:Q58947|Paraguayan War]]
+# [[d:Q152004|War of the Pacific]]
+# [[d:Q14947899|American frontier]]
+# [[d:Q186356|New Deal]]
+
+==== Asia, 56 ====
+
+===== Eastern Asia, 24 =====
+# [[d:Q1150973|1931 China floods]]
+# [[d:Q462195|1976 Tangshan earthquake]]
+# [[d:Q36204|2011 Tōhoku earthquake and tsunami]]
+## [[d:Q171178|Fukushima nuclear disaster]]
+# [[d:Q150229|Boxer Rebellion]]
+# [[d:Q862552|History of the People's Republic of China]]
+# [[d:Q179975|Chinese Civil War]]
+# '''[[d:Q8690|Cultural Revolution]]'''
+# [[d:Q188712|Empire of Japan]]
+# [[d:Q191282|First Opium War]]
+# [[d:Q178687|First Sino-Japanese War]]
+# [[d:Q58715|Great Leap Forward]]
+# [[d:Q2454958|Great Chinese Famine]]
+# [[d:Q8663|Korean War]]
+# [[d:Q3125096|Meiji period]]
+# '''[[d:Q8707|Meiji Restoration]]'''
+# '''[[d:Q8733|Qing Dynasty]]'''
+# [[d:Q159950|Russo-Japanese War]]
+# [[d:Q418151|Second Opium War]]
+# [[d:Q170314|Second Sino-Japanese War]]
+# [[d:Q192408|Taiping Rebellion]]
+# [[d:Q99717|Tiananmen Square protests of 1989]]
+# [[d:Q190517|Xinhai Revolution]]
+# [[d:Q864737|Unequal treaty]]
+
+===== Southern Asia, 9 =====
+# [[d:Q245551|1970 Bhola cyclone]]
+# [[d:Q371394|Bangladesh Liberation War]]
+# [[d:Q129286|British Raj]]
+# [[d:Q1092790|Indian independence movement]]
+# [[d:Q129864|Indian Rebellion of 1857]]
+# [[d:Q1922071|Indo-Pakistani War of 1971]]
+# [[d:Q129053|Partition of India]]
+# [[d:Q6500483|Nguyen dynasty]]
+# [[d:Q1062422|Konbaung Dynasty]]
+
+===== Southeastern Asia, 9 =====
+# [[d:Q130754|2004 Indian Ocean earthquake and tsunami]]
+# [[d:Q188161|Dutch East Indies]]
+# [[d:Q185682|French Indochina]]
+# [[d:Q1332160|Indonesian National Revolution]]
+# [[d:Q214456|Philippine–American War]]
+# [[d:Q422082|Philippine Revolution]]
+# '''[[d:Q8740|Vietnam War]]'''
+# [[d:Q191764|Khmer Rouge]]
+# [[d:Q748780|First Indochina War]]
+
+===== Western Asia, 14 =====
+# [[d:Q593774|1953 Iranian coup d'état]]
+# '''[[d:Q8669|Arab–Israeli conflict]]'''
+# [[d:Q80034|Armenian Genocide]]
+# [[d:Q223732|Israeli Declaration of Independence]]
+# [[d:Q37643|Gulf War]]
+# [[d:Q82664|Iran–Iraq War]]
+# [[d:Q126065|Iranian Revolution]]
+# [[d:Q545449|Iraq War]]
+# [[d:Q151622|Israeli–Palestinian conflict]]
+# [[d:Q1368440|Persian Constitutional Revolution]]
+# [[d:Q83085|Soviet war in Afghanistan]]
+# [[d:Q234738|Turkish War of Independence]]
+# [[d:Q83896|Young Turks]]
+# [[d:Q182865|War in Afghanistan (2001&#8211;present)]]
+
+==== Europe, 70 ====
+
+===== Basics, 11 =====
+# [[d:Q131964|Austrian Empire]]
+# [[d:Q28513|Austria-Hungary]]
+# [[d:Q46362|Congress of Vienna]]
+# [[d:Q1048268|European integration]]
+# [[d:Q212114|History of the European Union]]
+# '''[[d:Q2763|The Holocaust]]'''
+# [[d:Q154640|Holy Alliance]]
+# [[d:Q124425|Iron Curtain]]
+# [[d:Q3588|Revolutions of 1848]]
+# [[d:Q740724|Treaty of Paris (1814)]]
+# '''[[d:Q8736|Treaty of Versailles]]'''
+
+===== Eastern Europe, 30 =====
+# [[d:Q165725|Balkan Wars]]
+## [[d:Q177918|First Balkan War]]
+## [[d:Q184183|Second Balkan War]]
+# [[d:Q486|Chernobyl disaster]]
+# [[d:Q254106|Crimean War]]
+# [[d:Q33946|Czechoslovakia]]
+# [[d:Q5167679|Dissolution of the Soviet Union]]
+# [[d:Q16957|East Germany]]
+# [[d:Q179250|French invasion of Russia]]
+# [[d:Q187650|Great Purge]]
+# [[d:Q87138|Greco-Turkish War (1919&#8211;22)]]
+# [[d:Q182062|Greek War of Independence]]
+# [[d:Q161448|Gulag]]
+# [[d:Q165058|Holodomor]]
+# [[d:Q164348|Hungarian Revolution of 1956]]
+# [[d:Q186284|Polish–Soviet War]]
+# [[d:Q162401|Prague Spring]]
+# [[d:Q382861|Revolutions of 1989]]
+# [[d:Q79911|Russian Civil War]]
+# [[d:Q34266|Russian Empire]]
+# [[d:Q184928|Revolution of 1905]]
+# '''[[d:Q8729|Russian Revolution]]'''
+# [[d:Q174205|Russo-Turkish War (1877–1878)]]
+# [[d:Q1003|Solidarity (Polish trade union)]]
+# [[d:Q170541|Eastern Bloc]]
+# [[d:Q15180|Soviet Union]]
+## [[d:Q191515|Mensheviks]]
+## [[d:Q182449|NKVD]]
+# [[d:Q36704|Yugoslavia]]
+# [[d:Q85125|Population transfer in the Soviet Union]]
+
+===== Western Europe, 29 =====
+# [[d:Q223933|Belgian Revolution]]
+# [[d:Q5086|Berlin Wall]]
+# [[d:Q71084|First French Empire]]
+# [[d:Q46083|Franco-Prussian War]]
+# [[d:Q58296|French First Republic]]
+# [[d:Q151624|German Confederation]]
+# [[d:Q43287|German Empire]]
+# [[d:Q56039|German reunification]]
+# [[d:Q188371|Great Famine (Ireland)]]
+# [[d:Q199955|Hundred Days]]
+# [[d:Q51122|Italian unification]]
+# [[d:Q214028|July Revolution]]
+# [[d:Q78994|Napoleonic Wars]]
+# '''[[d:Q7318|Nazi Germany]]'''
+## [[d:Q36749|Beer Hall Putsch]]
+## [[d:Q43250|Gestapo]]
+## [[d:Q7320|Nazi Party]]
+## [[d:Q44687|Schutzstaffel]]
+## [[d:Q150793|Sturmabteilung]]
+## [[d:Q105570|20 July Plot]]
+# [[d:Q152499|Peninsular War]]
+# [[d:Q133132|Paris Commune]]
+# [[d:Q178038|Second Spanish Republic]]
+# [[d:Q10859|Spanish Civil War]]
+# [[d:Q815436|The Troubles]]
+# [[d:Q154705|Unification of Germany]]
+# [[d:Q328468|Nazi concentration camps]]
+# [[d:Q41304|Weimar Republic]]
+# [[d:Q160944|Stab-in-the-back myth]]
+{{Div col end}}
+
+=== Historical cities, 1 ===
+{{Div col|cols=4}}
+# [[d:Q200441|Antioch]]
+{{Div col end}}
