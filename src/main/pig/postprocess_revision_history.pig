@@ -1,6 +1,6 @@
 /*                                                                                               
 Set language, e.g.,
--param 'LANG=ca'
+pig -param 'LANG=ca' postprocess_revision_history.pig
 */
 
 SET mapreduce.output.fileoutputformat.compress false;
@@ -12,8 +12,8 @@ SET mapreduce.output.fileoutputformat.compress false;
 -- Load the pagecount data.
 -- NB: the '-tagfile' flag seems to be buggy and throw the indices off: Both the filename and the
 -- domain field contain the file name in that case.
-Rev = LOAD '/tmp/rev.tsv' USING PigStorage('\t')
---Rev = LOAD '/user/west1/revision_history/$LANG' USING PigStorage('\t')
+--Rev = LOAD '/tmp/rev.tsv' USING PigStorage('\t')
+Rev = LOAD '/user/west1/revision_history/$LANG' USING PigStorage('\t')
 	AS (rev_id:long, page_id:int, text_id:int, user_id:int, user:chararray, timestamp:chararray, minor:chararray,
         deleted:chararray, length:int, parent_id:int, comment:chararray);
 
