@@ -1,0 +1,1066 @@
+<noinclude>'''Return to [[List of articles every Wikipedia should have/Expanded]]'''</noinclude>
+== Society and social sciences, 900 ==
+::''Transcluded from [[List of articles every Wikipedia should have/Expanded/Society and social sciences]]''.
+
+=== Basics, 20 ===
+{{Div col|cols=4}}
+# '''[[d:Q8425|Society]]'''
+# [[d:Q177634|Community]]
+# [[d:Q80083|Humanities]]
+# '''[[d:Q11024|Communication]]'''
+# '''[[d:Q11028|Information]]'''
+# [[d:Q815726|Solidarity]]
+# [[d:Q928786|Area studies]]
+# [[d:Q37732|Demography]]
+# [[d:Q16387|Information science]]
+# [[d:Q875377|Mandate of Heaven]]
+# [[d:Q165650|Media studies]]
+# [[d:Q505605|Open society]]
+# [[d:Q1110684|Professional society]]
+# [[d:Q955824|Scientific society]]
+# [[d:Q769620|Social actions]]
+# [[d:Q214693|Social capital]]
+# [[d:Q553270|Social cohesion]]
+# [[d:Q1641112|Social order]]
+# [[d:Q211606|Social structure]]
+# [[d:Q190553|Sociobiology]]
+{{Div col end}}
+
+=== Business and economics, 98 ===
+{{Div col|cols=4}}
+# [[d:Q4830453|Business]]
+# '''[[d:Q8134|Economics]]'''
+## [[d:Q39680|Macroeconomics]]
+## [[d:Q39072|Microeconomics]]
+## [[d:Q28877|Good (economics)]]
+## [[d:Q7406919|Service (economics)]]
+## [[d:Q166656|Supply and demand]]
+# [[d:Q159810|Economy]]
+# [[d:Q4116214|Accountancy]]
+# '''[[d:Q8137|Capital (economics)]]'''
+# [[d:Q783794|Company]]
+# [[d:Q167037|Corporation]]
+# '''[[d:Q8142|Currency]]'''
+## '''[[d:Q4916|Euro]]'''
+## '''[[d:Q8146|Japanese yen]]'''
+## [[d:Q25224|Pound sterling]]
+## [[d:Q39099|Renminbi]]
+## [[d:Q178843|Rupee]]
+## '''[[d:Q4917|United States dollar]]'''
+# [[d:Q41207|Coin]]
+# [[d:Q47433|Banknotes]]
+# [[d:Q22687|Bank]]
+# [[d:Q80042|Cheque]]
+# [[d:Q3196867|Debt]]
+# [[d:Q161380|Credit card]]
+# [[d:Q189539|Loan]]
+# [[d:Q170924|Interest]]
+# [[d:Q12638|Gross domestic product]]
+# [[d:Q28161|Labour economics]]
+# [[d:Q54128|Domestic worker]]
+# [[d:Q83405|Factory]]
+# [[d:Q43015|Finance]]
+# '''[[d:Q8148|Industry]]'''
+## '''[[d:Q11451|Agriculture]]'''
+## [[d:Q385378|Construction]]
+## [[d:Q14373|Fishing]]
+## [[d:Q38112|Forestry]]
+## [[d:Q878138|Fur trade]]
+## [[d:Q36963|Hunting]]
+## [[d:Q187939|Manufacturing]]
+## [[d:Q44497|Mining]]
+## [[d:Q214261|Oil refining]]
+## [[d:Q49389|Tourism]]
+### [[d:Q27686|Hotel]]
+# [[d:Q42767|Whaling]]
+# [[d:Q35865|Inflation]]
+# [[d:Q161081|Deflation]]
+# [[d:Q43183|Insurance]]
+# [[d:Q4290|Investment]]
+# [[d:Q2920921|Management]]
+# [[d:Q37654|Market]]
+# [[d:Q39809|Marketing]]
+# '''[[d:Q1368|Money]]'''
+# [[d:Q43637|Monopoly]]
+# [[d:Q44454|Moral hazard]]
+# [[d:Q6422240|Property]]
+# [[d:Q126793|Retail]]
+# [[d:Q11315|Shopping mall]]
+# [[d:Q180846|Supermarket]]
+# [[d:Q11691|Stock exchange]]
+## [[d:Q13677|New York Stock Exchange]]
+## [[d:Q82059|NASDAQ]]
+## [[d:Q171240|London Stock Exchange]]
+## [[d:Q217475|Tokyo Stock Exchange]]
+# '''[[d:Q8161|Tax]]'''
+## [[d:Q645011|Corporate tax]]
+## [[d:Q179222|Income tax]]
+## [[d:Q607695|Property tax]]
+## [[d:Q11055488|Sales tax]]
+## [[d:Q52389|Customs duty]]
+# [[d:Q601401|Trade]]
+# [[d:Q282049|Career]]
+# [[d:Q656365|Employment]]
+# [[d:Q41171|Unemployment]]
+# [[d:Q1462531|Layoff]]
+# [[d:Q946865|Retirement]]
+# [[d:Q6821213|Wage]]
+
+==== Companies, 20 ====
+# [[d:Q125054|Aldi]]
+# [[d:Q312|Apple Inc.]]
+# [[d:Q35476|AT&T]]
+# [[d:Q487907|Bank of America]]
+# [[d:Q54078|IKEA]]
+# [[d:Q26463|Industrial and Commercial Bank of China]]
+# [[d:Q319642|Chevron]]
+# [[d:Q156238|ExxonMobil]]
+# [[d:Q54173|General Electric]]
+# [[d:Q95|Google]]
+# [[d:Q37156|IBM]]
+# [[d:Q1063455|The Lego Group]]
+# [[d:Q18224|Maersk]]
+# [[d:Q38076|McDonald's]]
+# [[d:Q2283|Microsoft]]
+# [[d:Q160746|Nestlé]]
+# [[d:Q210047|Petrobras]]
+# [[d:Q212405|Procter & Gamble]]
+# [[d:Q154950|Royal Dutch Shell]]
+# [[d:Q41187|Sony]]
+# [[d:Q483551|Walmart]]
+
+{{Div col end}}
+
+=== Culture, 8 ===
+# [[d:Q14660|Flag]]
+# [[d:Q44595|Cannibalism]]
+# [[d:Q82821|Tradition]]
+# [[d:Q47223|Birthday]]
+# [[d:Q464458|Eid al-Fitr]]
+# [[d:Q251868|Halloween]]
+# [[d:Q4618|Carnival]]
+# [[d:Q41662|Ramadan]]
+
+=== Education, 106 ===
+{{Div col|cols=4}}
+# '''[[d:Q8434|Education]]'''
+# [[d:Q189004|College]]
+# [[d:Q207137|Curriculum]]
+# [[d:Q133500|Learning]]
+# [[d:Q3914|School]]
+# [[d:Q37226|Teacher]]
+# [[d:Q3918|University]]
+# [[d:Q159595|Distance education]]
+# [[d:Q136822|Higher education]]
+# [[d:Q189329|Liberal arts education]]
+# [[d:Q182250|E-learning]]
+# [[d:Q162633|Academy]]
+# [[d:Q48282|Student]]
+# [[d:Q188823|Scholarship]]
+# [[d:Q132834|Madrasa]]
+# [[d:Q126807|Kindergarten]]
+# [[d:Q187685|Thesis]]
+# [[d:Q217577|Diploma]]
+# [[d:Q187073|Bologna Process]]
+# [[d:Q7922|Pedagogy]]
+# [[d:Q199657|Reading]]
+# [[d:Q9842|Elementary school]]
+# [[d:Q184644|Music school]]
+
+==== Libraries, 19 ====
+# [[d:Q7075|Library]]
+
+;Africa, 1
+# [[d:Q435|Library of Alexandria]]
+
+;Americas, 3
+# [[d:Q894583|Boston Public Library]]
+# [[d:Q131454|Library of Congress]]
+# [[d:Q219555|New York Public Library]]
+
+;Asia, 4
+# [[d:Q732353|National Library of China]]
+# [[d:Q619913|National Library of India]]
+# [[d:Q495005|National Library of Korea]]
+# [[d:Q477675|National Diet Library]]
+
+;Europe, 9
+# [[d:Q213678|Vatican Library]]
+# [[d:Q23308|British Library]]
+# [[d:Q1048694|Russian State Library]]
+# [[d:Q267566|National Library of Russia]]
+# [[d:Q460907|National Central Library (Florence)]]
+# [[d:Q592734|Vernadsky National Library of Ukraine]]
+# [[d:Q27302|German National Library]]
+# [[d:Q193563|Bibliothèque nationale de France]]
+# [[d:Q750403|Biblioteca Nacional de España]]
+
+;Oceania, 1
+# [[d:Q623578|National Library of Australia]]
+{{Div col end}}
+
+==== Educational institutions, 64 ====
+{{Div col|cols=4}}
+;Africa, 4
+# [[d:Q378014|University of al-Karaouine]]
+# [[d:Q173959|Al-Azhar University]]
+# [[d:Q194445|Cairo University]]
+# [[d:Q951305|University of Cape Town]]
+
+;Americas, 24
+# [[d:Q586904|Federal University of Rio de Janeiro]]
+# [[d:Q222738|National Autonomous University of Mexico]]
+# [[d:Q391028|University of British Columbia]]
+# [[d:Q194223|University of Buenos Aires]]
+# [[d:Q180865|University of Toronto]]
+
+;;USA, 19
+# [[d:Q131252|University of Chicago]]
+# [[d:Q161562|California Institute of Technology]]
+# [[d:Q49108|Massachusetts Institute of Technology]]
+# [[d:Q41506|Stanford University]]
+# [[d:Q168751|Duke University]]
+# [[d:Q192334|University of North Carolina at Chapel Hill]]
+# [[d:Q213439|University of Virginia]]
+# [[d:Q230492|University of Michigan]]
+# [[d:Q168756|University of California, Berkeley]]
+# [[d:Q174710|University of California, Los Angeles]]
+
+;;;Ivy League, 9
+# [[d:Q49113|Ivy League]]
+# [[d:Q13371|Harvard University]]
+# [[d:Q49112|Yale University]]
+# [[d:Q21578|Princeton University]]
+# [[d:Q49114|Brown University]]
+# [[d:Q49088|Columbia University]]
+# [[d:Q49115|Cornell University]]
+# [[d:Q49116|Dartmouth College]]
+# [[d:Q49117|University of Pennsylvania]]
+
+
+;Asia, 12
+# [[d:Q336264|Kyoto University]]
+# [[d:Q7842|University of Tokyo]]
+;;India, 4
+# [[d:Q1145306|University of Calcutta]]
+# [[d:Q948720|Indian Institute of Science]]
+# [[d:Q622358|Indian Institutes of Technology]]
+# [[d:Q46026|Indian Institutes of Management]]
+;;China, 6
+# [[d:Q495015|Fudan University]]
+# [[d:Q15568|University of Hong Kong]]
+# [[d:Q683580|Nanjing University]]
+# [[d:Q16952|Peking University]]
+# [[d:Q16955|Tsinghua University]]
+# [[d:Q197543|Zhejiang University]]
+
+;Europe, 23
+# [[d:Q131262|University of Bologna]]
+# [[d:Q186285|University of Copenhagen]]
+# [[d:Q219694|Complutense University of Madrid]]
+# [[d:Q165980|University of Vienna]]
+# [[d:Q156598|Leiden University]]
+# [[d:Q209344|Sapienza University of Rome]]
+# [[d:Q308963|University of Salamanca]]
+# [[d:Q11942|ETH Zurich]]
+
+;;France, 3
+# [[d:Q209842|University of Paris]]
+# [[d:Q214654|Sorbonne (building)]]
+# [[d:Q1144549|Pierre-and-Marie-Curie University]]
+
+;;Germany, 4
+# [[d:Q55044|Ludwig Maximilian University of Munich]]
+# [[d:Q152087|Humboldt University of Berlin]]
+# [[d:Q152838|University of Göttingen]]
+# [[d:Q151510|Heidelberg University]]
+
+;;UK, 3
+# [[d:Q35794|University of Cambridge]]
+# [[d:Q34433|University of Oxford]]
+# [[d:Q170027|University of London]]
+
+;;Eastern Europe, 5
+# [[d:Q31519|Charles University in Prague]]
+# [[d:Q189441|Jagiellonian University]]
+# [[d:Q13164|Moscow State University]]
+# [[d:Q27621|Saint Petersburg State University]]
+# [[d:Q84151|Taras Shevchenko National University of Kyiv]]
+
+;Oceania, 1
+# [[d:Q127990|Australian National University]]
+{{Div col end}}
+
+=== Organizations, 162 ===
+{{Div col|cols=4}}
+# [[d:Q326343|Central Tibetan Administration]]
+# [[d:Q8333|FBI]]
+# [[d:Q622188|Hells Angels]]
+# [[d:Q80919|KGB]]
+# [[d:Q127784|MS-13]]
+# [[d:Q34216|Mossad]]
+# [[d:Q1458155|Sicilian Mafia]]
+# [[d:Q183287|Yakuza]]
+
+==== International organizations, 154 ====
+===== Intergovernmental organisations, 84 =====
+# [[d:Q340195|African Development Bank]]
+# '''[[d:Q7159|African Union]]'''
+# [[d:Q295875|ANZUS]]
+# '''[[d:Q7172|Arab League]]'''
+# [[d:Q674182|Arctic Council]]
+# [[d:Q188822|Asian Development Bank]]
+# [[d:Q170481|Asia-Pacific Economic Cooperation]]
+# '''[[d:Q7768|Association of Southeast Asian Nations]]'''
+# [[d:Q309195|Bank for International Settlements]]
+# [[d:Q8874|Bolivarian Alliance for the Americas]]
+# [[d:Q205995|Caribbean Community]]
+# [[d:Q379850|Central Treaty Organization]]
+# [[d:Q318693|Collective Security Treaty Organization]]
+# '''[[d:Q7779|Commonwealth of Independent States]]'''
+# '''[[d:Q7785|Commonwealth of Nations]]'''
+# [[d:Q182500|Community of Portuguese Language Countries]]
+# [[d:Q217172|Cooperation Council for the Arab States of the Gulf]]
+# [[d:Q789769|Council of the Baltic Sea States]]
+# [[d:Q337456|East African Community]]
+# [[d:Q193272|Economic Community of West African States]]
+# [[d:Q225950|Economic Cooperation Organization]]
+# [[d:Q473996|Eurasian Economic Community]]
+# [[d:Q474548|Eurasian Union]]
+# [[d:Q19771|G-20 major economies]]
+# [[d:Q37143|G8]]
+# [[d:Q133536|Geneva Conventions]]
+# [[d:Q191384|International Bank for Reconstruction and Development]]
+# [[d:Q848633|International Chamber of Commerce]]
+# [[d:Q827525|International Development Association]]
+# [[d:Q656801|International Finance Corporation]]
+# [[d:Q472311|International Organization for Migration]]
+# [[d:Q176815|Inter-Parliamentary Union]]
+# [[d:Q8475|Interpol]]
+# [[d:Q41230|Islamic Development Bank]]
+# [[d:Q123209|Latin Union]]
+# [[d:Q38130|League of Nations]]
+# '''[[d:Q7184|NATO]]'''
+# [[d:Q181574|North American Free Trade Agreement]]
+# '''[[d:Q7795|OPEC]]'''
+# [[d:Q41550|Organisation for Economic Co-operation and Development]]
+# [[d:Q191703|Organisation of African Unity]]
+# [[d:Q81299|Organization for Security and Co-operation in Europe]]
+# [[d:Q123759|Organization of American States]]
+# [[d:Q380340|Organization of the Black Sea Economic Cooperation]]
+# [[d:Q461736|Paris Club]]
+# [[d:Q485207|Shanghai Cooperation Organisation]]
+# [[d:Q145700|South Asian Association for Regional Cooperation]]
+# [[d:Q277252|Southeast Asia Treaty Organization]]
+# [[d:Q816706|Southern African Development Community]]
+# [[d:Q192177|Union for the Mediterranean]]
+# [[d:Q4230|Union of South American Nations]]
+# '''[[d:Q1065|United Nations]]'''
+## [[d:Q41984|International Atomic Energy Agency]]
+## '''[[d:Q7801|International Court of Justice]]'''
+## [[d:Q47488|International Criminal Court]]
+## '''[[d:Q7804|International Monetary Fund]]'''
+## [[d:Q81066|Secretary-General of the United Nations]]
+## '''[[d:Q7809|UNESCO]]'''
+## [[d:Q740308|UNICEF]]
+## [[d:Q386120|United Nations Industrial Development Organization]]
+## [[d:Q220563|United Nations Secretariat]]
+## [[d:Q37470|United Nations Security Council]]
+## '''[[d:Q7164|World Bank]]'''
+## [[d:Q320863|World Bank Group]]
+## '''[[d:Q7817|World Health Organization]]'''
+## '''[[d:Q7825|World Trade Organization]]'''
+
+;;European
+# [[d:Q13116|Benelux]]
+# [[d:Q319014|Central European Free Trade Agreement]]
+# [[d:Q42944|CERN]]
+# [[d:Q191582|Comecon]]
+# [[d:Q8908|Council of Europe]]
+# [[d:Q8896|Council of the European Union]]
+# [[d:Q212141|Economic and Monetary Union of the European Union]]
+# [[d:Q8919|European Atomic Energy Community]]
+# [[d:Q488981|European Bank for Reconstruction and Development]]
+# [[d:Q161549|European Coal and Steel Community]]
+# [[d:Q52847|European Economic Community]]
+# [[d:Q192247|European Investment Bank]]
+# [[d:Q8889|European Parliament]]
+# '''[[d:Q458|European Union]]'''
+# [[d:Q146165|Nordic Council]]
+# [[d:Q332337|League of Corinth]]
+# [[d:Q189946|Western European Union]]
+# [[d:Q41644|Warsaw Pact]]
+
+===== NGO, 70 =====
+# [[d:Q208571|Agenda 21]]
+# [[d:Q191866|AIESEC]]
+# [[d:Q34490|al-Qaeda]]
+# [[d:Q40358|American Association for the Advancement of Science]]
+# [[d:Q180003|American National Standards Institute]]
+# [[d:Q431534|Association des États Généraux des Étudiants de l'Europe]]
+# [[d:Q127992|Association for Computing Machinery]]
+# [[d:Q159486|Austrian Holocaust Memorial Service]]
+# [[d:Q386730|Austrian Service Abroad]]
+# [[d:Q184937|Bilderberg Group]]
+# [[d:Q210108|BirdLife International]]
+# [[d:Q852242|College of Cardinals]]
+# [[d:Q152746|Deutsches Institut für Normung]]
+# [[d:Q151991|European Southern Observatory]]
+# [[d:Q214130|Fédération Aéronautique Internationale]]
+# [[d:Q179412|Fédération Internationale de l'Automobile]]
+# [[d:Q430371|Fédération Internationale de Motocyclisme]]
+# [[d:Q48413|Free Software Foundation]]
+# [[d:Q81307|Greenpeace]]
+# [[d:Q326816|GUAM Organization for Democracy and Economic Development]]
+# [[d:Q493302|Hizb ut-Tahrir]]
+# [[d:Q744312|Hospitality Club]]
+# [[d:Q131566|Institute of Electrical and Electronics Engineers]]
+# [[d:Q229478|International Bureau of Weights and Measures]]
+# [[d:Q653054|International Council of Museums]]
+# [[d:Q273138|International Council on Monuments and Sites]]
+# [[d:Q233611|International Hydrographic Organization]]
+# [[d:Q201054|International Maritime Organization]]
+# [[d:Q828490|International Mathematical Union]]
+# [[d:Q15028|International Organization for Standardization]]
+# '''[[d:Q7178|International Red Cross and Red Crescent Movement]]'''
+# [[d:Q190193|International Society for Krishna Consciousness]]
+# [[d:Q48268|International Union for Conservation of Nature]]
+# [[d:Q33438|International Union of Pure and Applied Chemistry]]
+# [[d:Q749445|List of International Organization for Standardization standards]]
+# [[d:Q233398|Live Earth]]
+# [[d:Q64611|Moro Islamic Liberation Front]]
+# '''[[d:Q7191|Nobel Prize]]'''
+# [[d:Q206811|PEN International]]
+# [[d:Q170|Pirate Parties International]]
+# [[d:Q323481|Programme for International Student Assessment]]
+# [[d:Q381282|Pugwash Conferences on Science and World Affairs]]
+# [[d:Q872181|Scouting]]
+# [[d:Q188307|The Salvation Army]]
+# [[d:Q48663|Union Cycliste Internationale]]
+# [[d:Q215613|Unrepresented Nations and Peoples Organization]]
+# [[d:Q359|WikiLeaks]]
+# [[d:Q749394|World Anti-Doping Agency]]
+# [[d:Q283639|World Council of Churches]]
+# [[d:Q1147477|World Heritage Committee]]
+# [[d:Q37033|World Wide Web Consortium]]
+;;Humanitarian
+# [[d:Q42970|Amnesty International]]
+# [[d:Q187052|Human Rights Watch]]
+# [[d:Q49330|Médecins Sans Frontières]]
+# [[d:Q154330|Reporters Without Borders]]
+# [[d:Q174240|Transparency International]]
+;;Sport
+# [[d:Q845773|Confédération Mondiale des Activités Subaquatiques]]
+# [[d:Q659499|Court of Arbitration for Sport]]
+# [[d:Q841054|European Club Association]]
+# [[d:Q642949|European Olympic Committees]]
+# [[d:Q6851|Fédération Internationale de Volleyball]]
+# [[d:Q46199|FIBA]]
+# [[d:Q102178|FIDE]]
+# [[d:Q253414|FIFA]]
+# [[d:Q379079|International Federation of Gymnastics]]
+# [[d:Q190173|International Ice Hockey Federation]]
+# [[d:Q40970|International Olympic Committee]]
+# [[d:Q183288|National Olympic Committee]]
+# [[d:Q844293|Olympic Council of Asia]]
+# [[d:Q35572|UEFA]]
+{{Div col end}}
+
+=== Law, 70 ===
+{{Div col|cols=4}}
+
+;Basics, 31
+# '''[[d:Q7748|Law]]'''
+## [[d:Q5950118|Civil law (legal system)]]
+## [[d:Q30216|Common law]]
+## [[d:Q146491|Criminal law]]
+# [[d:Q329777|Appeal]]
+# [[d:Q207946|Arbitration]]
+# '''[[d:Q8454|Capital punishment]]'''
+# [[d:Q191600|Civil and political rights]]
+# '''[[d:Q7755|Constitution]]'''
+# [[d:Q93288|Contract]]
+# [[d:Q262283|Copyright]]
+# [[d:Q41487|Court]]
+# [[d:Q308922|Damages]]
+# [[d:Q2578557|Equity (law)]]
+# [[d:Q176763|Evidence (law)]]
+# [[d:Q22692|Freedom of speech]]
+# [[d:Q705178|Guilt (law)]]
+# [[d:Q6495575|Injunction]]
+# [[d:Q105985|Judiciary]]
+# [[d:Q4932206|Jurisprudence]]
+# [[d:Q5167661|Justice]]
+# [[d:Q40348|Lawyer]]
+# [[d:Q253623|Patent]]
+# [[d:Q780687|Rights]]
+# [[d:Q3237872|Fundamental rights]]
+# [[d:Q35535|Police]]
+# [[d:Q158970|Tort]]
+# [[d:Q196939|Witness]]
+# [[d:Q16533|Judge]]
+# [[d:Q185351|Lawyer]]
+# [[d:Q2526135|Security]]
+
+; Subjects, 8
+# [[d:Q171251|Administrative law]]
+# [[d:Q665141|Case law]]
+# [[d:Q131257|Intellectual property]]
+# [[d:Q4394526|International law]]
+# [[d:Q1149275|Property law]]
+# [[d:Q670732|Religious law]]
+# [[d:Q7766927|Statutory law]]
+# [[d:Q854022|Trust law]]
+
+; Crime, 22
+# [[d:Q83267|Crime]]
+# [[d:Q365680|Assault]]
+# [[d:Q647578|Copyright infringement]]
+# [[d:Q157833|Embezzlement]]
+# [[d:Q6452087|Extortion]]
+# [[d:Q28813|Fraud]]
+# [[d:Q41397|Genocide]]
+# [[d:Q149086|Homicide]]
+## [[d:Q132821|Murder]]
+# [[d:Q844924|Illegal drug trade]]
+# [[d:Q318296|Kidnapping]]
+# [[d:Q46952|Organized crime]]
+# [[d:Q45393|Piracy]]
+# [[d:Q34577|Poaching]]
+# [[d:Q47092|Rape]]
+# [[d:Q53706|Robbery]]
+# [[d:Q193518|Sabotage]]
+# [[d:Q673281|Sexual assault]]
+# [[d:Q184840|Smuggling]]
+# [[d:Q2727213|Theft]]
+# [[d:Q132781|Torture]]
+# [[d:Q124490|Violence]]
+
+; Specific documents, 8
+# [[d:Q12519|Magna Carta]]
+# [[d:Q127912|United States Declaration of Independence]]
+# [[d:Q11698|United States Constitution]]
+# [[d:Q169759|Declaration of the Rights of Man and of the Citizen]]
+# [[d:Q40591|The Communist Manifesto]]
+# '''[[d:Q7813|Universal Declaration of Human Rights]]'''
+# [[d:Q457862|International Covenant on Economic, Social and Cultural Rights]]
+# [[d:Q392119|International Covenant on Civil and Political Rights]]
+# [[d:Q2146981|Nuremberg principles]]
+{{Div col end}}
+
+=== Mass media, 84 ===
+<small>For technology of mass communication (television, radio, etc.) see technology section</small>
+{{Div col|cols=4}}
+# [[d:Q37038|Advertising]]
+# [[d:Q627603|Cartoon]]
+# [[d:Q1517374|History of radio]]
+# '''[[d:Q11030|Journalism]]'''
+# '''[[d:Q11033|Mass media]]'''
+# [[d:Q38926|News]]
+# [[d:Q41298|Magazine]]
+# [[d:Q40469|Associated Press]]
+# [[d:Q130879|Reuters]]
+
+; Magazines, 15
+# [[d:Q485240|Billboard (magazine)]]
+# [[d:Q180089|The Economist]]
+# [[d:Q463198|Life (magazine)]]
+# [[d:Q312086|Mad (magazine)]]
+# [[d:Q5973845|National Geographic (magazine)]]
+# [[d:Q217305|The New Yorker]]
+# [[d:Q33659|People (magazine)]]
+# [[d:Q150820|Playboy]]
+# [[d:Q849759|Punch (magazine)]]
+# [[d:Q371820|Reader's Digest]]
+# [[d:Q33511|Rolling Stone]]
+# [[d:Q39379|Scientific American]]
+# [[d:Q131478|Der Spiegel]]
+# [[d:Q43297|Time (magazine)]]
+# [[d:Q154008|Vogue (magazine)]]
+
+;Newspapers, 9
+# '''[[d:Q11032|Newspaper]]'''
+# [[d:Q183399|Financial Times]]
+# [[d:Q12461|Le Monde]]
+# [[d:Q183644|Pravda]]
+# [[d:Q50008|The Times]]
+# [[d:Q46807|The Times of India]]
+# [[d:Q9684|The New York Times]]
+# [[d:Q164746|The Wall Street Journal]]
+# [[d:Q166032|The Washington Post]]
+
+; Radio, 4
+# [[d:Q168718|The Goon Show]]
+# [[d:Q585769|Grand Ole Opry]]
+# [[d:Q967116|The Shadow]]
+# [[d:Q24958|The War of the Worlds (radio drama)]]
+
+;Television, 38
+# [[d:Q93204|Documentary film]]
+# [[d:Q166400|European Broadcasting Union]]
+# [[d:Q123737|Emmy Award]]
+# [[d:Q846662|Game show]]
+# [[d:Q170238|Sitcom]]
+# [[d:Q23739|Soap opera]]
+# [[d:Q15416|Television program]]
+# [[d:Q247869|60 Minutes]]
+# [[d:Q1048856|All in the Family]]
+# [[d:Q201052|American Idol]]
+# [[d:Q208491|BBC World News]]
+# [[d:Q178837|Disney Channel]]
+# [[d:Q34316|Doctor Who]]
+# [[d:Q79784|Friends]]
+# [[d:Q1145764|Guiding Light]]
+# [[d:Q29641|Gunsmoke]]
+# [[d:Q181943|I Love Lucy]]
+# [[d:Q1543066|Meet the Press]]
+# [[d:Q16401|Monty Python's Flying Circus]]
+# [[d:Q1247168|Roots (TV miniseries)]]
+# [[d:Q155629|Sesame Street]]
+# [[d:Q886|The Simpsons]]
+# [[d:Q1092|Star Trek]]
+# [[d:Q131144|Tom and Jerry]]
+# [[d:Q1338655|The Tonight Show]]
+# [[d:Q742103|The Twilight Zone]]
+
+;;Television network
+# [[d:Q1254874|Television network]]
+# [[d:Q13477|Al Jazeera]]
+# [[d:Q169889|American Broadcasting Company]]
+# [[d:Q49653|ARD]]
+# [[d:Q9531|BBC]]
+# [[d:Q43380|CBS]]
+# [[d:Q207936|China Central Television]]
+# [[d:Q48340|CNN]]
+# [[d:Q153770|Deutsche Welle]]
+# [[d:Q220072|ITV]]
+# [[d:Q13974|NBC]]
+# [[d:Q215616|PBS]]
+
+;Websites, 9
+# [[d:Q3884|Amazon]]
+# [[d:Q58024|EBay]]
+# [[d:Q355|Facebook]]
+# [[d:Q40629|Myspace]]
+# [[d:Q918|Twitter]]
+# [[d:Q9366|Google Search]]
+# [[d:Q37312|Internet Movie Database]]
+# [[d:Q866|YouTube]]
+# [[d:Q52|Wikipedia]]
+{{Div col end}}
+
+=== Museums, 18 ===
+{{Div col|cols=4}}
+# [[d:Q33506|Museum]]
+;;''United States''
+# [[d:Q217717|American Museum of Natural History]]
+# [[d:Q731126|J. Paul Getty Museum]]
+# [[d:Q188740|Museum of Modern Art]]
+# [[d:Q214867|National Gallery of Art]]
+# [[d:Q510324|Philadelphia Museum of Art]]
+# [[d:Q131626|Smithsonian Institution]]
+
+;;''Other''
+# [[d:Q131617|Deutsches Museum]]
+# [[d:Q132783|Hermitage Museum]]
+# [[d:Q160236|Metropolitan Museum of Art]]
+# [[d:Q19675|Musée du Louvre]]
+# [[d:Q23402|Musée d'Orsay]]
+# [[d:Q309388|Natural History Museum]] (London)
+# [[d:Q1895953|Musée National d'Art Moderne]]
+# [[d:Q160112|Museo del Prado]]
+# [[d:Q51252|Uffizi]]
+# [[d:Q182955|Vatican Museums]]
+# [[d:Q213322|Victoria and Albert Museum]]
+{{Div col end}}
+
+=== Politics and government, 198 ===
+{{Div col|cols=4}}
+# [[d:Q837313|Civics]]
+# '''[[d:Q7163|Politics]]'''
+# [[d:Q29556|Civil liberties]]
+# '''[[d:Q1889|Diplomacy]]'''
+## [[d:Q121998|Ambassador]]
+## [[d:Q213283|Diplomatic mission]]
+# [[d:Q40231|Election]]
+# '''[[d:Q7181|Globalization]]'''
+# '''[[d:Q7278|Political party]]'''
+# '''[[d:Q7281|Propaganda]]'''
+# [[d:Q10931|Revolution]]
+# [[d:Q79896|Separation of powers]]
+# [[d:Q11204|Legislature]]
+# [[d:Q44918|Rule of law]]
+# [[d:Q42138|Citizenship]]
+# [[d:Q11206|Constitutional law]]
+# [[d:Q39825|Census]]
+# [[d:Q3510521|Computer security]]
+# [[d:Q189573|Golden Rule]]
+# [[d:Q220596|Habeas corpus]]
+# [[d:Q189900|Information security]]
+# [[d:Q171995|Individualism]]
+# [[d:Q480498|Impeachment]]
+# [[d:Q166542|International relations]]
+# [[d:Q628967|Labour law]]
+# [[d:Q186228|Minimum wage]]
+# [[d:Q46337|Manifesto]]
+# [[d:Q231002|Nationality]]
+# [[d:Q43812|Passport]]
+# [[d:Q309118|Politburo]]
+# [[d:Q2483208|Social security]]
+# [[d:Q156595|Self-determination]]
+# [[d:Q160128|Treason]]
+# [[d:Q47217|Civil disobedience]]
+# [[d:Q1326430|Social contract]]
+# [[d:Q188961|Decentralization]]
+# [[d:Q191675|Mixed economy]]
+# [[d:Q178074|Veto]]
+# [[d:Q170984|Crown (headgear)]]
+# [[d:Q543|Censorship]]
+# [[d:Q484105|Autonomy]]
+# [[d:Q211017|E-Government]]
+# [[d:Q219825|National Convention]]
+# [[d:Q155076|Legal personality]]
+# [[d:Q181648|Foreign policy]]
+# [[d:Q49617|The Internationale]]
+# [[d:Q207892|Public law]]
+# [[d:Q152263|Flash mob]]
+# [[d:Q188213|State religion]]
+# [[d:Q223625|Curfew]]
+# [[d:Q29677|Natural and legal rights]]
+# [[d:Q47988|Identity document]]
+# [[d:Q543654|Seat of local government]]
+# [[d:Q189603|Public health]]
+# [[d:Q331439|Human overpopulation]]
+# [[d:Q175331|Demonstration (people)]]
+# [[d:Q179661|Therapy]]
+# [[d:Q159454|Socialist International]]
+# [[d:Q72468|Bureaucracy]]
+# [[d:Q188844|Volunteering]]
+# [[d:Q118365|Dictatorship of the proletariat]]
+# [[d:Q47499|International Workers' Day]]
+# [[d:Q1744607|Class conflict]]
+# [[d:Q191159|Working class]]
+
+;Governance
+# [[d:Q640506|Cabinet (government)]]
+# [[d:Q45382|Coup d'état]]
+# [[d:Q192914|Cult of personality]]
+# [[d:Q35798|Executive (government)]]
+# '''[[d:Q7188|Government]]'''
+# [[d:Q35749|Parliament]]
+# [[d:Q166747|Parliamentary system]]
+# [[d:Q49892|Presidential system]]
+## [[d:Q49890|Semi-presidential system]]
+# [[d:Q31728|Public administration]]
+# [[d:Q130614|Roman Senate]]
+# [[d:Q216227|State of emergency]]
+# [[d:Q189760|Voting]]
+# [[d:Q182985|Voting system]]
+
+;Types of states and state divisions
+# [[d:Q56061|Administrative division]]
+# [[d:Q30059|Arrondissement]]
+# [[d:Q131401|Caliphate]]
+# [[d:Q133442|City-state]]
+# [[d:Q133156|Colony]]
+# [[d:Q170156|Confederation]]
+# [[d:Q28575|County]]
+# [[d:Q154547|Duchy]]
+# [[d:Q192611|Electoral district]]
+# [[d:Q189898|Emirate]]
+# [[d:Q48349|Empire]]
+# [[d:Q107390|Federated state]]<!--Delete? we have federation-->
+# [[d:Q43702|Federation]]
+# [[d:Q5398059|Indian reservation]]
+# [[d:Q15284|Municipality]]
+# [[d:Q179671|Nation-state]]
+# [[d:Q123705|Neighbourhood]]
+# [[d:Q188800|Personal union]]
+# [[d:Q217405|Police state]]
+# [[d:Q208500|Principality]]
+# [[d:Q164142|Protectorate]]
+# [[d:Q34876|Province]]
+# [[d:Q208164|Puppet state]]
+# [[d:Q50686|Single-party state]]
+# [[d:Q3624078|Sovereign state]]
+# '''[[d:Q7275|State]]'''
+# [[d:Q179164|Unitary state]]
+# [[d:Q210980|Virtual community]]
+
+;Ideology and political theory, 29
+# [[d:Q203764|Activism]]
+# '''[[d:Q6199|Anarchism]]'''
+# [[d:Q6229|Authoritarianism]]
+# [[d:Q189445|Bicameralism]]
+# '''[[d:Q6206|Capitalism]]'''
+# [[d:Q209158|Christian democracy]]
+# '''[[d:Q6186|Communism]]'''
+# '''[[d:Q7169|Conservatism]]'''
+# [[d:Q1194747|Constitutionalism]]
+# [[d:Q188843|Cosmopolitanism]]
+# [[d:Q179352|Despotism]]
+# [[d:Q188958|Egalitarianism]]
+# '''[[d:Q6223|Fascism]]'''
+# [[d:Q204886|Federalism]]
+# [[d:Q1661415|Green politics]]
+# '''[[d:Q7257|Ideology]]'''
+# '''[[d:Q7260|Imperialism]]'''
+# [[d:Q189746|Islamism]]
+# [[d:Q181800|Juche]]
+# [[d:Q155059|Leninism]]
+# '''[[d:Q6216|Liberalism]]'''
+# [[d:Q178598|Libertarianism]]
+# '''[[d:Q7264|Marxism]]'''
+# [[d:Q190656|Multiculturalism]]
+# '''[[d:Q6235|Nationalism]]'''
+# [[d:Q7310|Nazism]]
+# [[d:Q186240|Ostracism]]
+# [[d:Q6241|Patriotism]]
+# [[d:Q194236|Separatism]]
+# [[d:Q121254|Social democracy]]
+# '''[[d:Q7272|Socialism]]'''
+## [[d:Q189280|Democratic socialism]]
+## [[d:Q180902|Socialist realism]]
+## [[d:Q192447|Utopian socialism]]
+# [[d:Q322294|Statism]]
+# [[d:Q128135|Totalitarianism]]
+# [[d:Q42388|Zionism]]
+
+;Forms of government
+# [[d:Q184558|Absolutism]]
+# '''[[d:Q7167|Colonialism]]'''
+# [[d:Q41614|Constitutional monarchy]]
+# '''[[d:Q7174|Democracy]]'''
+## [[d:Q171174|Direct democracy]]
+## [[d:Q192125|Liberal democracy]]
+## [[d:Q188759|Representative democracy]]
+# '''[[d:Q317|Dictatorship]]'''
+# [[d:Q219934|Enlightened absolutism]]
+# [[d:Q182034|Hegemony]]
+# [[d:Q191244|Kleptocracy]]
+# [[d:Q185681|Matriarchy]]
+# [[d:Q178079|Meritocracy]]
+# [[d:Q116|Monarch]]
+# '''[[d:Q7269|Monarchy]]'''
+# [[d:Q191031|Ochlocracy]]
+# [[d:Q79751|Oligarchy]]
+# [[d:Q181339|Patriarchy]]
+# [[d:Q189724|Planned economy]]
+# [[d:Q131708|Plutocracy]]
+# '''[[d:Q7270|Republic]]'''
+## [[d:Q4198907|Parliamentary republic]]
+# [[d:Q190044|Technocracy]]
+# [[d:Q44405|Theocracy]]
+# [[d:Q83204|Triumvirate]]
+
+;Titles
+# [[d:Q181217|Bey]]
+# [[d:Q65997|Caliph]]
+# [[d:Q183318|Dictator]]
+# [[d:Q166382|Emir]]
+# [[d:Q484079|Führer]]
+# [[d:Q132050|Governor]]
+# [[d:Q205706|Grand duke]]
+# [[d:Q48352|Head of state]]
+# [[d:Q181888|Khan (title)]]
+# [[d:Q30185|Mayor]]
+# [[d:Q169180|Ombudsman]]
+# [[d:Q30461|President]]
+# [[d:Q14212|Prime minister]]
+# [[d:Q2747456|Prince]]
+# [[d:Q600751|Prosecutor]]
+# [[d:Q170305|Satrap]]
+# [[d:Q184299|Shah]]
+# [[d:Q43292|Sultan]]
+# [[d:Q44356|Tsar]]
+# [[d:Q180095|Tyrant]]
+# [[d:Q175240|Vizier]]
+
+;Historic events/books
+# [[d:Q217197|Eurozone crisis]]
+# [[d:Q219817|French Directory]]
+# [[d:Q173100|Glasnost]]
+# [[d:Q193034|Leviathan (book)]]
+# [[d:Q6743|May 1968 events in France]]
+# [[d:Q836386|Orange Revolution]]
+# [[d:Q193547|Reign of Terror]]
+# [[d:Q205302|Simony]]
+# [[d:Q182817|Velvet Revolution]]
+{{Div col end}}
+
+=== Society, 42 ===
+# [[d:Q181865|Civil society]]
+# [[d:Q178706|Institution]]
+
+==== Groups, 7 ====
+{{Div col|cols=4}}
+# [[d:Q194166|Consortium]]
+# [[d:Q43229|Organization]]
+# [[d:Q163740|Nonprofit organization]]
+# [[d:Q728646|Partnership]]
+# [[d:Q276548|Secret society]]
+# [[d:Q2715623|Social network]]
+# [[d:Q133311|Tribe]]
+{{Div col end}}
+
+==== Services and institutions, 4 ====
+{{Div col|cols=4}}
+# [[d:Q269770|Boarding school]]
+# [[d:Q160645|Orphanage]]
+# [[d:Q40357|Prison]]
+# [[d:Q205398|Social work]]
+{{Div col end}}
+
+==== Social issues, 21 ====
+{{Div col|cols=4}}
+# '''[[d:Q8452|Abortion]]'''
+# [[d:Q122224|Birth control]]
+# [[d:Q366|Corruption]]
+# [[d:Q169940|Deforestation]]
+# [[d:Q169207|Discrimination]]
+## '''[[d:Q8461|Racism]]'''
+## [[d:Q93200|Sexism]]
+# [[d:Q100159|Euthanasia]]
+# [[d:Q168247|Famine]]
+# [[d:Q831058|Political freedom]]
+# '''[[d:Q8458|Human rights]]'''
+# [[d:Q221719|One-child policy]]
+# [[d:Q58734|Pollution]]
+## [[d:Q131123|Air pollution]]
+# [[d:Q10294|Poverty]]
+# [[d:Q131201|Sustainable development]]
+# '''[[d:Q8463|Slavery]]'''
+# [[d:Q49773|Social movement]]
+## [[d:Q2855609|Environmentalism]]
+## '''[[d:Q7252|Feminism]]'''
+# [[d:Q238651|World peace]]
+
+==== Social status, 8 ====
+# [[d:Q30103|Minority group]]
+# [[d:Q841628|Social stratification]]
+# [[d:Q484416|Caste]]
+# [[d:Q219517|Dalit]]
+# [[d:Q187588|Social class]]
+# [[d:Q177826|Clergy]]
+# [[d:Q241588|Middle class]]
+# [[d:Q132603|Proletariat]]
+
+{{Div col end}}
+
+=== Social sciences, 8 ===
+<small>Only those not treated previously</small>
+{{Div col|cols=4}}
+# [[d:Q34749|Social science]]
+# [[d:Q36442|Political science]]
+# [[d:Q1510761|Social change]]
+# [[d:Q623971|Social control]]
+# [[d:Q1193625|Social research]]
+# [[d:Q1990987|Social theory]]
+# [[d:Q1377163|Sociological theory]]
+# [[d:Q21201|Sociology]]
+{{Div col end}}
+
+=== War and military, 86 ===
+{{Div col|cols=4}}
+# '''[[d:Q454|Peace]]'''
+# '''[[d:Q198|War]]'''
+# [[d:Q1056901|Casualty (person)]]
+# [[d:Q334516|Declaration of war]]
+# [[d:Q57346|Defensive wall]]
+# [[d:Q633339|Desertion]]
+# [[d:Q191503|Duel]]
+# [[d:Q57821|Fortification]]
+# [[d:Q130596|Laws of war]]
+# [[d:Q131647|Medal]]
+# [[d:Q177266|Militarism]]
+# [[d:Q744593|Military–industrial complex]]
+# [[d:Q1196123|Military uniform]]
+# [[d:Q178197|Mercenary]]
+# [[d:Q2287072|Operational level of war]]
+# [[d:Q58848|Pacifism]]
+# [[d:Q179637|Prisoner of war]]
+# [[d:Q131572|Refugee]]
+# [[d:Q217901|Surrender (military)]]
+# [[d:Q135010|War crime]]
+# [[d:Q154605|Total war]]
+# [[d:Q715625|Martial law]]
+# [[d:Q163698|Psychological warfare]]
+# [[d:Q207320|Paramilitary]]
+# [[d:Q208485|Scorched earth]]
+# [[d:Q45635|Casus belli]]
+# [[d:Q41691|Demilitarized zone]]
+# [[d:Q380782|Commander-in-chief]]
+# [[d:Q210392|Killed in action]]
+# [[d:Q194181|War reparations]]
+# [[d:Q208383|Ceasefire]]
+# [[d:Q645883|Military operation]]
+# [[d:Q234497|Special forces]]
+# [[d:Q322348|Arms race]]
+
+;Military, 7
+# '''[[d:Q8473|Military]]'''
+# [[d:Q580750|Conscription]]
+# [[d:Q2351849|Military education and training]]
+# [[d:Q163059|Military logistics]]
+# [[d:Q192386|Military science]]
+# [[d:Q219087|Military strategy]]
+# [[d:Q207645|Military tactics]]
+
+;Military forces, 6
+# [[d:Q772547|Armed forces]]
+# [[d:Q61883|Air force]]
+# [[d:Q37726|Army]]
+# [[d:Q47315|Cavalry]]
+# [[d:Q29171|Infantry]]
+# [[d:Q4508|Navy]]
+
+;Military operations, 6
+# [[d:Q178561|Battle]]
+# [[d:Q273976|Blockade]]
+# [[d:Q650711|Combat]]
+# [[d:Q831663|Military campaign]]
+# [[d:Q2001676|Offensive (military)]]
+# [[d:Q188055|Siege]]
+
+;Military organization, 5
+# [[d:Q15627509|Military organization]]
+# [[d:Q6382533|Battalion]]
+# [[d:Q1346923|Command and control]]
+# [[d:Q169534|Division (military)]]
+# [[d:Q6813432|Staff (military)]]
+
+;Military ranks, 13
+# [[d:Q56019|Military rank]]
+# [[d:Q132851|Admiral]]
+# [[d:Q19100|Captain (armed forces)]]
+# [[d:Q104680|Colonel]]
+# [[d:Q83460|General officer]]
+# [[d:Q186024|Lieutenant]]
+# [[d:Q983927|Major]]
+# [[d:Q111837|Marshal]]
+# [[d:Q189290|Officer (armed forces)]]
+# [[d:Q158668|Private (rank)]]
+# [[d:Q157696|Sergeant]]
+# [[d:Q707995|Seaman]]
+# [[d:Q4991371|Soldier]]
+
+;Wars by type, 5
+# '''[[d:Q8465|Civil war]]'''
+# [[d:Q766875|Ethnic conflict]]
+# [[d:Q467011|Invasion]]
+# [[d:Q124734|Rebellion]]
+# '''[[d:Q7283|Terrorism]]'''
+
+;Warfare by type, 10
+# [[d:Q471145|Aerial warfare]]
+# [[d:Q843941|Anti-aircraft warfare]]
+# [[d:Q316936|Anti-tank warfare]]
+# [[d:Q568312|Armoured warfare]]
+# [[d:Q429245|Conventional warfare]]
+# [[d:Q165950|Espionage]]
+# [[d:Q80895|Guerrilla warfare]]
+# [[d:Q876274|Naval warfare]]
+# [[d:Q201948|Sniper]]
+# [[d:Q241059|Trench warfare]]
+
+{{Div col end}}

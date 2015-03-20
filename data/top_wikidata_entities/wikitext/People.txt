@@ -1,0 +1,2510 @@
+<noinclude>'''Return to [[List of articles every Wikipedia should have/Expanded]]'''
+</noinclude>
+
+== People, 2000 ==
+::''Transcluded from [[List of articles every Wikipedia should have/Expanded/People]]''.
+
+=== Entertainers, 107 ===
+==== Actors and Actresses, 77 ==== 
+{{Div col|cols=4}}
+===== Silent movies, 6 =====
+;Americas
+# [[d:Q104340|Harold Lloyd]]<!-- act silent films y:1913 C: US -->
+# [[d:Q104183|Lillian Gish]]<!-- AFI Top; act Debut:1912 C: US -->
+# [[d:Q103949|Buster Keaton]]<!--act Debut: C: US -->
+# [[d:Q104109|Mary Pickford]]<!--AFI Top; C: CAN -->
+# [[d:Q229232|Gloria Swanson]]<!--Debut: C: US -->
+
+;Europe
+# [[d:Q232404|Asta Nielsen]] <!-- Silent movie y:1902 C: Da -->
+
+===== Modern era, 71 ===== 
+;Africa, 0
+<!-- nothing yet! -->
+
+;Americas, 35
+
+;;USA
+# [[d:Q100937|Fred Astaire]]<!--dancer/act Debut: C: US -->
+# '''[[d:Q4605|Sarah Bernhardt]]'''<!--act Debut: C: US -->
+# [[d:Q16390|Humphrey Bogart]] <!--Debut: C: US -->
+# [[d:Q34012|Marlon Brando]]<!--Debut: C: US -->
+# [[d:Q64450|Marx Brothers]]<!--act Debut: C: US -->
+# [[d:Q94041|James Cagney]]<!--Debut: C: US -->
+# '''[[d:Q882|Charlie Chaplin]]'''<!--comedian/act Debut: C: US -->
+# [[d:Q203819|Claudette Colbert]]<!--Debut: C: US -->
+# [[d:Q93957|Gary Cooper]]<!--Debut: C: US -->
+# [[d:Q40475|Joan Crawford]]<!--Debut:1925 C: US -->
+# [[d:Q71206|Bette Davis]]<!--act Debut:1929 C: US -->
+# [[d:Q36949|Robert De Niro]]
+# [[d:Q83359|James Dean]]<!--act Debut: C: US -->
+# [[d:Q19155|Henry Fonda]]<!--act Debut: C: US -->
+# [[d:Q41142|Jane Fonda]]
+# [[d:Q71243|Clark Gable]]<!--act Debut: C: US -->
+# [[d:Q11637|Judy Garland]]<!--singer/act Debut: C: US -->
+# [[d:Q49001|Whoopi Goldberg]]
+# [[d:Q83410|Cary Grant]]<!--act Debut: C: US -->
+# [[d:Q2263|Tom Hanks]]
+# [[d:Q56016|Katharine Hepburn]]<!--act Debut: C: US -->
+# [[d:Q3925|Grace Kelly]]<!--act Debut: C: US -->
+# [[d:Q73089|Gene Kelly]]<!--singer/dancer/act Debut: C: US -->
+# '''[[d:Q4616|Marilyn Monroe]]'''<!--singer/act Debut: C: US -->
+# [[d:Q43874|Eddie Murphy]]
+# [[d:Q39792|Jack Nicholson]]
+# [[d:Q108366|Gregory Peck]]<!--act Debut: C: US -->
+# [[d:Q94002|Barbara Stanwyck]]<!--act Debut:1922 C: US -->
+# [[d:Q102462|James Stewart]]<!--Debut:1932 C: US -->
+# [[d:Q873|Meryl Streep]]
+# [[d:Q34851|Elizabeth Taylor]]<!--act Debut: C: US -->
+# [[d:Q182580|Shirley Temple]]<!--singer/act Debut: C: US -->
+# [[d:Q71275|Spencer Tracy]]<!--act Debut: C: US -->
+# [[d:Q40531|John Wayne]]<!--act Debut: C: US -->
+# [[d:Q202878|Mae West]]<!--act Debut: C: US -->
+# [[d:Q83338|Robin Williams]]
+
+;Asia, 4
+;;China
+# [[d:Q16397|Bruce Lee]] <!-- C: Ch -->
+
+;;India
+# [[d:Q9570|Amitabh Bachchan]]<!--C: India act 3 NFAs Debut:1969 -->
+# [[d:Q3111264|Pran]] <!--C: India director/actor  -->
+
+;;Japan
+# [[d:Q37001|Toshiro Mifune]]<!--C: Ja -->
+
+;Europe, 31
+;;''France''
+# [[d:Q36268|Brigitte Bardot]]<!--C: Fr -->
+# [[d:Q106255|Jean-Paul Belmondo]]<!--C: Fr -->
+# [[d:Q2737|Louis de Funès]]<!--C: Fr -->
+# [[d:Q106529|Alain Delon]]<!--C: Fr y:1957-->
+# [[d:Q129092|Fernandel]]<!--C: Fr -->
+# [[d:Q23842|Jean Gabin]]<!--C: Fr -->
+# [[d:Q168359|Jean Marais]]<!--C: Fr -->
+# [[d:Q150662|Gérard Philipe]]<!--C: Fr -->
+
+;;''Great Britain''
+# [[d:Q151973|Richard Burton]]<!--act Debut: 1949 C: GB-->
+# [[d:Q123351|Michael Caine]]<!--act Debut: C: GB -->
+# [[d:Q4573|Sean Connery]]
+# [[d:Q166389|Daniel Day-Lewis]]<!--act Debut: 1971 C: GB-->
+# [[d:Q42786|Audrey Hepburn]]<!--act Debut:1948 C: GB -->
+# [[d:Q65932|Anthony Hopkins]]<!--British actor Debut:1960 C: GB -->
+# [[d:Q704385|Edmund Kean]]
+# [[d:Q129429|Vivien Leigh]]<!--act Debut: C: GB -->
+# [[d:Q55245|Laurence Olivier]]<!--act Debut:1926 C: GB -->
+# [[d:Q103876|Peter O'Toole]]<!--Debut: C: GB -->
+# [[d:Q177984|Peter Sellers]]<!--Debut: C: GB -->
+
+;;''Italy''
+# [[d:Q199943|Adriano Celentano]]
+# [[d:Q56009|Gina Lollobrigida]]<!--Italian actress Debut: C: It -->
+# [[d:Q43252|Sophia Loren]]<!--act Debut: C: It -->
+# [[d:Q55469|Marcello Mastroianni]]<!--Debut: C: It -->
+
+;;''Sweden''
+# [[d:Q43247|Ingrid Bergman]]<!--act/musician Debut:1932 C: Sv -->
+# [[d:Q5443|Greta Garbo]]<!--act Debut:1920 C: Sv -->
+
+;;''USSR''
+# [[d:Q376335|Mikhail Ulyanov]]<!--act Debut: C: USSR -->
+# [[d:Q717810|Yevgeny Leonov]]<!--act Debut: C: USSR -->
+# [[d:Q380250|Innokenty Smoktunovsky]]<!--act Debut: C: USSR -->
+# [[d:Q471740|Armen Dzhigarkhanyan]]
+
+;;Other
+# '''[[d:Q4612|Marlene Dietrich]]'''<!--act/singer Debut: C: Ger -->
+# [[d:Q153018|Maximilian Schell]]<!--act Debut: C: Austria -->
+{{Div col end}}
+
+==== Performing artists, 40 ====
+{{Div col|cols=4}}
+# [[d:Q449037|Alvin Ailey]]<!--C: It dancer -->
+# [[d:Q231923|Marian Anderson]]<!--C: US Singer -->
+# [[d:Q711073|Frederick Ashton]]<!--C: GB dancer 1930s-->
+# [[d:Q295420|Mikhail Baryshnikov]]*<!--C: Ru dancer -->
+# [[d:Q217764|Maurice Béjart]]<!--C: Fr balletdancer delete?-->
+# [[d:Q944176|Carlo Blasis]]<!--C: It dancer -->
+# [[d:Q42402|Andrea Bocelli]]<!--C: It opera singer -->
+# [[d:Q1320382|Erik Bruhn]]<!--C: Da dancer -->
+# [[d:Q150651|George Carlin]]<!--comedian Debut:1956 C: US -->
+# [[d:Q170726|Enrico Caruso]]<!--C: It opera singer -->
+# [[d:Q62558|Cyd Charisse]]<!--C: US dancer -->
+# [[d:Q362106|Boris Christoff]]<!-- C: Bulgaria opera singer -->
+# [[d:Q139637|David Copperfield]]
+# [[d:Q130853|Plácido Domingo]]<!--C: Es opera singer -->
+# [[d:Q483512|Isadora Duncan]]<!--C: US Dancer -->
+# [[d:Q435304|Fanny Elssler]]<!--C: Austria Ballet -->
+# [[d:Q314312|Michel Fokine]]<!--C: Ru Ballet y: 1900s -->
+# [[d:Q231776|Margot Fonteyn]]<!--C: GB Ballet y: 1930s -->
+# [[d:Q367653|Gregory Hines]]<!--C: US dancer -->
+# [[d:Q131545|Harry Houdini]]
+# [[d:Q2650296|Avdotia Istomina]]<!--C: Ru ballet -->
+# [[d:Q231316|Tamara Karsavina]]<!--C: Ru Dancer -->
+# [[d:Q213712|Rudolf von Laban]]<!--C: Hungary dancer -->
+# [[d:Q231345|Jenny Lind]]
+# [[d:Q267796|Natalia Makarova]]
+# [[d:Q194363|Vaslav Nijinsky]]
+# [[d:Q233951|Birgit Nilsson]]
+# [[d:Q84217|Rudolf Nureyev]]
+# [[d:Q37615|Luciano Pavarotti]]
+# [[d:Q151874|Anna Pavlova]]
+# [[d:Q312320|Marius Petipa]]*<!--C: Fr Ballet y: 1890s -->
+# [[d:Q233718|Leontyne Price]]*<!--C: US opera y: 1950s -->
+# [[d:Q353019|Jerome Robbins]]
+# [[d:Q240890|Renata Scotto]]
+# [[d:Q235517|Beverly Sills]]
+# [[d:Q265872|Frederica von Stade]]
+# [[d:Q203990|Marie Taglioni]]
+# [[d:Q264400|Maria Tallchief]]
+# [[d:Q454336|Twyla Tharp]]
+# [[d:Q29073|Gaétan Vestris]]
+{{Div col end}}
+
+=== Visual artists, 111 ===
+{{Div col|cols=4}}
+==== Western painters and illustrators, 77 ====
+;Ancient era
+;;Europe
+# [[d:Q177302|Phidias]]<!--ancient sculptor C:Gre B: -->
+# [[d:Q47163|Vitruvius]]<!--C: It B:-80  -->
+
+;Medieval era
+;;Europe
+# [[d:Q130531|Hieronymus Bosch]]<!--an Early painter C: NL B: -->
+# [[d:Q102272|Jan van Eyck]]<!--a Flemish painter  C: NL B: -->
+# [[d:Q7814|Giotto]]<!--painter C: It B: -->
+# [[d:Q838|Andrei Rublev]]<!--C:Ru B: -->
+
+;Renaissance to early modern era
+# [[d:Q301|El Greco]]
+;;France
+# [[d:Q83155|Jacques-Louis David]]<!--Neoclassical painter  C:Fr B: -->
+# [[d:Q33477|Eugène Delacroix]]<!--C:Fr B:1798 -->
+# [[d:Q313701|François Mansart]]<!--classicism architect C:Fr B: -->
+# [[d:Q41554|Nicolas Poussin]]<!--C:Fr B:1594 -->
+;;Germany
+# '''[[d:Q5580|Albrecht Dürer]]'''<!--C: Ger B:1471 -->
+# [[d:Q104884|Caspar David Friedrich]]<!--C: Ger B:1774 -->
+# [[d:Q48319|Hans Holbein the Younger]] <!-- German portraitist B:1497 -->
+# [[d:Q151759|Karl Friedrich Schinkel]]<!--Prussian architect C: Ger B: -->
+;;Italy
+# [[d:Q123150|Borromini]]<!--Baroque architect C: It B: -->
+# [[d:Q42207|Caravaggio]]<!--Baroque painter C: It B: -->
+# [[d:Q160538|Bernini]]<!--Baroque sculptor and architect C: It B: -->
+# [[d:Q17169|Giovanni Bellini]]<!--Venetian painter C: It B: -->
+# [[d:Q5669|Sandro Botticelli]]<!--C: It B:1445 -->
+# [[d:Q7793|Bramante]]<!--Renaissance architect C: It B: -->
+# [[d:Q182664|Canaletto]]<!--Venetian painter C: It B: -->
+# [[d:Q5822|Piero della Francesca]]<!--C: It B:1415 -->
+# [[d:Q5681|Andrea Mantegna]]<!--C: It B:1431 -->
+# [[d:Q5811|Masaccio]]<!--painter of the Quattrocento C: It B: -->
+# '''[[d:Q5592|Michelangelo]]'''<!--C: It B: -->
+# [[d:Q177692|Palladio]]<!--Renaissance architect C: It B: -->
+# '''[[d:Q5597|Raphael]]'''<!--C: It B:1483 -->
+# [[d:Q5571|Andrea del Sarto]]<!--Renaissance painter C: It B: -->
+# [[d:Q9319|Tintoretto]]<!--Venetian painter C: It B: -->
+# [[d:Q47551|Titian]]<!--Venetian painter C: It B: -->
+# [[d:Q9440|Paolo Veronese]]<!--Venetian painter C: It B: -->
+# '''[[d:Q762|Leonardo da Vinci]]'''<!--C: It B: -->
+;;Netherlands
+# [[d:Q150679|Anthony van Dyck]]<!--a Flemish painter  C: NL B: -->
+# '''[[d:Q5599|Peter Paul Rubens]]'''<!--art/Dutch C: NL B: -->
+# '''[[d:Q5598|Rembrandt]]'''<!--C: NL B:1606 -->
+# [[d:Q41264|Johannes Vermeer]]<!--C: NL B:1632 -->
+;;Spain
+# [[d:Q297838|Jusepe de Ribera]]<!--Baroque painter C:Es B: -->
+# '''[[d:Q297|Diego Velázquez]]'''<!--C:Es B:1599 -->
+
+;Modern era (painters)
+# [[d:Q93284|Marc Chagall]]
+# [[d:Q5912|Marcel Duchamp]]
+# [[d:Q7836|Ren&#233; Magritte]]
+;;Americas
+;;;''Mexico''
+# '''[[d:Q5588|Frida Kahlo]]'''<!--C:Mexico B:1907 -->
+;;;''United States''
+# [[d:Q173223|Mary Cassatt]]<!--C: US B:1844 -->
+# [[d:Q46408|Georgia O'Keeffe]]<!--C: US B:1887 -->
+# [[d:Q37571|Jackson Pollock]]<!--C: US B:1912 -->
+# [[d:Q160149|Mark Rothko]]<!--C:US B:1903 -->
+# '''[[d:Q5603|Andy Warhol]]'''<!--C: US B: -->
+# [[d:Q217434|Grant Wood]]<!--C: US B:1891 -->
+;;Europe
+# [[d:Q44007|Paul Klee]]<!--C:Switzerland B:1879 -->
+# [[d:Q34661|Gustav Klimt]]<!--C:Austria B:1862 -->
+# [[d:Q41406|Edvard Munch]]<!--Symbolist painter C:No B: -->
+# [[d:Q154448|Victor Vasarely]]<!-- modern painter C:Hungary B: -->
+;;;''France''
+# [[d:Q23380|Jean Auguste Dominique Ingres]]<!--C:Fr B:1780 -->
+# [[d:Q355751|Marie-Antoine Carême]]
+# [[d:Q35548|Paul Cézanne]]<!--C:Fr B:1839 -->
+# [[d:Q46373|Edgar Degas]]<!--C:Fr B:1834 -->
+# [[d:Q37693|Paul Gauguin]]<!--C:Fr B:1848 -->
+# [[d:Q40599|Édouard Manet]]<!--C:Fr B:1832 -->
+# '''[[d:Q5589|Henri Matisse]]'''<!--C:Fr B:1869 -->
+# [[d:Q296|Claude Monet]]<!--C:Fr B:1840 -->
+# [[d:Q39931|Pierre-Auguste Renoir]]<!--C:Fr B:1841 -->
+# [[d:Q156386|Henri Rousseau]]<!--C:Fr B:1844 -->
+# [[d:Q82445|Toulouse-Lautrec]]<!-- Post-Impressionist painter C:Fr B: -->
+# [[d:Q34013|Georges Seurat]]
+;;;''Great Britain''
+# [[d:Q154340|Francis Bacon (artist)]]<!--C:GB B:1561 -->
+# [[d:Q171344|William Hogarth]]<!--C:GB B:1697 -->
+# [[d:Q159758|J. M. W. Turner]]<!--C:GB B:1775 -->
+;;;''Netherlands''
+# '''[[d:Q5582|Vincent van Gogh]]'''<!--C: NL B:1853 -->
+# [[d:Q151803|Piet Mondrian]]<!--C: NL B:1872 -->
+;;;''Russia''
+# [[d:Q61064|Wassily Kandinsky]]<!--C:Ru B:1866 -->
+# [[d:Q130777|Kazimir Malevich]]<!--C:Ru B:1879 -->
+# [[d:Q172911|Ilya Repin]]<!--Russian painter C:Ru B:1844 -->
+# [[d:Q208993|Nicholas Roerich]]
+;;;''Spain''
+# '''[[d:Q5577|Salvador Dalí]]'''<!--C:Es B:1904 -->
+# '''[[d:Q5432|Francisco Goya]]'''<!--C:Es B:1746 -->
+# [[d:Q152384|Joan Miró]]<!--C:Es B:1893 -->
+# '''[[d:Q5593|Pablo Picasso]]'''<!--C:Es B:1881 -->
+
+==== Sculptors, 2 ====
+# [[d:Q30755|Auguste Rodin]]<!--C:Fr B:1840 -->
+# [[d:Q37562|Donatello]]<!--C: It B:1386 -->
+
+==== Architects, 26 ====
+;Africa
+;;''Egypt''
+# [[d:Q131171|Imhotep]]
+;Americas
+;;''Brazil''
+# [[d:Q134165|Oscar Niemeyer]]<!--C:Brazil B:1907 -->
+;;''United States''
+# [[d:Q559852|Walter Burley Griffin]]<!--C: US B:1876 -->
+# [[d:Q715701|William Le Baron Jenney]] <!--Skyscrapers C: US B:1832 -->
+# [[d:Q180374|Frank Gehry]]<!--modern American architect C: US B: -->
+# '''[[d:Q5604|Frank Lloyd Wright]]'''<!--C: US B:1867 -->
+# [[d:Q159612|Richard Meier]]<!--modern American architect C: US B: -->
+# [[d:Q243240|Louis Sullivan]]<!--C: US B:1856 -->
+;Asia
+# [[d:Q46868|I. M. Pei]]<!--C:Ch B:1917 -->
+# '''[[d:Q5600|Mimar Sinan]]'''<!--the chief Ottoman architect C:Turkey B: -->
+# [[d:Q151794|Kenzo Tange]]<!--modern architect C:Ja B: -->
+;Europe
+# [[d:Q82840|Alvar Aalto]]<!--C:Finland B:1898 -->
+# '''[[d:Q4724|Le Corbusier]]'''<!--C:Switzerland B:1847 -->
+# [[d:Q25328|Gaudí]]<!--Spanish Art Nouveau architect C:Es B: -->
+# [[d:Q49744|Victor Horta]]<!--Art Nouveau architect C:Belgium B:1861 -->
+# [[d:Q295929|Inigo Jones]] <!-- English designer and architect B:1573 -->
+# [[d:Q84312|Richard Neutra]]<!--modern architect C:Austria B: -->
+# [[d:Q190148|Renzo Piano]]<!--modern architect C: It B: -->
+# [[d:Q170373|Christopher Wren]]<!--C:GB B:1632 -->
+;;''Germany''
+# [[d:Q60694|Günter Behnisch]]<!--deconstructivist architec C: Ger B: -->
+# [[d:Q76726|Peter Behrens]]<!--modern architect C: Ger B: -->
+# [[d:Q61071|Walter Gropius]]<!--C: Ger B:1883 -->
+# [[d:Q76730|Erich Mendelsohn]]<!--expressionist architec C: Ger B: -->
+# [[d:Q64412|Frei Otto]]<!--modern architect C: Ger B: -->
+# [[d:Q41508|Ludwig Mies van der Rohe]]<!--C: Ger B:1886 -->
+# [[d:Q57481|Hans Scharoun]]<!--C: Ger B: -->
+
+==== Non-Western traditions, 5 ====
+;China
+# [[d:Q469439|Shitao]]<!--C:Ch B:1642 -->
+;India
+# [[d:Q333453|Raja Ravi Varma]]<!--C:India B:1848 -->
+;Japan
+# [[d:Q200798|Hiroshige]]<!--C:Ja B:1858 -->
+# '''[[d:Q5586|Hokusai]]'''<!--C:Ja B:1760 -->
+# [[d:Q48514|Sesshū Tōyō]]<!--C:Ja B:1420 -->
+{{Div col end}}
+
+=== Writers, 244 ===
+{{Div col|cols=4}}
+# '''[[d:Q5670|Abu Nuwas]]'''
+# [[d:Q79822|Adam Mickiewicz]]
+# '''[[d:Q7200|Alexander Pushkin]]'''
+# [[d:Q216466|Alejo Carpentier]]
+# [[d:Q38337|Alexandre Dumas]]
+# [[d:Q215868|Alice Walker]]
+# [[d:Q6711|Allen Ginsberg]]
+# [[d:Q207817|Amir Khusrow]]
+# '''[[d:Q5685|Anton Chekhov]]'''
+# [[d:Q493|Arthur Rimbaud]]
+# [[d:Q2793|Brothers Grimm]]
+# [[d:Q193608|Carl Sandburg]]<!--poet-->
+# '''[[d:Q5686|Charles Dickens]]'''
+# [[d:Q1541|Cicero]] <!-- Roman orator -->
+# [[d:Q186335|Dashiell Hammett]]
+# [[d:Q42|Douglas Adams]]
+# [[d:Q33772|Du Fu]]
+# [[d:Q16867|Edgar Allan Poe]]
+# [[d:Q360079|Eino Leino]]
+# [[d:Q4441|Emily Dickinson]]
+# [[d:Q47293|Erich Maria Remarque]]
+# [[d:Q23434|Ernest Hemingway]]
+# [[d:Q93354|F. Scott Fitzgerald]]
+# '''[[d:Q905|Franz Kafka]]'''
+# '''[[d:Q991|Fyodor Dostoyevsky]]'''
+# [[d:Q140412|John Donne]]
+# '''[[d:Q5878|Gabriel García Márquez]]'''
+# '''[[d:Q5683|Geoffrey Chaucer]]'''
+# [[d:Q19185|George Bernard Shaw]]
+# [[d:Q3335|George Orwell]]
+# [[d:Q107000|Ghalib]]
+# [[d:Q42511|H. G. Wells]]
+# '''[[d:Q5673|Hans Christian Andersen]]'''
+# [[d:Q41042|Harold Pinter]]
+# [[d:Q44403|Heinrich Heine]]
+# [[d:Q36661|Henrik Ibsen]]
+# [[d:Q170509|Henry James]]
+# [[d:Q187765|Henry Miller]]
+# [[d:Q25973|Hermann Hesse]]
+# [[d:Q70991|Hildegard of Bingen]]
+# [[d:Q262816|Ilf and Petrov]]
+# [[d:Q34981|Isaac Asimov]]
+# [[d:Q310630|Ivan Vazov]]<!-- Most prominent Bulgarian author -->
+# [[d:Q892|J. R. R. Tolkien]]
+# [[d:Q160534|Jack Kerouac]]
+# [[d:Q45765|Jack London]]
+# [[d:Q43347|Rumi]]
+# '''[[d:Q6882|James Joyce]]'''
+# [[d:Q36322|Jane Austen]]
+# [[d:Q218698|Jerome K. Jerome]]
+# '''[[d:Q5879|Johann Wolfgang von Goethe]]'''
+# [[d:Q39212|John Steinbeck]]
+# [[d:Q105756|John Updike]]
+# [[d:Q41166|Jonathan Swift]]
+# '''[[d:Q909|Jorge Luis Borges]]'''
+# [[d:Q103285|José Martí]]
+# [[d:Q37060|José Saramago]]
+# [[d:Q33977|Jules Verne]]
+# '''[[d:Q7011|Kālidāsa]]'''
+# [[d:Q188093|Langston Hughes]]
+# '''[[d:Q7243|Leo Tolstoy]]'''
+# [[d:Q38082|Lewis Carroll]]
+# '''[[d:Q7071|Li Bai]]'''
+# '''[[d:Q5679|Lord Byron]]'''
+# '''[[d:Q7199|Marcel Proust]]'''
+# '''[[d:Q7245|Mark Twain]]'''
+# [[d:Q39803|Mario Vargas Llosa]]
+# '''[[d:Q5676|Matsuo Bashō]]''' 
+# [[d:Q12706|Maxim Gorky]]
+# '''[[d:Q5682|Miguel de Cervantes]]'''
+# [[d:Q835|Mikhail Bulgakov]]
+# '''[[d:Q687|Molière]]'''
+# [[d:Q81731|Murasaki Shikibu]]
+# '''[[d:Q7176|Naguib Mahfouz]]'''
+# [[d:Q69339|Nathaniel Hawthorne]]
+# [[d:Q43718|Nikolai Gogol]]
+# [[d:Q214622|Nikos Kazantzakis]]
+# [[d:Q337373|Olaf Stapledon]]
+# [[d:Q35900|Omar Khayyám]]
+# [[d:Q34189|Pablo Neruda]]
+# [[d:Q1401|Petrarch]]
+# [[d:Q171091|Philip K. Dick]]
+# '''[[d:Q7241|Rabindranath Tagore]]'''
+# [[d:Q76483|Rainer Maria Rilke]]
+# [[d:Q193236|Gabriele D’Annunzio]]
+# [[d:Q835808|Brontë family]]
+# [[d:Q123078|Robert A. Heinlein]]
+# [[d:Q170302|Saadi Shirazi]]
+# [[d:Q44306|Salman Rushdie]]
+# [[d:Q17892|Sappho]]
+# [[d:Q83059|Saul Bellow]]
+# [[d:Q132805|Thomas Hardy]]
+# [[d:Q37030|Thomas Mann]]
+# [[d:Q35155|Thomas Pynchon]]
+# [[d:Q72334|Toni Morrison]]
+# [[d:Q134180|Truman Capote]]
+# [[d:Q12807|Umberto Eco]]
+# '''[[d:Q535|Victor Hugo]]'''
+# [[d:Q43736|Yasunari Kawabata]]
+# [[d:Q134456|Yukio Mishima]]
+
+==== Ancient, 13 ====
+# [[d:Q313330|Qu Yuan]]
+# [[d:Q43423|Aesop]]
+# [[d:Q118992|Menander]]
+# [[d:Q40939|Aeschylus]]
+# [[d:Q43353|Aristophanes]]
+# [[d:Q48305|Euripides]] 
+# '''[[d:Q6240|Hafez]]'''
+# '''[[d:Q6691|Homer]]'''
+# [[d:Q6197|Horace]]
+# '''[[d:Q7198|Ovid]]'''
+# [[d:Q41523|Plutarch]]
+# '''[[d:Q7235|Sophocles]]'''
+# '''[[d:Q1398|Virgil]]'''
+# [[d:Q82778|Pliny the Elder]]
+
+==== Middle Ages, 10 ====
+# '''[[d:Q1067|Dante Alighieri]]'''
+# [[d:Q43459|Ferdowsi]]
+# [[d:Q312458|Jami]]
+# [[d:Q312551|Kabir]]
+# [[d:Q234908|Nizami Ganjavi]]
+# [[d:Q312954|Rudaki]]
+# [[d:Q1402|Giovanni Boccaccio]]
+# [[d:Q503340|Ali-Shir Nava'i]]
+# '''[[d:Q692|William Shakespeare]]'''
+# [[d:Q4302|Chrétien de Troyes]]
+# [[d:Q234816|Christine de Pizan]]
+# [[d:Q849|François Villon ]]
+
+==== Renaissance, 13 ====
+# [[d:Q178379|Fuzûlî]]
+# [[d:Q312976|Tulsidas]]
+# [[d:Q170800|Pedro Calderón de la Barca]]
+# [[d:Q590|Luís de Camões]]
+# [[d:Q747|Pierre Corneille]]
+# [[d:Q40946|Daniel Defoe]]
+# [[d:Q270275|Gavrila Derzhavin]]
+# [[d:Q213355|John Dryden]]
+# [[d:Q183266|Samuel Johnson]]
+# [[d:Q79759|John Milton]]
+# [[d:Q41568|Michel de Montaigne]]
+# [[d:Q742|Jean Racine]]
+# [[d:Q165257|Lope de Vega]]
+
+==== Modern, 83 ====
+# [[d:Q155845|Chinua Achebe]]
+# [[d:Q37327|Samuel Beckett]]
+# [[d:Q41513|William Blake]]
+# [[d:Q38757|Bertolt Brecht]]
+# [[d:Q40640|Ray Bradbury]]
+# [[d:Q180377|Raymond Chandler]]
+# [[d:Q35064|Agatha Christie]]
+# [[d:Q47087|Arthur C. Clarke]]
+# [[d:Q35610|Arthur Conan Doyle]]
+# [[d:Q25161|Roald Dahl]]
+# [[d:Q168728|Robert Frost]]
+# [[d:Q81447|Aldous Huxley]]
+# [[d:Q34743|Rudyard Kipling]]
+# [[d:Q55767|Astrid Lindgren]]
+# [[d:Q80596|Arthur Miller]]
+# [[d:Q36591|Vladimir Nabokov]]
+# [[d:Q47152|Mary Shelley]]
+# [[d:Q41488|Wole Soyinka]]
+# [[d:Q1512|Robert Louis Stevenson]]
+# [[d:Q81438|Walt Whitman]]
+# [[d:Q30875|Oscar Wilde]]
+# [[d:Q101638|Mary Wollstonecraft]]
+# [[d:Q40909|Virginia Woolf]]
+# [[d:Q40213|W. B. Yeats]]
+# [[d:Q302910|Ngũgĩ wa Thiong'o]]
+# [[d:Q43293|J. M. Coetzee]]
+# [[d:Q47619|Nadine Gordimer]]
+# [[d:Q183492|Margaret Atwood]]
+# [[d:Q80900|Pearl S. Buck]]
+# [[d:Q181667|Washington Irving]]
+# [[d:Q2754|Jaroslav Hašek]]
+# [[d:Q451655|Andrzej Szczypiorski]]
+# [[d:Q37767|T. S. Eliot]]
+# [[d:Q184935|Mihai Eminescu]] <!-- Major Romanian author --> 
+# [[d:Q38392|William Faulkner]]
+# [[d:Q244390|Ken Kesey]]
+# [[d:Q133855|Guillaume Apollinaire]]
+# [[d:Q216980|Constantine P. Cavafy]]
+# [[d:Q502|Stendhal]]
+# [[d:Q44183|William Golding]]
+# [[d:Q39829|Stephen King]]<!-- C: US-->
+# [[d:Q181659|Ursula K. Le Guin]]
+# [[d:Q123469|Sinclair Lewis]]
+# [[d:Q4985|Herman Melville]]<!-- Moby-Dick C: US-->
+# [[d:Q173540|Margaret Mitchell]]
+# [[d:Q182870|Mario Puzo]]<!-- Godfather-->
+# [[d:Q163366|Ezra Pound]]
+# [[d:Q79904|J. D. Salinger]]
+# [[d:Q75612|Isaac Bashevis Singer]]
+# [[d:Q102513|Harriet Beecher Stowe]]
+# [[d:Q49074|Kurt Vonnegut]]
+# [[d:Q178106|William Carlos Williams]]
+# [[d:Q184440|Jorge Amado]]
+# [[d:Q484292|Chinghiz Aitmatov]]
+# [[d:Q484141|Muhammad Iqbal]]
+# [[d:Q134798|Haruki Murakami]]
+# [[d:Q80095|Kenzaburō Ōe]]
+# [[d:Q241248|Orhan Pamuk]]
+# [[d:Q23114|Lu Xun]]
+# [[d:Q47737|Kahlil Gibran]]
+# [[d:Q1031|France Prešeren]]
+# [[d:Q179695|Ismail Kadare]]
+# [[d:Q82925|Joseph Conrad]]
+# [[d:Q81219|Sándor Petőfi]]
+# [[d:Q41502|Henryk Sienkiewicz]]
+# [[d:Q134958|Taras Shevchenko]]
+# [[d:Q80440|Anna Akhmatova]]
+# [[d:Q862|Joseph Brodsky]]
+# [[d:Q46602|Ivan Bunin]]
+# [[d:Q191598|Nikolay Karamzin]]
+# [[d:Q46599|Mikhail Lermontov]]
+# [[d:Q132964|Vladimir Mayakovsky]]
+# [[d:Q208003|Nikolay Nekrasov]]
+# [[d:Q41223|Boris Pasternak]]
+# [[d:Q34474|Aleksandr Solzhenitsyn]]
+# [[d:Q192279|Aleksey Nikolayevich Tolstoy]]
+# [[d:Q42831|Ivan Turgenev]]
+# [[d:Q9711|Honoré de Balzac]]
+# [[d:Q501|Charles Baudelaire]]
+# [[d:Q182804|Karen Blixen]]
+# [[d:Q43444|Gustave Flaubert]]
+# [[d:Q4583|Anne Frank]]
+# [[d:Q41408|Federico García Lorca]]
+# [[d:Q47484|André Gide]]
+# [[d:Q40826|Knut Hamsun]]
+# [[d:Q46706|Eugène Ionesco]]
+# [[d:Q44519|Selma Lagerlöf]]
+# [[d:Q1403|Luigi Pirandello]]
+# [[d:Q22670|Friedrich Schiller]]
+# [[d:Q7724|August Strindberg]]
+# [[d:Q16409|Tristan Tzara]]
+# [[d:Q504|Émile Zola]]
+# [[d:Q220078|Kingsley Amis]]
+# [[d:Q178698|W. H. Auden]]
+# [[d:Q192069|Enid Blyton]]
+# [[d:Q217619|Anthony Burgess]]
+# [[d:Q201732|Robert Graves]]
+# [[d:Q82083|John Keats]]
+# [[d:Q9204|C. S. Lewis]]
+# [[d:Q205739|Alan Moore]]
+# [[d:Q79025|Walter Scott]]
+# [[d:Q213447|John Millington Synge]]
+# [[d:Q45546|William Wordsworth]]
+# [[d:Q82409|Samuel Taylor Coleridge]]
+# [[d:Q93343|Percy Bysshe Shelley]]
+{{Div col end}}
+
+=== Musicians and composers, 150 ===
+{{Div col|cols=4}}
+==== Western art music ====
+;Composers
+# [[d:Q200867|Gustav Holst]]<!--Classical-->
+# [[d:Q192114|Jon Lord]]<!--pianist/composer-->
+# [[d:Q212089|Alan Parsons]]<!--musician/composer-->
+# [[d:Q528781|Pancho Vladigerov]]<!--Classical/ C: Bulgaria-->
+# [[d:Q13894|Richard Strauss]]
+;;Medieval and Renaissance
+# [[d:Q207717|Guillaume Dufay]]<!--Renaissance/composer-->
+# '''[[d:Q179277|Giovanni da Palestrina]]'''
+;;Baroque period (1600–1760)
+# '''[[d:Q1339|Johann Sebastian Bach]]'''<!--Classical/ C: Ger-->
+# '''[[d:Q7302|George Frideric Handel]]'''
+# [[d:Q53068|Claudio Monteverdi]]
+# '''[[d:Q1340|Antonio Vivaldi]]'''<!--Classical/ C: It-->
+;;Classical period (1730–1820)
+# '''[[d:Q7349|Joseph Haydn]]'''<!--Classical/Germany-->
+# '''[[d:Q254|Wolfgang Amadeus Mozart]]'''<!--Classical/ C: Austria-->
+;;Romantic period (1815–1910)
+# [[d:Q185040|Mily Balakirev]]<!--Classical/Russia: The 5 C: Ru-->
+# '''[[d:Q255|Ludwig van Beethoven]]'''<!--Classical/ C: Ger /Austria-->
+# [[d:Q1151|Hector Berlioz]]<!--composer/ C: Fr-->
+# [[d:Q56158|Georges Bizet]]
+# [[d:Q164004|Alexander Borodin]]<!--Classical/Russia: The 5 C: Ru-->
+# '''[[d:Q7294|Johannes Brahms]]'''
+# [[d:Q81752|Anton Bruckner]]
+# '''[[d:Q1268|Frédéric Chopin]]'''
+# [[d:Q208546|César Cui]]<!--Classical/Russia: The 5 C: Ru-->
+# '''[[d:Q7298|Antonín Dvořák]]'''<!--Classical-->
+# [[d:Q80621|Edvard Grieg]]<!--Classical/ C: No-->
+# [[d:Q41309|Franz Liszt]]<!--Classical/ C: Austria-->
+# '''[[d:Q7304|Gustav Mahler]]'''<!--Classical-->
+# [[d:Q46096|Felix Mendelssohn]]<!--Classical/ C: Ger-->
+# [[d:Q132682|Modest Mussorgsky]]<!--Classical/Russia: The 5 C: Ru-->
+# [[d:Q93227|Nikolai Rimsky-Korsakov]]<!--Classical/Russia: The 5 C: Ru-->
+# [[d:Q9726|Gioachino Rossini]]
+# '''[[d:Q7312|Franz Schubert]]'''<!--Classical-->
+# [[d:Q7351|Robert Schumann]]<!--Classical-->
+# [[d:Q48173|Bedřich Smetana]]<!--Classical/ C: Czech-->
+# [[d:Q83309|Johann Strauss]]<!--Classical/ C: Austria-->
+# [[d:Q1146602|Gilbert and Sullivan]]<!--opera-->
+# '''[[d:Q7315|Pyotr Ilyich Tchaikovsky]]'''<!--Classical/Russia C: Ru-->
+# '''[[d:Q7317|Giuseppe Verdi]]'''<!--opera-->
+# '''[[d:Q1511|Richard Wagner]]'''<!--opera-->
+;;20th century
+# [[d:Q448644|Harold Arlen]]
+# [[d:Q83326|Béla Bartók]]<!--composer/ C: Hungary-->
+# [[d:Q4700|Claude Debussy]]<!--Classical/ C: Fr-->
+# [[d:Q275900|Joe Hisaishi]]<!--C:Ja -->
+# [[d:Q49481|Sergei Prokofiev]]<!--Classical-->
+# '''[[d:Q7311|Giacomo Puccini]]'''<!--opera-->
+# [[d:Q1178|Maurice Ravel]]<!--Classical/ C: Fr-->
+# [[d:Q154770|Arnold Schoenberg]]<!--composer/ C: Austria-->
+# [[d:Q80135|Dmitri Shostakovich]]<!--composer/ C: Ru-->
+# [[d:Q45682|Jean Sibelius]]<!--Classical/ C: Finland-->
+# '''[[d:Q7314|Igor Stravinsky]]'''<!--Classical/Russia C: Ru-->
+;Performers
+;;Conductors
+# [[d:Q152505|Leonard Bernstein]]<!--composer-->
+;;Singers
+# [[d:Q1110560|Umm Kulthum]]
+# [[d:Q512|Vladimir Vysotsky]]
+;;Violinists/celist
+# [[d:Q234891|Yo-Yo Ma]]<!-- C: Ch cellist-->
+# [[d:Q66075|Niccolò Paganini]]<!--violinist/guitarist/composer-->
+
+==== Non-Western art music ====
+# [[d:Q103774|Ravi Shankar]]
+
+==== Folk and popular music ====
+# [[d:Q18233|ABBA]]<!--pop C: Sv -->
+# [[d:Q41076|Mariah Carey]]
+# [[d:Q12003|Cher]]
+# [[d:Q115962|David Coverdale]]<!--singer/composer-->
+# [[d:Q104372|Doris Day]]<!--singer/act Debut: C: US -->
+# [[d:Q190151|Bruce Dickinson]]<!--singer/songwriter-->
+# [[d:Q185151|Ronnie James Dio]]<!--singer/songwriter-->
+# [[d:Q5105|Celine Dion]]<!--film/pop-->
+# [[d:Q2831|Michael Jackson]]<!--pop C: US -->
+# [[d:Q2808|Elton John]]
+# [[d:Q1744|Madonna]]<!--pop C: US -->
+# [[d:Q409|Bob Marley]]<!--rock/reggae C: US -->
+# [[d:Q215359|Dean Martin]]<!--singer/act Debut: C: US -->
+# [[d:Q14441|Liza Minnelli]]<!--singer/act Debut: C: US -->
+# [[d:Q205721|Joni Mitchell]]<!--rock/many-->
+# [[d:Q40912|Frank Sinatra]]<!--pop C: US -->
+# [[d:Q4636|Barbra Streisand]]<!--singer/actress Debut:1961 C: US -->
+# [[d:Q714|Stevie Wonder]]<!--musician/composer-->
+;American folk and country
+# [[d:Q42775|Johnny Cash]]<!--country/many C: US -->
+# [[d:Q72984|Bing Crosby]]<!--#1 male voice Debut:1926 C: US -->
+# [[d:Q464241|Faith Hill]]<!--country/many-->
+# [[d:Q508202|George Jones]]<!--country/many-->
+# [[d:Q654716|Peter, Paul and Mary]]<!--USA folksongs C: US -->
+# [[d:Q229430|Reba McEntire]]<!--country/many-->
+# [[d:Q558582|Ronnie Milsap]]<!--country/many-->
+# [[d:Q180453|Dolly Parton]]<!--country/pop/many C: US -->
+# [[d:Q206181|Hank Williams]]<!--country/many C: US -->
+;Blues and soul
+# [[d:Q544387|Ray Charles]]*<!--singer/pianist/composer C: US -->
+# [[d:Q125121|Aretha Franklin]]*<!--rock-->
+# [[d:Q188969|B.B. King]]<!--guitarist/singer/composer-->
+;Composers and songwriters
+# [[d:Q153172|Vangelis]]<!--composer-->
+;Film music
+# [[d:Q235077|Jerry Goldsmith]]<!--film, 48 AMPAS noms-->
+# [[d:Q185928|Henry Mancini]]<!--film/many/Moonriver-->
+# [[d:Q23848|Ennio Morricone]]<!--film/many-->
+# [[d:Q269094|Richard Rodgers]]<!--film/many-->
+# [[d:Q319396|Miklós Rózsa]]<!--film/many-->
+# [[d:Q350704|Max Steiner]]<!--"the father of film music" film/many-->
+# [[d:Q131285|John Williams]]<!--film/many-->
+;Funk
+# [[d:Q5950|James Brown]]
+;Guitarists
+# [[d:Q44570|John Lee Hooker]]<!--guitarist/singer/composer-->
+# [[d:Q202937|Stevie Ray Vaughan]]<!--guitarist/composer-->
+;Hip-hop and rap
+# [[d:Q5608|Eminem]]
+# [[d:Q6078|Dr. Dre]]
+# [[d:Q6107|Tupac Shakur]]
+;Jazz
+# '''[[d:Q1779|Louis Armstrong]]''' <!--Jazz trumpeter-->
+# [[d:Q93341|Miles Davis]]
+# [[d:Q123829|George Gershwin]]<!--musical/pop-->
+# [[d:Q200131|Antônio Carlos Jobim]]
+# [[d:Q103651|Glenn Miller]]<!--big band-->
+;Musical comedy and lyricists
+# [[d:Q128746|Irving Berlin]]<!--musical/pop-->
+# [[d:Q313270|Jerome Kern]]<!--Showboat-->
+# [[d:Q215120|Cole Porter]]<!--pop-->
+# [[d:Q180975|Andrew Lloyd Webber]]<!--musical/film/USA C: US -->
+;Non-English language singers
+# '''[[d:Q1631|Édith Piaf]]'''
+# [[d:Q156347|Lata Mangeshkar]]
+# [[d:Q80510|Alla Pugacheva]]
+# [[d:Q156815|Mohammed Rafi]]
+# [[d:Q1207860|Zhou Xuan]]
+;Rock
+# [[d:Q27593|AC/DC]]
+# [[d:Q111074|John Barry]]<!--film/Bond/many-->
+# '''[[d:Q1299|The Beatles]]'''
+## [[d:Q1203|John Lennon]]<!--rock/pop-->
+## [[d:Q2599|Paul McCartney]]<!--musician/composer-->
+# [[d:Q5921|Chuck Berry]]<!--rock-->
+# [[d:Q5383|David Bowie]]
+# [[d:Q48187|Eric Clapton]]<!--guitarist/singer/composer-->
+# [[d:Q190076|Joe Cocker]]<!--singer/composer-->
+# [[d:Q144622|Phil Collins]]<!--singer/drummer/composer-->
+# [[d:Q332032|Alice Cooper]]<!--singer/composer-->
+# [[d:Q101505|Deep Purple]]
+# [[d:Q45354|The Doors]]
+# [[d:Q392|Bob Dylan]]<!--folk/rock-->
+# [[d:Q175195|Peter Gabriel]]<!--singer/composer-->
+# [[d:Q484918|Simon & Garfunkel]]<!--folk/rock/#1-->
+# [[d:Q5928|Jimi Hendrix]]<!--rock-->
+# [[d:Q1514|Janis Joplin]]<!--rock-->
+# [[d:Q15920|Metallica]]
+# [[d:Q185147|Gary Moore]]<!--guitarist/singer/compozer-->
+# [[d:Q11649|Nirvana]]
+# [[d:Q133151|Ozzy Osbourne]]<!--singer/composer-->
+# [[d:Q2306|Pink Floyd]]
+## [[d:Q180861|Roger Waters]]<!--bass guitarist/singer/composer-->
+# '''[[d:Q303|Elvis Presley]]'''<!--rock-->
+# [[d:Q15862|Queen]]
+## [[d:Q15869|Freddie Mercury]]<!--rock/composer Queen-->
+# [[d:Q229375|Linda Ronstadt]]<!--rock/pop-->
+# [[d:Q47670|Black Sabbath]]
+# [[d:Q1225|Bruce Springsteen]]
+# [[d:Q11036|The Rolling Stones]]
+## [[d:Q189599|Keith Richards]]<!--guitarist/songwriter-->
+## [[d:Q128121|Mick Jagger]]<!--singer/songwriter-->
+# [[d:Q131814|Tina Turner]]<!--singer/songwriter-->
+# [[d:Q396|U2]]
+# [[d:Q127330|Frank Zappa]]
+# [[d:Q2331|Led Zeppelin]]
+{{Div col end}}
+
+=== Criminals, 4 ===
+# [[d:Q44200|Billy the Kid]]<!--C: US y: 1870s-->
+# [[d:Q43963|Jack the Ripper]]<!--C: -->
+# [[d:Q80048|Al Capone]]<!--C: US y: 1930s-->
+# [[d:Q187447|Pablo Escobar]]<!--C: Columbia y: 1970s-->
+
+=== Directors, producers & screenwriters, 78 ===
+{{Div col|cols=4}}
+# '''[[d:Q25089|Woody Allen]]'''<!--director/screenwriter/comedian/act C: US 1960's->-->
+# [[d:Q55171|Pedro Almodóvar]]<!--director/screenwriter C:Es 1980's-> -->
+# [[d:Q55163|Robert Altman]]<!--director C: US 1970's-> -->
+# [[d:Q154490|Jean-Jacques Annaud]]<!--director-->
+# [[d:Q23301|Roberto Benigni]]<!--director/actor, C: It-->
+# '''[[d:Q7546|Ingmar Bergman]]'''
+# [[d:Q53009|Bernardo Bertolucci]]<!--director-->
+# [[d:Q134867|Danny Boyle]]<!--director-->
+# [[d:Q616886|Ken Burns]]<!--director-->
+# [[d:Q42574|James Cameron]]<!--Titanic/$$=#1 C: US -->
+# [[d:Q51492|Frank Capra]]
+# [[d:Q83158|Jean Cocteau]]
+# '''[[d:Q43203|Clint Eastwood]]'''<!--many, C: US /Italy-->
+# '''[[d:Q56094|Francis Ford Coppola]]'''
+# [[d:Q56014|George Cukor]]
+# '''[[d:Q8704|Walt Disney]]'''<!--C: US writer/producer-->
+# [[d:Q51127|Carl Theodor Dreyer]]<!--C: Da silent movie-->
+# '''[[d:Q8003|Sergei Eisenstein]]'''
+# [[d:Q44426|Rainer Werner Fassbinder]]<!--director/act-/ C: Ger-->
+# '''[[d:Q7371|Federico Fellini]]'''<!--director/ C: It-->
+# [[d:Q51114|John Ford]]<!--C: US -->
+# [[d:Q51525|Miloš Forman]]
+# [[d:Q313256|Bob Fosse]]
+# [[d:Q53001|Jean-Luc Godard]]<!--producer-->
+# [[d:Q72579|Samuel Goldwyn]]<!--producer-->
+# [[d:Q25078|Terry Gilliam]]
+# [[d:Q51123|D. W. Griffith]]
+# '''[[d:Q7374|Alfred Hitchcock]]'''
+# [[d:Q103646|Ron Howard]]<!--C: US director/act-->
+# [[d:Q51575|John Huston]]<!--director/act-->
+# [[d:Q72717|Elia Kazan]]
+# [[d:Q55407|Raj Kapoor]]
+# [[d:Q26372|Takeshi Kitano]]<!--C: Ja -->
+# [[d:Q55208|Andrei Konchalovsky]]<!--director/producer-->
+# '''[[d:Q2001|Stanley Kubrick]]'''
+# '''[[d:Q8006|Akira Kurosawa]]'''
+# [[d:Q19504|Fritz Lang]]
+# [[d:Q55260|David Lean]]
+# [[d:Q160726|Ang Lee]]<!--director, C: Taiwan-->
+# [[d:Q28941|Frank Lloyd]]
+# '''[[d:Q38222|George Lucas]]'''<!--C: US -->
+# [[d:Q51559|Sidney Lumet]]
+# [[d:Q55965|Auguste and Louis Lumière]]
+# [[d:Q51583|Joseph L. Mankiewicz]]
+# [[d:Q463883|Frances Marion]]
+# [[d:Q55207|Nikita Mikhalkov]]<!--director/producer/actor-->
+# [[d:Q285928|Lewis Milestone]]
+# [[d:Q189526|Brian De Palma]]
+# [[d:Q271284|Alan Parker]]
+# [[d:Q51552|Roman Polanski]]
+# '''[[d:Q51522|Sydney Pollack]]'''
+# [[d:Q299419|Carlo Ponti]]<!--producer-->
+# [[d:Q55415|Leni Riefenstahl]]
+# [[d:Q8873|Satyajit Ray]]<!--director-->
+# [[d:Q59215|Robert Redford]]<!--C: US -->
+# '''[[d:Q50713|Jean Renoir]]'''
+# [[d:Q295855|Carlos Saura]]<!--director-->
+# '''[[d:Q41148|Martin Scorsese]]'''
+# [[d:Q72291|David O. Selznick]]<!--producer-->
+# [[d:Q317574|Mack Sennett]]<!--director-->
+# [[d:Q53004|Vittorio De Sica]]<!--director / C: It-->
+# [[d:Q299194|Aaron Sorkin]]
+# '''[[d:Q8877|Steven Spielberg]]'''<!--C: US -->
+# [[d:Q49484|Constantin Stanislavski]]
+# [[d:Q179497|Oliver Stone]]<!--C: US -->
+# [[d:Q3772|Quentin Tarantino]]<!--C: US -->
+# [[d:Q438472|Irving Thalberg]]<!--producer-->
+# [[d:Q53045|Giuseppe Tornatore]]<!--director / C: It-->
+# [[d:Q133730|Lars von Trier]]<!--director / C: Da-->
+# [[d:Q13888|Luchino Visconti]]<!--director / C: It-->
+# [[d:Q472520|Hal B. Wallis]]
+# [[d:Q55411|Wim Wenders]]
+# [[d:Q24829|Orson Welles]]<!--director/minor actor Debut: C: US -->
+# [[d:Q51547|Billy Wilder]]
+# [[d:Q59821|Robert Wise]]
+# [[d:Q51495|William Wyler]]
+# [[d:Q364342|Darryl F. Zanuck]]<!--producer-->
+# [[d:Q187364|Robert Zemeckis]]<!--producer-->
+{{Div col end}}
+
+=== Businesspeople, 39 ===
+{{Div col|cols=4}}
+;Ancient, 1
+# [[d:Q175121|Marcus Licinius Crassus]]<!--C: It , Industry:  -->
+
+;Middle age, 1
+# [[d:Q177854|Lorenzo de' Medici]]<!--C: It , Industry:  -->
+
+;Industrial revolution, 18
+# [[d:Q140692|Samuel Crompton]]<!-- C: GB , Industry:  -->
+# [[d:Q193042|Thomas Newcomen]]<!-- C: GB , Industry:  -->
+# [[d:Q57423|John Jacob Astor]] <!--Furs, shipping C: Ger , Industry:  -->
+# [[d:Q320109|Jamsetji Tata]]<!-- C: India , Industry: Tata -->
+
+;;''United States''
+# [[d:Q484265|Andrew Carnegie]]<!-- C: US , Industry: steel -->
+# [[d:Q2916122|James Buchanan Duke]]<!-- C: US , Industry: Tobacco -->
+# [[d:Q47213|Warren Buffett]]
+# '''[[d:Q8768|Henry Ford]]'''<!-- C: US , Industry: assembly, automobiles -->
+# [[d:Q124462|Meyer Guggenheim]]<!-- C: US , Industry: mining/smelting/gold  -->
+# [[d:Q189081|Howard Hughes]]<!-- C: US , Industry: oil, aircraft -->
+# [[d:Q54168|J. P. Morgan]]<!-- C: US , Industry: banking, trusts -->
+# [[d:Q318591|J. Paul Getty]]<!-- C: US , Industry: oil/art -->
+# [[d:Q294931|William Randolph Hearst]]<!-- C: US , Industry: Publishing  -->
+# [[d:Q160278|John D. Rockefeller]]<!-- C: US , Industry: oil -->
+# [[d:Q382109|Leland Stanford]]<!-- C: US , Industry:  -->
+# [[d:Q313721|Cornelius Vanderbilt]]<!-- C: US , Industry:  -->
+# [[d:Q447716|Madam C. J. Walker]]<!-- C: US , Industry: Beauty products -->
+# [[d:Q262367|George Westinghouse]]<!-- C: US , Industry: Aircraft -->
+
+;Modern, 7
+# [[d:Q45661|Coco Chanel]]<!-- C: Fr , Industry:  -->
+# [[d:Q336520|Alan Sugar]]<!-- C: GB , Industry: Amstrad -->
+# [[d:Q468364|Dhirubhai Ambani]]<!-- C: India , Industry:  -->
+# [[d:Q43969|Muhammad Yunus]]<!--Founded Grameen Bank, Nobel Peace Prize Laureate --><!-- C: India , Period: Modern, Industry:  -->
+# [[d:Q181282|Enzo Ferrari]]<!-- C: It , Industry:  -->
+
+;;''United States''
+# [[d:Q319648|Ray Kroc]]<!-- C: US , Period: Modern, Industry: McDonalds -->
+# [[d:Q497827|Sam Walton]]<!-- C: US , Period: Modern, Industry: Walmart -->
+
+;Contemporary, 12
+# [[d:Q298547|Mukesh Ambani]] <!--Richest man in India--><!-- C: India , Industry:  -->
+# [[d:Q170419|Carlos Slim]]<!-- C: Mexico , Industry: phones  -->
+# [[d:Q92764|Sergey Brin]]<!-- C: Ru , Industry: Google -->
+# [[d:Q194419|Richard Branson]]<!-- C: GB , Industry:  -->
+
+;;''United States''
+# [[d:Q5284|Bill Gates]]<!-- C: US , Industry: Windows -->
+# [[d:Q19837|Steve Jobs]]<!-- C: US , Industry: Apple -->
+# [[d:Q317521|Elon Musk]]<!-- C: US , Industry:  -->
+# [[d:Q4934|Larry Page]]<!-- C: US , Industry: Google -->
+# [[d:Q22686|Donald Trump]]<!-- C: US , Industry: Real estate -->
+# [[d:Q193368|Ted Turner]]<!-- C: US , Industry: TV networks -->
+# [[d:Q55800|Oprah Winfrey]]
+# [[d:Q36215|Mark Zuckerberg]]<!-- C: US , Industry: Facebook  -->
+{{Div col end}}
+
+=== Explorers, 30 ===
+{{Div col|cols=4}}
+;Earlier
+# '''[[d:Q7331|Ibn Battuta]]'''
+# [[d:Q42838|Leif Ericson]]
+
+;Age of discovery
+# [[d:Q133060|Willem Barentsz]]
+# [[d:Q85642|John Cabot]]
+# [[d:Q174432|Pedro Álvares Cabral]]
+# '''[[d:Q7321|Jacques Cartier]]'''
+# '''[[d:Q7322|Christopher Columbus]]'''
+# '''[[d:Q7326|Hernán Cortés]]'''
+# [[d:Q36517|Francis Drake]]
+# [[d:Q201510|Juan Sebastián Elcano]]
+# '''[[d:Q7328|Vasco da Gama]]'''
+# '''[[d:Q1496|Ferdinand Magellan]]'''
+# [[d:Q185974|Ponce de Leon]]<!--c: Es , Fountain-->
+# [[d:Q44741|Francisco Pizarro]]
+# '''[[d:Q6101|Marco Polo]]'''
+# [[d:Q60040|Hernando de Soto]]
+# [[d:Q42188|Abel Tasman]]
+# [[d:Q47674|Amerigo Vespucci]]
+# '''[[d:Q7333|Zheng He]]'''
+
+;Early modern
+# [[d:Q127641|Vitus Bering]]
+# '''[[d:Q7324|James Cook]]'''
+# [[d:Q6694|Alexander von Humboldt]]
+# [[d:Q48373|David Livingstone]]
+# [[d:Q171421|Henry Morton Stanley]]
+
+;Modern
+# '''[[d:Q926|Roald Amundsen]]'''<!--c: No-->
+# '''[[d:Q1615|Neil Armstrong]]'''<!--c: US-->
+# '''[[d:Q7327|Yuri Gagarin]]'''<!--c: Ru-->
+# [[d:Q182642|John Glenn]]<!--c: US first person to orbit Earth-->
+# [[d:Q33817|Edmund Hillary]]<!--Everest-->
+# [[d:Q80732|Tenzing Norgay]]<!--Everest-->
+{{Div col end}}
+
+=== Philosophers, historians, political and social scientists, 197 ===
+
+==== Philosophers, 96 ====
+{{Div col|cols=4}}
+
+;Ancient, 23
+# '''[[d:Q868|Aristotle]]'''
+# '''[[d:Q8018|Augustine of Hippo]]'''
+# '''[[d:Q4604|Confucius]]'''
+# [[d:Q41980|Democritus]]
+# [[d:Q59180|Diogenes of Sinope]]
+# [[d:Q43216|Epicurus]]
+# [[d:Q179785|Gorgias]]
+# [[d:Q28959|Han Fei]]
+# [[d:Q41155|Heraclitus]]
+# '''[[d:Q9333|Laozi]]'''
+# [[d:Q152919|Li Si]]
+# [[d:Q188903|Mencius]]
+# [[d:Q125551|Parmenides]]
+# '''[[d:Q859|Plato]]'''
+# [[d:Q134189|Plotinus]]
+# [[d:Q2054|Seneca the Younger]]
+# [[d:Q351345|Shang Yang]]
+# '''[[d:Q913|Socrates]]'''
+# [[d:Q36303|Thales]]
+# [[d:Q216072|Xunzi]]
+# [[d:Q171303|Zeno of Citium]]
+# [[d:Q132157|Zeno of Elea]]
+# [[d:Q47739|Zhuangzi]]
+
+;Middle Ages, 13
+# [[d:Q4295|Peter Abelard]]
+# [[d:Q39837|Averroes]]
+# [[d:Q102851|Boethius]]
+# [[d:Q37388|Francis Bacon]]
+# [[d:Q36330|Giordano Bruno]]
+# [[d:Q528415|Hasdai Crescas]]
+# [[d:Q190089|Duns Scotus]]
+# [[d:Q127398|Maimonides]]
+# [[d:Q154751|Nicholas of Cusa]]
+# '''[[d:Q9438|Thomas Aquinas]]'''
+# [[d:Q378462|Wang Yangming]]
+# [[d:Q43936|William of Ockham]]
+# '''[[d:Q9397|Zhu Xi]]'''
+
+;Early modern, 25
+# [[d:Q82049|George Berkeley]]
+# [[d:Q12735|Johan Amos Comenius]]
+# '''[[d:Q9191|René Descartes]]'''
+# [[d:Q34787|Friedrich Engels]]
+# [[d:Q43499|Desiderius Erasmus]]
+# [[d:Q154959|Hugo Grotius]]
+# '''[[d:Q9235|Georg Wilhelm Friedrich Hegel]]'''
+# [[d:Q37621|Thomas Hobbes]]
+# [[d:Q37160|David Hume]]
+# [[d:Q125249|William James]]
+# '''[[d:Q9312|Immanuel Kant]]'''
+# [[d:Q6512|Søren Kierkegaard]]
+# [[d:Q34628|Gotthold Ephraim Lessing]]
+# '''[[d:Q9353|John Locke]]'''
+# [[d:Q50020|John Stuart Mill]]
+# [[d:Q15975|Montesquieu]]
+# '''[[d:Q9358|Friedrich Nietzsche]]'''
+# '''[[d:Q6527|Jean-Jacques Rousseau]]'''
+# [[d:Q76521|Max Scheler]]<!--C: Ger Heidegger affirmed, with Ortega y Gasset, that all philosophers of the century were indebted to Scheler and praised him as "the strongest philosophical force in modern Germany, nay, in contemporary Europe and in contemporary philosophy as such."-->
+# [[d:Q76576|Friedrich Schleiermacher]]
+# [[d:Q38193|Arthur Schopenhauer]]
+# [[d:Q144535|Herbert Spencer]]<!--C: GB "The only other English philosopher to have achieved anything like such widespread popularity was Bertrand Russell - coining the expression "survival of the fittest",  -->
+# [[d:Q35802|Baruch Spinoza]]
+# [[d:Q185832|Emanuel Swedenborg]]
+# '''[[d:Q9068|Voltaire]]'''
+
+;Modern, 35
+# [[d:Q152388|Theodor W. Adorno]]
+# [[d:Q160640|Raymond Aron]]<!--C:  -->
+# '''[[d:Q7197|Simone de Beauvoir]]'''
+# [[d:Q42156|Henri Bergson]]
+# [[d:Q205162|Isaiah Berlin]]
+# [[d:Q57240|Ernst Bloch]]
+# [[d:Q84423|Martin Buber]]
+# [[d:Q34670|Albert Camus]]
+# [[d:Q57188|Ernst Cassirer]]
+# [[d:Q192348|Benedetto Croce]]
+# [[d:Q184226|Gilles Deleuze]]
+# [[d:Q130631|Jacques Derrida]]
+# [[d:Q131805|John Dewey]]
+# [[d:Q48226|Ralph Waldo Emerson]]<!--notability?-->
+# [[d:Q76422|Ludwig Feuerbach]]
+# [[d:Q102585|Johann Gottlieb Fichte]]
+# [[d:Q60028|Gottlob Frege]]
+# [[d:Q559957|Yan Fu]]
+# [[d:Q76356|Hans-Georg Gadamer]]
+# [[d:Q76357|Jürgen Habermas]]<!--C:  ISA-Top10;-->
+# [[d:Q48301|Martin Heidegger]]
+# [[d:Q58586|Edmund Husserl]]
+# [[d:Q184980|Thomas Kuhn]]
+# [[d:Q296249|Imre Lakatos]]
+# [[d:Q193871|Marshall McLuhan]]
+# [[d:Q212639|Maurice Merleau-Ponty]]
+# [[d:Q81244|Karl Popper]]
+# [[d:Q172544|John Rawls]]
+# [[d:Q33760|Bertrand Russell]]<!--one of top 2 logicians of 20th century-->
+# '''[[d:Q9364|Jean-Paul Sartre]]'''
+# [[d:Q131149|Henry David Thoreau]]
+# [[d:Q185085|Miguel de Unamuno]]
+# [[d:Q183372|Alfred North Whitehead]]
+# '''[[d:Q9391|Ludwig Wittgenstein]]'''
+# [[d:Q360135|Kang Youwei]]
+{{Div col end}}
+
+====Historians, 21 ====
+{{Div col|cols=4}}
+
+;Ancient, 8
+# [[d:Q142999|Eusebius]]
+# [[d:Q26825|Herodotus]]
+# [[d:Q2039|Livy]]
+# [[d:Q172198|Ammianus Marcellinus]] <!-- Roman historian -->
+# [[d:Q2161|Tacitus]] <!-- Roman historian -->
+# [[d:Q41683|Thucydides]]
+# '''[[d:Q9372|Sima Qian]]'''
+# [[d:Q129772|Xenophon]]
+
+;Middle Ages, 3
+# [[d:Q154938|Bede]]
+# '''[[d:Q9294|Ibn Khaldun]]'''
+# [[d:Q328782|Rashid-al-Din Hamadani]]
+
+;Early modern, 3
+# [[d:Q161841|Edward Gibbon]]
+# [[d:Q77184|Leopold von Ranke]]
+# [[d:Q5738|Adolphe Thiers]]
+
+;Modern, 7
+# [[d:Q185105|Fernand Braudel]]
+# [[d:Q44272|Michel Foucault]]<!--C:  -->
+# [[d:Q719787|Christopher Hill]]
+# [[d:Q25351|Theodor Mommsen]]
+# [[d:Q706931|A. J. P. Taylor]]
+# [[d:Q59112|Barbara W. Tuchman]]
+# [[d:Q548462|Frederick Jackson Turner]]
+{{Div col end}}
+
+====Economists, 14====
+{{Div col|cols=4}}
+;Early modern period, 4
+# [[d:Q13526|Thomas Robert Malthus]]
+# [[d:Q13575|François Quesnay]]
+# [[d:Q160270|David Ricardo]]<!--C: GB  one of the most influential of the classical economists-->
+# '''[[d:Q9381|Adam Smith]]'''
+
+;Modern, 10
+# [[d:Q47426|Milton Friedman]]<!--C:  -->
+# [[d:Q62835|Hermann Heinrich Gossen]]<!--C:  -->
+# '''[[d:Q9317|John Maynard Keynes]]'''*<!--C:  -->
+# [[d:Q5752|Peter Kropotkin]]
+# [[d:Q131112|Paul Krugman]]<!--C:  -->
+# [[d:Q128736|John Forbes Nash, Jr.]]*<!--C:  -->
+# [[d:Q152452|Gunnar Myrdal]]<!--C: Sv - best known in the US for his study of race relations,  theory of money and economic fluctuations AND Nobel prize-->
+# [[d:Q179493|Bertil Ohlin]]<!--C: Sv standard mathematical model of international free trade, the Heckscher–Ohlin model AND Nobel prize-->
+# [[d:Q102454|Paul Samuelson]]
+# [[d:Q58031|Werner Sombart]]<!--C: Ger  one of the leading Continental European social scientists during the first quarter of the 20th century-->
+# [[d:Q295673|William Vickrey]]<!--C: CAN AND Nobel Prize  -->
+{{Div col end}}
+
+==== Linguists, 7 ====
+{{Div col|cols=4}}
+;Antiquity
+# [[d:Q104804|Mesrop Mashtots]] <!-- Armenian linguist -->
+# [[d:Q189725|Pāṇini]] <!-- Sanskrit linguist -->
+
+;Modern
+# [[d:Q185375|Mikhail Bakhtin]]
+# [[d:Q9049|Noam Chomsky]]*<!--C:  -->
+# [[d:Q159876|Julia Kristeva]]
+# [[d:Q360084|Yuri Lotman]]
+# [[d:Q13230|Ferdinand de Saussure]]<!--C:  -->
+{{Div col end}}
+
+====Sociologists, 13====
+{{Div col|cols=4}}
+# [[d:Q76844|Ulrich Beck]]<!--C: Most cited http://www.timeshighereducation.co.uk/405956.article -->
+# [[d:Q156268|Pierre Bourdieu]]<!--C:  ISA-Top10;-->
+# [[d:Q12718|Auguste Comte]]<!--C: founder -->
+# [[d:Q15948|Émile Durkheim]]<!--C: Most cited http://www.timeshighereducation.co.uk/405956.article -->
+# [[d:Q75812|Norbert Elias]]<!--C:  ISA-Top10;-->
+# [[d:Q220008|Anthony Giddens, Baron Giddens]]<!--C: Most cited http://www.timeshighereducation.co.uk/405956.article  -->
+# [[d:Q314471|Erving Goffman]] <!--C: ISA-Top10; Most cited http://www.timeshighereducation.co.uk/405956.article -->
+# [[d:Q355237|Bruno Latour]]<!--C: Most cited http://www.timeshighereducation.co.uk/405956.article -->
+# [[d:Q312843|Robert K. Merton]]<!--C: ISA-Top10; -->
+# [[d:Q203913|Talcott Parsons]]<!--C:  ISA-Top10;-->
+# [[d:Q319816|Pitirim Sorokin]]<!--C: Ru He is best known for his contributions to the social cycle theory.-->
+# '''[[d:Q9387|Max Weber]]'''*<!--C:  ISA-Top10;-->
+# [[d:Q312837|C. Wright Mills]]<!--C:  ISA-Top10;-->
+{{Div col end}}
+
+====Political writers, 9====
+{{Div col|cols=4}}
+
+;Antiquity, 1
+# [[d:Q9045|Chanakya]]
+
+;Middle Ages, 1
+# '''[[d:Q1399|Niccolò Machiavelli]]'''
+
+;Early Modern, 1
+# [[d:Q165792|Edmund Burke]]
+
+;Modern, 6
+# [[d:Q219368|Judith Butler]]<!--C: Most cited http://www.timeshighereducation.co.uk/405956.article -->
+# [[d:Q83003|Antonio Gramsci]]<!--C:  -->
+# [[d:Q126462|Thomas Paine]]<!--C:  -->
+# '''[[d:Q7231|Rosa Luxemburg]]'''*<!--C:  -->
+# '''[[d:Q9061|Karl Marx]]'''*<!--C:  -->
+# [[d:Q77161|Hans Morgenthau]]<!--C: US  landmark contributions to international relations theory and the study of international law, and his Politics Among Nations, first published in 1948, went through five editions during his lifetime. -->
+{{Div col end}}
+
+====Psychologists, 31 ==== <!--Limit 15?-->
+{{Div col|cols=4}}
+# [[d:Q152393|Alfred Adler]]
+# [[d:Q310741|Gordon Allport]]
+# [[d:Q153753|Albert Bandura]]
+# [[d:Q353133|Raymond Cattell]]
+# [[d:Q58632|Hans Eysenck]]
+# [[d:Q313931|Albert Ellis]]
+# [[d:Q58074|Erik Erikson]]
+# [[d:Q76881|Gustav Fechner]]*
+# [[d:Q315916|Leon Festinger]]
+# '''[[d:Q9215|Sigmund Freud]]'''*
+# [[d:Q57085|Erich Fromm]]
+# [[d:Q184746|Jane Goodall]]
+# [[d:Q683246|Donald O. Hebb]]
+# [[d:Q60024|Hermann von Helmholtz]]
+# [[d:Q76509|Karl Jaspers]]
+# [[d:Q41532|Carl Jung]]
+# [[d:Q77106|Kurt Lewin]]
+# [[d:Q23357|Abraham Maslow]]*
+# [[d:Q28876|David McClelland]]
+# [[d:Q670658|George Armitage Miller]]*
+# [[d:Q42985|Ivan Pavlov]]*
+# [[d:Q123190|Jean Piaget]]*
+# [[d:Q191004|Carl Rogers]]
+# [[d:Q84172|Otto Rank]]
+# [[d:Q290285|Stanley Schachter]]
+# [[d:Q213195|B. F. Skinner]]*
+# [[d:Q310694|Benjamin Spock]]
+# [[d:Q309765|Edward Thorndike]]
+# [[d:Q217477|John B. Watson]]
+# [[d:Q75814|Wilhelm Wundt]]
+# [[d:Q180819|Lev Vygotsky]]
+{{Div col end}}
+
+====Anthropologists and cultural scientists, 2====
+# [[d:Q128126|Claude Lévi-Strauss]]<!--C:  -->
+# [[d:Q180099|Margaret Mead]]
+
+====Art historians and critics, 3====
+# [[d:Q61078|Walter Benjamin]]
+# [[d:Q434813|Clement Greenberg]]
+# [[d:Q57656|Erwin Panofsky]]
+
+=== Religious figures, 130 === <!--deities are listed in Philosophy and religion-->
+{{Div col|cols=4}}
+==== Abrahamic religions, 88 ====
+# '''[[d:Q9181|Abraham]]'''
+# [[d:Q70899|Adam]]
+# [[d:Q171724|Daniel]]
+# [[d:Q41370|David]]
+# [[d:Q133507|Elijah]]
+# [[d:Q191787|Ezra]]
+# [[d:Q81989|Gabriel]]
+# [[d:Q188794|Isaiah]]
+# [[d:Q289957|Jacob]]
+# [[d:Q145746|Joseph (son of Jacob)]]
+# '''[[d:Q9077|Moses]]'''
+# [[d:Q81422|Noah]]
+# [[d:Q37085|Solomon]]
+
+;;Christianity, 55
+# [[d:Q345|Mary (mother of Jesus)]]
+# '''[[d:Q302|Jesus]]'''
+# [[d:Q44015|John the Apostle]]
+# [[d:Q40662|John the Baptist]]
+# [[d:Q42544|Thomas More]]
+# '''[[d:Q9200|Paul the Apostle]]'''
+# [[d:Q33923|Saint Peter]]
+
+;;;''Eastern Christianity''
+# [[d:Q106026|Arius]]
+# [[d:Q44024|Athanasius of Alexandria]]
+# [[d:Q44258|Basil of Caesarea]]
+# [[d:Q43706|John Chrysostom]]
+# [[d:Q188883|Clement of Alexandria]]
+# [[d:Q44079|Cyril of Alexandria]]
+# [[d:Q51884|John of Damascus]]
+# [[d:Q239925|Saints Cyril and Methodius]]
+# [[d:Q44011|Gregory of Nazianzus]]
+# [[d:Q185073|Nestorius]]
+# [[d:Q44269|Saint Nicholas]]
+# [[d:Q379587|Patriarch Nikon]]
+# [[d:Q191734|Gregory of Nyssa]]
+# [[d:Q170472|Origen]]
+
+;;;''Popes''
+# [[d:Q42887|Pope Clement I]]
+# [[d:Q42827|Pope Gregory I]]
+# [[d:Q43954|Pope Leo I]]
+# [[d:Q16975|Pope Paul VI]]
+# [[d:Q43720|Pope Pius IX]]
+
+;;;''Protestantism''
+# [[d:Q313070|Jacobus Arminius]] <!-- C: Netherlands - his views became the basis of Arminianism and the Dutch Remonstrant movement. -->
+# [[d:Q107473|Karl Barth]] <!--C: Switzerland - is often regarded as the greatest Protestant theologian of the twentieth century. -->
+# [[d:Q76326|Dietrich Bonhoeffer]]<!--  C: Ger - His writings on Christianity's role in the secular world have become widely influential, and many have labelled his book The Cost of Discipleship a modern classic. Anti-nazi-->
+# [[d:Q37577|John Calvin]]*<!--C: Fr - He was a principal figure in the development of Calvinism -->
+# [[d:Q199894|Thomas Cranmer]]<!-- C: GB - as Archbishop of Canterbury, he was responsible for establishing the first doctrinal and liturgical structures of the reformed Church of England. -->
+# [[d:Q235069|Mary Baker Eddy]]<!--c: US the founder of Christian Science -->
+# [[d:Q213550|Billy Graham]]<!-- C: US - Graham has repeatedly been on Gallup's list of most admired men and women. He has appeared on the list 55 times since 1955 (including 49 consecutive years), more than any other individual in the world.-->
+# [[d:Q189937|John Knox]]<!--C: GB Scotland -  a leader of the Protestant Reformation who is considered the founder of thePresbyterian denomination in Scotland.-->
+# [[d:Q76325|Philipp Melanchthon]]*<!--C: Ger stands next to Luther and Calvin as a reformer, theologian, and molder of Protestantism -->
+# [[d:Q335171|Menno Simons]]<!--C: Netherlands a contemporary of the Protestant Reformers and his followers became known as Mennonites.-->
+# [[d:Q47102|Joseph Smith]]<!--C: US founded the Latter Day Saint movement, the predominant branch of which is Mormonism.  -->
+# [[d:Q278825|Charles Spurgeon]]<!--C: GB Spurgeon remains highly influential among Christians of various denominations, among whom he is known as the "Prince of Preachers". -->
+# [[d:Q213393|John Wesley]]<!--C: GB  founding the Methodist movement -->
+# [[d:Q123034|Huldrych Zwingli]]<!--C: Switzerland His legacy lives on in the confessions, liturgy, and church orders of the Reformed churches of today -->
+
+;;;''Western Christianity''
+# [[d:Q43689|Ambrose]]
+# [[d:Q676555|Francis of Assisi]]
+# [[d:Q43746|Bonaventure]]
+# [[d:Q236326|Columba]]
+# [[d:Q190388|John of the Cross]]
+# [[d:Q48438|Saint George]]
+# [[d:Q43977|Jan Hus]]
+# [[d:Q182123|Irenaeus]]
+# [[d:Q44248|Jerome]]
+# [[d:Q44281|Ignatius of Loyola]]
+# [[d:Q44265|Benedict of Nursia]]
+# [[d:Q174929|Tertullian]]
+# [[d:Q210735|Tomás de Torquemada]]
+# [[d:Q173893|John Wycliffe]]
+# [[d:Q163900|Francis Xavier]]
+
+;; Islam, 13
+# [[d:Q180123|Fatimah]]
+# '''[[d:Q9458|Muhammad]]'''
+
+;;;''Shi'a Islam''
+# [[d:Q39619|Ali]]
+# [[d:Q112128|Hussein ibn Ali]]
+# [[d:Q170046|Ja'far al-Sadiq]]
+
+;;;''Sunni Islam''
+# [[d:Q241026|Muhammad al-Bukhari]]
+# [[d:Q140124|Muslim ibn al-Hajjaj]]
+# [[d:Q293571|Al-Nawawi]]
+# [[d:Q294281|Al-Shafi‘i]]
+# [[d:Q312299|Malik ibn Anas]]
+# [[d:Q194442|Ahmad ibn Hanbal]]
+# [[d:Q190896|Abū Ḥanīfa]]
+# [[d:Q491558|Ibn Taymiyyah]]
+
+;;Judaism, 8
+# [[d:Q363513|Judah Loew ben Bezalel]]
+# [[d:Q279359|Vilna Gaon]]
+# [[d:Q310821|Akiva ben Joseph]]
+# [[d:Q26456|Rashi]]
+# [[d:Q319062|Baal Shem Tov]]
+
+;;Others, 2
+# '''[[d:Q9546|Al-Ghazali]]'''
+# [[d:Q46420|Ibn Arabi]]
+
+==== Buddhism, 17 ====
+# '''[[d:Q9441|Gautama Buddha]]'''
+# [[d:Q310913|Thich Nhat Hanh]]
+# [[d:Q17293|14th Dalai Lama]]
+# [[d:Q1708503|Longchenpa]]
+# [[d:Q171195|Nagarjuna]]
+# [[d:Q231582|Padmasambhava]]
+
+;;Chinese Buddhism
+# [[d:Q187172|Bodhidharma]]<!--C: Ch-->
+# [[d:Q345012|Huineng]]<!--C: Ch-->
+# [[d:Q1194206|Huiyuan (Buddhist)]]<!--C: Ch-->
+# [[d:Q335293|Kumārajīva]]<!--C: Ch-->
+# [[d:Q197778|Zhiyi]]<!--C: Ch-->
+
+;;Indian Buddhism
+# [[d:Q28988|Ananda]]<!--C: India-->
+# [[d:Q379814|Maudgalyayana]]<!--C: India-->
+# [[d:Q320142|Sariputta]]<!--C: India-->
+# [[d:Q316343|Vasubandhu]]<!--C: India-->
+
+;;Japanese Buddhism
+# [[d:Q318064|Dōgen]]<!--C: Ja-->
+# [[d:Q222227|Kūkai]]<!--C: Ja-->
+
+==== Hinduism, 18 ====
+;;Ancient
+# [[d:Q29049|Kanada]]
+# [[d:Q574355|Kapila]]
+# [[d:Q231680|Patanjali]]
+# [[d:Q715607|Valmiki]]
+# [[d:Q330521|Vyasa]]
+
+;;Medieval
+# [[d:Q771686|Basava]]
+# [[d:Q774847|Kumārila Bhaṭṭa]]
+# [[d:Q1771062|Gaudapada]]
+# [[d:Q335371|Madhvacharya]]
+# [[d:Q870262|Chaitanya Mahaprabhu]]
+# [[d:Q1741798|Ramanuja]]
+# [[d:Q180967|Adi Shankara]]
+
+;;Modern
+# [[d:Q192207|Sri Aurobindo]]
+# [[d:Q288441|Ramana Maharshi]]
+# [[d:Q234898|A. C. Bhaktivedanta Swami Prabhupada]]
+# [[d:Q183126|Ramakrishna]]
+# [[d:Q47478|Swami Vivekananda]]
+# [[d:Q312549|Paramahansa Yogananda]]
+
+==== Others, 7 ====
+;;Bahá'í
+# [[d:Q104273|Báb]]
+# [[d:Q101054|Bahá'u'lláh]]
+
+;;Sikhism
+# [[d:Q83322|Guru Nanak]]
+# [[d:Q312967|Guru Gobind Singh]]
+
+;;Zoroastrianism
+# [[d:Q35811|Zoroaster]]
+
+;Mystics
+# [[d:Q39978|Nostradamus]]
+# [[d:Q43989|Grigori Rasputin]]
+{{Div col end}}
+
+=== Politicians and leaders, 349 ===
+==== Ancient, 48 ====
+{{Div col|cols=4}}
+===== Asia =====
+; Central Asia 
+# '''[[d:Q8423|Cyrus the Great]]'''
+# [[d:Q103960|Semiramis]]
+; Eastern Asia 
+# '''[[d:Q7192|Qin Shi Huang]]'''
+# [[d:Q37151|Sun Tzu]]
+; Egypt 
+# [[d:Q81794|Akhenaten]]<!--C: Egypt-->
+# [[d:Q635|Cleopatra]]<!--C: Egypt-->
+# [[d:Q174367|Djoser]]<!--C: Egypt-->
+# [[d:Q129234|Hatshepsut]]<!--C: Egypt-->
+# [[d:Q40930|Nefertiti]]<!--C: Egypt-->
+# [[d:Q573606|Ptahhotep]]
+# [[d:Q168261|Ptolemy I Soter]]<!--C: Egypt-->
+# [[d:Q1523|Ramesses II]]<!--C: Egypt-->
+# [[d:Q157899|Thutmose III]]<!--C: Egypt-->
+# [[d:Q12154|Tutankhamun]]<!--C: Egypt-->
+# [[d:Q157918|Seti I]]<!--C: Egypt-->
+; Southern Asia 
+# '''[[d:Q8589|Ashoka]]'''
+# [[d:Q188541|Chandragupta Maurya]]
+; Western Asia 
+# [[d:Q184462|Croesus]]
+# [[d:Q36359|Hammurabi]]
+# [[d:Q185126|Mithridates VI of Pontus]]
+# [[d:Q159888|Queen of Sheba]]
+# [[d:Q44387|Dareios I.]]
+# [[d:Q7210|Emperor Gaozu of Han]]
+
+===== Europe =====
+; Ancient Rome
+# [[d:Q1429|Antoninus Pius]]<!--C: Rome-->
+# '''[[d:Q1405|Augustus]]'''<!--C: Rome-->
+# [[d:Q1409|Caligula]]
+# '''[[d:Q8413|Constantine the Great]]'''<!--C: Rome-->
+# [[d:Q1423|Domitian]]<!--C: Rome-->
+# '''[[d:Q1048|Julius Caesar]]'''<!--C: Rome-->
+# [[d:Q1430|Marcus Aurelius]]<!--C: Rome-->
+# [[d:Q1413|Nero]]<!--C: Rome-->
+# [[d:Q46696|Theodosius I]]<!--C: Rome-->
+# [[d:Q1407|Tiberius]]<!--C: Rome-->
+# [[d:Q1425|Trajan]]<!--C: Rome-->
+; Eastern Europe
+# [[d:Q36724|Attila]]
+# [[d:Q172353|Pyrrhus of Epirus]]
+; Hellenistic Kingdom
+# [[d:Q184176|Seleucus I Nicator]]
+; Macedonia
+# '''[[d:Q8409|Alexander the Great]]'''
+# [[d:Q130650|Philip II of Macedon]]
+; Greece 
+# [[d:Q187982|Alcibiades]]<!--C: Gre-->
+# [[d:Q117253|Demosthenes]]<!--C: Gre-->
+# [[d:Q80398|Pericles]]<!--C: Gre-->
+# [[d:Q133337|Solon]]<!--C: Gre-->
+; Western Europe 
+# [[d:Q102371|Alaric I]]
+# [[d:Q68880|Arminius]]
+# [[d:Q184634|Boudica]]
+# [[d:Q178953|Vercingetorix]]
+# [[d:Q36456|Hannibal]]
+{{Div col end}}
+
+==== Middle Ages, 67 ====
+{{Div col|cols=4}}
+===== Asia =====
+; Byzantine Empire
+# [[d:Q41833|Basil II]]
+# [[d:Q41852|Heraclius]]
+# [[d:Q41866|Justinian I]]
+# [[d:Q31755|Leo III the Isaurian]]
+# [[d:Q41610|Manuel I Komnenos]]
+; Caliphates
+# [[d:Q334923|Abu Bakr]]
+# [[d:Q131002|Harun al-Rashid]]
+# [[d:Q181154|Muawiyah I]]
+# '''[[d:Q8467|Umar]]'''
+# [[d:Q37731|Uthman ibn Affan]]
+; Central Asia
+# [[d:Q175138|Batu Khan]]
+# [[d:Q177320|Hulagu Khan]]
+# '''[[d:Q8462|Timur]]'''
+# [[d:Q486088|Ulugh Beg]]
+; China
+# [[d:Q7523|Kublai Khan]]<!--C: Ch-->
+; Eastern Asia
+# '''[[d:Q720|Genghis Khan]]'''
+# [[d:Q7519|Ögedei Khan]]
+; Western Asia
+# [[d:Q34503|Mehmed the Conqueror]]
+# [[d:Q83100|Osman I]]
+# '''[[d:Q8581|Saladin]]'''
+
+===== Europe =====
+; Eastern Europe
+# [[d:Q188634|Matthias Corvinus]]
+# [[d:Q192264|Simeon I of Bulgaria]]<!--C: Bukgaria-->
+# [[d:Q177903|Stephen I of Hungary]]<!--C: Hungary-->
+# [[d:Q43715|Vlad the Impaler]]
+; England and Scotland
+# [[d:Q83476|Alfred the Great]]<!--C: GB-->
+# [[d:Q57798|Edward I of England]]<!--C: GB-->
+# [[d:Q102140|Henry II of England]]<!--C: GB-->
+# [[d:Q129308|John, King of England]]<!--C: GB-->
+# [[d:Q42305|Richard I of England]]<!--C: GB-->
+# [[d:Q37594|William the Conqueror]]<!--C: GB-->
+; France
+# '''[[d:Q3044|Charlemagne]]'''<!--C: Fr-->
+# [[d:Q28984|Chlothar I]]<!--C: Fr-->
+# [[d:Q82339|Clovis I]]<!--C: Fr-->
+# [[d:Q43974|Louis the Pious]]<!--C: Fr-->
+# [[d:Q8058|Louis XI of France]]<!--C: Fr-->
+# [[d:Q34428|Philip II of France]]<!--C: Fr-->
+# [[d:Q130969|Philip IV of France]]<!--C: Fr-->
+; Germany
+# [[d:Q154936|Arnulf of Carinthia]]<!--C: Ger-->
+# [[d:Q150712|Charles the Fat]]<!--C: Ger-->
+# [[d:Q150620|Henry the Fowler]]<!--C: Ger-->
+; Holy Roman Empire
+# [[d:Q155669|Charles IV, Holy Roman Emperor]]
+# [[d:Q71231|Charles the Bald]]
+# [[d:Q79789|Frederick I, Holy Roman Emperor]]
+# [[d:Q130221|Frederick II, Holy Roman Emperor]]
+# [[d:Q60094|Henry IV, Holy Roman Emperor]]
+# [[d:Q43915|Otto I, Holy Roman Emperor]]
+# [[d:Q57124|Sigismund, Holy Roman Emperor]]
+; Italy
+# [[d:Q164823|Girolamo Savonarola]]<!--C: It-->
+# [[d:Q191103|Lucrezia Borgia]]<!--C: It-->
+; Papal States
+# [[d:Q108316|Pope Alexander VI]]
+# [[d:Q134646|Pope Boniface VIII]]
+# [[d:Q133063|Pope Gregory VII]]
+# [[d:Q128076|Pope Innocent III]]
+; Poland and Lithuania
+# [[d:Q53436|Bolesław I Chrobry]]<!--C: Poland-->
+# [[d:Q54049|Jogaila]]<!--C: Poland-->
+# [[d:Q53435|Mieszko I of Poland]]<!--C: Poland-->
+; Russia
+# [[d:Q174044|Alexander Nevsky]]<!--C: Ru-->
+# [[d:Q171185|Ivan III of Russia]]<!--C: Ru-->
+# [[d:Q1058572|Sviatoslav I of Kiev]]<!--C: Ru-->
+# [[d:Q14974|Vladimir the Great]]<!--C: Ru-->
+; Southern Europe
+# [[d:Q105105|Theoderic the Great]]
+; Western Europe
+# [[d:Q587697|Afonso I of Portugal]]<!--C: Portugal-->
+# [[d:Q134128|Cnut the Great]]<!--C: Da-->
+# [[d:Q12860|Ferdinand II of Aragon]]<!--C: Portugal-->
+# [[d:Q182897|Henry the Navigator]]<!--C: Portugal-->
+# [[d:Q45859|Isabella I of Castile]]<!--C: Es-->
+# [[d:Q150735|Lothair I]]
+{{Div col end}}
+
+==== Early modern period, 60 ====
+{{Div col|cols=4}}
+===== Americas =====
+; Americas
+# [[d:Q179577|Atahualpa]]
+# [[d:Q141791|Moctezuma II]]
+# [[d:Q43527|Sitting Bull]]<!--C: US-->
+; United States
+# [[d:Q178903|Alexander Hamilton]]<!--C: US-->
+# '''[[d:Q23|George Washington]]'''<!--C: US-->
+# [[d:Q11813|James Madison]]<!--C: US-->
+# [[d:Q11806|John Adams]]<!--C: US-->
+# [[d:Q11812|Thomas Jefferson]]<!--C: US-->
+
+===== Asia =====
+; Central Asia
+# [[d:Q171349|Abbas I of Persia]]
+# [[d:Q797848|Babur]]
+# [[d:Q486188|Humayun]]
+; Japan
+# [[d:Q171411|Oda Nobunaga]]<!--C: Ja-->
+# [[d:Q171977|Tokugawa Ieyasu]]<!--C: Ja-->
+# [[d:Q187550|Toyotomi Hideyoshi]]<!--C: Ja-->
+; Southern Asia
+# '''[[d:Q8597|Akbar]]'''
+# [[d:Q485547|Aurangzeb]]
+# [[d:Q83672|Shah Jahan]]
+; Western Asia
+# [[d:Q170514|Mehmed IV]]
+# [[d:Q494660|Selim I]]
+# [[d:Q199633|Selim III]]
+# '''[[d:Q8474|Suleiman the Magnificent]]'''
+
+===== Europe =====
+; England and Scotland
+# [[d:Q81506|Charles I of England]]<!--C: GB-->
+# '''[[d:Q7207|Elizabeth I of England]]'''<!--C: GB-->
+# [[d:Q38370|Henry VIII]]<!--C: GB-->
+# [[d:Q79972|James VI and I]]<!--C: GB-->
+# [[d:Q82674|Mary I of England]]<!--C: GB-->
+# [[d:Q131412|Mary, Queen of Scots]]<!--C: GB-->
+# [[d:Q104190|Robert Walpole]]<!--C: GB-->
+# [[d:Q129987|William III of England]]<!--C: GB-->
+# [[d:Q128902|William Pitt the Younger]]<!--C: GB-->
+; France
+# [[d:Q166056|Cardinal Mazarin]]<!--C: Fr-->
+# [[d:Q26702|Cardinal Richelieu]]<!--C: Fr-->
+# [[d:Q131552|Catherine de' Medici]]<!--C: Fr-->
+# [[d:Q129857|Francis I of France]]<!--C: Fr-->
+# [[d:Q936976|Henry IV of France]]<!--C: Fr-->
+# '''[[d:Q7742|Louis XIV]]'''<!--C: Fr-->
+# [[d:Q7738|Louis XV of France]]<!--C: Fr-->
+# [[d:Q7732|Louis XVI of France]]<!--C: Fr-->
+; Holy Roman Empire
+# [[d:Q32500|Charles V, Holy Roman Emperor]]
+# [[d:Q150611|Ferdinand I, Holy Roman Emperor]]
+# [[d:Q76555|Joseph II, Holy Roman Emperor]]
+# [[d:Q150494|Leopold I, Holy Roman Emperor]]
+# [[d:Q131706|Maria Theresa]]
+# [[d:Q150726|Maximilian I, Holy Roman Emperor]]
+; Italia and Papal States
+# [[d:Q83159|Pope Clement VII]]
+# [[d:Q80516|Pope Julius II]]
+; Poland and Lithuania
+# [[d:Q53454|John III Sobieski]]
+# [[d:Q52940|Sigismund III Vasa]]
+; Russia
+# [[d:Q7731|Alexis of Russia]]<!--C: Ru-->
+# [[d:Q170172|Boris Godunov]]<!--C: Ru-->
+# [[d:Q36450|Catherine the Great]]<!--C: Ru-->
+# [[d:Q130752|Elizabeth of Russia]]<!--C: Ru-->
+# [[d:Q7996|Ivan the Terrible]]<!--C: Ru-->
+# '''[[d:Q8479|Peter the Great]]'''<!--C: Ru-->
+; Western Europe
+# [[d:Q52934|Charles XII of Sweden]]<!--C: Sv-->
+# [[d:Q153586|Christian IV of Denmark]]<!--C: Da-->
+# [[d:Q33550|Frederick the Great]]<!--C: Ger-->
+# [[d:Q34417|Philip II of Spain]]<!--C: Es-->
+# [[d:Q170467|Philip V of Spain]]<!--C: Es-->
+# [[d:Q78454|William the Silent]]
+{{Div col end}}
+
+==== Modern, 145 ====
+{{Div col|cols=4}}
+===== Africa, 17 =====
+; Eastern Africa
+# [[d:Q41178|Haile Selassie I]]
+# [[d:Q48231|Idi Amin]]
+# [[d:Q186525|Julius Nyerere]]
+; Northern Africa
+# [[d:Q179825|Abdelkader El Djezairi]]
+# [[d:Q42013|Anwar Sadat]]
+# [[d:Q39524|Gamal Abdel Nasser]]
+# [[d:Q19878|Muammar Gaddafi]]
+# [[d:Q182781|Muhammad Ali of Egypt]]
+; Southern and Central Africa
+# [[d:Q19825|Cecil Rhodes]]
+# [[d:Q184945|Hastings Banda]]
+# [[d:Q164535|Mobutu Sese Seko]]
+# '''[[d:Q8023|Nelson Mandela]]'''
+# [[d:Q10707|Robert Mugabe]]
+# [[d:Q27695|Shaka]]
+; Western Africa
+# [[d:Q1254|Kofi Annan]]
+# '''[[d:Q8620|Kwame Nkrumah]]'''
+# [[d:Q154545|Léopold Sédar Senghor]]
+
+===== Americas, 33 =====
+; Brazil
+# [[d:Q939|Pedro I of Brazil]]<!--C: Brazil-->
+# [[d:Q156774|Pedro II of Brazil]]<!--C: Brazil-->
+; Canada
+# [[d:Q8619|Pierre Trudeau]]
+; Central America and Caribbean
+# [[d:Q57402|Daniel Ortega]]
+# [[d:Q11256|Fidel Castro]]<!--C: Cuba-->
+; Mexico
+# [[d:Q182276|Benito Juárez]]<!--C: Mexico-->
+# [[d:Q150688|Porfirio Díaz]]<!--C: Mexico-->
+; South America
+# [[d:Q152534|Alfredo Stroessner]]
+# [[d:Q368|Augusto Pinochet]]
+# [[d:Q40933|Eva Perón]]
+# [[d:Q8440|Hugo Chávez]]
+# [[d:Q134160|José de San Martín]]
+# [[d:Q440|Salvador Allende]]
+# '''[[d:Q8605|Simón Bolívar]]'''
+; United States
+# [[d:Q207|George W. Bush]]<!--C: US-->
+# [[d:Q23685|Jimmy Carter]]
+# [[d:Q1124|Bill Clinton]]<!--C: US-->
+# [[d:Q9916|Dwight D. Eisenhower]]<!--C: US-->
+# [[d:Q11817|Andrew Jackson]]<!--C: US-->
+# [[d:Q9640|Lyndon B. Johnson]]<!--C: US-->
+# [[d:Q9696|John F. Kennedy]]<!--C: US-->
+# [[d:Q66107|Henry Kissinger]]<!--C: US-->
+# '''[[d:Q91|Abraham Lincoln]]'''<!--C: US-->
+# [[d:Q127417|Douglas MacArthur]]<!--C: US-->
+# [[d:Q11815|James Monroe]]<!--C: US-->
+# [[d:Q9588|Richard Nixon]]<!--C: US-->
+# [[d:Q11891|James K. Polk]]<!--C: US-->
+# [[d:Q9960|Ronald Reagan]]<!--C: US-->
+# [[d:Q83396|Eleanor Roosevelt]]
+# '''[[d:Q8007|Franklin D. Roosevelt]]'''<!--C: US-->
+# [[d:Q33866|Theodore Roosevelt]]<!--C: US-->
+# [[d:Q11613|Harry S. Truman]]<!--C: US-->
+# [[d:Q34296|Woodrow Wilson]]<!--C: US-->
+
+===== Asia, 36 =====
+; China
+# [[d:Q47842|Empress Dowager Cixi]]<!--C: Ch-->
+# [[d:Q17410|Zhou Enlai]]<!--C: Ch-->
+# [[d:Q15029|Hu Jintao]]<!--C: Ch-->
+# [[d:Q16574|Chiang Kai-shek]]<!--C: Ch-->
+# [[d:Q185152|Puyi]]<!--C: Ch-->
+# [[d:Q16977|Deng Xiaoping]]<!--C: Ch-->
+# '''[[d:Q8573|Sun Yat-sen]]'''<!--C: Ch-->
+# '''[[d:Q5816|Mao Zedong]]'''<!--C: Ch-->
+; Eastern Asia
+# [[d:Q14356|Park Chung-hee]]
+# [[d:Q34479|Hirohito]]<!--C: Ja-->
+# [[d:Q41117|Kim Il-sung]]<!--C: North_Korea-->
+# [[d:Q174231|Emperor Meiji]]<!--C: Ja-->
+# [[d:Q179871|Eisaku Satō]]
+; Central Asia
+# [[d:Q157451|Heydar Aliyev]]
+# [[d:Q57394|Nursultan Nazarbayev]]
+# [[d:Q82918|Saparmurat Niyazov]]
+# [[d:Q128245|Mohammad Reza Pahlavi]]<!--C: Iran-->
+; India
+# [[d:Q1149|Indira Gandhi]]<!--C: India-->
+# '''[[d:Q1047|Jawaharlal Nehru]]'''<!--C: India-->
+# [[d:Q9455|Vallabhbhai Patel]]<!--C: India-->
+; Southeastern Asia
+# [[d:Q1480|Corazon Aquino]]
+# [[d:Q1463|Ferdinand Marcos]]<!--C: Philippines-->
+# [[d:Q36014|Ho Chi Minh]]<!--C: Vietnam-->
+# [[d:Q181383|Mahathir Mohamad]]
+# [[d:Q39464|Pol Pot]]<!--C: Cambodia-->
+# [[d:Q44819|Suharto]]
+# [[d:Q76127|Sukarno]]
+# [[d:Q131248|Lee Kuan Yew]]
+; Southern Asia
+# [[d:Q34413|Benazir Bhutto]]<!--C: Pakistan-->
+# [[d:Q160554|Muhammad Ali Jinnah]]
+; Western Asia
+# '''[[d:Q5152|Mustafa Kemal Atatürk]]'''<!--C: Turkey-->
+# [[d:Q37610|David Ben-Gurion]]
+# [[d:Q134817|Abdul Hamid II]]
+# [[d:Q1316|Saddam Hussein]]<!--C: Iraq-->
+# [[d:Q174791|Mahmud II]]
+# [[d:Q42992|Golda Meir]]
+
+===== Europe, 59 =====
+; Austria-Hungary
+# [[d:Q43063|Archduke Franz Ferdinand of Austria]]<!--C: Austria-->
+# [[d:Q130834|Francis II, Holy Roman Emperor]]<!--C: Austria-->
+# [[d:Q51056|Franz Joseph I of Austria]]<!--C: Austria-->
+# [[d:Q45662|Klemens von Metternich]]<!--C: Austria-->
+
+; Eastern Europe
+# [[d:Q150543|Alexander Dubček]]
+# [[d:Q53783|Enver Hoxha]]
+# [[d:Q629702|Leonid Kuchma]]
+# [[d:Q9161|Josip Broz Tito]]<!--C: Albania-->
+# [[d:Q885|Józef Piłsudski]]
+# [[d:Q444|Lech Wałęsa]]<!--C: Poland-->
+# [[d:Q80504|Nicolae Ceaușescu]]<!--C: Romania-->
+# [[d:Q47139|Slobodan Milošević]]<!--C: Serbia-->
+# [[d:Q36233|Václav Havel]]<!--C: Czech-->
+
+; France
+# '''[[d:Q2042|Charles de Gaulle]]'''<!--C: Fr-->
+# [[d:Q2038|François Mitterrand]]<!--C: Fr-->
+# [[d:Q7771|Louis Philippe I]]<!--C: Fr-->
+# '''[[d:Q517|Napoleon]]'''<!--C: Fr-->
+# [[d:Q7721|Napoleon III]]<!--C: Fr-->
+; Germany
+# '''[[d:Q352|Adolf Hitler]]'''<!--C: Ger-->
+# [[d:Q2607|Erich Honecker]]<!--C: Ger-->
+# [[d:Q2514|Willy Brandt]]<!--C: Ger-->
+# [[d:Q2518|Helmut Kohl]]<!--C: Ger-->
+# [[d:Q2492|Konrad Adenauer]]<!--C: Ger-->
+# '''[[d:Q8442|Otto von Bismarck]]'''<!--C: Ger-->
+# [[d:Q41749|Joseph Goebbels]]
+# [[d:Q2677|Wilhelm II, German Emperor]]<!--C: Ger-->
+# [[d:Q150652|William I, German Emperor]]<!--C: Ger-->
+; Italia and Papal States
+# [[d:Q989|Pope John Paul II]]
+; Russia and USSR
+# [[d:Q83171|Alexander II of Russia]]<!--C: Ru-->
+# [[d:Q34453|Boris Yeltsin]]<!--C: Ru-->
+# [[d:Q151929|Eduard Shevardnadze]]<!--C: Ru-->
+# '''[[d:Q855|Joseph Stalin]]'''<!--C: Ru-->
+# [[d:Q765165|Leonid Brezhnev]]<!--C: Ru-->
+# [[d:Q30487|Mikhail Gorbachev]]<!--C: Ru-->
+# [[d:Q130734|Nicholas I of Russia]]<!--C: Ru-->
+# [[d:Q40787|Nicholas II of Russia]]<!--C: Ru-->
+# [[d:Q35314|Nikita Khrushchev]]<!--C: Ru-->
+; United Kingdom
+# [[d:Q82006|Benjamin Disraeli]]<!--C: GB-->
+# [[d:Q129006|Clement Attlee]]<!--C: GB-->
+# [[d:Q9685|Diana, Princess of Wales]]<!--C: GB-->
+# [[d:Q9682|Elizabeth II]]<!--C: GB-->
+# [[d:Q7416|Margaret Thatcher]]<!--C: GB-->
+# [[d:Q9439|Queen Victoria]]<!--C: GB-->
+# [[d:Q160852|William Ewart Gladstone]]<!--C: GB-->
+# '''[[d:Q8016|Winston Churchill]]'''<!--C: GB-->
+# [[d:Q12665|Robert Baden-Powell]]<!--C: GB-->
+; Western Europe
+# [[d:Q151394|António de Oliveira Salazar]]<!--C: Portugal-->
+# [[d:Q23559|Benito Mussolini]]<!--C: It-->
+# [[d:Q166092|Camillo Benso, Count of Cavour]]<!--C: It-->
+# [[d:Q152306|Carl Gustaf Emil Mannerheim]]<!--C: Finland-->
+# [[d:Q52927|Charles XIV John of Sweden]]<!--C: Sv-->
+# [[d:Q1267|Dag Hammarskjöld]]<!--C: No-->
+# [[d:Q29179|Francisco Franco]]<!--C: Es-->
+# [[d:Q133009|Gro Harlem Brundtland]]<!--C: No-->
+# [[d:Q19943|Juan Carlos I of Spain]]<!--c: Es-->
+# [[d:Q12967|Leopold II of Belgium]]<!--c: Belgium-->
+# [[d:Q319645|Christian Michelsen]]
+# [[d:Q539|Giuseppe Garibaldi]]<!--C: It-->
+# [[d:Q153832|Alcide De Gasperi]]<!-- C: It -->
+{{Div col end}}
+
+====Current political leaders, 13====
+Many Wikipedias have provisions for including current heads of government in their expanded vital article list.  This list suggests the heads of the G8 countries, plus Brazil, China, India, the current U.N. Secretary General and the current Pope
+{{Div col|cols=4}}
+# [[d:Q1253|Ban Ki-moon]] (U.N.)
+# [[d:Q450675|Pope Francis]] (Pope)
+# [[d:Q40722|Dilma Rousseff]] (Brazil)<!--c: Brazil-->
+# [[d:Q206|Stephen Harper]] (Canada)<!--c: CAN-->
+# [[d:Q15031|Xi Jinping]] (China)<!--c: Ch-->
+# [[d:Q157|François Hollande]] (France)<!--C: Fr-->
+# [[d:Q567|Angela Merkel]] (Germany)<!--c: Ger-->
+# [[d:Q41914|Manmohan Singh]] (India)<!--c: India-->
+# [[d:Q47563|Matteo Renzi]] (Italy)<!--C: It-->
+# [[d:Q132345|Shinzō Abe]] (Japan)<!--c: Ja-->
+# [[d:Q7747|Vladimir Putin]] (Russia)<!--C: Ru-->
+# [[d:Q192|David Cameron]] (U.K.)<!--c: GB-->
+# [[d:Q76|Barack Obama]] (U.S.)<!--C: US-->
+
+====Military leaders and military theorists, 16====
+# [[d:Q185476|Flavius Aetius]]
+# [[d:Q125414|Pompey]]
+# [[d:Q2253|Scipio Africanus]]
+# [[d:Q483783|Sulla]]
+# [[d:Q152428|Prince Eugene of Savoy]]
+# [[d:Q154232|Alexander Suvorov]]
+# [[d:Q76430|Carl von Clausewitz]]
+# [[d:Q34836|Ulysses S. Grant]]<!--C: US-->
+# [[d:Q170596|T. E. Lawrence]]
+# [[d:Q165557|Robert E. Lee]]<!--C: US-->
+# [[d:Q151414|George Marshall]]
+# [[d:Q83235|Horatio Nelson, 1st Viscount Nelson]]<!--c: GB-->
+# [[d:Q14060|Erwin Rommel]]
+# [[d:Q179910|Vo Nguyen Giap]]
+# [[d:Q131691|Arthur Wellesley, 1st Duke of Wellington]]
+# [[d:Q124617|Georgy Zhukov]]
+{{Div col end}}
+
+=== Rebels, revolutionaries and activists, 35 ===
+{{Div col|cols=4}}
+;Africa
+# [[d:Q214473|Steve Biko]]<!--c: South_Africa 1960s -->
+# [[d:Q202155|Thomas Sankara]]<!--c: Burkina_Faso 1980s-->
+
+;Asia
+# [[d:Q34211|Yasser Arafat]]<!--c: Palestina 1960s-->
+# [[d:Q36740|Aung San Suu Kyi]]<!--c: Burma-->
+# '''[[d:Q1001|Mohandas Karamchand Gandhi]]'''<!--c: India-->
+# [[d:Q38823|Ruhollah Khomeini]]<!--c: Iran 1970s-->
+# [[d:Q1317|Osama bin Laden]]<!--c: Saudi-Arabia 1980s-->
+
+;Europe
+# '''[[d:Q7226|Joan of Arc]]'''<!--C: Fr-->
+# [[d:Q44279|Oliver Cromwell]]<!--c: GB-->
+# [[d:Q184623|Georges Danton]]<!--C: Fr 1780s-->
+# '''[[d:Q1394|Vladimir Lenin]]'''<!--C: Ru-->
+# [[d:Q318461|Vasil Levski]]<!--c: Bulgaria 1860s-->
+# '''[[d:Q9554|Martin Luther]]'''<!--C: Ger 1510s Protestant Reformation-->
+# [[d:Q37103|Florence Nightingale]]<!--c: GB 1860s -->
+# [[d:Q294136|Emilia Plater]]<!--c: Poland C: Lithuania 1830s-->
+# [[d:Q80492|Gavrilo Princip]]<!--c: Serbia 1910s-->
+# [[d:Q44197|Maximilien de Robespierre]]
+# [[d:Q83406|Spartacus]]<!--c: Rome -->
+# [[d:Q30547|Mother Teresa]]<!--c: Albania 1940s-->
+# [[d:Q33391|Leon Trotsky]]<!--C: Ru 1910s-->
+# [[d:Q82457|William Wallace]]<!--c: Scotland 1290s-->
+# [[d:Q49086|Simon Wiesenthal]]<!--c: Austria 1940s-->
+
+;Americas
+# '''[[d:Q5809|Che Guevara]]'''<!--c: Argentina 1950s-->
+# [[d:Q192278|Pancho Villa]]<!--c: Mexico 1910s-->
+;;''USA''
+# [[d:Q192245|Susan B. Anthony]]<!--C: US 1870s-->
+# [[d:Q79969|Emma Goldman]]<!--C: US 1890s-->
+# [[d:Q19673|Al Gore]]<!--C: US-->
+# [[d:Q107082|Mother Jones]]<!--C: US 1880s-->
+# [[d:Q38203|Helen Keller]]<!--C: US deafblind 1910s -->
+# '''[[d:Q8027|Martin Luther King, Jr.]]'''<!--C: US-->
+# [[d:Q41921|Rosa Parks]]<!--C: US 1950s -->
+# [[d:Q465335|Elizabeth Cady Stanton]]<!--C: US 1840s -->
+# [[d:Q105180|Sojourner Truth]]<!--C: US 1840s-->
+# [[d:Q102870|Harriet Tubman]]<!--C: US 1840s-->
+# [[d:Q43303|Malcolm X]]<!--C: US 1950s -->
+
+{{Div col end}}
+
+=== Scientists, inventors and mathematicians, 282 === <!--Limit [[List of articles every Wikipedia should have/Expanded/Quotas]]-->
+{{Div col|cols=4}}
+<!--Source: http://phys.kent.edu/~manley/physicists.html -->
+==== Pre-modern, 26 ====
+;;Ancient
+# [[d:Q11826|Ab&#363; Ray&#7717;&#257;n al-B&#299;r&#363;n&#299;]]
+# '''[[d:Q8739|Archimedes]]'''<!--c: Gre y:-250 -->
+# [[d:Q180109|Apollonius of Perga]]<!--c: Gre y: -200 -->
+# [[d:Q202001|Archytas]]<!--c: Gre y:-400 -->
+# [[d:Q11359|Aryabhata]]<!--c: India y: 500 -->
+# [[d:Q178217|Diophantus]]<!--c: Gre y: 250 -->
+# [[d:Q43182|Eratosthenes]]<!--c: Gre y: -200 Geography -->
+# '''[[d:Q8747|Euclid]]'''<!--c: Gre y: -300 -->
+# [[d:Q185150|Eudoxus of Cnidus]]<!--c: Gre y: -400 -->
+# [[d:Q159905|Hipparchus]]<!--c: Gre y: -150 -->
+# [[d:Q5264|Hippocrates]]<!--c: Gre y: -400 Medicine -->
+# [[d:Q11903|Hypatia]]<!--c: Egypt y: 400 -->
+# [[d:Q211783|Pappus of Alexandria]]<!--c: Gre y: 300 -->
+# [[d:Q34943|Ptolemy]]<!--c: Egypt y: 150 -->
+# [[d:Q10261|Pythagoras]]<!--c: Gre math-->
+# [[d:Q1265657|Su Song]]<!--c: Ch Polymath-->
+
+;;Middle Ages
+# [[d:Q11104|Alhacen]]<!--c: Arab y: 1000 father of optics; spectrum-->
+# [[d:Q213385|Bhāskara II]]<!--c: India y: 1150 -->
+# '''[[d:Q9038|Muḥammad ibn Mūsā al-Khwārizmī]]'''<!--C: Iran y: 800 -->
+# [[d:Q302835|Nasir al-Din al-Tusi]]<!--c: Iran y: 1250 -->
+# '''[[d:Q8011|Avicenna]]'''<!--c: Iran y: 100 -->
+# '''[[d:Q202943|Brahmagupta]]'''<!--c: India y: 650 zero-->
+# [[d:Q8763|Fibonacci]]<!--c: It y: 1250 -->
+# [[d:Q167852|Geber]]<!--c: Iran y: 800 -->
+# [[d:Q192706|William Gilbert]]<!--c: GB y: 1600 physicist-->
+# [[d:Q470531|Seki Takakazu]]<!--c: Ja y: 1700 -->
+
+==== Physics and astronomy, 79 ====
+;;Astronomy
+# [[d:Q36620|Tycho Brahe]]<!--astronomy-->
+# '''[[d:Q619|Nicolaus Copernicus]]'''
+# [[d:Q148109|Subrahmanyan Chandrasekhar]]
+# '''[[d:Q307|Galileo Galilei]]'''<!--physicist-->
+# [[d:Q47434|Edmond Halley]]<!--astronomy/comet-->
+# [[d:Q43027|Edwin Hubble]]<!--astronomy-->
+# '''[[d:Q8963|Johannes Kepler]]'''<!--astronomy-->
+# [[d:Q160187|Ole Rømer]]
+# [[d:Q410|Carl Sagan]]<!--astronomy/Cosmos-->
+;;Early modern
+# [[d:Q46830|Robert Hooke]]
+# [[d:Q39599|Christiaan Huygens]]
+# [[d:Q58720|Mikhail Lomonosov]]
+# '''[[d:Q935|Isaac Newton]]'''<!--physicist-->
+;;Modern
+# [[d:Q675|André-Marie Ampère]]<!--father of electrodynamics-->
+# [[d:Q43476|Amedeo Avogadro]]<!--pressure/atoms-->
+# [[d:Q122986|Johann Jakob Balmer]]<!--hydrogen spectrum-->
+# [[d:Q122701|William Thomson, 1st Baron Kelvin]]
+# [[d:Q41269|Henri Becquerel]]<!--discovered natural radioactivity-->
+# [[d:Q155794|Hans Bethe]]
+# [[d:Q7085|Niels Bohr]]<!--contributed to quantum theory & nuclear reactions-->
+# [[d:Q84296|Ludwig Boltzmann]]
+# [[d:Q58978|Max Born]]
+# [[d:Q133747|William Henry Bragg]]<!--x-ray spectrometry-->
+# [[d:Q131733|Henry Cavendish]]<!--physicist-->
+# [[d:Q80884|James Chadwick]]
+# [[d:Q172466|Steven Chu]]<!--Doppler cooling method of laser light-->
+# '''[[d:Q7186|Marie Curie]]'''
+# [[d:Q37463|Pierre Curie]]<!--discovered piezoelectricity-->
+# [[d:Q41284|John Dalton]]
+# [[d:Q277579|James Dewar]]<!--liquified nitrogen; Dewar flask-->
+# [[d:Q131721|Johannes Diderik van der Waals]]
+# [[d:Q47480|Paul Dirac]]<!--co-found quantum electrodynamics; antimatter-->
+# '''[[d:Q937|Albert Einstein]]'''
+# '''[[d:Q8750|Michael Faraday]]'''<!--chemist-->
+# '''[[d:Q8753|Enrico Fermi]]'''<!--self-sustaining nuclear chain reaction-->
+# [[d:Q39246|Richard Feynman]]<!--physicist-->
+# [[d:Q187966|Léon Foucault]]<!--invented the gyroscope-->
+# [[d:Q187241|Augustin-Jean Fresnel]]<!--transverse light waves-->
+# [[d:Q17714|Stephen Hawking]]<!--physicist-->
+# [[d:Q40904|Werner Heisenberg]]
+# '''[[d:Q8962|James Prescott Joule]]'''<!--mechanical equivalent of heat-->
+# [[d:Q60052|Gustav Kirchhoff]]<!--3 laws of spectral analysis-->
+# [[d:Q133267|Lev Landau]]
+# [[d:Q169577|Ernest Lawrence]]<!--invented cyclotron-->
+# [[d:Q41688|Hendrik Lorentz]]<!--physicist-->
+# [[d:Q93996|Ernst Mach]]<!--Mach number/sound-->
+# '''[[d:Q9095|James Clerk Maxwell]]'''<!--physicist-->
+# [[d:Q56189|Lise Meitner]]
+# [[d:Q127234|Albert A. Michelson]]<!--interferometer, precisely measured speed of light-->
+# [[d:Q130975|Robert Andrews Millikan]]<!--coined "cosmic rays"-->
+# [[d:Q176206|Pieter van Musschenbroek]]<!--capacitor 1745-->
+# [[d:Q1585|Georg Ohm]]<!--Ohm's law/resistance-->
+# [[d:Q132537|J. Robert Oppenheimer]]<!--first A-bomb-->
+# [[d:Q65989|Wolfgang Pauli]]<!--discovered exclusion principle; neutrino-->
+# '''[[d:Q9021|Max Planck]]'''<!--physicist-->
+# [[d:Q35149|Wilhelm Röntgen]]<!-- X-rays -->
+# [[d:Q997|Andrei Sakharov]]<!--father of the Soviet hydrogen bomb-->
+# '''[[d:Q9130|Erwin Schrödinger]]'''<!--Schrödinger wave equation-->
+# [[d:Q77078|Arnold Sommerfeld]]
+# [[d:Q699541|G. I. Taylor]]
+# [[d:Q6733|Edward Teller]]<!--H-bomb-->
+# [[d:Q47285|J. J. Thomson]]
+# [[d:Q25820|Thomas Young]]<!--wave nature of light-->
+# [[d:Q366471|Yakov Borisovich Zel'dovich]]
+# [[d:Q44412|Hans Christian Ørsted]]<!--electric magnet-->
+# [[d:Q172840|Murray Gell-Mann ]]<!--explanation of strange particles-->
+# [[d:Q333724|Wallace Carothers]]<!--nylon @DuPont-->
+# [[d:Q536469|George FitzGerald]]<!--Lorentz-FitzGerald contraction-->
+# [[d:Q78520|Victor Francis Hess]]<!--discovered cosmic radiation-->
+# [[d:Q184592|Gerard 't Hooft]]<!--gauge theories in elementary particle physics-->
+# [[d:Q71023|Alfred Kastler]]<!--atom/wave Hertzian resonances-->
+# [[d:Q57063|Philipp Lenard]]<!--cathode rays; photoelectric effect-->
+# [[d:Q323267|Osborne Reynolds]]<!--turbulence/hydrodynamics-->
+# [[d:Q311567|Johannes Rydberg]]<!--spectra of many elements/Rydberg constant-->
+# [[d:Q185914|Michael Servetus]]<!--aragonese humanist, first European to describe the function of pulmonary circulation-->
+# [[d:Q16581|Joseph Stefan]]<!--blackbody radiation-->
+# [[d:Q193655|John Hasbrouck Van Vleck]]<!--father of modern magnetism, solid-state physics-->
+# [[d:Q155790|Eugene Wigner]]<!--"nuclear cross section"-->
+# [[d:Q171034|Robert Wilson]]<!--Nobel physicist-->
+
+==== Chemistry, 25 ====
+# [[d:Q80956|Svante Arrhenius]]
+# [[d:Q151911|J&#246;ns Jacob Berzelius]]
+# [[d:Q131761|Humphry Davy]]
+# [[d:Q43393|Robert Boyle]]
+# [[d:Q103835|Peter Debye]]
+# [[d:Q153185|Joseph Louis Gay-Lussac]]
+# [[d:Q153243|Josiah Willard Gibbs]]<!--physicist/chemist "Gibbs effect"-->
+# [[d:Q57065|Otto Hahn]]
+# [[d:Q102822|Jacobus Henricus van 't Hoff]]
+# [[d:Q7487|Dorothy Hodgkin]]
+# [[d:Q39607|Antoine Lavoisier]]<!--chemist-->
+# [[d:Q16571|Justus von Liebig]]
+# '''[[d:Q9106|Dmitri Mendeleev]]'''<!---->
+# [[d:Q159636|Joseph Priestley]]<!--chemist discovery of oxygen-->
+# [[d:Q115490|Tadeus Reichstein]]
+# '''[[d:Q9123|Ernest Rutherford]]'''<!--chemist-->
+# [[d:Q554890|Willis R. Whitney]]
+# [[d:Q102830|Frederick Soddy]]
+# [[d:Q48983|Linus Pauling]]
+# [[d:Q208858|Gilbert Lewis]]
+# [[d:Q57075|Fritz Haber]]
+# [[d:Q151564|Frederick Sanger]]
+# [[d:Q316371|Vladimir Vernadsky]]
+# [[d:Q232316|Robert Burns Woodward]]
+# [[d:Q76606|Carl Bosch]]
+
+==== Natural sciences, 28 ====
+;;Biology
+# [[d:Q154824|Norman Borlaug]]
+# [[d:Q150526|Santiago Ramón y Cajal]]<!--histologist, psychologist, and Nobel laureate-->
+# [[d:Q123280|Francis Crick]]
+# [[d:Q184366|Thomas Henry Huxley]]<!--studied dinosaurs as birds?-->
+# [[d:Q82122|Jean-Baptiste Lamarck]]<!--evolution-->
+# [[d:Q43522|Antonie van Leeuwenhoek]]
+# '''[[d:Q1043|Carl Linnaeus]]'''<!--taxonomy-->
+# [[d:Q78496|Konrad Lorenz]]
+# [[d:Q37970|Gregor Mendel]]
+# [[d:Q83333|James Watson]]
+;;Medicine
+# [[d:Q28738|Casimir Funk]]
+# [[d:Q93128|William Harvey]]
+# [[d:Q83428|Paracelsus]]
+# '''[[d:Q529|Louis Pasteur]]'''<!--medicine-->
+# [[d:Q200101|Jonas Salk]]<!--vaccine-->
+# [[d:Q59736|Ignaz Semmelweis]]<!--medicine-->
+# [[d:Q170267|Andreas Vesalius]]
+;;Natural sciences
+# [[d:Q182882|John James Audubon]]
+# [[d:Q229264|Georges-Louis Leclerc, Comte de Buffon]]
+# [[d:Q181685|Sadi Carnot]]<!--founded thermodynamics-->
+# [[d:Q100948|Rachel Carson]]
+# [[d:Q83233|Jacques Cousteau]]<!--invented SCUBA-->
+# '''[[d:Q1035|Charles Darwin]]'''
+# [[d:Q37064|Alexander Fleming]]
+# '''[[d:Q8778|Galen]]'''
+# [[d:Q48246|Ernst Haeckel]]
+# [[d:Q40852|Edward Jenner]]
+# [[d:Q318960|Richard Leakey]]
+
+==== Inventors, 56 ====
+# [[d:Q133544|John Logie Baird]]
+# [[d:Q949|John Bardeen]]<!--transistor 1947-->
+# [[d:Q76687|Georg Bednorz]]<!--co-discover first ceramic superconductors 1986-->
+# [[d:Q34286|Alexander Graham Bell]]
+# [[d:Q40224|Karl Benz]]
+# [[d:Q71004|Emile Berliner]]<!--made flat records-->
+# [[d:Q76766|Gerd Binnig]]<!--co-designed the scanning tunneling microscope (STM)-->
+# [[d:Q1095376|Clarence Birdseye]]<!--frozen food-->
+# [[d:Q57384|Wernher von Braun]]
+# [[d:Q168468|David Brewster]]<!--invented kaleidoscope/stereoscope-->
+# [[d:Q35820|Wright brothers]]<!--Flyer-->
+# [[d:Q335039|Nolan Bushnell]]<!--Pong (first video game) 1972-->
+# [[d:Q21901|Josephine Cochrane]]<!--invented dishwasher-->
+# [[d:Q469938|Christopher Cockerell]]<!--hovercraft inventor-->
+# [[d:Q131405|Louis Daguerre]]<!-- daguerreotype -->
+# [[d:Q983493|Raymond Vahan Damadian]]<!--invented MRI 1977-->
+# [[d:Q289023|Robert H. Dennard]]<!--invented RAM memory-->
+# [[d:Q12674|Rudolf Diesel]]<!-- Diesel motor, used in nearly all motor ships -->
+# [[d:Q189147|George Eastman]]<!--camera-->
+# '''[[d:Q8743|Thomas Edison]]'''
+# [[d:Q297469|Leo Fender]]<!--invents electric guitar-->
+# [[d:Q354863|Lee De Forest]]<!--invented triode 1907-->
+# [[d:Q34969|Benjamin Franklin]]<!--stove, lightning rod-->
+# [[d:Q590764|Arthur Fry]]<!--post-it note inventor 1974-->
+# [[d:Q102289|Buckminster Fuller]]<!--architect-->
+# [[d:Q192496|Robert Fulton]]<!--steamboat-->
+# [[d:Q546175|Gordon Gould]]<!--invents the laser 1958-->
+# [[d:Q2120396|Wilson Greatbatch]]<!--internal pacemaker inventor-->
+# '''[[d:Q8958|Johannes Gutenberg]]'''<!--invented moveable type-->
+# [[d:Q360359|Elias Howe]]<!--American sewing machine-->
+# [[d:Q310833|Joseph Marie Jacquard]]<!--complex loom-->
+# [[d:Q588120|Robert Jarvik]]<!--Jarvik-7 heart 1978-->
+# [[d:Q1373386|Philippe Kahn]]<!--camera phone-->
+# [[d:Q28900|John George Kemeny]]<!--invented BASIC 1964-->
+# [[d:Q182031|Jack Kilby]]<!--co-invented IC chip, Nobel Prize in physics in 2000-->
+# [[d:Q7509|Stephanie Kwolek]]<!--invented Kevlar 1965-->
+# [[d:Q92862|Jaron Lanier]]<!--coins "virtual reality"-->
+# [[d:Q28978|Ignacy Łukasiewicz]]
+# [[d:Q36488|Guglielmo Marconi]]<!--wireless-->
+# [[d:Q719357|Cyrus McCormick]]<!--mechanical reaper invented 1831-->
+# [[d:Q92766|Robert Metcalfe]]<!--developed ethernet 1973-->
+# [[d:Q75698|Samuel Morse]]
+# [[d:Q23810|Alfred Nobel]]<!--Prize/dynamite-->
+# [[d:Q241735|Robert Noyce]]<!--co-invented IC chip-->
+# [[d:Q150910|Charles Algernon Parsons]]<!--steam turbine-->
+# [[d:Q908166|Roy J. Plunkett]]<!--teflon 1938-->
+# [[d:Q163415|William Shockley]]<!--transistor 1947-->
+# [[d:Q1373431|Alan Shugart]]<!--floppy disk inventor-->
+# [[d:Q312011|Isaac Singer]]<!--invented sew bobbin-->
+# '''[[d:Q9036|Nikola Tesla]]'''<!--physicist-->
+# [[d:Q680|Alessandro Volta]]<!--battery-->
+# [[d:Q183631|Ernest Walton]]<!--co-invented the first particle accelerator-->
+# '''[[d:Q9041|James Watt]]'''<!--steam engine-->
+# [[d:Q76707|Wilhelm E. Weber]]<!--magnetometers-->
+# [[d:Q280930|Eli Whitney]]<!--invented cotton gin-->
+# [[d:Q162900|Charles Wilson]]<!--invented the cloud chamber-->
+
+==== Mathematicians, 49 ====
+;;Early modern
+# [[d:Q122366|Daniel Bernoulli]]<!--physicist-->
+# [[d:Q122392|Jacob Bernoulli]]
+# [[d:Q214544|Bonaventura Cavalieri]]
+# [[d:Q153232|Jean le Rond d'Alembert]]
+# '''[[d:Q7604|Leonhard Euler]]'''<!--math-->
+# '''[[d:Q75655|Pierre de Fermat]]'''<!--math-->
+# '''[[d:Q9047|Gottfried Wilhelm Leibniz]]'''
+# '''[[d:Q1290|Blaise Pascal]]'''<!--math-->
+;;Modern
+# '''[[d:Q124115|Niels Henrik Abel]]'''
+# [[d:Q157642|Vladimir Arnold]]
+# [[d:Q180217|Stefan Banach]]
+# [[d:Q207718|Isaac Barrow]]
+# [[d:Q134661|George Boole]]
+# [[d:Q76420|Georg Cantor]]
+# [[d:Q274639|Élie Cartan]]
+# [[d:Q8814|Augustin-Louis Cauchy]]
+# [[d:Q76556|Richard Dedekind]]<!--C: Ger y: 1860 abstract algebra -->
+# [[d:Q29193|Peter Gustav Lejeune Dirichlet]]<!--C: Ger y: 1840 number theory-->
+# [[d:Q61047|Gotthold Eisenstein]]<!--C: Ger y: 1840 number theory-->
+# [[d:Q216723|Ronald Fisher]]<!--C: GB y: 1920 Statistics-->
+# [[d:Q8772|Joseph Fourier]]<!--C: Fr y: 1800 greenhouse effect -->
+# '''[[d:Q7091|Évariste Galois]]'''<!--C: Fr y: 1820 Group theory-->
+# '''[[d:Q6722|Carl Friedrich Gauss]]'''<!--math-->
+# [[d:Q77141|Alexander Grothendieck]]<!--C: Ger y: 1950 algebraic geometry-->
+# '''[[d:Q41390|Kurt Gödel]]'''<!--math-->
+# [[d:Q164425|Jacques Hadamard]]
+# [[d:Q11887|William Hamilton]]<!--classical mechanics-->
+# [[d:Q184337|G. H. Hardy]]
+# [[d:Q168401|Charles Hermite]]
+# '''[[d:Q41585|David Hilbert]]'''
+# [[d:Q76564|Carl Gustav Jacob Jacobi]]
+# [[d:Q76641|Felix Klein]]
+# [[d:Q153224|Andrey Kolmogorov]]
+# '''[[d:Q80222|Joseph Louis Lagrange]]'''<!--physicist-->
+# [[d:Q44481|Pierre-Simon Laplace]]<!--math-->
+# [[d:Q129199|Nikolai Lobachevsky]]
+# [[d:Q101740|Benoit Mandelbrot]]
+# [[d:Q164374|Pierre Louis Maupertuis]]
+# [[d:Q206832|Gaspard Monge]]
+# '''[[d:Q17455|John von Neumann]]'''
+# [[d:Q7099|Emmy Noether]]<!--best known woman mathematician-->
+# [[d:Q117346|Grigori Perelman]]
+# '''[[d:Q81082|Henri Poincaré]]'''<!--founded qualitative dynamics/topology-->
+# [[d:Q168452|Jean-Victor Poncelet]]
+# '''[[d:Q83163|Srinivasa Ramanujan]]'''
+# '''[[d:Q42299|Bernhard Riemann]]'''<!--math-->
+# [[d:Q560847|James Harris Simons]]
+# [[d:Q57103|Karl Weierstrass]]
+# [[d:Q71029|Hermann Weyl]]
+
+==== Computer scientists, 19 ====
+# [[d:Q314308|John Vincent Atanasoff]]<!-- Atanasoff–Berry Computer -->
+# [[d:Q46633|Charles Babbage]]
+# '''[[d:Q80|Tim Berners-Lee]]'''<!--HTTP & HTML 1990-->
+# [[d:Q92624|Dan Bricklin]]<!--VisiCalc spreadsheet 1978-->
+# [[d:Q92765|Seymour Cray]]<!--Cray supercomputer inventor-->
+# [[d:Q7637|Ward Cunningham]]<!--developed wiki-->
+# [[d:Q8556|Edsger W. Dijkstra]]
+# [[d:Q92614|Douglas Engelbart]]<!--computer mouse inventor 1968-->
+# [[d:Q192145|Herman Hollerith]]<!--computer-->
+# [[d:Q92627|Gary Kildall]]<!--PC, CP/M-->
+# [[d:Q17457|Donald Knuth]]<!--algorithms-->
+# [[d:Q7259|Ada Lovelace]]
+# [[d:Q45575|Dennis Ritchie]]<!--computer/Unix-->
+# [[d:Q7439|Richard Stallman]]
+# [[d:Q34253|Linus Torvalds]]
+# '''[[d:Q7251|Alan Turing]]'''<!--computer-->
+# [[d:Q92604|Niklaus Wirth]]<!--computer/Pascal, 1984 Turing Award-->
+# [[d:Q483382|Steve Wozniak]]
+# [[d:Q60093|Konrad Zuse]]<!-- designed first working computer, Zuse Z3, and first programming language, Plankalkül; articles in 46 Wikipedias -->
+{{Div col end}}
+
+=== Journalists, 19 === <!--Limit [[List of articles every Wikipedia should have/Expanded/Quotas]] -->
+{{Div col|cols=4}}
+# [[d:Q236939|Christiane Amanpour]]<!--C: GB-->
+# [[d:Q310900|Robert Fisk]]*<!--C: GB-->
+# [[d:Q471546|John Pilger]] <!--C: Australia , twice won Britain's Journalist of the Year Award -->
+# [[d:Q3518399|Arun Shourie]]<!--C: India the first of India’s true investigative journalists who led to the fall of a Chief Minister in Maharashtra in the eighties.-->
+
+;United States
+# [[d:Q766913|Ed Bradley]]<!--C: US , CBS covered the fall of Saigon-->
+# [[d:Q919527|Tom Brokaw]]<!--C: US , NBC -  Four Freedoms Medal: Freedom of Speech And Expression, 7 Emmys and 1 Peabody-->
+# [[d:Q31073|Walter Cronkite]]<!--C: US , CBS-->
+# [[d:Q271324|Hedda Hopper]]<!--C: US 1920's gossip -->
+# [[d:Q374610|David McCullough]]*<!--C: US , PBS  2 Pulitzer Prize, National Book Award, Presidential Medal of Freedom-->
+# [[d:Q353935|Edward R. Murrow]]*<!--C: US A pioneer of television news broadcasting -->
+# [[d:Q173417|Joseph Pulitzer]]
+# [[d:Q733027|Dan Rather]]<!--C: US , CBS-->
+# [[d:Q1368995|Geraldo Rivera]]<!--C: US-->
+# [[d:Q579324|John Stossel]]<!--C: US , NBC 19 Emmy Awards -->
+# [[d:Q83807|Ed Sullivan]]<!--longest variety host Debut: C: US -->
+# [[d:Q325487|Mike Wallace]]<!--C: US , CBS 60 Minutes (1968–2006; 2008)-->
+# [[d:Q231417|Barbara Walters]]<!--C: US , ABC became the first female co-anchor of any network evening news-->
+# [[d:Q3097952|Walter Winchell]]<!--C: US His newspaper column was syndicated in over 2,000 newspapers worldwide, and he was read by 50 million people a day from the 1920s until the early 1960s.-->
+# [[d:Q312782|Bob Woodward]]*
+
+{{Div col end}}
+
+=== Sports figures, 171 === <!--limit [[List of articles every Wikipedia should have/Expanded/Quotas]]-->
+
+{{Div col|cols=4}}
+;Athletics, 24
+# [[d:Q319351|Roger Bannister]]*<!--athlete 1954-->
+# [[d:Q1189|Usain Bolt]]*
+# [[d:Q52604|Bob Beamon]]
+# [[d:Q184556|Sergey Bubka]]
+# [[d:Q188502|Sebastian Coe]]
+# [[d:Q310989|Dick Fosbury]]
+# [[d:Q171500|Haile Gebrselassie]]
+# [[d:Q311289|Eric Heiden]] (US)<!--C: US former long track speed skater 19xx-->
+# [[d:Q232008|Stefka Kostadinova]]<!--women's world record holder in the high jump since 1987-->
+# [[d:Q209390|Jackie Joyner-Kersee]]*<!--19xx-->
+# [[d:Q452605|Rafer Johnson]] (US)<!--C: US  athlete 1958-->
+# [[d:Q6319|Yelena Isinbayeva]]
+# [[d:Q312684|Sawao Kato]] <!--Gymnastics, C: Ja-->
+# [[d:Q131237|Carl Lewis]]* (US)<!--C: US 19xx-->
+# [[d:Q28947|Kipchoge Keino]]<!--C: Kenya track and field athlete 1987-->
+# [[d:Q345673|Bobby Morrow]] (US)<!--C: US  athlete 1956-->
+# [[d:Q52620|Edwin Moses]] (US)<!--C: US athlete 1984-->
+# [[d:Q101942|Paavo Nurmi]]* <!--C: Finland long distance runner 19xx-->
+# [[d:Q52651|Jesse Owens]]* (US)<!--19xx-->
+# [[d:Q237276|Lilia Podkopayeva]]<!--C: UKR gymnast 1996 Gold gym-->
+# [[d:Q31083|Wilma Rudolph]] (US)<!--C: US  Woman athlete 19xx-->
+# [[d:Q231983|Babe Didrikson Zaharias]] (US)<!--C: US  athlete OG 1932 19xx-->
+# [[d:Q443894|Elena Zamolodchikova]]<!--C: Ru gymnast 2000 Gold gym-->
+# [[d:Q52589|Emil Zátopek]]* <!--19xx-->
+
+;Alpine skiing, 5 <!--(limit 5?)-->
+# [[d:Q11485|Jean-Claude Killy]]<!--C: Fr alpine ski 19xx-->
+# [[d:Q1956|Hermann Maier]]<!-- -->
+# [[d:Q9586|Annemarie Moser-Pröll]]<!--Woman-->
+# [[d:Q530|Ingemar Stenmark]]<!--C: Sv - One of best overall skier-->
+# [[d:Q10068|Lindsey Vonn]] (US)<!--C: US  -->
+
+;American/Irish/Australian Football, 4
+# [[d:Q927916|Jim Brown]]* (US)<!--C: US 19xx #6-->
+# [[d:Q44473|O. J. Simpson]]* (US)<!--C: US 19xx #34-->
+# [[d:Q505423|Jerry Rice]]* (US)<!--C: US 19xx #1-->
+# [[d:Q716029|Johnny Unitas]]* (US)<!--C: US 19xx #11-->
+
+;Badminton, 2
+# [[d:Q1390341|Lin Dan]]<!--C: Ch - best player all time-->
+# [[d:Q363540|Peter Gade]]<!--C: Da-->
+
+;Basketball, 11
+# [[d:Q179051|K. Abdul-Jabbar]] (US)<!-- C: US 1985-->
+# [[d:Q435891|Sergei Belov]]
+# [[d:Q190152|Larry Bird]] (US)<!-- C: US NBA  19xx-->
+# [[d:Q182455|Wilt Chamberlain]] (US)<!--C: US 1970-->
+# [[d:Q193020|Tim Duncan]] (US)<!--C: US 2003-->
+# [[d:Q134183|Magic Johnson]]* (US)<!-- C: US 19xx-->
+# [[d:Q41421|Michael Jordan]]* (US)<!-- C: US 1991-->
+# [[d:Q209982|Dražen Petrović]]
+# [[d:Q242185|Bill Russell]]* (US)<!--C: US 1968-->
+# [[d:Q297750|Arvydas Sabonis]]
+# [[d:Q460394|Pat Summitt]] (US)<!-- C: US Womens college  -->
+
+;Baseball, 7 <!--(limit 10?) BR: http://m.bleacherreport.com/articles/310677-the-50-greatest-baseball-players-of-all-time/page/50. E: http://m.espn.go.com/general/videofeature?id=8652210&num=104-->
+# [[d:Q215777|Hank Aaron]] (US)<!--C: US br10-5 19xx-->
+# [[d:Q552828|Ty Cobb]] (US)<!--C: US br4-e6 19xx-->
+# [[d:Q357444|Lou Gehrig]] (US)<!--C: US br7-e11 19xx-->
+# [[d:Q561852|Willie Mays]] (US)<!--C: US e2 19xx-->
+# [[d:Q732103|Sadaharu Oh]]<!--C: Ja-->
+# [[d:Q221048|Jackie Robinson]] (US)<!--C: US 19xx medal of Freedom and congr gold medal-->
+# [[d:Q213812|Babe Ruth]]* (US)<!--C: US br1-e1 19xx-->
+
+;Biathlon, 1
+# [[d:Q189408|Ole Einar Bjørndalen]]
+
+;Bicycle, 6 <!--(limit 5?)-->
+# [[d:Q221001|Jacques Anquetil]]
+# [[d:Q155010|Gino Bartali]]
+# [[d:Q219912|Fausto Coppi]]
+# [[d:Q109255|Bernard Hinault]]
+# [[d:Q105542|Miguel Indurain]]
+# [[d:Q103756|Eddy Merckx]]*
+
+;Boxing, 8 <!--(limit 10?)-->
+# [[d:Q36107|Muhammad Ali]]* (US)<!--C: US 1974-->
+# [[d:Q734339|Henry Armstrong]] (US)<!--C: US 19xx-->
+# [[d:Q313686|Jack Dempsey]] (US)<!--C: US 19xx-->
+# [[d:Q188362|Rocky Marciano]] (US)<!--C: US 19xx-->
+# [[d:Q273206|Joe Louis]] (US)<!--C: US 19xx-->
+# [[d:Q335872|Ingemar Johansson]]<!--C: Sv 1959-->
+# [[d:Q316706|Sugar Ray Robinson]] (US)<!--C: US 19xx-->
+# [[d:Q335798|Sugar Ray Leonard]] (US)<!--C: US 1981-->
+
+;Chess, 2 <!--(limit 3?)-->
+# [[d:Q41314|Bobby Fischer]]* (US)<!--C: US  chess -->
+# [[d:Q28614|Garry Kasparov]]*<!--C: Ru Chess 19xx-->
+
+;Cricket, 3 <!--(limit 5?)-->
+# [[d:Q313591|Don Bradman]]<!--c: Australia cricket 19xx-->
+# [[d:Q616068|W.G. Grace]]<!--C: GB cricket 19xx-->
+# [[d:Q9488|Sachin Tendulkar]]*<!--C: India Cricket  greatest batsman of the modern generation 19xx-->
+
+;Equestrian, 1 <!--(limit 3?)-->
+# [[d:Q467676|Reiner Klimke]]
+
+;Field hockey, 2
+# [[d:Q271360|Luciana Aymar]]
+# [[d:Q381138|Dhyan Chand]]
+
+;Figureskating, 7 <!--(limit 2?)-->
+# [[d:Q2159796|Robin Cousins]]<!--C: GB figure skater 1980 Gold-->
+# [[d:Q729950|Scott Hamilton]] (US)<!--C: US figure skater 1984 Gold-->
+# [[d:Q204205|Sonja Henie]]<!--C: No figure skater 19xx-->
+# [[d:Q235254|Michelle Kwan]] (US)<!--C: US figure skater 2002-->
+# [[d:Q232999|Tara Lipinski]] (US)<!--C: US figure skater 1998 Gold skating-->
+# [[d:Q28943|Axel Paulsen]]<!--C: No figure skater triple Axel jump-->
+# [[d:Q233812|Irina Rodnina]]<!--C: Ru figure skaters 3 Gold skating-->
+
+;Golf, 9 <!--(limit 10?)-->
+# [[d:Q365626|Ben Hogan]] (US)<!--C: US  Golf 19xx-->
+# [[d:Q437526|Bobby Jones]] (US)<!--C: US golf 19xx-->
+# [[d:Q9424|Jack Nicklaus]] (US)<!--C: US 1978-->
+# [[d:Q9434|Arnold Palmer]] (US)<!--C: US  Golf 1960-->
+# [[d:Q469721|Gary Player]]
+# [[d:Q945056|Sam Snead]] (US)<!--C: US  won a record 82 PGA Tour GOLF 19xx-->
+# [[d:Q232711|Annika Sörenstam]]<!--Woman-->
+# [[d:Q950128|Lee Trevino]] (US)<!--C: US  golfer one of only four players to twice win the U.S. Open, The Open Championship and the PGA Championship. 1971-->
+# [[d:Q10993|Tiger Woods]]* (US)<!--C: US 1996/2000-->
+
+;Gymnastics, 6
+# [[d:Q33228|Nadia Comăneci]]<!--1976/1980 Gold gym/floor-->
+# [[d:Q221575|Olga Korbut]]<!--C: Ru Athletic 1972 Gold gym@floor-->
+# [[d:Q22102|Larisa Latynina]]<!--C: Ru gymnast 1956/1960 Gold gym+floor-->
+# [[d:Q314032|Li Ning]]<!--1984, 1988, 2008 torch lighter-->
+# [[d:Q299095|Vitaly Scherbo]]<!--6 golds, 1992-->
+# [[d:Q231516|Ludmilla Tourischeva]]<!--1972 Gold gym-->
+
+;Icehockey, 11 <!--(limit 10?)-->
+# [[d:Q553302|Viacheslav Fetisov]]
+# [[d:Q209518|Wayne Gretzky]]*<!--1982-->
+# [[d:Q380267|Valeri Kharlamov]]
+# [[d:Q358519|Gordie Howe]]<!--C: CAN ice hockey 19xx-->
+# [[d:Q456688|Bobby Hull]]<!--C: CAN ice hockey 19xx-->
+# [[d:Q316249|Mario Lemieux]]<!--C: CAN ice hockey 19xx-->
+# [[d:Q505412|Sergei Makarov]]
+# [[d:Q348017|Bobby Orr]]<!--C: CAN ice hockey 1970-->
+# [[d:Q325138|Maurice Richard]]<!--C: CAN ice hockey 19xx-->
+# [[d:Q739746|Börje Salming]]
+# [[d:Q316864|Vladislav Tretiak]]
+
+;Motorsports, 6 <!--(limit 10?)-->
+# [[d:Q171312|Mario Andretti]]<!--racing driver 19xx-->
+# [[d:Q2069|Juan Manuel Fangio]]<!--C: Argentina  racing car  19xx-->
+# [[d:Q10494|Alain Prost]]<!--racing driver 19xx-->
+# [[d:Q9671|Michael Schumacher]]*
+# [[d:Q10490|Ayrton Senna]]
+# [[d:Q3188|Jackie Stewart]]<!--C: GB Formula One racing driver 1973-->
+
+;Nordic skiing, 2
+# [[d:Q217505|Bjørn Dæhlie]]
+# [[d:Q16849|Matti Nykänen]]
+
+;Sailing, 2
+# [[d:Q449073|Ben Ainslie]]
+# [[d:Q50893|Paul Elvstrøm]] 
+
+;Soccer, 23 <!--(limit 20?)-->
+# [[d:Q4457|Franz Beckenbauer]]<!--C: Ger 19xx-->
+# [[d:Q10520|David Beckham]]*<!--C: GB 19xx-->
+# [[d:Q11584|Iker Casillas]]<!--C:Es 19xx-->
+# [[d:Q171583|Bobby Charlton]]*<!--C: GB 19xx-->
+# [[d:Q17163|Johan Cruyff]]*<!--C: NL 19xx-->
+# [[d:Q162043|Eusébio]]<!--C: Portugal 19xx-->
+# [[d:Q44980|Sir Alex Ferguson]]<!--C: GB 19xx-->
+# [[d:Q222086|Mia Hamm]]<!--C: Sv 19xx-->
+# [[d:Q188720|Michael Laudrup]]<!--C: Da 19xx-->
+# [[d:Q17515|Diego Maradona]]*<!--C: Argentina 19xx-->
+# [[d:Q216140|Stanley Matthews]]<!--C: GB 19xx-->
+# [[d:Q615|Lionel Messi]]*
+# [[d:Q191492|Bobby Moore]]<!--C: GB 19xx-->
+# [[d:Q43744|Gerd Müller]]*<!--C: Ger 19xx-->
+# [[d:Q482931|Ferenc Puskas]]*<!--C: Hungary 19xx-->
+# [[d:Q39444|Ronaldinho]]<!--C: Brazil 19xx-->
+# [[d:Q529207|Ronaldo]]*<!--C: Brazil 19xx-->
+# [[d:Q11571|Cristiano Ronaldo]]
+# [[d:Q12897|Pelé]]*<!--C: Brazil 2008 Lifetime Achievement Award-->
+# [[d:Q483629|Marco van Basten]]<!--C: NL 19xx-->
+# [[d:Q182314|Peter Schmeichel]]<!--C: Da 19xx-->
+# [[d:Q167828|Lev Yashin]]<!--C: Ru 19xx-->
+# [[d:Q1835|Zinedine Zidane]]*<!--C: Fr 19xx-->
+
+;Speedskating, 2 <!--(limit 2?)-->
+# [[d:Q231513|Bonnie Blair]]<!--speedskater 1994 Gold-->
+# [[d:Q318403|Johann Olav Koss]]<!--C: No speed skater, 1994-->
+
+;Swimming, 4 <!--(limit 5?)-->
+# [[d:Q221482|Jim Thorpe]]*<!--19xx-->
+# [[d:Q180748|Mark Spitz]]*<!--1972 Gold(7)-->
+# [[d:Q39562|Michael Phelps]]* (US)<!--C: US swimmer 2004/2008-->
+# [[d:Q311332|Greg Louganis]] (US)<!--C: US diver 1984/1988-->
+
+;Table tennis, 1 <!--(limit 2?)-->
+# [[d:Q345360|Jan-Ove Waldner]]<!--C: Sv maybe best in world all time-->
+
+;Team handball, 2<!--(limit 3?)-->
+# [[d:Q310526|Ivano Balić]]<!--C: Croatia-->
+# [[d:Q265646|Anja Andersen]]<!--C: Da y:1990s-->
+
+;Tennis, 16 <!--(limit 10?)-->
+# [[d:Q7407|Andre Agassi]]* (US)<!--C: US 2003-->
+# [[d:Q104506|Björn Borg]]
+# [[d:Q202342|Margaret Court]]
+# [[d:Q14286|Chris Evert]] (US)<!--C: US 1976-->
+# [[d:Q1426|Roger Federer]]* <!--C: Switzerland y:2000-->
+# [[d:Q53554|Pancho Gonzales]] (US)<!--C: US 19xx-->
+# [[d:Q11662|Steffi Graf]]*<!--C: Ger y:1980s-->
+# [[d:Q54527|Billie Jean King]] (US)<!--C: US 1972-->
+# [[d:Q105550|Rod Laver]]<!--C: Australia 19xx-->
+# [[d:Q232831|Suzanne Lenglen]]
+# [[d:Q16474|John McEnroe]] (US)<!--C: US 19xx-->
+# [[d:Q10132|Rafael Nadal]]<!--C:Es y:2000s-->
+# [[d:Q54545|Martina Navratilova]]*<!--C: US C:CHZ 19xx-->
+# [[d:Q9446|Pete Sampras]]* (US)<!--C: US #1, 14 GS 19xx-->
+# [[d:Q54684|Bill Tilden]] (US)<!--C: US 19xx-->
+# [[d:Q11459|Serena Williams]] (US)<!--C: US 19xx-->
+
+;Volleyball, 1 <!--(limit 2?)-->
+# [[d:Q472336|Karch Kiraly]] (US)<!--C: US  -->
+
+==== Sports executives and administrators ====
+# [[d:Q483437|Sepp Blatter]]<!--Incumbent FIFA president from 1998 -->
+# [[d:Q82984|Pierre de Coubertin]]<!-- Founder of Modern Olympic Games -->
+# [[d:Q171166|Juan Antonio Samaranch]]<!-- IOC President  -->
+
+{{Div col end}}
+
+=== Mythical and legendary people, 29 ===
+{{Div col|cols=4}}
+# [[d:Q41746|Achilles]]<!--C: Gre -->
+# [[d:Q82732|Aeneas]]<!--C: Gre -->
+# [[d:Q128176|Agamemnon]]<!--C: Gre -->
+# [[d:Q161582|Andromeda]]<!--C: Gre -->
+# [[d:Q165510|Argonauts]]<!--C: Gre -->
+# [[d:Q45792|King Arthur]]<!--C: GB -->
+# [[d:Q130818|Atlas (mythology)]]<!--C: Gre -->
+# [[d:Q48328|Beowulf]]
+# [[d:Q190103|Castor and Pollux]]
+# [[d:Q128430|Cyclops]]<!--C: Gre -->
+# [[d:Q83496|Cerberus]]<!--C: Gre -->
+# [[d:Q29372|Grendel]]
+# [[d:Q11829|Hansel and Gretel]]
+# [[d:Q122248|Heracles]]<!--C: Gre -->
+# [[d:Q176758|Jason]]<!--C: Gre -->
+# [[d:Q131651|Electra]]<!--C: Gre -->
+# [[d:Q165170|Europa]]<!--C: Gre -->
+# [[d:Q131588|Ganymede]]<!--C: Gre -->
+# [[d:Q164061|Helen of Troy]] <!-- Greek -->
+# [[d:Q174278|Medea]]<!--C: Gre -->
+# [[d:Q160730|Medusa]]<!--C: Gre -->
+# [[d:Q47231|Odysseus]]<!--C: Gre -->
+# [[d:Q130890|Oedipus]]<!--C: Gre -->
+# [[d:Q201261|Orion]]<!--C: Gre -->
+# [[d:Q130832|Perseus]]<!--C: Gre -->
+# [[d:Q107190|Peter Pan]]
+# [[d:Q207535|Roland]] <!-- Medieval Europe -->
+# [[d:Q151480|Sphinx]]
+# [[d:Q150986|Sirens]]<!--C: Gre -->
+{{Div col end}}
+
+=== Fictional characters, 15 ===
+{{Div col|cols=4}}
+# [[d:Q2695156|Batman]]
+# [[d:Q11934|Mickey Mouse]]
+# [[d:Q11831|Snow White]]
+# [[d:Q79015|Superman]]
+# [[d:Q744536|Tintin]]
+# [[d:Q187002|Baba Yaga]]
+# [[d:Q315796|Santa Claus]]
+# [[d:Q209515|Aladdin]]
+# [[d:Q844|James Bond ]]
+# [[d:Q973053|The Cat in the Hat]]
+# [[d:Q3266236|Count Dracula]]
+# [[d:Q4653|Sherlock Holmes]]
+# [[d:Q170241|Tarzan]]
+# [[d:Q140527|The Three Musketeers]]
+# [[d:Q188784|Superhero]]
+{{Div col end}}

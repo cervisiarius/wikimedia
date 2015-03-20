@@ -1,0 +1,456 @@
+<noinclude>'''Return to [[List of articles every Wikipedia should have/Expanded]]'''</noinclude>
+== Philosophy and religion, 350 ==
+::''Transcluded from [[List of articles every Wikipedia should have/Expanded/Philosophy and religion]]''.
+
+=== Philosophy, 98 ===
+====Basics, 6====
+{{Div col|cols=4}}
+# '''[[d:Q5891|Philosophy]]'''
+# [[d:Q484761|Philosophy of language]]
+# [[d:Q180536|Philosophy of mathematics]]
+# [[d:Q23407|Philosophy of mind]]
+# [[d:Q179805|Political philosophy]]
+# [[d:Q180592|Social philosophy]]
+{{Div col end}}
+
+====History of philosophy, 13====
+{{Div col|cols=4}}
+;Philosophy by epoch, 7
+# [[d:Q178540|Pre-Socratic philosophy]]
+# [[d:Q204100|Ancient philosophy]]
+## [[d:Q999259|Ancient Greek philosophy]]
+# [[d:Q192292|Medieval philosophy]]
+# [[d:Q917440|Renaissance philosophy]]
+# [[d:Q860746|Modern philosophy]]
+# [[d:Q943303|Contemporary philosophy]]
+
+;Philosophy by region, 6
+# [[d:Q307043|Eastern philosophy]]
+# [[d:Q842333|Western philosophy]]
+# [[d:Q376022|Indian philosophy]]
+# [[d:Q184663|Chinese philosophy]]
+# [[d:Q1203683|German philosophy]]
+# [[d:Q2364399|American philosophy]]
+{{Div col end}}
+
+====Philosophical branches, approaches and concepts, 65 ====
+{{Div col|cols=4}}
+
+=====Aesthetics, 4=====
+# [[d:Q35986|Aesthetics]]
+
+;Concepts, 3
+# '''[[d:Q7242|Beauty]]'''
+# [[d:Q468427|Mimesis]]
+# [[d:Q999803|Sublime (philosophy)]]
+
+=====Ethics, 16=====
+# '''[[d:Q9465|Ethics]]'''
+# [[d:Q538733|Applied ethics]]
+# [[d:Q56003|Meta-ethics]]
+# [[d:Q2725442|Normative ethics]]
+
+;Approaches, 4
+# [[d:Q221373|Deontological ethics]]
+# [[d:Q80968|Nihilism]]
+# [[d:Q83188|Relativism]]
+# [[d:Q160590|Utilitarianism]]
+
+;Concepts, 8
+# [[d:Q878070|Duty]]
+# [[d:Q15292|Evil]]
+# '''[[d:Q9476|Free will]]'''
+# [[d:Q15290|Good]]
+# [[d:Q2979|Liberty]]
+# [[d:Q48324|Morality]]
+# [[d:Q157811|Virtue]]
+# [[d:Q799|Wisdom]]
+
+=====Epistemology, 15=====
+# '''[[d:Q9471|Epistemology]]'''
+# [[d:Q131012|Occam's razor]]
+# [[d:Q332880|Common sense]]
+# [[d:Q193526|Conscience]]
+# [[d:Q3962655|Opinion]]
+# [[d:Q28643|Paradigm]]
+# [[d:Q178354|Reason]]
+
+;Approaches, 5
+# [[d:Q83368|Empiricism]]
+# [[d:Q56000|Naturalism (philosophy)]]
+# [[d:Q126692|Pragmatism]]
+# [[d:Q483024|Rationalism]]
+# [[d:Q206829|Reductionism]]
+
+;Concepts, 4
+# [[d:Q164359|Experience]]
+# '''[[d:Q9081|Knowledge]]'''
+# '''[[d:Q7949|Truth]]'''
+
+=====Logic, 6=====
+# '''[[d:Q8078|Logic]]'''
+# '''[[d:Q9453|Dialectic]]'''
+# '''[[d:Q491412|Philosophical logic]]'''
+# [[d:Q186619|Argument]]
+# [[d:Q408386|Inference]]
+# [[d:Q483372|Paradox]]
+
+=====Metaphysics, 12=====
+# [[d:Q35277|Metaphysics]]
+# [[d:Q673661|Abstraction]]
+# [[d:Q179289|Causality]]
+# [[d:Q154242|Nothing]]
+
+;Approaches, 5
+# [[d:Q131133|Determinism]]
+# [[d:Q167312|Dualism]]
+# [[d:Q33442|Idealism]]
+# '''[[d:Q7081|Materialism]]'''
+# [[d:Q178801|Monism]]
+
+;Concepts, 3
+# [[d:Q468777|Existence]]
+# [[d:Q44325|Ontology]]
+# '''[[d:Q9510|Reality]]'''
+
+=====Philosophy of science, 6=====
+# [[d:Q59115|Philosophy of science]]
+## [[d:Q188572|Fact]]
+## [[d:Q41719|Hypothesis]]
+## [[d:Q483677|Pseudoscience]]
+### [[d:Q179098|Parapsychology]]
+## [[d:Q17737|Theory]]
+
+=====Religious philosophy, 6=====
+# [[d:Q2054106|Religious philosophy]]
+## [[d:Q1001079|Buddhist philosophy]]
+## [[d:Q193104|Islamic philosophy]]
+## [[d:Q854807|Christian philosophy]]
+# [[d:Q209295|Philosophy of religion]]
+# [[d:Q481201|Absolute (philosophy)]]
+{{Div col end}}
+
+==== Philosophical schools and traditions, 14 ====
+{{Div col|cols=4}}
+# [[d:Q59104|Continental philosophy]]
+# [[d:Q38066|Existentialism]]
+# [[d:Q46158|Humanism]]
+# [[d:Q193627|Logical positivism]]
+# [[d:Q878985|Modernism]]
+# [[d:Q131015|Positivism]]
+# [[d:Q47783|Postmodernism]]
+# [[d:Q37068|Romanticism]]
+# [[d:Q1395219|Skepticism]]
+# [[d:Q48235|Stoicism]]
+# [[d:Q179168|Structuralism]]
+# [[d:Q183216|Analytic philosophy]]
+# [[d:Q179235|Phenomenology (philosophy)]]
+# [[d:Q328945|Thomism]]
+{{Div col end}}
+
+===Religion and spiritualty, 87 ===
+{{Div col|cols=4}}
+
+;Basics, 20
+# '''[[d:Q9174|Religion]]'''
+# [[d:Q178885|Deity]]
+## '''[[d:Q190|God]]'''
+## [[d:Q205985|Goddess]]
+# [[d:Q42603|Priest]]
+# [[d:Q168796|Spirituality]]
+# '''[[d:Q9165|Soul]]'''
+# [[d:Q108458|Meditation]]
+# [[d:Q40953|Prayer]]
+# [[d:Q851918|Adoration]]
+# [[d:Q83345|Circumcision]]
+# [[d:Q6674|Devil]]
+# [[d:Q34187|Religious studies]]
+# [[d:Q179723|Sacrifice]]
+# [[d:Q1075827|Comparative religion]]
+# [[d:Q117850|Doctrine]]
+# [[d:Q1068640|Folk religion]]
+# [[d:Q171899|Freedom of religion]]
+# [[d:Q216920|Secularism]]
+# [[d:Q34178|Theology]]
+
+; Deity, 2
+# [[d:Q635155|Creator deity]]
+# [[d:Q334486|Mother goddess]]
+
+; Beliefs, 11
+# [[d:Q43004|Animism]]
+# [[d:Q215304|Creation myth]]
+# [[d:Q109411|Curse]]
+# [[d:Q170337|Eschatology]]
+# [[d:Q5410500|Faith]]
+# [[d:Q390248|Myth of origins]]
+# [[d:Q188681|Resurrection]]
+# [[d:Q1151419|Sacred]]
+# [[d:Q80837|Supernatural]]
+# [[d:Q947965|Totemism]]
+# [[d:Q899918|Theophany]]
+
+; Practices, 13
+# [[d:Q191776|Apologetics]]
+# [[d:Q44602|Fasting]]
+# [[d:Q160598|Heresy]]
+# [[d:Q132137|Icon]]
+# [[d:Q181543|Iconoclasm]]
+# [[d:Q840665|Idolatry]]
+# [[d:Q172331|Liturgy]]
+# [[d:Q1644573|Pilgrimage]]
+# [[d:Q214267|Prophecy]]
+# [[d:Q904756|Religious conversion]]
+# [[d:Q189819|Ritual]]
+# [[d:Q1579384|Veneration]]
+# [[d:Q2514663|Worship]]
+
+; Death and afterlife, 13
+# [[d:Q623282|Afterlife]]
+# [[d:Q331055|Burial]]
+# [[d:Q39614|Cemetery]]
+# [[d:Q207315|Cremation]]
+# [[d:Q192619|Crypt]]
+# [[d:Q161936|Death (personification)]]
+# [[d:Q201676|Funeral]]
+# [[d:Q4489450|Heaven]]
+# [[d:Q564|Hell]]
+# [[d:Q43616|Mummy]]
+# [[d:Q128593|Reincarnation]]
+# [[d:Q193291|Spirit]]
+# [[d:Q154365|Underworld]]
+
+; Institutions, 10
+# [[d:Q101687|Altar]]
+# [[d:Q478004|Anti-clericalism]]
+# [[d:Q183770|Creed]]
+# [[d:Q11038979|Cult]]
+# [[d:Q44613|Monastery]]
+# [[d:Q13414953|Religious denomination]]
+# [[d:Q41521|Schism (religion)]]
+# [[d:Q19097|Sect]]
+# [[d:Q697295|Shrine]]
+# [[d:Q44539|Temple]]
+
+; Theistic philosophies, 15
+# [[d:Q620805|Theism]]
+# [[d:Q288928|Agnosticism]]
+# '''[[d:Q7066|Atheism]]'''
+# [[d:Q620629|Deism]]
+# '''[[d:Q9149|Fundamentalism]]'''
+# '''[[d:Q9159|Monotheism]]'''
+# [[d:Q221390|Panentheism]]
+# [[d:Q728455|Pantheism]]
+# '''[[d:Q9163|Polytheism]]'''
+# [[d:Q156112|Ecumenism]]
+# [[d:Q189753|Neopaganism]]
+# [[d:Q383258|Orthodoxy]]
+# [[d:Q29536|Paganism]]
+# [[d:Q172904|Syncretism]]
+# [[d:Q106687|Unitarianism]]
+
+; Non-theistic philosophies, 3
+# [[d:Q871396|Nontheism]]
+# [[d:Q5522978|Antitheism]]
+# [[d:Q210115|Freethought]]
+{{Div col end}}
+
+=== Specific religions, 113 ===
+{{Div col|cols=4}}
+
+====Abrahamic religions, 61 ====
+# '''[[d:Q5043|Christianity]]'''
+# [[d:Q163943|Druze]]
+# '''[[d:Q432|Islam]]'''
+# '''[[d:Q9268|Judaism]]'''
+# [[d:Q235113|Angel]]
+# [[d:Q37302|Holy Spirit]]
+# [[d:Q51626|Messiah]]
+# [[d:Q60227|Sin]]
+# [[d:Q34623|Ten Commandments]]
+
+;Christianity, 28
+# [[d:Q34651|Christian Church]]
+# [[d:Q3678579|Jehovah]]
+# [[d:Q35230|Satan]]
+# [[d:Q1845|Bible]]
+## [[d:Q18813|New Testament]]
+## [[d:Q19786|Old Testament]]
+# [[d:Q19809|Christmas]]
+# [[d:Q21196|Easter]]
+# [[d:Q39864|Pentecost]]<!--Christmas celebrates the birth of Christ; Pentecost celebrates the birth/founding of the Christian/Catholic church-->
+# [[d:Q37090|Trinity]]
+# [[d:Q584205|Nontrinitarianism]]
+# [[d:Q1841|Catholicism]]
+## '''[[d:Q9592|Catholic Church]]'''
+## [[d:Q19546|Pope]]
+# [[d:Q3333484|Orthodox Christianity]]
+# [[d:Q23540|Protestantism]]
+## [[d:Q6423963|Anglicanism]]
+## [[d:Q93191|Baptism]]
+## [[d:Q194253|Evangelicalism]]
+## [[d:Q75809|Lutheranism]]
+## [[d:Q33203|Methodism]]
+## [[d:Q747802|Mormonism]]
+## [[d:Q170208|Quakers]]
+# [[d:Q49377|Oriental Orthodoxy]]
+# [[d:Q16970|Church (building)]]
+# [[d:Q2977|Cathedral]]
+# [[d:Q60995|Russian Orthodox Church]]
+# [[d:Q101849|Calvinism]]
+
+;Islam, 14
+# [[d:Q176770|Five Pillars of Islam]]
+# [[d:Q1192063|Islamic schools and branches]]
+## '''[[d:Q9585|Shia Islam]]'''
+## [[d:Q483654|Sunni Islam]]
+## '''[[d:Q9603|Sufism]]'''
+# [[d:Q234801|Allah]]
+# [[d:Q428|Quran]]
+# [[d:Q125482|Imam]]
+# [[d:Q32815|Mosque]]
+# [[d:Q234915|Hajj]]
+# [[d:Q234343|Hadith]]
+# [[d:Q29466|Kaaba]]
+# [[d:Q47740|Muslim]]
+# [[d:Q482752|Sharia]]
+
+;Judaism, 10
+# [[d:Q80970|Orthodox Judaism]]
+# [[d:Q1133485|Reform Judaism]]
+# [[d:Q205644|Conservative Judaism]]
+# [[d:Q121393|Passover]]
+# [[d:Q133485|Rabbi]]
+# [[d:Q34627|Synagogue]]
+# [[d:Q34990|Torah]]
+# [[d:Q83367|Tanakh]]
+# [[d:Q43290|Talmud]]
+# [[d:Q132994|Yom Kippur]]
+
+====Eastern religions, 45====
+# [[d:Q217403|en:Ayyavazhi]]
+# [[d:Q22679|Bahá'í Faith]]
+# '''[[d:Q748|Buddhism]]'''
+## [[d:Q48362|Mahayana]]
+### [[d:Q193849|Avalokiteśvara]]
+### [[d:Q494235|Diamond Sutra]]
+## [[d:Q42927|Nirvana]]
+## [[d:Q132265|Theravada]]
+### [[d:Q215685|Pāli Canon]]
+## [[d:Q483889|Tibetan Buddhism]]
+## [[d:Q172175|Vajrayana]]
+## '''[[d:Q7953|Zen]]'''
+# '''[[d:Q9581|Confucianism]]'''
+## [[d:Q1377760|Four Books and Five Classics]]
+# '''[[d:Q9089|Hinduism]]'''
+## [[d:Q234953|Shaivism]]
+## [[d:Q45584|Vaishnavism]]
+## [[d:Q849345|Shaktism]]
+## [[d:Q184128|Om]]
+## [[d:Q83090|Avatar]]
+## [[d:Q132325|Ayurveda]]
+## [[d:Q46802|Bhagavad Gita]]
+## [[d:Q11389|Brahma]]
+## [[d:Q746990|Brahman]]
+## [[d:Q134293|Dharma]]
+## [[d:Q71684|Ishvara]]
+## [[d:Q132196|Karma]]
+## [[d:Q42891|Krishna]]
+## [[d:Q10283|Kumbha Mela]]
+## [[d:Q37293|Ramayana]]
+## [[d:Q727413|Rigveda]]
+## [[d:Q11378|Shiva]]
+## '''[[d:Q9595|Trimurti]]'''
+## [[d:Q6113985|Upanishads]]
+## [[d:Q39950|Vedas]]
+## [[d:Q2512051|Vedanta]]
+## [[d:Q11380|Vishnu]]
+## '''[[d:Q9350|Yoga]]'''
+# '''[[d:Q9232|Jainism]]'''
+# [[d:Q812767|Shinto]]
+# '''[[d:Q9316|Sikhism]]'''
+## [[d:Q203249|Guru Granth Sahib]]
+## [[d:Q180422|Harmandir Sahib]]<!--Golden Temple-->
+# '''[[d:Q9598|Taoism]]'''
+## [[d:Q134425|Tao Te Ching]]
+
+====Traditional religions, 7====
+# [[d:Q386498|Traditional African religion]]
+# [[d:Q1074275|Chinese folk religion]]
+## [[d:Q860434|Jade Emperor]]
+# [[d:Q42042|Shamanism]]
+# '''[[d:Q9601|Zoroastrianism]]'''
+## [[d:Q83426|Avesta]]
+## [[d:Q200263|Parsi]]
+{{Div col end}}
+
+=== Esoterics, magic and mythology, 52 ===
+{{Div col|cols=4}}
+<!--For heroes and characters, see under "Mythical and fictional people", for creatures, see under "Literature: Fictional worlds"-->
+# [[d:Q45996|Mysticism]]
+# [[d:Q41726|Freemasonry]]
+# [[d:Q48420|Gnosticism]]
+# [[d:Q81741|Magic (paranormal)]]
+## [[d:Q34362|Astrology]]
+## [[d:Q583269|Tarot]]
+## [[d:Q259745|Witchcraft]]
+# [[d:Q178934|Occultism]]
+# [[d:Q177764|West African Vodun]]
+
+====Mythology, 43====
+# '''[[d:Q9134|Mythology]]'''
+## [[d:Q36192|Folklore]]
+# [[d:Q376608|Australian Aboriginal mythology]]
+# [[d:Q263031|Celtic polytheism]]
+# [[d:Q205740|Egyptian mythology]]
+# [[d:Q1122452|Germanic paganism]]
+# [[d:Q34726|Greek mythology]]
+# [[d:Q180627|Lilith]]
+# [[d:Q128285|Norse mythology]]
+# [[d:Q122173|Roman mythology]]
+
+;Abrahamic mythology, 1
+# [[d:Q830183|Eve]]
+
+;Egyptian mythology, 8
+# [[d:Q58373|Amun]]<!--head god-->
+# [[d:Q47534|Anubis]]
+# [[d:Q130227|Aten]]<!--one god-->
+# [[d:Q133343|Hathor]]<!--Egyptian deity-->
+# [[d:Q84122|Horus]]<!--Egyptian deity-->
+# [[d:Q79876|Isis]]<!--Egyptian deity-->
+# [[d:Q46491|Osiris]]<!-- Egyptian deity -->
+# [[d:Q1252904|Ra]]<!-- Egyptian deity -->
+
+;Greek mythology, 14
+# [[d:Q34201|Zeus]]<!--head god-->
+# [[d:Q121973|Eros]]
+# [[d:Q41127|Poseidon]]
+# [[d:Q41410|Hades]]
+# [[d:Q38012|Hera]]
+# [[d:Q35500|Aphrodite]]<!--Greek deity-->
+# [[d:Q39503|Artemis]]<!--Greek deity-->
+# [[d:Q37122|Athena]]<!--Greek deity-->
+# [[d:Q41419|Hestia]]
+# [[d:Q40901|Ares]]
+# [[d:Q41484|Hermes]]
+# [[d:Q44384|Hephaestus]]
+# [[d:Q37340|Apollo]]
+# [[d:Q93172|Gaia (mythology)]]
+
+;Native American mythology, 1
+# [[d:Q179818|Quetzalcoatl]]
+
+;Norse mythology, 3
+# [[d:Q1647325|Freyja]]<!--Norse deity-->
+# [[d:Q43610|Odin]]<!--Norse deity-->
+# [[d:Q42952|Thor]]<!--Norse deity-->
+
+;Roman mythology, 6
+# [[d:Q125046|Juno (mythology)]]
+# [[d:Q4649|Jupiter (mythology)]]<!--Roman deity-->
+# [[d:Q112|Mars (mythology)]]<!--Roman deity-->
+# [[d:Q152262|Pluto (mythology)]]<!--Roman deity-->
+# [[d:Q47652|Venus (mythology)]]<!--Roman deity-->
+# [[d:Q4640|Vulcan (mythology)]]<!--Roman deity-->
+{{Div col end}}

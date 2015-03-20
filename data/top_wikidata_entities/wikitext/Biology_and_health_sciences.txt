@@ -1,0 +1,1488 @@
+<noinclude>'''Return to [[List of articles every Wikipedia should have/Expanded]]'''</noinclude>
+==Biology and health sciences, 1100 ==
+::''Transcluded from [[List of articles every Wikipedia should have/Expanded/Biology and health sciences]]''.
+
+=== Basic, 30 ===
+{{Div col|cols=4}}
+# '''[[d:Q420|Biology]]'''
+## '''[[d:Q441|Botany]]'''
+## [[d:Q431|Zoology]]
+# '''[[d:Q11398|Biological classification]]'''
+## [[d:Q8269924|Taxonomy]]
+## '''[[d:Q7432|Species]]'''
+## [[d:Q34740|Genus]]
+## [[d:Q35409|Family (biology)]]
+## [[d:Q36602|Order (biology)]]
+## [[d:Q37517|Class (biology)]]
+## [[d:Q38348|Phylum]]
+## [[d:Q36732|Kingdom (biology)]]
+## [[d:Q146481|Domain (biology)]]
+# '''[[d:Q1063|Evolution]]'''
+## [[d:Q43478|Natural selection]]
+# [[d:Q7162|Genetics]]
+## '''[[d:Q7430|DNA]]'''
+## [[d:Q11053|RNA]]
+## [[d:Q7187|Gene]]
+## [[d:Q178694|Heredity]]
+# '''[[d:Q3|Life]]'''
+## '''[[d:Q4|Death]]'''
+## [[d:Q231218|Origin of life]]
+# [[d:Q7193|Microbiology]]
+# [[d:Q7175|Mycology]]
+# [[d:Q483921|Adaptation]]
+# [[d:Q486420|Genetic drift]]
+# [[d:Q42918|Mutation]]
+# [[d:Q7205|Paleontology]]
+# [[d:Q171184|Phylogenetics]]
+{{Div col end}}
+
+=== Anatomy and Morphology, 100 ===
+{{Div col|cols=4}}
+# '''[[d:Q514|Anatomy]]'''
+# [[d:Q196113|Camouflage]]
+# '''[[d:Q7868|Cell (biology)]]'''
+# '''[[d:Q11078|Endocrine system]]'''
+# '''[[d:Q1059|Immune system]]'''
+# [[d:Q712378|Organ (anatomy)]]
+# [[d:Q40397|Tissue (biology)]]
+{{Div col end}}
+
+==== Animal anatomy and morphology, 68 ====
+{{Div col|cols=4}}
+
+;Circulatory system, 7
+# [[d:Q9655|Artery]]
+# '''[[d:Q7873|Blood]]'''
+# '''[[d:Q11068|Circulatory system]]'''
+# '''[[d:Q1072|Heart]]'''
+# [[d:Q37187|Red blood cell]]
+# [[d:Q9609|Vein]]
+# [[d:Q42395|White blood cell]]
+
+;Gastrointestinal tract, 10
+# '''[[d:Q9649|Human digestive system]]'''
+# [[d:Q13400903|Human gastrointestinal tract]]
+# [[d:Q5982337|Colon (anatomy)]]
+# '''[[d:Q11090|Small intestine]]'''
+# '''[[d:Q9368|Liver]]'''
+# '''[[d:Q11083|Large intestine]]'''
+# [[d:Q9635|Mouth]]
+# [[d:Q561|Human tooth]]
+# [[d:Q9618|Pancreas]]
+# [[d:Q1029907|Stomach]]
+
+;Integumentary system, 8
+# [[d:Q483213|Integumentary system]]
+# '''[[d:Q9103|Breast]]'''
+# '''[[d:Q1074|Skin]]'''
+# [[d:Q81025|Feather]]
+# [[d:Q197204|Fur]]
+# [[d:Q28472|Hair]]
+# [[d:Q36864|Nail (anatomy)]]
+# [[d:Q188488|Scale (anatomy)]]
+
+;Muscular system, 3
+# [[d:Q7060553|Muscular system]]
+# [[d:Q428914|Myocyte]]
+# [[d:Q1048687|Skeletal striated muscle]]
+
+;Nervous system, 17
+# '''[[d:Q9404|Nervous system]]'''
+# '''[[d:Q1073|Brain]]'''
+# '''[[d:Q11101|Sensory system]]'''
+# [[d:Q821413|Auditory system]]
+## '''[[d:Q7362|Ear]]'''
+# [[d:Q1147588|Gustatory system]]
+# [[d:Q1054094|Olfactory system]]
+## '''[[d:Q7363|Nose]]'''
+# [[d:Q328835|Somatosensory system]]
+# [[d:Q558363|Visual system]]
+## '''[[d:Q7364|Eye]]'''
+# [[d:Q83500|Intelligence]]
+# [[d:Q160289|Hearing]]
+# [[d:Q124794|Taste]]
+# [[d:Q1541064|Olfaction]]
+# [[d:Q81938|Pain]]
+# [[d:Q162668|Visual perception]]
+
+;Reproductive system, 7
+# '''[[d:Q7895|Reproductive system]]'''
+# [[d:Q58|Penis]]
+# [[d:Q5880|Vagina]]
+# [[d:Q4620674|Sex organ]]
+# [[d:Q873072|Clitoris]]
+# [[d:Q9631|Ovary]]
+# [[d:Q9384|Testicle]]
+
+;Respiratory system, 3
+# '''[[d:Q7891|Respiratory system]]'''
+# '''[[d:Q7886|Lung]]'''
+# [[d:Q132390|Gill]]
+
+;Skeletal system, 7
+# '''[[d:Q7881|Skeleton]]'''
+# [[d:Q265868|Bone]]
+# [[d:Q9645|Chest]]
+# [[d:Q713102|Pelvis]]
+# [[d:Q13147|Skull]]
+# [[d:Q482853|Vertebral column]]
+# [[d:Q9644|Joint]]
+
+;Tissues, 4
+# [[d:Q41301|Epithelium]]
+# [[d:Q25615|Connective tissue]]
+# '''[[d:Q7365|Muscle]]'''
+# [[d:Q203850|Nervous tissue]]
+
+;Urinary system, 2
+# [[d:Q9377|Kidney]]
+# [[d:Q9382|Urinary bladder]]
+{{Div col end}}
+
+==== Plant morphology and anatomy, 23 ====
+{{Div col|cols=4}}
+# [[d:Q1056194|Plant cell]]
+## [[d:Q128700|Cell wall]]
+# [[d:Q184453|Bark]]
+# [[d:Q13184|Berry]]
+# '''[[d:Q506|Flower]]'''
+## [[d:Q79932|Pollen]]
+# '''[[d:Q1364|Fruit]]'''
+# [[d:Q33971|Leaf]]
+# [[d:Q41500|Root]]
+# [[d:Q40763|Seed]]
+# [[d:Q216635|Stoma]]
+
+;Life forms, 4
+# [[d:Q190903|Herbaceous plant]]
+# [[d:Q14079|Liana]]
+# [[d:Q42295|Shrub]]
+# '''[[d:Q10884|Tree]]'''
+
+;Plant stem, 3
+# [[d:Q134267|Plant stem]]
+# [[d:Q193472|Trunk (botany)]]
+# '''[[d:Q287|Wood]]'''
+
+;Plant tissues, 5
+# [[d:Q796482|Epidermis (botany)]]
+# [[d:Q375601|Ground tissue]]
+# [[d:Q207604|Meristem]]
+# [[d:Q968604|Vascular tissue]]
+# [[d:Q369429|Vascular cambium]]
+{{Div col end}}
+
+==== Fungal morphology and anatomy, 2 ====
+{{Div col|cols=4}}
+# [[d:Q193129|Hypha]]
+# [[d:Q326228|Mycelium]]
+{{Div col end}}
+
+=== Biochemistry, 28 ===
+{{Div col|cols=4}}
+# [[d:Q206229|Biomolecule]]
+# [[d:Q910979|Biological pigment]]
+## [[d:Q191907|Carotenoid]]
+## [[d:Q43177|Chlorophyll]]
+## [[d:Q187526|Melanin]]
+# '''[[d:Q11358|Carbohydrate]]'''
+## [[d:Q80294|Cellulose]]
+## [[d:Q41534|Starch]]
+## '''[[d:Q11002|Sugar]]'''
+# [[d:Q127980|Fat]]
+## [[d:Q61476|Fatty acid]]
+## '''[[d:Q11367|Lipid]]'''
+# '''[[d:Q8054|Protein]]'''
+## '''[[d:Q8047|Enzyme]]'''
+## [[d:Q43041|Hemoglobin]]
+## [[d:Q8066|Amino acid]]
+# '''[[d:Q11364|Hormone]]'''
+## [[d:Q277954|Estrogen]]
+## [[d:Q1318776|Testosterone]]
+# [[d:Q70702|Alkaloid]]
+# [[d:Q127900|Lactose]]
+# [[d:Q161219|Chitin]]
+# [[d:Q174936|Glycogen]]
+# [[d:Q43656|Cholesterol]]
+# [[d:Q7202|Molecular biology]]
+# [[d:Q123619|Nucleic acid]]
+# [[d:Q132621|Epinephrine]]
+# [[d:Q192949|Plant hormone]]
+{{Div col end}}
+
+=== Biological processes and Physiology, 42 ===
+{{Div col|cols=4}}
+# '''[[d:Q9530|Breathing]]'''
+# '''[[d:Q103191|Homeostasis]]'''
+# '''[[d:Q1057|Metabolism]]'''
+# [[d:Q185557|Excretion]]
+# [[d:Q472287|Respiration (physiology)]]
+{{Div col end}}
+
+==== Biological reproduction and Ontogeny, 34 ====
+{{Div col|cols=4}}
+
+;Basics, 13
+# '''[[d:Q11990|Reproduction]]'''
+# [[d:Q2347178|Human development (biology)]]
+# [[d:Q213713|Developmental biology]]
+# [[d:Q173432|Asexual reproduction]]
+# [[d:Q182353|Sexual reproduction]]
+## '''[[d:Q11995|Pregnancy]]'''
+## '''[[d:Q290|Sex]]'''
+### [[d:Q43445|Female]]
+### [[d:Q44148|Male]]
+# '''[[d:Q12171|Menstruation]]'''
+# [[d:Q83864|Menstrual cycle]]
+# [[d:Q177708|Menopause]]
+# [[d:Q9715|Semen]]
+
+;Ontogeny, 16
+# [[d:Q193603|Ontogeny]]
+# [[d:Q1403158|Cuticle]]
+# [[d:Q17147|Egg (biology)]]
+# [[d:Q33196|Embryo]]
+# [[d:Q26513|Fetus]]
+# [[d:Q207254|Imago]]
+# [[d:Q129270|Larva]]
+# [[d:Q1066907|Longevity]]
+# [[d:Q33753|Metamorphosis]]
+# [[d:Q245998|Microbial cyst]]
+# [[d:Q381084|Moulting]]
+# [[d:Q258362|Nymph (biology)]]
+# [[d:Q101065|Puberty]]
+# [[d:Q170595|Pupa]]
+# [[d:Q177332|Spore]]
+# [[d:Q168525|Tadpole]]
+
+===== Plant reproduction, 5 =====
+# [[d:Q2725616|Plant reproduction]]
+# [[d:Q189951|Gametophyte]]
+# [[d:Q134624|Pollination]]
+# [[d:Q725951|Alternation of generations]]
+# [[d:Q647173|Sporophyte]]
+{{Div col end}}
+
+==== Animal physiology, 1 ====
+# '''[[d:Q11978|Digestion]]'''
+
+==== Plant physiology, 2 ====
+{{Div col|cols=4}}
+# '''[[d:Q11982|Photosynthesis]]'''
+# [[d:Q167980|Transpiration]]
+{{Div col end}}
+
+=== Ecology, 9 ===
+{{Div col|cols=4}}
+# '''[[d:Q7150|Ecology]]'''
+# [[d:Q37813|Ecosystem]]
+# '''[[d:Q11394|Endangered species]]'''
+# [[d:Q123509|Extinction]]
+# [[d:Q206912|Extremophile]]
+# [[d:Q101998|Biome]]
+# [[d:Q47041|Biodiversity]]
+# [[d:Q45767|Competition (biology)]]
+# [[d:Q172861|Ecological niche]]
+{{Div col end}}
+
+=== Organisms, 653 ===
+{{Div col|cols=4}}
+# '''[[d:Q7239|Organism]]'''
+{{Div col end}}
+
+==== Animals, 456 ====
+
+===== Basic, 10 =====
+{{Div col|cols=4}}
+# '''[[d:Q729|Animal]]'''
+# '''[[d:Q1360|Arthropod]]'''
+# [[d:Q1359|Chelicerata]]
+# [[d:Q10915|Chordate]]
+# [[d:Q26214|Gnathostomata]]
+# [[d:Q105146|Hexapoda]]
+# [[d:Q43806|Invertebrate]]
+# '''[[d:Q5185|Nematode]]'''
+# [[d:Q19159|Tetrapod]]
+# [[d:Q25241|Vertebrate]]
+{{Div col end}}
+
+===== Arachnids, 8 =====
+{{Div col|cols=4}}
+# [[d:Q19137|Acari]]
+# [[d:Q1358|Arachnid]]
+# [[d:Q19116|Opiliones]]
+# [[d:Q19119|Pseudoscorpion]]
+# [[d:Q19125|Scorpion]]
+# [[d:Q19126|Solifugae]]
+# '''[[d:Q1357|Spider]]'''
+## [[d:Q213383|Tarantula]]
+{{Div col end}}
+
+===== Crustaceans, 8 =====
+{{Div col|cols=4}}
+# [[d:Q25364|Crustacean]]
+# [[d:Q193418|Amphipoda]]
+# [[d:Q188360|Branchiopoda]]
+# [[d:Q40802|Crab]]
+# [[d:Q4610|Decapoda]]
+# [[d:Q29498|Krill]]
+# [[d:Q1038113|Lobster]]
+# [[d:Q182978|Malacostraca]]
+{{Div col end}}
+
+===== Insects, 63 =====
+{{Div col|cols=4}}
+# '''[[d:Q1390|Insect]]'''
+# [[d:Q184616|Caddisfly]]
+# [[d:Q13676|Earwig]]
+# [[d:Q388162|Flea]]
+# [[d:Q6481228|Louse]]
+# [[d:Q131250|Mantis]]
+# [[d:Q205301|Mecoptera]]
+# [[d:Q156438|Neuroptera]]
+## [[d:Q231439|Antlion]]
+# [[d:Q188029|Phasmatodea]] (stick insects)
+# [[d:Q203547|Plecoptera]]
+# [[d:Q271623|Psocoptera]]
+# [[d:Q327144|Strepsiptera]]
+# [[d:Q185628|Thrips]]
+
+;Beetles (Coleoptera), 9
+# [[d:Q22671|Beetle]]
+# [[d:Q7415384|Curculionidae]]
+# [[d:Q25327|Coccinellidae]] (ladybird)
+# [[d:Q25420|Firefly]]
+# [[d:Q27046|Ground beetle]]
+# [[d:Q193407|Leaf beetle]]
+## [[d:Q156954|Colorado potato beetle]]
+# [[d:Q205295|Longhorn beetle]]
+# [[d:Q186946|Scarabaeidae]]
+
+;Cockroaches (Blattodea), 2
+# [[d:Q25309|Cockroach]]
+# [[d:Q546583|Termite]]
+
+;Flies (Diptera), 6
+# [[d:Q25312|Fly]]
+# [[d:Q130888|Drosophila melanogaster]] (common fruit fly)
+# [[d:Q228241|Horse-fly]]
+# [[d:Q166111|Housefly]]
+# '''[[d:Q7367|Mosquito]]'''
+# [[d:Q205256|Tsetse fly]]
+
+;Hemiptera (true bugs), 6
+# [[d:Q26371|Hemiptera]]
+# [[d:Q130778|Cicada]]
+# [[d:Q27191|Heteroptera]] (typical bugs)
+## [[d:Q940337|Bed bug]]
+## [[d:Q270322|Gerridae]] (water skaters)
+# [[d:Q183350|Aphid]] (plant lice)
+
+;Hymenoptera, 6
+# [[d:Q22651|Hymenoptera]]
+# '''[[d:Q7386|Ant]]'''
+# '''[[d:Q7391|Bee]]'''
+## [[d:Q25407|Bumblebee]]
+## [[d:Q30034|Western honey bee]]
+# [[d:Q9458574|Wasp]]
+
+;Lepidoptera, 12
+# [[d:Q28319|Lepidoptera]]
+# [[d:Q11946202|Butterfly]]
+# [[d:Q134747|Bombyx mori]] (domesticated silkmoth)
+# [[d:Q45559|Geometer moth]]
+# [[d:Q158717|Lycaenidae]] (Blues and Coppers)
+# [[d:Q1725788|Moth]]
+# [[d:Q156449|Nymphalidae]]
+# [[d:Q41559|Pieridae]] (Yellow-Whites)
+## [[d:Q26764|Pieris brassicae]]
+# [[d:Q232936|Skipper (butterfly)]]
+# [[d:Q157683|Sphingidae]]
+# [[d:Q59905|Swallowtail butterfly]]
+
+;Odonata, 3
+# [[d:Q25375|Odonata]]
+# [[d:Q230502|Damselfly]]
+# [[d:Q80066|Dragonfly]]
+
+;Orthoptera, 5
+# [[d:Q167810|Orthoptera]]
+# [[d:Q47328|Cricket (insect)]]
+# [[d:Q83902|Grasshopper]]
+# [[d:Q199765|Mole cricket]]
+# [[d:Q727919|Tettigoniidae]]
+
+{{Div col end}}
+
+===== Cnidarians, 3=====
+{{Div col|cols=4}}
+# [[d:Q25441|Cnidaria]]
+# [[d:Q171446|Coral]]
+# [[d:Q30178|Jellyfish]]
+{{Div col end}}
+
+===== Molluscas, 6=====
+{{Div col|cols=4}}
+# '''[[d:Q25326|Mollusca]]'''
+# [[d:Q107411|Oyster]]
+# [[d:Q40152|Octopus]]
+# [[d:Q81900|Squid]]
+# [[d:Q1953597|Slug]]
+## [[d:Q308841|Snail]]
+{{Div col end}}
+
+===== Invertebrata, others, 5 =====
+{{Div col|cols=4}}
+# [[d:Q190701|Springtail]]
+# [[d:Q25823|Myriapoda]]
+## [[d:Q43447|Centipede]]
+## [[d:Q167367|Millipede]]
+# [[d:Q19106|Sea spider]]
+
+{{Div col end}}
+
+===== Amphibians, 5 =====
+{{Div col|cols=4}}
+# '''[[d:Q10908|Amphibian]]'''
+# [[d:Q4758|Caecilian]]
+# [[d:Q53636|Frog]]
+# [[d:Q53663|Salamander]]
+# [[d:Q6408|True frog]]
+{{Div col end}}
+
+===== Birds, 104 =====
+{{Div col|cols=4}}
+# '''[[d:Q5113|Bird]]'''
+# [[d:Q100196|Archaeopteryx]]
+# [[d:Q21695|Grebe]]
+# [[d:Q41994|Flamingo]]
+# [[d:Q43624|Hummingbird]]
+# [[d:Q180691|Mousebird]]
+# [[d:Q9147|Penguin]]
+# [[d:Q179983|Sandgrouse]]
+# [[d:Q19172|Tinamou]]
+# [[d:Q19264|Tropicbird]]
+
+;Accipitriformes and Falconiformes, 6
+# [[d:Q188737|Accipiter]]
+# [[d:Q2092297|Eagle]]
+# [[d:Q43489|Falcon]]
+# [[d:Q184858|New World vulture]]
+# [[d:Q25332|Osprey]]
+# [[d:Q168748|Secretarybird]]
+
+;Anseriformes, 4
+# [[d:Q7556|Anatidae]]
+# [[d:Q3736439|Duck]]
+# [[d:Q82562|Goose]]
+# [[d:Q34384|Swan]]
+
+;Apodiformes, 1
+# [[d:Q26617|Swift]]
+
+;Caprimulgiformes, 2
+# [[d:Q26125|Caprimulgiformes]]
+# [[d:Q27244|Nightjar]]
+
+;Charadriiformes, 7
+# [[d:Q25978|Charadriiformes]]
+# [[d:Q28294|Auk]]
+# [[d:Q205320|Buttonquail]]
+# [[d:Q27589|Gull]]
+# [[d:Q26626|Sandpiper]]
+# [[d:Q205323|Skua]]
+# [[d:Q875769|Tern]]
+
+;Ciconiiformes, 5
+# [[d:Q18789|Heron]]
+# [[d:Q193833|Ibis]]
+# [[d:Q18700|Shoebill]]
+# [[d:Q208488|Spoonbill]]
+# [[d:Q28507|Stork]]
+
+;Columbiformes, 3
+# [[d:Q43502|Dodo]]
+# '''[[d:Q10856|Columbidae]]'''
+## [[d:Q191968|Passenger Pigeon]]
+
+;Coraciiformes, 3
+# [[d:Q183147|Bee-eater]]
+# [[d:Q26773|Hornbill]]
+# [[d:Q25247|Hoopoe]]
+
+;Cuculiformes, 3
+# [[d:Q26381|Cuckoo]]
+# [[d:Q188660|Hoatzin]]
+# [[d:Q213827|Turaco]]
+
+;Galliformes, 7
+# [[d:Q21659|Galliformes]]
+# '''[[d:Q780|Chicken]]'''
+# [[d:Q201240|Grouse]]
+# [[d:Q171953|Guineafowl]]
+# [[d:Q25432|Common Pheasant]]
+# [[d:Q28358|Common Quail]]
+# [[d:Q43794|Turkey (bird)]]
+
+;Gruiformes, 4
+# [[d:Q25557|Gruiformes]]
+# [[d:Q25365|Crane (bird)]]
+# [[d:Q21755|Bustard]]
+# [[d:Q26623|Rallidae]]
+
+;Passerines, 23
+# [[d:Q25341|Passerine]]
+# [[d:Q194240|Songbird]]
+
+;;Corvoidea, 5
+# [[d:Q179333|Bird-of-paradise]]
+# [[d:Q25565|Corvidae]]
+## [[d:Q43365|Crow]]
+## [[d:Q25307|Eurasian Magpie]]
+# [[d:Q171052|Shrike]]
+
+;;Passerida, 16
+# [[d:Q188854|Bulbul]]
+# [[d:Q28486|Emberizidae]]
+# [[d:Q160835|Finch]]
+# [[d:Q29858|Lark]]
+# [[d:Q205943|Motacillidae]]
+# [[d:Q200989|Old World flycatcher]]
+## [[d:Q25334|European Robin]]
+## [[d:Q25393|Common Nightingale]]
+# [[d:Q205857|Nuthatch]]
+# [[d:Q28922|Sparrow]]
+# [[d:Q185237|Starling]]
+# [[d:Q208221|Sunbird]]
+# [[d:Q39861|Swallow]]
+# [[d:Q168473|Tit (bird)]]
+# [[d:Q26050|Thrush (bird)]]
+# [[d:Q208304|Wren]]
+
+;Pelecaniformes, 4
+# [[d:Q19401|Cormorant]]
+# [[d:Q19370|Darter]]
+# [[d:Q203472|Frigatebird]]
+# [[d:Q19413|Pelican]]
+
+;Piciformes, 4
+# [[d:Q25934|Piciformes]]
+# [[d:Q214137|Honeyguide]]
+# [[d:Q1325045|Toucan]]
+# [[d:Q25439|Woodpecker]]
+
+;Procellariiformes, 3
+# [[d:Q55805|Albatross]]
+# [[d:Q207767|Procellariidae]]
+# [[d:Q193404|Storm petrel]]
+
+;Psittaciformes, 3
+# [[d:Q31431|Parrot]]
+# [[d:Q121221|Budgerigar]]
+# [[d:Q31448|Cockatoo]]
+
+;Ratites, 6
+# [[d:Q201231|Cassowary]]
+# [[d:Q93208|Emu]]
+# [[d:Q43642|Kiwi]]
+# [[d:Q452969|Moa]]
+# [[d:Q17592|Ostrich]]
+# [[d:Q19171|Rhea (bird)]]
+
+;Strigiformes, 5 
+# [[d:Q25222|Owl]]
+# [[d:Q26012|True owl]]
+## [[d:Q130933|Eurasian Eagle-Owl]]
+## [[d:Q129958|Little Owl]]
+# [[d:Q27112|Tytonidae]]
+
+;Trogoniformes, 1
+# [[d:Q191469|Trogon]]
+{{Div col end}}
+
+===== Fishes, 56 =====
+{{Div col|cols=4}}
+# '''[[d:Q152|Fish]]'''
+# [[d:Q25371|Chondrichthyes]] (cartilaginous fishes)
+# [[d:Q130955|Acanthodii]] ("spiny sharks")
+# [[d:Q27207|Osteichthyes]] (bony fish)
+## [[d:Q127282|Actinopterygii]] (ray-finned fish)
+## [[d:Q160830|Sarcopterygii]] (lobe-finned fish)
+# [[d:Q130932|Placodermi]]
+# [[d:Q201235|Electric eel]]
+# [[d:Q206948|Anglerfish]]
+# [[d:Q42237|Mullet (fish)]]
+## [[d:Q234014|Flathead mullet]]
+# [[d:Q145409|Arapaima]]
+
+;Batoidea, 3
+# [[d:Q6495741|Batoidea]]
+# [[d:Q190736|Sawfish]]
+# [[d:Q41317|Electric ray]]
+
+;Characiformes, 2
+# [[d:Q217458|Characiformes]]
+# [[d:Q185215|Piranha]]
+
+;Chondrosteans, 1
+# [[d:Q181871|Sturgeon]]
+
+;Clupeiformes, 3
+# [[d:Q193389|Clupeiformes]]
+# [[d:Q192662|Anchovy]]
+# [[d:Q27141|Clupeidae]]
+
+;Cypriniformes, 8
+# [[d:Q177879|Cypriniformes]]
+# [[d:Q35047|Cyprinidae]]
+## [[d:Q144534|Common bream]]
+## [[d:Q237800|Carassius]]
+## [[d:Q81110|Common carp]]
+## [[d:Q123141|Goldfish]]
+## [[d:Q76098|Grass Carp]]
+## [[d:Q76280|Tench]]
+
+;Cyprinodontiformes, 1
+# [[d:Q178202|Guppy]]
+
+;Elopomorpha, 1
+# [[d:Q128685|Eel]]
+
+;Gadiformes, 3
+# [[d:Q216241|Gadiformes]]
+# [[d:Q144700|Burbot]]
+# [[d:Q202406|Haddock]]
+
+;Perciformes, 8
+# [[d:Q127595|Perciformes]]
+# [[d:Q3406|Cichlid]]
+# [[d:Q4468|Goby]]
+# [[d:Q217129|European seabass]]
+# [[d:Q164327|Swordfish]]
+# [[d:Q239771|Remora]]
+# [[d:Q215185|Scombridae]]
+## [[d:Q2346039|Thunnus]]
+
+;Pleuronectiformes, 2
+# [[d:Q59577|Flatfish]]
+# [[d:Q217329|Turbot]]
+
+;Salmoniformes, 2
+# [[d:Q184238|Salmonidae]]
+# [[d:Q2258881|Trout]]
+
+;Scorpaeniformes, 1
+# [[d:Q208777|Scorpaeniformes]] 
+
+;Sharks, 5
+# '''[[d:Q7372|Shark]]'''
+# [[d:Q129026|Great white shark]]
+# [[d:Q208490|Hammerhead shark]]
+# [[d:Q188212|Tiger shark]]
+# [[d:Q80378|Whale shark]]
+
+;Siluriformes, 2
+# [[d:Q59576|catfish]]
+# [[d:Q159323|Wels catfish]]
+
+;Syngnathiformes, 1
+# [[d:Q74363|Seahorse]]
+
+;Tetraodontiformes, 1
+# [[d:Q201701|Tetraodontidae]] (pufferfish)
+
+{{Div col end}}
+
+===== Dinosaurs, 10 =====
+{{Div col|cols=4}}
+# '''[[d:Q430|Dinosaur]]'''
+# [[d:Q14400|Allosaurus]]
+# [[d:Q40621|Ankylosaurus]]
+# [[d:Q14326|Apatosaurus]] (Brontosaurus)
+# [[d:Q14397|Brachiosaurus]]
+# [[d:Q14330|Diplodocus]]
+# [[d:Q14388|Stegosaurus]]
+# [[d:Q14384|Triceratops]]
+# [[d:Q14332|Tyrannosaurus]]
+# [[d:Q14403|Velociraptor]]
+{{Div col end}}
+
+===== Mammals, 156 =====
+{{Div col|cols=4}}
+# '''[[d:Q7377|Mammal]]'''
+# [[d:Q46212|Aardvark]]
+# [[d:Q47867|Armadillo]]
+# [[d:Q183383|Colugo]]
+# [[d:Q129513|Elephant shrew]]
+# [[d:Q53099|Hyrax]]
+# [[d:Q25397|Pangolin]]
+# [[d:Q25431|Sirenia]]
+# [[d:Q231550|Treeshrew]]
+
+;Bats, 4
+# [[d:Q28425|Bat]] 
+# [[d:Q185230|Megabat]]
+# [[d:Q971343|Microbat]]
+# [[d:Q190691|Vampire bat]]
+
+;Carnivora, 35
+# [[d:Q25306|Carnivora]]
+# [[d:Q11788|Bear]]
+## [[d:Q36341|Brown bear]]
+## [[d:Q33602|Giant panda]]
+## [[d:Q33609|Polar bear]]
+# [[d:Q25324|Canidae]]
+## '''[[d:Q144|Dog]]'''
+## [[d:Q8331|Fox]]
+## [[d:Q44299|Coyote]]
+## [[d:Q18498|Gray wolf]]
+## [[d:Q125525|Jackal]]
+# [[d:Q25265|Felidae]]
+## '''[[d:Q146|Cat]]'''
+## [[d:Q23907|Cheetah]]
+## [[d:Q35255|Cougar]]
+## [[d:Q35694|Jaguar]]
+## [[d:Q34706|Leopard]]
+## [[d:Q140|Lion]] 
+## [[d:Q677014|Lynx]]
+## [[d:Q19939|Tiger]]
+# [[d:Q42046|Hyena]]
+# [[d:Q80479|Mongoose]]
+# [[d:Q25437|Mustelidae]]
+## [[d:Q27066|European badger]]
+## [[d:Q173128|Honey badger]]
+## [[d:Q26533|Marten]]
+## [[d:Q200184|Otter]]
+## [[d:Q26423|Sable]]
+## [[d:Q41407|Sea otter]]
+## [[d:Q25345|Stoat]]
+## [[d:Q28521|Weasel]]
+## [[d:Q14334|Wolverine]]
+# [[d:Q147114|Procyonidae]]
+# [[d:Q83244|Skunk]]
+# [[d:Q185864|Viverridae]]
+
+;Cetaceans, 8
+# '''[[d:Q160|Cetacea]]'''
+# [[d:Q1865281|Whale]]
+# [[d:Q42196|Blue whale]]
+# [[d:Q7369|Dolphin]]
+# [[d:Q132905|Humpback whale]]
+# [[d:Q26843|Killer whale]]
+# [[d:Q10867|Porpoise]]
+# [[d:Q81214|Sperm whale]]
+
+;Erinaceids, 2
+# [[d:Q28257|Erinaceidae]]
+# [[d:Q6120|Hedgehog]]
+
+;Even-toed ungulates, 36
+# [[d:Q25329|Even-toed ungulate]]
+# [[d:Q192164|Ruminantia]]
+# [[d:Q25497|Bovid]]
+## [[d:Q160042|African buffalo]]
+## [[d:Q82728|American bison]]
+## [[d:Q25894|Antelope]]
+## [[d:Q172923|Capra (genus)]]
+## '''[[d:Q830|Cattle]]'''
+## [[d:Q190858|Gazelle]]
+## [[d:Q174296|Gaur]]
+## [[d:Q2934|Goat]]
+## [[d:Q132576|Impala]]
+## [[d:Q184004|Muskox]]
+## '''[[d:Q7368|Sheep]]'''
+## [[d:Q42710|Water buffalo]]
+## [[d:Q7609|Wildebeest]]
+## [[d:Q81091|European bison]]
+## [[d:Q26547|Yak]]
+# '''[[d:Q7375|Camel]]'''
+## [[d:Q132922|Bactrian camel]]
+## [[d:Q71516|Dromedary]]
+# [[d:Q23390|Deer]]
+## [[d:Q180404|Elk]]
+## [[d:Q35517|Moose]]
+## [[d:Q79794|Red deer]]
+## [[d:Q39624|Reindeer]]
+# [[d:Q42569|Llama]]
+# [[d:Q15083|Giraffe]]
+# [[d:Q172886|Guanaco]]
+# [[d:Q34505|Hippopotamus]]
+# [[d:Q232866|Peccary]]
+# [[d:Q10798|Pig]]
+## [[d:Q58697|Wild boar]]
+## '''[[d:Q787|Domestic pig]]'''
+# [[d:Q187943|Pronghorn]]
+# [[d:Q167797|Vicuña]]
+
+;Lagomorphs, 4
+# [[d:Q25401|Lagomorpha]]
+# [[d:Q46076|Hare]]
+# [[d:Q184067|Pika]]
+# [[d:Q9394|Rabbit]]
+
+;Marsupials, 6
+# [[d:Q25336|Marsupial]]
+# [[d:Q26332|Diprotodontia]]
+## [[d:Q5070208|Kangaroo]]
+## [[d:Q36101|Koala]]
+# [[d:Q213333|Dasyuromorphia]]
+## [[d:Q134964|Tasmanian devil]]
+
+;Monotremes, 3
+# [[d:Q21790|Monotreme]]
+# [[d:Q21824|Echidna]]
+# [[d:Q15343|Platypus]]
+
+;Odd-toed ungulates, 7
+# [[d:Q25374|Odd-toed ungulate]]
+# [[d:Q19707|Donkey]]
+# [[d:Q165115|Equidae]]
+# '''[[d:Q726|Horse]]'''
+# [[d:Q34718|Rhinoceros]]
+# [[d:Q128001|Tapir]]
+# [[d:Q32789|Zebra]]
+
+;Pilosa, 1
+# [[d:Q2274076|Sloth]]
+
+;Pinnipeds, 4
+# [[d:Q30263|Pinniped]]
+# [[d:Q26700|Eared seal]]
+# [[d:Q25587|Earless seal]]
+# [[d:Q40994|Walrus]]
+
+;Primates, 16
+# '''[[d:Q7380|Primate]]'''
+# [[d:Q1367|Monkey]]
+# [[d:Q102470|Ape]]
+## [[d:Q80174|Chimpanzee]]
+## [[d:Q185939|Gibbon]]
+## [[d:Q36611|Gorilla]]
+## [[d:Q41050|Orangutan]]
+## '''[[d:Q5|Human]]'''
+# [[d:Q182968|Old World monkey]]
+## [[d:Q159429|Baboon]]
+## [[d:Q177601|Macaque]]
+## [[d:Q156606|Rhesus macaque]]
+# [[d:Q82265|Strepsirrhini]]
+## [[d:Q185239|Galago]]
+## [[d:Q37212|Lemur]]
+# [[d:Q60205|Tarsier]]
+
+;Proboscidea, 4
+# [[d:Q26308|Proboscidea]]
+# '''[[d:Q7378|Elephant]]'''
+# [[d:Q36715|Mammoth]]
+# [[d:Q192272|Mastodon]]
+
+;Rodents, 15
+# '''[[d:Q10850|Rodent]]'''
+# [[d:Q131538|Capybara]]
+# [[d:Q187704|Coypu]]
+# [[d:Q47542|Beaver]]
+# [[d:Q273071|Dipodidae]]
+# [[d:Q108235|Dormouse]]
+# [[d:Q79803|Guinea pig]]
+# [[d:Q6573|Hamster]]
+# [[d:Q131567|Marmot]]
+# [[d:Q39275|Mouse]]
+# [[d:Q25916|Muridae]]
+# [[d:Q26283|Muskrat]]
+# [[d:Q36396|Rat]]
+# [[d:Q9482|Squirrel]]
+# [[d:Q199251|Spermophilus]]
+
+;Soricomorpha, 2
+# [[d:Q41631|Shrew]]
+# [[d:Q104825|Talpidae]]
+{{Div col end}}
+
+===== Reptiles, 19 =====
+{{Div col|cols=4}}
+# '''[[d:Q10811|Reptile]]'''
+## [[d:Q530397|Alligator]]
+# [[d:Q15879|Lizard]] - 
+## [[d:Q37686|Chameleon]]
+## [[d:Q4504|Komodo dragon]]
+## [[d:Q207058|Gila monster]]
+# '''[[d:Q2102|Snake]]'''
+## [[d:Q192056|Vipera berus]]
+## [[d:Q45556|Boidae]]
+## [[d:Q2303322|Cobra]]
+## [[d:Q460286|Hydrophiinae]]
+# [[d:Q223044|Turtle]]
+## [[d:Q486672|Galápagos tortoise]]
+## [[d:Q219329|Sea turtle]]
+### [[d:Q199458|Green sea turtle]]
+### [[d:Q120043|Leatherback sea turtle]]
+### [[d:Q192095|Loggerhead sea turtle]]
+## [[d:Q46360|Tortoise]]
+# [[d:Q163283|Tuatara]]
+{{Div col end}}
+
+===== Vertebrata, others, 3 =====
+{{Div col|cols=4}}
+# [[d:Q130869|Dimetrodon]]
+# [[d:Q161095|Agnatha]]
+# [[d:Q75713|Hagfish]]
+{{Div col end}}
+
+==== Plants, 173 ====
+# '''[[d:Q756|Plant]]'''
+
+===== Seedless Plant, 4 =====
+{{Div col|cols=4}}
+# [[d:Q80005|Fern]]
+# [[d:Q189808|Marchantiophyta]]
+# [[d:Q25347|Moss]]
+# [[d:Q28114|Equisetum]]
+{{Div col end}}
+
+===== Flowering plant, 79 ===== 
+{{Div col|cols=4}}
+# [[d:Q25314|Angiosperms]]
+# [[d:Q157211|Geranium]]
+# [[d:Q5194627|Lilium]]
+# [[d:Q145777|Convolvulaceae]] (Morning glory)
+
+;Asparagales, 9
+# [[d:Q26229|Asparagales]]
+# [[d:Q155874|Agave]]
+# [[d:Q127134|Aloe]]
+# [[d:Q156207|Gladiolus]]
+# [[d:Q155941|Iridaceae]]
+# [[d:Q101711|Lily of the Valley]]
+# [[d:Q29465|Narcissus (plant)]]
+# [[d:Q25308|Orchidaceae]]
+# [[d:Q156317|Yucca]]
+
+;Alismatales, 3
+# [[d:Q27341|Alismatales]]
+# [[d:Q48227|Araceae]]
+# [[d:Q239835|Anthurium]]
+
+;Ericales, 6
+# [[d:Q21737|Ericales]]
+# [[d:Q975872|Ericaceae]]
+## [[d:Q189393|Rhododendron]]
+# [[d:Q156574|Theaceae]]
+## [[d:Q212815|Camellia]]
+# [[d:Q157115|Primulaceae]] (Primrose)
+
+;Asterales, 9
+# [[d:Q21730|Asterales]]
+# [[d:Q25400|Asteraceae]]
+## [[d:Q59882|Chrysanthemum]]
+## [[d:Q130918|Dahlia]]
+## [[d:Q26158|Bellis perennis]]
+## [[d:Q30024|Taraxacum]]
+## [[d:Q171497|Sunflower]]
+## [[d:Q147552|Tagetes]] (Marigold)
+# [[d:Q155802|Campanulaceae]] (Bellflowers)
+
+;Gentianales, 2
+# [[d:Q21754|Gentianales]]
+# [[d:Q173756|Apocynaceae]] (dogbane family) 
+
+;Brassicales, 1
+# [[d:Q21904|Brassicales]]
+
+;Cucurbitales, 1
+# [[d:Q8314|Cucurbitaceae]]
+
+;Poales, 3
+# [[d:Q28502|Poales]]
+# [[d:Q43238|Poaceae]] or Gramineae (grass family) 
+## [[d:Q35922|Bamboo]]
+
+;Rosales, 6
+# [[d:Q21895|Rosales]]
+# [[d:Q46299|Rosaceae]]
+## [[d:Q39918|Almond]]
+## [[d:Q34687|Rose]]
+# [[d:Q156311|Ulmaceae]]
+## [[d:Q131113|Elm]]
+
+;Lamiales, 5
+# [[d:Q21742|Lamiales]]
+# [[d:Q53476|Lamiaceae]] or Labiatae (mint family) 
+# [[d:Q155966|Oleaceae]]
+## [[d:Q128887|Fraxinus]] (Ash tree)
+# [[d:Q157151|Salvia]]
+
+;Malpighiales, 4
+# [[d:Q21887|Malpighiales]]
+# [[d:Q156584|Euphorbiaceae]] (spurge family) 
+# [[d:Q208253|Poinsettia]]
+# [[d:Q146095|Viola (plant)]]
+
+;Malvales, 2
+# [[d:Q156551|Malvaceae]]
+## [[d:Q157991|Adansonia]] (Baobab)
+
+;Myrtales, 3
+# [[d:Q21866|Myrtales]]
+# [[d:Q156563|Myrtaceae]] (myrtle family) 
+## [[d:Q45669|Eucalyptus]]
+
+;Fagales, 11
+# [[d:Q21881|Fagales]]
+# [[d:Q156064|Betulaceae]]
+## [[d:Q25239|Alder]]
+## [[d:Q25243|Birch]]
+## [[d:Q145889|Hazel]]
+## [[d:Q158513|Hornbeam]]
+# [[d:Q145977|Fagaceae]]
+## [[d:Q129324|Chestnut]]
+## [[d:Q25403|Beech]]
+## [[d:Q12004|Oak]]
+# [[d:Q216944|Juglandaceae]] (Wallnut)
+
+;Sapindales, 2
+# [[d:Q26316|Sapindales]]
+# [[d:Q34007|Cashew]]
+
+;Arecales, 2
+# [[d:Q14080|Arecaceae]] (Palm tree)
+# [[d:Q13187|Coconut]]
+
+;Proteales, 2
+# [[d:Q207427|Nelumbo]]
+# [[d:Q163025|Platanus]]
+
+;Cornales, 1
+# [[d:Q159545|Cornus (genus)]] (Dogwood tree)
+
+;Fabales, 2
+# [[d:Q21878|Fabales]]
+# [[d:Q44448|Fabaceae]]
+
+;Urticales, 1
+# [[d:Q156579|Moraceae]]
+
+{{Div col end}}
+
+===== Pinophyta, 6 =====
+{{Div col|cols=4}}
+# [[d:Q128550|Cedrus]]
+# [[d:Q146911|Cypress]]
+# [[d:Q25350|Fir]]
+# [[d:Q25662|Juniper]]
+# [[d:Q12024|Pine]]
+# [[d:Q26782|Spruce]]
+{{Div col end}}
+
+===== Fruits, 34 =====
+{{Div col|cols=4}}
+# '''[[d:Q89|Apple]]''' 
+# [[d:Q37453|Apricot]]
+# [[d:Q37153|Avocado]]
+# '''[[d:Q503|Banana]]''' 
+# [[d:Q13180|Blackberry]]
+# [[d:Q14677|Breadfruit]]
+# [[d:Q196|Cherry]]
+# [[d:Q81513|Citrus]] fruits
+## [[d:Q106090|Kumquat]]
+## '''[[d:Q500|Lemon]]'''
+## [[d:Q13195|Lime (fruit)]] 
+## [[d:Q13191|Orange (fruit)]] 
+# [[d:Q36146|Common fig]]
+# [[d:Q23425|Cucumber]]
+# [[d:Q13181|Cranberry]]
+# [[d:Q146661|Red Currant]]
+# [[d:Q146604|Blackcurrant]]
+# [[d:Q25292|Date]]
+# [[d:Q7540|Eggplant]]
+# '''[[d:Q10978|Grape]]'''
+# [[d:Q320179|Guava]]
+# [[d:Q45757|Jackfruit]]
+# [[d:Q13194|Kiwifruit]]
+# [[d:Q13182|Lychee]]
+# [[d:Q169|Mango]]
+# [[d:Q44789|Morus (plant)]]
+# [[d:Q37083|Olive]]
+# [[d:Q34887|Papaya]]
+# [[d:Q13189|Peach]]
+# [[d:Q434|Pear]] 
+# [[d:Q1493|Pineapple]] 
+# [[d:Q13188|Pomegranate]]
+# [[d:Q13158|Strawberry]]
+# [[d:Q38645|Watermelon]]
+{{Div col end}}
+
+=====  Vegetables and Grain, 49 =====
+{{Div col|cols=4}}
+# '''[[d:Q11004|Vegetable]]'''
+
+;Amaranthaceae, 2
+# [[d:Q165437|Beet]]
+# [[d:Q157954|Chard]]
+
+;Allium, 2
+# [[d:Q1807269|Leek]]
+# [[d:Q193498|Shallot]]
+
+;Apiaceae, 3
+# [[d:Q81|Carrot]] 
+# [[d:Q28298|Celery]]
+# [[d:Q132624|Cumin]]
+
+;Asteraceae, 5
+# [[d:Q134609|Artichoke]]
+# [[d:Q146190|Jerusalem artichoke]]
+# [[d:Q2544599|Chicory]]
+# [[d:Q178547|Endive]]
+# [[d:Q83193|Lettuce]]
+
+;Brassicaceae, 8
+# [[d:Q156884|Eruca sativa]]
+# [[d:Q35051|Cabbage]]
+# [[d:Q7537|Cauliflower]]
+# [[d:Q47722|Broccoli]]
+# [[d:Q147202|Kohlrabi]]
+# [[d:Q7224565|Radish]]
+# [[d:Q158464|Rutabaga]]
+# [[d:Q3916957|Turnip]] 
+
+;Solanaceae, 3
+# [[d:Q165199|Chili pepper]]
+# '''[[d:Q10998|Potato]]''' 
+# [[d:Q23501|Tomato]]
+
+;Fabaceae, 7
+# [[d:Q145909|Legume]] 
+# [[d:Q25237|Pea]]
+# [[d:Q379813|Bean]]
+## [[d:Q131342|Vicia faba]]
+## '''[[d:Q11006|Soybean]]'''
+## [[d:Q42339|Common bean]] 
+# [[d:Q37383|Peanut]]
+
+;Other, 6
+# [[d:Q28367|Asparagus]]
+# [[d:Q83124|Cassava]]
+# [[d:Q80531|Okra]]
+# [[d:Q158015|Portulaca oleracea]]
+# [[d:Q26297|Sorrel]]
+# [[d:Q37937|Sweet potato]]
+
+;Grain, 12
+# '''[[d:Q11577|Barley]]'''
+# '''[[d:Q11575|Maize]]'''
+# '''[[d:Q12104|Oat]]'''
+# '''[[d:Q5090|Rice]]''' 
+# '''[[d:Q12111|Sorghum]]''' 
+# '''[[d:Q12106|Wheat]]'''
+## [[d:Q158767|Spelt]]
+# [[d:Q259438|Millet]]
+# '''[[d:Q12099|Rye]]'''
+# [[d:Q132734|Buckwheat]]
+# [[d:Q156344|Amaranth]]
+# [[d:Q139925|Quinoa]]
+{{Div col end}}
+
+==== Fungus, 13 ====
+{{Div col|cols=4}}
+# '''[[d:Q764|Fungus]]'''
+# [[d:Q83093|Mushroom]]
+# [[d:Q174726|Ascomycota]]
+# [[d:Q174698|Basidiomycota]]
+# [[d:Q215384|Zygomycota]]
+
+;Edible fungi, 6
+# [[d:Q390456|Agaricus]]
+# [[d:Q19740|Boletus edulis]]
+# [[d:Q188749|Chanterelle]]
+# [[d:Q186451|Pleurotus ostreatus]]
+# [[d:Q320999|Shiitake]]
+# [[d:Q2690965|Truffle]]
+
+;Poisonous fungi, 2
+# [[d:Q131227|Amanita muscaria]]
+# [[d:Q188643|Amanita phalloides]] (Death cap)
+
+{{Div col end}}
+
+==== Others, 10====
+{{Div col|cols=4}}
+# [[d:Q19088|Eukaryote]]
+# '''[[d:Q10872|Archaea]]'''
+# '''[[d:Q10876|Bacteria]]''' - 
+## [[d:Q25419|Escherichia coli]]
+# '''[[d:Q10892|Protist]]'''
+# [[d:Q47051|Prion]]
+# '''[[d:Q808|Virus]]'''
+## [[d:Q15787|HIV]]
+# [[d:Q37868|Algae]]
+# [[d:Q25367|Plankton]]
+{{Div col end}}
+
+=== Animal breeding, 29 ===
+{{Div col|cols=4}}
+;Horses, 13
+# [[d:Q184138|Arabian horse]]
+# [[d:Q489798|Andalusian horse]]
+# [[d:Q620656|Appaloosa]]
+# [[d:Q844058|Clydesdale]]
+# [[d:Q388952|Fresian]]
+# [[d:Q635926|Hackney]]
+# [[d:Q217671|Lipizzan]]
+# [[d:Q1759281|Morgan]]
+# [[d:Q1996502|Palomino]]
+# [[d:Q466602|American Quarter Horse]]
+# [[d:Q467024|Standardbred]]
+# [[d:Q210826|Thoroughbred]]  
+# [[d:Q188828|Pony]]
+;Cats, 2
+# [[d:Q42604|Siamese (cat)]]
+# [[d:Q42675|Manx]]
+;Cattle, 4
+# [[d:Q897314|Brahman (cattle)]]
+# [[d:Q737173|Hereford]]
+# [[d:Q58903|Highland cattle]]
+# [[d:Q58910|Holstein]]
+;Dogs, 10
+# [[d:Q21102|Beagle]]
+# [[d:Q653|Chihuahua (dog)]]
+# [[d:Q29099|Dachshund]]
+# [[d:Q17504|Dalmatian (dog)]]
+# [[d:Q5414|Great Dane]]
+# [[d:Q38571|Greyhound]]
+# [[d:Q39017|Retriever]]
+# [[d:Q38280|German Shepherd]]
+# [[d:Q39357|Shih Tzu]]
+# [[d:Q38984|Terrier]]
+
+{{Div col end}}
+
+=== Health and fitness, 25 ===
+{{Div col|cols=4}}
+# '''[[d:Q12147|Health]]'''
+# [[d:Q309252|Physical fitness]]
+## [[d:Q131191|Body mass index]]
+## [[d:Q219067|Physical exercise]]
+## [[d:Q162297|Hygiene]]
+## '''[[d:Q12174|Obesity]]'''
+## [[d:Q718113|Weight loss]]
+# [[d:Q123414|Stress (biology)]]
+# '''[[d:Q10737|Suicide]]'''
+# [[d:Q2138622|Nutrition]]
+## [[d:Q474191|Diet (nutrition)]]
+## [[d:Q645858|Dietary supplement]]
+## '''[[d:Q12167|Malnutrition]]'''
+# [[d:Q3184856|Substance abuse]]
+## '''[[d:Q12029|Addiction]]'''
+## [[d:Q15326|Alcoholism]]
+## [[d:Q182413|Substance dependence]]
+# [[d:Q8386|Drug]] <!-- for specific substances see chemical compounds -->
+## [[d:Q79817|Cannabis]]
+## '''[[d:Q1566|Tobacco]]'''
+## [[d:Q46452|Opium]]
+# [[d:Q317309|Mental health]]
+# [[d:Q332154|Ageing]]
+# [[d:Q165947|Hunger]]
+# [[d:Q662860|Smoking]]
+
+{{Div col end}}
+
+=== Medicine, 105 ===
+{{Div col|cols=4}}
+See also "Biology" for e.g. anatomy
+
+====General concepts, 62 ====
+# '''[[d:Q11190|Medicine]]'''
+## [[d:Q31207|Health care]]
+# [[d:Q39631|Physician]]s and other professionals
+## [[d:Q6500773|General practitioner]]
+## [[d:Q121176|Nursing]]
+## [[d:Q774306|Surgeon]]
+# [[d:Q159557|Coma]]
+## [[d:Q139720|Persistent vegetative state]]
+# '''[[d:Q12131|Disability]]'''
+## [[d:Q38404|Autism]]
+## '''[[d:Q10874|Blindness]]'''
+## [[d:Q133696|Color blindness]]
+## '''[[d:Q12133|Deafness]]'''
+## [[d:Q183560|Mental retardation]]
+# [[d:Q1064904|Injury]]
+## [[d:Q68833|Bone fracture]]
+## [[d:Q574491|Bruise]]
+## [[d:Q170518|Burn]]
+## [[d:Q1350326|Frostbite]]
+## [[d:Q184753|Wound]]
+# [[d:Q131130|Anesthesia]]
+# [[d:Q974135|Chemotherapy]]
+# [[d:Q177719|Medical diagnosis]]
+# [[d:Q105196|Organ transplantation]]
+# [[d:Q29483|Palliative care]]
+# [[d:Q180507|Radiation therapy]]
+# [[d:Q40821|Surgery]]
+# [[d:Q1353169|Artificial organ]]
+# '''[[d:Q12184|Pandemic]]'''
+# [[d:Q835153|Physical examination]]
+## [[d:Q41482|Autopsy]]
+## [[d:Q179991|Biopsy]]
+## [[d:Q82642|Blood pressure]]
+## [[d:Q886837|Blood test]]
+## [[d:Q476697|DNA profiling]]
+## [[d:Q79785|Electrocardiography]]
+## [[d:Q212809|Endoscopy]]
+## [[d:Q796207|Eye examination]]
+## [[d:Q719444|Lumbar puncture]]
+## [[d:Q161238|Magnetic resonance imaging]]
+## [[d:Q942976|Pap test]]
+## [[d:Q191733|Pulse]]
+## [[d:Q77604|Radiology]]
+## [[d:Q179405|Reflex]]
+## [[d:Q842424|Urinalysis]]
+# [[d:Q40867|Poison]]
+## [[d:Q184651|Toxin]]
+# [[d:Q193078|Trauma (medicine)]]
+## [[d:Q189389|Aneurysm]]
+## [[d:Q720026|Brain damage]]
+## [[d:Q166019|Bleeding]]
+## [[d:Q202837|Cardiac arrest]]
+## '''[[d:Q86|Headache]]'''
+## [[d:Q105688|Hypoxia (medical)]]
+## [[d:Q101991|Inflammation]]
+## '''[[d:Q12152|Myocardial infarction]]'''
+## [[d:Q767485|Respiratory failure]]
+## [[d:Q178061|Shock (circulatory)]]
+## '''[[d:Q12202|Stroke]]'''
+# [[d:Q179630|Syndrome]]
+# [[d:Q16917|Hospital]]
+# [[d:Q47715|Down syndrome]]
+
+====Fields of medicine, 43====
+# [[d:Q188504|Alternative medicine]]
+## [[d:Q121713|Acupuncture]]
+## [[d:Q1074812|Chiropractic]]
+## [[d:Q861699|Herbalism]]
+## [[d:Q81058|Homeopathy]]
+## [[d:Q213403|Naturopathy]]
+## [[d:Q325253|Osteopathy]]
+## [[d:Q767405|Holistic health]]
+# [[d:Q539690|Angiology]]
+# [[d:Q10379|Cardiology]]
+# '''[[d:Q12128|Dentistry]]'''
+## [[d:Q133772|Dental caries]]
+## [[d:Q907359|Dental restoration]]
+## [[d:Q848390|Root canal]]
+## [[d:Q143925|Toothache]]
+# [[d:Q171171|Dermatology]]
+# [[d:Q842811|Dietitian]]
+# [[d:Q120569|Gastroenterology]]
+# [[d:Q10384|Geriatrics]]
+# [[d:Q103824|Hematology]]
+# [[d:Q101929|Immunology]]
+# [[d:Q83042|Neurology]]
+# [[d:Q80015|Obstetrics and gynaecology]]
+# [[d:Q162555|Oncology]]
+# [[d:Q161437|Ophthalmology]]
+# [[d:Q189553|Otolaryngology]]
+# [[d:Q123028|Pediatrics]]
+# [[d:Q614304|Pharmacy]]
+## '''[[d:Q12140|Pharmaceutical drug]]'''
+## [[d:Q105186|Pharmacist]]
+## [[d:Q1643563|Prescription drug]]
+# [[d:Q128406|Pharmacology]]
+## [[d:Q323936|Pharmacokinetics]]
+## '''[[d:Q12187|Antibacterial]]'''
+## '''[[d:Q12190|Penicillin]]'''
+# [[d:Q7867|Psychiatry]]
+# [[d:Q203337|Pulmonology]]
+# [[d:Q1981388|Reproductive health]]
+# [[d:Q7218|Toxicology]]
+# [[d:Q771035|Traditional medicine]]
+# [[d:Q105650|Urology]]
+# [[d:Q192995|Vaccination]]
+## [[d:Q134808|Vaccine]]
+{{Div col end}}
+
+=== Disease, 79 ===
+{{Div col|cols=4}}
+; Disease, 14
+# '''[[d:Q12136|Disease]]'''
+## [[d:Q42982|Allergy]]
+## '''[[d:Q11081|Alzheimer's disease]]'''
+## [[d:Q35869|Asthma]]
+## [[d:Q173022|Bronchitis]]
+## [[d:Q147778|Cirrhosis]]
+## [[d:Q83030|Dementia]]
+## '''[[d:Q12206|Diabetes mellitus]]'''
+## [[d:Q11085|Parkinson's disease]]
+## [[d:Q389735|Heart disease]]
+## [[d:Q131742|Hepatitis]]
+## [[d:Q41861|Hypertension]]
+## [[d:Q48143|Meningitis]]
+## [[d:Q8277|Multiple sclerosis]]
+; Cancer, 11
+# '''[[d:Q12078|Cancer]]'''
+## [[d:Q128581|Breast cancer]]
+## [[d:Q188874|Colorectal cancer]]
+## [[d:Q29496|Leukemia]]
+## [[d:Q47912|Lung cancer]]
+## [[d:Q208414|Lymphoma]]
+## [[d:Q181257|Prostate cancer]]
+## [[d:Q192102|Skin cancer]]
+### [[d:Q180614|Melanoma]]
+## [[d:Q133212|Tumor]]
+### [[d:Q233309|Brain tumor]]
+; Foodborne illness, 5
+# [[d:Q272002|Foodborne illness]]
+## [[d:Q154865|Botulism]]
+## [[d:Q852186|Mushroom poisoning]]
+## [[d:Q83319|Typhoid fever]]
+## [[d:Q150839|Salmonella]]
+; Infectious disease, 40
+# [[d:Q131736|Infectious disease]]
+## [[d:Q170065|Pathogen]]
+## '''[[d:Q12198|Sexually transmitted disease]]'''
+### '''[[d:Q12199|AIDS]]'''
+### [[d:Q101896|Gonorrhea]]
+### [[d:Q6473911|Herpes simplex]]
+### [[d:Q41083|Syphilis]]
+## [[d:Q129104|Anthrax]]
+## [[d:Q217519|Bubonic plague]]
+## [[d:Q44727|Chickenpox]]
+## '''[[d:Q12090|Cholera]]'''
+## '''[[d:Q12125|Common cold]]'''
+## [[d:Q30953|Dengue fever]]
+## [[d:Q134649|Diphtheria]]
+## [[d:Q129279|Dysentery]]
+## [[d:Q199615|Encephalitis]]
+## [[d:Q168805|Gangrene]]
+## [[d:Q51993|Ebola virus disease]]
+## [[d:Q652744|Hand, foot and mouth disease]]
+## '''[[d:Q2840|Influenza]]'''
+### [[d:Q160122|Influenza A virus subtype H5N1]]
+## [[d:Q36956|Leprosy]]
+## [[d:Q201989|Lyme disease]]
+## '''[[d:Q12156|Malaria]]'''
+## [[d:Q79793|Measles]]
+## [[d:Q176741|Mumps]]
+## [[d:Q134859|Pertussis]] (Whooping Cough)
+## '''[[d:Q12192|Pneumonia]]'''
+## '''[[d:Q12195|Poliomyelitis]]'''
+## [[d:Q39222|Rabies]]
+## [[d:Q103177|Severe acute respiratory syndrome]]
+## [[d:Q167178|Scabies]]
+## [[d:Q180266|Scarlet fever]]
+## '''[[d:Q12214|Smallpox]]'''
+## [[d:Q47790|Tetanus]]
+## [[d:Q703961|Transmissible spongiform encephalopathy]]
+## '''[[d:Q12204|Tuberculosis]]'''
+## [[d:Q160649|Typhus]]
+## [[d:Q158856|West Nile virus]]
+## [[d:Q154874|Yellow fever]]
+; Mental illness, 9
+# '''[[d:Q12135|Mental disorder]]'''
+## [[d:Q131755|Bipolar disorder]]
+## [[d:Q42844|Major depressive disorder]]
+## [[d:Q181032|Neurosis]]
+## [[d:Q202387|Posttraumatic stress disorder]]
+## [[d:Q170082|Psychosis]]
+### [[d:Q189643|Delusion]]
+### [[d:Q130741|Hallucination]]
+## [[d:Q41112|Schizophrenia]]
+{{Div col end}}
