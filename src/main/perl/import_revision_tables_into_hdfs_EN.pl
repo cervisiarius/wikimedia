@@ -9,6 +9,8 @@ while(my $line = <STDIN>) {
   if ($line =~ /(\d+),(\d+),(\d+),'(.*)',(\d+),'(.*)','(\d+)',(\d+),(\d+),(\d+),(\d+),'.*',.*,.*$/) {
     my ($id, $page, $text_id, $comment, $user, $user_text, $timestamp, $minor_edit, $deleted, $len,
       $parent_id) = ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11);
+    $minor_edit = $minor_edit == 1 ? 'true' : 'false';
+    $deleted = $deleted == 1 ? 'true' : 'false';
     $user_text =~ s/\t/\\t/g;
     $comment =~ s/\t/\\t/g;
     print join("\t", $id, $page, $text_id, $user, $user_text, $timestamp, $minor_edit, $deleted,
