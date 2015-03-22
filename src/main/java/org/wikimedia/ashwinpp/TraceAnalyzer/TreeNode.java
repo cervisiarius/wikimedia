@@ -8,7 +8,10 @@ import org.apache.commons.lang.StringUtils;
 import java.util.Queue;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import com.google.gson.Gson;
+import org.apache.commons.lang.ArrayUtils;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -28,6 +31,21 @@ public class TreeNode {
             current = c;
         }
     }
+    private TreeNode[] mergeChildren(TreeNode[] children){
+        Map childrenMap = new HashMap<String, TreeNode>();
+        for(int i=0; i<children.length;i++){
+            String uri = children[i].uri_path;
+            if(childrenMap.containsKey(uri)){
+                TreeNode c1 = (TreeNode)childrenMap.get(uri);
+                c1.children =(TreeNode[]) ArrayUtils.addAll(c1.children, children[i].children);
+            }
+            else{
+                childrenMap.put(uri, children[i]);
+            }
+        }
+        return (TreeNode[])childrenMap.values().toArray(new TreeNode[childrenMap.size()]);
+    }
+            
     private List< List< String>> generateSingletons(){
         Queue<TreeNode> pageQueue = new LinkedList<TreeNode>();
         TreeNode root = this;
@@ -39,6 +57,7 @@ public class TreeNode {
             tuple.add(0, node.uri_path);
             output.add(tuple);
             if (node.children!=null){
+                node.children = mergeChildren(node.children);
                 for(int i=0; i<node.children.length;i++){
                     pageQueue.add(node.children[i]);
                 }
@@ -61,6 +80,7 @@ public class TreeNode {
             }
             TreeNode current = node.current;
             if (current.children!=null){
+                current.children = mergeChildren(current.children);
                 for(int i=0; i<current.children.length;i++){
                     pageQueue.add(new Triplet(node.parent, current, current.children[i]));
                 }
@@ -85,6 +105,7 @@ public class TreeNode {
             }
             TreeNode current  = node.current;
             if (current.children!=null){
+                current.children = mergeChildren(current.children);
                 for(int i=0; i<current.children.length;i++){
                     pageQueue.add(new Triplet(node.parent, current,  current.children[i]));
                 }
@@ -138,7 +159,7 @@ public class TreeNode {
             while((input=br.readLine())!=null){
                 Gson gson = new Gson();
                 TreeNode tn = gson.fromJson(input, TreeNode.class);
-                System.out.println(tn.generatePairsString());
+                System.out.println(tn.generateSingletonString());
 
             }
  
