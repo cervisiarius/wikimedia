@@ -127,4 +127,4 @@ GroupedByPair = FOREACH GroupedByPair GENERATE
 -- Make sure everything by the same user appears sequentially.
 SortedByUser = ORDER GroupedByPair BY user, mid PARALLEL $PARALLEL;
 
-STORE Grouped INTO '/user/west1/revision_history_aggregated/$LANG';
+STORE SortedByUser INTO '/user/west1/revision_history_aggregated/$LANG';
