@@ -25,7 +25,7 @@ Rev = FILTER Rev BY (user_id > 0);
 
 -- Remove the unnecessary columns.
 Rev = FOREACH Rev GENERATE
-	rev_id,
+    rev_id,
     page_id,
     user_id,
     user,
@@ -74,7 +74,7 @@ Wikidata = FOREACH  Wikidata GENERATE
 ---------------------------------------------------------------------------------------------------
 
 -- Add titles to revisions.
-RPJoined = JOIN Rev BY page_id, Pages BY page_id;
+RPJoined = JOIN Rev BY page_id, Pages BY page_id PARALLEL $PARALLEL;
 RPJoined = FOREACH RPJoined GENERATE 
     Rev::rev_id AS rev_id,
     Pages::page_title AS page_title,
@@ -85,7 +85,7 @@ RPJoined = FOREACH RPJoined GENERATE
     Rev::parent_id AS parent_id;
 
 -- Add Wikidata ids.
-RPWJoined = JOIN RPJoined BY page_title, Wikidata BY page_title;
+RPWJoined = JOIN RPJoined BY page_title, Wikidata BY page_title PARALLEL $PARALLEL;
 RPWJoined = FOREACH RPWJoined GENERATE 
     RPJoined::rev_id AS rev_id,
     Wikidata::mid AS mid,
@@ -97,7 +97,7 @@ RPWJoined = FOREACH RPWJoined GENERATE
     RPJoined::parent_id AS parent_id;
 
 -- Join against revisions again, in order to compute byte difference.
-RPWPJoined = JOIN RPWJoined BY parent_id LEFT OUTER, Rev BY rev_id;
+RPWPJoined = JOIN RPWJoined BY parent_id LEFT OUTER, Rev BY rev_id PARALLEL $PARALLEL;
 RPWPJoined = FOREACH RPWPJoined GENERATE 
     RPWJoined::mid AS mid,
     RPWJoined::page_title AS page_title,
@@ -115,7 +115,7 @@ RPWPJoined = FOREACH RPWPJoined GENERATE
 -- Aggregate by user/mid.
 -- TODO: Compute number of days on which editors was active on the article, and the number of days
 -- between the first and last edits.
-GroupedByPair = GROUP RPWPJoined BY (user_id, mid);
+GroupedByPair = GROUP RPWPJoined BY (user_id, mid) PARALLEL $PARALLEL;
 GroupedByPair = FOREACH GroupedByPair GENERATE
     MIN(RPWPJoined.user_id) AS user_id,
     MIN(RPWPJoined.user) AS user,
