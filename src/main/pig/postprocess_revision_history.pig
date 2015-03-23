@@ -3,8 +3,7 @@ Set language, e.g.,
 pig \
 -param LANG=ca \
 -param PARALLEL=10 \
--param BASEDIR=/home/west1/wikimedia/trunk/ \
-postprocess_revision_history.pig \
+postprocess_revision_history.pig
 */
 
 SET mapreduce.output.fileoutputformat.compress false;
@@ -16,8 +15,8 @@ SET mapreduce.output.fileoutputformat.compress false;
 -- Load the pagecount data.
 -- NB: the '-tagfile' flag seems to be buggy and throw the indices off: Both the filename and the
 -- domain field contain the file name in that case.
-Rev = LOAD '/tmp/rev.tsv' USING PigStorage('\t')
---Rev = LOAD '/user/west1/revision_history/$LANG' USING PigStorage('\t')
+--Rev = LOAD '/tmp/rev.tsv' USING PigStorage('\t')
+Rev = LOAD '/user/west1/revision_history/$LANG' USING PigStorage('\t')
 	AS (rev_id:long, page_id:int, text_id:int, user_id:int, user:chararray, timestamp:chararray,
         minor:chararray, deleted:chararray, length:int, parent_id:int, comment:chararray);
 
@@ -34,18 +33,18 @@ Rev = FOREACH Rev GENERATE
     length,
     parent_id;
 
-DEFINE hashUnjoin `./hash_unjoin.pl bots.txt 4 1` ship('$BASEDIR/src/main/perl/hash_unjoin.pl', '$BASEDIR/data/bots/bots.txt');
-Rev = STREAM Rev THROUGH hashUnjoin AS (rev_id:long, page_id:int, text_id:int, user_id:int,
-        user:chararray, timestamp:chararray, minor:chararray, deleted:chararray, length:int,
-        parent_id:int, comment:chararray);
+-- Remove bots.
+DEFINE hashUnjoin `./hash_unjoin.pl bots.txt 4 1` ship('/home/west1/wikimedia/trunk/src/main/perl/hash_unjoin.pl', '/home/west1/wikimedia/trunk/data/bots/bots.txt');
+Rev = STREAM Rev THROUGH hashUnjoin AS (rev_id:long, page_id:int, user_id:int, user:chararray,
+        timestamp:chararray, length:int, parent_id:int);
 
 
 ---------------------------------------------------------------------------------------------------
 -- Titles
 ---------------------------------------------------------------------------------------------------
 
---Pages = LOAD '/user/west1/pages/$LANG' USING PigStorage('\t')
-Pages = LOAD '/tmp/pages.tsv' USING PigStorage('\t')
+Pages = LOAD '/user/west1/pages/$LANG' USING PigStorage('\t')
+--Pages = LOAD '/tmp/pages.tsv' USING PigStorage('\t')
     AS (page_id:int, page_title:chararray, is_redirect:chararray);
 
 -- Discard redirects.
@@ -57,12 +56,12 @@ Pages = FILTER Pages BY (is_redirect == 'false');
 ---------------------------------------------------------------------------------------------------
 
 -- Read the Wikidata file that maps Wikidata entries to Wikipedia articles.
-Wikidata = LOAD '/tmp/interlanguage_links.tsv' USING PigStorage('\t')
---Wikidata = LOAD '/user/west1/interlanguage_links.tsv' USING PigStorage('\t')
+--Wikidata = LOAD '/tmp/interlanguage_links.tsv' USING PigStorage('\t')
+Wikidata = LOAD '/user/west1/interlanguage_links.tsv' USING PigStorage('\t')
 	AS (mid:chararray, lang:chararray, page_title:chararray);
 
 -- Keep only the language of interest.
---Wikidata = FILTER Wikidata BY (lang == '$LANG');
+Wikidata = FILTER Wikidata BY (lang == '$LANG');
 
 -- Replace spaces with underscores in titles.
 Wikidata = FOREACH  Wikidata GENERATE
@@ -116,7 +115,6 @@ RPWPJoined = FOREACH RPWPJoined GENERATE
 -- Aggregate by user/mid.
 -- TODO: Compute number of days on which editors was active on the article, and the number of days
 -- between the first and last edits.
--- TODO: Remove bots!
 GroupedByPair = GROUP RPWPJoined BY (user_id, mid);
 GroupedByPair = FOREACH GroupedByPair GENERATE
     MIN(RPWPJoined.user_id) AS user_id,
