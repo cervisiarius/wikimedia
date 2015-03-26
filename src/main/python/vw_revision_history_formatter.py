@@ -14,10 +14,12 @@ existing = dict([(lang, deque()) for lang in langs])
 for lang in langs:
   f = gzip.open(DATA_DIR + 'missing_articles/mids_per_language/mids_' + lang + '.txt.gz', 'rb')
   for line in f:
-    existing[lang].append(line.strip())
+    mid, title = line.strip().split('\t')
+    existing[lang].append(mid)
   f.close()
 
 # Sample articles that exist but haven't been edited by the user.
+# TODO: Need to make sure the user actually hasn't edited the negative example!!!
 def sample_negatives(data_for_user, lang):
   ex = existing[lang]
   N = len(data_for_user)

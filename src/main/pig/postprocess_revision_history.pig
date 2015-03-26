@@ -117,7 +117,7 @@ RPWPJoined = FOREACH RPWPJoined GENERATE
 -- between the first and last edits.
 GroupedByPair = GROUP RPWPJoined BY (user_id, mid) PARALLEL $PARALLEL;
 GroupedByPair = FOREACH GroupedByPair GENERATE
-    $LANG AS lang,
+    '$LANG' AS lang,
     MIN(RPWPJoined.user_id) AS user_id,
     MIN(RPWPJoined.user) AS user,
     MIN(RPWPJoined.mid) AS mid,
