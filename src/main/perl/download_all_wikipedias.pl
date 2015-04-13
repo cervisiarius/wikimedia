@@ -1,7 +1,5 @@
 #!/usr/bin/perl
 
-#my @langs = split(/\n/, `cat $BASEDIR/largest_wikipedias.txt`);
-
 my $links_to_langs = `wget -q -O - 'http://dumps.wikimedia.org/backup-index.html' | grep '<a href=".*wiki/[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]">'`;
 
 foreach my $line (split /\n/, $links_to_langs) {

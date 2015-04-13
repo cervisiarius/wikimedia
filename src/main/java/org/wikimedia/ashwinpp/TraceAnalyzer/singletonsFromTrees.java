@@ -1,4 +1,4 @@
-package TraceAnalyzer;
+package org.wikimedia.ashwinpp.TraceAnalyzer;
 import java.io.IOException; 
 import org.apache.pig.EvalFunc;
 import org.apache.pig.backend.hadoop.executionengine.physicalLayer.PigLogger;

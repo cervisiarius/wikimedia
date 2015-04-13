@@ -1,4 +1,4 @@
-package TraceAnalyzer;
+package org.wikimedia.ashwinpp.TraceAnalyzer;
 import org.apache.pig.data.Tuple;
 import org.apache.pig.data.DataBag;
 import org.apache.pig.data.BagFactory;
