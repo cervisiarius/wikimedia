@@ -1,0 +1,51 @@
+\documentclass[12pt,letterpaper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{fullpage}
+
+\begin{document}
+\title{The Link Placement Problem}
+\author{Bob West}
+\maketitle
+
+\section{Problem formulation}
+
+\begin{itemize}
+\item INSTANCE: Directed graph $G=(V,E)$, set of paths $P \subseteq V^*$, shortcut probabilities $Q=\{q_{st} : (s,t) \in V^2 \setminus E\}$, positive integer $K$.
+\item QUESTION: Given a budget of $K$ shortcut links $(s_1,t_1), \dots, (s_K,t_K)$, what is the maximum cumulative flow over the shortcuts across all paths?
+\end{itemize}
+
+\section{NP-hardness}
+
+By reduction from HITTING SET.%
+\footnote{Garey and Johnson, Problem SP8, p.~222}
+
+\subsection{Definition of the HITTING SET problem}
+
+\begin{itemize}
+\item INSTANCE: Collection $C$ of subsets of a finite set $Z$, positive integer $L \leq |Z|$.
+\item QUESTION: Is there a subset $Z' \subseteq Z$ with $|Z'| \leq L$ such that $Z'$ contains at least one element from each subset in $C$?
+\end{itemize}
+
+Importantly, the problem remains NP-complete even if $|c| \leq 2$ for all $c \in C$.
+
+\subsection{Reduction}
+
+We need to reduce a HITTING SET instance $(C,Z,L)$ to an instance $(V,E,P,Q,K)$ of our problem.
+We assume w.l.o.g.\ that each $c \in C$ contains at most two elements.
+
+First, we set $K=L$.
+
+$V=\bigcup_{i=1}^{|Z|} \{s_i, m_i, t_i\}$.
+
+For each $c \in C$: if $c=\{z_i,z_j\}$, add a path $(s_i,s_j,t_i,t_j)$ to $P$; if $c=\{z_i\}$, add a path $(s_i,m_i,t_i)$ to $P$.
+
+$E$ is the set of edges induced by $P$.
+
+$q_{st}=1$ for all $(s,t) \in V^2 \setminus E$.
+
+
+
+\end{document}
