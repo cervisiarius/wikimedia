@@ -49,6 +49,8 @@ public class ArticleTokenizerMapper implements Mapper<Text, Text, Text, Text> {
 		markup = stripper.stripExcessNewlines(markup);
 		markup = StringEscapeUtils.unescapeHtml(markup);
 		markup = markup.replace('\u2019', '\'');
+		markup = markup.replaceAll("\\s*\n+\\s*", "\n");
+		markup = tokenize(markup);
 		return markup;
 	}
 
@@ -61,10 +63,6 @@ public class ArticleTokenizerMapper implements Mapper<Text, Text, Text, Text> {
 			sep = " ";
 		}
 		return buf.toString();
-	}
-
-	public String processWikiText(String s) {
-		return tokenize(format(s).replaceAll("\\s*\n+\\s*", "\n"));
 	}
 
 	// @Override
@@ -102,7 +100,7 @@ public class ArticleTokenizerMapper implements Mapper<Text, Text, Text, Text> {
 						content = m.group(1);
 						reporter.incrCounter(HADOOP_COUNTERS.OK_ARTICLE, 1);
 						output.collect(new Text(title),
-						    new Text(String.format("%s\t%s", "", processWikiText(content))));
+						    new Text(String.format("%s\t%s", "", format(content))));
 					}
 				}
 			} else {
@@ -121,7 +119,7 @@ public class ArticleTokenizerMapper implements Mapper<Text, Text, Text, Text> {
 		String xml = sc.next();
 		Matcher m = CONTENT_PATTERN.matcher(xml);
 		String content = m.group(1);
-		System.out.println(obj.processWikiText(content));
+		System.out.println(obj.format(content));
 		sc.close();
 	}
 
