@@ -23,8 +23,10 @@ import org.wikipedia.miner.util.MarkupStripper;
 public class ArticleTokenizerMapper implements Mapper<Text, Text, Text, Text> {
 
 	private static Pattern NAMESPACE_PATTERN = Pattern.compile("(?s).*<ns>0</ns>.*");
-	private static Pattern REDIRECT_PATTERN = Pattern.compile("(?s).*<redirect title=\"(.*?)\"");
+	private static Pattern REDIRECT_PATTERN = Pattern.compile("(?s).*<redirect title=\"(.*?)\".*");
 	private static Pattern TITLE_PATTERN = Pattern.compile("(?s).*?<title>(.*?)</title>.*");
+	// Need to include the NS tag, so we make sure we get the article, rather than the revision, id.
+	private static Pattern ID_PATTERN = Pattern.compile("(?s).*<ns>0</ns>\\s*<id>(\\d+)</id>.*");
 	private static Pattern CONTENT_PATTERN = Pattern
 	    .compile("(?s).*?<text xml:space=\"preserve\">(.*)</text>.*");
 
@@ -33,7 +35,7 @@ public class ArticleTokenizerMapper implements Mapper<Text, Text, Text, Text> {
 	private MarkupStripper stripper = new MarkupStripper();
 
 	private static enum HADOOP_COUNTERS {
-		NON_MAIN_NAMESPACE, NO_TITLE, REDIRECT, OK_ARTICLE, MAP_EXCEPTION
+		NON_MAIN_NAMESPACE, NO_TITLE_OR_ID, REDIRECT, OK_ARTICLE, MAP_EXCEPTION
 	}
 
 	public String format(String markup) {
@@ -82,30 +84,34 @@ public class ArticleTokenizerMapper implements Mapper<Text, Text, Text, Text> {
 	    throws IOException {
 		try {
 			String xml = key.toString();
-			String title, content;
+			String title, content, id;
 			// We're only interested in the main namespace.
 			if (!NAMESPACE_PATTERN.matcher(xml).matches()) {
 				reporter.incrCounter(HADOOP_COUNTERS.NON_MAIN_NAMESPACE, 1);
 				return;
 			}
 			Matcher m = TITLE_PATTERN.matcher(xml);
-			if (m.matches()) {
+			Matcher idMatcher = ID_PATTERN.matcher(xml);
+			if (m.matches() && idMatcher.matches()) {
+				id = idMatcher.group(1);
 				title = StringEscapeUtils.unescapeHtml(m.group(1));
 				m = REDIRECT_PATTERN.matcher(xml);
 				if (m.matches()) {
 					String redirectTarget = m.group(1);
 					reporter.incrCounter(HADOOP_COUNTERS.REDIRECT, 1);
-					output.collect(new Text(title), new Text(String.format("%s\t%s", redirectTarget, "")));
+					output.collect(new Text(title),
+					    new Text(String.format("%s\t%s\t%s", id, redirectTarget, "")));
 				} else {
 					m = CONTENT_PATTERN.matcher(xml);
 					if (m.matches()) {
 						content = m.group(1);
 						reporter.incrCounter(HADOOP_COUNTERS.OK_ARTICLE, 1);
-						output.collect(new Text(title), new Text(String.format("%s\t%s", "", format(content))));
+						output.collect(new Text(title),
+						    new Text(String.format("%s\t%s\t%s", id, "", format(content))));
 					}
 				}
 			} else {
-				reporter.incrCounter(HADOOP_COUNTERS.NO_TITLE, 1);
+				reporter.incrCounter(HADOOP_COUNTERS.NO_TITLE_OR_ID, 1);
 			}
 		} catch (Exception e) {
 			reporter.incrCounter(HADOOP_COUNTERS.MAP_EXCEPTION, 1);
