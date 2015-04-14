@@ -66,6 +66,10 @@ public class ArticleTokenizerMapper implements Mapper<Text, Text, Text, Text> {
 		}
 		return buf.toString();
 	}
+	
+	public static String normalizeTitle(String title) {
+		return StringEscapeUtils.unescapeHtml(title).replace(' ', '_');
+	}
 
 	// @Override
 	public void configure(JobConf conf) {
@@ -94,10 +98,10 @@ public class ArticleTokenizerMapper implements Mapper<Text, Text, Text, Text> {
 			Matcher idMatcher = ID_PATTERN.matcher(xml);
 			if (m.matches() && idMatcher.matches()) {
 				id = idMatcher.group(1);
-				title = StringEscapeUtils.unescapeHtml(m.group(1));
+				title = normalizeTitle(m.group(1));
 				m = REDIRECT_PATTERN.matcher(xml);
 				if (m.matches()) {
-					String redirectTarget = m.group(1);
+					String redirectTarget = normalizeTitle(m.group(1));
 					reporter.incrCounter(HADOOP_COUNTERS.REDIRECT, 1);
 					output.collect(new Text(title),
 					    new Text(String.format("%s\t%s\t%s", id, redirectTarget, "")));
