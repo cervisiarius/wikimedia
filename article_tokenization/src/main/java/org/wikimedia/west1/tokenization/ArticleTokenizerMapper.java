@@ -113,6 +113,7 @@ public class ArticleTokenizerMapper implements Mapper<Text, Text, Text, Text> {
 		}
 	}
 
+	// Just for testing.
 	public static void main(String[] args) throws Exception {
 		ArticleTokenizerMapper obj = new ArticleTokenizerMapper();
 		obj.configure(null);

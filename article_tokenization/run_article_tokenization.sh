@@ -1,7 +1,12 @@
 #!/bin/bash
 
+# The $WIKI parameter (e.g., zuwiki-20150407) must be passed in as a command-line argument.
+export WIKI=$1
+# The number of reducers must be passed in as a command-line argument.
+export NUM_REDUCERS=$2
+
 # Modify these parameters.
-# This is where the JAR file with the Mapper and Reducer code resides.
+# This is where the JAR file with the Mapper code resides.
 export TARGET_DIR=$HOME/wikimedia/trunk/article_tokenization/target
 # This is where additional JARs reside.
 export LIB_DIR=$HOME/wikimedia/trunk/lib
@@ -22,4 +27,4 @@ hadoop jar /usr/lib/hadoop-mapreduce/hadoop-streaming.jar \
     -output       $OUT_DIR \
     -mapper       org.wikimedia.west1.tokenization.ArticleTokenizerMapper \
     -reducer      "/bin/cat" \
-    -numReduceTasks 100
+    -numReduceTasks $NUM_REDUCERS
