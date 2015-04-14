@@ -2,9 +2,9 @@
 
 # Modify these parameters.
 # This is where the JAR file with the Mapper and Reducer code resides.
-export TARGET_DIR=~/wikimedia/trunk/target
+export TARGET_DIR=$HOME/wikimedia/trunk/target
 # This is where additional JARs reside.
-export LIB_DIR=~/wikimedia/trunk/lib
+export LIB_DIR=$HOME/wikimedia/trunk/lib
 # The part of the server logs you want to process.
 #export IN_DIR=/wmf/data/wmf/webrequest/webrequest_source=text/year=2015/*/*/*/*
 export IN_DIR=/user/west1/webrequest_source=text/year=2015/*/*/*/*
