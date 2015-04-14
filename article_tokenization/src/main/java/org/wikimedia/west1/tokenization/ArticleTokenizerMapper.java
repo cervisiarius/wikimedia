@@ -23,7 +23,7 @@ import org.wikipedia.miner.util.MarkupStripper;
 public class ArticleTokenizerMapper implements Mapper<Text, Text, Text, Text> {
 
 	private static Pattern NAMESPACE_PATTERN = Pattern.compile("(?s).*<ns>0</ns>.*");
-	private static Pattern REDIRECT_PATTERN = Pattern.compile("(?s).*<redirect title=\"(.*)");
+	private static Pattern REDIRECT_PATTERN = Pattern.compile("(?s).*<redirect title=\"(.*?)\"");
 	private static Pattern TITLE_PATTERN = Pattern.compile("(?s).*?<title>(.*?)</title>.*");
 	private static Pattern CONTENT_PATTERN = Pattern
 	    .compile("(?s).*?<text xml:space=\"preserve\">(.*)</text>.*");
@@ -68,7 +68,9 @@ public class ArticleTokenizerMapper implements Mapper<Text, Text, Text, Text> {
 	// @Override
 	public void configure(JobConf conf) {
 		tokenizerFactory = PTBTokenizerFactory.newPTBTokenizerFactory(new WordTokenFactory(),
-		    "tokenizeNLs=true");
+		    "tokenizeNLs=true,americanize=false,normalizeCurrency=false,normalizeParentheses=false,"
+		        + "normalizeOtherBrackets=false,unicodeQuotes=false,ptb3Ellipsis=true,"
+		        + "escapeForwardSlashAsterisk=false,untokenizable=noneKeep");
 	}
 
 	// @Override
@@ -99,8 +101,7 @@ public class ArticleTokenizerMapper implements Mapper<Text, Text, Text, Text> {
 					if (m.matches()) {
 						content = m.group(1);
 						reporter.incrCounter(HADOOP_COUNTERS.OK_ARTICLE, 1);
-						output.collect(new Text(title),
-						    new Text(String.format("%s\t%s", "", format(content))));
+						output.collect(new Text(title), new Text(String.format("%s\t%s", "", format(content))));
 					}
 				}
 			} else {
