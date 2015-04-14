@@ -2,7 +2,7 @@
 
 # Modify these parameters.
 # This is where the JAR file with the Mapper and Reducer code resides.
-export TARGET_DIR=~/wikimedia/trunk/article_tokenization/target
+export TARGET_DIR=$HOME/wikimedia/trunk/article_tokenization/target
 # The part of the server logs you want to process.
 export IN_DIR=/user/west1/wikipedia_dumps/$WIKI-pages-articles-multistream.xml
 # The output directory.
