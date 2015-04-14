@@ -8,7 +8,7 @@ export LIB_DIR=$HOME/wikimedia/trunk/lib
 # The part of the server logs you want to process.
 export IN_FILE=/user/west1/wikipedia_dumps/$WIKI-pages-articles-multistream.xml
 # The output directory.
-export OUT_DIR=/user/west1/wikipedia_plaintexts/$WIKI.tsv
+export OUT_DIR=/user/west1/wikipedia_plaintexts/$WIKI
 
 echo "Running hadoop job"
 hadoop jar /usr/lib/hadoop-mapreduce/hadoop-streaming.jar \
