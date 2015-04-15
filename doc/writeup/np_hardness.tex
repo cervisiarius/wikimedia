@@ -12,15 +12,65 @@
 
 \section{Problem formulation}
 
-\begin{itemize}
-\item INSTANCE: Directed graph $G=(V,E)$, set of paths $P \subseteq V^*$, shortcut probabilities $Q=\{q_{st} : (s,t) \in V^2 \setminus E\}$, positive integer $K$.
-\item QUESTION: Given a budget of $K$ shortcut links $(s_1,t_1), \dots, (s_K,t_K)$, what is the maximum cumulative flow over the shortcuts across all paths?
-\end{itemize}
+We have:
+
+- a hyperlink network $G=(V,E)$
+
+- a set $P$ of navigation paths over this network
+
+- model: after the navigation paths were collected, we introduce some previously non-existent links
+
+- now, for each path $p=(p_1,\dots,p_n)$, we let the user revisit the path step by step, and for each triple $(p_i,p_{i+1},p_{i+2})$ along the path, the user has the option to choose the shortcut $(p_i,p_{i+2})$ if that shortcut is one of the newly introduced links; i.e., the user may choose to skip over $p_{i+1}$
+
+- we assume that, for each node triple $(s,m,t)$ with $(s,t) \notin E$, there is a fixed probability $q(s,m,t)$ with which the user will choose the shortcut $(s,t)$ over the full triple $(s,m,t)$
+
+- this way, we can compute the probability of being chosen for each shortcut link along each path
+
+- consider a path $p=(p_1,\dots,p_n)$ and let $f^p_i$ be the probability that the (old) link $(p_i,p_{i+1})$ is clicked on path $p$, and $g^p_i$ the probability that the (new) link $(p_i,p_{i+2})$ is clicked
+
+- define $x(s,t)$ as a binary variable indicating whether $(s,t)$ is one of the newly introduced links
+
+- these two probabilities are defined recursively as follows:
+\begin{eqnarray}
+\begin{array}{llll}
+f^p_i &=& \left(f^p_{i-1} + g^p_{i-2}\right) \, (1 - x(p_i,p_{i+2}) \, q(p_i,p_{i+1},p_{i+2})) & \mbox{for $i=1,\dots,n-2$} \\
+g^p_i &=& \left(f^p_{i-1} + g^p_{i-2}\right) \, x(p_i,p_{i+2}) \, q(p_i,p_{i+1},p_{i+2}) & \mbox{for $i=1,\dots,n-2$} \\
+f^p_{i} &=& f^p_{i-1} + g^p_{i-2} & \mbox{for $i=n-1,n$} \\
+f^p_0 &=& 1 & \\
+g^p_{-1} &=& g^p_0 \;\;=\;\; g^p_{n-1} \;\;=\;\; g^p_n \;\;=\;\; 0 &
+\end{array}
+\end{eqnarray}
+
+- if $(p_i,p_{i+2})$ is not one of the newly introduced links, then $g^p_i=0$
+
+- flow interpretation: one unit of flow is transmitted from $p_1$ to $p_n$
+
+- the flow that enters each node must equal the flow that leaves it
+
+- each newly introduced shortcut link $(s,t)$ may appear in several paths, and has a probability of being clicked on each of these paths
+
+- the value of that probability depends on the entire set of new shortcut links
+
+- by summing these probabilities for fixed $(s,t)$ across all paths, we obtain the number of clicks that shortcut is expected to receive
+
+- so we can now phrase our optimization objective: given a budget of $K$ shortcut links that may be added, choose those shortcuts that would receive the maximum expected number of clicks
+
+- more formally: we want to maximize $\sum_{p \in P} \sum_{i=1}^{|p|-2} g^p_i$
+
+\subsection{Integer linear program}
+
 
 \section{NP-hardness}
 
 By reduction from HITTING SET.%
 \footnote{Garey and Johnson, Problem SP8, p.~222}
+
+\subsection{Definition of the LINK PLACEMENT problem}
+
+\begin{itemize}
+\item INSTANCE: Directed graph $G=(V,E)$, set of paths $P \subseteq V^*$, shortcut probabilities $Q=\{q_{st} : (s,t) \in V^2 \setminus E\}$, positive integer $K$.
+\item QUESTION: Given a budget of $K$ shortcut links $(s_1,t_1), \dots, (s_K,t_K)$, what is the maximum cumulative flow over the shortcuts across all paths?
+\end{itemize}
 
 \subsection{Definition of the HITTING SET problem}
 
@@ -33,7 +83,7 @@ Importantly, the problem remains NP-complete even if $|c| \leq 2$ for all $c \in
 
 \subsection{Reduction}
 
-We need to reduce a HITTING SET instance $(C,Z,L)$ to an instance $(V,E,P,Q,K)$ of our problem.
+We need to reduce a HITTING SET instance $(C,Z,L)$ to a LINK PLACEMENT instance $(V,E,P,Q,K)$.
 We assume w.l.o.g.\ that each $c \in C$ contains at most two elements.
 
 First, we set $K=L$.
@@ -46,6 +96,10 @@ $E$ is the set of edges induced by $P$.
 
 $q_{st}=1$ for all $(s,t) \in V^2 \setminus E$.
 
+
+\section{Approximate solutions}
+
+\subsection{Submodularity}
 
 
 \end{document}
