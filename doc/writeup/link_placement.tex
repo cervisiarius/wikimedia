@@ -5,6 +5,7 @@
 \usepackage{amssymb}
 \usepackage{fullpage}
 \usepackage{hyphenat}
+\usepackage{amsthm}
 
 \usepackage{tikz}
 \usetikzlibrary{arrows}
@@ -12,6 +13,9 @@
 
 \newcommand{\LP}{LINK PLACEMENT}
 \newcommand{\HS}{HITTING SET}
+\newcommand{\reals}{\mathbb{R}}
+
+\newtheorem{lemma}{Lemma}
 
 \begin{document}
 \title{The Link Placement Problem}
@@ -298,6 +302,21 @@ Hence, if all $|C|$ subsets can be hit in \HS{}, then the maximum shortcut flow 
 
 \section{Approximate solution via submodularity}
 
+Let $\phi : 2^{V \times V} \rightarrow \reals$ be the function that computes the value of a solution to the link prediction problem, i.e., $\phi$ computes the cumulative flow over all shortcut edges.
+
+In this section we show that $\phi$ is monotone submodular, which implies that it admits a $(1-1/e)$-approximation via greedy marginal\hyp gain optimization.
+
+We use $\phi_p(E')$ to denote the value of the solution $E'$ when discarding all paths but $p$. The total value $\phi(E')$ is then obtained by summing over all path-wise values, i.e., $\phi(E') = \sum_{p \in P} \phi_p(E')$.
+
+\begin{lemma}
+\label{thm:monotonicity}
+$\phi$ is monotone decreasing, i.e., $\phi(B) \leq \phi(A)$ if $A \subseteq B$.
+\end{lemma}
+
+\begin{proof}[Proof]
+Without loss of generality, we need to consider only the case where $B$ is one element larger than $A$, i.e., $B = A \cup \{y\}$; the lemma will then follow by transitivity. Further, we may consider only the path-wise value $\phi_p$; the lemma will then also hold for $\phi$.
+First, note that the flow over all edges upstream (i.e., towards the left in Fig.~\ref{fig:shortcut_example}) of $y$ will be unaffected when introducing $y$.
+\end{proof}
 
 
 \end{document}
