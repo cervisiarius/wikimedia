@@ -1,0 +1,106 @@
+---
+title: "Analysis of navigation tree metrics"
+output: html_document
+---
+
+```{r load data}
+DATADIR <- sprintf('%s/wikimedia/trunk/data', Sys.getenv('HOME'))
+data <- read.table(sprintf('%s/tree_metrics_sample_en.tsv', DATADIR), header=TRUE)
+```
+
+We analyze a sample of 100,000 navigation traces. The sample excludes all traces consisting of a single page view (i.e., the majority).
+
+# Tree size
+
+Tree size is defined as the number of nodes in the tree.
+
+First, a histogram (log-log scales).
+
+```{r}
+h <- hist(data$size, breaks=(min(data$size)-1):max(data$size), plot=FALSE)
+plot(h$breaks[-1], h$counts/sum(h$counts), log='xy', panel.first=grid(),
+     xlab='Tree size', ylab='Probability')
+```
+
+If the distribution were exponential, $\frac{1}{1-F(s)}$ would be a straight line on a single-log plot (where $s$ is the tree size, and $F(s)$, the CDF), but clearly this isn't the case:
+
+```{r}
+x <- sort(data$size)
+y <- (1:length(data$size))/length(data$size)
+plot(x, 1/(1-y), log='y', ylim=c(1,1e5), panel.first=grid(), xlab='Tree size s', ylab='1/(1-F(s))')
+```
+
+If the distribution were Weibull, $\log(\frac{1}{1-F(s)})$ would be a straight line on log-log scales (left).
+If the distribution were a power law, $1-F(s)$ would be a straight line on log-log scales (right).
+(see http://www.itl.nist.gov/div898/handbook/apr/section2/apr221.htm)
+
+```{r}
+par(mfrow=c(1,2))
+plot(x, log(1/(1-y)), log='xy', ylim=c(0.5,15), panel.first=grid(), xlab='Tree size s', ylab='log(1/(1-F(s)))')
+plot(x, rev(y), log='xy', panel.first=grid(), xlab='Tree size s', ylab='1 - F(s)')
+```
+
+TODO: Figure out the best fit via a goodness-of-fit or likelihood ratio test.
+
+# Tree depth
+
+Note that depth cannot be larger than 100, since we impose this limit at data-extraction time (to avoid stack overflows in recursive tree processing).
+
+```{r}
+h <- hist(data$depth, breaks=(min(data$depth)-1):max(data$depth), plot=FALSE)
+plot(h$breaks[-1], h$counts/sum(h$counts), log='xy', panel.first=grid(),
+     xlab='Tree depth', ylab='Probability')
+```
+
+Again, if the distribution were Weibull, the left plot would be a straight line; if it were a power law, the right plot would be a straight line.
+
+```{r}
+x <- sort(data$depth)
+y <- (1:length(data$depth))/length(data$depth)
+par(mfrow=c(1,2))
+plot(x, log(1/(1-y)), log='xy', panel.first=grid(), ylim=c(1,15), xlab='Tree size s', ylab='log(1/(1-F(s)))')
+plot(x, rev(y), log='xy', panel.first=grid(), xlab='Tree size s', ylab='1-F(s)')
+```
+
+# Node degree
+
+Maximum degree per tree.
+
+```{r}
+par(mfrow=c(1,1))
+metric <- data$degree_max
+plot(sort(metric), rev(1:length(metric))/length(metric), log='xy',
+     panel.first=grid(), xlab='Max degree d', ylab='1-F(d)')
+```
+
+Average degree per tree.
+
+```{r}
+metric <- data$degree_mean
+plot(sort(metric), rev(1:length(metric))/length(metric), log='xy',
+     panel.first=grid(), xlab='Mean degree d', ylab='1-F(d)')
+```
+
+# Wiener index
+
+The Wiener index measures the average path length over all pairs of nodes in the tree. It is maximal for a linear chain and minimal for a tree in which all non-root nodes are children of the root.
+
+```{r}
+metric <- data$wiener_index
+plot(sort(metric), rev(1:length(metric))/length(metric), log='xy',
+     panel.first=grid(), xlab='Wiener index w', ylab='1-F(w)')
+```
+
+For a tree consisting of a single click, the Wiener index is 1. Since single-click trees are most likely, a Wiener index of 1 is necessarily most likely. So what if we fix the size $s$ of the tree to some larger value?
+
+The following boxplot shows the distribution of the Wiener index for different values of $s$ (on the $x$-axis). We observe that the Wiener index stays below 5 even as we increase the tree size to $s=30$. This is noteworthy because the theoretical maximum grows linearly and equals roughly $s/3$. This means that the fraction of very long paths (approximately linear chains) decreases with the tree size.
+
+```{r}
+range <- 3:30
+small_trees <- data[data$size %in% range,]
+boxplot(split(small_trees$wiener_index, small_trees$size),
+        xlab='Tree size s', ylab='Wiener index')
+abline(1, 1/3, col='green', lty=2)
+lines(range-min(range)+1, 2*(1-1/range), col='green', lty=3)
+legend('topleft', legend=c('Theoretical max', 'Theoretical min'), col='green', lty=c(2,3))
+```
