@@ -1,3 +1,6 @@
+# USAGE: spark-submit  --master yarn --deploy-mode client --num-executors 15 --executor-memory 10g --executor-cores 8 --driver-memory 10g als.py
+
+
 from pyspark.sql import *
 from operator import add
 import csv
@@ -20,23 +23,29 @@ from pyspark import SparkConf, SparkContext
 # remove "ratings" if the editor added less that MIN_BYTES to the article
 MIN_BYTES = 100
 # remove the editor is they have edited more than MAX_ARTICLES or less than MIN_ARTICLES
-MIN_ARTICLES = 5
+MIN_ARTICLES = 3
 MAX_ARTICLES = 1000
 
 #sampling
 PRE_REDUCTION_RATE = 1.0
-POST_REDUCTION_RATE = 0.01
+POST_REDUCTION_RATE = 1.0
+
+IMPLICIT = True
 
 # what language to buld recommender for 
 LANGUAGE = 'en'
 
 # cv parameters
-ranks = [25, 35  ]
-lambdas = [1.0, 10.0  ]
-numIters = [10,20 ]
+ranks = [35,   ]
+lambdas = [10.0,  ]
+numIters = [10, ]
 
 conf = SparkConf()
 conf.set("spark.app.name", 'als')
+conf.set("spark.core.connection.ack.wait.timeout", "180")
+
+
+
 sc = SparkContext(conf=conf)
 
 
@@ -175,7 +184,10 @@ def cross_validation(training, validation, test, ranks, lambdas, numIters):
     numValidation = validation.count()
     numTest = test.count()
     for rank, lmbda, numIter in itertools.product(ranks, lambdas, numIters):
-        model = ALS.train(training, rank, numIter, lmbda)
+        if IMPLICIT:
+            model = ALS.trainImplicit(training, rank, numIter, alpha = lmbda)
+        else:
+            model = ALS.train(training, rank, numIter, lmbda)
         validationRmse = computeRmse(model, validation, numValidation)
         print "RMSE (validation) = %f for the model trained with " % validationRmse + \
               "rank = %d, lambda = %.1f, and numIter = %d." % (rank, lmbda, numIter)
