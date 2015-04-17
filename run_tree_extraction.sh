@@ -7,9 +7,9 @@ export TARGET_DIR=$HOME/wikimedia/trunk/target
 export LIB_DIR=$HOME/wikimedia/trunk/lib
 # The part of the server logs you want to process.
 #export IN_DIR=/wmf/data/wmf/webrequest/webrequest_source=text/year=2015/*/*/*/*
-export IN_DIR=/user/west1/webrequest_source=text/year=2015/*/*/*/*
+export IN_DIR=/user/west1/webrequest_source=text/year=2015/month=2/*/*/*
 # The output directory.
-export OUT_DIR=/user/west1/navigation_trees_3
+export OUT_DIR=/user/west1/navigation_trees_month=2
 # Cf. org.wikimedia.west1.traces.TreeExtractorReducer.isGoodPageview().
 export KEEP_BAD_TREES=false
 # Cf. org.wikimedia.west1.traces.TreeExtractorReducer.isGoodPageview().
@@ -19,9 +19,9 @@ export KEEP_AMBIGUOUS_TREES=true
 # Regular expression of the languages you want to include. The following partition of the top 50
 # languages into 3 sets was chosen such that the cumulative sizes of their redirect tables are
 # approximately equal.
-#export LANGUAGE_PATTERN='en'
+export LANGUAGE_PATTERN='en'
 #export LANGUAGE_PATTERN='es|fr|ru|de|fa|sv|simple|zh|ja'
-export LANGUAGE_PATTERN='sh|pt|ar|nl|it|ceb|war|sr|pl|uk|ca|id|ro|tr|ko|no|fi|uz|cs|hu|vi|he|hy|eo|da|bg|et|lt|el|vo|sk|sl|eu|nn|kk|hr|hi|ms|gl|min'
+#export LANGUAGE_PATTERN='sh|pt|ar|nl|it|ceb|war|sr|pl|uk|ca|id|ro|tr|ko|no|fi|uz|cs|hu|vi|he|hy|eo|da|bg|et|lt|el|vo|sk|sl|eu|nn|kk|hr|hi|ms|gl|min'
 # If a user has more than this many pageviews, we ignore her.
 # Having 100K pageviews in a month would mean one every 26 seconds.
 # Having 10K pageviews in a month would mean one every 4 minutes.
