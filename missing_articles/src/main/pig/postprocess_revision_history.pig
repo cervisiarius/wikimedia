@@ -34,7 +34,7 @@ Rev = FOREACH Rev GENERATE
     parent_id;
 
 -- Remove bots.
-DEFINE hashUnjoin `./hash_unjoin.pl bots.txt 4 1` ship('/home/west1/wikimedia/trunk/src/main/perl/hash_unjoin.pl', '/home/west1/wikimedia/trunk/data/bots/bots.txt');
+DEFINE hashUnjoin `./hash_unjoin.pl bots.txt 4 1` ship('/home/west1/wikimedia/trunk/missing_articles/src/main/perl/hash_unjoin.pl', '/home/west1/wikimedia/trunk/data/bots/bots.txt');
 Rev = STREAM Rev THROUGH hashUnjoin AS (rev_id:long, page_id:int, user_id:int, user:chararray,
         timestamp:chararray, length:int, parent_id:int);
 
