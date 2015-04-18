@@ -2,6 +2,7 @@ import string
 import gensim
 import os
 import time
+import argparse
 
 
 
@@ -12,23 +13,23 @@ if __name__ == '__main__':
 
 
     parser = argparse.ArgumentParser()
-    parser.add_argument('-d', '--dir', required = True, help='experiment data directory' )
+    parser.add_argument('--dir', required = True, help='experiment data directory' )
     args = parser.parse_args()
 
     home_dir = '/home/ellery'
     hadoop_home_dir = '/user/ellery'
-    exp_dir = args.d 
-    base_dir = os.join(home_dir, exp_dir)
-    hadoop_base_dir = os.join(hadoop_home_dir,  exp_dir)
+    exp_dir = args.dir 
+    base_dir = os.path.join(home_dir, exp_dir)
+    hadoop_base_dir = os.path.join(hadoop_home_dir,  exp_dir)
     dict_file = 'dictionary.txt'
     article_name_file = 'articles.txt'
     article_file = 'articles.blei'
     article_vectors_file = 'article_vectors.txt'
 
     dictionary = gensim.corpora.dictionary.Dictionary() 
-    id2Token = dict(enumerate(l[:-1] for l in open(os.join(base_dir, dict_file)))) 
+    id2Token = dict(enumerate(l[:-1] for l in open(os.path.join(base_dir, dict_file)))) 
     dictionary.token2id  = {v: k for k, v in id2Token.items()}
-    corpus = gensim.corpora.bleicorpus.BleiCorpus(os.join(base_dir, article_file), fname_vocab= os.join(base_dir, dict_file)) 
+    corpus = gensim.corpora.bleicorpus.BleiCorpus(os.path.join(base_dir, article_file), fname_vocab= os.path.join(base_dir, dict_file)) 
 
 
     time1 = time.time()
@@ -48,15 +49,14 @@ if __name__ == '__main__':
                                 gamma_threshold=0.001)
     time2 = time.time()
     print 'training lda model took %0.3f minutes' % ((time2-time1) / 60.0)
-    model.save(os.join(base_dir, 'lda_model'))
+    model.save(os.path.join(base_dir, 'lda_model'))
 
     def write_doc_vectors_to_file(model, corpus):
         # write reduced document vectors to file
-        article_name_f = open(os.join(base_dir, article_name_file), 'r')
-        article_f = open(os.join(base_dir, article_file), 'r')
-        article_vectors_f = open(os.join(base_dir, article_vectors_file), 'w')
+        article_name_f = open(os.path.join(base_dir, article_name_file), 'r')
+        article_f = open(os.path.join(base_dir, article_file), 'r')
+        article_vectors_f = open(os.path.join(base_dir, article_vectors_file), 'w')
 
-        time1 = time.time()
         for i in range(len(corpus)):
             doc = [ p.split(':') for p in next(article_f)[:-1].split(' ')[1:]]
             doc = [(int(p[0]), int(p[1])) for p in doc]
@@ -67,9 +67,7 @@ if __name__ == '__main__':
             article_vectors_f.write(line)
         if i % 10000 == 0:
             print line
-            
-    time2 = time.time()
-    print 'function took %0.3f minutes' % ((time2-time1) / 60.0)
+
     
     time1 = time.time()
     write_doc_vectors_to_file(model, corpus)
@@ -79,5 +77,5 @@ if __name__ == '__main__':
     # move document vectors to hdfs
 
     print os.system('hadoop fs -mkdir ' + hadoop_base_dir )
-    print os.system('hadoop fs -put ' + os.join(base_dir, article_vectors_file ) + ' ' + os.join(hadoop_base_dir, article_vectors_file))
+    print os.system('hadoop fs -put ' + os.path.join(base_dir, article_vectors_file ) + ' ' + os.path.join(hadoop_base_dir, article_vectors_file))
 
