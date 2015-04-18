@@ -57,7 +57,6 @@ if __name__ == '__main__':
         article_f = open(os.path.join(base_dir, article_file), 'r')
         article_vectors_f = open(os.path.join(base_dir, article_vectors_file), 'w')
 
-        time1 = time.time()
         for i in range(len(corpus)):
             doc = [ p.split(':') for p in next(article_f)[:-1].split(' ')[1:]]
             doc = [(int(p[0]), int(p[1])) for p in doc]
@@ -69,8 +68,6 @@ if __name__ == '__main__':
         if i % 10000 == 0:
             print line
 
-    time2 = time.time()
-    print 'function took %0.3f minutes' % ((time2-time1) / 60.0)
     
     time1 = time.time()
     write_doc_vectors_to_file(model, corpus)
