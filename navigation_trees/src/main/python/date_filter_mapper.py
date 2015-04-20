@@ -16,7 +16,7 @@ if __name__ == '__main__':
     try:
       tree = json.loads(line)
       if (tree['dt'].startswith('2015-01')):
-        print line
+        print line,
     except IOError as e:
       if e.errno == errno.EPIPE: pass
 
