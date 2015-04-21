@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# The number of reducers must be given on the command line.
+export NUM_REDUCERS=$1
+
 # Modify these parameters.
 export LANG=en
 # The part of the server logs you want to process.
@@ -17,4 +20,4 @@ hadoop jar /usr/lib/hadoop-mapreduce/hadoop-streaming.jar \
     -output       $OUT_DIR \
     -mapper       "/usr/bin/python ./date_filter_mapper.py" \
     -reducer      "/bin/cat" \
-    -numReducers  100
+    -numReduceTasks $NUM_REDUCERS
