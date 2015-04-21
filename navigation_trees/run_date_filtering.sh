@@ -9,6 +9,7 @@ export OUT_DIR=/user/west1/navigation_trees/month=1/$LANG
 
 echo "Running hadoop job"
 hadoop jar /usr/lib/hadoop-mapreduce/hadoop-streaming.jar \
+    -D            mapreduce.job.queuename=priority \
     -D            mapreduce.output.fileoutputformat.compress=false \
     -D            mapreduce.task.timeout=6000000 \
     -files        /home/west1/wikimedia/trunk/navigation_trees/src/main/python/date_filter_mapper.py \
