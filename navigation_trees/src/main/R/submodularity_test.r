@@ -36,18 +36,23 @@ for (n in 1:1000) {
   A <- Ay
   A[y] <- 0
   
-  dA <- c(dA, phi(Ay)-phi(A))
-  dB <- c(dB, phi(By)-phi(B))
+  dA <- c(dA, p1(Ay)-p1(A))
+  dB <- c(dB, p1(By)-p1(B))
   
-  if (phi(Ay)-phi(A) < phi(By)-phi(B)) {
-    print(A)
-    print(Ay)
-    print(B) 
-    print(By)
-    print('-----------------')
-    break
-  }
+#   dA <- c(dA, phi(Ay)-phi(A))
+#   dB <- c(dB, phi(By)-phi(B))  
+#   if (phi(Ay)-phi(A) < phi(By)-phi(B)) {
+#     print(A)
+#     print(Ay)
+#     print(B) 
+#     print(By)
+#     print('-----------------')
+#     break
+#   }
 }
+
+plot(dA, dB, log='xy')
+abline(0,1, col='red')
 
 rbind(A,Ay)
 rbind(vol(A),vol(Ay))

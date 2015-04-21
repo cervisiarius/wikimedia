@@ -56,7 +56,7 @@ hadoop jar /usr/lib/hadoop-mapreduce/hadoop-streaming.jar \
     -D            org.wikimedia.west1.traces.keepAmbiguousTrees=$KEEP_AMBIGUOUS_TREES \
     -D            org.wikimedia.west1.traces.keepBadTrees=$KEEP_BAD_TREES \
     -D            org.wikimedia.west1.traces.keepSingletonTrees=$KEEP_SINGLETON_TREES \
-    -D            org.wikimedia.west1.traces.hashSalt=`date +%s | sha256sum | base64 | head -c 64` \
+    -D            org.wikimedia.west1.traces.hashSalt=df765889fdiiohfjsfughc2387hsvtrvkjjkhgdsfsdlkfhs74uisafjsdbjb \
     -D            org.wikimedia.west1.traces.maxNumPageviews=$MAX_NUM_PAGEVIEWS \
     -inputformat  net.iponweb.hadoop.streaming.parquet.ParquetAsJsonInputFormat \
     -outputformat org.wikimedia.west1.traces.MultiLanguageOutputFormat \
@@ -65,3 +65,8 @@ hadoop jar /usr/lib/hadoop-mapreduce/hadoop-streaming.jar \
     -mapper       org.wikimedia.west1.traces.GroupAndFilterMapper \
     -reducer      org.wikimedia.west1.traces.TreeExtractorReducer \
     -numReduceTasks 100
+
+# Hash salt used to be generated randomly, such that for different runs, different "users" will get
+# different ids (i.e., same language has different ids for different months). But for
+# es|fr|ru|de|fa|sv|simple|zh|ja we set it deterministically, so we can group users across all 3 months.
+#    -D            org.wikimedia.west1.traces.hashSalt=`date +%s | sha256sum | base64 | head -c 64` \
