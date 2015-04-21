@@ -302,21 +302,103 @@ Hence, if all $|C|$ subsets can be hit in \HS{}, then the maximum shortcut flow 
 
 \section{Approximate solution via submodularity}
 
-Let $\phi : 2^{V \times V} \rightarrow \reals$ be the function that computes the value of a solution to the link prediction problem, i.e., $\phi$ computes the cumulative flow over all shortcut edges.
+Let $\psi : 2^{V \times V} \rightarrow \reals$ be the function that computes the value of a solution to the link prediction problem, i.e., $\psi$ computes the cumulative flow over all shortcut edges.
 
-In this section we show that $\phi$ is monotone submodular, which implies that it admits a $(1-1/e)$-approximation via greedy marginal\hyp gain optimization.
+If $\psi$ were monotone submodular, it would admit a $(1-1/e)$-approximation via greedy marginal\hyp gain optimization.
+Unfortunately, unlike first suspected, $\psi$ doesn't have this property.
+See Fig.~\ref{fig:counterexample} for a counterexample.
 
-We use $\phi_p(E')$ to denote the value of the solution $E'$ when discarding all paths but $p$. The total value $\phi(E')$ is then obtained by summing over all path-wise values, i.e., $\phi(E') = \sum_{p \in P} \phi_p(E')$.
+\begin{figure}
+ \centering
+\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=3cm,thick]
+
+  \tikzstyle{p}=[circle,fill=orange!20,draw,font=\footnotesize,inner sep=0pt,minimum size=7mm]
+  \tikzstyle{plain}=[circle,fill=white,font=\footnotesize]
+
+  \node[p] (p1) [right of=p0, node distance=2cm] {$p_1$};
+  \node[p] (p2) [right of=p1, node distance=3cm] {$p_2$};
+  \node[p] (p3) [right of=p2, node distance=3cm] {$p_3$};
+  \node[p] (p4) [right of=p3, node distance=3cm] {$p_4$};
+  \node[p] (p5) [right of=p4, node distance=3cm] {$p_5$};
+  \path
+    (p1) edge (p2)
+    (p2) edge (p3)
+    (p3) edge (p4)
+    (p4) edge (p5);
+  \path
+    (p1) edge [bend left=50] node[align=center] {$x$} (p3)
+    (p2) edge [bend left=50] node[align=center] {$y$} (p4)
+    (p3) edge [bend left=50, dashed] node[align=center] {$z$} (p5);
+
+\end{tikzpicture}
+
+\caption{Example showing that the original objective is not submodular. The $q$-values for all edges are defined as 1. Now, $\psi(\{x,y,z\}) - \psi(\{x,y\}) = 2-1 = 1$, but $\psi(\{y,z\}) - \psi(\{y\}) = 1-1 = 0$.}
+ \label{fig:counterexample}
+\end{figure}
+
+It is, however, possible to modify the objective such that it becomes submodular.
+The non-submodular objective $\psi$ captured the expected number of clicks received by all shortcut links across all paths.
+Now, let us instead consider the expected number of paths in which at least one shortcut click is clicked.
+We define the new objective as
+\begin{eqnarray}
+\phi(E')  &=& \sum_{p \in P} \phi_p(E') \\
+          &=& \sum_{p \in P} \left( 1 - \prod_{i=1}^{|p|-2} \left( 1 - x(p_i,p_{i+2}) \, q(p_i,p_{i+1},p_{i+2}) \right) \right).
+\end{eqnarray}
+
+We use $\phi_p(E')$ to denote the value of the solution $E'$ when discarding all paths but $p$.
+It captures the probability of at least one shortcut being clicked in path $p$.
+The total value $\phi(E')$ is then obtained by summing over all path-wise values.
 
 \begin{lemma}
 \label{thm:monotonicity}
-$\phi$ is monotone decreasing, i.e., $\phi(B) \leq \phi(A)$ if $A \subseteq B$.
+$\phi$ is monotone increasing (i.e., $\phi(B) \geq \phi(A)$ if $A \subseteq B$) and submodular (i.e., $\phi(B \cup \{y\}) - \phi(B) \leq \phi(A \cup \{y\}) - \phi(A)$ if $A \subseteq B$).
 \end{lemma}
 
 \begin{proof}[Proof]
-Without loss of generality, we need to consider only the case where $B$ is one element larger than $A$, i.e., $B = A \cup \{y\}$; the lemma will then follow by transitivity. Further, we may consider only the path-wise value $\phi_p$; the lemma will then also hold for $\phi$.
-First, note that the flow over all edges upstream (i.e., towards the left in Fig.~\ref{fig:shortcut_example}) of $y$ will be unaffected when introducing $y$.
+Without loss of generality, we need to consider only the case where $B$ is one element larger than $A$, i.e., $B = A \cup \{z\}$; the lemma will then follow by transitivity. Further, we may consider only the path-wise value $\phi_p$; the lemma will then also hold for $\phi$, since the sum of submodular functions is also a submodular function.
+
+Monotonicity is easy to see: Certainly, the probability of taking at least one link doesn't decrease if there are more links available. More formally, let $I_A$ and $I_B$ be the sets of indices at which the links from $A$ and $B$, respectively, start in $p$; and $k$, the index at which $z$ starts (if $z$ doesn't appear in $p$, $\phi_p(B)=\phi_p(A)$ trivially).
+Also define $q^p_i = q(p_i,p_{i+1},p_{i+2})$.
+Then,
+\begin{eqnarray}
+\phi_p(B)  &=& 1 - \prod_{i \in I_B} \left( 1 - q^p_i \right) \\
+                      &=& 1 - (1 - q^p_k) \prod_{i \in I_A} \left( 1 - q^p_i \right) \\
+                      &\geq& 1 - \prod_{i \in I_A} \left( 1 - q^p_i \right) \\
+                      &=& \phi_p(A).
+\end{eqnarray}
+
+Submodularity is also straightforward. Let $k$ again be the index where $z$ starts, and $j$, the index where $y$ starts (if $y$ and $z$ don't both appear in $p$, then $\phi_p(B \cup \{y\}) - \phi_p(B) = \phi_p(A \cup \{y\}) - \phi_p(A)$). Then,
+\begin{eqnarray}
+\phi_p(B \cup \{y\}) - \phi_p(B) 
+  &=& \left(1 - (1 - q^p_j) \prod_{i \in I_B} \left( 1 - q^p_i \right)\right)
+    - \left(1 - \prod_{i \in I_B} \left( 1 - q^p_i \right)\right) \\
+  &=& \left(\prod_{i \in I_B} \left( 1 - q^p_i \right)\right) - (1 - q^p_j) \prod_{i \in I_B} \left( 1 - q^p_i \right) \\
+  &=& (1 - q^p_k) \left[\left(\prod_{i \in I_A} \left( 1 - q^p_i \right)\right) - (1 - q^p_j) \prod_{i \in I_A} \left( 1 - q^p_i \right)\right] \\
+  &\leq& \left(\prod_{i \in I_A} \left( 1 - q^p_i \right)\right) - (1 - q^p_j) \prod_{i \in I_A} \left( 1 - q^p_i \right) \\
+  &=& \left(1 - (1 - q^p_j) \prod_{i \in I_A} \left( 1 - q^p_i \right)\right)
+    - \left(1 - \prod_{i \in I_A} \left( 1 - q^p_i \right)\right) \\
+  &=& \phi_p(A \cup \{y\}) - \phi_p(A).
+\end{eqnarray}
 \end{proof}
 
+
+REMARKS:
+
+- Another advantage of this objective: It's easier to handle long-range links.
+
+- The problem remains NP-hard: In Fig.~\ref{fig:reduction}, the probability of at least one link being taken equals the expected number of links taken. (Exactly one link is taken per path with at least one shortcut link.)
+
+
+
+\subsection{Greedy algorithm}
+
+A greedy algorithm has a $(1-1/e)$-approximation guarantee.
+
+- Lazy: when shortcut $y$ is chosen and unpolluted, all links that co-occur with $y$ in any path must be marked polluted
+
+- When $y$ is chosen but polluted, recompute its marginal gain: For each path $p$ containing $y$, increase the marginal gain of $y$ by 
+$$\left(\prod_{i \in I_A} \left( 1 - q^p_i \right)\right) - (1 - q^p_j) \prod_{i \in I_A} \left( 1 - q^p_i \right)
+\;\;\;=\;\;\; q^p_j \prod_{i \in I_A} \left( 1 - q^p_i \right),$$
+where $A$ is the current set of shortcuts, and $j$, the index of $y$ in $p$.
 
 \end{document}
