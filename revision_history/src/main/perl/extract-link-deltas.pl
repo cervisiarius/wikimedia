@@ -8,6 +8,9 @@ use HTML::Entities;
 # Important: deal with unicode properly (for uppercasing etc.).
 use utf8;
 
+# This variable must be set.
+my $REDIRECT_FILE = '/u/west1/wikimedia/trunk/data/redirects/enwiki_20141008_redirects.tsv.gz';
+
 sub normalizeTitle {
 	my $title = shift;
 	# Trim.
@@ -53,7 +56,7 @@ sub filterTitle {
 sub loadRedirects {
 	my %harshibarky = ();
 	# Important: read in UTF-8 mode.
-	open(RED, '-|:encoding(utf-8)', 'zcat /u/west1/wikimedia/trunk/data/redirects/enwiki_20141008_redirects.tsv.gz');
+	open(RED, '-|:encoding(utf-8)', "zcat $REDIRECT_FILE") or die $!;
 	while (my $line = <RED>) {
 		chomp $line;
 		# Use whitespace instead of underscore.
