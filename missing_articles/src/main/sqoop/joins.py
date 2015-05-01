@@ -1,6 +1,6 @@
 import os
 
-languages = ['ca',]
+languages = ['en', 'es', 'wikidata', 'de']
 
 os.system("export HIVE_OPTS='-hiveconf mapreduce.job.queuename=priority'")
 

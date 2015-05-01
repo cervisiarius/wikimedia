@@ -123,6 +123,7 @@ GroupedByPair = FOREACH GroupedByPair GENERATE
     MIN(RPWPJoined.mid) AS mid,
     MIN(RPWPJoined.page_title) AS page_title,
 	COUNT(RPWPJoined) AS num_edits,
+    MAX(RPWPJoined.timestamp) AS timestamp,
 	SUM(RPWPJoined.bytes_added) AS bytes_added;
 
 -- Make sure everything by the same user appears sequentially.

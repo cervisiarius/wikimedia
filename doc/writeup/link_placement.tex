@@ -11,6 +11,8 @@
 \usetikzlibrary{arrows}
 \usetikzlibrary{shapes.geometric}
 
+%\newcommand{\LP}{\textsc{link placement}}
+%\newcommand{\HS}{\textsc{hitting set}}
 \newcommand{\LP}{LINK PLACEMENT}
 \newcommand{\HS}{HITTING SET}
 \newcommand{\reals}{\mathbb{R}}
@@ -22,29 +24,39 @@
 \author{Bob West}
 \maketitle
 
-\section{Problem formulation}
 
-We have:
+\section{Problem statement}
 
-- a hyperlink network $G=(V,E)$
+We formulate the problem of adding the optimal set of hyperlinks to a website, given a limited budget of links that may be added.
+Limiting the number of new links may be important in practice, since links typically need to be added, or at least checked, by a human website administrator, which is time-consuming and costly, so we want to keep the load on the human low while still producing a good ensemble of links.
 
-- a set $P \subseteq V^*$ of navigation paths over this network
+In the link placement problem we are given
+\begin{enumerate}
+\item a website represented as a hyperlink graph $G=(V,E)$ and
+\item a set $P \subseteq V^*$ of navigation paths over this network
+\end{enumerate}
+and are asked for the $K$ best previously non-existent links $E' \subseteq V^2 \setminus E$ to be added to $G$.
 
-- after the navigation paths were collected, we introduce some previously non-existent links $E' \subseteq V^2 \setminus E$
+Here, `best' can be defined according to a variety of objective functions.
+We describe two in the next section.
 
-- now, for each path $p=(p_1,\dots,p_n)$, we imagine that the user revisits the path step by step, and for each triple $(p_i,p_{i+1},p_{i+2})$ along the path for which $(p_i,p_{i+2}) \in E'$, the user has the option to choose the shortcut $(p_i,p_{i+2})$; i.e., in these cases the user may choose to skip over $p_{i+1}$
 
-- we assume that, for each node triple $(s,m,t)$ with $(s,t) \in E'$, there is a fixed probability $q(s,m,t)$ with which the user will choose the shortcut $(s,t)$ over the full triple $(s,m,t)$
+\section{Objective functions}
 
-- this way, we can compute the probability of being chosen for each shortcut link along each path
+\subsection{Maximizing the expected number of clicks on new links}
 
-- we emphasize that only single nodes can be skipped along a path, i.e., only forward\hyp  triangle\hyp closing operations are allowed in $G$
+The first objective we consider captures the expected number of clicks received cumulatively by all newly added links.
+This is a natural criterion, since it leads to a set of new links that will be used heavily and will therefore facilitate navigation.
 
-- consider a path $p=(p_1,\dots,p_n)$ and let $f^p_i$ be the probability that the (old) link $(p_i,p_{i+1})$ is clicked on path $p$, and $g^p_i$ the probability that the (new) link $(p_i,p_{i+2})$ is clicked
+In this setup, we imagine for each path $p=(p_1,\dots,p_n)$ that the user revisits the path step by step, and for each triple $(p_i,p_{i+1},p_{i+2})$ along the path for which $(p_i,p_{i+2}) \in E'$, the user has the option to choose the shortcut $(p_i,p_{i+2})$; i.e., in these cases the user may choose to skip over $p_{i+1}$.
 
-- define $x(s,t)$ as a binary variable indicating whether $(s,t) \in E'$
+We assume that, for each node triple $(s,m,t)$ with $(s,t) \in E'$, there is a fixed probability $q(s,m,t)$ with which the user will choose the shortcut $(s,t)$ over the full triple $(s,m,t)$.
+This way, we can compute the probability of being chosen for each shortcut link along each path.
+We emphasize that in this setup only single nodes can be skipped along a path, i.e., only forward\hyp triangle\hyp closing operations are allowed in $G$.
 
-- then the above path\hyp specific probabilities are defined recursively as follows:
+Consider a path $p=(p_1,\dots,p_n)$ and let $f^p_i$ be the probability that the (old) link $(p_i,p_{i+1})$ is clicked on path $p$, and $g^p_i$ the probability that the (new) link $(p_i,p_{i+2})$ is clicked.
+We define $x(s,t)$ as a binary variable indicating whether $(s,t) \in E'$, i.e., whether $(s,t)$ is chosen in the solution.
+Then the above path\hyp specific probabilities $f^p_i$ and $g^p_i$ are defined recursively as follows:
 
 \begin{eqnarray}
 \begin{array}{llll}
@@ -88,32 +100,34 @@ g^p_{-1} &=& g^p_0 \;\;=\;\; g^p_{n-1} \;\;=\;\; g^p_n \;\;=\;\; 0 &
 
 \end{tikzpicture}
 
-\caption{...
-}
+\caption{Example showing how the probabilities $f^p_i$ and $g^p_i$ of being clicked are computed for a path $p$ based on the association prior click probabilities $q$ according to Eq.~\ref{eqn:f_and_g}. The straight arrows correspond to $f^p_i$'s, the bent arrows, to $g^p_i$'s.}
  \label{fig:shortcut_example}
 \end{figure}
 
-- it follows that, if $(p_i,p_{i+2}) \notin E'$, then $g^p_i=0$
+Note that this definition implies that, if $(p_i,p_{i+2}) \notin E'$, then $g^p_i=0$.
 
-- flow interpretation: one unit of flow is transmitted from $p_1$ to $p_n$
+The above equations allow an interpretation in terms of network flow: one unit of flow is transmitted from $p_1$ to $p_n$, and the flow that enters each node must equal the flow that leaves it.
+See Fig.~\ref{fig:shortcut_example} for an example.
 
-- the flow that enters each node must equal the flow that leaves it
+The new links are not independent but interact with each other (Fig.~\ref{fig:shortcut_example}), so the flows over the new links depends on the entire set $E'$ of new shortcut links.
+It is this interaction between links that makes the problem hard (in fact NP-hard, as we shall see).
 
-- each newly introduced shortcut link $(s,t) \in E'$ may appear in several paths, and has a probability of being clicked on each of these paths
+Each newly introduced shortcut link $(s,t) \in E'$ may appear in several paths and has a probability of being clicked on each of these paths.
+By summing these probabilities for fixed $(s,t)$ across all paths, we obtain the number of clicks that shortcut is expected to receive.
 
-- the value of that probability depends on the entire set $E'$ of new shortcut links
-
-- by summing these probabilities for fixed $(s,t)$ across all paths, we obtain the number of clicks that shortcut is expected to receive
-
-- so we can now phrase our optimization objective: given a budget of $K$ shortcut links that may be added, choose those shortcuts that would receive the maximum expected number of clicks
-
-- more formally: we want to maximize $\sum_{p \in P} \sum_{i=1}^{|p|-2} g^p_i$, where $|p|$ is the number of nodes on path $p$.
-
-
-
+So we can now phrase our optimization objective: given a budget of $K$ shortcut links that may be added, choose those shortcuts that would receive the maximum expected number of clicks.
+More formally, we want to maximize
+\begin{eqnarray}
+\psi(E') &=& \sum_{p \in P} \psi_p(E') \\
+&=& \sum_{p \in P} \sum_{i=1}^{|p|-2} g^p_i,
+\end{eqnarray}
+where $|p|$ is the number of nodes on path $p$.
 
 
-\subsection{Integer linear program}
+
+
+
+\subsubsection*{Integer linear program}
 
 Note that in the above flow constraints (Eq.~\ref{eqn:f_and_g}), there is multiplicative interaction between the $f$ and $g$, and the $x$, variables.
 
@@ -138,41 +152,74 @@ x(s,t) &\in& \{0,1\} & \mbox{for $(s,t) \in V^2$} \\
 \label{eqn:ILP_constraints}
 \end{equation}
 
+The problem is made hard by the integrality constraint $x(s,t) \in \{0,1\}$.
+
+
+
+
+\subsection{Maximizing the expected number of paths with a click on a new link}
+
+Our second objective function is more path- than link-centric.
+It considers the expected number of paths in which at least one shortcut click is clicked.
+Formally, the objective function is
+\begin{eqnarray}
+\phi(E')  &=& \sum_{p \in P} \phi_p(E') \\
+          &=& \sum_{p \in P} \left( 1 - \prod_{i=1}^{|p|-2} \left( 1 - x(p_i,p_{i+2}) \, q(p_i,p_{i+1},p_{i+2}) \right) \right),
+\end{eqnarray}
+where $x(s,t)$ is again a binary variable indicating whether $(s,t)$ is part of the solution.
+
+We use $\phi_p(E')$ to denote the value of the solution $E'$ when discarding all paths but $p$.
+It captures the probability of at least one shortcut being clicked in path $p$.
+The total value $\phi(E')$ is then obtained by summing over all path-wise values and captures the expected number of paths with at least one shortcut click.
+
+In the previous objective $\psi$ we could only handle shortcuts skipping a single node, since it isn't clear how the flow would be distributed if several shortcuts were available from the same source.
+In the case of $\phi$, on the other hand, handling long-range links skipping more than a single node (and thus handling potentially several shortcuts from the same source) is straightforward:
+Since we start from the probability that {\em no} link is clicked (and then subtract it from one to get the probability that at least one link is clicked), we can simply multiply the probabilities of the single links not being clicked.
+In other words, computing the probability of no flow is conceptually simpler than computing how the flow is divided up.
+
+
 
 
 \section{NP-hardness}
 
-Integer linear programs are in general NP-hard, and here we show that this is also true for our case.
+Now we show that our problem is dang hard.
+We start with the link-based objective $\psi$ and then show that the same reasoning can be used to prove that optimizing the path-based objective $\phi$ is NP-hard.
 
-We proceed by reducing HITTING SET%
-\footnote{Garey and Johnson, Problem SP8, p.~222}
-to our problem.
 
-First we formally define the LINK PLACEMENT and HITTING SET problems.
+\subsection{Hardness of optimizing $\psi$}
 
-\subsection{Definition of the LINK PLACEMENT problem}
+We already saw that our problem can be formulated as an integer linear program.
+Solving integer linear programs is in general NP-hard, and here we show that this is also true for our specific case.
+
+We proceed by reducing \HS{}%
+\footnote{Garey and Johnson: {\it Computers and Intractability,} 1979, Problem SP8, p.~222.}
+to our problem of maximizing $\psi$.
+But first we formally define the \LP{} and \HS{} problems.
+
+\subsubsection{Definition of the \LP{} problem}
 
 \begin{itemize}
-\item INSTANCE: Directed graph $G=(V,E)$;
+\item {\bf Instance:} Directed graph $G=(V,E)$;
 set of paths $P \subseteq V^*$;
 positive integer $K$;
 a shortcut probability for each node triple, i.e., a mapping $q : V^3 \rightarrow [0,1]$.
-\item QUESTION: Given a budget of $K$ shortcut links $(s_1,t_1), \dots, (s_K,t_K)$, what is the maximum cumulative flow over the shortcuts across all paths, according to the model of Eq.~\ref{eqn:f_and_g}?
+\item {\bf Question:} Given a budget of $K$ shortcut links $(s_1,t_1), \dots, (s_K,t_K)$, what is the maximum cumulative flow over the shortcuts across all paths, according to the model of Eq.~\ref{eqn:f_and_g}?
 \end{itemize}
 
-\subsection{Definition of the HITTING SET problem}
+\subsubsection{Definition of the \HS{} problem}
 
 \begin{itemize}
-\item INSTANCE: Collection $C$ of subsets of a finite set $Z$, positive integer $L \leq |Z|$.
-\item QUESTION: Is there a subset $Z' \subseteq Z$ with $|Z'| \leq L$ such that $Z'$ contains at least one element from each subset in $C$?
+\item {\bf Instance:} Collection $C$ of subsets of a finite set $Z$, positive integer $L \leq |Z|$.
+\item {\bf Question:} Is there a subset $Z' \subseteq Z$ with $|Z'| \leq L$ such that $Z'$ contains at least one element from each subset in $C$?
 \end{itemize}
 
 Importantly, the problem remains NP-complete even if $|c| \leq 2$ for all $c \in C$.
 
-\subsection{Reduction}
+\subsubsection{Reduction}
 
-We need to reduce a HITTING SET instance $(C,Z,L)$ to a LINK PLACEMENT instance $(V,E,P,q,K)$.
+We need to reduce a \HS{} instance $(C,Z,L)$ to a \LP{} instance $(V,E,P,q,K)$.
 We assume w.l.o.g.\ that each $c \in C$ contains at most two elements.
+(As stated above, \HS{} remains NP-complete even in this special case.)
 
 First, we construct the hyperlink network $G=(V,E)$.
 For each $z_i \in Z$ we include three nodes $s_i,m_i,t_i$ in the hyperlink network:
@@ -279,9 +326,9 @@ K=L.
 
 \end{tikzpicture}
 
-\caption{The reduction from HITTING SET to LINK PLACEMENT.
-{\bf Blue:} the HITTING SET instance.
-{\bf Red/yellow/green:} the paths constructed for the LINK PLACEMENT instance.
+\caption{The reduction from \HS{} to \LP{}.
+{\bf Blue:} the \HS{} instance.
+{\bf Red/yellow/green:} the paths constructed for the \LP{} instance.
 }
  \label{fig:reduction}
 \end{figure}
@@ -299,24 +346,123 @@ Further, given the interleaving way in which the paths are constructed, and sinc
 Hence, if all $|C|$ subsets can be hit in \HS{}, then the maximum shortcut flow is $|C|$ in \LP{}, and {\it vice versa}.
 
 
+\subsection{Hardness of optimizing $\phi$}
+
+Given the above proof, it is not hard to see that optimzing $\phi$ is NP-hard as well.
+The paths in the \LP{} instance were constructed such that, whenever a path contains at least one shortcut, exactly one shortcut is clicked.
+Therefore the number of shortcut clicks in a path equals the probability that at least one shortcut is clicked:
+if the path contains a shortcut, both are 1, otherwise both are 0.
+
+Hence, $\psi=\phi$ in the special case of paths as constructed in our reduction, and it follows that optimizing $\phi$ is NP-hard as well.
+
+
 
 \section{Approximate solution via submodularity}
 
-Let $\phi : 2^{V \times V} \rightarrow \reals$ be the function that computes the value of a solution to the link prediction problem, i.e., $\phi$ computes the cumulative flow over all shortcut edges.
+Not all NP-hard problems are equally hard. Some allow efficient approximations, others don't.
+While both $\psi$ and $\phi$ are NP-hard, we'll now show that $\phi$ has a property that allows for high-quality approximation via a greedy algorithm, while $\psi$ doesn't have this property.
 
-In this section we show that $\phi$ is monotone submodular, which implies that it admits a $(1-1/e)$-approximation via greedy marginal\hyp gain optimization.
+This property is submodularity.
+Monotone submodular functions may be maximized approximately with a $(1-1/e)$-approximation guarantee ($1-1/e \approx 63\%$) via greedy marginal\hyp gain optimization.
 
-We use $\phi_p(E')$ to denote the value of the solution $E'$ when discarding all paths but $p$. The total value $\phi(E')$ is then obtained by summing over all path-wise values, i.e., $\phi(E') = \sum_{p \in P} \phi_p(E')$.
+\subsection{Non-submodularity of $\psi$}
+
+First, we consider the case of $\psi$.
+Recall that $\psi : 2^{V \times V} \rightarrow \reals$ computes the cumulative expected flow over all shortcut edges.
+The counterexample of Fig.~\ref{fig:counterexample} shows that $\psi$ is not submodular.
+
+\subsection{Submodularity of $\phi$}
+
+\begin{figure}
+ \centering
+\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=3cm,thick]
+
+  \tikzstyle{p}=[circle,fill=orange!20,draw,font=\footnotesize,inner sep=0pt,minimum size=7mm]
+  \tikzstyle{plain}=[circle,fill=white,font=\footnotesize]
+
+  \node[p] (p1) [right of=p0, node distance=2cm] {$p_1$};
+  \node[p] (p2) [right of=p1, node distance=3cm] {$p_2$};
+  \node[p] (p3) [right of=p2, node distance=3cm] {$p_3$};
+  \node[p] (p4) [right of=p3, node distance=3cm] {$p_4$};
+  \node[p] (p5) [right of=p4, node distance=3cm] {$p_5$};
+  \path
+    (p1) edge (p2)
+    (p2) edge (p3)
+    (p3) edge (p4)
+    (p4) edge (p5);
+  \path
+    (p1) edge [bend left=50] node[align=center] {$x$} (p3)
+    (p2) edge [bend left=50] node[align=center] {$y$} (p4)
+    (p3) edge [bend left=50, dashed] node[align=center] {$z$} (p5);
+
+\end{tikzpicture}
+
+\caption{Example showing that the objective $\psi$ is not submodular. If the $q$-values for all edges are defined as 1 then $\psi(\{x,y,z\}) - \psi(\{x,y\}) = 2-1 > 1-1 = \psi(\{y,z\}) - \psi(\{y\})$.}
+ \label{fig:counterexample}
+\end{figure}
+
+Our second objective $\phi$, however, is monotone submodular, as shown by the following lemma.
 
 \begin{lemma}
 \label{thm:monotonicity}
-$\phi$ is monotone decreasing, i.e., $\phi(B) \leq \phi(A)$ if $A \subseteq B$.
+The function $\phi$ is monotone increasing (i.e., $\phi(B) \geq \phi(A)$ if $A \subseteq B$) and submodular (i.e., $\phi(B \cup \{y\}) - \phi(B) \leq \phi(A \cup \{y\}) - \phi(A)$ if $A \subseteq B$).
 \end{lemma}
 
 \begin{proof}[Proof]
-Without loss of generality, we need to consider only the case where $B$ is one element larger than $A$, i.e., $B = A \cup \{y\}$; the lemma will then follow by transitivity. Further, we may consider only the path-wise value $\phi_p$; the lemma will then also hold for $\phi$.
-First, note that the flow over all edges upstream (i.e., towards the left in Fig.~\ref{fig:shortcut_example}) of $y$ will be unaffected when introducing $y$.
+Without loss of generality, we need to consider only the case where $B$ is one element larger than $A$, i.e., $B = A \cup \{z\}$; the lemma will then follow by transitivity. Further, we may consider only the path\hyp specific function $\phi_p$; the lemma will then also hold for $\phi$, since the sum of submodular functions is also a submodular function.
+
+Monotonicity is easy to see: Certainly, the probability of taking at least one link doesn't decrease if there are more links available. More formally, let $I_A$ and $I_B$ be the sets of indices at which the links from $A$ and $B$, respectively, start in $p$; and $k$, the index at which $z$ starts (if $z$ doesn't appear in $p$, $\phi_p(B)=\phi_p(A)$ trivially).
+Also define $q^p_i = q(p_i,p_{i+1},p_{i+2})$.
+Then,
+\begin{eqnarray}
+\phi_p(B)  &=& 1 - \prod_{i \in I_B} \left( 1 - q^p_i \right) \\
+                      &=& 1 - (1 - q^p_k) \prod_{i \in I_A} \left( 1 - q^p_i \right) \\
+                      &\geq& 1 - \prod_{i \in I_A} \left( 1 - q^p_i \right) \\
+                      &=& \phi_p(A).
+\end{eqnarray}
+
+Submodularity is also straightforward. Let $k$ again be the index where $z$ starts, and $j$, the index where $y$ starts (if $y$ and $z$ don't both appear in $p$, then $\phi_p(B \cup \{y\}) - \phi_p(B) = \phi_p(A \cup \{y\}) - \phi_p(A)$). Then,
+\begin{eqnarray}
+\phi_p(B \cup \{y\}) - \phi_p(B) 
+  &=& \left(1 - (1 - q^p_j) \prod_{i \in I_B} \left( 1 - q^p_i \right)\right)
+    - \left(1 - \prod_{i \in I_B} \left( 1 - q^p_i \right)\right) \\
+  &=& \left(\prod_{i \in I_B} \left( 1 - q^p_i \right)\right) - (1 - q^p_j) \prod_{i \in I_B} \left( 1 - q^p_i \right) \\
+  &=& (1 - q^p_k) \left[\left(\prod_{i \in I_A} \left( 1 - q^p_i \right)\right) - (1 - q^p_j) \prod_{i \in I_A} \left( 1 - q^p_i \right)\right] \\
+  &\leq& \left(\prod_{i \in I_A} \left( 1 - q^p_i \right)\right) - (1 - q^p_j) \prod_{i \in I_A} \left( 1 - q^p_i \right) \\
+  &=& \left(1 - (1 - q^p_j) \prod_{i \in I_A} \left( 1 - q^p_i \right)\right)
+    - \left(1 - \prod_{i \in I_A} \left( 1 - q^p_i \right)\right) \\
+  &=& \phi_p(A \cup \{y\}) - \phi_p(A).
+\end{eqnarray}
 \end{proof}
+
+
+
+
+
+\subsection{Greedy algorithm}
+
+(This section contains only jotted-down notes.)
+
+- A greedy algorithm has a $(1-1/e)$-approximation guarantee for submodular objective functions.
+
+- Lazy: when shortcut $y$ is chosen and unpolluted, all links that co-occur with $y$ in any path must be marked polluted
+
+- When $y$ is chosen but polluted, recompute its marginal gain: For each path $p$ containing $y$, increase the marginal gain of $y$ by 
+$$\left(\prod_{i \in I_A} \left( 1 - q^p_i \right)\right) - (1 - q^p_j) \prod_{i \in I_A} \left( 1 - q^p_i \right)
+\;\;\;=\;\;\; q^p_j \prod_{i \in I_A} \left( 1 - q^p_i \right),$$
+where $A$ is the current set of shortcuts, and $j$, the index of $y$ in $p$.
+
+
+\section{TODO}
+
+- In all of the above, we assumed that we have probabilities $q$ of a shortcut being taken if it existed.
+In practice, we need to estimate these probabilities from data, which is itself a challenging problem.
+
+- Plan: Identify all links that were added in February. For each link, derive features from the time before the link was added (such as our metrics inspired by frequent-item-set mining), in order to predict the probability with which the link will be clicked after the link was added.
+
+- More formally, is $(s,t)$ is the link, the dependent variable is the number paths on which a direct click from $s$ to $t$ occurred, divided by the number of paths on which $s$ occurred before $t$.
+
+- Work with Stanford CS and/or SimTk logs
 
 
 \end{document}
