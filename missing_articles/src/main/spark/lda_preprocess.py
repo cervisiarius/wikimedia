@@ -9,34 +9,57 @@ import string
 import gensim
 import os
 import argparse
+from util import save_rdd
+from ConfigParser import SafeConfigParser
+
+
 
 """
 Usage: 
 
 /home/otto/spark-1.3.0-bin-hadoop2.4/bin/spark-submit \
 --driver-memory 5g --master yarn --deploy-mode client \
---num-executors 4 --executor-memory 20g --executor-cores 8 \
-/home/ellery/wikimedia/missing_articles/src/main/spark/lda_preprocess.py --dir exp_dir
+--num-executors 4 --executor-memory 5g --executor-cores 8 \
+--queue priority \
+/home/ellery/wikimedia/missing_articles/src/main/spark/lda_preprocess.py \
+--dir simple_lda2 \
+--config /home/ellery/wikimedia/missing_articles/missing_articles.ini \
+--lang simple \
+--dump /user/west1/wikipedia_plaintexts/simplewiki-20150406 \
+--min 100000
+
 
 To run LDA, see wikimedia/missing_articles/src/main/python/get_gensim_lda.py
 """
+# set up environment
+conf = SparkConf()
+conf.set("spark.app.name", 'lda_preprocess')
+sc = SparkContext(conf=conf)
 
 
-def load_articles(files):
+
+def load_articles(language, dump_path, wikidata_mapping_path):
     """
     Right now we have files for enwiki and simple wiki where each line 
     corresponds to the full article text. Tokens seperated by spaces
     """
-    articles = None
-    for lang, f in files.iteritems():
-        lang_articles = sc.textFile("/user/west1/wikipedia_plaintexts/" + f).map(lambda line: line.split('\t'))
-        lang_articles = lang_articles.filter(lambda x: len(x) ==4 and len(x[3]) > 0 and len(x[2]) == 0)
-        lang_articles = lang_articles.map(lambda x: ('|'.join([lang, x[0], x[1]]), x[3].split(' ')))
-        
-        if articles == None:
-            articles = lang_articles
-        else:
-            articles = articles.union(lang_articles)
+
+    # get article to wikidata_item mapping
+    wikidata_mapping = sc.textFile(wikidata_mapping_path)\
+                       .map(lambda line: line.split('\t'))\
+                       .filter(lambda x: x[1] == language)\
+                       .map(lambda x: (x[1] + "|" + x[2].replace(' ', '_'), x[0]))
+
+    articles = sc.textFile(dump_path).map(lambda line: line.split('\t'))
+    articles = articles.filter(lambda x: len(x) ==4 and len(x[3]) > 0 and len(x[2]) == 0)
+    articles = articles.map(lambda x: ('|'.join([language, x[0]]), x[3].split(' ')))
+    #print 'Got %d articles pre join' % articles.count()
+
+    # replace page_id with wikidata id
+    articles = wikidata_mapping.join(articles)\
+                    .map(lambda x: (x[0] + '|' + x[1][0] , x[1][1]))
+
+    #print 'Got %d articles post join' % articles.count()
     return articles
 
 
@@ -57,12 +80,14 @@ def get_word_id_mapping(articles, min_occurrences = 3, num_tokens = 100000):
         local_word_map.append(t)
     return dict(local_word_map), sc.parallelize(local_word_map)
 
+
 def get_banned_words():
     punctuation = set(string.punctuation)
     nltk_stopwords = set(stopwords.words('english'))
     wikimarkup = set(['*nl*', '</ref>', '<ref>', '--', '``', "''", "'s", 'also', 'refer' , '**'])
     banned_words = punctuation.union(nltk_stopwords).union(wikimarkup)
     return banned_words
+
 
 def clean_article_text(articles, banned_words):
     """
@@ -112,78 +137,58 @@ def translate_words_to_ids(tf_articles, word_id_map):
     groupByKey()
 
 
-if __name__ == '__main__':
+def main(args):
+    cp = SafeConfigParser()
+    cp.read(args.config)
+    base_dir = os.path.join(cp.get('general', 'local_data_dir'), args.dir)
+    hadoop_base_dir = os.path.join(cp.get('general', 'hadoop_data_dir'), args.dir)
+    if not os.path.exists(base_dir):
+        os.makedirs(base_dir)
 
-    files = { 'simple': 'simplewiki-20150406'} #, 'en': 'enwiki-20150304'}
-    min_occurrences = 3
-    num_tokens = 50000
-
-
-    parser = argparse.ArgumentParser()
-    parser.add_argument('--dir', required = True, help='experiment directory' )
-    args = parser.parse_args()
-
-    # set up environment
-    conf = SparkConf()
-    conf.set("spark.app.name", 'lda_preprocess')
-    sc = SparkContext(conf=conf)
-
-    
     # load articles
-    tokenized_articles = load_articles(files)
+    tokenized_articles = load_articles(args.lang, args.dump, cp.get('general', 'id2article'))
     # normalize
-    
     normalized_tokenized_articles = clean_article_text(tokenized_articles, get_banned_words())
     # get word-id maping
-    local_word_id_map, word_id_map = get_word_id_mapping(normalized_tokenized_articles, min_occurrences = min_occurrences, num_tokens = num_tokens)
-    local_id_word_map = inv_map = {v: k for k, v in local_word_id_map.items()}
+    local_word_id_map, word_id_map = get_word_id_mapping(normalized_tokenized_articles, min_occurrences = args.min, num_tokens = args.top)
     # map list of tokens into list of token:count elements
     tf_articles = get_term_frequencies(normalized_tokenized_articles)
     # map list of token:count elements into list of token-id:count
     id_articles = translate_words_to_ids(tf_articles, word_id_map)
 
-
-    home_dir = '/home/ellery/'
-    hadoop_home_dir = '/user/ellery/'
-    exp_dir = args.dir + '/'
-    base_dir = home_dir + exp_dir
-    hadoop_base_dir = hadoop_home_dir + exp_dir
-
-    dict_file = 'dictionary.txt'
-
-    zip_dir = 'articles.pre_blei_dir'
-    zip_file = 'articles.pre_blei.gz'
-    combined_file = 'articles.pre_blei'
-
-    article_name_file = 'articles.txt'
-    article_file = 'articles.blei'
-    article_vectors_file = 'article_vectors.txt'
-
-
-
-    print os.system( 'rm -r ' + base_dir)
-    print os.system( 'mkdir ' + base_dir)
-    print os.system( 'hadoop fs -rm -r ' + hadoop_base_dir)
-    print os.system( 'hadoop fs -mkdir ' + hadoop_base_dir)
-
-
-
     # save dictionary to file: word at line i has id i
-    with open(base_dir + dict_file, 'w') as f:
+    dict_file = os.path.join(base_dir, cp.get('LDA', 'word2index'))
+    with open(dict_file, 'w') as f:
         for word, word_id in sorted(local_word_id_map.items(), key=lambda x:x[1]):
             line = word + '\n'
             f.write(line.encode('utf8'))
 
-        # save rdd to file
+
     def tuple_to_str(t):
         article, vector = t
         str_vector = [str(e[0]) + ':' + str(e[1]) for e in vector]
         return article + ' ' + str(len(str_vector)) + ' ' + ' '.join(str_vector)
-    id_articles.map(tuple_to_str).saveAsTextFile ("hdfs://" + hadoop_base_dir + zip_dir, compressionCodecClass  =  "org.apache.hadoop.io.compress.GzipCodec")
+    
+    save_rdd(id_articles.map(tuple_to_str), base_dir , hadoop_base_dir, 'articles.pre_blei')
+    pre_blei_corpus_file = os.path.join( base_dir, 'articles.pre_blei')
+    article2index_file = os.path.join( base_dir, cp.get('LDA', 'article2index'))
+    blei_corpus_file = os.path.join( base_dir, cp.get('LDA', 'blei_corpus')) 
+    print os.system( "cut  -d' ' -f2- %s > %s" % (pre_blei_corpus_file,  blei_corpus_file))
+    print os.system( "cut  -d' ' -f1 %s > %s" % (pre_blei_corpus_file, article2index_file))
+    os.system("rm " + pre_blei_corpus_file)
+    #sc.stop()
 
 
-    print os.system('hadoop fs -copyToLocal ' + hadoop_base_dir + zip_dir + ' ' + base_dir +  zip_dir)
-    print os.system( 'cat ' + base_dir + zip_dir + '/*.gz > ' + base_dir + zip_file)
-    print os.system( 'gunzip ' + base_dir + zip_file)
-    print os.system( "cut  -d' ' -f2- " + base_dir + combined_file + ' > ' + base_dir + article_file)
-    print os.system( "cut  -d' ' -f1 " + base_dir + combined_file + ' > ' + base_dir + article_name_file)
+
+if __name__ == '__main__':
+
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--dir', required = True, help='experiment directory')
+    parser.add_argument('--config', required = True, help='full path to configuration file')
+    parser.add_argument('--lang', required = True, help='language of the articles in the corpus')
+    parser.add_argument('--dump', required = True, help='name of the dumo')
+    parser.add_argument('--min', default = 3, type=int,  help='minimum number of time a word must appear in the corpus')
+    parser.add_argument('--top', default = 50000, type=int,  help='include top k tokens in model')
+    args = parser.parse_args()
+    main(args)
+    

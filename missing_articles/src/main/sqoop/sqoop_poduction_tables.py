@@ -1,7 +1,7 @@
 
 import os
 db = 'prod_tables'
-wikis = ['dewiki', 'frwiki', 'simplewiki', 'enwiki']
+wikis = ['cawiki',] # 'dewiki', 'eswiki', 'enwiki']
 overwrite = True
 
 page_query = """
@@ -56,7 +56,7 @@ sqoop import                                                      \
   --delete-target-dir                                               \
   --username research                                               \
   --password-file /user/ellery/sqoop.password                       \
-  --split-by a.ll_title                                              \
+  --split-by a.ll_from                                              \
   --hive-import                                                     \
   --hive-database %(db)s                                        \
   --create-hive-table                                               \

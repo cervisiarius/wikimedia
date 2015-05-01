@@ -1,11 +1,12 @@
-import pyspark
 from pyspark import SparkConf, SparkContext
-from pyspark.sql import *
-from operator import add
 import argparse
 import os
 import codecs
-import pandas as pd
+import networkx as nx
+from collections import Counter
+from pprint import pprint
+from ConfigParser import SafeConfigParser
+from util import get_parser, save_rdd
 
 
 
@@ -15,57 +16,234 @@ Usage:
 /home/otto/spark-1.3.0-bin-hadoop2.4/bin/spark-submit \
 --driver-memory 5g --master yarn --deploy-mode client \
 --num-executors 2 --executor-memory 10g --executor-cores 8 \
-/home/ellery/wikimedia/missing_articles/src/main/spark/find_articles_for_translation.py --dir en-siple --s en -t simple
-
+--queue priority \
+/home/ellery/wikimedia/missing_articles/src/main/spark/find_articles_for_translation.py \
+--dir es-ca \
+--s es \
+--t ca \
+--r en \
+--config /home/ellery/wikimedia/missing_articles/missing_articles.ini 
 """
 
-def get_parser(names):
-    def loadRecord(line):
-        #input = StringIO.StringIO(line)
-        cells = line.strip().split('\t')
-        return dict(zip(names, cells))
-    return loadRecord
+
+def create_graph(sc, cp, delim, wd_languages, rd_languages, ill_languages_from, ill_languages_to):
+    G = nx.Graph()
+
+    # add wikidata links
+    names = ["id", "language_code", "article_name"]
+    wikidata_links = sc.textFile(cp.get('general', 'id2article')).map(get_parser(names))\
+                    .filter(lambda x: x['language_code'] in wd_languages and x['id'].startswith('Q'))\
+                    .map(lambda x: ('wikidata'+ delim + x['id'], x['language_code'] + delim + x['article_name']))         
+    G.add_edges_from(wikidata_links.collect())
+    print "Got Wikidata Links"
+
+    # add interlanguage links
+    prod_tables = cp.get('general', 'prod_tables')
+
+    names = ['ll_from', 'll_to', 'll_lang']
+    for ill_lang in ill_languages_from:
+        ill = sc.textFile(os.path.join(prod_tables,  ill_lang + 'wiki_langlinks_joined'))\
+        .map(lambda x: x.split('\t'))\
+        .filter(lambda x: x[2] in ill_languages_to and len(x[1]) > 0 and len(x[0]) > 0)\
+        .map(lambda x: (ill_lang + delim + x[0], x[2] + delim + x[1]))
+        G.add_edges_from(ill.collect())
+        print "Got ILL links for %s" % ill_lang
+
+    # add redirect links
+    names = ['rd_from', 'rd_to']
+    for rd_lang in rd_languages:
+        rd = sc.textFile(os.path.join(prod_tables,  rd_lang + "wiki_redirect_joined"))\
+        .map(lambda x: x.split('\t'))\
+        .map(lambda x: (rd_lang + delim + x[0], rd_lang + delim + x[1]))
+        G.add_edges_from(rd.collect())
+        print "got rdd links for %s" % rd_lang
+
+    return G
+
+
+
+def test_clustering(G, n, s, t, delim):
+    """
+    Given a node, find the connected component n is in.
+    """
+    sub_g = G.subgraph(nx.node_connected_component(G,n ))
+    print ("Nodes:")
+    pprint(sub_g.nodes())
+    print("\nEdges")
+    pprint(sub_g.edges())
+    print("\nCluster")
+    pprint(get_merged_cluster(tumor_g, s, t, delim))
+    
+
+def is_subgraph_missing_target_item(g, s, t, delim):
+    """
+    Given a subgraph, see of it is missing an article in
+    the target language
+    """
+    has_s = False
+    has_t = False
+    missing_items = {}
+    
+    for e in g.edges_iter():
+        e_dict = {}
+        l1, n1 = e[0].split(delim)
+        l2, n2 = e[1].split(delim)
+        e_dict[l1] = n1
+        e_dict[l2] = n2
+        
+        if 'wikidata' in e_dict and s in e_dict:
+            has_s = True
+            missing_items[e_dict['wikidata']] = e_dict[s] 
+            
+        if 'wikidata' in e_dict and t in e_dict:
+            has_t = True
+                
+    if has_s and not has_t:
+        return missing_items
+    else:
+        return {}
+    
+
+def get_missing_items(sc, cp, G, s, t, r, delim, exp_dir, n = 100):
+    """
+    Find all items in s missing in t
+    """
+    cc = nx.connected_component_subgraphs (G)
+    missing_items = {}
+    for i, g in enumerate(cc):
+        missing_items.update(is_subgraph_missing_target_item(g, s, t, delim))
+    
+    print("Got %d missing items" % len(missing_items))
+    # HACK: remove lists articles with colon :
+    missing_items = sc.parallelize(missing_items.iteritems())\
+                    .filter(lambda x: ':' not in x[1])\
+                    .filter(lambda x: not x[1].startswith('List'))
+
+    #names = ['wikidata_id', 'lang', 'article_title', 'pageview_count']
+    pageviews = sc.textFile(cp.get('general', 'pageviews'))\
+    .map(lambda x: x.split('\t'))\
+    .filter(lambda x: x[1] == s)\
+    .map(lambda x: (x[0], int(x[3])))
+
+    print("Got %d pageview counts" % pageviews.count())
+
+    missing_items = missing_items.join(pageviews)
+
+    print("Got %d missing items after join" % missing_items.count())
+
+    ranked_missing_items = missing_items.sortBy(lambda x: -x[1][1])
+
+    print("Got %d missing items after ranking" % ranked_missing_items.count())
+
+    def tuple_to_str(t):
+        item_id, (item_name, n) = t
+        line = item_id + '\t' + item_name + '\t' + str(n) 
+        return line
+
+    str_ranked_missing_items = ranked_missing_items.map(tuple_to_str)
+    base_dir = os.path.join(cp.get('general', 'local_data_dir'), exp_dir)
+    if not os.path.exists(base_dir):
+        os.makedirs(base_dir)
+    hadoop_base_dir = os.path.join(cp.get('general', 'hadoop_data_dir'), exp_dir)
+    save_rdd (str_ranked_missing_items,  base_dir , hadoop_base_dir, cp.get('missing', 'ranked_missing_items'))
+    
+
+
+def get_merged_items(g, s, t, delim):
+    """
+    """
+    merged_items = set()
+    has_s = False
+    has_t = False
+    wikidata_items = set()
+    
+    for e in g.edges_iter():
+        e_dict = {}
+        l1, n1 = e[0].split(delim)
+        l2, n2 = e[1].split(delim)
+        e_dict[l1] = n1
+        e_dict[l2] = n2
+        
+        if 'wikidata' in e_dict and s in e_dict:
+            has_s = True
+            wikidata_items.add(e_dict['wikidata'])
+            merged_items.add(e)
+            
+        if 'wikidata' in e_dict and t in e_dict:
+            has_t = True
+            wikidata_items.add(e_dict['wikidata'])
+            merged_items.add(e)
+        
+    if len(wikidata_items) > 1 and has_s and has_t:
+        return merged_items, wikidata_items
+    else:
+        return None, None
+
+
+def save_merged_items(G, s, t, delim, filename):
+    f = open(filename, 'w')
+    gs = nx.connected_component_subgraphs (G)
+    clusters = []
+    for g in gs:
+        cluster, items = get_merged_items(g, s, t, delim)
+        if cluster:
+            cluster = list(cluster)
+            cluster = [sorted(edge, reverse=True) for edge in cluster]
+            cluster.sort(reverse = True)
+            f.write( "\n")
+            for edge in cluster:
+                line = edge[0] + " " + edge[1] + '\n'
+                f.write(line.encode('utf8'))
+    f.close()
+     
 
 
 if __name__ == '__main__':
 
 
     parser = argparse.ArgumentParser()
-    parser.add_argument('-d', '--dir', required = True, help='experiment dir' )
-    parser.add_argument('-s', '--s', required = True, help='source language' )
-    parser.add_argument('-t', '--t', required = True, help='target language' )
-    
-    args = parser.parse_args()
+    parser.add_argument('--dir', required = True, help='experiment dir' )
+    parser.add_argument('--s', required = True, help='source language' )
+    parser.add_argument('--t', required = True, help='target language' )
+    parser.add_argument('--r', required = True, help='recommendation language' )
+    parser.add_argument('--config', required = True, help='path to recommendation file' )
 
+
+    args = parser.parse_args()
+    exp_dir = args.dir
     s = args.s
     t = args.t
-    expdir = os.path.join('/home/ellery', args.dir)
+    r = args.r
 
-    # set up environment
+    cp = SafeConfigParser()
+    cp.read(args.config)
+
+    delim = '|'
+
+    wd_languages = set([s, t, r])
+    rd_languages = set([s, t, r, 'wikidata'])
+    ill_languages_from = set([s, t, r])
+    ill_languages_to = set([s, t, r])
+
     conf = SparkConf()
-    conf.set("spark.app.name", 'find articles for translation')
+    conf.set("spark.app.name", 'finding missing articles')
     sc = SparkContext(conf=conf)
 
-    important_missing_articles_file_name = 'important_' + s +'_articles_missing_in_'+ t +'.tsv'
-    #missing_articles_file_name = s +'_articles_missing_in_'+ t +'.tsv'
+
+    G = create_graph(sc, cp, delim, wd_languages, rd_languages, ill_languages_from, ill_languages_to)
+    print "Got entire Graph"
+    get_missing_items(sc, cp, G, s, t, r, delim, exp_dir, n = 10000)
+    print "Got missing Items"
+
+
+    merged_filename = os.path.join(cp.get('general', 'local_data_dir'), exp_dir, cp.get('missing', 'merged_items'))
+    save_merged_items(G, s, t, delim, merged_filename)
+    print "Got clusters"
     
-    names = ["importance", "id", "category", "description"]  
-    top_articles = sc.textFile("top_10k_wikidata_entities.tsv").map(get_parser(names))
-    top_article_ids = top_articles.map(lambda x: x['id'])
-
-    names = ["id", "language_code", "article_name"]
-    interlanguage_links = sc.textFile("/user/west1/interlanguage_links.tsv").map(get_parser(names))
     
-    items_in_source = interlanguage_links.filter(lambda x: x['language_code'] == s).map(lambda x: x['id'])
-    items_in_target = interlanguage_links.filter(lambda x: x['language_code'] == t).map(lambda x: x['id'])
-    source_items_missing_in_target = items_in_source.subtract(items_in_target)
+
+    
 
 
-    missing_list = source_items_missing_in_target.intersection(top_article_ids).collect()
-    missing_set = set(missing_list)
-    missing_set_details = interlanguage_links.filter(lambda x: x['language_code'] == s and x['id'] in missing_set ).collect()
-    with open(os.path.join(expdir, important_missing_articles_file_name), 'w') as f:
-        f.write('id\tname\n')
-        for d in missing_set_details:
-            line = d['id'] + '\t' + d['article_name'] + '\n'
-            f.write(line.encode('utf8'))
+
+    
