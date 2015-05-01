@@ -1,7 +1,7 @@
 
 import os
 db = 'prod_tables'
-wikis = ['wikidatawiki',] # 'dewiki', 'eswiki', 'enwiki']
+wikis = ['cawiki',] # 'dewiki', 'eswiki', 'enwiki']
 overwrite = True
 
 page_query = """
