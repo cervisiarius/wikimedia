@@ -4,9 +4,9 @@
 # This is where additional JARs reside.
 export LIB_DIR=$HOME/wikimedia/trunk/lib
 # The part of the server logs you want to process.
-export IN_DIR=/user/west1/webrequest_source=text/year=2015/month=2/*/*/*
+export IN_DIR=/user/west1/webrequest_source=text/year=2015/month=2/day=2/hour=12/*
 # The output directory.
-export OUT_DIR=/user/west1/webrequest_source=text__SPARSE/year=2015/month=2/*/*/*
+export OUT_DIR=/user/west1/webrequest_source=text__SPARSE/year=2015/month=2/day=2/hour=12
 
 echo "Running hadoop job"
 hadoop jar /usr/lib/hadoop-mapreduce/hadoop-streaming.jar \
