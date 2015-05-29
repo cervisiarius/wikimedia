@@ -29,10 +29,6 @@ hadoop jar /usr/lib/hadoop-mapreduce/hadoop-streaming.jar \
                                         optional binary x_forwarded_for;
                                         optional binary user_agent;
                                         optional binary accept_language;
-                                        optional int32 year;
-                                        optional int32 month;
-                                        optional int32 day;
-                                        optional int32 hour;
                                        }" \
     -D            mapreduce.task.timeout=6000000 \
     -D            mapreduce.map.output.key.class=org.apache.hadoop.io.Text \
