@@ -14,7 +14,24 @@ hadoop jar /usr/lib/hadoop-mapreduce/hadoop-streaming.jar \
     -D            mapreduce.output.fileoutputformat.compress=true \
     -D            mapreduce.output.fileoutputformat.compress.codec=org.apache.hadoop.io.compress.SnappyCodec \
     -D            parquet.read.support.class=net.iponweb.hadoop.streaming.parquet.GroupReadSupport \
+    -D            parquet.write.support.class=net.iponweb.hadoop.streaming.parquet.GroupWriteSupport \
     -D            parquet.read.schema="message webrequest_schema {
+                                        optional binary hostname;
+                                        optional int64 sequence;
+                                        optional binary dt; 
+                                        optional binary ip;
+                                        optional binary http_status;
+                                        optional binary http_method;
+                                        optional binary uri_host;
+                                        optional binary uri_path;
+                                        optional binary uri_query;
+                                        optional binary content_type;
+                                        optional binary referer;
+                                        optional binary x_forwarded_for;
+                                        optional binary user_agent;
+                                        optional binary accept_language;
+                                       }" \
+    -D            iow.streaming.output.schema="message webrequest_schema {
                                         optional binary hostname;
                                         optional int64 sequence;
                                         optional binary dt; 
@@ -39,6 +56,6 @@ hadoop jar /usr/lib/hadoop-mapreduce/hadoop-streaming.jar \
     -outputformat net.iponweb.hadoop.streaming.parquet.ParquetAsJsonOutputFormat \
     -input        $IN_DIR \
     -output       $OUT_DIR \
-    -mapper       "/bin/cat" \
-    -reducer      "/bin/cat"
+    -mapper       "/bin/cat"
+#    -reducer      "/bin/cat"
 #    -numReduceTasks 0
