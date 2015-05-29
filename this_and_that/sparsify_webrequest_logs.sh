@@ -29,7 +29,6 @@ hadoop jar /usr/lib/hadoop-mapreduce/hadoop-streaming.jar \
                                         optional binary x_forwarded_for;
                                         optional binary user_agent;
                                         optional binary accept_language;
-                                        optional binary record_version;
                                         optional binary geocoded_data;
                                         optional int32 year;
                                         optional int32 month;
