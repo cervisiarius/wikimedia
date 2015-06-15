@@ -6,6 +6,8 @@
 \usepackage{fullpage}
 \usepackage{hyphenat}
 \usepackage{amsthm}
+\usepackage{algorithm}
+\usepackage{algorithmic}
 
 \usepackage{tikz}
 \usetikzlibrary{arrows}
@@ -426,9 +428,9 @@ Submodularity is also straightforward. Let $k$ again be the index where $z$ star
 \phi_p(B \cup \{y\}) - \phi_p(B) 
   &=& \left(1 - (1 - q^p_j) \prod_{i \in I_B} \left( 1 - q^p_i \right)\right)
     - \left(1 - \prod_{i \in I_B} \left( 1 - q^p_i \right)\right) \\
-  &=& \left(\prod_{i \in I_B} \left( 1 - q^p_i \right)\right) - (1 - q^p_j) \prod_{i \in I_B} \left( 1 - q^p_i \right) \\
-  &=& (1 - q^p_k) \left[\left(\prod_{i \in I_A} \left( 1 - q^p_i \right)\right) - (1 - q^p_j) \prod_{i \in I_A} \left( 1 - q^p_i \right)\right] \\
-  &\leq& \left(\prod_{i \in I_A} \left( 1 - q^p_i \right)\right) - (1 - q^p_j) \prod_{i \in I_A} \left( 1 - q^p_i \right) \\
+  &=& q^p_j \prod_{i \in I_B} \left( 1 - q^p_i \right) \\
+  &=& (1 - q^p_k) \, q^p_j \prod_{i \in I_A} \left( 1 - q^p_i \right) \\
+  &\leq& q^p_j \prod_{i \in I_A} \left( 1 - q^p_i \right) \\
   &=& \left(1 - (1 - q^p_j) \prod_{i \in I_A} \left( 1 - q^p_i \right)\right)
     - \left(1 - \prod_{i \in I_A} \left( 1 - q^p_i \right)\right) \\
   &=& \phi_p(A \cup \{y\}) - \phi_p(A).
@@ -445,12 +447,80 @@ Submodularity is also straightforward. Let $k$ again be the index where $z$ star
 
 - A greedy algorithm has a $(1-1/e)$-approximation guarantee for submodular objective functions.
 
+- Here we assume $q$ is a function of $s$ and $t$ only
+
 - Lazy: when shortcut $y$ is chosen and unpolluted, all links that co-occur with $y$ in any path must be marked polluted
 
 - When $y$ is chosen but polluted, recompute its marginal gain: For each path $p$ containing $y$, increase the marginal gain of $y$ by 
-$$\left(\prod_{i \in I_A} \left( 1 - q^p_i \right)\right) - (1 - q^p_j) \prod_{i \in I_A} \left( 1 - q^p_i \right)
+$$\phi_p(A \cup \{y\}) - \phi_p(A)
 \;\;\;=\;\;\; q^p_j \prod_{i \in I_A} \left( 1 - q^p_i \right),$$
 where $A$ is the current set of shortcuts, and $j$, the index of $y$ in $p$.
+
+\begin{algorithm}[t]
+\caption{Greedy link placement}
+% [1] adds line numbering:
+\begin{algorithmic}[1]
+\label{alg:greedy}
+\INPUT hyperlink graph $G=(V,E)$; set $P \subseteq V^*$ of navigation paths; click probabilities $q$; number $K$ of links to be added to $G$
+\OUTPUT set $E' \subseteq V^2 \setminus E$ of $K$ links to be added to $G$
+\STATE $E' \leftarrow \{\}$ \hspace*{1mm}// \textit{the solution}
+\STATE $Q \leftarrow \mathtt{PriorityQueue()}$ \hspace*{1mm}// \textit{the remaining link candidates}
+\STATE $L \leftarrow \mathtt{HashTable()}$ \hspace*{1mm}// \textit{maps a source--target pair to the corresponding link-candidate object}
+\FOR{all link candidates $(s,t)$ from all paths in $P$}
+  \STATE $I \leftarrow$ set of paths on which $(s,t)$ appears
+  \STATE $\ell \leftarrow \mathtt{LinkCandidate}(I, q(s,t), \mathtt{false})$ \hspace*{1mm}// \textit{last argument specifies that $\ell$ is unpolluted}
+  \STATE $L[(s,t)] \leftarrow \ell$
+  \STATE $Q.\mathtt{insert}(\ell, \mathtt{MarginalGain}(\ell, \{\}))$
+\ENDFOR
+\FOR{$c = 1, \dots, K$}
+  \WHILE{$\mathtt{true}$}
+  	\STATE ......................
+  \ENDWHILE
+\ENDFOR
+\end{algorithmic}
+\end{algorithm}
+
+\begin{algorithm}[t]
+\caption{Marginal-gain computation: \texttt{MarginalGain}}
+% [1] adds line numbering:
+\begin{algorithmic}[1]
+\label{alg:marginal_gain}
+\INPUT link candidate $\ell$; current solution $E'$
+\OUTPUT marginal gain of $\ell$ when added to the current solution $E'$
+\STATE $m \leftarrow 0$
+\FOR{$p \in \ell.\mathtt{paths}$}
+  \STATE $j \leftarrow$ starting position of $\ell$ in $p$
+  \STATE $I_{E'} \leftarrow$ starting positions of the links from $E'$ in $p$
+  \STATE $m \leftarrow m + q^p_j \prod_{i \in I_{E'}} (1 - q^p_i)$
+\ENDFOR
+\STATE \textbf{return} $m$
+\end{algorithmic}
+\end{algorithm}
+
+%\begin{algorithm}[t]
+%\caption{Basic navigation algorithm}
+%% [1] adds line numbering:
+%\begin{algorithmic}[1]
+%\label{alg:search}
+%\INPUT start node $s$; target node $t$; evaluation function $V$
+%\OUTPUT sequence of nodes visited
+%\STATE push $s$ onto initially empty stack $\mathcal{S}$
+%\WHILE{stack $\mathcal{S}$ is not empty}
+%  \STATE pop node $u$ from stack $\mathcal{S}$ and remember it as visited
+%  \IF{$u = t$}
+%    \STATE \textbf{return} sequence of nodes visited
+%  \ELSIF{$u$ has not been visited before}
+%    \FOR{all neighbors $u'$ of $u$, in order of increasing value according to $V(u'|u,t)$}
+%      \STATE push $u'$ onto stack $\mathcal{S}$
+%      \IF{$u' = t$}
+%	\STATE \textbf{break} \hspace*{1mm}// \textit{make sure $t$ is picked in next iteration}
+%      \ENDIF
+%    \ENDFOR
+%  \ENDIF
+%\ENDWHILE
+%\STATE \textbf{return} `no path between $s$ and $t$ exists'
+%\end{algorithmic}
+%\end{algorithm}
 
 
 \section{TODO}
