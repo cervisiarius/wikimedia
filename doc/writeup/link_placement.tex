@@ -466,15 +466,35 @@ where $A$ is the current set of shortcuts, and $j$, the index of $y$ in $p$.
 \STATE $E' \leftarrow \{\}$ \hspace*{1mm}// \textit{the solution}
 \STATE $Q \leftarrow \mathtt{PriorityQueue()}$ \hspace*{1mm}// \textit{the remaining link candidates}
 \STATE $L \leftarrow \mathtt{HashTable()}$ \hspace*{1mm}// \textit{maps a source--target pair to the corresponding link-candidate object}
-\FOR{all link candidates $(s,t)$ from all paths in $P$}
-  \STATE $I \leftarrow$ set of paths on which $(s,t)$ appears
-  \STATE $\ell \leftarrow \mathtt{LinkCandidate}(I, q(s,t), \mathtt{false})$ \hspace*{1mm}// \textit{last argument specifies that $\ell$ is unpolluted}
-  \STATE $L[(s,t)] \leftarrow \ell$
-  \STATE $Q.\mathtt{insert}(\ell, \mathtt{MarginalGain}(\ell, \{\}))$
+\STATE $M \leftarrow \mathtt{HashTable()}$ \hspace*{1mm}// \textit{maps a source--target pair to the set of paths in which it appears}
+\STATE  // \textit{Store for each source--target pair in which paths it appears}
+\FOR{all paths $p \in P$}
+  \FOR{all link candidates $(s,t)$ appearing in $p$}
+    \STATE $M[s,t] \leftarrow M[s,t] \cup \{p\}$ \hspace*{1mm}// \textit{Here we should impose a frequency threshold}
+  \ENDFOR
 \ENDFOR
+\STATE  // \textit{Initialize all link canidates and build priority queue}
+\FOR{all link candidates $(s,t) \in M.\mathtt{keys}$}
+  \STATE $\ell \leftarrow \mathtt{LinkCandidate}(\mathtt{paths}=M[s,t], \mathtt{prob}=q(s,t), \mathtt{polluted}=\mathtt{false})$ %\hspace*{1mm}// \textit{last argument specifies that $\ell$ is unpolluted}
+  \STATE $L[s,t] \leftarrow \ell$
+  \STATE $Q[\ell] \leftarrow \mathtt{MarginalGain}(\ell, \{\})$
+\ENDFOR
+\STATE  // \textit{Construct the solution}
 \FOR{$c = 1, \dots, K$}
   \WHILE{$\mathtt{true}$}
-  	\STATE ......................
+  	\STATE $\ell \leftarrow Q.\mathtt{poll()}$
+    \IF{$\ell.\mathtt{polluted} = \mathtt{true}$}
+      \STATE $Q[\ell] \leftarrow \mathtt{MarginalGain}(\ell, E')$
+      \STATE $\ell.\mathtt{polluted} \leftarrow \mathtt{false}$
+    \ELSE
+      \FOR{$p \in \ell.\mathtt{paths}$}
+        \FOR{all link candidates $(s,t)$ appearing in $p$}
+          \STATE $L[s,t].\mathtt{polluted} \leftarrow \mathtt{true}$
+        \ENDFOR
+      \ENDFOR
+      \STATE $E' \leftarrow E' \cup \{\ell\}$
+      \STATE \textbf{break}
+    \ENDIF
   \ENDWHILE
 \ENDFOR
 \end{algorithmic}
@@ -490,37 +510,12 @@ where $A$ is the current set of shortcuts, and $j$, the index of $y$ in $p$.
 \STATE $m \leftarrow 0$
 \FOR{$p \in \ell.\mathtt{paths}$}
   \STATE $j \leftarrow$ starting position of $\ell$ in $p$
-  \STATE $I_{E'} \leftarrow$ starting positions of the links from $E'$ in $p$
-  \STATE $m \leftarrow m + q^p_j \prod_{i \in I_{E'}} (1 - q^p_i)$
+  \STATE $I \leftarrow$ starting positions of the links from $E'$ in $p$
+  \STATE $m \leftarrow m + q^p_j \prod_{i \in I} (1 - q^p_i)$
 \ENDFOR
 \STATE \textbf{return} $m$
 \end{algorithmic}
 \end{algorithm}
-
-%\begin{algorithm}[t]
-%\caption{Basic navigation algorithm}
-%% [1] adds line numbering:
-%\begin{algorithmic}[1]
-%\label{alg:search}
-%\INPUT start node $s$; target node $t$; evaluation function $V$
-%\OUTPUT sequence of nodes visited
-%\STATE push $s$ onto initially empty stack $\mathcal{S}$
-%\WHILE{stack $\mathcal{S}$ is not empty}
-%  \STATE pop node $u$ from stack $\mathcal{S}$ and remember it as visited
-%  \IF{$u = t$}
-%    \STATE \textbf{return} sequence of nodes visited
-%  \ELSIF{$u$ has not been visited before}
-%    \FOR{all neighbors $u'$ of $u$, in order of increasing value according to $V(u'|u,t)$}
-%      \STATE push $u'$ onto stack $\mathcal{S}$
-%      \IF{$u' = t$}
-%	\STATE \textbf{break} \hspace*{1mm}// \textit{make sure $t$ is picked in next iteration}
-%      \ENDIF
-%    \ENDFOR
-%  \ENDIF
-%\ENDWHILE
-%\STATE \textbf{return} `no path between $s$ and $t$ exists'
-%\end{algorithmic}
-%\end{algorithm}
 
 
 \section{TODO}
