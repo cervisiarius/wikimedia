@@ -17,6 +17,7 @@ foreach my $lang (@langs) {
   my $sqoop_cmd =
     "sqoop import                                                     \\
     -Dmapreduce.output.fileoutputformat.compress=false                \\
+    -Dmapreduce.job.queuename=priority                                \\
     --connect jdbc:mysql://analytics-store.eqiad.wmnet/$lang\wiki     \\
     --verbose                                                         \\
     --target-dir /user/west1/revision_history/$lang                   \\
