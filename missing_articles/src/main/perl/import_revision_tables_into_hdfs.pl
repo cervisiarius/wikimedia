@@ -9,7 +9,8 @@ my @langs = split(/\n/, `cut -f1 $DATADIR/list_of_wikipedias.tsv`);
 open(ERR, '> sqoop.log') or die $!;
 
 foreach my $lang (@langs) {
-  if ($lang eq 'en') {
+  # We only do this for French, Spanish, Polish
+  if ($lang !~ '^es|fr|pl$') {
     next;
   }
   print STDERR "Importing $lang\n";
