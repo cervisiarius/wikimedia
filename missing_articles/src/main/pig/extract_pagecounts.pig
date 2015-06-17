@@ -1,3 +1,7 @@
+/*
+ * pig -Dmapreduce.job.queuename=priority extract_pagecounts.pig
+ */
+
 SET mapreduce.output.fileoutputformat.compress false;
 
 REGISTER /home/west1/wikimedia/trunk/src/main/pig/udf/pigudf.jar;
