@@ -10,7 +10,8 @@ open(ERR, '> sqoop.log') or die $!;
 
 foreach my $lang (@langs) {
   # We only do this for French, Spanish, Polish
-  if ($lang !~ '^es|fr|pl$') {
+  #if ($lang !~ /^es|fr|pl$/) {
+  if ($lang ne 'en') {
     next;
   }
   print STDERR "Importing $lang\n";

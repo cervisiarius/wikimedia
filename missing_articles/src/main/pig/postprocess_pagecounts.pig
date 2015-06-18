@@ -1,3 +1,7 @@
+/*
+ * pig -Dmapreduce.job.queuename=priority postprocess_pagecounts.pig
+ */
+
 SET mapreduce.output.fileoutputformat.compress false;
 
 -- Read the Wikidata file that maps Wikidata entries to Wikipedia articles.
