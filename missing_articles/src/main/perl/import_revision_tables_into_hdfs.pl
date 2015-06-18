@@ -34,6 +34,7 @@ foreach my $lang (@langs) {
     --escaped-by \\\\                                                 \\
     --username=research --password HGY3DhGoYhxF                       \\
     --split-by a.rev_id                                               \\
+    --num-mappers 80                                                  \\
     --query '
     SELECT
       a.rev_id,
