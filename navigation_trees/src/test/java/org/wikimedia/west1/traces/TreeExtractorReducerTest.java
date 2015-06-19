@@ -59,7 +59,7 @@ public class TreeExtractorReducerTest {
 	}
 
 	public static void testSequenceToTrees() throws Exception {
-		List<Pageview> session = new ArrayList<Pageview>();
+		List<BrowserEvent> session = new ArrayList<BrowserEvent>();
 		session.add(makePageview(1, 10, "a", "-"));
 		session.add(makePageview(2, 15, "c", "http://a"));
 		session.add(makePageview(3, 20, "b", "http://a"));
@@ -67,7 +67,7 @@ public class TreeExtractorReducerTest {
 		session.add(makePageview(5, 30, "b", "http://a"));
 		session.add(makePageview(6, 40, "c", "http://b"));
 		session.add(makePageview(7, 50, "d", "http://c"));
-		for (Pageview root : reducer.sequenceToTrees(session, null)) {
+		for (BrowserEvent root : reducer.sequenceToTrees(session, null)) {
 			System.out.println(root.toString(2));
 		}
 	}
@@ -93,7 +93,7 @@ public class TreeExtractorReducerTest {
 		    + "\"content_type\":\"text/html; charset=UTF-8\",\"parent_ambiguous\":false}";
 		JSONObject json = new JSONObject(pvString);
 		System.out.println(json.toString(2));
-		System.out.println(reducer.isGoodPageview(json, false, null, null));
+		System.out.println(reducer.isGoodEvent(json, false, null, null));
 	}
 
 	public static void testIsGoodTree() throws Exception {
@@ -134,8 +134,8 @@ public class TreeExtractorReducerTest {
 		    + "\"content_type\":\"text/html; charset=UTF-8\",\"parent_ambiguous\":false}";
 		Pageview pv = new Pageview(new JSONObject(pvString), null);
 		System.out.println(pv.toString(2));
-		System.out.println(pv.resolvedArticle);
-		System.out.println(pv.refererArticle);
+		System.out.println(pv.getPathAndQuery());
+		System.out.println(pv.getRefererPathAndQuery());
 		System.out.println(revRdirects.get("Macaxeira"));
 	}
 	

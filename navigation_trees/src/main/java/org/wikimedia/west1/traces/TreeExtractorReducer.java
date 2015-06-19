@@ -40,10 +40,12 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
   private static final String JSON_BAD_TREE = "bad_tree";
   private static final String JSON_DT = "dt";
   private static final String JSON_UA = "user_agent";
-  private static final String JSON_URI_PATH = "uri_path";
+  private static final String JSON_TITLE = "title";
   private static final String JSON_HTTP_STATUS = "http_status";
   private static final String JSON_REFERER = "referer";
-  private static final String JSON_RESOLVED_URI_PATH = "resolved_uri_path";
+  private static final String JSON_UNRESOLVED_TITLE = "unresolved_title";
+  private static final String JSON_IS_SEARCH = "is_search";
+  private static final String JSON_SEARCH_PARAMS = "search_params";
   // Job config parameters specifying which Wikipedia versions we're interested in, e.g.,
   // "(pt|es)\\.wikipedia\\.org".
   private static final String CONF_LANGUAGE_PATTERN = "org.wikimedia.west1.traces.languagePattern";
@@ -52,15 +54,13 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
   private static final String CONF_KEEP_AMBIGUOUS_TREES = "org.wikimedia.west1.traces.keepAmbiguousTrees";
   // Job config parameters specifying if we want to keep trees whose root is from a Wikimedia site.
   private static final String CONF_KEEP_BAD_TREES = "org.wikimedia.west1.traces.keepBadTrees";
-  // Job config parameters specifying if we want to keep trees consisting of a single pageview (even
-  // if this is true, we keep only the singletons that have a non-empty referer, so we can be sure
-  // the user's browser sends referer information).
+  // Job config parameters specifying if we want to keep trees consisting of a single event.
   private static final String CONF_KEEP_SINGLETON_TREES = "org.wikimedia.west1.traces.keepSingletonTrees";
   // Job config parameters specifying a string for salting UID hashes, so it's very hard to get the
   // hash value for a given UID.
   private static final String CONF_HASH_SALT = "org.wikimedia.west1.traces.hashSalt";
-  // If a user has more than this many pageviews, we ignore her.
-  private static final String CONF_MAX_NUM_PAGEVIEWS = "org.wikimedia.west1.traces.maxNumPageviews";
+  // If a user has more than this many events, we ignore her.
+  private static final String CONF_MAX_NUM_EVENTS = "org.wikimedia.west1.traces.maxNumEvents";
   // To avoid StackOverflowErrors, we set a maximum depth for the recursive method isGoodTree.
   private static final int MAX_RECURSION_DEPTH = 100;
   // A pattern matching Wikimedia host names.
@@ -71,12 +71,13 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
   // + "wik(ibooks|idata|inews|imedia|ipedia|iquote|isource|tionary|iversity|ivoyage)\\.org.*";
       + "wiki(data|media|pedia)\\.org.*");
 
-  // The fields you want to store for every pageview.
+  // The fields you want to store for every event.
   private static final Set<String> FIELDS_TO_KEEP = new HashSet<String>(Arrays.asList(JSON_DT,
-      JSON_URI_PATH, JSON_HTTP_STATUS,
+      JSON_TITLE, JSON_HTTP_STATUS,
       // The fields we added.
-      JSON_RESOLVED_URI_PATH, JSON_CHILDREN, JSON_PARENT_AMBIGUOUS, JSON_BAD_TREE));
-  // The fields you want to store only for the root (because they're identical for all pageviews in
+      JSON_UNRESOLVED_TITLE, JSON_CHILDREN, JSON_PARENT_AMBIGUOUS, JSON_BAD_TREE, JSON_IS_SEARCH,
+      JSON_SEARCH_PARAMS));
+  // The fields you want to store only for the root (because they're identical for all events in
   // the same tree).
   private static final Set<String> FIELDS_TO_KEEP_IN_ROOT = new HashSet<String>(Arrays.asList(
       JSON_UA, JSON_REFERER, JSON_TREE_ID));
@@ -84,12 +85,12 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
   private static enum HADOOP_COUNTERS {
     // In order to have an idea what the big reasons are for dismissing trees. Note that these don't
     // add up to the number of trees we start with before filtering, since filtering fails fast (cf.
-    // isGoodPageview).
-    REDUCE_SKIPPED_SINGLETON, REDUCE_SKIPPED_HOUR_23, REDUCE_SKIPPED_WIKIMEDIA_REFERER_IN_ROOT, REDUCE_SKIPPED_AMBIGUOUS, REDUCE_TOO_MANY_PAGEVIEWS, REDUCE_STACKOVERFLOW,
+    // isGoodEvent).
+    REDUCE_SKIPPED_SINGLETON, REDUCE_SKIPPED_HOUR_23, REDUCE_SKIPPED_WIKIMEDIA_REFERER_IN_ROOT, REDUCE_SKIPPED_AMBIGUOUS, REDUCE_TOO_MANY_EVENTS, REDUCE_STACKOVERFLOW,
     // OK_TREE and BAD_TREE add to the number of trees we started with before filtering.
     REDUCE_OK_TREE, REDUCE_BAD_TREE, REDUCE_EXCEPTION, REDUCE_REDIRECT_RESOLVED,
     // Timers etc.
-    REDUCE_MSEC_PAGEVIEW_CONSTRUCTOR, REDUCE_MAX_MEMORY
+    REDUCE_MSEC_EVENT_CONSTRUCTOR, REDUCE_MAX_MEMORY
   }
 
   private Pattern homePagePattern;
@@ -97,7 +98,7 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
   private boolean keepBadTrees;
   private boolean keepSingletonTrees;
   private String hashSalt;
-  private int maxNumPageviews;
+  private int maxNumEvents;
 
   // The redirects; they're read from file when this Mapper instance is created.
   private Map<String, Map<String, String>> redirects = new HashMap<String, Map<String, String>>();
@@ -142,12 +143,12 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
   // time), e.g., 5ca697716da3203201f56d09b41c954d_20150118_0004.
   private Text makeTreeId(String lang, String uid, int seqNum) {
     String uidHash = DigestUtils.md5Hex(uid + hashSalt);
-    // seqNum is zero-padded to fixed length 5: we allow at most MAX_NUM_PAGEVIEWS = 100K pageviews
-    // per day, and in the worst case, each pageview is its own tree, so seqNum <= 99999.
+    // seqNum is zero-padded to fixed length 5: we allow at most MAX_NUM_EVENTS = 100K events
+    // per day, and in the worst case, each event is its own tree, so seqNum <= 99999.
     return new Text(String.format("%s_%s_%05d", lang, uidHash, seqNum));
   }
 
-  // We don't want to keep all info from the original pageview objects, and we discard it here.
+  // We don't want to keep all info from the original event objects, and we discard it here.
   private static void sparsifyJson(JSONObject json, boolean isGlobalRoot) {
     // First process children recursively.
     if (json.has(JSON_CHILDREN)) {
@@ -166,12 +167,11 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
     }
   }
 
-  protected boolean isGoodPageview(JSONObject root, boolean isGlobalRoot, Reporter reporter,
+  protected boolean isGoodEvent(JSONObject root, boolean isGlobalRoot, Reporter reporter,
       String lang) throws JSONException {
     // If the root of the tree has no referer and no children, we don't know if this browser sends
     // referer info, so we exclude the tree.
-    if (isGlobalRoot && !root.has(JSON_CHILDREN)
-        && (!keepSingletonTrees || !root.getString(JSON_REFERER).startsWith("http"))) {
+    if (isGlobalRoot && !root.has(JSON_CHILDREN) && !keepSingletonTrees) {
       reporter.incrCounter(HADOOP_COUNTERS.REDUCE_SKIPPED_SINGLETON, 1);
       return false;
     }
@@ -199,7 +199,7 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
     if (recursionDepth > MAX_RECURSION_DEPTH) {
       reporter.incrCounter(HADOOP_COUNTERS.REDUCE_STACKOVERFLOW, 1);
       return false;
-    } else if (!isGoodPageview(root, recursionDepth == 0, reporter, lang)) {
+    } else if (!isGoodEvent(root, recursionDepth == 0, reporter, lang)) {
       return false;
     } else if (root.has(JSON_CHILDREN)) {
       JSONArray children = root.getJSONArray(JSON_CHILDREN);
@@ -212,10 +212,10 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
     return true;
   }
 
-  // Keep only the good trees.
-  private List<Pageview> filterTrees(List<Pageview> roots, Reporter reporter, String lang) {
-    List<Pageview> filtered = new ArrayList<Pageview>();
-    for (Pageview root : roots) {
+  // Keep only the good trees. As a side effect, this sparsifies the JSON objects.
+  private List<BrowserEvent> filterTrees(List<BrowserEvent> roots, Reporter reporter, String lang) {
+    List<BrowserEvent> filtered = new ArrayList<BrowserEvent>();
+    for (BrowserEvent root : roots) {
       try {
         if (isGoodTree(root.json, 0, reporter, lang)) {
           sparsifyJson(root.json, true);
@@ -232,60 +232,64 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
     return filtered;
   }
 
-  // Input: the list of session pageviews in temporal order.
+  // Input: the list of session browser events in temporal order.
   // Output: the list of tree roots.
-  private List<Pageview> getMinimumSpanningForest(List<Pageview> session, Reporter reporter)
+  private List<BrowserEvent> getMinimumSpanningForest(List<BrowserEvent> session, Reporter reporter)
       throws JSONException {
     // The list of all trees contained in the session.
-    List<Pageview> roots = new ArrayList<Pageview>();
+    List<BrowserEvent> roots = new ArrayList<BrowserEvent>();
     // Count for all URLs how often they were seen in this session.
-    Map<String, Integer> articleCounts = new HashMap<String, Integer>();
-    // Remember, for each URL, the last pageview of it.
-    Map<String, Pageview> articleToLastPageview = new HashMap<String, Pageview>();
-    // Iterate over all pageviews in temporal order.
-    for (Pageview pv : session) {
-      Pageview parent = articleToLastPageview.get(pv.refererArticle);
-      // If we haven't seen the referer of this pageview in the current session, make the pageview a
+    Map<String, Integer> pageCounts = new HashMap<String, Integer>();
+    // Remember, for each page, the last event in which it was seen.
+    Map<String, BrowserEvent> pageToLastEvent = new HashMap<String, BrowserEvent>();
+    // Iterate over all events in temporal order.
+    for (BrowserEvent event : session) {
+      String ref = event.getRefererPathAndQuery();
+      BrowserEvent parent = pageToLastEvent.get(ref);
+      // If we haven't seen the referer of this event in the current session, make the event a
       // root.
       if (parent == null) {
-        roots.add(pv);
+        roots.add(event);
       }
-      // Otherwise, append it as a child to the latest pageview of the referer.
+      // Otherwise, append it as a child to the latest event involving the referer page.
       else {
-        parent.json.append(JSON_CHILDREN, pv.json);
-        Integer refererCount = articleCounts.get(pv.refererArticle);
+        parent.json.append(JSON_CHILDREN, event.json);
+        Integer refererCount = pageCounts.get(ref);
         // A parent is ambiguous if we have seen the referer URL several times in this session
-        // before the current pageview.
+        // before the current event.
         if (refererCount != null && refererCount > 1) {
-          pv.json.put(JSON_PARENT_AMBIGUOUS, true);
+          event.json.put(JSON_PARENT_AMBIGUOUS, true);
         }
       }
-      // Remember this pageview as the last pageview for its URL.
-      articleToLastPageview.put(pv.resolvedArticle, pv);
+      // Remember this event as the last event for its URL.
+      pageToLastEvent.put(event.getPathAndQuery(), event);
       // Update the counter for this URL.
-      Integer c = articleCounts.get(pv.resolvedArticle);
-      articleCounts.put(pv.resolvedArticle, c == null ? 1 : c + 1);
+      Integer c = pageCounts.get(event.getPathAndQuery());
+      pageCounts.put(event.getPathAndQuery(), c == null ? 1 : c + 1);
     }
     return roots;
   }
 
-  // Takes a list of pageviews, orders them by time, and extracts a set of trees via the
+  // Takes a list of events, orders them by time, and extracts a set of trees via the
   // minimum-spanning-forest heuristic.
-  public List<Pageview> sequenceToTrees(List<Pageview> pageviews, Reporter reporter)
+  public List<BrowserEvent> sequenceToTrees(List<BrowserEvent> events, Reporter reporter)
       throws JSONException {
     // This sort is stable, so requests having the same timestamp will stay in the original order.
-    Collections.sort(pageviews, new Comparator<Pageview>() {
+    Collections.sort(events, new Comparator<BrowserEvent>() {
       @Override
-      public int compare(Pageview pv1, Pageview pv2) {
-      	long t1 = pv1.time;
-      	long t2 = pv2.time;
-      	// NB: Don't use subtraction-based comparison, since overflow may cause errors!
-        if (t1 > t2) return 1;
-        else if (t1 < t2) return -1;
-        else return 0;
+      public int compare(BrowserEvent pv1, BrowserEvent pv2) {
+        long t1 = pv1.time;
+        long t2 = pv2.time;
+        // NB: Don't use subtraction-based comparison, since overflow may cause errors!
+        if (t1 > t2)
+          return 1;
+        else if (t1 < t2)
+          return -1;
+        else
+          return 0;
       }
     });
-    return getMinimumSpanningForest(pageviews, reporter);
+    return getMinimumSpanningForest(events, reporter);
   }
 
   private void setDefaultConfig() {
@@ -294,7 +298,7 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
     keepBadTrees = true;
     keepSingletonTrees = true;
     hashSalt = "sdsdsafdsfdsfs";
-    maxNumPageviews = 3600;
+    maxNumEvents = 3600;
   }
 
   @Override
@@ -308,7 +312,7 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
       keepBadTrees = conf.getBoolean(CONF_KEEP_BAD_TREES, false);
       keepSingletonTrees = conf.getBoolean(CONF_KEEP_SINGLETON_TREES, false);
       hashSalt = conf.get(CONF_HASH_SALT);
-      maxNumPageviews = conf.getInt(CONF_MAX_NUM_PAGEVIEWS, 100000);
+      maxNumEvents = conf.getInt(CONF_MAX_NUM_EVENTS, 100000);
       String[] languages = conf.get(CONF_LANGUAGE_PATTERN, "").split("\\|");
       readAllRedirects(languages);
     }
@@ -319,38 +323,38 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
   }
 
   @Override
-  public void reduce(Text key, Iterator<Text> pageviewIterator, OutputCollector<Text, Text> out,
+  public void reduce(Text key, Iterator<Text> eventIterator, OutputCollector<Text, Text> out,
       Reporter reporter) throws IOException {
     try {
-      List<Pageview> pageviews = new ArrayList<Pageview>();
+      List<BrowserEvent> events = new ArrayList<BrowserEvent>();
       int n = 0;
       String[] lang_day_uid = key.toString().split(GroupAndFilterMapper.UID_SEPARATOR, 2);
       String lang = lang_day_uid[0];
       String uid = lang_day_uid[1];
 
-      // Collect all pageviews for this user on this day.
-      while (pageviewIterator.hasNext()) {
-        // If there are too many pageview events, output nothing.
-        if (++n > maxNumPageviews) {
-          reporter.incrCounter(HADOOP_COUNTERS.REDUCE_TOO_MANY_PAGEVIEWS, 1);
+      // Collect all events for this user on this day.
+      while (eventIterator.hasNext()) {
+        // If there are too many event events, output nothing.
+        if (++n > maxNumEvents) {
+          reporter.incrCounter(HADOOP_COUNTERS.REDUCE_TOO_MANY_EVENTS, 1);
           return;
         } else {
-          JSONObject json = new JSONObject(pageviewIterator.next().toString());
+          JSONObject json = new JSONObject(eventIterator.next().toString());
           long before = System.currentTimeMillis();
-          Pageview pv = new Pageview(json, redirects.get(lang));
+          BrowserEvent event = BrowserEvent.newInstance(json, redirects.get(lang));
           long after = System.currentTimeMillis();
-          reporter.incrCounter(HADOOP_COUNTERS.REDUCE_MSEC_PAGEVIEW_CONSTRUCTOR, after - before);
-          pageviews.add(pv);
-          if (!json.getString(JSON_URI_PATH).equals(pv.resolvedArticle)) {
+          reporter.incrCounter(HADOOP_COUNTERS.REDUCE_MSEC_EVENT_CONSTRUCTOR, after - before);
+          events.add(event);
+          if (!json.has(JSON_UNRESOLVED_TITLE)) {
             reporter.incrCounter(HADOOP_COUNTERS.REDUCE_REDIRECT_RESOLVED, 1);
           }
         }
       }
       // Extract trees and output them.
-      List<Pageview> allRoots = sequenceToTrees(pageviews, reporter);
-      List<Pageview> goodRoots = filterTrees(allRoots, reporter, lang);
+      List<BrowserEvent> allRoots = sequenceToTrees(events, reporter);
+      List<BrowserEvent> goodRoots = filterTrees(allRoots, reporter, lang);
       int i = 0;
-      for (Pageview root : goodRoots) {
+      for (BrowserEvent root : goodRoots) {
         root.json.put(JSON_TREE_ID, makeTreeId(lang, uid, i));
         out.collect(new Text(lang), new Text(root.toString()));
         if (root.json.has(JSON_BAD_TREE) && root.json.getBoolean(JSON_BAD_TREE)) {
