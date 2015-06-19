@@ -10,9 +10,9 @@ export LIB_DIR=$HOME/wikimedia/trunk/lib
 export IN_DIR=/user/west1/webrequest_source=text/year=2015/month=2/*/*/*
 # The output directory.
 export OUT_DIR=/user/west1/navigation_trees_month=2
-# Cf. org.wikimedia.west1.traces.TreeExtractorReducer.isGoodPageview().
+# Cf. org.wikimedia.west1.traces.TreeExtractorReducer.isGoodEvent().
 export KEEP_BAD_TREES=false
-# Cf. org.wikimedia.west1.traces.TreeExtractorReducer.isGoodPageview().
+# Cf. org.wikimedia.west1.traces.TreeExtractorReducer.isGoodEvent().
 export KEEP_SINGLETON_TREES=true
 # Cf. org.wikimedia.west1.traces.TreeExtractorReducer.getMinimumSpanningForest().
 export KEEP_AMBIGUOUS_TREES=true
@@ -31,6 +31,7 @@ export MAX_NUM_EVENTS=10000
 echo "Running hadoop job"
 hadoop jar /usr/lib/hadoop-mapreduce/hadoop-streaming.jar \
     -libjars      $TARGET_DIR/TreeExtractor-0.0.1-SNAPSHOT-jar-with-dependencies.jar,$LIB_DIR/iow-hadoop-streaming-1.0.jar \
+    -D            mapreduce.job.queuename=priority \
     -D            mapred.child.java.opts="-Xss10m -Xmx3g" \
     -D            mapreduce.output.fileoutputformat.compress=false \
     -D            mapreduce.output.fileoutputformat.compress.codec=com.hadoop.compression.lzo.LzopCodec \
