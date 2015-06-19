@@ -8,6 +8,8 @@ my @langs = split(/\n/, `cut -f1 $DATADIR/list_of_wikipedias.tsv`);
 
 open(ERR, '> sqoop.log') or die $!;
 
+# NB: num-mappers=80 (unclear if that speeds things up)
+
 foreach my $lang (@langs) {
   # We only do this for French, Spanish, Polish
   #if ($lang !~ /^es|fr|pl$/) {

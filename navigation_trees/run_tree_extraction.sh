@@ -67,6 +67,6 @@ hadoop jar /usr/lib/hadoop-mapreduce/hadoop-streaming.jar \
     -numReduceTasks 100
 
 # Hash salt used to be generated randomly, such that for different runs, different "users" will get
-# different ids (i.e., same language has different ids for different months). But for
-# es|fr|ru|de|fa|sv|simple|zh|ja we set it deterministically, so we can group users across all 3 months.
+# different ids (i.e., same language has different ids for different months). But from now on we
+# set it deterministically, so we can group users across all 3 months.
 #    -D            org.wikimedia.west1.traces.hashSalt=`date +%s | sha256sum | base64 | head -c 64` \

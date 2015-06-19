@@ -277,9 +277,9 @@ public class TreeExtractorReducer implements Reducer<Text, Text, Text, Text> {
     // This sort is stable, so requests having the same timestamp will stay in the original order.
     Collections.sort(events, new Comparator<BrowserEvent>() {
       @Override
-      public int compare(BrowserEvent pv1, BrowserEvent pv2) {
-        long t1 = pv1.time;
-        long t2 = pv2.time;
+      public int compare(BrowserEvent e1, BrowserEvent e2) {
+        long t1 = e1.time;
+        long t2 = e2.time;
         // NB: Don't use subtraction-based comparison, since overflow may cause errors!
         if (t1 > t2)
           return 1;

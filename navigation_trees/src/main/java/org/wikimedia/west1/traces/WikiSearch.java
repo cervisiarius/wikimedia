@@ -13,7 +13,7 @@ public class WikiSearch extends BrowserEvent {
   private static final String JSON_IS_SEARCH = "is_search";
   private static final String JSON_SEARCH_PARAMS = "search_params";
 
-  private static Pattern QUERY_PATTERN = Pattern
+  public static Pattern QUERY_PATTERN = Pattern
       .compile("\\?search=(.*)&title=Special%3ASearch&?(.*)");
 
   @Override

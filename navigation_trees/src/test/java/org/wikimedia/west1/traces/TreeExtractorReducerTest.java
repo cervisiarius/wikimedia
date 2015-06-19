@@ -1,9 +1,5 @@
 package org.wikimedia.west1.traces;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -12,8 +8,6 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Scanner;
-import java.util.zip.GZIPInputStream;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -24,31 +18,6 @@ public class TreeExtractorReducerTest {
 
 	static {
 		reducer.configure(null);
-	}
-
-	private static Map<String, List<String>> readReverseRedirectsFromFile(String file) throws IOException {
-		Map<String, List<String>> map = new HashMap<String, List<String>>();
-		InputStream is = new FileInputStream(new File(file));
-		if (file.endsWith(".gz")) {
-			try {
-				is = new GZIPInputStream(is);
-			} catch (IOException e) {
-			}
-		}
-		Scanner sc = new Scanner(is, "UTF-8").useDelimiter("\n");
-		while (sc.hasNext()) {
-			String[] tokens = sc.next().split("\t", 2);
-			String src = tokens[0];
-			String tgt = tokens[1];
-			List<String> srcForTgt = map.get(tgt);
-			if (srcForTgt == null) {
-				srcForTgt = new ArrayList<String>();
-				map.put(tgt, srcForTgt);
-			}
-			srcForTgt.add(src);
-		}
-		sc.close();
-		return map;
 	}
 
 	private static Pageview makePageview(int seqNum, int time, String url, String referer)
@@ -120,23 +89,27 @@ public class TreeExtractorReducerTest {
 		System.out.println(reducer.isGoodTree(json, 0, null, null));
 	}
 
-	public static void testPageview() throws Exception {
-		Map<String, List<String>> revRdirects = readReverseRedirectsFromFile(System.getenv("HOME")
-		    + "/wikimedia/trunk/data/ptwiki_20141104_redirects.tsv.gz");
-		String pvString = "{\"x_analytics\":\"php=hhvm\",\"dt\":\"2014-12-04T01:18:34\","
-		    + "\"uri_path\":\"/wiki/Antraz\",\"range\":\"-\",\"accept_language\":\"en-US,en;q=0.5\","
+	public static void testBrowserEvent() throws Exception {
+	  Map<String, String> red = new HashMap<String, String>();
+    red.put("Antraz", "Antraz_RED");
+    red.put("Café-do-bugre", "Café-do-bugre_RED");
+		String evString = "{\"x_analytics\":\"php=hhvm\",\"dt\":\"2014-12-04T01:18:34\","
+		    + "\"uri_path\":\"/wiki/Antraz\",\"uri_query\":\"\","
+        //+ "\"uri_path\":\"/w/index.php\",\"uri_query\":\"?search=Miss%C3%A9+World+2014&title=Special%3ASearch&go=Go&fulltext=1\","
+		    + "\"range\":\"-\",\"accept_language\":\"en-US,en;q=0.5\","
 		    + "\"x_forwarded_for\":\"-\",\"cache_status\":\"hit\",\"hostname\":\"cp4016.ulsfo.wmnet\","
-		    + "\"response_size\":90662,\"uri_query\":\"\",\"uri_host\":\"pt.wikipedia.org\","
+		    + "\"response_size\":90662,\"uri_host\":\"pt.wikipedia.org\","
 		    + "\"ip\":\"1.10.195.119\",\"http_method\":\"GET\",\"http_status\":\"200\","
 		    + "\"time_firstbyte\":1.26839E-4,\"sequence\":1261697215,"
 		    + "\"user_agent\":\"Mozilla/5.0 (Windows NT 5.1; rv:33.0) Gecko/20100101 Firefox/33.0\","
-		    + "\"referer\":\"http://pt.wikipedia.org/wiki/Caf%C3%A9-do-bugre\","
+        //+ "\"referer\":\"http://pt.wikipedia.org/wiki/Caf%C3%A9-do-bugre\","
+        + "\"referer\":\"http://pt.wikipedia.org/w/index.php?search=Miss+World+2014&title=Special%3ASearch&go=Go\","
 		    + "\"content_type\":\"text/html; charset=UTF-8\",\"parent_ambiguous\":false}";
-		Pageview pv = new Pageview(new JSONObject(pvString), null);
-		System.out.println(pv.toString(2));
-		System.out.println(pv.getPathAndQuery());
-		System.out.println(pv.getRefererPathAndQuery());
-		System.out.println(revRdirects.get("Macaxeira"));
+		BrowserEvent ev = BrowserEvent.newInstance(new JSONObject(evString), red);
+		System.out.println(ev.toString(2));
+		System.out.println(ev.getPathAndQuery());
+		System.out.println(ev.getRefererPathAndQuery());
+		System.out.println(ev.time);
 	}
 	
 	public static void testComparison() {
@@ -157,7 +130,9 @@ public class TreeExtractorReducerTest {
 
 	public static void main(String[] args) throws Exception {
 		//System.out.println(GroupAndFilterMapper.NON_ARTICLE_PAGE_PATTERN.matcher("/wiki/Wikipédia:Página_principal").matches());
-		testComparison();
+		//testComparison();
+	  testBrowserEvent();
+	  //testIsGoodTree();
 		System.in.read();
 	}
 

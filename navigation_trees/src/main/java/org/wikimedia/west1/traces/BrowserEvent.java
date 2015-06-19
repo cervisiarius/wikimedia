@@ -28,6 +28,30 @@ public abstract class BrowserEvent {
 
   private Map<String, String> redirects;
 
+  public BrowserEvent(JSONObject json, Map<String, String> redirects) throws ParseException {
+    this.redirects = redirects;
+    this.json = json;
+    this.time = DATE_FORMAT.parse(json.getString(JSON_DT)).getTime();
+  }
+
+  // Creates either a Pageview or a WikiSearch object, depending on the URL.
+  public static BrowserEvent newInstance(JSONObject json, Map<String, String> redirects) {
+    try {
+      if (json.getString(JSON_URI_PATH).startsWith("/wiki/")) {
+        return new Pageview(json, redirects);
+      } else if (json.getString(JSON_URI_PATH).startsWith("/w/index.php")
+          && json.getString(JSON_URI_QUERY).startsWith("?search=")) {
+        return new WikiSearch(json, redirects);
+      } else {
+        throw new IllegalArgumentException();
+      }
+    } catch (ParseException e) {
+      throw new IllegalArgumentException();
+    } catch (JSONException e) {
+      throw new IllegalArgumentException();
+    }
+  }
+
   protected static final String decode(String s) {
     try {
       return URLDecoder.decode(s, UTF8);
@@ -74,7 +98,7 @@ public abstract class BrowserEvent {
         }
         // The referer is something else, such as a wiki search.
         else {
-          return ref.getPath() + ref.getQuery();
+          return ref.getPath() + '?' + ref.getQuery();
         }
       }
     } catch (MalformedURLException e) {
@@ -82,30 +106,6 @@ public abstract class BrowserEvent {
     } catch (NullPointerException e) {
       // This may happen if ref.getAuthority() or ref.getPath() returns null.
       return null;
-    }
-  }
-
-  public BrowserEvent(JSONObject json, Map<String, String> redirects) throws ParseException {
-    this.redirects = redirects;
-    this.json = json;
-    this.time = DATE_FORMAT.parse(json.getString(JSON_DT)).getTime();
-  }
-
-  // Creates either a Pageview or a WikiSearch object, depending on the URL.
-  public static BrowserEvent newInstance(JSONObject json, Map<String, String> redirects) {
-    try {
-      if (json.getString(JSON_URI_PATH).startsWith("/wiki/")) {
-        return new Pageview(json, redirects);
-      } else if (json.getString(JSON_URI_PATH).startsWith("/w/index.php")
-          && json.getString(JSON_URI_QUERY).startsWith("?search=")) {
-        return new WikiSearch(json, redirects);
-      } else {
-        throw new IllegalArgumentException();
-      }
-    } catch (ParseException e) {
-      throw new IllegalArgumentException();
-    } catch (JSONException e) {
-      throw new IllegalArgumentException();
     }
   }
 
