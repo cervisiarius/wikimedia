@@ -22,10 +22,10 @@ export KEEP_AMBIGUOUS_TREES=true
 export LANGUAGE_PATTERN='en'
 #export LANGUAGE_PATTERN='es|fr|ru|de|fa|sv|simple|zh|ja'
 #export LANGUAGE_PATTERN='sh|pt|ar|nl|it|ceb|war|sr|pl|uk|ca|id|ro|tr|ko|no|fi|uz|cs|hu|vi|he|hy|eo|da|bg|et|lt|el|vo|sk|sl|eu|nn|kk|hr|hi|ms|gl|min'
-# If a user has more than this many pageviews, we ignore her.
-# Having 100K pageviews in a month would mean one every 26 seconds.
-# Having 10K pageviews in a month would mean one every 4 minutes.
-# Having 3600 pageviews in a day would mean one every 24 seconds.
+# If a user has more than this many events, we ignore her.
+# Having 100K events in a month would mean one every 26 seconds.
+# Having 10K events in a month would mean one every 4 minutes.
+# Having 3600 events in a day would mean one every 24 seconds.
 export MAX_NUM_EVENTS=10000
 
 echo "Running hadoop job"
