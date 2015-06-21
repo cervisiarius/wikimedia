@@ -28,10 +28,10 @@ public class TestReadParquet extends Configured
     /*
      * Read a Parquet record
      */
-    public static class MyMap extends
-      Mapper {
-/* 
-      public void map(LongWritable key, Group value, Context context) throws IOException, InterruptedException {
+    public static class MyMap extends Mapper<LongWritable, Group, NullWritable, Text> {
+
+    	@Override
+      public void map(LongWritable key, Group value, Mapper<LongWritable, Group, NullWritable, Text>.Context context) throws IOException, InterruptedException {
           NullWritable outKey = NullWritable.get();
           String outputRecord = "";
           // Get the schema and field values of the record
@@ -41,7 +41,6 @@ public class TestReadParquet extends Configured
           //context.write(outKey, new Text("(((((" + outputRecord));
           context.write(outKey, new Text(inputRecord));
       }
-      */
   }
  
   public int run(String[] args) throws Exception {
