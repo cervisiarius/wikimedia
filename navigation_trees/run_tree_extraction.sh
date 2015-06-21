@@ -39,6 +39,8 @@ export HADOOP_CLASSPATH=$HADOOP_CLASSPATH:$THRIFTJAR
 export LIBJARS=`echo "$CLASSPATH" | awk 'BEGIN { RS = ":" } { print }' | grep parquet-format | tail -1`
 export LIBJARS=$LIBJARS,$THRIFTJAR
 
+echo $LIBJARS
+
 echo "Running hadoop job"
 hadoop jar $TARGET_DIR/TreeExtractor-0.0.1-SNAPSHOT-jar-with-dependencies.jar \
     -D            mapreduce.job.queuename=priority \
