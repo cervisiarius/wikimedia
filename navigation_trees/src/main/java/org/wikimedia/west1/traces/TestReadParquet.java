@@ -30,7 +30,7 @@ public class TestReadParquet extends Configured
      */
     public static class MyMap extends
       Mapper {
- 
+/* 
       public void map(LongWritable key, Group value, Context context) throws IOException, InterruptedException {
           NullWritable outKey = NullWritable.get();
           String outputRecord = "";
@@ -41,6 +41,7 @@ public class TestReadParquet extends Configured
           //context.write(outKey, new Text("(((((" + outputRecord));
           context.write(outKey, new Text(inputRecord));
       }
+      */
   }
  
   public int run(String[] args) throws Exception {
@@ -70,6 +71,7 @@ public class TestReadParquet extends Configured
  
   public static void main(String[] args) throws Exception {
     try {
+    	System.out.println("YO");
       int res = ToolRunner.run(new Configuration(), new TestReadParquet(), args);
       System.exit(res);
     } catch (Exception e) {
