@@ -35,7 +35,7 @@ public class TestReadParquet extends Configured
           NullWritable outKey = NullWritable.get();
           String outputRecord = "";
           // Get the schema and field values of the record
-          String inputRecord = value.toString();
+          String inputRecord = "{{{{{{{{{{{" + value.toString();
           // Process the value, create an output record
           // ...
           context.write(outKey, new Text("(((((" + outputRecord));
