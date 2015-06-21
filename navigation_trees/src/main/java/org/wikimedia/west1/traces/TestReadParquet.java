@@ -14,16 +14,38 @@ import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.mapreduce.Mapper;
 import org.apache.hadoop.mapreduce.lib.output.TextOutputFormat;
+import org.json.JSONObject;
 
 import parquet.example.data.Group;
 import parquet.hadoop.example.ExampleInputFormat;
 
 public class TestReadParquet extends Configured implements Tool {
 
+	private static final String[] FIELDS = { "dt", "ip", "http_status", "uri_host", "uri_path",
+	    "content_type", "referer", "x_forwarded_for", "user_agent", "accept_language" };
+
+	private String getSchema() {
+		StringBuffer schema = new StringBuffer();
+		schema.append("message webrequest_schema {");
+		for (String field : FIELDS) {
+			schema.append(String.format("optional binary %s;", field));
+		}
+		schema.append("};");
+		return schema.toString();
+	}
+
 	/*
 	 * Read a Parquet record
 	 */
 	public static class MyMap extends Mapper<LongWritable, Group, Text, Text> {
+
+		private static JSONObject createJson(Group data) {
+			JSONObject json = new JSONObject();
+			for (String field : FIELDS) {
+				json.append(field, data.getString(field, 0));
+			}
+			return json;
+		}
 
 		@Override
 		public void map(LongWritable key, Group value,
@@ -31,7 +53,7 @@ public class TestReadParquet extends Configured implements Tool {
 		    InterruptedException {
 			Text outKey = new Text();
 			// Get the schema and field values of the record
-			String outputRecord = value.getString("dt", 0) + value.getString("accept_language", 0); //value.toString();
+			String outputRecord = createJson(value).toString();
 			// Process the value, create an output record
 			// ...
 			context.write(outKey, new Text(outputRecord));
@@ -41,11 +63,7 @@ public class TestReadParquet extends Configured implements Tool {
 	public int run(String[] args) throws Exception {
 
 		Configuration conf = getConf();
-		conf.set("parquet.read.schema", "message webrequest_schema {" + "optional binary dt;"
-//		    + "optional binary ip;" + "optional binary http_status;" + "optional binary uri_host;"
-//		    + "optional binary uri_path;" + "optional binary content_type;"
-//		    + "optional binary referer;" + "optional binary x_forwarded_for;"
-		    + "optional binary user_agent;" + "optional binary accept_language;" + "};");
+		conf.set("parquet.read.schema", getSchema());
 
 		Job job = new Job(conf);
 
@@ -72,7 +90,7 @@ public class TestReadParquet extends Configured implements Tool {
 
 	public static void main(String[] args) throws Exception {
 		try {
-			System.out.println("YO");
+			System.out.println("YIP!");
 			int res = ToolRunner.run(new Configuration(), new TestReadParquet(), args);
 			System.exit(res);
 		} catch (Exception e) {
