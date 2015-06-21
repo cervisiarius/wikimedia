@@ -17,7 +17,7 @@
     <hadoop.version.b>2.6.0-mr1-cdh5.4.0</hadoop.version.b>
     <!--hadoop.version.a>2.3.0-cdh5.0.2</hadoop.version.a-->
     <!--hadoop.version.b>2.3.0-mr1-cdh5.0.2</hadoop.version.b-->
-    <main.class>org.wikimedia.west1.traces.TestReadParquet</main.class>
+    <main.class>org.wikimedia.west1.traces.TreeExtraction</main.class>
   </properties>
 
   <dependencyManagement>

@@ -37,10 +37,10 @@ fi
 THRIFTJAR=`ls -l $CDH_BASE/lib/hive/lib/libthrift*jar | awk '{print $9}' | head -1`
 export HADOOP_CLASSPATH=$HADOOP_CLASSPATH:$THRIFTJAR
 export LIBJARS=`echo "$CLASSPATH" | awk 'BEGIN { RS = ":" } { print }' | grep parquet-format | tail -1`
-export LIBJARS=$LIBJARS,$THRIFTJAR,$TARGET_DIR/TreeExtractor-0.0.1-SNAPSHOT-jar-with-dependencies.jar
+export LIBJARS=$LIBJARS,$THRIFTJAR
 
 echo "Running hadoop job"
-hadoop jar /usr/lib/hadoop-mapreduce/hadoop-streaming.jar \
+hadoop jar $TARGET_DIR/TreeExtractor-0.0.1-SNAPSHOT-jar-with-dependencies.jar \
     -libjars      $LIBJARS
     -D            mapreduce.job.queuename=priority \
     -D            mapred.child.java.opts="-Xss10m -Xmx3g" \
