@@ -50,8 +50,10 @@ public class TreeExtraction extends Configured implements Tool {
 		job.setInputFormatClass(ExampleInputFormat.class);
 		job.setOutputFormatClass(TextOutputFormat.class);
 
-		FileInputFormat.setInputPaths(job, new Path(conf.get(CONF_INPUT)));
-		FileOutputFormat.setOutputPath(job, new Path(conf.get(CONF_OUTPUT)));
+//		FileInputFormat.setInputPaths(job, new Path(conf.get(CONF_INPUT)));
+//		FileOutputFormat.setOutputPath(job, new Path(conf.get(CONF_OUTPUT)));
+		FileInputFormat.setInputPaths(job, new Path(args[0]));
+		FileOutputFormat.setOutputPath(job, new Path(args[1]));
 
 		job.waitForCompletion(true);
 		return 0;

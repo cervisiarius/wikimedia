@@ -41,7 +41,6 @@ export LIBJARS=$LIBJARS,$THRIFTJAR
 
 echo "Running hadoop job"
 hadoop jar $TARGET_DIR/TreeExtractor-0.0.1-SNAPSHOT-jar-with-dependencies.jar \
-    -libjars      $LIBJARS \
     -D            mapreduce.job.queuename=priority \
     -D            mapred.child.java.opts="-Xss10m -Xmx3g" \
     -D            mapreduce.output.fileoutputformat.compress=false \
@@ -55,7 +54,8 @@ hadoop jar $TARGET_DIR/TreeExtractor-0.0.1-SNAPSHOT-jar-with-dependencies.jar \
     -D            org.wikimedia.west1.traces.maxNumEvents=$MAX_NUM_EVENTS \
     -D            org.wikimedia.west1.traces.input=$IN_DIR \
     -D            org.wikimedia.west1.traces.output=$OUT_DIR \
-    -D            org.wikimedia.west1.traces.numReduceTasks=$NUM_REDUCE
+    -D            org.wikimedia.west1.traces.numReduceTasks=$NUM_REDUCE \
+    -libjars      $LIBJARS
 
 # Hash salt used to be generated randomly, such that for different runs, different "users" will get
 # different ids (i.e., same language has different ids for different months). But from now on we
