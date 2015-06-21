@@ -13,8 +13,10 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <hadoop.version.a>2.3.0-cdh5.0.2</hadoop.version.a>
-    <hadoop.version.b>2.3.0-mr1-cdh5.0.2</hadoop.version.b>
+    <hadoop.version.a>2.6.0-cdh5.4.0</hadoop.version.a>
+    <hadoop.version.b>2.6.0-mr1-cdh5.4.0</hadoop.version.b>
+    <!--hadoop.version.a>2.3.0-cdh5.0.2</hadoop.version.a-->
+    <!--hadoop.version.b>2.3.0-mr1-cdh5.0.2</hadoop.version.b-->
   </properties>
 
   <dependencyManagement>
