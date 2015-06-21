@@ -16,14 +16,11 @@ import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.mapreduce.Mapper;
 import org.apache.hadoop.mapreduce.lib.output.TextOutputFormat;
  
-import parquet.Log;
 import parquet.example.data.Group;
 import parquet.hadoop.example.ExampleInputFormat;
 
 public class TestReadParquet extends Configured
   implements Tool {
-  private static final Log LOG =
-  Log.getLog(TestReadParquet.class);
  
     /*
      * Read a Parquet record
@@ -33,13 +30,11 @@ public class TestReadParquet extends Configured
     	@Override
       public void map(LongWritable key, Group value, Mapper<LongWritable, Group, NullWritable, Text>.Context context) throws IOException, InterruptedException {
           NullWritable outKey = NullWritable.get();
-          String outputRecord = "";
           // Get the schema and field values of the record
-          String inputRecord = "{{{{{{{{{{{" + value.toString();
+          String outputRecord = "{{{{{{{{{{{" + value.toString();
           // Process the value, create an output record
           // ...
-          //context.write(outKey, new Text("(((((" + outputRecord));
-          context.write(outKey, new Text(inputRecord));
+          context.write(outKey, new Text(outputRecord));
       }
   }
  
@@ -50,8 +45,8 @@ public class TestReadParquet extends Configured
     job.setJarByClass(getClass());
     job.setJobName(getClass().getName());
     
-    job.setMapOutputKeyClass(LongWritable.class);
-    job.setMapOutputValueClass(Text.class);
+    //job.setMapOutputKeyClass(NullWritable.class);
+    //job.setMapOutputValueClass(Text.class);
     job.setOutputKeyClass(Text.class);
     job.setOutputValueClass(Text.class);
     
