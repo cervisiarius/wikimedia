@@ -6,6 +6,7 @@ import java.util.regex.Pattern;
 
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapred.JobConf;
+import org.apache.hadoop.mapreduce.Mapper;
 import org.json.JSONObject;
 
 import ua_parser.Parser;
@@ -64,10 +65,7 @@ public class GroupAndFilterMapperTest {
         + "\"x_forwarded_for\":\"-\","
         + "\"user_agent\":\"Mozilla/5.0 (Windows NT 6.1; WOW64; Trident/7.0; rv:11.0) like Gecko\","
         + "\"accept_language\":\"es-MX\",\"x_analytics\":\"php=hhvm\",\"range\":\"-\"}";
-    JobConf conf = new JobConf();
-    conf.set("org.wikimedia.west1.traces.languagePattern", "en|es");
-    mapper.configure(conf);
-    mapper.map(new Text(evString), new Text(), null, null);
+    ///////////////////////////////////
   }
 
 	public static void main(String[] args) throws Exception {
