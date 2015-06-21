@@ -38,7 +38,8 @@ public class TestReadParquet extends Configured
           String inputRecord = "{{{{{{{{{{{" + value.toString();
           // Process the value, create an output record
           // ...
-          context.write(outKey, new Text("(((((" + outputRecord));
+          //context.write(outKey, new Text("(((((" + outputRecord));
+          context.write(outKey, new Text(inputRecord));
       }
   }
  
@@ -48,10 +49,12 @@ public class TestReadParquet extends Configured
  
     job.setJarByClass(getClass());
     job.setJobName(getClass().getName());
+    
     job.setMapOutputKeyClass(LongWritable.class);
     job.setMapOutputValueClass(Text.class);
     job.setOutputKeyClass(Text.class);
     job.setOutputValueClass(Text.class);
+    
     job.setMapperClass(MyMap.class);
     job.setNumReduceTasks(0);
  
