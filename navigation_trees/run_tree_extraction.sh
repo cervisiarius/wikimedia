@@ -41,7 +41,7 @@ export LIBJARS=$LIBJARS,$THRIFTJAR
 
 echo "Running hadoop job"
 hadoop jar $TARGET_DIR/TreeExtractor-0.0.1-SNAPSHOT-jar-with-dependencies.jar \
-    -libjars      $LIBJARS
+    -libjars      $LIBJARS \
     -D            mapreduce.job.queuename=priority \
     -D            mapred.child.java.opts="-Xss10m -Xmx3g" \
     -D            mapreduce.output.fileoutputformat.compress=false \
