@@ -22,7 +22,7 @@ import parquet.hadoop.example.ExampleInputFormat;
 public class TestReadParquet extends Configured implements Tool {
 
 	private static final String[] FIELDS = { "dt", "ip", "http_status", "uri_host", "uri_path",
-	    "content_type", "referer", "x_forwarded_for", "user_agent", "accept_language" };
+	    "uri_query", "content_type", "referer", "x_forwarded_for", "user_agent", "accept_language" };
 
 	private String getSchema() {
 		StringBuffer schema = new StringBuffer();
@@ -42,7 +42,7 @@ public class TestReadParquet extends Configured implements Tool {
 		private static JSONObject createJson(Group data) {
 			JSONObject json = new JSONObject();
 			for (String field : FIELDS) {
-				json.append(field, data.getString(field, 0));
+				json.put(field, data.getString(field, 0));
 			}
 			return json;
 		}
