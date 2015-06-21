@@ -31,7 +31,7 @@ public class TestReadParquet extends Configured implements Tool {
 		    InterruptedException {
 			Text outKey = new Text();
 			// Get the schema and field values of the record
-			String outputRecord = value.getString("dt", 0); //value.toString();
+			String outputRecord = value.getString("dt", 0) + value.getString("accept_language", 0); //value.toString();
 			// Process the value, create an output record
 			// ...
 			context.write(outKey, new Text(outputRecord));
