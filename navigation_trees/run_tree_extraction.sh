@@ -36,8 +36,9 @@ else
 fi
 THRIFTJAR=`ls -l $CDH_BASE/lib/hive/lib/libthrift*jar | awk '{print $9}' | head -1`
 export HADOOP_CLASSPATH=$HADOOP_CLASSPATH:$THRIFTJAR
-export LIBJARS=`echo "$CLASSPATH" | awk 'BEGIN { RS = ":" } { print }' | grep parquet-format | tail -1`
-export LIBJARS=$LIBJARS,$THRIFTJAR
+export LIBJARS=$THRIFTJAR
+#export LIBJARS=`echo "$CLASSPATH" | awk 'BEGIN { RS = ":" } { print }' | grep parquet-format | tail -1`
+#export LIBJARS=$LIBJARS,$THRIFTJAR
 
 echo $LIBJARS
 
