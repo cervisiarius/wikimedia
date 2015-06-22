@@ -7,6 +7,7 @@ import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
+import org.apache.hadoop.mapreduce.lib.output.LazyOutputFormat;
 import org.apache.hadoop.mapreduce.lib.output.TextOutputFormat;
 import org.apache.hadoop.util.Tool;
 import org.apache.hadoop.util.ToolRunner;
@@ -49,7 +50,8 @@ public class TreeExtraction extends Configured implements Tool {
 		job.setNumReduceTasks(conf.getInt(CONF_NUM_REDUCE, 1));
 
 		job.setInputFormatClass(ExampleInputFormat.class);
-		job.setOutputFormatClass(TextOutputFormat.class);
+		//job.setOutputFormatClass(TextOutputFormat.class);
+		LazyOutputFormat.setOutputFormatClass(job, TextOutputFormat.class);
 
 		FileInputFormat.setInputPaths(job, new Path(conf.get(CONF_INPUT)));
 		FileOutputFormat.setOutputPath(job, new Path(conf.get(CONF_OUTPUT)));

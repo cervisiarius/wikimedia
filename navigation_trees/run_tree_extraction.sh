@@ -29,7 +29,7 @@ MAX_NUM_EVENTS=10000
 # The number of reducers.
 NUM_REDUCE=10
 
-# Set some required environment variables.
+# Set some required environment variables (Thrift is needed for reading Parquet).
 if [ -e /opt/cloudera/parcels/CDH ] ; then
     CDH_BASE=/opt/cloudera/parcels/CDH
 else

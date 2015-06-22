@@ -21,13 +21,15 @@ import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.FileSystem;
 import org.apache.hadoop.fs.Path;
+import org.apache.hadoop.io.NullWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Reducer;
+import org.apache.hadoop.mapreduce.lib.output.MultipleOutputs;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class TreeExtractorReducer extends Reducer<Text, Text, Text, Text> {
+public class TreeExtractorReducer extends Reducer<Text, Text, NullWritable, Text> {
 
   // JSON field names.
   private static final String JSON_TREE_ID = "id";
@@ -89,6 +91,8 @@ public class TreeExtractorReducer extends Reducer<Text, Text, Text, Text> {
     REDUCE_MSEC_EVENT_CONSTRUCTOR, REDUCE_MAX_MEMORY
   }
 
+  private MultipleOutputs<NullWritable, Text> out;
+
   private Pattern homePagePattern;
   private boolean keepAmbiguousTrees;
   private boolean keepBadTrees;
@@ -144,6 +148,10 @@ public class TreeExtractorReducer extends Reducer<Text, Text, Text, Text> {
     // per day, and in the worst case, each event is its own tree, then seqNum <= 9999.
     return new Text(String.format("%s_%s_%s_%04d", lang, uidHash, day, seqNum));
   }
+  
+  private static String generateOutputFilename(String lang) {
+    return lang + "/part";
+  }
 
   // We don't want to keep all info from the original event objects, and we discard it here.
   private static void sparsifyJson(JSONObject json, boolean isGlobalRoot) {
@@ -165,7 +173,7 @@ public class TreeExtractorReducer extends Reducer<Text, Text, Text, Text> {
   }
 
   protected boolean isGoodEvent(JSONObject root, boolean isGlobalRoot,
-      Reducer<Text, Text, Text, Text>.Context context, String lang) throws JSONException {
+      Reducer<Text, Text, NullWritable, Text>.Context context, String lang) throws JSONException {
     // If the root of the tree has no referer and no children, we don't know if this browser sends
     // referer info, so we exclude the tree.
     if (isGlobalRoot && !root.has(JSON_CHILDREN) && !keepSingletonTrees) {
@@ -192,7 +200,7 @@ public class TreeExtractorReducer extends Reducer<Text, Text, Text, Text> {
 
   // Depth-first search, failing as soon as a node fails.
   protected boolean isGoodTree(JSONObject root, int recursionDepth,
-      Reducer<Text, Text, Text, Text>.Context context, String lang) throws JSONException {
+      Reducer<Text, Text, NullWritable, Text>.Context context, String lang) throws JSONException {
     if (recursionDepth > MAX_RECURSION_DEPTH) {
       context.getCounter(HADOOP_COUNTERS.REDUCE_STACKOVERFLOW).increment(1);
       return false;
@@ -211,7 +219,7 @@ public class TreeExtractorReducer extends Reducer<Text, Text, Text, Text> {
 
   // Keep only the good trees. As a side effect, this sparsifies the JSON objects.
   private List<BrowserEvent> filterTrees(List<BrowserEvent> roots,
-      Reducer<Text, Text, Text, Text>.Context context, String lang) {
+      Reducer<Text, Text, NullWritable, Text>.Context context, String lang) {
     List<BrowserEvent> filtered = new ArrayList<BrowserEvent>();
     for (BrowserEvent root : roots) {
       try {
@@ -298,11 +306,13 @@ public class TreeExtractorReducer extends Reducer<Text, Text, Text, Text> {
     maxNumEvents = 3600;
   }
 
+  @SuppressWarnings({ "rawtypes", "unchecked" })
   @Override
-  public void setup(Reducer<Text, Text, Text, Text>.Context context) {
+  public void setup(Reducer<Text, Text, NullWritable, Text>.Context context) {
     if (context == null) {
       setDefaultConfig();
     } else {
+      out = new MultipleOutputs(context);
       Configuration conf = context.getConfiguration();
       homePagePattern = Pattern.compile("http.?://(" + conf.get(CONF_LANGUAGE_PATTERN, "")
           + ")\\.wikipedia\\.org/");
@@ -317,8 +327,13 @@ public class TreeExtractorReducer extends Reducer<Text, Text, Text, Text> {
   }
 
   @Override
+  protected void cleanup(Context context) throws IOException, InterruptedException {
+    out.close();
+  }
+
+  @Override
   public void reduce(Text key, Iterable<Text> eventsIt,
-      Reducer<Text, Text, Text, Text>.Context context) throws IOException {
+      Reducer<Text, Text, NullWritable, Text>.Context context) throws IOException {
     try {
       List<BrowserEvent> events = new ArrayList<BrowserEvent>();
       int n = 0;
@@ -351,7 +366,8 @@ public class TreeExtractorReducer extends Reducer<Text, Text, Text, Text> {
       int i = 0;
       for (BrowserEvent root : goodRoots) {
         root.json.put(JSON_TREE_ID, makeTreeId(lang, uid, root.json.getString(JSON_DT), i));
-        context.write(new Text(lang), new Text(root.toString()));
+        //context.write(new Text(lang), new Text(root.toString()));
+        out.write(NullWritable.get(), new Text(root.toString()), generateOutputFilename(lang));
         if (root.json.has(JSON_BAD_TREE) && root.json.getBoolean(JSON_BAD_TREE)) {
           context.getCounter(HADOOP_COUNTERS.REDUCE_BAD_TREE).increment(1);
         } else {
