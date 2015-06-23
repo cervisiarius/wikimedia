@@ -3,6 +3,8 @@
 # Modify these parameters.
 # This is where the JAR file with the Mapper and Reducer code resides.
 TARGET_DIR=$HOME/wikimedia/trunk/navigation_trees/target
+# Logs are written here.
+LOG_DIR=$HOME/wikimedia/trunk/data/log
 # The part of the server logs you want to process.
 #IN_DIR=/wmf/data/wmf/webrequest/webrequest_source=text/year=2015/*/*/*/*
 #IN_DIR=/user/west1/webrequest_source=text/year=2015/month=2/day=6/hour=9/000063_0
@@ -54,4 +56,5 @@ hadoop jar $TARGET_DIR/TreeExtractor-0.0.1-SNAPSHOT-jar-with-dependencies.jar \
     -D            org.wikimedia.west1.traces.input=$IN_DIR \
     -D            org.wikimedia.west1.traces.output=$OUT_DIR \
     -D            org.wikimedia.west1.traces.numReduceTasks=$NUM_REDUCE \
-    -libjars      $LIBJARS
+    -libjars      $LIBJARS \
+&> $LOG_DIR/tree_extraction_$(date +%Y%m%d).log
