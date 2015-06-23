@@ -83,7 +83,7 @@ public abstract class BrowserEvent {
   }
 
   // This returns a representation of the event that can be matched to other events' referer, i.e.,
-  // "/wiki/XYZ/" for Pageviews, and "index.php?search=XYZ&title=Special%3ASearch..." for
+  // "/wiki/XYZ/" for Pageviews, and "/w/index.php?search=XYZ&title=Special%3ASearch..." for
   // WikiSearches.
   public abstract String getPathAndQuery();
 

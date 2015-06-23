@@ -8,12 +8,9 @@ import org.json.JSONObject;
 
 public class Pageview extends BrowserEvent {
 
-  // The article after redirect resolution.
-  private String resolvedTitle;
-
   @Override
   public String getPathAndQuery() {
-    return "/wiki/" + this.resolvedTitle;
+    return "/wiki/" + json.getString(JSON_TITLE);
   }
 
   public Pageview(JSONObject json, Map<String, String> redirects) throws JSONException,
@@ -30,11 +27,9 @@ public class Pageview extends BrowserEvent {
     // Resolve redirects in article.
     String articleRedirect = redirects.get(article);
     if (articleRedirect != null) {
-      this.resolvedTitle = articleRedirect;
       json.put(JSON_TITLE, articleRedirect);
       json.put(JSON_UNRESOLVED_TITLE, article);
     } else {
-      this.resolvedTitle = article;
       json.put(JSON_TITLE, article);
     }
   }
