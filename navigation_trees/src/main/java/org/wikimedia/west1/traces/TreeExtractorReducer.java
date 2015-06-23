@@ -345,7 +345,7 @@ public class TreeExtractorReducer extends Reducer<Text, Text, NullWritable, Text
           context.getCounter(HADOOP_COUNTERS.REDUCE_MSEC_EVENT_CONSTRUCTOR).increment(
               after - before);
           events.add(event);
-          if (!json.has(BrowserEvent.JSON_UNRESOLVED_TITLE)) {
+          if (json.has(BrowserEvent.JSON_UNRESOLVED_TITLE)) {
             context.getCounter(HADOOP_COUNTERS.REDUCE_REDIRECT_RESOLVED).increment(1);
           }
         }
