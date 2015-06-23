@@ -57,4 +57,4 @@ hadoop jar $TARGET_DIR/TreeExtractor-0.0.1-SNAPSHOT-jar-with-dependencies.jar \
     -D            org.wikimedia.west1.traces.output=$OUT_DIR \
     -D            org.wikimedia.west1.traces.numReduceTasks=$NUM_REDUCE \
     -libjars      $LIBJARS \
-2>&1 | tee $LOG_DIR/tree_extraction_$(date +%Y%m%d).log
+2>&1 | tee $LOG_DIR/tree_extraction_$(date +%Y%m%dT%H%M%S).log
