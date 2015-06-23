@@ -384,7 +384,7 @@
 	org.wikimedia.west1.traces.TreeExtractorReducer$HADOOP_COUNTERS
 		REDUCE_MSEC_EVENT_CONSTRUCTOR=33969148
 		REDUCE_OK_TREE=3044217351
-		REDUCE_REDIRECT_RESOLVED=4833137457
+		REDUCE_REDIRECT_RESOLVED=4833137457  // NB: The if-condition was erroneously negated here, so here this counts the number of browser events where *no* redirect was resolved; bug has been fixed.
 		REDUCE_SKIPPED_WIKIMEDIA_REFERER_IN_ROOT=162327344
 		REDUCE_STACKOVERFLOW=28541
 		REDUCE_TOO_MANY_EVENTS=13232
