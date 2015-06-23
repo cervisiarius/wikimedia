@@ -8,8 +8,6 @@ import org.json.JSONObject;
 
 public class Pageview extends BrowserEvent {
 
-  private static final String JSON_UNRESOLVED_TITLE = "unresolved_title";
-
   // The article after redirect resolution.
   private String resolvedTitle;
 
@@ -23,6 +21,12 @@ public class Pageview extends BrowserEvent {
     super(json, redirects);
     // Extract the article from the URI path.
     String article = extractArticleFromPath(json.getString(JSON_URI_PATH));
+    // If there's an anchor reference, split it off.
+    String[] article_anchor = article.split("#", 2);
+    if (article_anchor.length == 2) {
+      article = article_anchor[0];
+      json.put(JSON_ANCHOR, article_anchor[1]); 
+    }
     // Resolve redirects in article.
     String articleRedirect = redirects.get(article);
     if (articleRedirect != null) {
@@ -34,5 +38,5 @@ public class Pageview extends BrowserEvent {
       json.put(JSON_TITLE, article);
     }
   }
-
+  
 }

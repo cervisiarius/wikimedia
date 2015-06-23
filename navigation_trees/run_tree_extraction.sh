@@ -4,11 +4,11 @@
 # This is where the JAR file with the Mapper and Reducer code resides.
 TARGET_DIR=$HOME/wikimedia/trunk/navigation_trees/target
 # The part of the server logs you want to process.
-#export IN_DIR=/wmf/data/wmf/webrequest/webrequest_source=text/year=2015/*/*/*/*
+#IN_DIR=/wmf/data/wmf/webrequest/webrequest_source=text/year=2015/*/*/*/*
 #IN_DIR=/user/west1/webrequest_source=text/year=2015/month=2/day=6/hour=9/000063_0
-IN_DIR=/user/west1/webrequest_source=text/year=2015/month=2/day=6/hour=9/*
+IN_DIR=/user/west1/webrequest_source=text/year=2015/month=1/day=*/hour=*/*
 # The output directory.
-OUT_DIR=/user/west1/parquet_test
+OUT_DIR=/user/west1/navigation_trees_WITH-SEARCH/month=1
 # Cf. org.wikimedia.west1.traces.TreeExtractorReducer.isGoodEvent().
 KEEP_BAD_TREES=false
 # Cf. org.wikimedia.west1.traces.TreeExtractorReducer.isGoodEvent().
@@ -19,15 +19,15 @@ KEEP_AMBIGUOUS_TREES=true
 # languages into 3 sets was chosen such that the cumulative sizes of their redirect tables are
 # approximately equal.
 LANGUAGE_PATTERN='en'
-#export LANGUAGE_PATTERN='es|fr|ru|de|fa|sv|simple|zh|ja'
-#export LANGUAGE_PATTERN='sh|pt|ar|nl|it|ceb|war|sr|pl|uk|ca|id|ro|tr|ko|no|fi|uz|cs|hu|vi|he|hy|eo|da|bg|et|lt|el|vo|sk|sl|eu|nn|kk|hr|hi|ms|gl|min'
+#LANGUAGE_PATTERN='es|fr|ru|de|fa|sv|simple|zh|ja'
+#LANGUAGE_PATTERN='sh|pt|ar|nl|it|ceb|war|sr|pl|uk|ca|id|ro|tr|ko|no|fi|uz|cs|hu|vi|he|hy|eo|da|bg|et|lt|el|vo|sk|sl|eu|nn|kk|hr|hi|ms|gl|min'
 # If a user has more than this many events, we ignore her.
 # Having 100K events in a month would mean one every 26 seconds.
 # Having 10K events in a month would mean one every 4 minutes.
 # Having 3600 events in a day would mean one every 24 seconds.
 MAX_NUM_EVENTS=10000
 # The number of reducers.
-NUM_REDUCE=10
+NUM_REDUCE=100
 
 # Set some required environment variables (Thrift is needed for reading Parquet).
 if [ -e /opt/cloudera/parcels/CDH ] ; then
@@ -38,8 +38,6 @@ fi
 THRIFTJAR=`ls -l $CDH_BASE/lib/hive/lib/libthrift*jar | awk '{print $9}' | head -1`
 export HADOOP_CLASSPATH=$HADOOP_CLASSPATH:$THRIFTJAR
 export LIBJARS=$THRIFTJAR
-
-echo $LIBJARS
 
 echo "Running hadoop job"
 hadoop jar $TARGET_DIR/TreeExtractor-0.0.1-SNAPSHOT-jar-with-dependencies.jar \

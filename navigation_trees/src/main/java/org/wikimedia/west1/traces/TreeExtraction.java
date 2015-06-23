@@ -50,7 +50,7 @@ public class TreeExtraction extends Configured implements Tool {
 		job.setNumReduceTasks(conf.getInt(CONF_NUM_REDUCE, 1));
 
 		job.setInputFormatClass(ExampleInputFormat.class);
-		//job.setOutputFormatClass(TextOutputFormat.class);
+		// This is how we are able to write to several output folders from the same Reducer.
 		LazyOutputFormat.setOutputFormatClass(job, TextOutputFormat.class);
 
 		FileInputFormat.setInputPaths(job, new Path(conf.get(CONF_INPUT)));

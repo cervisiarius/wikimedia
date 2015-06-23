@@ -31,19 +31,6 @@ import org.json.JSONObject;
 
 public class TreeExtractorReducer extends Reducer<Text, Text, NullWritable, Text> {
 
-  // JSON field names.
-  private static final String JSON_TREE_ID = "id";
-  private static final String JSON_CHILDREN = "children";
-  private static final String JSON_PARENT_AMBIGUOUS = "parent_ambiguous";
-  private static final String JSON_BAD_TREE = "bad_tree";
-  private static final String JSON_DT = "dt";
-  private static final String JSON_UA = "user_agent";
-  private static final String JSON_TITLE = "title";
-  private static final String JSON_HTTP_STATUS = "http_status";
-  private static final String JSON_REFERER = "referer";
-  private static final String JSON_UNRESOLVED_TITLE = "unresolved_title";
-  private static final String JSON_IS_SEARCH = "is_search";
-  private static final String JSON_SEARCH_PARAMS = "search_params";
   // Job config parameters specifying which Wikipedia versions we're interested in, e.g.,
   // "(pt|es)\\.wikipedia\\.org".
   private static final String CONF_LANGUAGE_PATTERN = "org.wikimedia.west1.traces.languagePattern";
@@ -70,15 +57,17 @@ public class TreeExtractorReducer extends Reducer<Text, Text, NullWritable, Text
       + "wiki(data|media|pedia)\\.org.*");
 
   // The fields you want to store for every event.
-  private static final Set<String> FIELDS_TO_KEEP = new HashSet<String>(Arrays.asList(JSON_DT,
-      JSON_TITLE, JSON_HTTP_STATUS,
+  private static final Set<String> FIELDS_TO_KEEP = new HashSet<String>(Arrays.asList(
+      BrowserEvent.JSON_DT, BrowserEvent.JSON_TITLE,
+      BrowserEvent.JSON_HTTP_STATUS,
       // The fields we added.
-      JSON_UNRESOLVED_TITLE, JSON_CHILDREN, JSON_PARENT_AMBIGUOUS, JSON_BAD_TREE, JSON_IS_SEARCH,
-      JSON_SEARCH_PARAMS));
+      BrowserEvent.JSON_ANCHOR, BrowserEvent.JSON_UNRESOLVED_TITLE, BrowserEvent.JSON_CHILDREN,
+      BrowserEvent.JSON_PARENT_AMBIGUOUS, BrowserEvent.JSON_BAD_TREE, BrowserEvent.JSON_IS_SEARCH,
+      BrowserEvent.JSON_SEARCH_PARAMS));
   // The fields you want to store only for the root (because they're identical for all events in
   // the same tree).
   private static final Set<String> FIELDS_TO_KEEP_IN_ROOT = new HashSet<String>(Arrays.asList(
-      JSON_UA, JSON_REFERER, JSON_TREE_ID));
+      BrowserEvent.JSON_UA, BrowserEvent.JSON_REFERER, BrowserEvent.JSON_TREE_ID));
 
   private static enum HADOOP_COUNTERS {
     // In order to have an idea what the big reasons are for dismissing trees. Note that these don't
@@ -148,7 +137,7 @@ public class TreeExtractorReducer extends Reducer<Text, Text, NullWritable, Text
     // per day, and in the worst case, each event is its own tree, then seqNum <= 9999.
     return new Text(String.format("%s_%s_%s_%04d", lang, uidHash, day, seqNum));
   }
-  
+
   private static String generateOutputFilename(String lang) {
     return lang + "/part";
   }
@@ -156,8 +145,8 @@ public class TreeExtractorReducer extends Reducer<Text, Text, NullWritable, Text
   // We don't want to keep all info from the original event objects, and we discard it here.
   private static void sparsifyJson(JSONObject json, boolean isGlobalRoot) {
     // First process children recursively.
-    if (json.has(JSON_CHILDREN)) {
-      JSONArray children = json.getJSONArray(JSON_CHILDREN);
+    if (json.has(BrowserEvent.JSON_CHILDREN)) {
+      JSONArray children = json.getJSONArray(BrowserEvent.JSON_CHILDREN);
       for (int i = 0; i < children.length(); ++i) {
         sparsifyJson((JSONObject) children.get(i), false);
       }
@@ -176,7 +165,7 @@ public class TreeExtractorReducer extends Reducer<Text, Text, NullWritable, Text
       Reducer<Text, Text, NullWritable, Text>.Context context, String lang) throws JSONException {
     // If the root of the tree has no referer and no children, we don't know if this browser sends
     // referer info, so we exclude the tree.
-    if (isGlobalRoot && !root.has(JSON_CHILDREN) && !keepSingletonTrees) {
+    if (isGlobalRoot && !root.has(BrowserEvent.JSON_CHILDREN) && !keepSingletonTrees) {
       context.getCounter(HADOOP_COUNTERS.REDUCE_SKIPPED_SINGLETON).increment(1);
       return false;
     }
@@ -184,14 +173,15 @@ public class TreeExtractorReducer extends Reducer<Text, Text, NullWritable, Text
     // previous tree (e.g., one whose parent was discarded in the mapper because it doesn't match
     // the required URL pattern). As an exception, we do allow trees that start with the home page
     // of one of the specified Wikipedia versions.
-    if (isGlobalRoot && WIKI_HOST_PATTERN.matcher(root.getString(JSON_REFERER)).matches()
-        && !homePagePattern.matcher(root.getString(JSON_REFERER)).matches()) {
+    if (isGlobalRoot
+        && WIKI_HOST_PATTERN.matcher(root.getString(BrowserEvent.JSON_REFERER)).matches()
+        && !homePagePattern.matcher(root.getString(BrowserEvent.JSON_REFERER)).matches()) {
       context.getCounter(HADOOP_COUNTERS.REDUCE_SKIPPED_WIKIMEDIA_REFERER_IN_ROOT).increment(1);
       return false;
     }
     // If we don't want to keep ambiguous trees, discard them.
-    if (!keepAmbiguousTrees && root.has(JSON_PARENT_AMBIGUOUS)
-        && root.getBoolean(JSON_PARENT_AMBIGUOUS)) {
+    if (!keepAmbiguousTrees && root.has(BrowserEvent.JSON_PARENT_AMBIGUOUS)
+        && root.getBoolean(BrowserEvent.JSON_PARENT_AMBIGUOUS)) {
       context.getCounter(HADOOP_COUNTERS.REDUCE_SKIPPED_AMBIGUOUS).increment(1);
       return false;
     }
@@ -206,8 +196,8 @@ public class TreeExtractorReducer extends Reducer<Text, Text, NullWritable, Text
       return false;
     } else if (!isGoodEvent(root, recursionDepth == 0, context, lang)) {
       return false;
-    } else if (root.has(JSON_CHILDREN)) {
-      JSONArray children = root.getJSONArray(JSON_CHILDREN);
+    } else if (root.has(BrowserEvent.JSON_CHILDREN)) {
+      JSONArray children = root.getJSONArray(BrowserEvent.JSON_CHILDREN);
       for (int i = 0; i < children.length(); ++i) {
         if (!isGoodTree(children.getJSONObject(i), recursionDepth + 1, context, lang)) {
           return false;
@@ -228,7 +218,7 @@ public class TreeExtractorReducer extends Reducer<Text, Text, NullWritable, Text
           filtered.add(root);
         } else if (keepBadTrees) {
           sparsifyJson(root.json, true);
-          root.json.put(JSON_BAD_TREE, true);
+          root.json.put(BrowserEvent.JSON_BAD_TREE, true);
           filtered.add(root);
         }
       } catch (JSONException e) {
@@ -259,12 +249,12 @@ public class TreeExtractorReducer extends Reducer<Text, Text, NullWritable, Text
       }
       // Otherwise, append it as a child to the latest event involving the referer page.
       else {
-        parent.json.append(JSON_CHILDREN, event.json);
+        parent.json.append(BrowserEvent.JSON_CHILDREN, event.json);
         Integer refererCount = pageCounts.get(ref);
         // A parent is ambiguous if we have seen the referer URL several times in this session
         // before the current event.
         if (refererCount != null && refererCount > 1) {
-          event.json.put(JSON_PARENT_AMBIGUOUS, true);
+          event.json.put(BrowserEvent.JSON_PARENT_AMBIGUOUS, true);
         }
       }
       // Remember this event as the last event for its URL.
@@ -355,7 +345,7 @@ public class TreeExtractorReducer extends Reducer<Text, Text, NullWritable, Text
           context.getCounter(HADOOP_COUNTERS.REDUCE_MSEC_EVENT_CONSTRUCTOR).increment(
               after - before);
           events.add(event);
-          if (!json.has(JSON_UNRESOLVED_TITLE)) {
+          if (!json.has(BrowserEvent.JSON_UNRESOLVED_TITLE)) {
             context.getCounter(HADOOP_COUNTERS.REDUCE_REDIRECT_RESOLVED).increment(1);
           }
         }
@@ -365,10 +355,11 @@ public class TreeExtractorReducer extends Reducer<Text, Text, NullWritable, Text
       List<BrowserEvent> goodRoots = filterTrees(allRoots, context, lang);
       int i = 0;
       for (BrowserEvent root : goodRoots) {
-        root.json.put(JSON_TREE_ID, makeTreeId(lang, uid, root.json.getString(JSON_DT), i));
-        //context.write(new Text(lang), new Text(root.toString()));
+        root.json.put(BrowserEvent.JSON_TREE_ID,
+            makeTreeId(lang, uid, root.json.getString(BrowserEvent.JSON_DT), i));
         out.write(NullWritable.get(), new Text(root.toString()), generateOutputFilename(lang));
-        if (root.json.has(JSON_BAD_TREE) && root.json.getBoolean(JSON_BAD_TREE)) {
+        if (root.json.has(BrowserEvent.JSON_BAD_TREE)
+            && root.json.getBoolean(BrowserEvent.JSON_BAD_TREE)) {
           context.getCounter(HADOOP_COUNTERS.REDUCE_BAD_TREE).increment(1);
         } else {
           context.getCounter(HADOOP_COUNTERS.REDUCE_OK_TREE).increment(1);

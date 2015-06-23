@@ -12,11 +12,22 @@ import org.json.JSONObject;
 
 public abstract class BrowserEvent {
 
-  protected static final String JSON_DT = "dt";
-  protected static final String JSON_REFERER = "referer";
-  protected static final String JSON_TITLE = "title";
-  protected static final String JSON_URI_QUERY = "uri_query";
-  protected static final String JSON_URI_PATH = "uri_path";
+  // JSON field names.
+  public static final String JSON_TREE_ID = "id";
+  public static final String JSON_CHILDREN = "children";
+  public static final String JSON_PARENT_AMBIGUOUS = "parent_ambiguous";
+  public static final String JSON_BAD_TREE = "bad_tree";
+  public static final String JSON_DT = "dt";
+  public static final String JSON_UA = "user_agent";
+  public static final String JSON_TITLE = "title";
+  public static final String JSON_HTTP_STATUS = "http_status";
+  public static final String JSON_REFERER = "referer";
+  public static final String JSON_UNRESOLVED_TITLE = "unresolved_title";
+  public static final String JSON_IS_SEARCH = "is_search";
+  public static final String JSON_SEARCH_PARAMS = "search_params";
+  public static final String JSON_URI_QUERY = "uri_query";
+  public static final String JSON_URI_PATH = "uri_path";
+  public static final String JSON_ANCHOR = "anchor";
 
   private static final String UTF8 = "UTF-8";
 
@@ -60,6 +71,8 @@ public abstract class BrowserEvent {
     }
   }
 
+  // If there's an anchor reference in the URL, it will still be present in the result of this
+  // method.
   protected static String extractArticleFromPath(String uriPath) {
     // Valid paths contain '/wiki/' before the article name.
     if (uriPath.startsWith("/wiki/") && uriPath.length() > 6) {
