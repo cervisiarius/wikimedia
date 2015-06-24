@@ -6,13 +6,9 @@ import networkx as nx
 from collections import Counter
 from pprint import pprint
 from ConfigParser import SafeConfigParser
-<<<<<<< HEAD
 from util import get_parser
 import pandas as pd
-=======
 from util import get_parser, save_rdd
-
->>>>>>> 596f5a4f5162be2053b696be271051f3763d056e
 
 
 """
@@ -116,6 +112,7 @@ def get_missing_items(sc, cp, G, s, t, r, delim, exp_dir, n = 100):
     for i, g in enumerate(cc):
         missing_items.update(is_subgraph_missing_target_item(g, s, t, delim))
 <<<<<<< HEAD
+<<<<<<< HEAD
 
     missing_items_df = pd.DataFrame(missing_items.items())
     missing_items_df.columns = ['id', 'title']
@@ -139,19 +136,21 @@ def get_missing_items(sc, cp, G, s, t, r, delim, exp_dir, n = 100):
     missing_items = sc.parallelize(missing_items.iteritems())\
                     .filter(lambda x: ':' not in x[1])\
                     .filter(lambda x: not x[1].startswith('List'))
+=======
+>>>>>>> f8f312aa183d1112b05d8a0b0d4e0430f87e5761
 
-    #names = ['wikidata_id', 'lang', 'article_title', 'pageview_count']
+    missing_items_df = pd.DataFrame(missing_items.items())
+    missing_items_df.columns = ['id', 'title']
+    missing_items_df = missing_items_df[missing_items_df['title'].apply(lambda x: (':' not in x) and (not x.startswith('List')))]
+
     pageviews = sc.textFile(cp.get('general', 'pageviews'))\
     .map(lambda x: x.split('\t'))\
     .filter(lambda x: x[1] == s)\
-    .map(lambda x: (x[0], int(x[3])))
+    .map(lambda x: (x[0], int(x[3]))).collect()
+    pageviews_df = pd.DataFrame(pageviews)
+    pageviews_df.columns = ['id', 'n']
 
-    print("Got %d pageview counts" % pageviews.count())
-
-    missing_items = missing_items.join(pageviews)
-
-    print("Got %d missing items after join" % missing_items.count())
-
+<<<<<<< HEAD
     ranked_missing_items = missing_items.sortBy(lambda x: -x[1][1])
 
     print("Got %d missing items after ranking" % ranked_missing_items.count())
@@ -169,6 +168,12 @@ def get_missing_items(sc, cp, G, s, t, r, delim, exp_dir, n = 100):
     save_rdd (str_ranked_missing_items,  base_dir , hadoop_base_dir, cp.get('missing', 'ranked_missing_items'))
     
 >>>>>>> 596f5a4f5162be2053b696be271051f3763d056e
+=======
+    missing_items_df = missing_items_df.merge(pageviews_df, on='id')
+    missing_items_df = missing_items_df.sort('n', ascending = False)
+    fname = os.path.join(cp.get('general', 'local_data_dir'), exp_dir, cp.get('missing', 'missing_items'))
+    missing_items_df.to_csv(fname, sep='\t', encoding='utf8', index = False, header = False) 
+>>>>>>> f8f312aa183d1112b05d8a0b0d4e0430f87e5761
 
 
 def get_merged_items(g, s, t, delim):
@@ -256,9 +261,13 @@ if __name__ == '__main__':
     conf = SparkConf()
     conf.set("spark.app.name", 'finding missing articles')
 <<<<<<< HEAD
+<<<<<<< HEAD
     conf.set("spark.akka.frameSize", 30)
 =======
 >>>>>>> 596f5a4f5162be2053b696be271051f3763d056e
+=======
+    conf.set("spark.akka.frameSize", 30)
+>>>>>>> f8f312aa183d1112b05d8a0b0d4e0430f87e5761
     sc = SparkContext(conf=conf)
 
 
@@ -267,10 +276,13 @@ if __name__ == '__main__':
     get_missing_items(sc, cp, G, s, t, r, delim, exp_dir, n = 10000)
     print "Got missing Items"
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 
 >>>>>>> 596f5a4f5162be2053b696be271051f3763d056e
+=======
+>>>>>>> f8f312aa183d1112b05d8a0b0d4e0430f87e5761
     merged_filename = os.path.join(cp.get('general', 'local_data_dir'), exp_dir, cp.get('missing', 'merged_items'))
     save_merged_items(G, s, t, delim, merged_filename)
     print "Got clusters"

@@ -233,7 +233,7 @@ def cross_validation(training, validation, test, candidates, id_title_map, ranks
     numTraining = training.count()
     numValidation = validation.count()
     numTest = test.count()
-    if IMPLICIT:
+    if  not IMPLICIT:
         alphas = [1.0]
     for rank, lmbda, numIter, alpha in itertools.product(ranks, lambdas, numIters, alphas):
         if IMPLICIT:

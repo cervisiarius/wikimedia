@@ -1,13 +1,12 @@
 """
 spark-submit   \
 --driver-memory 5g --master yarn --deploy-mode client \
---num-executors 2 \
+--num-executors 4 \
 --executor-memory 10g \
 --executor-cores 8 \
 --queue priority \
 /home/ellery/wikimedia/missing_articles/src/main/spark/als_importance.py \
---config /home/ellery/wikimedia/missing_articles/missing_articles.ini 
-
+--config /home/ellery/wikimedia/missing_articles/missing_articles.ini  > so.txt
 """
 
 
