@@ -5,5 +5,7 @@ my $NUM_REDUCERS = 50;
 my $HOME = $ENV{'HOME'};
 
 foreach my $lang (@langs) {
-    `sh $HOME/wikimedia/trunk/navigation_trees/src/main/perl/run_date_filtering.sh $lang $NUM_REDUCERS`;
+  print "Processing $lang\n";
+  `sh $HOME/wikimedia/trunk/navigation_trees/run_date_filtering.sh $lang $NUM_REDUCERS`;
 }
+

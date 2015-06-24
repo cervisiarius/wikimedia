@@ -11,6 +11,7 @@ import java.util.Map;
 import java.util.Scanner;
 import java.util.zip.GZIPInputStream;
 
+// NB: unused
 public class RedirectResolutionTestClient {
 
   private static Map<String, String> readRedirects(String lang) throws IOException {
@@ -45,7 +46,7 @@ public class RedirectResolutionTestClient {
         ObjectInputStream inFromServer = new ObjectInputStream(sock.getInputStream());
         outToServer.writeObject("pt");
         outToServer.writeObject(key);
-        String s = (String) inFromServer.readObject();
+        // String s = (String) inFromServer.readObject();
         // System.out.println(s);
         inFromServer.close();
         outToServer.close();

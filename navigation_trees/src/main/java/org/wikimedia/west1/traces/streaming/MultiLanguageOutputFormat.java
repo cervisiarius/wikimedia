@@ -1,4 +1,4 @@
-package org.wikimedia.west1.traces;
+package org.wikimedia.west1.traces.streaming;
 
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.Text;

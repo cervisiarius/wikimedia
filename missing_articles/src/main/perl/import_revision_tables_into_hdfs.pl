@@ -8,7 +8,13 @@ my @langs = split(/\n/, `cut -f1 $DATADIR/list_of_wikipedias.tsv`);
 
 open(ERR, '> sqoop.log') or die $!;
 
+# NB: num-mappers=80 (unclear if that speeds things up)
+
 foreach my $lang (@langs) {
+  # We only do this for French, Spanish, Polish
+  if ($lang !~ /^es|fr|pl$/) {
+    next;
+  }
   print STDERR "Importing $lang\n";
   print ERR "
     =========================================
@@ -17,6 +23,7 @@ foreach my $lang (@langs) {
   my $sqoop_cmd =
     "sqoop import                                                     \\
     -Dmapreduce.output.fileoutputformat.compress=false                \\
+    -Dmapreduce.job.queuename=priority                                \\
     --connect jdbc:mysql://analytics-store.eqiad.wmnet/$lang\wiki     \\
     --verbose                                                         \\
     --target-dir /user/west1/revision_history/$lang                   \\
@@ -28,6 +35,7 @@ foreach my $lang (@langs) {
     --escaped-by \\\\                                                 \\
     --username=research --password HGY3DhGoYhxF                       \\
     --split-by a.rev_id                                               \\
+    --num-mappers 80                                                  \\
     --query '
     SELECT
       a.rev_id,
