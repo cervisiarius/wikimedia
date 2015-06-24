@@ -1,7 +1,7 @@
 
 import os
 db = 'prod_tables'
-wikis = ['cawiki',] # 'dewiki', 'eswiki', 'enwiki']
+wikis = ['frwiki', 'plwiki', 'eswiki', 'enwiki'] # 'dewiki', 'eswiki', 'enwiki']
 overwrite = True
 
 page_query = """
@@ -71,7 +71,35 @@ WHERE $CONDITIONS
 '
 """
 
-table_queries = [page_query, redirect_query, langlinks_query]
+
+revision_query = """
+sqoop import                                                      \
+  --connect jdbc:mysql://analytics-store.eqiad.wmnet/%(wiki)s      \
+  --verbose                                                         \
+  --target-dir /tmp/$(mktemp -u -p '' -t ${USER}_sqoop_2XXXXX)      \
+  --delete-target-dir                                               \
+  --username research                                               \
+  --password-file /user/ellery/sqoop.password                       \
+  --split-by rev_parent_id                                              \
+  --hive-import                                                     \
+  --hive-database %(db)s                                        \
+  --create-hive-table                                               \
+  --hive-table %(wiki)s_revision                                         \
+  --query '
+SELECT
+  rev_page,
+  rev_user,
+  CAST(rev_user_text AS CHAR(255) CHARSET utf8) AS rev_user_text,
+  rev_minor_edit,
+  rev_deleted,
+  rev_len,
+  rev_parent_id
+FROM revision
+WHERE $CONDITIONS
+'
+"""
+
+table_queries = [revision_query] #[page_query, redirect_query, langlinks_query, revision_query]
 
 os.system("export JAVA_HOME=/usr/lib/jvm/java-1.7.0-openjdk-amd64")
 for wiki in wikis:
