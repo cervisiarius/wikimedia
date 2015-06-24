@@ -357,6 +357,7 @@ public class TreeExtractorReducer extends Reducer<Text, Text, NullWritable, Text
       for (BrowserEvent root : goodRoots) {
         root.json.put(BrowserEvent.JSON_TREE_ID,
             makeTreeId(lang, uid, root.json.getString(BrowserEvent.JSON_DT), i));
+        // Write the output to the folder for this language.
         out.write(NullWritable.get(), new Text(root.toString()), generateOutputFilename(lang));
         if (root.json.has(BrowserEvent.JSON_BAD_TREE)
             && root.json.getBoolean(BrowserEvent.JSON_BAD_TREE)) {

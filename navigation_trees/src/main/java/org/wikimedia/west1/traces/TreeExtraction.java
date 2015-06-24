@@ -33,6 +33,7 @@ public class TreeExtraction extends Configured implements Tool {
 	public int run(String[] args) throws Exception {
 
 		Configuration conf = getConf();
+		// Make sure we only read the necessary columns.
 		conf.set("parquet.read.schema", getSchema());
 
 		Job job = new Job(conf);
