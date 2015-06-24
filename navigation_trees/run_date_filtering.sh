@@ -18,5 +18,6 @@ hadoop jar /usr/lib/hadoop-mapreduce/hadoop-streaming.jar \
     -input        $IN_FILE \
     -output       $OUT_DIR \
     -mapper       "/usr/bin/python ./date_filter_mapper.py" \
-    -reducer      "/bin/cat" \
+    -reducer      "/usr/bin/sort" \
     -numReduceTasks $NUM_REDUCERS
+

@@ -19,14 +19,14 @@ Usage:
 
 /home/otto/spark-1.3.0-bin-hadoop2.4/bin/spark-submit \
 --driver-memory 5g --master yarn --deploy-mode client \
---num-executors 4 --executor-memory 5g --executor-cores 8 \
+--num-executors 4 --executor-memory 20g --executor-cores 8 \
 --queue priority \
 /home/ellery/wikimedia/missing_articles/src/main/spark/lda_preprocess.py \
---dir simple_lda2 \
+--dir en_lda_100k \
 --config /home/ellery/wikimedia/missing_articles/missing_articles.ini \
---lang simple \
---dump /user/west1/wikipedia_plaintexts/simplewiki-20150406 \
---min 100000
+--lang en \
+--dump /user/west1/wikipedia_plaintexts/enwiki-20150304 \
+--top 100000
 
 
 To run LDA, see wikimedia/missing_articles/src/main/python/get_gensim_lda.py

@@ -16,6 +16,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.zip.GZIPInputStream;
 
+//NB: unused
 public class RedirectResolutionServer implements Runnable {
 
   private int serverPort;

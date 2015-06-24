@@ -11,11 +11,10 @@ from ConfigParser import SafeConfigParser
 
 """
 python /home/ellery/wikimedia/missing_articles/src/main/python/get_gensim_lda_vectors.py \
---dir simple_lda2 \
+--dir en_lda_100k \
 --config /home/ellery/wikimedia/missing_articles/missing_articles.ini \
---dim 20
+--dim 400
 """
-
 
 def main(args):
 

@@ -9,6 +9,10 @@ my @langs = split(/\n/, `cut -f1 $DATADIR/list_of_wikipedias.tsv`);
 open(ERR, '> sqoop_page.log') or die $!;
 
 foreach my $lang (@langs) {
+  # We only do this for English, French, Spanish, Polish
+  if ($lang !~ '^en|es|fr|pl$') {
+    next;
+  }
   print STDERR "Importing pages for $lang\n";
   print ERR "
     =========================================
@@ -17,6 +21,7 @@ foreach my $lang (@langs) {
   my $sqoop_cmd =
     "sqoop import                                                     \\
     -Dmapreduce.output.fileoutputformat.compress=false                \\
+    -Dmapreduce.job.queuename=priority                                \\
     --connect jdbc:mysql://analytics-store.eqiad.wmnet/$lang\wiki     \\
     --verbose                                                         \\
     --target-dir /user/west1/pages/$lang                              \\
