@@ -1,7 +1,0 @@
-# Sort the top 50 languages by size of the redirect table.
-cd ~/wikimedia/trunk/data/redirects
-sort  ../largest_wikipedias.txt > /tmp/l.txt
-ls -l | sed 's/\(.*\)wiki.*/\1/' | tail -n +2 | sed 's/  */\t/g' | cut -f5,9 | sort -k2,2 | join -1 1 -2 2 /tmp/l.txt - | sed 's/ /\t/' | sort -k2,2nr > ../size_of_redirect_tables.tsv
-
-# Copy webrequest data.
-hadoop distcp /wmf/data/wmf/webrequest/webrequest_source=text/year=2015/ /user/west1/webrequest_source=text/
