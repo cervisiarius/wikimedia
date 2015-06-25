@@ -5,13 +5,13 @@ public class LinkCandidate implements Comparable<LinkCandidate> {
   public String name;
   public float score;
   public float margGain;
-  public boolean polluted;
+  public boolean corrupted;
   
   public LinkCandidate(String name) {
     this.name = name;
     this.score = Float.NaN;
     this.margGain = Float.NaN;
-    this.polluted = false;
+    this.corrupted = false;
   }
   
   @Override
