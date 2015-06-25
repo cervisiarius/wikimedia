@@ -33,7 +33,7 @@ public class SubmodularLinkPlacement {
 	}
 
 	private void initMargGains() {
-		// Compute all marginal gains
+		// Initial marginal gains are simply the candidate scores.
 		for (LinkCandidate cand : candsToTrees.keySet()) {
 			cand.margGain = cand.score;
 		}
