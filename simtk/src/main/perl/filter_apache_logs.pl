@@ -13,11 +13,10 @@
 # (7) referer
 # (8) user agent
 
-use lib 'lib';
-use HTTP::UA::Parser;
+#use HTTP::UA::Parser;
 use Digest::MD5 qw(md5 md5_hex md5_base64);
 
-my $ua_parser = HTTP::UA::Parser->new();
+#my $ua_parser = HTTP::UA::Parser->new();
 
 sub is_spider {
   my $ua_string = shift;
