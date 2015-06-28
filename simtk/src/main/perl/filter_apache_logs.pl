@@ -18,19 +18,17 @@ use Digest::MD5 qw(md5 md5_hex md5_base64);
 
 my $ua_parser = HTTP::UA::Parser->new();
 
-# 'Mozilla/5.0 (iPhone; CPU iPhone OS 6_0 like Mac OS X) AppleWebKit/536.26 (KHTML, like Gecko) Version/6.0 Mobile/10A5376e Safari/8536.25 (compatible; Googlebot-Mobile/2.1; +http://www.google.com/bot.html)'
-
 sub is_spider {
   my $ua_string = shift;
-  #$ua_parser->parse($ua_string);
   return
-    #$ua_parser->device->family eq 'Spider' ||
+    #parse($ua_string)->device->family eq 'Spider' ||
     $ua_string =~ m{[Bb]ot|[Ss]pider|WordPress|AppEngine|AppleDictionaryService|Python-urllib|python-requests|Google-HTTP-Java-Client|[Ff]acebook|[Yy]ahoo|RockPeaks|^Java/1\\.|^curl|^PHP/|^-$|^$};
 }
 
 sub is_good_doc {
   my $url = shift;
-  return $url =~ m{^/home/} && $url !~ m{\.(gif|js|css|ico|png|jpg)$};
+  return ($url =~ m{^/home/} && $url !~ m{\.(gif|js|css|ico|png|jpg)$})
+    || $url =~ m{^/search/\?type_of_search=};
 }
 
 my %month_map = (
