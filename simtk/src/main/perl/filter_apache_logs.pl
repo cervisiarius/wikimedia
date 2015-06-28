@@ -15,24 +15,14 @@
 
 use HTTP::UA::Parser;
 
-my $parser = HTTP::UA::Parser->new();
+my $ua_parser = HTTP::UA::Parser->new();
 
-   print $r->ua->toString();         # -> "Safari 5.0.1"
-    print $r->ua->toVersionString();  # -> "5.0.1"
-    print $r->ua->family;             # -> "Safari"
-    print $r->ua->major;              # -> "5"
-    print $r->ua->minor;              # -> "0"
-    print $r->ua->patch;              # -> "1"
-    
-    print $r->os->toString();         # -> "iOS 5.1"
-    print $r->os->toVersionString();  # -> "5.1"
-    print $r->os->family              # -> "iOS"
-    print $r->os->major;              # -> "5"
-    print $r->os->minor;              # -> "1"
-    print $r->os->patch;              # -> undef
-    
-    print $r->device->family;         # -> "iPhone"
+# 'Mozilla/5.0 (iPhone; CPU iPhone OS 6_0 like Mac OS X) AppleWebKit/536.26 (KHTML, like Gecko) Version/6.0 Mobile/10A5376e Safari/8536.25 (compatible; Googlebot-Mobile/2.1; +http://www.google.com/bot.html)'        
 
+sub is_spider {
+  $ua_parser->parse($_);
+  return $ua_parser->device->family eq 'Spider';
+}
     
 my %month_map = (
   'Jan' => '01',
