@@ -13,11 +13,9 @@
 # (7) referer
 # (8) user agent
 
-use Digest::MD5 qw(md5 md5_hex md5_base64);
-
 sub is_spider {
   my $ua_string = shift;
-  return $ua_string =~ m{[Bb]ot|[Ss]pider|WordPress|AppEngine|AppleDictionaryService|Python-urllib|python-requests|Google-HTTP-Java-Client|[Ff]acebook|[Yy]ahoo|RockPeaks|^Java/1\\.|^curl|^PHP/|^-$|^$};
+  return $ua_string =~ m{[Bb]ot|[Cc]rawler|[Ss]pider|HTTrack|WordPress|AppEngine|AppleDictionaryService|Python-urllib|python-requests|Google-HTTP-Java-Client|[Ff]acebook|[Yy]ahoo|Abonti|Seznam|RockPeaks|^Java/|^curl|^PHP/|^-$|^$};
 }
 
 my %month_map = (
@@ -49,7 +47,7 @@ while (my $line = <STDIN>) {
       # Filter and send this row. The first occurrence of $url is as a key, the second one, as part
       # of the value.
       if (!is_spider($user_agent) && $http_status =~ '^(200|302|304)$') {
-        print join("\t", $url, md5_hex("$ip|$user_agent"), $date, $http_status, $url, $referer, $user_agent) . "\n";
+        print join("\t", $url, $ip, $date, $http_status, $url, $referer, $user_agent) . "\n";
       }
     }
   }
