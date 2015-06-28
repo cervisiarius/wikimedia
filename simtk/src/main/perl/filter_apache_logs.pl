@@ -22,7 +22,7 @@ my $ua_parser = HTTP::UA::Parser->new();
 
 sub is_spider {
   my $ua_string = shift;
-  $ua_parser->parse($ua_string);
+  #$ua_parser->parse($ua_string);
   return
     #$ua_parser->device->family eq 'Spider' ||
     $ua_string =~ m{[Bb]ot|[Ss]pider|WordPress|AppEngine|AppleDictionaryService|Python-urllib|python-requests|Google-HTTP-Java-Client|[Ff]acebook|[Yy]ahoo|RockPeaks|^Java/1\\.|^curl|^PHP/|^-$|^$};
