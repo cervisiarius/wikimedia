@@ -6,7 +6,7 @@ my $last_key = '';
 
 while (my $line = <STDIN>) {
   chomp $line;
-  my ($key, $value) = split($line, /\t/, 2);
+  my ($key, $value) = split(/\t/, $line, 2);
   # When we see a new key, flush the buffer.
   if ($key ne $last_key && $last_key ne '') {
     if ($url_ok) {
