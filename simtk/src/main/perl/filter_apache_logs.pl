@@ -14,6 +14,7 @@
 # (8) user agent
 
 use HTTP::UA::Parser;
+use Digest::MD5 qw(md5 md5_hex md5_base64);
 
 my $ua_parser = HTTP::UA::Parser->new();
 
@@ -22,12 +23,15 @@ my $ua_parser = HTTP::UA::Parser->new();
 sub is_spider {
   my $ua_string = shift;
   $ua_parser->parse($ua_string);
-  return $ua_parser->device->family eq 'Spider';
+  return
+    #$ua_parser->device->family eq 'Spider' ||
+    $ua_string =~ m{[Bb]ot|[Ss]pider|WordPress|AppEngine|AppleDictionaryService|Python-urllib|python-requests|Google-HTTP-Java-Client|[Ff]acebook|[Yy]ahoo|RockPeaks|^Java/1\\.|^curl|^PHP/|^-$|^$};
 }
 
-print is_spider('Mozilla/5.0 (iPhone; CPU iPhone OS 6_0 like Mac OS X) AppleWebKit/536.26 (KHTML, like Gecko) Version/6.0 Mobile/10A5376e Safari/8536.25 (compatible; Googlebot-Mobile/2.1; +http://www.google.com/bot.html)')."\n";
-print is_spider('Mozilla/5.0 (iPhone; CPU iPhone OS 6_0 like Mac OS X) AppleWebKit/536.26 (KHTML, like Gecko) Version/6.0 Mobile/10A5376e Safari/8536.25')."\n";
-
+sub is_good_doc {
+  my $url = shift;
+  return $url =~ m{^/home/} && $url !~ m{\.(gif|js|css|ico|png|jpg)$};
+}
 
 my %month_map = (
   'Jan' => '01',
@@ -51,8 +55,10 @@ while (my $line = <STDIN>) {
     if ($date =~ m{(\d+)/(.+)/(....):(..:..:..) (-?\d+)}) {
       my ($day, $month, $year, $time, $zone) = ($1, $2, $3, $4, $5);
       $date = "$year-".$month_map{$month}."-$day\T$time";
-      print join("\t", $ip, $date, $url, $http_status, $referer, $user_agent) . "\n";
-      print $parser
+      next if (is_spider($user_agent));
+      next if (!is_good_doc($url));
+      next if ($http_status !~ '^(200|302|304)$');
+      print join("\t", md5_hex("$ip|$user_agent"), $date, $http_status, $url, $referer, $user_agent) . "\n";
     }
   }
 }
