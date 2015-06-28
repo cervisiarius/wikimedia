@@ -13,6 +13,7 @@
 # (7) referer
 # (8) user agent
 
+use lib 'lib';
 use HTTP::UA::Parser;
 use Digest::MD5 qw(md5 md5_hex md5_base64);
 
