@@ -24,6 +24,7 @@ import org.json.JSONObject;
 public class TreeExtractionReducer extends Reducer<Text, Text, NullWritable, Text> {
 
 	private static final int MAX_NUM_EVENTS = 10000;
+  private static final int MAX_RECURSION_DEPTH = 100;
 
 	// The fields you want to store for every event.
 	private static final Set<String> FIELDS_TO_KEEP = new HashSet<String>(Arrays.asList(
@@ -37,8 +38,12 @@ public class TreeExtractionReducer extends Reducer<Text, Text, NullWritable, Tex
 	    BrowserEvent.JSON_UA, BrowserEvent.JSON_REFERER, BrowserEvent.JSON_TREE_ID));
 
 	private static enum HADOOP_COUNTERS {
-		REDUCE_OK_TREE, REDUCE_BAD_TREE, REDUCE_TOO_MANY_EVENTS, REDUCE_EXCEPTION
+		REDUCE_OK_TREE, REDUCE_BAD_TREE, REDUCE_STACKOVERFLOW, REDUCE_TOO_MANY_EVENTS, REDUCE_EXCEPTION
 	}
+
+	private static class StackOverFlowException extends Exception {
+		static final long serialVersionUID = 345678;
+	};
 
 	// Tree ids consist of the language, a salted hash of the UID, the day, and a sequential number
 	// (in order of time), e.g., de_5ca697716da3203201f56d09b41c954d_20150118_0004.
@@ -51,12 +56,16 @@ public class TreeExtractionReducer extends Reducer<Text, Text, NullWritable, Tex
 	}
 
 	// We don't want to keep all info from the original event objects, and we discard it here.
-	private static void sparsifyJson(JSONObject json, boolean isGlobalRoot) {
+	private static void sparsifyJson(JSONObject json, boolean isGlobalRoot, int recursionDepth)
+	    throws StackOverFlowException {
+		if (recursionDepth > MAX_RECURSION_DEPTH) {
+			throw new StackOverFlowException();
+		}
 		// First process children recursively.
 		if (json.has(BrowserEvent.JSON_CHILDREN)) {
 			JSONArray children = json.getJSONArray(BrowserEvent.JSON_CHILDREN);
 			for (int i = 0; i < children.length(); ++i) {
-				sparsifyJson((JSONObject) children.get(i), false);
+				sparsifyJson((JSONObject) children.get(i), false, recursionDepth + 1);
 			}
 		}
 		// Then process the root itself.
@@ -153,15 +162,19 @@ public class TreeExtractionReducer extends Reducer<Text, Text, NullWritable, Tex
 			for (BrowserEvent root : allRoots) {
 				root.json.put(BrowserEvent.JSON_TREE_ID,
 				    makeTreeId(uid, root.json.getString(BrowserEvent.JSON_DT), i));
-				sparsifyJson(root.json, true);
-				context.write(NullWritable.get(), new Text(root.toString()));
-				// If the root's referer is a SimTk page, mark the tree as bad.
-				if (root.getRefererPathAndQuery() != null) {
-					context.getCounter(HADOOP_COUNTERS.REDUCE_BAD_TREE).increment(1);
-				} else {
-					context.getCounter(HADOOP_COUNTERS.REDUCE_OK_TREE).increment(1);
+				try {
+					sparsifyJson(root.json, true, 0);
+					context.write(NullWritable.get(), new Text(root.toString()));
+					// If the root's referer is a SimTk page, mark the tree as bad.
+					if (root.getRefererPathAndQuery() != null) {
+						context.getCounter(HADOOP_COUNTERS.REDUCE_BAD_TREE).increment(1);
+					} else {
+						context.getCounter(HADOOP_COUNTERS.REDUCE_OK_TREE).increment(1);
+					}
+					++i;
+				} catch (StackOverFlowException e) {
+					context.getCounter(HADOOP_COUNTERS.REDUCE_STACKOVERFLOW).increment(1);
 				}
-				++i;
 			}
 		} catch (Exception e) {
 			context.getCounter(HADOOP_COUNTERS.REDUCE_EXCEPTION).increment(1);
