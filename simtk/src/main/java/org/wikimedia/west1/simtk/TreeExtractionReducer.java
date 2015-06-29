@@ -35,6 +35,7 @@ public class TreeExtractionReducer extends Reducer<Text, Text, NullWritable, Tex
 	// The fields you want to store only for the root (because they're identical for all events in
 	// the same tree).
 	private static final Set<String> FIELDS_TO_KEEP_IN_ROOT = new HashSet<String>(Arrays.asList(
+			BrowserEvent.JSON_IP,
 	    BrowserEvent.JSON_UA, BrowserEvent.JSON_REFERER, BrowserEvent.JSON_TREE_ID));
 
 	private static enum HADOOP_COUNTERS {

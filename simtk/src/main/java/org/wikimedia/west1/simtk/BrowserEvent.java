@@ -38,7 +38,9 @@ public class BrowserEvent {
 		try {
 			this.url = new URL("http://simtk.org" + json.getString(JSON_PATH));
 			this.json.put(JSON_URI_PATH, url.getPath());
-			this.json.put(JSON_URI_QUERY, '?' + url.getQuery());
+			if (url.getQuery() != null) {
+				this.json.put(JSON_URI_QUERY, '?' + url.getQuery());
+			}
 		} catch (MalformedURLException e) {
 			throw new IllegalArgumentException();
 		}
