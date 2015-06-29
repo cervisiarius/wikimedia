@@ -38,7 +38,9 @@ public class TreeExtractionMapper extends Mapper<LongWritable, Text, Text, Text>
 	}
 
 	private static boolean isGoodPath(String path) {
-		if (path.matches(".*\\.(js|css|png|jpg|jpeg|gif|ico)"))
+		if (path.matches(".*\\.(js|css|png|jpg|jpeg|gif|ico)[$?]"))
+			return false;
+		if (path.matches("/(logos|logos-frs|userpics|securimage|templates)/.*"))
 			return false;
 		return true;
 	}
