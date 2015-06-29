@@ -3,6 +3,10 @@ package org.wikimedia.west1.simtk;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.PrintStream;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
@@ -16,24 +20,65 @@ public class TreeExtractionMapper extends Mapper<LongWritable, Text, Text, Text>
 		MAP_OK_REQUEST, MAP_EXCEPTION
 	}
 
+	private static final Pattern FORBIDDEN_UA_PATTERN = Pattern
+	    .compile(".*([Bb]ot|[Cc]rawler|[Ss]pider|HTTrack|WordPress|AppEngine|AppleDictionaryService|Python-urllib|python-requests|Google-HTTP-Java-Client|[Ff]acebook|[Yy]ahoo|Abonti|Seznam|RockPeaks).*|Java/.*|curl.*|PHP/.*|-|");
+
+	private static final Pattern ROW_PATTERN = Pattern
+	    .compile("(\\S*) \\S* \\S* \\[(.*)\\] \"GET (.*) HTTP/.*\" (\\d+) \\d+ \"(.*)\" \"(.*)\"");
+
+	private static final Pattern DATE_PATTERN = Pattern
+	    .compile("(\\d+)/(.+)/(....):(..:..:..) (-?\\d+)");
+
+	private static boolean isSpider(String userAgent) {
+		return FORBIDDEN_UA_PATTERN.matcher(userAgent).matches();
+	}
+	
+	private static boolean isGoodHttpStatus(String status) {
+		return status.equals("200") || status.equals("302") || status.equals("304");
+	}
+
+	private Map<String, String> monthToIntMap;
+
+	@Override
+	public void setup(Context context) {
+		monthToIntMap = new HashMap<String, String>();
+		monthToIntMap.put("Jan", "01");
+		monthToIntMap.put("Feb", "02");
+		monthToIntMap.put("Mar", "03");
+		monthToIntMap.put("Apr", "04");
+		monthToIntMap.put("May", "05");
+		monthToIntMap.put("Jun", "06");
+		monthToIntMap.put("Jul", "07");
+		monthToIntMap.put("Aug", "08");
+		monthToIntMap.put("Sep", "09");
+		monthToIntMap.put("Oct", "10");
+		monthToIntMap.put("Nov", "11");
+		monthToIntMap.put("Dec", "12");
+	}
+
 	@Override
 	public void map(LongWritable key, Text value, Context context) throws IOException,
 	    InterruptedException {
 		try {
-			JSONObject json = new JSONObject();
-			// ip, date, http_status, path, referer, user_agent.
-			String[] tokens = value.toString().split("\t", 6);
-			json.put(BrowserEvent.JSON_IP, tokens[0]);
-			json.put(BrowserEvent.JSON_DT, tokens[1]);
-			json.put(BrowserEvent.JSON_HTTP_STATUS, tokens[2]);
-			json.put(BrowserEvent.JSON_PATH, tokens[3]);
-			json.put(BrowserEvent.JSON_REFERER, tokens[4]);
-			json.put(BrowserEvent.JSON_UA, tokens[5]);
-
-			context.write(
-			    new Text(String.format("%s|%s", json.getString(BrowserEvent.JSON_IP),
-			        json.getString(BrowserEvent.JSON_UA))), new Text(json.toString()));
-			context.getCounter(HADOOP_COUNTERS.MAP_OK_REQUEST).increment(1);
+			Matcher m1 = ROW_PATTERN.matcher(value.toString());
+			// Row must be valid.
+			if (m1.matches()) {
+				Matcher m2 = DATE_PATTERN.matcher(m1.group(2));
+				if (m2.matches() && !isSpider(m1.group(6)) && isGoodHttpStatus(m1.group(4))) {
+					String date = String.format("%s-%s-%sT%s", m2.group(3), monthToIntMap.get(m2.group(2)),
+					    m2.group(1), m2.group(4));
+					JSONObject json = new JSONObject();
+					json.put(BrowserEvent.JSON_IP, m1.group(1));
+					json.put(BrowserEvent.JSON_DT, date);
+					json.put(BrowserEvent.JSON_HTTP_STATUS, m1.group(4));
+					json.put(BrowserEvent.JSON_PATH, m1.group(3));
+					json.put(BrowserEvent.JSON_REFERER, m1.group(5));
+					json.put(BrowserEvent.JSON_UA, m1.group(6));
+					context.write(new Text(String.format("%s|%s", m1.group(1), m1.group(6))),
+					    new Text(json.toString()));
+					context.getCounter(HADOOP_COUNTERS.MAP_OK_REQUEST).increment(1);
+				}
+			}
 		} catch (JSONException e) {
 			context.getCounter(HADOOP_COUNTERS.MAP_EXCEPTION).increment(1);
 			ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -41,5 +86,4 @@ public class TreeExtractionMapper extends Mapper<LongWritable, Text, Text, Text>
 			System.err.format("MAP_EXCEPTION: %s\n", baos.toString("UTF-8"));
 		}
 	}
-
 }
