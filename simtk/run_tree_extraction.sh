@@ -1,6 +1,6 @@
 #!/bin/bash
 
-IN_DIR=/user/west1/simtk/weblogs
+IN_DIR=/user/west1/simtk/weblogs_filtered
 # The output directory.
 OUT_DIR=/user/west1/simtk/navigation_trees
 # This is where the JAR file with the Mapper and Reducer code resides.
