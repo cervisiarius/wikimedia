@@ -32,9 +32,15 @@ public class TreeExtractionMapper extends Mapper<LongWritable, Text, Text, Text>
 	private static boolean isSpider(String userAgent) {
 		return FORBIDDEN_UA_PATTERN.matcher(userAgent).matches();
 	}
-	
+
 	private static boolean isGoodHttpStatus(String status) {
 		return status.equals("200") || status.equals("302") || status.equals("304");
+	}
+
+	private static boolean isGoodPath(String path) {
+		if (path.matches(".*\\.(js|css|png|jpg|jpeg|gif|ico)"))
+			return false;
+		return true;
 	}
 
 	private Map<String, String> monthToIntMap;
@@ -63,19 +69,24 @@ public class TreeExtractionMapper extends Mapper<LongWritable, Text, Text, Text>
 			Matcher m1 = ROW_PATTERN.matcher(value.toString());
 			// Row must be valid.
 			if (m1.matches()) {
+				String ip = m1.group(1);
+				String path = m1.group(3);
+				String httpStatus = m1.group(4);
+				String referer = m1.group(5);
+				String userAgent = m1.group(6);
 				Matcher m2 = DATE_PATTERN.matcher(m1.group(2));
-				if (m2.matches() && !isSpider(m1.group(6)) && isGoodHttpStatus(m1.group(4))) {
+				if (m2.matches() && !isSpider(userAgent) && isGoodHttpStatus(httpStatus)
+				    && isGoodPath(path) && !referer.endsWith(path)) {
 					String date = String.format("%s-%s-%sT%s", m2.group(3), monthToIntMap.get(m2.group(2)),
 					    m2.group(1), m2.group(4));
 					JSONObject json = new JSONObject();
-					json.put(BrowserEvent.JSON_IP, m1.group(1));
+					json.put(BrowserEvent.JSON_IP, ip);
 					json.put(BrowserEvent.JSON_DT, date);
-					json.put(BrowserEvent.JSON_HTTP_STATUS, m1.group(4));
-					json.put(BrowserEvent.JSON_PATH, m1.group(3));
-					json.put(BrowserEvent.JSON_REFERER, m1.group(5));
-					json.put(BrowserEvent.JSON_UA, m1.group(6));
-					context.write(new Text(String.format("%s|%s", m1.group(1), m1.group(6))),
-					    new Text(json.toString()));
+					json.put(BrowserEvent.JSON_HTTP_STATUS, httpStatus);
+					json.put(BrowserEvent.JSON_PATH, path);
+					json.put(BrowserEvent.JSON_REFERER, referer);
+					json.put(BrowserEvent.JSON_UA, userAgent);
+					context.write(new Text(String.format("%s|%s", ip, userAgent)), new Text(json.toString()));
 					context.getCounter(HADOOP_COUNTERS.MAP_OK_REQUEST).increment(1);
 				}
 			}
