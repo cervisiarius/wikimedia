@@ -4,25 +4,25 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.PrintStream;
 
-import org.apache.hadoop.io.NullWritable;
+import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Mapper;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class TreeExtractionMapper extends Mapper<Text, NullWritable, Text, Text> {
+public class TreeExtractionMapper extends Mapper<LongWritable, Text, Text, Text> {
 
 	private static enum HADOOP_COUNTERS {
 		MAP_OK_REQUEST, MAP_EXCEPTION
 	}
 
 	@Override
-	public void map(Text key, NullWritable value, Context context) throws IOException,
+	public void map(LongWritable key, Text value, Context context) throws IOException,
 	    InterruptedException {
 		try {
 			JSONObject json = new JSONObject();
 			// ip, date, http_status, path, referer, user_agent.
-			String[] tokens = key.toString().split("\t", 6);
+			String[] tokens = value.toString().split("\t", 6);
 			json.put(BrowserEvent.JSON_IP, tokens[0]);
 			json.put(BrowserEvent.JSON_DT, tokens[1]);
 			json.put(BrowserEvent.JSON_HTTP_STATUS, tokens[2]);
