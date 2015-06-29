@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# NB: unused, since the strategy of considering as good pages those that appear as a referer at
+# least once didn't work, cf. note from 2015-06-28, p. 201 in notebook.
+
 # Modify these parameters.
 IN_FILE=/user/west1/simtk/weblogs
 OUT_DIR=/user/west1/simtk/weblogs_filtered
