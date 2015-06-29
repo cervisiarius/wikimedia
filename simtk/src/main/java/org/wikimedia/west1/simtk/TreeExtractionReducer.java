@@ -24,7 +24,7 @@ import org.json.JSONObject;
 public class TreeExtractionReducer extends Reducer<Text, Text, NullWritable, Text> {
 
 	private static final int MAX_NUM_EVENTS = 10000;
-  private static final int MAX_RECURSION_DEPTH = 100;
+	private static final int MAX_RECURSION_DEPTH = 100;
 
 	// The fields you want to store for every event.
 	private static final Set<String> FIELDS_TO_KEEP = new HashSet<String>(Arrays.asList(
@@ -35,8 +35,8 @@ public class TreeExtractionReducer extends Reducer<Text, Text, NullWritable, Tex
 	// The fields you want to store only for the root (because they're identical for all events in
 	// the same tree).
 	private static final Set<String> FIELDS_TO_KEEP_IN_ROOT = new HashSet<String>(Arrays.asList(
-			BrowserEvent.JSON_IP,
-	    BrowserEvent.JSON_UA, BrowserEvent.JSON_REFERER, BrowserEvent.JSON_TREE_ID));
+	    BrowserEvent.JSON_IP, BrowserEvent.JSON_BAD_TREE, BrowserEvent.JSON_UA,
+	    BrowserEvent.JSON_REFERER, BrowserEvent.JSON_TREE_ID));
 
 	private static enum HADOOP_COUNTERS {
 		REDUCE_OK_TREE, REDUCE_BAD_TREE, REDUCE_STACKOVERFLOW, REDUCE_TOO_MANY_EVENTS, REDUCE_EXCEPTION
@@ -165,13 +165,14 @@ public class TreeExtractionReducer extends Reducer<Text, Text, NullWritable, Tex
 				    makeTreeId(uid, root.json.getString(BrowserEvent.JSON_DT), i));
 				try {
 					sparsifyJson(root.json, true, 0);
-					context.write(NullWritable.get(), new Text(root.toString()));
 					// If the root's referer is a SimTk page, mark the tree as bad.
 					if (root.getRefererPathAndQuery() != null) {
+						root.json.put(BrowserEvent.JSON_BAD_TREE, true);
 						context.getCounter(HADOOP_COUNTERS.REDUCE_BAD_TREE).increment(1);
 					} else {
 						context.getCounter(HADOOP_COUNTERS.REDUCE_OK_TREE).increment(1);
 					}
+					context.write(NullWritable.get(), new Text(root.toString()));
 					++i;
 				} catch (StackOverFlowException e) {
 					context.getCounter(HADOOP_COUNTERS.REDUCE_STACKOVERFLOW).increment(1);

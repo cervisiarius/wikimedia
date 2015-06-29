@@ -24,7 +24,7 @@ public class TreeExtractionMapper extends Mapper<LongWritable, Text, Text, Text>
 	    .compile(".*([Bb]ot|[Cc]rawler|[Ss]pider|HTTrack|WordPress|AppEngine|AppleDictionaryService|Python-urllib|python-requests|Google-HTTP-Java-Client|[Ff]acebook|[Yy]ahoo|Abonti|Seznam|RockPeaks).*|Java/.*|curl.*|PHP/.*|-|");
 
 	private static final Pattern ROW_PATTERN = Pattern
-	    .compile("(\\S*) \\S* \\S* \\[(.*)\\] \"GET (.*) HTTP/.*\" (\\d+) \\d+ \"(.*)\" \"(.*)\"");
+	    .compile("(\\S*) \\S* \\S* \\[(.*)\\] \"(GET|POST) (.*) HTTP/.*\" (\\d+) \\d+ \"(.*)\" \"(.*)\"");
 
 	private static final Pattern DATE_PATTERN = Pattern
 	    .compile("(\\d+)/(.+)/(....):(..:..:..) (-?\\d+)");
@@ -41,6 +41,8 @@ public class TreeExtractionMapper extends Mapper<LongWritable, Text, Text, Text>
 		if (path.matches(".*\\.(js|css|png|jpg|jpeg|gif|ico)($|\\?.*)"))
 			return false;
 		if (path.matches("/(logos|logos-frs|userpics|securimage|templates|themes)/.*"))
+			return false;
+		if (path.matches("/project/project_following\\.php.*"))
 			return false;
 		return true;
 	}
@@ -72,10 +74,10 @@ public class TreeExtractionMapper extends Mapper<LongWritable, Text, Text, Text>
 			// Row must be valid.
 			if (m1.matches()) {
 				String ip = m1.group(1);
-				String path = m1.group(3);
-				String httpStatus = m1.group(4);
-				String referer = m1.group(5);
-				String userAgent = m1.group(6);
+				String path = m1.group(4);
+				String httpStatus = m1.group(5);
+				String referer = m1.group(6);
+				String userAgent = m1.group(7);
 				Matcher m2 = DATE_PATTERN.matcher(m1.group(2));
 				if (m2.matches() && !isSpider(userAgent) && isGoodHttpStatus(httpStatus)
 				    && isGoodPath(path) && !referer.endsWith(path)) {
