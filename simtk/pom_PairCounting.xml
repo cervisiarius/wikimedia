@@ -15,7 +15,8 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <hadoop.version.a>2.6.0-cdh5.4.2</hadoop.version.a>
     <hadoop.version.b>2.6.0-mr1-cdh5.4.2</hadoop.version.b>
-    <main.class>org.wikimedia.west1.simtk.PairCounting</main.class>
+    <!--main.class>org.wikimedia.west1.simtk.PairCounting</main.class-->
+    <main.class>org.wikimedia.west1.simtk.TreeExtractionMapper</main.class>
   </properties>
 
   <dependencyManagement>
@@ -146,6 +147,15 @@
             </descriptorRefs>
           </configuration>
         </plugin>
+
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>exec-maven-plugin</artifactId>
+        <version>1.2.1</version>
+        <configuration>
+          <mainClass>${main.class}</mainClass>
+        </configuration>
+      </plugin>
 
     </plugins>
   </build>
