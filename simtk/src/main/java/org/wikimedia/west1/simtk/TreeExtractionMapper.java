@@ -101,4 +101,44 @@ public class TreeExtractionMapper extends Mapper<LongWritable, Text, Text, Text>
 			System.err.format("MAP_EXCEPTION: %s\n", baos.toString("UTF-8"));
 		}
 	}
+	
+	public static void main(String[] args) {
+    Map<String,String> monthToIntMap = new HashMap<String, String>();
+    monthToIntMap.put("Jan", "01");
+    monthToIntMap.put("Feb", "02");
+    monthToIntMap.put("Mar", "03");
+    monthToIntMap.put("Apr", "04");
+    monthToIntMap.put("May", "05");
+    monthToIntMap.put("Jun", "06");
+    monthToIntMap.put("Jul", "07");
+    monthToIntMap.put("Aug", "08");
+    monthToIntMap.put("Sep", "09");
+    monthToIntMap.put("Oct", "10");
+    monthToIntMap.put("Nov", "11");
+    monthToIntMap.put("Dec", "12");
+	  String value = "130.18.154.13 - - [14/Jan/2015:13:26:24 -0800] \"GET /home/zephyr/?feature=rec&rank=3&src=523 HTTP/1.1\" 200 4997 \"https://simtk.org/home/dmd\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/600.2.5 (KHTML, like Gecko) Version/8.0.2 Safari/600.2.5\"";
+    Matcher m1 = ROW_PATTERN.matcher(value.toString());
+    if (m1.matches()) {
+      System.out.println("!!!!!!!!!!!");
+      String ip = m1.group(1);
+      String path = m1.group(4);
+      String httpStatus = m1.group(5);
+      String referer = m1.group(6);
+      String userAgent = m1.group(7);
+      Matcher m2 = DATE_PATTERN.matcher(m1.group(2));
+      if (m2.matches() && !isSpider(userAgent) && isGoodHttpStatus(httpStatus)
+          && isGoodPath(path) && !referer.endsWith(path)) {
+        String date = String.format("%s-%s-%sT%s", m2.group(3), monthToIntMap.get(m2.group(2)),
+            m2.group(1), m2.group(4));
+        JSONObject json = new JSONObject();
+        json.put(BrowserEvent.JSON_IP, ip);
+        json.put(BrowserEvent.JSON_DT, date);
+        json.put(BrowserEvent.JSON_HTTP_STATUS, httpStatus);
+        json.put(BrowserEvent.JSON_PATH, path);
+        json.put(BrowserEvent.JSON_REFERER, referer);
+        json.put(BrowserEvent.JSON_UA, userAgent);
+      }
+    }
+	  
+	}
 }
