@@ -3,6 +3,7 @@ package org.wikimedia.west1.simtk;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.PrintStream;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -13,6 +14,7 @@ import java.util.Set;
 import org.apache.hadoop.io.NullWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Reducer;
+import org.apache.hadoop.mapreduce.lib.output.MultipleOutputs;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -24,6 +26,25 @@ public class PairCountingReducer extends Reducer<Text, Text, Text, NullWritable>
     REDUCE_OK_SESSIONS, REDUCE_TOO_MANY_EVENTS, REDUCE_EXCEPTION
   }
 
+  private static long REC_FEAT_INTRO_TIME;
+
+  private MultipleOutputs<Text, NullWritable> out;
+
+  @SuppressWarnings({ "rawtypes", "unchecked" })
+  public void setup(Reducer<Text, Text, Text, NullWritable>.Context context) {
+    out = new MultipleOutputs(context);
+    try {
+      REC_FEAT_INTRO_TIME = BrowserEvent.DATE_FORMAT.parse("2014-01-15T00:00:00").getTime();
+    } catch (ParseException e) {
+      throw new RuntimeException(e);
+    }
+  }
+
+  @Override
+  protected void cleanup(Context context) throws IOException, InterruptedException {
+    out.close();
+  }
+
   private static String makePairString(String path1, String path2) {
     path1 = path1.endsWith("/") ? path1 : path1 + "/";
     path2 = path2.endsWith("/") ? path2 : path2 + "/";
@@ -33,35 +54,52 @@ public class PairCountingReducer extends Reducer<Text, Text, Text, NullWritable>
     return path1 + "\t" + path2;
   }
 
-  private void processSession(List<BrowserEvent> session,
+  private void processSession(List<BrowserEvent> session, String sessionId,
       Reducer<Text, Text, Text, NullWritable>.Context context) throws IOException,
       InterruptedException {
+    long sessionTime = session.get(0).time;
     Set<String> direct = new HashSet<String>();
     Set<String> all = new HashSet<String>();
     for (int i = 0; i < session.size(); ++i) {
       BrowserEvent e1 = session.get(i);
-      for (int j = i + 1; j < session.size(); ++j) {
+      Set<String> seenPages = new HashSet<String>();
+      for (int j = 0; j < session.size(); ++j) {
         BrowserEvent e2 = session.get(j);
-        // TODO: need to make sure the link source is also in this session.
-        try {
-          all.add(makePairString(e1.url.getPath(), e2.url.getPath()));
-        } catch (IllegalArgumentException e) {
-          // This happens if source equals target.
-        }
-        if (e2.referer != null && e2.referer.getPath().startsWith("/home/")) {
+        if (j > i) {
           try {
-            direct.add(makePairString(e2.referer.getPath(), e2.url.getPath()));
+            all.add(makePairString(e1.url.getPath(), e2.url.getPath()));
           } catch (IllegalArgumentException e) {
             // This happens if source equals target.
           }
+          // Register a direct click if the referer is also in this session.
+          if (e2.referer != null && e2.referer.getPath().startsWith("/home/")
+              && seenPages.contains(e2.referer.getPath())) {
+            try {
+              direct.add(makePairString(e2.referer.getPath(), e2.url.getPath()));
+            } catch (IllegalArgumentException e) {
+              // This happens if source equals target.
+            }
+          }
         }
+        // Remember the page as seen.
+        seenPages.add(e2.url.getPath());
       }
     }
     for (String pair : direct) {
-      context.write(new Text("CLICK\t" + pair), NullWritable.get());
+      // Output clicks from after the rec feature was introduced.
+      if (sessionTime >= REC_FEAT_INTRO_TIME) {
+        out.write(new Text(pair), NullWritable.get(), "clicks/part");
+      }
     }
     for (String pair : all) {
-      context.write(new Text("PATH\t" + pair), NullWritable.get());
+      // Output pairs from after the rec feature was introduced.
+      if (sessionTime >= REC_FEAT_INTRO_TIME) {
+        out.write(new Text(pair), NullWritable.get(), "pairs/part");
+      }
+      // Output session memberships of pairs from before the rec feature was introduced.
+      else {
+        out.write(new Text(pair + "\t" + sessionId), NullWritable.get(), "sessions/part");
+      }
     }
     context.getCounter(HADOOP_COUNTERS.REDUCE_OK_SESSIONS).increment(1);
   }
@@ -89,11 +127,15 @@ public class PairCountingReducer extends Reducer<Text, Text, Text, NullWritable>
     for (BrowserEvent event : events) {
       // If we see a break of more than one hour, flush the last session.
       if (lastTime >= 0 && event.time - lastTime > 3600 * 1000) {
-        sessions.add(new ArrayList<BrowserEvent>(session));
+        sessions.add(session);
         session = new ArrayList<BrowserEvent>();
       }
       session.add(event);
       lastTime = event.time;
+    }
+    // Take care of last session.
+    if (!session.isEmpty()) {
+      sessions.add(session);
     }
     return sessions;
   }
@@ -102,15 +144,10 @@ public class PairCountingReducer extends Reducer<Text, Text, Text, NullWritable>
   public void reduce(Text key, Iterable<Text> eventsIt,
       Reducer<Text, Text, Text, NullWritable>.Context context) throws IOException {
     try {
-      final long MIN_TIME = BrowserEvent.DATE_FORMAT.parse("2014-01-15T00:00:00").getTime();
       List<BrowserEvent> events = new ArrayList<BrowserEvent>();
       int n = 0;
       // Collect all events for this user.
       for (Text eventText : eventsIt) {
-        ///////////////////////////////////////////
-        if (eventText.toString().contains("/home/zephyr") && eventText.toString().matches(".*/home/(dmd|emma|forcebalance|msmbuilder).*")) {
-          System.err.println("!!!!!!!!!!FOUND(1)  " + eventText);
-        }
         // If there are too many event events, output nothing.
         if (++n > MAX_NUM_EVENTS) {
           context.getCounter(HADOOP_COUNTERS.REDUCE_TOO_MANY_EVENTS).increment(1);
@@ -118,19 +155,16 @@ public class PairCountingReducer extends Reducer<Text, Text, Text, NullWritable>
         } else {
           JSONObject json = new JSONObject(eventText.toString());
           BrowserEvent event = new BrowserEvent(json);
-          // Only consider events from the time after the introduction of the recommendation
-          // feature. Also, only consider views of project pages (they start with "/home/").
-          if (event.time > MIN_TIME && event.url.getPath().startsWith("/home/")) {
+          // Consider views of project pages (they start with "/home/").
+          if (event.url.getPath().startsWith("/home/")) {
             events.add(event);
-            ///////////////////////////////////////////
-            if (eventText.toString().contains("/home/zephyr") && eventText.toString().matches(".*/home/(dmd|emma|forcebalance|msmbuilder).*")) {
-              System.err.println("!!!!!!!!!!FOUND(2)  " + eventText);
-            }
           }
         }
       }
+      int seq = 0;
       for (List<BrowserEvent> session : sequenceToSessions(events)) {
-        processSession(session, context);
+        processSession(session, String.format("%s_%d", key.toString(), seq), context);
+        ++seq;
       }
     } catch (Exception e) {
       context.getCounter(HADOOP_COUNTERS.REDUCE_EXCEPTION).increment(1);

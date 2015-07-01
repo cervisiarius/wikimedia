@@ -5,8 +5,8 @@ import java.util.PriorityQueue;
 
 public class ScoreLinkPlacement extends LinkPlacement {
 
-	public ScoreLinkPlacement(int numLinks) throws IOException {
-		super(numLinks);
+	public ScoreLinkPlacement(int numLinks, String datadir) throws IOException {
+		super(numLinks, datadir);
 		for (LinkCandidate cand : candsToTrees.keySet()) {
 			// Set the margGain field, which is used for comparison, to score.
 			cand.margGain = cand.score;
@@ -30,7 +30,7 @@ public class ScoreLinkPlacement extends LinkPlacement {
 	}
 
 	public static void main(String[] args) throws IOException {
-		ScoreLinkPlacement placement = new ScoreLinkPlacement(100);
+		ScoreLinkPlacement placement = new ScoreLinkPlacement(100, LinkPlacement.DATADIR_SIMTK);
 		System.err.println("DONE LOADING DATA");
 		placement.placeLinks();
 		System.err.format("Value: %s", placement.evaluate());

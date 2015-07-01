@@ -8,6 +8,7 @@ import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.input.TextInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
+import org.apache.hadoop.mapreduce.lib.output.LazyOutputFormat;
 import org.apache.hadoop.mapreduce.lib.output.TextOutputFormat;
 import org.apache.hadoop.util.Tool;
 import org.apache.hadoop.util.ToolRunner;
@@ -34,7 +35,8 @@ public class PairCounting extends Configured implements Tool {
 		job.setNumReduceTasks(getConf().getInt(CONF_NUM_REDUCE, 1));
 
 		job.setInputFormatClass(TextInputFormat.class);
-		job.setOutputFormatClass(TextOutputFormat.class);
+    // This is how we are able to write to several output folders from the same Reducer.
+    LazyOutputFormat.setOutputFormatClass(job, TextOutputFormat.class);
 
 		FileInputFormat.setInputPaths(job, new Path(getConf().get(CONF_INPUT)));
 		FileOutputFormat.setOutputPath(job, new Path(getConf().get(CONF_OUTPUT)));

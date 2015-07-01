@@ -15,8 +15,7 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <hadoop.version.a>2.6.0-cdh5.4.2</hadoop.version.a>
     <hadoop.version.b>2.6.0-mr1-cdh5.4.2</hadoop.version.b>
-    <!--main.class>org.wikimedia.west1.simtk.PairCounting</main.class-->
-    <main.class>org.wikimedia.west1.simtk.TreeExtractionMapper</main.class>
+    <main.class>org.wikimedia.west1.simtk.PairCounting</main.class>
   </properties>
 
   <dependencyManagement>
@@ -24,7 +23,7 @@
       <dependency>
         <groupId>jdk.tools</groupId>
         <artifactId>jdk.tools</artifactId>
-        <version>1.6</version>
+        <version>1.7</version>
       </dependency>
 
       <dependency>
@@ -107,8 +106,8 @@
         <artifactId>maven-compiler-plugin</artifactId>
         <version>3.1</version>
         <configuration>
-          <source>1.6</source>
-          <target>1.6</target>
+          <source>1.7</source>
+          <target>1.7</target>
         </configuration>
       </plugin>
 
