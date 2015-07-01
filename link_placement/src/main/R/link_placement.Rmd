@@ -1,0 +1,23 @@
+---
+title: "Link placement"
+author: "Bob West"
+date: "June 30, 2015"
+output: html_document
+---
+
+```{r, fig.width=6, fig.height=6}
+library(plotrix)
+
+results_wiki <- read.table(sprintf('%s/wikimedia/trunk/data/link_placement/link_placement_results.tsv',
+                                   Sys.getenv('HOME')), header=TRUE)
+matplot(results_wiki$n, results_wiki[,-1], type='b', pch=1, lty=1, bty='n', main='Wikipedia',
+        xlab='Number of added links', ylab='Objective (expected # paths with at least one click on new links)')
+legend('topleft', legend=rev(colnames(results_wiki)[-1]), col=5:1, lty=1, bty='n')
+
+results_simtk <- read.table(sprintf('%s/wikimedia/trunk/data/simtk/pair_counts/link_placement_results.tsv',
+                                   Sys.getenv('HOME')), header=TRUE)
+matplot(results_simtk$n, results_simtk[,-1], type='b', pch=1, lty=1, bty='n', main='SimTk',
+        xlab='Number of added links', ylab='Objective (expected # paths with at least one click on new links)')
+legend('topleft', legend=rev(colnames(results_simtk)[-1]), col=5:1, lty=1, bty='n')
+
+```
