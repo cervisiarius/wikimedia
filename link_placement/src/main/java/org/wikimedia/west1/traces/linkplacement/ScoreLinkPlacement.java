@@ -29,11 +29,11 @@ public class ScoreLinkPlacement extends LinkPlacement {
 		for (int i = 0; i < numLinks; ++i) {
 			// Pick the candidate with the largest (initial) marginal gain.
 			LinkCandidate cand = priorityQueue.poll();
+			solution.add(cand);
 			if (!quiet) {
 				System.out.format("(%d) %s, score: %s, gain: %s, #paths: %d\n", i, cand.name, cand.score,
 				    cand.margGain, candsToTrees.get(cand).length);
 			}
-			solution.add(cand);
 		}
 	}
 

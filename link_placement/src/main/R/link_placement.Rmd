@@ -5,19 +5,55 @@ date: "June 30, 2015"
 output: html_document
 ---
 
-```{r, fig.width=6, fig.height=6}
+# Results of link placement algorithms
+
+```{r, fig.width=12, fig.height=6}
 library(plotrix)
+library(Matrix)
+
+.default_par <- par(no.readonly=TRUE)
 
 results_wiki <- read.table(sprintf('%s/wikimedia/trunk/data/link_placement/link_placement_results.tsv',
                                    Sys.getenv('HOME')), header=TRUE)
+results_simtk <- read.table(sprintf('%s/wikimedia/trunk/data/simtk/pair_counts/link_placement_results.tsv',
+                                   Sys.getenv('HOME')), header=TRUE)
+
+par(mfrow=c(1,2))
 matplot(results_wiki$n, results_wiki[,-1], type='b', pch=1, lty=1, bty='n', main='Wikipedia',
         xlab='Number of added links', ylab='Objective (expected # paths with at least one click on new links)')
 legend('topleft', legend=rev(colnames(results_wiki)[-1]), col=5:1, lty=1, bty='n')
 
-results_simtk <- read.table(sprintf('%s/wikimedia/trunk/data/simtk/pair_counts/link_placement_results.tsv',
-                                   Sys.getenv('HOME')), header=TRUE)
 matplot(results_simtk$n, results_simtk[,-1], type='b', pch=1, lty=1, bty='n', main='SimTk',
         xlab='Number of added links', ylab='Objective (expected # paths with at least one click on new links)')
 legend('topleft', legend=rev(colnames(results_simtk)[-1]), col=5:1, lty=1, bty='n')
+par(.default_par)
+```
 
+```{r}
+load_trees <- function(dir) {
+  read.table(pipe(sprintf("gunzip -c %s/%s/link_candidates_tree_ids.tsv.gz | perl -ne 'chomp; @a=split/\t/; foreach my $tree (split /,/, $a[2]) {print \"$a[0] $a[1]\t$tree\n\"}'",
+                                        Sys.getenv('HOME'), dir)), sep='\t', quote='',
+                           col.names=c('cand', 'tree'), colClasses=c('character'))
+}
+
+plot_ccdf <- function(trees) {
+  cand_idx <- 1:length(unique(trees$cand))
+  names(cand_idx) <- unique(trees$cand)
+  
+  tree_idx <- 1:length(unique(trees$tree))
+  names(tree_idx) <- unique(trees$tree)
+  
+  M <- sparseMatrix(cand_idx[trees$cand], tree_idx[trees$tree], x=1)
+  
+  trees_per_cand <- rowSums(M)
+  
+  plot(sort(trees_per_cand), rev(1:nrow(M)), log='xy', type='l', main='CCDF',
+       xlab='Number of trees per candidate', ylab='Number of candidates')
+}
+
+trees_wiki <- load_trees('wikimedia/trunk/data/link_placement')
+plot_ccdf(trees_wiki)
+
+sessions_simtk <- load_trees('wikimedia/trunk/data/simtk/pair_counts')
+plot_ccdf(sessions_simtk)
 ```
