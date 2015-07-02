@@ -35,6 +35,17 @@ data <- data[data$num_clicks_before == 0,]
 data$click_prob_before <- data$num_clicks_before / data$num_paths_before
 data$click_prob_after <- data$num_clicks_after / data$num_paths_after
 
+# Compute the search probabilities.
+data$search_prob_ext_before <- data$num_external_searches_before / (data$num_external_searches_before + data$num_paths_before)
+data$search_prob_wiki_before <- data$num_wiki_searches_before / (data$num_paths_before + data$num_wiki_searches_200_before)
+data$search_prob_all_before <- (data$num_external_searches_before + data$num_wiki_searches_before) /
+  (data$num_external_searches_before + data$num_paths_before + data$num_wiki_searches_200_before)
+data$search_prob_ext_after <- data$num_external_searches_after / (data$num_external_searches_after + data$num_paths_after)
+data$search_prob_wiki_after <- data$num_wiki_searches_after / (data$num_paths_after + data$num_wiki_searches_200_after)
+data$search_prob_all_after <- (data$num_external_searches_after + data$num_wiki_searches_after) /
+  (data$num_external_searches_after + data$num_paths_after + data$num_wiki_searches_200_after)
+
+
 # TODO: num_wiki_searches is also sometimes larger than num_paths
 
 # Currently the data is only accurate for the cases where both #paths_before and #paths_after is
@@ -43,43 +54,81 @@ data$click_prob_after <- data$num_clicks_after / data$num_paths_after
 # So here we can only analyze pairs that were active both before and after.
 active <- data[data$num_paths_before >= 5 & data$num_paths_after >= 5,]
 
-x_ext <- active$num_external_searches_before / (active$num_external_searches_before + active$num_paths_before)
-x_wiki <- active$num_wiki_searches_before / (active$num_paths_before + active$num_wiki_searches_200_before)
-ord_ext <- order(x_ext, decreasing=TRUE)
-ord_wiki <- order(x_wiki, decreasing=TRUE)
+#############################################################
+ord_ext <- order(active$search_prob_ext_before, decreasing=TRUE)
+ord_wiki <- order(active$search_prob_wiki_before, decreasing=TRUE)
+ord_all <- order(active$search_prob_all_before, decreasing=TRUE)
 plot(1:nrow(active), active$click_prob_after[ord_ext], col='#00000005', pch=16)
 
+# Randomize the order of the candidates with search scores of 0.
+y_wiki <- active$click_prob_after[ord_wiki]
+idx <- which(active$search_prob_wiki_before[ord_wiki]==0)
+y_wiki[idx] <- y_wiki[idx[sample(length(idx), length(idx))]]
+y_ext <- active$click_prob_after[ord_ext]
+idx <- which(active$search_prob_ext_before[ord_ext]==0)
+y_ext[idx] <- y_ext[idx[sample(length(idx), length(idx))]]
+y_all <- active$click_prob_after[ord_all]
+idx <- which(active$search_prob_all_before[ord_all]==0)
+y_all[idx] <- y_all[idx[sample(length(idx), length(idx))]]
+
+smooth <- function(y) ksmooth(1:length(y), y, bandwidth=50, kernel='normal')$y
+
 #####################
-plot(cumsum(active$click_prob_after[ord_wiki])/(1:nrow(active)), type='l', col='red', xlim=c(0,5000))
+plot(cumsum(active$click_prob_after[ord_wiki])/(1:nrow(active)), type='l', col='red', xlim=c(0,8000))
 abline(v=min(which(x_wiki[ord_wiki]==0)), col='red')
 lines(cumsum(active$click_prob_after[ord_ext])/(1:nrow(active)))
 abline(v=min(which(x_ext[ord_ext]==0)))
+lines(cumsum(active$click_prob_after[ord_all])/(1:nrow(active)), col='green')
+abline(v=min(which(x_all[ord_all]==0)), col='green')
 
-smooth <- function(y) ksmooth(1:length(y), y, bandwidth=100, kernel='normal')$y
-plot(smooth(active$click_prob_after[ord_wiki]), type='l', col='red', xlim=c(0,5000))
-abline(v=min(which(x_wiki[ord_wiki]==0)), col='red')
-lines(smooth(active$click_prob_after[ord_ext]))
+plot(smooth(y_wiki), type='l', col='red', xlim=c(0,5000),
+     main='Wiki search as an indicator for link quality',
+     xlab='Rank w.r.t. search proportion (Jan 15)', ylab='Proportion of direct clicks (Mar 15)')
+abline(v=min(which(x_wiki[ord_wiki]==0)))
+text(1500, 0.8, 'At least one search')
+text(4200, 0.8, 'No search')
+
+plot(smooth(y_ext), type='l', xlim=c(0,5000),
+     main='External search as an indicator for link quality',
+     xlab='Rank w.r.t. search proportion (Jan 15)', ylab='Proportion of direct clicks (Mar 15)')
 abline(v=min(which(x_ext[ord_ext]==0)))
+text(1500, 0.85, 'At least one search')
+text(4000, 0.85, 'No search')
+
+plot(smooth(y_all), type='l', col='green', xlim=c(0,10000),
+     main='Any search as an indicator for link quality',
+     xlab='Rank w.r.t. search proportion (Jan 15)', ylab='Proportion of direct clicks (Mar 15)')
+abline(v=min(which(x_all[ord_all]==0)))
+text(2000, 0.85, 'At least one search')
+text(8000, 0.85, 'No search')
+
 
 plot(x_wiki[ord_wiki], smooth(active$click_prob_after[ord_wiki]), type='l', col='red', ylim=c(0.5,1), xlim=c(0,1))
+rug(x_wiki[ord_wiki], col='red')
 lines(x_ext[ord_ext], smooth(active$click_prob_after[ord_ext]))
 
-
-plot(active$num_paths_before, active$num_clicks_after/active$num_paths_after, log='x', col='#00000005', pch=16)
-lowess <- lowess(log(active$num_paths_before), log(active$num_clicks_after/active$num_paths_after))
-lines(exp(lowess$x), exp(lowess$y), col='red')
-
-groups <- cut(active$num_paths_before, c(1,10,100,1000,10000))
-boxplot(active$num_clicks_after/active$num_paths_after ~ groups)
+plot(x_all[ord_all], smooth(active$click_prob_after[ord_all]), type='l', col='green', ylim=c(0.45,0.9), xlim=c(0.005,1), log='x')
+rug(x_all[ord_all], col='#00ff0050')
 
 
 
 
-sgn <- sign(num_wiki_searches_after - num_wiki_searches_before)
-barplot(tapply(sgn, sgn, length))
+search_diff_boxplot <- function(search_prob_before, search_prob_after) {
+  diff <- ((search_prob_after - search_prob_before) / search_prob_before)[search_prob_before > 0]
+  #diff <- ((search_prob_after - search_prob_before) / search_prob_before)[search_prob_before > 0 & search_prob_after > 0]
+  #diff <- (search_prob_after - search_prob_before)[search_prob_before > 0]
+  boxplot(diff, ylim=c(-1,1), main=length(diff))
+  abline(h=0, col='gray')
+}
 
-sgn <- sign(active$num_external_searches_after - active$num_external_searches_before)
-barplot(tapply(sgn, sgn, length))
+search_diff_boxplot(active$search_prob_wiki_before, active$search_prob_wiki_after)
+search_diff_boxplot(active$search_prob_ext_before, active$search_prob_ext_after)
+search_diff_boxplot(active$search_prob_all_before, active$search_prob_all_after)
+
+idx <- which(active$search_prob_all_before > 0)
+plot(active$search_prob_all_before[idx], active$search_prob_all_after[idx],
+     col='#00000010', pch=16, xlim=c(0,1), ylim=c(0,1), cex=1)
+abline(0,1)
 
 ```
 

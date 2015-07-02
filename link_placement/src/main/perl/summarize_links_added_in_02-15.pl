@@ -25,20 +25,27 @@ while (my $pair = <IN>) {
 }
 close(IN);
 
-# Load candidate scores.
-print STDERR "Loading candidate scores\n";
-open(IN, "gunzip -c $DATADIR/link_candidates_scores_GROUND-TRUTH.tsv.gz |") or die $!;
+# Load links with at least one path before.
+print STDERR "Loading links with path before\n";
+open(IN, "gunzip -c $DATADIR/path_summaries_01-15_added_in_02-15.tsv.gz |") or die $!;
 while (my $line = <IN>) {
   chomp $line;
-  my ($src, $tgt, $prob_direct_after, $num_paths_after, $num_paths_before, $num_clicks_before)
-    = split(/\t/, $line);
+  my ($src, $tgt, $num_paths_before, $num_clicks_before) = split(/\t/, $line);
   my $pair = "$src\t$tgt";
-  # If there were direct clicks before the link was added according to the edit history, this is
-  # due to wiki searches or because the link existed, but was hidden in a template.
-  $path_counts_before{$pair} = sprintf("%.0f", $num_paths_before);
-  $path_counts_after{$pair} = sprintf("%.0f", $num_paths_after);
-  $click_counts_before{$pair} = sprintf("%.0f", $num_clicks_before);
-  $click_counts_after{$pair} = sprintf("%.0f", $prob_direct_after * $num_paths_after);
+  $path_counts_before{$pair} = $num_paths_before;
+  $click_counts_before{$pair} = $num_clicks_before;
+}
+close(IN);
+
+# Load links with at least one path after.
+print STDERR "Loading links with path after\n";
+open(IN, "gunzip -c $DATADIR/path_summaries_03-15_added_in_02-15.tsv.gz |") or die $!;
+while (my $line = <IN>) {
+  chomp $line;
+  my ($src, $tgt, $num_paths_after, $num_clicks_after) = split(/\t/, $line);
+  my $pair = "$src\t$tgt";
+  $path_counts_after{$pair} = $num_paths_after;
+  $click_counts_after{$pair} = $num_clicks_after;
 }
 close(IN);
 
