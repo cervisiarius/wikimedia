@@ -1,0 +1,18 @@
+---
+title: "Analysis of added links"
+author: "Bob West"
+date: "07/01/2015"
+output: html_document
+---
+
+
+```{r}
+.default_par <- par(no.readonly=TRUE)
+
+DATADIR <- sprintf('%s/wikimedia/trunk/data/link_placement/', Sys.getenv('HOME'))
+
+data <- read.table(pipe(sprintf('gunzip -c %s/links_added_in_02-15_WITH-STATS.tsv.gz', DATADIR)),
+                   header=TRUE, quote='', sep='\t', row.names=NULL)
+
+```
+

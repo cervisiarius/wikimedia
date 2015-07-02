@@ -103,7 +103,7 @@ close(IN);
 # Write summary to disk.
 print STDERR "Writing summary to disk\n";
 open(OUT, "| gzip > $DATADIR/links_added_in_02-15_WITH-STATS.tsv.gz");
-print OUT join("\t", 'pair', 'num_paths_before', 'num_paths_after', 'num_clicks_before', 'num_clicks_after',
+print OUT join("\t", 'src', 'tgt', 'num_paths_before', 'num_paths_after', 'num_clicks_before', 'num_clicks_after',
   'num_wiki_searches_302_before', 'num_wiki_searches_200_before', 'num_wiki_searches_302_after',
   'num_wiki_searches_200_after', 'num_external_searches_before', 'num_external_searches_after') . "\n";
 foreach my $pair (keys %new_links) {
