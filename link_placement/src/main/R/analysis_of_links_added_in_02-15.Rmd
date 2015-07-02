@@ -35,23 +35,34 @@ data <- data[data$num_clicks_before == 0,]
 data$click_prob_before <- data$num_clicks_before / data$num_paths_before
 data$click_prob_after <- data$num_clicks_after / data$num_paths_after
 
+# TODO: num_wiki_searches is also sometimes larger than num_paths
+
 # Currently the data is only accurate for the cases where both #paths_before and #paths_after is
 # greater than 0; if only one of them is greater than 0, then both will appear as 0 (consequence
 # of how Ashwin extracted the data).
 # So here we can only analyze pairs that were active both before and after.
 active <- data[data$num_paths_before >= 5 & data$num_paths_after >= 5,]
 
+x_ext <- active$num_external_searches_before / (active$num_external_searches_before + active$num_paths_before)
+x_wiki <- active$num_wiki_searches_before / (active$num_paths_before + active$num_wiki_searches_200_before)
+ord_ext <- order(x_ext, decreasing=TRUE)
+ord_wiki <- order(x_wiki, decreasing=TRUE)
+plot(1:nrow(active), active$click_prob_after[ord_ext], col='#00000005', pch=16)
 
-plot(1:nrow(active), active$click_prob_after[order(active$num_external_searches_before)], col='#00000005', pch=16)
-lowess <- lowess(1:nrow(active), active$click_prob_after[order(active$num_external_searches_before)])
-lines(lowess$x, lowess$y)
+#####################
+plot(cumsum(active$click_prob_after[ord_wiki])/(1:nrow(active)), type='l', col='red', xlim=c(0,5000))
+abline(v=min(which(x_wiki[ord_wiki]==0)), col='red')
+lines(cumsum(active$click_prob_after[ord_ext])/(1:nrow(active)))
+abline(v=min(which(x_ext[ord_ext]==0)))
 
-plot(active$num_paths_before, active$num_paths_after, log='xy', col='#00000005', pch=16)
-cor(active$num_paths_before, active$num_paths_after, method='spearman')
+smooth <- function(y) ksmooth(1:length(y), y, bandwidth=100, kernel='normal')$y
+plot(smooth(active$click_prob_after[ord_wiki]), type='l', col='red', xlim=c(0,5000))
+abline(v=min(which(x_wiki[ord_wiki]==0)), col='red')
+lines(smooth(active$click_prob_after[ord_ext]))
+abline(v=min(which(x_ext[ord_ext]==0)))
 
-plot(active$num_paths_before, active$num_clicks_after, log='xy', col='#00000005', pch=16)
-
-plot(sort(active$num_clicks_after), (nrow(active):1)/nrow(active), log='xy', type='l')
+plot(x_wiki[ord_wiki], smooth(active$click_prob_after[ord_wiki]), type='l', col='red', ylim=c(0.5,1), xlim=c(0,1))
+lines(x_ext[ord_ext], smooth(active$click_prob_after[ord_ext]))
 
 
 plot(active$num_paths_before, active$num_clicks_after/active$num_paths_after, log='x', col='#00000005', pch=16)
