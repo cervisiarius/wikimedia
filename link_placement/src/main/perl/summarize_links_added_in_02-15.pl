@@ -35,9 +35,9 @@ while (my $line = <IN>) {
   my $pair = "$src\t$tgt";
   # If there were direct clicks before the link was added according to the edit history, this is
   # due to wiki searches or because the link existed, but was hidden in a template.
-  $path_counts_before{$pair} = $num_paths_before;
-  $path_counts_after{$pair} = $num_paths_after;
-  $click_counts_before{$pair} = $num_clicks_before;
+  $path_counts_before{$pair} = sprintf("%.0f", $num_paths_before);
+  $path_counts_after{$pair} = sprintf("%.0f", $num_paths_after);
+  $click_counts_before{$pair} = sprintf("%.0f", $num_clicks_before);
   $click_counts_after{$pair} = sprintf("%.0f", $prob_direct_after * $num_paths_after);
 }
 close(IN);
