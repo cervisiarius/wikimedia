@@ -42,12 +42,10 @@ while (my $line = <IN>) {
 }
 close(IN);
 
-$i = 0;
 # Load wiki searches before.
 print STDERR "Loading wiki searches before\n";
 open(IN, "gunzip -c $DATADIR/searches_wiki_01-15.tsv.gz |") or die $!;
 while (my $line = <IN>) {
-  last if (++$i == 10000);
   chomp $line;
   my ($src, $tgt, $num_searches_302, $num_searches_200) = split(/\t/, $line);
   my $pair = "$src\t$tgt";
@@ -59,12 +57,10 @@ while (my $line = <IN>) {
 }
 close(IN);
 
-$i = 0;
 # Load wiki searches after.
 print STDERR "Loading wiki searches after\n";
 open(IN, "gunzip -c $DATADIR/searches_wiki_03-15.tsv.gz |") or die $!;
 while (my $line = <IN>) {
-  last if (++$i == 10000);
   chomp $line;
   my ($src, $tgt, $num_searches_302, $num_searches_200) = split(/\t/, $line);
   my $pair = "$src\t$tgt";
@@ -76,12 +72,10 @@ while (my $line = <IN>) {
 }
 close(IN);
 
-$i = 0;
 # Load external searches before.
 print STDERR "Loading external searches before\n";
 open(IN, "gunzip -c $DATADIR/searches_external_01-15.tsv.gz |") or die $!;
 while (my $line = <IN>) {
-  last if (++$i == 10000);
   chomp $line;
   my ($src, $tgt, $num_searches) = split(/\t/, $line);
   my $pair = "$src\t$tgt";
@@ -92,12 +86,10 @@ while (my $line = <IN>) {
 }
 close(IN);
 
-$i = 0;
 # Load external searches after.
 print STDERR "Loading external searches after\n";
 open(IN, "gunzip -c $DATADIR/searches_external_03-15.tsv.gz |") or die $!;
 while (my $line = <IN>) {
-  last if (++$i == 10000);
   chomp $line;
   my ($src, $tgt, $num_searches) = split(/\t/, $line);
   my $pair = "$src\t$tgt";
