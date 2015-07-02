@@ -65,7 +65,9 @@ while (my $line = <IN>) {
     $wiki_search_counts_302_after{$pair} = $num_searches_302;
     $wiki_search_counts_200_after{$pair} = $num_searches_200;
 print "$pair\t$wiki_search_counts_302_after{$pair}\n";
-  }
+  } else {
+print "$pair\t--------------\n";
+}
 }
 close(IN);
 
