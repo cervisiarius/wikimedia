@@ -17,7 +17,7 @@ my %external_search_counts_before = ();
 my %external_search_counts_after = ();
 
 # Load added links.
-print STDERR 'Loading added links';
+print STDERR "Loading added links\n";
 open(IN, "gunzip -c $DATADIR/links_added_in_02-15.tsv.gz |") or die $!;
 while (my $pair = <IN>) {
   chomp $pair;
@@ -26,7 +26,7 @@ while (my $pair = <IN>) {
 close(IN);
 
 # Load candidate scores.
-print STDERR 'Loading candidate scores';
+print STDERR "Loading candidate scores\n";
 open(IN, "gunzip -c $DATADIR/link_candidates_scores_GROUND-TRUTH.tsv.gz |") or die $!;
 while (my $line = <IN>) {
   chomp $line;
@@ -44,7 +44,7 @@ close(IN);
 
 $i = 0;
 # Load wiki searches before.
-print STDERR 'Loading wiki searches before';
+print STDERR "Loading wiki searches before\n";
 open(IN, "gunzip -c $DATADIR/searches_wiki_01-15.tsv.gz |") or die $!;
 while (my $line = <IN>) {
   last if (++$i == 10000);
@@ -61,7 +61,7 @@ close(IN);
 
 $i = 0;
 # Load wiki searches after.
-print STDERR 'Loading wiki searches after';
+print STDERR "Loading wiki searches after\n";
 open(IN, "gunzip -c $DATADIR/searches_wiki_03-15.tsv.gz |") or die $!;
 while (my $line = <IN>) {
   last if (++$i == 10000);
@@ -78,7 +78,7 @@ close(IN);
 
 $i = 0;
 # Load external searches before.
-print STDERR 'Loading external searches before';
+print STDERR "Loading external searches before\n";
 open(IN, "gunzip -c $DATADIR/searches_external_01-15.tsv.gz |") or die $!;
 while (my $line = <IN>) {
   last if (++$i == 10000);
@@ -94,7 +94,7 @@ close(IN);
 
 $i = 0;
 # Load external searches after.
-print STDERR 'Loading external searches after';
+print STDERR "Loading external searches after\n";
 open(IN, "gunzip -c $DATADIR/searches_external_03-15.tsv.gz |") or die $!;
 while (my $line = <IN>) {
   last if (++$i == 10000);
@@ -109,22 +109,22 @@ while (my $line = <IN>) {
 close(IN);
 
 # Write summary to disk.
-print STDERR 'Writing summary to disk';
+print STDERR "Writing summary to disk\n";
 open(OUT, "| gzip > $DATADIR/links_added_in_02-15_WITH-STATS.tsv.gz");
 print OUT join("\t", 'pair', 'num_paths_before', 'num_paths_after', 'num_clicks_before', 'num_clicks_after',
   'num_wiki_searches_302_before', 'num_wiki_searches_200_before', 'num_wiki_searches_302_after',
   'num_wiki_searches_200_after', 'num_external_searches_before', 'num_external_searches_after') . "\n";
 foreach my $pair (keys %new_links) {
-  $num_paths_before = $path_counts_before{$pair} or 0;
-  $num_paths_after = $path_counts_after{$pair} or 0;
-  $num_clicks_before = $click_counts_before{$pair} or 0;
-  $num_clicks_after = $click_counts_after{$pair} or 0;
-  $num_wiki_searches_302_before = $wiki_search_counts_302_before{$pair} or 0;
-  $num_wiki_searches_200_before = $wiki_search_counts_200_before{$pair} or 0;
-  $num_wiki_searches_302_after = $wiki_search_counts_302_after{$pair} or 0;
-  $num_wiki_searches_200_after = $wiki_search_counts_200_after{$pair} or 0;
-  $num_external_searches_before = $external_search_counts_before{$pair} or 0;
-  $num_external_searches_after = $external_search_counts_after{$pair} or 0;
+  $num_paths_before = $path_counts_before{$pair} || 0;
+  $num_paths_after = $path_counts_after{$pair} || 0;
+  $num_clicks_before = $click_counts_before{$pair} || 0;
+  $num_clicks_after = $click_counts_after{$pair} || 0;
+  $num_wiki_searches_302_before = $wiki_search_counts_302_before{$pair} || 0;
+  $num_wiki_searches_200_before = $wiki_search_counts_200_before{$pair} || 0;
+  $num_wiki_searches_302_after = $wiki_search_counts_302_after{$pair} || 0;
+  $num_wiki_searches_200_after = $wiki_search_counts_200_after{$pair} || 0;
+  $num_external_searches_before = $external_search_counts_before{$pair} || 0;
+  $num_external_searches_after = $external_search_counts_after{$pair} || 0;
 
   print OUT join("\t", $pair, $num_paths_before, $num_paths_after, $num_clicks_before, $num_clicks_after,
     $num_wiki_searches_302_before, $num_wiki_searches_200_before, $num_wiki_searches_302_after,
