@@ -41,6 +41,7 @@ data$click_prob_after <- data$num_clicks_after / data$num_paths_after
 data$search_prob_ext_before <- data$num_external_searches_before / (data$num_external_searches_before + data$num_paths_before)
 data$search_prob_wiki_before <- data$num_wiki_searches_before / (data$num_paths_before + data$num_wiki_searches_200_before)
 data$search_prob_all_before <- (data$num_external_searches_before + data$num_wiki_searches_before) /
+  # Paths include 302 searches
   (data$num_external_searches_before + data$num_paths_before + data$num_wiki_searches_200_before)
 data$search_prob_ext_after <- data$num_external_searches_after / (data$num_external_searches_after + data$num_paths_after)
 data$search_prob_wiki_after <- data$num_wiki_searches_after / (data$num_paths_after + data$num_wiki_searches_200_after)
@@ -77,40 +78,39 @@ smooth <- function(y) ksmooth(1:length(y), y, bandwidth=50, kernel='normal')$y
 
 #####################
 plot(cumsum(active$click_prob_after[ord_wiki])/(1:nrow(active)), type='l', col='red', xlim=c(0,8000))
-abline(v=min(which(x_wiki[ord_wiki]==0)), col='red')
+abline(v=min(which(active$search_prob_wiki_before[ord_wiki]==0)), col='red')
 lines(cumsum(active$click_prob_after[ord_ext])/(1:nrow(active)))
-abline(v=min(which(x_ext[ord_ext]==0)))
+abline(v=min(which(active$search_prob_ext_before[ord_ext]==0)))
 lines(cumsum(active$click_prob_after[ord_all])/(1:nrow(active)), col='green')
-abline(v=min(which(x_all[ord_all]==0)), col='green')
+abline(v=min(which(active$search_prob_all_before[ord_all]==0)), col='green')
 
 plot(smooth(y_wiki), type='l', col='red', xlim=c(0,5000),
      main='Wiki search as an indicator for link quality',
      xlab='Rank w.r.t. search proportion (Jan 15)', ylab='Proportion of direct clicks (Mar 15)')
-abline(v=min(which(x_wiki[ord_wiki]==0)))
+abline(v=min(which(active$search_prob_wiki_before[ord_wiki]==0)))
 text(1500, 0.8, 'At least one search')
 text(4200, 0.8, 'No search')
 
 plot(smooth(y_ext), type='l', xlim=c(0,5000),
      main='External search as an indicator for link quality',
      xlab='Rank w.r.t. search proportion (Jan 15)', ylab='Proportion of direct clicks (Mar 15)')
-abline(v=min(which(x_ext[ord_ext]==0)))
+abline(v=min(which(active$search_prob_ext_before[ord_ext]==0)))
 text(1500, 0.85, 'At least one search')
 text(4000, 0.85, 'No search')
 
 plot(smooth(y_all), type='l', col='green', xlim=c(0,10000),
      main='Any search as an indicator for link quality',
      xlab='Rank w.r.t. search proportion (Jan 15)', ylab='Proportion of direct clicks (Mar 15)')
-abline(v=min(which(x_all[ord_all]==0)))
+abline(v=min(which(active$search_prob_all_before[ord_all]==0)))
 text(2000, 0.85, 'At least one search')
 text(8000, 0.85, 'No search')
 
 
-plot(x_wiki[ord_wiki], smooth(active$click_prob_after[ord_wiki]), type='l', col='red', ylim=c(0.5,1), xlim=c(0,1))
-rug(x_wiki[ord_wiki], col='red')
-lines(x_ext[ord_ext], smooth(active$click_prob_after[ord_ext]))
-
-plot(x_all[ord_all], smooth(active$click_prob_after[ord_all]), type='l', col='green', ylim=c(0.45,0.9), xlim=c(0.005,1), log='x')
-rug(x_all[ord_all], col='#00ff0050')
+plot(active$search_prob_wiki_before[ord_wiki], smooth(active$click_prob_after[ord_wiki]), type='l', col='red', ylim=c(0.5,1), xlim=c(0,1))
+rug(active$search_prob_wiki_before[ord_wiki], col='red')
+lines(active$search_prob_ext_before[ord_ext], smooth(active$click_prob_after[ord_ext]))
+plot(active$search_prob_all_before[ord_all], smooth(active$click_prob_after[ord_all]), type='l', col='green', ylim=c(0.45,0.9), xlim=c(0.005,1), log='x')
+rug(active$search_prob_all_before[ord_all], col='#00ff0050')
 
 
 

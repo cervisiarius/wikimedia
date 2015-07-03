@@ -26,6 +26,9 @@ public class WikiSearch extends BrowserEvent {
       json.put(JSON_IS_SEARCH, true);
       json.put(JSON_TITLE, decode(m.group(1)));
       json.put(JSON_SEARCH_PARAMS, m.group(2));
+    } else {
+      // UNTESTED.
+      throw new IllegalArgumentException("Bad search query string: " + json.toString());
     }
   }
 

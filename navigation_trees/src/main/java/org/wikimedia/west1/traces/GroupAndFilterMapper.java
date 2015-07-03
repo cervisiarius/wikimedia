@@ -110,7 +110,9 @@ public class GroupAndFilterMapper extends Mapper<LongWritable, Group, Text, Text
 				return;
 			}
 			// It must be to an article page or a wiki search.
-			boolean isArticle = json.getString(BrowserEvent.JSON_URI_PATH).startsWith("/wiki/");
+			boolean isArticle = json.getString(BrowserEvent.JSON_URI_PATH).startsWith("/wiki/")
+			    // UNTESTED.
+			    && json.getString(BrowserEvent.JSON_URI_QUERY).isEmpty();
 			boolean isWikiSearch = json.getString(BrowserEvent.JSON_URI_PATH).equals("/w/index.php")
 			    && WikiSearch.QUERY_PATTERN.matcher(json.getString(BrowserEvent.JSON_URI_QUERY))
 			        .matches();
@@ -130,11 +132,11 @@ public class GroupAndFilterMapper extends Mapper<LongWritable, Group, Text, Text
 				return;
 			}
 			// We only accept HTTP statuses 200 (OK), 304 (Not Modified), and 302 (Found). The latter are
-			// important for wiki searches, but it might be worthwhile filtering other cases out in later
-			// analysis stages.
+			// important only for wiki searches.
 			if (!json.getString(BrowserEvent.JSON_HTTP_STATUS).equals("200")
 			    && !json.getString(BrowserEvent.JSON_HTTP_STATUS).equals("304")
-			    && !json.getString(BrowserEvent.JSON_HTTP_STATUS).equals("302")) {
+			    // UNTESTED.
+			    && !(json.getString(BrowserEvent.JSON_HTTP_STATUS).equals("302") && isWikiSearch)) {
 				context.getCounter(HADOOP_COUNTERS.MAP_SKIPPED_BAD_HTTP_STATUS).increment(1);
 				return;
 			}
