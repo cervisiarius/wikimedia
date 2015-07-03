@@ -46,6 +46,9 @@ while (my $line = <IN>) {
   my $pair = "$src\t$tgt";
   $path_counts_after{$pair} = $num_paths_after;
   $click_counts_after{$pair} = $num_clicks_after;
+  if ($pair eq "$1\tCurrency, $path_counts_after{$pair} = $num_paths_after, $click_counts_after{$pair} = $num_clicks_after\n") {
+    print "$pair\t";    
+  }
 }
 close(IN);
 
