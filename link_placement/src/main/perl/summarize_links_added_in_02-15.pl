@@ -46,76 +46,73 @@ while (my $line = <IN>) {
   my $pair = "$src\t$tgt";
   $path_counts_after{$pair} = $num_paths_after;
   $click_counts_after{$pair} = $num_clicks_after;
-  if ($pair eq "\$1\tCurrency") {
-    print "$pair\t$path_counts_after{$pair} = $num_paths_after, $click_counts_after{$pair} = $num_clicks_after\n";
-  }
 }
 close(IN);
 
-# Load wiki searches before.
-print STDERR "Loading wiki searches before\n";
-open(IN, "gunzip -c $DATADIR/searches_wiki_01-15.tsv.gz |") or die $!;
-while (my $line = <IN>) {
-  chomp $line;
-  my ($src, $tgt, $num_searches_302, $num_searches_200) = split(/\t/, $line);
-  my $pair = "$src\t$tgt";
-  # Here we only consider searches corresponding to links that were added.
-  if (defined $new_links{$pair}) {
-    $wiki_search_counts_302_before{$pair} = $num_searches_302;
-    $wiki_search_counts_200_before{$pair} = $num_searches_200;
-  }
-}
-close(IN);
+# # Load wiki searches before.
+# print STDERR "Loading wiki searches before\n";
+# open(IN, "gunzip -c $DATADIR/searches_wiki_01-15.tsv.gz |") or die $!;
+# while (my $line = <IN>) {
+#   chomp $line;
+#   my ($src, $tgt, $num_searches_302, $num_searches_200) = split(/\t/, $line);
+#   my $pair = "$src\t$tgt";
+#   # Here we only consider searches corresponding to links that were added.
+#   if (defined $new_links{$pair}) {
+#     $wiki_search_counts_302_before{$pair} = $num_searches_302;
+#     $wiki_search_counts_200_before{$pair} = $num_searches_200;
+#   }
+# }
+# close(IN);
 
-# Load wiki searches after.
-print STDERR "Loading wiki searches after\n";
-open(IN, "gunzip -c $DATADIR/searches_wiki_03-15.tsv.gz |") or die $!;
-while (my $line = <IN>) {
-  chomp $line;
-  my ($src, $tgt, $num_searches_302, $num_searches_200) = split(/\t/, $line);
-  my $pair = "$src\t$tgt";
-  # Here we only consider searches corresponding to links that were added.
-  if (defined $new_links{$pair}) {
-    $wiki_search_counts_302_after{$pair} = $num_searches_302;
-    $wiki_search_counts_200_after{$pair} = $num_searches_200;
-  }
-}
-close(IN);
+# # Load wiki searches after.
+# print STDERR "Loading wiki searches after\n";
+# open(IN, "gunzip -c $DATADIR/searches_wiki_03-15.tsv.gz |") or die $!;
+# while (my $line = <IN>) {
+#   chomp $line;
+#   my ($src, $tgt, $num_searches_302, $num_searches_200) = split(/\t/, $line);
+#   my $pair = "$src\t$tgt";
+#   # Here we only consider searches corresponding to links that were added.
+#   if (defined $new_links{$pair}) {
+#     $wiki_search_counts_302_after{$pair} = $num_searches_302;
+#     $wiki_search_counts_200_after{$pair} = $num_searches_200;
+#   }
+# }
+# close(IN);
 
-# Load external searches before.
-print STDERR "Loading external searches before\n";
-open(IN, "gunzip -c $DATADIR/searches_external_01-15.tsv.gz |") or die $!;
-while (my $line = <IN>) {
-  chomp $line;
-  my ($src, $tgt, $num_searches) = split(/\t/, $line);
-  my $pair = "$src\t$tgt";
-  # Here we only consider searches corresponding to links that were added.
-  if (defined $new_links{$pair}) {
-    $external_search_counts_before{$pair} = $num_searches;
-  }
-}
-close(IN);
+# # Load external searches before.
+# print STDERR "Loading external searches before\n";
+# open(IN, "gunzip -c $DATADIR/searches_external_01-15.tsv.gz |") or die $!;
+# while (my $line = <IN>) {
+#   chomp $line;
+#   my ($src, $tgt, $num_searches) = split(/\t/, $line);
+#   my $pair = "$src\t$tgt";
+#   # Here we only consider searches corresponding to links that were added.
+#   if (defined $new_links{$pair}) {
+#     $external_search_counts_before{$pair} = $num_searches;
+#   }
+# }
+# close(IN);
 
-# Load external searches after.
-print STDERR "Loading external searches after\n";
-open(IN, "gunzip -c $DATADIR/searches_external_03-15.tsv.gz |") or die $!;
-while (my $line = <IN>) {
-  chomp $line;
-  my ($src, $tgt, $num_searches) = split(/\t/, $line);
-  my $pair = "$src\t$tgt";
-  # Here we only consider searches corresponding to links that were added.
-  if (defined $new_links{$pair}) {
-    $external_search_counts_after{$pair} = $num_searches;
-  }
-}
-close(IN);
+# # Load external searches after.
+# print STDERR "Loading external searches after\n";
+# open(IN, "gunzip -c $DATADIR/searches_external_03-15.tsv.gz |") or die $!;
+# while (my $line = <IN>) {
+#   chomp $line;
+#   my ($src, $tgt, $num_searches) = split(/\t/, $line);
+#   my $pair = "$src\t$tgt";
+#   # Here we only consider searches corresponding to links that were added.
+#   if (defined $new_links{$pair}) {
+#     $external_search_counts_after{$pair} = $num_searches;
+#   }
+# }
+# close(IN);
 
 # Write summary to disk.
 print STDERR "Writing summary to disk\n";
 open(OUT, "| gzip > $DATADIR/links_added_in_02-15_WITH-STATS.tsv.gz");
-print OUT join("\t", 'src', 'tgt', 'num_paths_before', 'num_paths_after', 'num_clicks_before', 'num_clicks_after',
-  'num_wiki_searches_302_before', 'num_wiki_searches_200_before', 'num_wiki_searches_302_after',
-  'num_wiki_searches_200_after', 'num_external_searches_before', 'num_external_searches_after') . "\n";
+# print OUT join("\t", 'src', 'tgt', 'num_paths_before', 'num_paths_after', 'num_clicks_before', 'num_clicks_after',
+#   'num_wiki_searches_302_before', 'num_wiki_searches_200_before', 'num_wiki_searches_302_after',
+#   'num_wiki_searches_200_after', 'num_external_searches_before', 'num_external_searches_after') . "\n";
 foreach my $pair (keys %new_links) {
   $num_paths_before = $path_counts_before{$pair} || 0;
   $num_paths_after = $path_counts_after{$pair} || 0;
@@ -128,8 +125,11 @@ foreach my $pair (keys %new_links) {
   $num_external_searches_before = $external_search_counts_before{$pair} || 0;
   $num_external_searches_after = $external_search_counts_after{$pair} || 0;
 
-  print OUT join("\t", $pair, $num_paths_before, $num_paths_after, $num_clicks_before, $num_clicks_after,
-    $num_wiki_searches_302_before, $num_wiki_searches_200_before, $num_wiki_searches_302_after,
-    $num_wiki_searches_200_after, $num_external_searches_before, $num_external_searches_after) . "\n";
+  if ($pair eq "\$1\tCurrency") {
+    print "$pair\t$path_counts_after{$pair} = $num_paths_after, $click_counts_after{$pair} = $num_clicks_after\n";
+  }
+  # print OUT join("\t", $pair, $num_paths_before, $num_paths_after, $num_clicks_before, $num_clicks_after,
+  #   $num_wiki_searches_302_before, $num_wiki_searches_200_before, $num_wiki_searches_302_after,
+  #   $num_wiki_searches_200_after, $num_external_searches_before, $num_external_searches_after) . "\n";
 }
-close(OUT);
+# close(OUT);
