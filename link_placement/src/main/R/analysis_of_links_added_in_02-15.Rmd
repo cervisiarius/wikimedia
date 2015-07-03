@@ -23,7 +23,9 @@ data$num_wiki_searches_before <- data$num_wiki_searches_302_before + data$num_wi
 data$num_wiki_searches_after <- data$num_wiki_searches_302_after + data$num_wiki_searches_200_after
 
 # Status-302 searches are counted as direct clicks in the input data, so correct for this.
-### WHY is sum(data$num_wiki_searches_302_before > data$num_clicks_before) == 1362, not 0?
+# Q: WHY is sum(data$num_wiki_searches_302_before > data$num_clicks_before) == 1362, not 0?
+# A: Maybe if the browser somehow fires several 302 search requests but only one 200 forward
+# to the article.
 data$num_clicks_before <- pmax(0, data$num_clicks_before - data$num_wiki_searches_302_before)
 data$num_clicks_after <- pmax(0, data$num_clicks_after - data$num_wiki_searches_302_after)
 
@@ -127,7 +129,7 @@ search_diff_boxplot(active$search_prob_all_before, active$search_prob_all_after)
 
 idx <- which(active$search_prob_all_before > 0)
 plot(active$search_prob_all_before[idx], active$search_prob_all_after[idx],
-     col='#00000010', pch=16, xlim=c(0,1), ylim=c(0,1), cex=1)
+     col='#00000010', pch=16, xlim=c(0.001,1), ylim=c(0.001,1), cex=2, log='xy')
 abline(0,1)
 
 ```
