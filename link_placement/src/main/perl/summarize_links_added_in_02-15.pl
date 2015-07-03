@@ -110,9 +110,9 @@ close(IN);
 # Write summary to disk.
 print STDERR "Writing summary to disk\n";
 open(OUT, "| gzip > $DATADIR/links_added_in_02-15_WITH-STATS.tsv.gz");
-# print OUT join("\t", 'src', 'tgt', 'num_paths_before', 'num_paths_after', 'num_clicks_before', 'num_clicks_after',
-#   'num_wiki_searches_302_before', 'num_wiki_searches_200_before', 'num_wiki_searches_302_after',
-#   'num_wiki_searches_200_after', 'num_external_searches_before', 'num_external_searches_after') . "\n";
+print OUT join("\t", 'src', 'tgt', 'num_paths_before', 'num_paths_after', 'num_clicks_before', 'num_clicks_after',
+  'num_wiki_searches_302_before', 'num_wiki_searches_200_before', 'num_wiki_searches_302_after',
+  'num_wiki_searches_200_after', 'num_external_searches_before', 'num_external_searches_after') . "\n";
 foreach my $pair (keys %new_links) {
   $num_paths_before = $path_counts_before{$pair} || 0;
   $num_paths_after = $path_counts_after{$pair} || 0;
@@ -126,10 +126,10 @@ foreach my $pair (keys %new_links) {
   $num_external_searches_after = $external_search_counts_after{$pair} || 0;
 
   if ($pair eq "\$1\tCurrency") {
-    print "$pair\t$path_counts_after{$pair} = $num_paths_after, $click_counts_after{$pair} = $num_clicks_after\n";
+    print STDERR "$pair\t$path_counts_after{$pair} = $num_paths_after, $click_counts_after{$pair} = $num_clicks_after\n";
   }
-  # print OUT join("\t", $pair, $num_paths_before, $num_paths_after, $num_clicks_before, $num_clicks_after,
-  #   $num_wiki_searches_302_before, $num_wiki_searches_200_before, $num_wiki_searches_302_after,
-  #   $num_wiki_searches_200_after, $num_external_searches_before, $num_external_searches_after) . "\n";
+  print OUT join("\t", $pair, $num_paths_before, $num_paths_after, $num_clicks_before, $num_clicks_after,
+    $num_wiki_searches_302_before, $num_wiki_searches_200_before, $num_wiki_searches_302_after,
+    $num_wiki_searches_200_after, $num_external_searches_before, $num_external_searches_after) . "\n";
 }
-# close(OUT);
+close(OUT);
