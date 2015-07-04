@@ -85,16 +85,14 @@ sum(x_raw == 0 & y_raw > 0)
 # Indirect before but no indirect after.
 sum(x_raw > 0 & y_raw == 0)
 
-# Let's also subtract 
-# x_raw <- data$num_paths_before
-# y_raw <- data$num_paths_after - data$num_wiki_searches_after - data$num_clicks_after 
-# x <- jitter(x_raw[x_raw > 0 & y_raw > 0], amount=0.5)
-# y <- jitter(y_raw[x_raw > 0 & y_raw > 0], amount=0.5)
-# plot(x, y, col='#00000005', pch=16, log='xy', xlim=range(c(x,y)), ylim=range(c(x,y)),
-#      xlab='Num paths before', ylab='Num paths after (indirect only)')
-# abline(0,1, col='red')
-
-
+# Let's check out searches.
+x_raw <- data$num_wiki_searches_before + data$num_external_searches_before
+y_raw <- data$num_wiki_searches_after + data$num_external_searches_after
+x <- jitter(x_raw[x_raw > 0 & y_raw > 0], amount=0.5)
+y <- jitter(y_raw[x_raw > 0 & y_raw > 0], amount=0.5)
+plot(x, y, col='#00000010', pch=16, log='xy', xlim=range(c(x,y)), ylim=range(c(x,y)),
+     xlab='Num searches before', ylab='Num searches after')
+abline(0,1, col='red')
 
 
 # Most clicks are not used at all (73%); among the rest, there's a long tail, with only few links
@@ -106,7 +104,8 @@ abline(h=frac_1)
 text(1000, frac_1, sprintf('No clicks: %.0f%%', frac_0*100), pos=3)
 text(1000, frac_1, sprintf('At least one click: %.0f%%', (1-frac_0)*100), pos=1)
 
-# The fact that links get used so rarely might come simply from the fact that
+# Once a link is introduced, it accounts for nearly all traffic from s to t.
+hist(data$click_prob_after, breaks=5, xlab='Direct-click ratio', main='')
 ```
 
 # Search as a predictor of link usage
@@ -201,6 +200,7 @@ search_diff_boxplot <- function(search_prob_before, search_prob_after) {
   abline(h=0, col='gray')
 }
 
+# This is most probably explained by an increase in direct clicks, not by a decrease in searches.
 search_diff_boxplot(active$search_prob_wiki_before, active$search_prob_wiki_after)
 search_diff_boxplot(active$search_prob_ext_before, active$search_prob_ext_after)
 search_diff_boxplot(active$search_prob_all_before, active$search_prob_all_after)
@@ -214,3 +214,57 @@ plot(active$search_prob_all_before[idx], active$search_prob_all_after[idx],
 abline(0,1)
 ```
 
+```{r}
+null <- read.table(pipe(sprintf('gunzip -c %s/link_candidates_FREQUENT_WITH-NULL-MODEL_month=1.tsv.gz | cut -f2-7,10-', DATADIR)),
+                   header=TRUE, quote='', sep='\t')
+rownames(null) <- paste(null$source, null$target)
+null$p_indir <- null$num_paths_before/null$s_count
+null$p_dir_pred <- pmin(1, pmax(0, (null$p_indir - null$null_model_p) / (1 - null$null_model_p)))
+null$prob_label_pred <- pmin(1, pmax(0, null$p_dir_pred / null$p_indir))
+null$p_indir_pred <- null$null_model_p + (1 - null$null_model_p) * null$null_model_p
+
+
+# null_3 <- read.table(pipe(sprintf('gunzip -c %s/link_candidates_FREQUENT_WITH-NULL-MODEL_month=3.tsv.gz | cut -f2-7,10-', DATADIR)),
+#                    header=TRUE, quote='', sep='\t')
+# rownames(null_3) <- paste(null_3$source, null_3$target)
+# common <- intersect(rownames(null), rownames(null_3))
+# plot(null$null_model_p[rownames(null) %in% common], null_3$null_model_p[rownames(null_3) %in% common], log='xy', xlim=c(10e-7,1), ylim=c(10e-7,1))
+
+abline(0, 1, col='red')
+smooth <- function(x, y) ksmooth(x, y, bandwidth=0.05, kernel='normal')
+ord <- order(null$prob_label_pred)
+sm <- smooth(null$prob_label_pred[ord], null$prob_label[ord])
+lines(sm$x, sm$y)
+rug(null$prob_label_pred[ord], col='#00000010')
+dens <- density(null$prob_label_pred[ord])
+lines(dens$x, dens$y/5, bw='SJ')
+abline(0, 1, col='red')
+
+plot(null$prob_label_pred, null$prob_label, pch=16, col='#00000010')
+
+smooth <- function(y) ksmooth(1:length(y), y, bandwidth=100, kernel='normal')
+sm <- smooth(null$prob_label[ord])
+plot(sm$x, sm$y, type='l')
+abline(v=max(which(null$prob_label_pred[ord]==0)))
+
+head(null[rev(ord),])
+
+#x <- log(null$p_dir_pred[null$p_dir_pred > 0 & null$p_s_direct_t > 0])
+#y <- log(null$p_s_direct_t[null$p_dir_pred > 0 & null$p_s_direct_t > 0])
+#lm <- lm(y ~ x)
+
+plot(null$p_dir_pred, null$p_s_direct_t, log='xy', xlim=c(1e-6,1), ylim=c(1e-6,1), pch=16, col='#00000010')
+abline(0, 1, col='red')
+#curve(coef(lm)[1] + x*coef(lm)[2], from add=TRUE)
+
+plot(null$p_indir, null$p_s_direct_t, log='xy', xlim=c(1e-6,1), ylim=c(1e-6,1), pch=16, col='#00000010')
+abline(0, 1, col='red')
+
+plot(null$p_dir_pred, null$null_model_p, log='xy', xlim=c(1e-6,1), ylim=c(1e-6,1), pch=16, col='#00000010')
+abline(0, 1, col='red')
+
+pairs(null[,c('p_s_direct_t', 'p_dir_pred', 'null_model_p', 'p_indir', 'p_indir_pred')], log='xy', pch=16, col='#00000010',
+      xlim=c(1e-6,1), ylim=c(1e-6,1))
+
+
+```
