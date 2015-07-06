@@ -249,13 +249,8 @@ abline(v=max(which(null$prob_label_pred[ord]==0)))
 
 head(null[rev(ord),])
 
-#x <- log(null$p_dir_pred[null$p_dir_pred > 0 & null$p_s_direct_t > 0])
-#y <- log(null$p_s_direct_t[null$p_dir_pred > 0 & null$p_s_direct_t > 0])
-#lm <- lm(y ~ x)
-
 plot(null$p_dir_pred, null$p_s_direct_t, log='xy', xlim=c(1e-6,1), ylim=c(1e-6,1), pch=16, col='#00000010')
 abline(0, 1, col='red')
-#curve(coef(lm)[1] + x*coef(lm)[2], from add=TRUE)
 
 plot(null$p_indir, null$p_s_direct_t, log='xy', xlim=c(1e-6,1), ylim=c(1e-6,1), pch=16, col='#00000010')
 abline(0, 1, col='red')
@@ -263,8 +258,105 @@ abline(0, 1, col='red')
 plot(null$p_dir_pred, null$null_model_p, log='xy', xlim=c(1e-6,1), ylim=c(1e-6,1), pch=16, col='#00000010')
 abline(0, 1, col='red')
 
-pairs(null[,c('p_s_direct_t', 'p_dir_pred', 'null_model_p', 'p_indir', 'p_indir_pred')], log='xy', pch=16, col='#00000010',
-      xlim=c(1e-6,1), ylim=c(1e-6,1))
+pairs(null[,c('p_s_direct_t', 'p_dir_pred', 'null_model_p', 'p_indir', 'p_indir_pred')],
+      panel=function(...) points(..., panel.first=abline(0,1,col='red')),
+      log='xy', pch=16, col='#00000010', xlim=c(1e-6,1), ylim=c(1e-6,1))
 
+
+# Check if we can rank meaningfully even when source is fixed.
+ord <- order(null$p_indir - null$null_model_p, decreasing=TRUE)
+counts <- tapply(null$source, null$source, length)
+nn <- null[null$source %in% names(counts)[counts >= 10],]
+summary(by(nn, nn$source, function(n) cor(n$p_indir, n$p_s_direct_t, method='spearman')))
+head(null[ord,c('p_s_direct_t', 'p_indir', 'null_model_p')])
+
+plot(null$p_s_direct_t, null$p_indir - null$null_model_p, log='xy', xlim=c(1e-6,1), ylim=c(1e-6,1))
+
+plot(null$p_s_direct_t, null$p_indir, log='xy', xlim=c(1e-6,1), ylim=c(1e-6,1))
+abline(0,1,col='red')
+
+#####################################
+xx <- log10(null$null_model_p[null$null_model_p > 0 & null$p_s_direct_t > 0])
+yy <- log10(null$p_s_direct_t[null$null_model_p > 0 & null$p_s_direct_t > 0])
+plot(xx, yy, col='#00000005', pch=16, cex=2, xlim=range(c(xx,yy)), ylim=range(c(xx,yy)))
+abline(0, 1, col='green')
+coef <- coef(lm(yy ~ xx + I(xx^2)))
+curve(coef[1] + x*coef[2] + x^2*coef[3], from=-14, to=0, add=TRUE, col='red', lwd=2)
+
+xx <- log10(null$p_indir[null$p_indir > 0 & null$p_s_direct_t > 0])
+yy <- log10(null$p_s_direct_t[null$p_indir > 0 & null$p_s_direct_t > 0])
+plot(xx, yy, col='#00000005', pch=16, cex=2, xlim=range(c(xx,yy)), ylim=range(c(xx,yy)))
+abline(0, 1, col='green')
+coef <- coef(lm(yy ~ xx + I(xx^2)))
+curve(coef[1] + x*coef[2] + x^2*coef[3], from=-14, to=0, add=TRUE, col='red', lwd=2)
+
+xx <- log10(null$p_dir_pred[null$p_dir_pred > 0 & null$p_s_direct_t > 0])
+yy <- log10(null$p_s_direct_t[null$p_dir_pred > 0 & null$p_s_direct_t > 0])
+plot(xx, yy, col='#00000005', pch=16, cex=2, xlim=c(-6,0), ylim=c(-6,0))
+abline(0, 1)
+coef <- coef(lm(yy ~ xx + I(xx^2)))
+smooth <- function(x, y) ksmooth(x, y, bandwidth=0.05, kernel='normal')
+lines(smooth(xx,yy)$x, smooth(xx,yy)$y, col='orange', lwd=3)
+curve(coef[1] + x*coef[2] + x^2*coef[3], from=-14, to=0, add=TRUE, col='green', lwd=4)
+abline(v=quantile(xx, c(.025,.975)))
+
+f <- function(x, coef) coef[1] + x*coef[2] + x^2*coef[3]
+plot(f(xx, coef), yy, col='#00000005', pch=16, cex=2, xlim=c(-4,-1), ylim=c(-4,-1))
+abline(0, 1)
+abline(v=f(quantile(xx, c(.025,.975)), coef))
+
+# Evaluate the different predictions.
+null$p_dir_pred_boosted <- 10^(f(log10(null$p_dir_pred), coef))
+null$delta <- null$p_indir - null$null_model_p
+null$mean <- (null$p_indir + null$null_model_p)/2
+#idx <- which(null$p_dir_pred > 0 & null$null_model_p > 0 & null$p_indir > 0 & null$p_s_direct_t > 0)
+idx <- which(null$null_model_p + null$p_indir > 0 & null$p_s_direct_t > 0)
+d <- null[idx, c('p_dir_pred', 'p_dir_pred_boosted', 'null_model_p', 'p_indir', 'delta', 'mean', 'p_s_direct_t')]
+cor(log(d), use='complete.obs')
+cor(log(d), method='spearman', use='complete.obs')
+dist(t(log(d)), method='manhattan')
+dist(t(log(d)), method='euclidean')
+
+logl <- outer(1:7, 1:7, FUN=Vectorize( function(i,j) -sum(d[,i]*log(d[,j]) + (1-d[,i])*log(1-d[,j])) ))
+rownames(logl) <- colnames(logl) <- c('p_dir_pred', 'p_dir_pred_boosted', 'null_model_p', 'p_indir', 'delta', 'mean', 'p_s_direct_t')
+logl
+
+input <- d
+input$log_p_star <- log(input$p_indir)
+input$log_p_null <- log(input$null_model_p)
+input$prod <- log(input$p_indir)*log(input$null_model_p)
+
+glm <- glm(p_s_direct_t ~ log_p_star + log_p_null + prod, family='binomial', data=input)
+plot(predict.glm(glm, input, type='response'), input$p_s_direct_t, log='xy', xlim=c(1e-6,1), ylim=c(1e-6,1))
+abline(0,1,col='red')
+
+
+pst <- 10^(f(log10(null$p_dir_pred), coef))
+z = pst / (pst + (1-pst)*null$null_model_p)
+plot(sort(z))
+
+smooth <- function(x, y) ksmooth(x, y, bandwidth=0.01, kernel='normal')
+sm <- smooth(z[is.finite(z)], null$prob_label[is.finite(z)])
+plot(z, null$prob_label, pch=16, col='#00000010')
+lines(sm$x, sm$y, lwd=2, col='red')
+
+ord <- order(z, na.last=FALSE)
+smooth <- function(x, y) ksmooth(x, y, bandwidth=100, kernel='normal')
+sm <- smooth(1:length(ord), null$prob_label[ord])
+plot(sm$x, sm$y, type='l')
+par(new=TRUE)
+plot(1:length(ord), z[ord], type='l', col='red')
+par(.default_par)
+
+par(mfrow=c(2,1))
+plot(1:length(ord), null$null_model_p[ord])
+plot(1:length(ord), null$p_indir[ord], col='red')
+plot(1:length(ord), null$p_dir_pred[ord], col='red', type='l')
+par(.default_par)
+plot(1:length(ord), z[ord], ylim=c(0,5))
+
+## null[400,]: num_paths_before > s_count
+
+#####################################
 
 ```
