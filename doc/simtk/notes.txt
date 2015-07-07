@@ -1,0 +1,24 @@
+- Apache log format (see section "Combined Log Format"):
+http://httpd.apache.org/docs/2.2/logs.html#accesslog
+
+e.g.,
+171.65.103.252 - - [29/Dec/2013:08:53:46 -0800] "GET /project/api.php/wiki-moin-sidebar?wiki_namespace=opensim HTTP/1.1" 200 4290 "-" "Python-urllib/2.4"
+
+ip address
+RFC 1413 identity (always "-")
+userid (via HTTP auth)
+time
+request string
+status code
+response size
+referer
+user agent
+
+# Find all direct transition pairs between project pages
+zcat ~/wikimedia/trunk/data/simtk/weblogs/*gz \
+| grep -vPi 'bot|crawler|spider|python|yahoo|facebook|curl|php' \
+| cut -f7,11 -d' ' | tr -d '"' \
+| grep -P '\/home\/.*simtk\.org\/home\/' \
+| sed 's/https\?:\/\/\(www.\)\?simtk.org//' \
+| perl -ne 'chomp; $row=$_; @a=split/ /; if($a[0]=~m{/home/([^/]*)(/.*|\?.*|)$}) {$x=$1; if($a[1]=~m{/home/([^/]*)(/.*|\?.*|)$}) {$y=$1;} if($x ne $y) {print "$x\t$y\n";}}' \
+| grep -v '&' | grep -vP '\t$' > /tmp/dir_pairs.tsv
