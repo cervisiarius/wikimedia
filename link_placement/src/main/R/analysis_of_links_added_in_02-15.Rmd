@@ -309,8 +309,9 @@ abline(v=f(quantile(xx, c(.025,.975)), coef))
 null$p_dir_pred_boosted <- 10^(f(log10(null$p_dir_pred), coef))
 null$delta <- null$p_indir - null$null_model_p
 null$mean <- (null$p_indir + null$null_model_p)/2
+idx <- which(null$null_model_p > 0 & null$ratio > 0 & null$p_s_direct_t > 0)
 #idx <- which(null$p_dir_pred > 0 & null$null_model_p > 0 & null$p_indir > 0 & null$p_s_direct_t > 0)
-idx <- which(null$null_model_p + null$p_indir > 0 & null$p_s_direct_t > 0)
+#idx <- which(null$null_model_p + null$p_indir > 0 & null$p_s_direct_t > 0)
 d <- null[idx, c('p_dir_pred', 'p_dir_pred_boosted', 'null_model_p', 'p_indir', 'delta', 'mean', 'p_s_direct_t')]
 cor(log(d), use='complete.obs')
 cor(log(d), method='spearman', use='complete.obs')
