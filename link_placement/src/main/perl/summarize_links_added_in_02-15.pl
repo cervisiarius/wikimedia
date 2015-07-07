@@ -35,7 +35,9 @@ open(IN, "gunzip -c $DATADIR/singleton_counts_01-15.tsv.gz |") or die $!;
 while (my $line = <IN>) {
   chomp $line;
   my ($src, $count) = split(/\t/, $line);
-  $source_counts_before{$src} = $count if (defined $relevant_sources{$src});
+  # The check for digits-only is necessary because one line contains several tabs:
+  # Tetralogy<TAB>of<TAB>Fallot<TAB>1.
+  $source_counts_before{$src} = $count if (defined $relevant_sources{$src} && $count =~ /^\d+$/);
 }
 close(IN);
 
@@ -45,7 +47,7 @@ open(IN, "gunzip -c $DATADIR/singleton_counts_03-15.tsv.gz |") or die $!;
 while (my $line = <IN>) {
   chomp $line;
   my ($src, $count) = split(/\t/, $line);
-  $source_counts_after{$src} = $count if (defined $relevant_sources{$src});
+  $source_counts_after{$src} = $count if (defined $relevant_sources{$src} && $count =~ /^\d+$/);
 }
 close(IN);
 
