@@ -21,7 +21,6 @@ if __name__ == '__main__':
     except IndexError:
       # This happens for one line with a weird unicode character.
       pass
-  f.close()
 
   for line in sys.stdin:
     # target (as reduce key), source, target, num_bytes, link positions (comma-separated).
