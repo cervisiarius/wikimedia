@@ -54,8 +54,7 @@ if __name__ == '__main__':
             for target in pos.keys():
               # Ignore self-links.
               if target != title:
-                # The first time, target is the key for the redirect-resolve reducer.
-                print '\t'.join([target, title, target, str(len(html)), ','.join(pos[target])])
+                print '\t'.join([title, target, str(len(html)), ','.join(pos[target])])
             break
         except KeyError:
           pass
