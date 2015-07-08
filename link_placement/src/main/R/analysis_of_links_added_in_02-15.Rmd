@@ -98,24 +98,27 @@ abline(0,1, col='red')
 # Now consider indirect paths only. Here, the data is much closer to the diagonal, which means that
 # the increased volume in transitions from s to t comes mostly from direct link clicks.
 # The number of indirect paths does not seem to decrease after the link is added.
-# x_raw <- data$num_paths_before
-# y_raw <- data$num_paths_after - data$num_clicks_after
-# x <- jitter(x_raw[x_raw > 0 & y_raw > 0], amount=0.5)
-# y <- jitter(y_raw[x_raw > 0 & y_raw > 0], amount=0.5)
-# plot(x, y, col='#00000005', pch=16, log='xy', xlim=range(c(x,y)), ylim=range(c(x,y)),
-#      xlab='Num paths before', ylab='Num paths after (indirect only)')
-# abline(0,1, col='red')
-
-x <- data$num_paths_before / data$num_source_before
-y <- (data$num_paths_after - data$num_clicks_after) / data$num_source_after
-plot(x, y, col='#00000005', pch=16, log='xy', xlim=c(1e-6, 1), ylim=c(1e-6, 1),
-     xlab='Fraction paths before', ylab='Fraction paths after (indirect only)')
+x_raw <- data$num_paths_before
+y_raw <- data$num_paths_after - data$num_clicks_after
+x <- jitter(x_raw[x_raw > 0 & y_raw > 0], amount=0.5)
+y <- jitter(y_raw[x_raw > 0 & y_raw > 0], amount=0.5)
+plot(x, y, col='#00000005', pch=16, log='xy', xlim=range(c(x,y)), ylim=range(c(x,y)),
+     xlab='Num paths before', ylab='Num paths after (indirect only)')
 abline(0,1, col='red')
 
-
-# This boxplot shows that the number of indirect paths changes.
-groups <- lapply(as.list(seq(10, 300, 10)), function(m) ((y-x)/x)[data$num_paths_before > m])
-boxplot(groups, notch=TRUE, outline = FALSE)
+# Also subtract searches, and normalize by the number of visits to s.
+n_indir_before <- data$num_paths_before - data$num_wiki_searches_before - data$num_external_searches_before
+n_indir_after <- data$num_paths_after - data$num_wiki_searches_after - data$num_external_searches_after - data$num_clicks_after
+x <- n_indir_before / data$num_source_before
+y <- n_indir_after / data$num_source_after
+plot(x, y, col='#00000005', pch=16, log='xy', xlim=c(1e-6, 1), ylim=c(1e-6, 1), cex=2,
+     xlab='Fraction paths before', ylab='Fraction paths after (indirect only)')
+abline(0,1, col='red')
+# This boxplot shows that the prob of indirect paths changes.
+groups_idx <- split(1:nrow(data), cut(n_indir_before, breaks=c(1,2,10,50,100,Inf), right=FALSE))
+groups_val <- lapply(groups_idx, function(idx) ((y-x)/x)[idx])
+boxplot(groups_val, notch=TRUE, names=names(groups_idx), outline=FALSE)
+panel.first=abline(h=0)
 grid()
 
 # Let's check out searches.
@@ -127,6 +130,20 @@ plot(x, y, col='#00000010', pch=16, log='xy', xlim=range(c(x,y)), ylim=range(c(x
      xlab='Num searches before', ylab='Num searches after')
 abline(0,1, col='red')
 
+# Normalized by p_s.
+n_search_before <- data$num_wiki_searches_before + data$num_external_searches_before
+n_search_after <- data$num_wiki_searches_after + data$num_external_searches_after
+x <- n_search_before / data$num_source_before
+y <- n_search_after / data$num_source_after
+plot(x, y, col='#00000010', pch=16, log='xy', , xlim=c(1e-6, 1e-1), ylim=c(1e-6, 1e-1), cex=2,
+     xlab='Search prob before', ylab='Search prob after')
+abline(0,1, col='red')
+# This boxplot shows that the search prob changes.
+groups_idx <- split(1:nrow(data), cut(n_search_before, breaks=c(1,2,10,30,Inf), right=FALSE))
+groups_val <- lapply(groups_idx, function(idx) ((y-x)/x)[idx])
+boxplot(groups_val, notch=TRUE, names=names(groups_idx), outline=FALSE)
+panel.first=abline(h=0)
+grid()
 
 # Most clicks are not used at all (66%); among the rest, there's a long tail, with only few links
 # used frequently. Only 1% gets used more than 100 times in the month of March.
@@ -244,32 +261,6 @@ draw_search_rank_vs_avg_usage(x_all, y_all, 'Search', 'black')
 draw_search_rank_vs_avg_usage(x_wiki, y_wiki, 'Wiki search', 'green')
 draw_search_rank_vs_avg_usage(x_ext, y_ext, 'External search', 'red')
 ```
-
-# Change in search volume after link introduction
-
-```{r}
-search_diff_boxplot <- function(search_prob_before, search_prob_after) {
-  #diff <- ((search_prob_after - search_prob_before) / search_prob_before)[search_prob_before > 0]
-  diff <- ((search_prob_after - search_prob_before) / search_prob_before)[search_prob_before > 0 & search_prob_after > 0]
-  #diff <- (search_prob_after - search_prob_before)[search_prob_before > 0]
-  boxplot(diff, ylim=c(-1,1), main=length(diff), notch=TRUE)
-  abline(h=0, col='gray')
-}
-
-# This is most probably explained by an increase in direct clicks, not by a decrease in searches.
-search_diff_boxplot(active$search_prob_wiki_before, active$search_prob_wiki_after)
-search_diff_boxplot(active$search_prob_ext_before, active$search_prob_ext_after)
-search_diff_boxplot(active$search_prob_all_before, active$search_prob_all_after)
-
-# The following scatter plot also shows that the search proportion decreases when the link is added.
-# NB: log axes.
-idx <- which(active$search_prob_all_before > 0)
-plot(active$search_prob_all_before[idx], active$search_prob_all_after[idx],
-     col='#00000010', pch=16, xlim=c(1e-6, 0.1), ylim=c(1e-6, 0.1), cex=2, log='xy',
-     xlab='Search proportion (Jan 15)', ylab='Search proportion (Mar 15)')
-abline(0,1)
-```
-
 
 
 
