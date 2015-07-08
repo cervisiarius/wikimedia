@@ -18,6 +18,9 @@ data[,1] <- paste(data$src, data$tgt)
 data <- data[,-2]
 colnames(data)[1] <- 'cand'
 
+data$src <- unlist(lapply(strsplit(data$cand, ' '), function(pair) pair[1]))
+data$tgt <- unlist(lapply(strsplit(data$cand, ' '), function(pair) pair[2]))
+
 data_orig <- data
 
 data$num_wiki_searches_before <- data$num_wiki_searches_302_before + data$num_wiki_searches_200_before
@@ -34,27 +37,51 @@ data$num_clicks_after <- pmax(0, data$num_clicks_after - data$num_wiki_searches_
 # into templates.
 data <- data[data$num_clicks_before == 0,]
 
-# Compute the direct-click probabilities.
-data$click_prob_before <- data$num_clicks_before / data$num_paths_before
-data$click_prob_after <- data$num_clicks_after / data$num_paths_after
+# Compute the p_st probabilities.
+# NB: This is greater than 1 for 7 pairs, 4 of them involving the target "List_of_markets_in_South_Korea".
+data$pst_after <- data$num_clicks_after / data$num_source_after
+
+# Compute the direct-click probabilities (ratio direct clicks vs. all paths).
+data$click_ratio_after <- data$num_clicks_after / data$num_paths_after
 
 # Compute the search probabilities.
-data$search_prob_ext_before <- data$num_external_searches_before / (data$num_external_searches_before + data$num_paths_before)
+# data$search_prob_ext_before <- data$num_external_searches_before / (data$num_external_searches_before + data$num_paths_before)
+# # Path counts already include 302 searches, so we just need to add the 200 searches in the denominator.
+# data$search_prob_wiki_before <- data$num_wiki_searches_before / (data$num_paths_before + data$num_wiki_searches_200_before)
+# data$search_prob_all_before <- (data$num_external_searches_before + data$num_wiki_searches_before) /
+#   (data$num_external_searches_before + data$num_paths_before + data$num_wiki_searches_200_before)
+# data$search_prob_ext_after <- data$num_external_searches_after / (data$num_external_searches_after + data$num_paths_after)
+# # Path counts already include 302 searches, so we just need to add the 200 searches in the denominator.
+# data$search_prob_wiki_after <- data$num_wiki_searches_after / (data$num_paths_after + data$num_wiki_searches_200_after)
+# data$search_prob_all_after <- (data$num_external_searches_after + data$num_wiki_searches_after) /
+#   (data$num_external_searches_after + data$num_paths_after + data$num_wiki_searches_200_after)
+
+data$search_prob_ext_before <- data$num_external_searches_before / data$num_source_before
 # Path counts already include 302 searches, so we just need to add the 200 searches in the denominator.
-data$search_prob_wiki_before <- data$num_wiki_searches_before / (data$num_paths_before + data$num_wiki_searches_200_before)
-data$search_prob_all_before <- (data$num_external_searches_before + data$num_wiki_searches_before) /
-  (data$num_external_searches_before + data$num_paths_before + data$num_wiki_searches_200_before)
-data$search_prob_ext_after <- data$num_external_searches_after / (data$num_external_searches_after + data$num_paths_after)
+data$search_prob_wiki_before <- data$num_wiki_searches_before / data$num_source_before
+data$search_prob_all_before <- (data$num_external_searches_before + data$num_wiki_searches_before) / data$num_source_before
+data$search_prob_ext_after <- data$num_external_searches_after / data$num_source_after
 # Path counts already include 302 searches, so we just need to add the 200 searches in the denominator.
-data$search_prob_wiki_after <- data$num_wiki_searches_after / (data$num_paths_after + data$num_wiki_searches_200_after)
-data$search_prob_all_after <- (data$num_external_searches_after + data$num_wiki_searches_after) /
-  (data$num_external_searches_after + data$num_paths_after + data$num_wiki_searches_200_after)
+data$search_prob_wiki_after <- data$num_wiki_searches_after / data$num_source_after
+data$search_prob_all_after <- (data$num_external_searches_after + data$num_wiki_searches_after) / data$num_source_after
 
 # Currently the data is only accurate for the cases where both #paths_before and #paths_after is
 # greater than 0; if only one of them is greater than 0, then both will appear as 0 (consequence
 # of how Ashwin extracted the data).
 # So here we can only analyze pairs that were active both before and after.
 active <- data[data$num_paths_before >= 5 & data$num_paths_after >= 5,]
+```
+
+# Popularity before vs. after
+
+```{r}
+before <- tapply(data$num_source_before, data$src, function(v) v[1])
+after <- tapply(data$num_source_after, data$src, function(v) v[1])
+after <- after[before > 0]
+before <- before[before > 0]
+boxplot(after-before)
+grid()
+summary((after-before)/before)
 ```
 
 # Usage of newly added links
@@ -71,19 +98,25 @@ abline(0,1, col='red')
 # Now consider indirect paths only. Here, the data is much closer to the diagonal, which means that
 # the increased volume in transitions from s to t comes mostly from direct link clicks.
 # The number of indirect paths does not seem to decrease after the link is added.
-x_raw <- data$num_paths_before
-y_raw <- data$num_paths_after - data$num_clicks_after
-x <- jitter(x_raw[x_raw > 0 & y_raw > 0], amount=0.5)
-y <- jitter(y_raw[x_raw > 0 & y_raw > 0], amount=0.5)
-plot(x, y, col='#00000005', pch=16, log='xy', xlim=range(c(x,y)), ylim=range(c(x,y)),
-     xlab='Num paths before', ylab='Num paths after (indirect only)')
+# x_raw <- data$num_paths_before
+# y_raw <- data$num_paths_after - data$num_clicks_after
+# x <- jitter(x_raw[x_raw > 0 & y_raw > 0], amount=0.5)
+# y <- jitter(y_raw[x_raw > 0 & y_raw > 0], amount=0.5)
+# plot(x, y, col='#00000005', pch=16, log='xy', xlim=range(c(x,y)), ylim=range(c(x,y)),
+#      xlab='Num paths before', ylab='Num paths after (indirect only)')
+# abline(0,1, col='red')
+
+x <- data$num_paths_before / data$num_source_before
+y <- (data$num_paths_after - data$num_clicks_after) / data$num_source_after
+plot(x, y, col='#00000005', pch=16, log='xy', xlim=c(1e-6, 1), ylim=c(1e-6, 1),
+     xlab='Fraction paths before', ylab='Fraction paths after (indirect only)')
 abline(0,1, col='red')
 
-# No indirect before but indirect after.
-# TODO: check: possibly because s or t was created simultaneously with link?
-sum(x_raw == 0 & y_raw > 0)
-# Indirect before but no indirect after.
-sum(x_raw > 0 & y_raw == 0)
+
+# This boxplot shows that the number of indirect paths changes.
+groups <- lapply(as.list(seq(10, 300, 10)), function(m) ((y-x)/x)[data$num_paths_before > m])
+boxplot(groups, notch=TRUE, outline = FALSE)
+grid()
 
 # Let's check out searches.
 x_raw <- data$num_wiki_searches_before + data$num_external_searches_before
@@ -95,17 +128,39 @@ plot(x, y, col='#00000010', pch=16, log='xy', xlim=range(c(x,y)), ylim=range(c(x
 abline(0,1, col='red')
 
 
-# Most clicks are not used at all (73%); among the rest, there's a long tail, with only few links
+# Most clicks are not used at all (66%); among the rest, there's a long tail, with only few links
 # used frequently. Only 1% gets used more than 100 times in the month of March.
 plot(sort(data$num_clicks_after), (nrow(data):1)/nrow(data), log='xy', type='l', panel.first=grid(),
      xlab='Mininum number of clicks', ylab='Fraction of new links')
 frac_1 <- sum(data$num_clicks_after>0)/nrow(data)
 abline(h=frac_1)
-text(1000, frac_1, sprintf('No clicks: %.0f%%', frac_0*100), pos=3)
-text(1000, frac_1, sprintf('At least one click: %.0f%%', (1-frac_0)*100), pos=1)
+text(1000, frac_1, sprintf('No clicks: %.0f%%', (1-frac_1)*100), pos=3)
+text(1000, frac_1, sprintf('At least one click: %.0f%%', frac_1*100), pos=1)
+
+# Now use p_st on the x axis instead. We want everyone to be able to achieve a given low number (1/N),
+# so we restrict ourselves to sources with at least N views. If we also restrict ourselves to the
+# range [1/N, 1] on the axis, then every data point can potentially be everywhere along this scale.
+# The more pageviews the source has, the harder it is for a new link to achieve a large number of clicks.
+# I expect this to be the case because high volume of s is correlated with a large number of outlinks of s.
+# TODO: control for p_s, match articles with many and few outlinks, and compare. Alternative hypothesis:
+# stopping prob might vary with p_s.
+#### Get outdegree from link_positions table.
+Min_num_s <- c(1e2, 1e3, 1e4, 1e5)
+for (i in 1:length(Min_num_s)) {
+  min_num_s <- Min_num_s[i]
+  idx <- which(is.finite(data$pst_after) & data$num_source_after >= min_num_s)
+  if (i == 1) {
+    plot(sort(data$pst_after[idx]), (length(idx):1)/length(idx), log='xy', type='l', col=i,
+         panel.first=grid(), xlim=c(1/min_num_s, 1), ylim=c(1e-6, 1),
+         xlab='Mininum p_st', ylab='Fraction of new links')
+  } else {
+    lines(sort(data$pst_after[idx]), (length(idx):1)/length(idx), col=i)
+  }
+}
+legend('topright', legend=Min_num_s, lty=1, col=1:length(Min_num_s))
 
 # Once a link is introduced, it accounts for nearly all traffic from s to t.
-hist(data$click_prob_after, breaks=5, xlab='Direct-click ratio', main='')
+hist(data$click_ratio_after, breaks=5, xlab='Direct-click ratio', main='')
 ```
 
 # Search as a predictor of link usage
@@ -120,9 +175,9 @@ x_wiki <- active$search_prob_wiki_before[ord_wiki]
 x_ext <- active$search_prob_ext_before[ord_ext]
 x_all <- active$search_prob_all_before[ord_all]
 
-y_wiki <- active$click_prob_after[ord_wiki]
-y_ext <- active$click_prob_after[ord_ext]
-y_all <- active$click_prob_after[ord_all]
+y_wiki <- active$pst_after[ord_wiki]
+y_ext <- active$pst_after[ord_ext]
+y_all <- active$pst_after[ord_all]
 
 # Randomize the order of the candidates with search scores of 0, to be sure to eliminate any
 # external bias among those equally ranked candidates.
@@ -131,7 +186,7 @@ idx <- which(x_ext==0);   y_ext[idx] <- y_ext[idx[sample(length(idx), length(idx
 idx <- which(x_all==0);   y_all[idx] <- y_all[idx[sample(length(idx), length(idx))]]
 
 # A scatter plot of search proportion vs. link usage.
-plot(1:nrow(active), y_all, col='#00000005', pch=16, cex=2, xlim=c(0,10000),
+plot(1:nrow(active), y_all, col='#00000005', pch=16, cex=2, xlim=c(0,10000), log='y',
      xlab='Rank w.r.t. search proportion (Jan 15)', ylab='Proportion of direct clicks (Mar 15)',
      main='All searches')
 abline(v=min(which(x_all==0)))
@@ -141,9 +196,10 @@ smooth <- function(y) ksmooth(1:length(y), y, bandwidth=50, kernel='normal')$y
 
 draw_search_rank_vs_usage_smoothed <- function(x, y, type, col) {
   xmax <- 1e4
-  plot(smooth(y), type='l', col=col, xlim=c(0,xmax),
-       main=sprintf('%s as a predictor of link quality', type),
-       xlab='Rank w.r.t. search proportion (Jan 15)', ylab='Proportion of direct clicks (Mar 15)')
+  plot(y, col='#00000005', pch=16, cex=2, xlim=c(0,xmax), log='y',
+       xlab='Rank w.r.t. search proportion (Jan 15)', ylab='Proportion of direct clicks (Mar 15)',
+       main=sprintf('%s as a predictor of link quality', type))
+  lines(smooth(y), col=col, xlim=c(0,xmax), lwd=2)
   x0 <- min(which(x==0))
   abline(v=x0)
   text(x0/2, 0.8, 'At least\none search')
@@ -157,14 +213,14 @@ draw_search_rank_vs_usage_smoothed(x_ext, y_ext, 'External search', 'red')
 # Let's draw the same plots again, but instead of rank, we use the actual value that's used for
 # ranking on the x-axis.
 draw_search_prop_vs_usage_smoothed <- function(x, y, type, col) {
-  plot(x, smooth(y), type='l', col=col, xlim=c(0.005, 1), log='x',
+  plot(x, smooth(y), type='l', col=col, xlim=c(1e-8, 0.1), log='xy',
        main=sprintf('%s as a predictor of link quality', type),
        xlab='Search proportion (Jan 15)', ylab='Proportion of direct clicks (Mar 15)')
-  rug(jitter(x), col='#00000050')
-#   dens_log <- density(log(x[x>0]))
-#   x_dens <- exp(dens_log$x)
-#   y_dens <- dens_log$y
-#   lines(x_dens, (y_dens-min(y_dens))/(max(y_dens)-min(y_dens))*0.05+0.45)
+  rug(x, col='#00000050')
+#    dens_log <- density(log(x[x>0]))
+#    x_dens <- exp(dens_log$x)
+#    y_dens <- dens_log$y
+#    lines(x_dens, (y_dens-min(y_dens))/(max(y_dens)-min(y_dens))*0.05+0.45)
 }
 
 draw_search_prop_vs_usage_smoothed(x_all, y_all, 'Search', 'black')
@@ -175,13 +231,13 @@ draw_search_prop_vs_usage_smoothed(x_ext, y_ext, 'External search', 'red')
 # a given rank. We plot rank vs. the average direct-click probability of the items above that rank.
 draw_search_rank_vs_avg_usage <- function(x, y, type, col) {
   xmax <- 1e4
-  plot(cumsum(y)/(1:length(y)), type='l', col=col, xlim=c(0,xmax), ylim=c(0.6,1),
+  plot(cumsum(y)/(1:length(y)), type='l', col=col, log='y', xlim=c(0,xmax), ylim=c(0.005, 0.6),
        main=sprintf('%s as a predictor of link quality', type),
        xlab='Rank w.r.t. search proportion (Jan 15)', ylab='Avg. proportion of direct clicks (Mar 15)')
   x0 <- min(which(x==0))
   abline(v=x0)
-  text(x0/2, 0.9, 'At least\none search')
-  text((x0+xmax)/2, 0.9, 'No search')  
+  text(x0/2, 0.2, 'At least\none search')
+  text((x0+xmax)/2, 0.2, 'No search')  
 }
 
 draw_search_rank_vs_avg_usage(x_all, y_all, 'Search', 'black')
@@ -193,10 +249,10 @@ draw_search_rank_vs_avg_usage(x_ext, y_ext, 'External search', 'red')
 
 ```{r}
 search_diff_boxplot <- function(search_prob_before, search_prob_after) {
-  diff <- ((search_prob_after - search_prob_before) / search_prob_before)[search_prob_before > 0]
-  #diff <- ((search_prob_after - search_prob_before) / search_prob_before)[search_prob_before > 0 & search_prob_after > 0]
+  #diff <- ((search_prob_after - search_prob_before) / search_prob_before)[search_prob_before > 0]
+  diff <- ((search_prob_after - search_prob_before) / search_prob_before)[search_prob_before > 0 & search_prob_after > 0]
   #diff <- (search_prob_after - search_prob_before)[search_prob_before > 0]
-  boxplot(diff, ylim=c(-1,1), main=length(diff))
+  boxplot(diff, ylim=c(-1,1), main=length(diff), notch=TRUE)
   abline(h=0, col='gray')
 }
 
@@ -209,10 +265,27 @@ search_diff_boxplot(active$search_prob_all_before, active$search_prob_all_after)
 # NB: log axes.
 idx <- which(active$search_prob_all_before > 0)
 plot(active$search_prob_all_before[idx], active$search_prob_all_after[idx],
-     col='#00000010', pch=16, xlim=c(0.001,1), ylim=c(0.001,1), cex=2, log='xy',
+     col='#00000010', pch=16, xlim=c(1e-6, 0.1), ylim=c(1e-6, 0.1), cex=2, log='xy',
      xlab='Search proportion (Jan 15)', ylab='Search proportion (Mar 15)')
 abline(0,1)
 ```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ```{r}
 null <- read.table(pipe(sprintf('gunzip -c %s/link_candidates_FREQUENT_WITH-NULL-MODEL_month=1.tsv.gz | cut -f2-7,10-', DATADIR)),

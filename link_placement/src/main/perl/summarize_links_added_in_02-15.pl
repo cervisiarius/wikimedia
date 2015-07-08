@@ -1,7 +1,5 @@
 #!/usr/bin/perl
 
-use Digest::MD5 qw(md5 md5_hex md5_base64);
-
 my $DATADIR = $ENV{'HOME'} . "/wikimedia/trunk/data/link_placement/";
 
 my %relevant_sources = ();
