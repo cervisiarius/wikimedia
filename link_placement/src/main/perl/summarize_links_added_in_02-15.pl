@@ -34,10 +34,10 @@ print STDERR "Loading singleton source counts before\n";
 open(IN, "gunzip -c $DATADIR/singleton_counts_01-15.tsv.gz |") or die $!;
 while (my $line = <IN>) {
   chomp $line;
-  my ($src, $count) = split(/\t/, $line);
-  # The check for digits-only is necessary because one line contains several tabs:
-  # Tetralogy<TAB>of<TAB>Fallot<TAB>1.
-  $source_counts_before{$src} = $count if (defined $relevant_sources{$src} && $count =~ /^\d+$/);
+  if ($line =~ /^([^ ]+)\t(\d+)$/) {
+    my ($src, $count) = ($1, $2);
+    $source_counts_before{$src} += $count if (defined $relevant_sources{$src});
+  }
 }
 close(IN);
 
@@ -46,8 +46,11 @@ print STDERR "Loading singleton source counts after\n";
 open(IN, "gunzip -c $DATADIR/singleton_counts_03-15.tsv.gz |") or die $!;
 while (my $line = <IN>) {
   chomp $line;
-  my ($src, $count) = split(/\t/, $line);
-  $source_counts_after{$src} = $count if (defined $relevant_sources{$src} && $count =~ /^\d+$/);
+  if ($line =~ /^([^ ]+)\t(\d+)$/) {
+    my ($src, $count) = ($1, $2);
+    # Because of some data issue some sources appear twice; add these counts.
+    $source_counts_after{$src} += $count if (defined $relevant_sources{$src});
+  }
 }
 close(IN);
 
