@@ -21,8 +21,6 @@ colnames(data)[1] <- 'cand'
 data$src <- unlist(lapply(strsplit(data$cand, ' '), function(pair) pair[1]))
 data$tgt <- unlist(lapply(strsplit(data$cand, ' '), function(pair) pair[2]))
 
-data_orig <- data
-
 data$num_wiki_searches_before <- data$num_wiki_searches_302_before + data$num_wiki_searches_200_before
 data$num_wiki_searches_after <- data$num_wiki_searches_302_after + data$num_wiki_searches_200_after
 
@@ -33,8 +31,7 @@ data$num_wiki_searches_after <- data$num_wiki_searches_302_after + data$num_wiki
 data$num_clicks_before <- pmax(0, data$num_clicks_before - data$num_wiki_searches_302_before)
 data$num_clicks_after <- pmax(0, data$num_clicks_after - data$num_wiki_searches_302_after)
 
-# Remove those that still have direct clicks before, which are most probably from links embedded
-# into templates.
+# Remove those that still have direct clicks before for some reason.
 data <- data[data$num_clicks_before == 0,]
 
 # Compute the p_st probabilities.
@@ -43,6 +40,9 @@ data$pst_after <- data$num_clicks_after / data$num_source_after
 
 # Compute the direct-click probabilities (ratio direct clicks vs. all paths).
 data$click_ratio_after <- data$num_clicks_after / data$num_paths_after
+
+# Compute the relative position of the first link occurrence in the article text.
+data$rel_link_pos <- data$min_link_pos / data$source_length
 
 # Compute the search probabilities.
 # data$search_prob_ext_before <- data$num_external_searches_before / (data$num_external_searches_before + data$num_paths_before)
@@ -118,7 +118,7 @@ abline(0,1, col='red')
 groups_idx <- split(1:nrow(data), cut(n_indir_before, breaks=c(1,2,10,50,100,Inf), right=FALSE))
 groups_val <- lapply(groups_idx, function(idx) ((y-x)/x)[idx])
 boxplot(groups_val, notch=TRUE, names=names(groups_idx), outline=FALSE)
-panel.first=abline(h=0)
+abline(h=0)
 grid()
 
 # Let's check out searches.
@@ -272,7 +272,19 @@ draw_search_rank_vs_avg_usage(x_ext, y_ext, 'External search', 'red')
 
 
 
+```{r}
+plot_groups <- function(x, breaks) {
+  idx <- which(is.finite(x))
+  means <- unlist(lapply(split(data$pst_after[idx], cut(x[idx], breaks=breaks)), function(x) mean(x, na.rm=TRUE)))
+  groups <- split(data$pst_after[idx], cut(x[idx], breaks=breaks))
+  boxplot(groups, outline=FALSE, ylim=c(0, max(means)))
+  lines(means, type='b')
+}
 
+plot_groups(data$rel_link_pos, quantile(data$rel_link_pos, seq(0,1,0.1), na.rm=TRUE))
+plot_groups(data$outdegree, quantile(data$outdegree, seq(0,1,0.1), na.rm=TRUE))
+plot_groups(data$source_length, quantile(data$source_length, seq(0,1,0.1), na.rm=TRUE))
+```
 
 
 
@@ -286,6 +298,33 @@ null$p_indir <- null$num_paths_before/null$s_count
 null$p_dir_pred <- pmin(1, pmax(0, (null$p_indir - null$null_model_p) / (1 - null$null_model_p)))
 null$prob_label_pred <- pmin(1, pmax(0, null$p_dir_pred / null$p_indir))
 null$p_indir_pred <- null$null_model_p + (1 - null$null_model_p) * null$null_model_p
+
+#######################################################################
+##### Does this exclude illegal articles?!?!
+
+x <- sort(abs(null$p_indir - null$p_s_direct_t))
+plot(x, (1:sum(is.finite(x)))/sum(is.finite(x)), log='x', type='l', panel.first=grid())
+
+# Only 2% of data points have p_st = 0, so we may ignore them by taking logs
+sum(null$p_s_direct_t==0)/nrow(null)
+sum(null$p_indir==0)/nrow(null)
+
+plot(null$p_indir, null$p_s_direct_t, log='xy', col='#00000010', pch=16, panel.first=c(abline(0,1)))
+
+x <- sort(abs(log10(null$p_indir) - log10(null$p_s_direct_t)))
+plot(x[is.finite(x)], (1:sum(is.finite(x)))/sum(is.finite(x)), type='l', panel.first=grid())
+
+plot(density(log10(null$p_indir) - log10(null$p_s_direct_t)))
+
+plot(density(log10(null$p_s_direct_t)), panel.first=grid())
+quantile(log10(null$p_s_direct_t), c(0.025, 0.05, 0.1, 0.9, 0.95, 0.975))
+
+# Sources are quite frequent.
+plot(density(log10(null$s_count)))
+plot(sort(null$s_count), (nrow(null):1)/nrow(null), log='x', type='l', panel.first=grid())
+
+# TODO: Macro-avg by source
+#######################################################################
 
 
 # null_3 <- read.table(pipe(sprintf('gunzip -c %s/link_candidates_FREQUENT_WITH-NULL-MODEL_month=3.tsv.gz | cut -f2-7,10-', DATADIR)),
