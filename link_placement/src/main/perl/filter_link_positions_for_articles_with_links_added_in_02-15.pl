@@ -21,7 +21,7 @@ open(IN, "gunzip -c $DATADIR/wikipedia_link_positions_enwiki-20150304.tsv.gz |")
 while (my $line = <IN>) {
   my ($src, $tgt, $size, $pos) = split(/\t/, $line);
   my $pair = "$src\t$tgt";
-  print $line if (defined $new_links{$pair});
+  print OUT $line if (defined $new_links{$pair});
 }
 close(IN);
 close(OUT);
