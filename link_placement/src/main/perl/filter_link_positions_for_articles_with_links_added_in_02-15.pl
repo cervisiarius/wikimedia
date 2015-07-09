@@ -18,10 +18,23 @@ close(IN);
 print STDERR "Streaming over link positions\n";
 open(OUT, "| gzip > $DATADIR/link_positions_enwiki-20150304_FILTERED.tsv.gz") or die $!;
 open(IN, "gunzip -c $DATADIR/wikipedia_link_positions_enwiki-20150304.tsv.gz |") or die $!;
+my $last_src = '';
+my $outdeg = 0;
+my @buffer = ();
 while (my $line = <IN>) {
+  chomp $line;
   my ($src, $tgt, $size, $pos) = split(/\t/, $line);
+  if ($last_src ne '' && $src ne $last_src) {
+    foreach my $out (@buffer) {
+      print OUT "$out\t$outdeg\n";
+    }
+    $outdeg = 0;
+    @buffer = ();
+  }
   my $pair = "$src\t$tgt";
-  print OUT $line if (defined $new_links{$pair});
+  ++$outdeg;
+  push(@buffer, $line) if defined $new_links{$pair};
+  $last_src = $src;
 }
 close(IN);
 close(OUT);

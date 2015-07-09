@@ -33,7 +33,7 @@ public class LinkPositionExtractionMapper implements Mapper<Text, Text, Text, Te
 
   public String format(String markup) {
     // First replace link markers so links don't get stripped.
-    markup = markup.replace("[[", "##LEFT##").replace("]]", "##RIGHT##");
+    markup = markup.replace("[[", "^^LEFT$$").replace("]]", "^^RIGHT$$");
     // This is a hacky way of removing emphasis (as EmphasisResolver seems to be buggy; since it's
     // also used by stripAllButInternalLinksAndEmphasis, we need to remove emphasis manually first)
     markup = markup.replaceAll("'{6}", "'");
@@ -41,7 +41,6 @@ public class LinkPositionExtractionMapper implements Mapper<Text, Text, Text, Te
     markup = markup.replaceAll("'{4}", "'");
     markup = markup.replaceAll("'{3}", "");
     markup = markup.replaceAll("'{2}", "");
-    markup = stripper.stripAllButInternalLinksAndEmphasis(markup, null);
     markup = stripper.stripInternalLinks(markup, null);
     markup = stripper.stripExcessNewlines(markup);
     markup = StringEscapeUtils.unescapeHtml(markup);
@@ -64,30 +63,39 @@ public class LinkPositionExtractionMapper implements Mapper<Text, Text, Text, Te
     int i = 0;
     int size = 0;
     while (i < s.length()) {
-      if (s.startsWith("##LEFT##", i)) {
-        int linkEnd = s.indexOf("##RIGHT##", i) + 9;
-        String link = s.substring(i + 8, linkEnd - 9);
-        String target, anchor;
-        if (link.contains("|")) {
-          target = normalize(link.substring(0, link.indexOf('|')));
-          anchor = link.substring(link.indexOf('|') + 1);
+      if (s.startsWith("^^LEFT$$", i)) {
+        int nextLeft = s.indexOf("^^LEFT$$", i + 1);
+        int nextRight = s.indexOf("^^RIGHT$$", i);
+        // Ill-formatted link; ignore.
+        if (nextLeft < nextRight || nextRight < 0) {
+          i += 8;
         } else {
-          target = normalize(link);
-          anchor = link;
+          int linkEnd = s.indexOf("^^RIGHT$$", i) + 9;
+          String link = s.substring(i + 8, linkEnd - 9);
+          String target, anchor;
+          if (link.contains("|")) {
+            target = normalize(link.substring(0, link.indexOf('|')));
+            anchor = link.substring(link.indexOf('|') + 1);
+          } else {
+            target = normalize(link);
+            anchor = link;
+          }
+          int hashIdx = target.indexOf('#');
+          if (hashIdx >= 0) {
+            target = target.substring(0, hashIdx);
+          }
+          List<Integer> pos = result.get(target);
+          if (pos == null) {
+            pos = new ArrayList<Integer>();
+            result.put(target, pos);
+          }
+          // System.out.print(anchor);
+          pos.add(size);
+          i = linkEnd;
+          size += anchor.length();
         }
-        int hashIdx = target.indexOf('#');
-        if (hashIdx >= 0) {
-          target = target.substring(0, hashIdx);
-        }
-        List<Integer> pos = result.get(target);
-        if (pos == null) {
-          pos = new ArrayList<Integer>();
-          result.put(target, pos);
-        }
-        pos.add(i + 8);
-        i = linkEnd;
-        size += anchor.length();
       } else {
+        // System.out.print(s.charAt(i));
         ++i;
         ++size;
       }
@@ -131,7 +139,9 @@ public class LinkPositionExtractionMapper implements Mapper<Text, Text, Text, Te
             posString.append(sep).append(p);
             sep = ",";
           }
-          output.collect(new Text(title), new Text(String.format("%s\t%s\t%s\n", target, size, posString)));
+          // System.out.format("%s\t%s\t%s\n", target, size, posString);
+          output.collect(new Text(title),
+              new Text(String.format("%s\t%s\t%s", target, size, posString)));
         }
       }
     } else {

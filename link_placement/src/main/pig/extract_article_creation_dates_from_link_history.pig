@@ -6,8 +6,6 @@ edits = LOAD '/user/ashwinp/revision_dump_link_history_20150403/*' USING PigStor
 	AS (id:int, page_title:chararray, x1:chararray, parent:int, date:chararray, x2:chararray,
 		x3:chararray, x4:chararray, x5:chararray, x6:chararray);
 
---edits = FILTER edits BY (parent == -1);
-
 edits = FOREACH edits GENERATE REPLACE(org.wikimedia.west1.pigudf.URLDECODE(page_title), ' ', '_') AS page_title, date;
 
 groups = GROUP edits BY page_title;

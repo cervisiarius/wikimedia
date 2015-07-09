@@ -87,9 +87,8 @@ public class LinkPositionExtractionReducer implements Reducer<Text, Text, Text, 
       }
     }
     for (String target : linkPosMap.keySet()) {
-      // out.collect(key, new Text(String.format("%s\t%s\t%s", target, size,
-      // linkPosMap.get(target))));
-      System.out.println(String.format("%s\t%s\t%s", target, size, linkPosMap.get(target)));
+      out.collect(key, new Text(String.format("%s\t%s\t%s", target, size, linkPosMap.get(target))));
+      // System.out.println(String.format("%s\t%s\t%s", target, size, linkPosMap.get(target)));
     }
   }
 

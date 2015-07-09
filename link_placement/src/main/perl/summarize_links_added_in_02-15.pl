@@ -15,6 +15,10 @@ my %wiki_search_counts_302_before = ();
 my %wiki_search_counts_302_after = ();
 my %external_search_counts_before = ();
 my %external_search_counts_after = ();
+my %min_link_positions = ();
+my %num_link_occurrences = ();
+my %outdegrees = ();
+my %source_lengths = ();
 
 # Load added links.
 print STDERR "Loading added links\n";
@@ -27,16 +31,20 @@ while (my $pair = <IN>) {
 }
 close(IN);
 
-# # Load link positions.
-# print STDERR "Loading link positions\n";
-# open(IN, "gunzip -c $DATADIR/link_positions_added_in_02-15.tsv.gz |") or die $!;
-# while (my $line = <IN>) {
-#   chomp $line;
-#   my ($src, $tgt, $size, $pos) = split(/\t/, $line);
-#   $existing_links{"$src\t$tgt"} = 1;
-#   $existing_pages{$src} = 1;
-# }
-# close(IN);
+# Load link positions.
+print STDERR "Loading link positions\n";
+open(IN, "gunzip -c $DATADIR/link_positions_enwiki-20150304_FILTERED.tsv.gz |") or die $!;
+while (my $line = <IN>) {
+  chomp $line;
+  my ($src, $tgt, $size, $pos) = split(/\t/, $line);
+  my $pair = "$src\t$tgt";
+  $source_lengths{$src} = $size;
+  ++$outdegrees{$src};
+  my @pos_array = split(/,/, $pos);
+  $num_link_occurrences{$pair} = scalar(@pos_array);
+  $min_link_positions{$pair} = $pos_array[0];
+}
+close(IN);
 
 # Load singleton source counts before.
 print STDERR "Loading singleton source counts before\n";
@@ -147,11 +155,13 @@ close(IN);
 
 # Write summary to disk.
 print STDERR "Writing summary to disk\n";
-open(OUT, "| gzip > $DATADIR/links_added_in_02-15_WITH-STATS.tsv.gz");
+#open(OUT, "| gzip > $DATADIR/links_added_in_02-15_WITH-STATS.tsv.gz");
+open(OUT, "| gzip > /tmp/test.txt.gz");
 print OUT join("\t", 'src', 'tgt', 'num_source_before', 'num_source_after', 'num_paths_before',
   'num_paths_after', 'num_clicks_before', 'num_clicks_after', 'num_wiki_searches_302_before',
   'num_wiki_searches_200_before', 'num_wiki_searches_302_after', 'num_wiki_searches_200_after',
-  'num_external_searches_before', 'num_external_searches_after') . "\n";
+  'num_external_searches_before', 'num_external_searches_after', 'outdegree', 'source_length',
+  'min_link_pos', 'num_link_occurrences') . "\n";
 foreach my $pair (keys %new_links) {
   my ($src, $tgt) = split(/\t/, $pair);
   $num_source_before = $source_counts_before{$src} || 0;
@@ -166,10 +176,15 @@ foreach my $pair (keys %new_links) {
   $num_wiki_searches_200_after = $wiki_search_counts_200_after{$pair} || 0;
   $num_external_searches_before = $external_search_counts_before{$pair} || 0;
   $num_external_searches_after = $external_search_counts_after{$pair} || 0;
+  $min_link_pos = $min_link_positions{$pair} || 'NA';
+  $outdeg = $outdegrees{$src} || 'NA';
+  $num_link_occ = $num_link_occurrences{$pair} || 'NA';
+  $src_len = $source_lengths{$src} || 'NA';
 
   print OUT join("\t", $pair, $num_source_before, $num_source_after, $num_paths_before,
     $num_paths_after, $num_clicks_before, $num_clicks_after, $num_wiki_searches_302_before,
     $num_wiki_searches_200_before, $num_wiki_searches_302_after, $num_wiki_searches_200_after,
-    $num_external_searches_before, $num_external_searches_after) . "\n";
+    $num_external_searches_before, $num_external_searches_after, $outdeg, $src_len, $min_link_pos,
+    $num_link_occ) . "\n";
 }
 close(OUT);
