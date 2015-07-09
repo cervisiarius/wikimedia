@@ -27,6 +27,17 @@ while (my $pair = <IN>) {
 }
 close(IN);
 
+# # Load link positions.
+# print STDERR "Loading link positions\n";
+# open(IN, "gunzip -c $DATADIR/link_positions_added_in_02-15.tsv.gz |") or die $!;
+# while (my $line = <IN>) {
+#   chomp $line;
+#   my ($src, $tgt, $size, $pos) = split(/\t/, $line);
+#   $existing_links{"$src\t$tgt"} = 1;
+#   $existing_pages{$src} = 1;
+# }
+# close(IN);
+
 # Load singleton source counts before.
 print STDERR "Loading singleton source counts before\n";
 open(IN, "gunzip -c $DATADIR/singleton_counts_01-15.tsv.gz |") or die $!;
