@@ -19,6 +19,7 @@ my %min_link_positions = ();
 my %num_link_occurrences = ();
 my %outdegrees = ();
 my %source_lengths = ();
+my %creation_dates = ();
 
 # Load added links.
 print STDERR "Loading added links\n";
@@ -36,13 +37,24 @@ print STDERR "Loading link positions\n";
 open(IN, "gunzip -c $DATADIR/link_positions_enwiki-20150304_FILTERED.tsv.gz |") or die $!;
 while (my $line = <IN>) {
   chomp $line;
-  my ($src, $tgt, $size, $pos) = split(/\t/, $line);
+  my ($src, $tgt, $size, $pos, $outdeg) = split(/\t/, $line);
   my $pair = "$src\t$tgt";
   $source_lengths{$src} = $size;
-  ++$outdegrees{$src};
+  $outdegrees{$src} = $outdeg;
   my @pos_array = split(/,/, $pos);
   $num_link_occurrences{$pair} = scalar(@pos_array);
   $min_link_positions{$pair} = $pos_array[0];
+}
+close(IN);
+
+# Load article creation dates.
+print STDERR "Loading article creation dates\n";
+open(IN, "gunzip -c $DATADIR/article_creation_dates_20150403.tsv.gz |") or die $!;
+while (my $line = <IN>) {
+  chomp $line;
+  my ($src, $date) = split(/\t/, $line);
+  my ($day, $time) = split(/T/, $date);
+  $creation_dates{$src} = $day if (defined $relevant_sources{$src});
 }
 close(IN);
 
@@ -155,13 +167,12 @@ close(IN);
 
 # Write summary to disk.
 print STDERR "Writing summary to disk\n";
-#open(OUT, "| gzip > $DATADIR/links_added_in_02-15_WITH-STATS.tsv.gz");
-open(OUT, "| gzip > /tmp/test.txt.gz");
+open(OUT, "| gzip > $DATADIR/links_added_in_02-15_WITH-STATS.tsv.gz");
 print OUT join("\t", 'src', 'tgt', 'num_source_before', 'num_source_after', 'num_paths_before',
   'num_paths_after', 'num_clicks_before', 'num_clicks_after', 'num_wiki_searches_302_before',
   'num_wiki_searches_200_before', 'num_wiki_searches_302_after', 'num_wiki_searches_200_after',
   'num_external_searches_before', 'num_external_searches_after', 'outdegree', 'source_length',
-  'min_link_pos', 'num_link_occurrences') . "\n";
+  'min_link_pos', 'num_link_occurrences', 'source_creation_date') . "\n";
 foreach my $pair (keys %new_links) {
   my ($src, $tgt) = split(/\t/, $pair);
   $num_source_before = $source_counts_before{$src} || 0;
@@ -180,11 +191,12 @@ foreach my $pair (keys %new_links) {
   $outdeg = $outdegrees{$src} || 'NA';
   $num_link_occ = $num_link_occurrences{$pair} || 'NA';
   $src_len = $source_lengths{$src} || 'NA';
+  $creation_date = $creation_dates{$src} || 'NA';
 
   print OUT join("\t", $pair, $num_source_before, $num_source_after, $num_paths_before,
     $num_paths_after, $num_clicks_before, $num_clicks_after, $num_wiki_searches_302_before,
     $num_wiki_searches_200_before, $num_wiki_searches_302_after, $num_wiki_searches_200_after,
     $num_external_searches_before, $num_external_searches_after, $outdeg, $src_len, $min_link_pos,
-    $num_link_occ) . "\n";
+    $num_link_occ, $creation_date) . "\n";
 }
 close(OUT);
