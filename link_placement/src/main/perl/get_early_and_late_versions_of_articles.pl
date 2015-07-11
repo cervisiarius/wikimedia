@@ -4,7 +4,12 @@
 
 # NB: Note the -CS flag above; it is such that we read and write from STDIN and STDOUT in UTF-8 format.
 
-# Important: this assumes the input to be grouped by page id.
+# Important: this assumes the input to be in exactly the same order as it was produced by
+# extract_link_deltas.pl; since (I think) the link-delta extraction for enwiki20150403 did not sort
+# revisions by date before processing the data (which might result in some out-of-order revisions),
+# you should not sort the data by date before running this 'ere script. As long as the is in the same
+# order as it went into (and thus came out of) extract_link_deltas.pl, the full list of links for a page
+# will be reconstructible from the deltas.
 
 # Input: /dfs/scratch1/ashwinp/revision_dump_link_deltas_20150403/*
 
@@ -12,28 +17,26 @@ use HTML::Entities;
 # Important: deal with unicode properly (for uppercasing etc.).
 use utf8;
 
-# This should rarely do anything, since redirects were already resolved temporally when extracting deltas.
+# print STDERR "Loading redirects... ";
+# my %redirects = ();
+# open(RED, "zcat " . $ENV{'HOME'} . "/wikimedia/trunk/data/redirects/enwiki_20141008_redirects.tsv.gz |");
+# while (my $line = <RED>) {
+#   chomp $line;
+#   my @tokens = split(/\t/, $line, 2);
+#   $redirects{$tokens[0]} = $tokens[1];
+# }
+# close(RED);
+# print STDERR "DONE\n";
+
 sub normalize_title {
   my $title = shift;
   $title =~ s/ /_/g;
-  my $resolved = $redirects{$title};
-  if ($resolved) {
-    $title = $resolved;
-    print "RESOLVED\n";
-  }
+  # This would rarely do anything, since redirects were already resolved temporally when extracting
+  # deltas, so skip the step.
+  #my $resolved = $redirects{$title};
+  #$title = $resolved if ($resolved);
   return $title;
 }
-
-print STDERR "Loading redirects... ";
-my %redirects = ();
-open(RED, "zcat " . $ENV{'HOME'} . "/wikimedia/trunk/data/redirects/enwiki_20141008_redirects.tsv.gz |");
-while (my $line = <RED>) {
-  chomp $line;
-  my @tokens = split(/\t/, $line, 2);
-  $redirects{$tokens[0]} = $tokens[1];
-}
-close(RED);
-print STDERR "DONE\n";
 
 my $early_date = '';
 my %early_links = ();
