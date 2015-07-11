@@ -3,6 +3,7 @@ package org.wikimedia.west1.traces.linkplacement.sourcebased;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -12,149 +13,120 @@ import java.util.Scanner;
 import java.util.Set;
 import java.util.zip.GZIPInputStream;
 
-import org.wikimedia.west1.traces.linkplacement.LinkCandidate;
-
 public abstract class LinkPlacement {
 
-	protected Set<LinkCandidate> solution;
-	protected PriorityQueue<LinkCandidate> priorityQueue;
+  protected Set<LinkCandidate> solution;
+  protected PriorityQueue<LinkCandidate> priorityQueue;
 
-	protected Map<LinkCandidate, int[]> candsToTrees;
-	protected Map<Integer, LinkCandidate[]> treesToCands;
+  protected Map<String, List<LinkCandidate>> srcToCands;
+  protected Map<String, Integer> srcCounts;
+  protected Map<String, Double> srcExistingLinkScoreSum;
 
-	public final static String DATADIR_WIKIPEDIA = System.getenv("HOME")
-	    + "/wikimedia/trunk/data/link_placement/";
-	public final static String DATADIR_SIMTK = System.getenv("HOME")
-	    + "/wikimedia/trunk/data/simtk/pair_counts/";
+  public final static String DATADIR_WIKIPEDIA = System.getenv("HOME")
+      + "/wikimedia/trunk/data/link_placement/";
+  public final static String DATADIR_SIMTK = System.getenv("HOME")
+      + "/wikimedia/trunk/data/simtk/pair_counts/";
 
-	private String datadir;
+  private String datadir;
+  private ScoreType scoreType;
 
-	public LinkPlacement(String datadir) throws IOException {
-		this.datadir = datadir;
-		this.solution = new HashSet<LinkCandidate>();
-		this.priorityQueue = new PriorityQueue<LinkCandidate>();
-    loadTreeData();
-    initMargGains();
-	}
+  public enum ScoreType {
+    P_ST, P_INDIR, P_SEARCH, P_NULL, P_MEAN_ALL
+  }
 
-	protected void initMargGains() {
-		for (LinkCandidate cand : candsToTrees.keySet()) {
-			cand.margGain = margGain(cand);
-		}
-		for (LinkCandidate cand : candsToTrees.keySet()) {
-			priorityQueue.offer(cand);
-		}
-	}
+  public LinkPlacement(String datadir, ScoreType scoreType) throws IOException {
+    this.datadir = datadir;
+    this.scoreType = scoreType;
+    this.solution = new HashSet<LinkCandidate>();
+    this.priorityQueue = new PriorityQueue<LinkCandidate>();
+    loadData();
+  }
 
-	private void loadTreeData() throws IOException {
-		Map<String, Float> candScores = loadCandScores();
-		candsToTrees = new HashMap<LinkCandidate, int[]>();
-		Map<Integer, List<LinkCandidate>> treesToCandLists = new HashMap<Integer, List<LinkCandidate>>();
-		Map<String, Integer> treeIndex = new HashMap<String, Integer>();
-		FileInputStream fis = new FileInputStream(datadir + "link_candidates_tree_ids.tsv.gz");
-		Scanner sc = new Scanner(new GZIPInputStream(fis), "UTF-8").useDelimiter("\n");
-		int lastInt = 0;
-		while (sc.hasNext()) {
-			String[] tokens = sc.next().split("\t", 3);
-			String candName = String.format("%s|%s", tokens[0], tokens[1]);
-			// Only consider candidates with a defined score.
-			if (candScores.containsKey(candName)) {
-				LinkCandidate cand = new LinkCandidate(candName, candScores.get(candName));
-				String[] treeIds = tokens[2].split(",");
-				int[] treeInts = new int[treeIds.length];
-				for (int i = 0; i < treeIds.length; ++i) {
-					Integer treeInt = treeIndex.get(treeIds[i]);
-					if (treeInt == null) {
-						treeInt = lastInt;
-						treeIndex.put(treeIds[i], lastInt);
-						++lastInt;
-					}
-					treeInts[i] = treeInt;
-					List<LinkCandidate> candList = treesToCandLists.get(treeInt);
-					if (candList == null) {
-						candList = new ArrayList<LinkCandidate>();
-						treesToCandLists.put(treeInt, candList);
-					}
-					candList.add(cand);
-				}
-				candsToTrees.put(cand, treeInts);
-			}
-		}
-		fis.close();
-		sc.close();
-		// Store the tree-to-cand map more efficiently with arrays rather than lists as values.
-		treesToCands = new HashMap<Integer, LinkCandidate[]>();
-		for (int treeId : treesToCandLists.keySet()) {
-			List<LinkCandidate> list = treesToCandLists.get(treeId);
-			LinkCandidate[] array = new LinkCandidate[list.size()];
-			treesToCands.put(treeId, list.toArray(array));
-		}
-	}
+  private void loadData() throws IOException {
+    srcToCands = new HashMap<String, List<LinkCandidate>>();
+    srcCounts = new HashMap<String, Integer>();
+    srcExistingLinkScoreSum = new HashMap<String, Double>();
+    FileInputStream fis = new FileInputStream(datadir + "global_optimization_input.tsv.gz");
+    Scanner sc = new Scanner(new GZIPInputStream(fis), "UTF-8").useDelimiter("\n");
+    // Read the header.
+    String[] colnames = sc.next().split("\t", 10);
+    while (sc.hasNext()) {
+      String[] tokens = sc.next().split("\t", colnames.length);
+      String src = tokens[0];
+      String tgt = tokens[1];
+      int isTop7k = Integer.parseInt(tokens[2]);
+      // For now ignore those that are not in the top 7k, since we don't have p_cum_existing yet for
+      // them.
+      if (isTop7k == 1) {
+        int srcCount = Integer.parseInt(tokens[3]);
+        try {
+          double existingLinkScoreCount = Double.parseDouble(tokens[4]);
+          srcCounts.put(src, srcCount);
+          srcExistingLinkScoreSum.put(src, existingLinkScoreCount);
+          for (int c = 4; c < colnames.length; ++c) {
+            if (colnames[c].toLowerCase().equals(scoreType.toString().toLowerCase())) {
+              List<LinkCandidate> candList = srcToCands.get(src);
+              if (candList == null) {
+                candList = new ArrayList<LinkCandidate>();
+                srcToCands.put(src, candList);
+              }
+              candList.add(new LinkCandidate(src, tgt, Double.parseDouble(tokens[c])));
+            }
+          }
+        } catch (NumberFormatException e) {
+          continue;
+        }
+      }
+    }
+    fis.close();
+    sc.close();
+  }
 
-	private Map<String, Float> loadCandScores() throws IOException {
-		Map<String, Float> result = new HashMap<String, Float>();
-		FileInputStream fis = new FileInputStream(datadir
-		    + "link_candidates_scores_GROUND-TRUTH.tsv.gz");
-		Scanner sc = new Scanner(new GZIPInputStream(fis), "UTF-8").useDelimiter("\n");
-		while (sc.hasNext()) {
-			String[] tokens = sc.next().split("\t", 6);
-			// TODO: maybe impose a threshold on candidate frequency?
-			result.put(String.format("%s|%s", tokens[0], tokens[1]), Float.parseFloat(tokens[2]));
-		}
-		fis.close();
-		sc.close();
-		return result;
-	}
+  protected Map<String, List<LinkCandidate>> splitSolutionBySource(Set<LinkCandidate> solution) {
+    Map<String, List<LinkCandidate>> bySource = new HashMap<String, List<LinkCandidate>>();
+    for (LinkCandidate cand : solution) {
+      List<LinkCandidate> candsForSrc = bySource.get(cand.src);
+      if (candsForSrc == null) {
+        candsForSrc = new ArrayList<LinkCandidate>();
+        bySource.put(cand.src, candsForSrc);
+      }
+      candsForSrc.add(cand);
+    }
+    return bySource;
+  }
 
-	public float evaluate() {
-		Set<Integer> trees = new HashSet<Integer>();
-		for (LinkCandidate cand : solution) {
-			for (int tree : candsToTrees.get(cand)) {
-				trees.add(tree);
-			}
-		}
-		float value = 0;
-		for (int tree : trees) {
-			float p_none = 1;
-			for (LinkCandidate cand : treesToCands.get(tree)) {
-				if (solution.contains(cand)) {
-					p_none *= (1 - cand.score);
-				}
-			}
-			value += (1 - p_none);
-		}
-		return value;
-	}
+  public double evaluate() {
+    return evaluate(solution);
+  }
 
-	protected float margGain(LinkCandidate cand) {
-		float mg = 0;
-		for (int tree : candsToTrees.get(cand)) {
-			float inc = cand.score;
-			// If the solution is empty, then the condition in the loop will always be false, so we can
-			// skip the for loop to begin with.
-			if (!solution.isEmpty()) {
-				for (LinkCandidate neighbor : treesToCands.get(tree)) {
-					if (solution.contains(neighbor)) {
-						inc *= (1 - neighbor.score);
-					}
-				}
-			}
-			mg += inc;
-		}
-		return mg;
-	}
+  public abstract double evaluate(Set<LinkCandidate> solution);
 
-	  public void placeLinks(int numLinks, boolean quiet) {
-	    // Pick the numLinks optimal candidates greedily, without updating marginal gains.
-	    for (int i = 0; i < numLinks; ++i) {
-	      // Pick the candidate with the largest (initial) marginal gain.
-	      LinkCandidate cand = priorityQueue.poll();
-	      solution.add(cand);
-	      if (!quiet) {
-	        System.out.format("(%d) %s, score: %s, gain: %s, #paths: %d\n", i, cand.name, cand.score,
-	            cand.margGain, candsToTrees.get(cand).length);
-	      }
-	    }
-	  }
+  public void placeLinks(int numLinks, boolean quiet) {
+    for (String src : srcToCands.keySet()) {
+      //System.out.format("========== %s\n", src);
+      List<LinkCandidate> cands = srcToCands.get(src);
+      // Sort all cands by score.
+      Collections.sort(cands, new LinkCandidate.ScoreComparator());
+      Set<LinkCandidate> localSolution = new HashSet<LinkCandidate>();
+      double value = 0;
+      for (LinkCandidate cand : cands) {
+        localSolution.add(cand);
+        double newValue = evaluate(localSolution);
+        cand.margGain = newValue - value;
+        priorityQueue.offer(cand);
+        value = newValue;
+      }
+    }
+    // Pick the numLinks optimal candidates greedily w.r.t. marginal gains.
+    for (int i = 0; i < numLinks; ++i) {
+      // Pick the candidate with the largest marginal gain.
+      LinkCandidate cand = priorityQueue.poll();
+      solution.add(cand);
+      if (!quiet) {
+        System.out.format("(%d) %s, gain: %.1f, n_src: %s, p_cum_ex: %.5f\n", i, cand,
+            cand.margGain, srcCounts.get(cand.src), srcExistingLinkScoreSum.get(cand.src));
+      }
+    }
+  }
 
 }

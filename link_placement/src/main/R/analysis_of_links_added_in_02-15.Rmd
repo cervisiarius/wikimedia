@@ -318,6 +318,7 @@ output <- data.frame(
   tgt=data$tgt,
   top7k=as.numeric(data$cand %in% rownames(null)),
   src_count=data$num_source_before,
+  p_cum_existing=NA,
   p_st=data$pst_after,
   p_indir=data$p_indir_before,
   p_search=data$search_prob_all_before,
@@ -329,6 +330,7 @@ rownames(output) <- data$cand
 output$p_null[rownames(output) %in% rownames(null)] <- null$null_model_p
 output$p_mean_taken[rownames(output) %in% rownames(null)] <- null$source_mean_baseline
 output$p_mean_all[rownames(output) %in% rownames(null)] <- null$source_all_outlinks_mean_baseline
+output$p_cum_existing <- output$p_mean_all * data$outdegree
 
 write.table(output, sprintf('%s/global_optimization_input.tsv', DATADIR), quote=FALSE, sep='\t', row.names=FALSE)
 ```
@@ -339,11 +341,11 @@ write.table(output, sprintf('%s/global_optimization_input.tsv', DATADIR), quote=
 sum(null$p_s_direct_t==0)/nrow(null)
 null <- null[null$p_s_direct_t > 0,]
 
-rel_diff <- function(pred, true) abs(true-pred)#/true
+rel_diff <- function(pred, true) abs(true-pred)/true
 
 # Stupid baseline.
-plot(null$source_mean_baseline, null$p_s_direct_t, log='xy', col='#00000010', pch=16, panel.first=c(abline(0,1)), xlim=c(1e-5,1), ylim=c(1e-5,1))
-x <- sort(rel_diff(null$source_mean_baseline, null$p_s_direct_t))
+plot(null$source_all_outlinks_mean_baseline, null$p_s_direct_t, log='xy', col='#00000010', pch=16, panel.first=c(abline(0,1)), xlim=c(1e-5,1), ylim=c(1e-5,1))
+x <- sort(abs(null$source_all_outlinks_mean_baseline - null$p_s_direct_t))
 summary(x)
 plot(x[is.finite(x)], (1:sum(is.finite(x)))/sum(is.finite(x)), type='l', panel.first=grid(), log='xy', xlim=c(1e-4,1e2))
 
@@ -353,6 +355,7 @@ plot(null$log_p_indir, null$log_pst, col='#00000010', pch=16, panel.first=c(abli
 plot(x[is.finite(x)], (1:sum(is.finite(x)))/sum(is.finite(x)), type='l', panel.first=grid(), log='xy', xlim=c(1e-4,1e2))
 
 x <- sort(abs(null$p_indir - null$p_s_direct_t))
+summary(x)
 plot(x, (1:sum(is.finite(x)))/sum(is.finite(x)), log='x', type='l', panel.first=grid())
 
 coef <- coef(lm(null$log_pst ~ null$log_p_indir + I(null$log_p_indir^2)))
