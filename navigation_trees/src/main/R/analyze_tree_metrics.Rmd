@@ -5,10 +5,17 @@ output: html_document
 
 ```{r load data}
 DATADIR <- sprintf('%s/wikimedia/trunk/data', Sys.getenv('HOME'))
-data <- read.table(sprintf('%s/tree_metrics_sample_en.tsv', DATADIR), header=TRUE)
+PLOTDIR <- sprintf('%s/snap-papers/2015/west1-ashwinp-wmf/FIG', Sys.getenv('HOME'))
+data <- read.table(pipe(sprintf('gunzip -c %s/tree_metrics_sample_en.tsv', DATADIR)), header=TRUE)
+
+# Set this to FALSE if you don't want to save plots to PDFs.
+save_plots <- TRUE
+
+.default_par <- par(no.readonly=TRUE)
 ```
 
-We analyze a sample of 100,000 navigation traces. The sample excludes all traces consisting of a single page view (i.e., the majority).
+We analyze a sample of 300,000 navigation traces.
+This data was computed before we considered searches and other 302 queries.
 
 # Tree size
 
@@ -17,9 +24,21 @@ Tree size is defined as the number of nodes in the tree.
 First, a histogram (log-log scales).
 
 ```{r}
-h <- hist(data$size, breaks=(min(data$size)-1):max(data$size), plot=FALSE)
+metric <- data$size
+# PDF.
+h <- hist(metric, breaks=(min(metric)-1):max(metric), plot=FALSE)
 plot(h$breaks[-1], h$counts/sum(h$counts), log='xy', panel.first=grid(),
      xlab='Tree size', ylab='Probability')
+# CCDF.
+if (save_plots) pdf(sprintf('%s/tree_metrics_size.pdf', PLOTDIR), width=1.68, height=1.2, pointsize=6,
+                    family='Helvetica', useDingbats=FALSE)
+par(mar=c(3.4, 3.4, 1.1, 0.6))
+plot(sort(metric), rev(1:sum(is.finite(metric)))/sum(is.finite(metric)), log='xy', type='l',
+     xlim=c(1,200), ylim=c(1e-5,1), panel.first=grid(), xlab='', ylab='')
+mtext('n', side=1, line=2.4)
+mtext(expression(paste('Pr[num nodes >= n]')), side=2, line=2.4)
+par(.default_par)
+if (save_plots) dev.off()
 ```
 
 If the distribution were exponential, $\frac{1}{1-F(s)}$ would be a straight line on a single-log plot (where $s$ is the tree size, and $F(s)$, the CDF), but clearly this isn't the case:
@@ -47,9 +66,21 @@ TODO: Figure out the best fit via a goodness-of-fit or likelihood ratio test.
 Note that depth cannot be larger than 100, since we impose this limit at data-extraction time (to avoid stack overflows in recursive tree processing).
 
 ```{r}
-h <- hist(data$depth, breaks=(min(data$depth)-1):max(data$depth), plot=FALSE)
+metric <- data$depth
+h <- hist(metric, breaks=(min(metric)-1):max(metric), plot=FALSE)
 plot(h$breaks[-1], h$counts/sum(h$counts), log='xy', panel.first=grid(),
      xlab='Tree depth', ylab='Probability')
+# CCDF.
+if (save_plots) pdf(sprintf('%s/tree_metrics_depth.pdf', PLOTDIR), width=1.68, height=1.2, pointsize=6,
+                    family='Helvetica', useDingbats=FALSE)
+par(mar=c(3.4, 3.4, 1.1, 0.6))
+plot(sort(metric), rev(1:sum(is.finite(metric)))/sum(is.finite(metric)), log='xy', type='l',
+     xlim=c(1,200), ylim=c(1e-5,1),
+     panel.first=grid(), xlab='', ylab='')
+mtext('d', side=1, line=2.4)
+mtext(expression(paste('Pr[depth >= d]')), side=2, line=2.4)
+par(.default_par)
+if (save_plots) dev.off()
 ```
 
 Again, if the distribution were Weibull, the left plot would be a straight line; if it were a power law, the right plot would be a straight line.
@@ -67,18 +98,43 @@ plot(x, rev(y), log='xy', panel.first=grid(), xlab='Tree size s', ylab='1-F(s)')
 Maximum degree per tree.
 
 ```{r}
-par(mfrow=c(1,1))
+# PDF
 metric <- data$degree_max
-plot(sort(metric), rev(1:length(metric))/length(metric), log='xy',
-     panel.first=grid(), xlab='Max degree d', ylab='1-F(d)')
+h <- hist(metric, breaks=(floor(min(metric, na.rm=TRUE)-1)):ceiling(max(metric, na.rm=TRUE)), plot=FALSE)
+plot(h$breaks[-1], h$counts/sum(h$counts), log='xy', panel.first=grid(),
+     xlab='Max non-leaf degree', ylab='Probability')
+# CCDF.
+if (save_plots) pdf(sprintf('%s/tree_metrics_max_nonleaf_degree.pdf', PLOTDIR), width=1.68, height=1.2, pointsize=6,
+                    family='Helvetica', useDingbats=FALSE)
+par(mar=c(3.4, 3.4, 1.1, 0.6))
+plot(sort(metric), rev(1:sum(is.finite(metric)))/sum(is.finite(metric)), log='xy', type='l',
+     xlim=c(1,200), ylim=c(1e-5,1),
+     panel.first=grid(), xlab='', ylab='')
+mtext('d', side=1, line=2.4)
+mtext(expression(paste('Pr[max internal deg >= d]')), side=2, line=2.4)
+par(.default_par)
+if (save_plots) dev.off()
 ```
 
 Average degree per tree.
 
 ```{r}
+# PDF
 metric <- data$degree_mean
-plot(sort(metric), rev(1:length(metric))/length(metric), log='xy',
-     panel.first=grid(), xlab='Mean degree d', ylab='1-F(d)')
+h <- hist(metric, breaks=(floor(min(metric, na.rm=TRUE)-1)):ceiling(max(metric, na.rm=TRUE)), plot=FALSE)
+plot(h$breaks[-1], h$counts/sum(h$counts), log='xy', panel.first=grid(),
+     xlab='Mean non-leaf degree', ylab='Probability')
+# CCDF.
+if (save_plots) pdf(sprintf('%s/tree_metrics_avg_nonleaf_degree.pdf', PLOTDIR), width=1.68, height=1.2, pointsize=6,
+                    family='Helvetica', useDingbats=FALSE)
+par(mar=c(3.4, 3.4, 1.1, 0.6))
+plot(sort(metric), rev(1:sum(is.finite(metric)))/sum(is.finite(metric)), log='xy', type='l',
+     xlim=c(1,200), ylim=c(1e-5,1),
+     panel.first=grid(), xlab='', ylab='')
+mtext('d', side=1, line=2.4)
+mtext(expression(paste('Pr[avg internal deg >= d]')), side=2, line=2.4)
+par(.default_par)
+if (save_plots) dev.off()
 ```
 
 # Wiener index
