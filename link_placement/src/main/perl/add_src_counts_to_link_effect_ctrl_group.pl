@@ -2,7 +2,8 @@
 
 my $DATADIR = $ENV{'HOME'} . "/wikimedia/trunk/data/link_placement/";
 
-my %relevant_pairs = ();
+my %counts_before = ();
+my %counts_after = ();
 
 # Load singleton source counts before.
 print STDERR "Loading singleton source counts before\n";
@@ -11,7 +12,7 @@ while (my $line = <IN>) {
   chomp $line;
   if ($line =~ /^([^ ]+)\t(\d+)$/) {
     my ($src, $count) = ($1, $2);
-    $source_counts_before{$src} += $count if (defined $relevant_sources{$src});
+    $counts_before{$src} += $count;
   }
 }
 close(IN);
@@ -23,17 +24,21 @@ while (my $line = <IN>) {
   chomp $line;
   if ($line =~ /^([^ ]+)\t(\d+)$/) {
     my ($src, $count) = ($1, $2);
-    # Because of some data issue some sources appear twice; add these counts.
-    $source_counts_after{$src} += $count if (defined $relevant_sources{$src});
+    $counts_after{$src} += $count;
   }
 }
 close(IN);
 
 # Load relevant data.
 print STDERR "Loading relevant pairs\n";
-open(IN, "gunzip -c $DATADIR/results/link_placement_results_$objective.tsv.gz |") or die $!;
+open(IN, "$DATADIR/results/link_addition_effect.tsv") or die $!;
+$line = <IN>;
+chomp $line;
+print "$line\tsource_count_before\tsource_count_after\n";
 while (my $line = <IN>) {
   chomp $line;
+  my ($src, $_garbage) = split(/\t/, $line, 2);
+  print "$line\t$counts_before{$src}\t$counts_after{$src}\n";
   my ($pos, $src, $tgt, $_garbage) = split(/\t/, $line, 4);
   $relevant_pairs{"$src\t$tgt"} = 1;
 }
