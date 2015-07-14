@@ -1,13 +1,13 @@
 #!/usr/bin/perl
 
-my $DATADIR = $ENV{'HOME'} . "/wikimedia/trunk/data/link_placement/results/";
+my $DATADIR = $ENV{'HOME'} . "/wikimedia/trunk/data/link_placement/";
 
 my %relevant_pairs = ();
 
 # Load results.
 foreach my $objective ('CHAIN', 'TREE', 'COINS') {
   print STDERR "Loading results from $objective model\n";
-  open(IN, "gunzip -c $DATADIR/link_placement_results_$objective.tsv.gz |") or die $!;
+  open(IN, "gunzip -c $DATADIR/results/link_placement_results_$objective.tsv.gz |") or die $!;
   while (my $line = <IN>) {
     chomp $line;
     my ($pos, $src, $tgt, $_garbage) = split(/\t/, $line, 4);
