@@ -89,3 +89,55 @@ lines(vol(Qx), col='red')
 lines(vol(Qy), lty=2)
 lines(vol(Q))
 legend('topright', legend=c('Qxy','Qx','Qy','Q'), col=c(2,2,1,1), lty=c(2,1,2,1))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Tabbed-browsing model.
+
+f <- function(p_old, p_new) {
+  1 - prod(1 - p_new / (sum(p_new) + sum(p_old)))
+}
+
+# Monotonicity.
+summary(sapply(1:1000, function(i) {
+  p_old <- runif(20)
+  p_new <- runif(15)
+  p <- runif(1)
+  f(p_old, c(p_new, p)) - f(p_old, p_new)
+  }))
+
+# Submodularity.
+summary(sapply(1:1000, function(i) {
+  p_old <- runif(200)
+  p_new <- runif(18)
+  p <- runif(1)
+  (f(p_old, c(p_new[-1], p)) - f(p_old, p_new[-1])) - (f(p_old, c(p_new, p)) - f(p_old, p_new))
+}))
+
+
+
+p_old <- c(.00001)
+p_new <- .1
+p <- .1
+f(p_old, c(p_new, p)) - f(p_old, p_new)

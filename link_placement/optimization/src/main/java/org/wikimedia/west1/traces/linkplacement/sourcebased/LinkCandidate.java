@@ -1,6 +1,8 @@
 package org.wikimedia.west1.traces.linkplacement.sourcebased;
 
 import java.util.Comparator;
+import java.util.HashMap;
+import java.util.Map;
 
 public class LinkCandidate implements Comparable<LinkCandidate> {
 
@@ -8,29 +10,32 @@ public class LinkCandidate implements Comparable<LinkCandidate> {
   public String tgt;
   public double score;
   public double margGain;
-  private String name;
+  Map<String, Double> values = new HashMap<String, Double>();
 
   public LinkCandidate(String src, String tgt, double score) {
     this.src = src;
     this.tgt = tgt;
-    this.name = src + " > " + tgt;
     this.score = score;
     this.margGain = Double.NaN;
+  }
+  
+  public String getName() {
+    return src + " > " + tgt;
   }
 
   @Override
   public String toString() {
-    return name + ":" + score;
+    return getName() + ":" + score;
   }
 
   @Override
   public boolean equals(Object other) {
-    return name.equals(((LinkCandidate) other).name);
+    return getName().equals(((LinkCandidate) other).getName());
   }
 
   @Override
   public int hashCode() {
-    return name.hashCode();
+    return getName().hashCode();
   }
 
   // Comparison is done based on the marginal gains; elements with larger marginal gains come

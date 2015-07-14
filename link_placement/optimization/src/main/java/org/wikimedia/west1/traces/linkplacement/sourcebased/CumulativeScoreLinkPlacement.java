@@ -1,58 +1,57 @@
 package org.wikimedia.west1.traces.linkplacement.sourcebased;
 
 import java.io.IOException;
+import java.io.PrintStream;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 public class CumulativeScoreLinkPlacement extends LinkPlacement {
 
-  public CumulativeScoreLinkPlacement(String datadir, ScoreType scoreType) throws IOException {
-    super(datadir, scoreType);
+  public CumulativeScoreLinkPlacement(String datadir) throws IOException {
+    super(datadir);
   }
 
-  // Evaluate under the chain-model objective.
-  public double evaluate(Set<LinkCandidate> solution) {
-    Map<String, List<LinkCandidate>> bySource = splitSolutionBySource(solution);
-    double value = 0;
-    for (String src : bySource.keySet()) {
-      double srcValue = 0;
-      for (LinkCandidate cand : bySource.get(src)) {
-        srcValue += cand.score;
-      }
-      srcValue = srcCounts.get(src) * srcValue / (srcValue + srcExistingLinkScoreSum.get(src));
-      value += srcValue;
-    }
-    return value;
+  @Override
+  protected double computeScore(Map<String, Double> values) {
+    return values.get("pst_indirect");
   }
 
-  public void placeLinks(int numLinks, boolean quiet) {
-    // Use as the value of a candidate its score times its source's count. Use this value as the
-    // marginal gain (although it's not), since the priority queue sorts candidates by marginal
-    // gain.
+  @Override
+  protected void initMargGains() {
+    // Use as the value of a candidate its score times its source's count.
     for (String src : srcToCands.keySet()) {
       for (LinkCandidate cand : srcToCands.get(src)) {
         cand.margGain = srcCounts.get(src) * cand.score;
         priorityQueue.offer(cand);
       }
     }
-    // Pick the numLinks optimal candidates greedily.
-    for (int i = 0; i < numLinks; ++i) {
-      // Pick the candidate with the largest marginal gain.
-      LinkCandidate cand = priorityQueue.poll();
-      solution.add(cand);
-      if (!quiet) {
-        System.out.format("(%d) %s, cum_score: %.1f, n_src: %s\n", i, cand, cand.margGain,
-            srcCounts.get(cand.src));
+  }
+
+  // Evaluate under the chain-model objective.
+  @Override
+  public double evaluate() {
+    Map<String, List<LinkCandidate>> bySource = splitSolutionBySource(solution);
+    double value = 0;
+    for (String src : bySource.keySet()) {
+      double srcNewLinkScoreSum = 0;
+      for (LinkCandidate cand : bySource.get(src)) {
+        srcNewLinkScoreSum += cand.score;
       }
+      value += srcClickCounts.get(src) * srcNewLinkScoreSum
+          / (srcNewLinkScoreSum + srcExistingLinkScoreSum.get(src));
     }
+    return value;
   }
 
   public static void main(String[] args) throws IOException {
-    CumulativeScoreLinkPlacement obj = new CumulativeScoreLinkPlacement(
-        LinkPlacement.DATADIR_WIKIPEDIA, ScoreType.P_ST);
-    obj.placeLinks(100, false);
-    System.out.println(obj.evaluate());
+    String dir;
+    try {
+      dir = args[0];
+    } catch (ArrayIndexOutOfBoundsException e) {
+      dir = LinkPlacement.DATADIR_WIKIPEDIA;
+    }
+    CumulativeScoreLinkPlacement obj = new CumulativeScoreLinkPlacement(dir);
+    obj.placeLinks((int) 1e6, new PrintStream(dir + "/link_placement_results_COINS.tsv"));
   }
 
 }

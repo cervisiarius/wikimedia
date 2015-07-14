@@ -8,9 +8,15 @@ output: html_document
 # Load the data and beat it into shape
 
 ```{r}
+library(plotrix)
+
 .default_par <- par(no.readonly=TRUE)
 
+# Set this to FALSE if you don't want to save plots to PDFs.
+save_plots <- TRUE
+
 DATADIR <- sprintf('%s/wikimedia/trunk/data/link_placement/', Sys.getenv('HOME'))
+PLOTDIR <- sprintf('%s/snap-papers/2015/west1-ashwinp-wmf/FIG', Sys.getenv('HOME'))
 
 data <- read.table(pipe(sprintf('gunzip -c %s/links_added_in_02-15_WITH-STATS.tsv.gz', DATADIR)),
                    header=TRUE, quote='', sep='\t')
@@ -111,9 +117,11 @@ groups_idx <- split(1:nrow(data), cut(data$p_indir_before * data$num_source_befo
                                       breaks=c(1,2,10,50,100,Inf), right=FALSE))
 groups_val <- lapply(groups_idx,
                      function(idx) ((data$p_indir_after - data$p_indir_before)/data$p_indir_before)[idx])
-boxplot(groups_val, notch=TRUE, names=names(groups_idx), outline=FALSE)
+if (save_plots) pdf(sprintf('%s/pindir_drop.pdf', PLOTDIR), width=3.2, height=2, pointsize=6, family='Helvetica', useDingbats=FALSE)
+boxplot(groups_val, notch=FALSE, names=names(groups_idx), outline=FALSE,
+        xlab='Number indirect paths before', ylab='Rel. drop in indirect-path probability')
 abline(h=0)
-grid()
+if (save_plots) dev.off()
 
 # Let's check out searches.
 x_raw <- data$num_wiki_searches_before + data$num_external_searches_before
@@ -130,22 +138,26 @@ plot(data$search_prob_all_before, data$search_prob_all_after, col='#00000010', p
      xlab='Search prob before', ylab='Search prob after')
 abline(0,1, col='red')
 # This boxplot shows that the search prob changes. Grouping is by number of searches before.
-groups_idx <- split(1:nrow(data), cut(data$num_all_searches_before$,
-                                      breaks=c(1,2,10,30,Inf), right=FALSE))
+groups_idx <- split(1:nrow(data), cut(data$num_all_searches_before, breaks=c(1,2,10,30,Inf), right=FALSE))
 groups_val <- lapply(groups_idx, function(idx)
   ((data$search_prob_all_after - data$search_prob_all_before)/data$search_prob_all_before)[idx])
-boxplot(groups_val, notch=TRUE, names=names(groups_idx), outline=FALSE)
+if (save_plots) pdf(sprintf('%s/psearch_drop.pdf', PLOTDIR), width=3.2, height=2, pointsize=6, family='Helvetica', useDingbats=FALSE)
+boxplot(groups_val, notch=FALSE, names=names(groups_idx), outline=FALSE,
+        xlab='Number searches before', ylab='Rel. drop in search probability')
 panel.first=abline(h=0)
-grid()
+if (save_plots) dev.off()
 
 # Most clicks are not used at all (66%); among the rest, there's a long tail, with only few links
 # used frequently. Only 1% gets used more than 100 times in the month of March.
+if (save_plots) pdf(sprintf('%s/new_link_usage_ccdf.pdf', PLOTDIR), width=3.2, height=2, pointsize=6,
+                    family='Helvetica', useDingbats=FALSE)
 plot(sort(data$num_clicks_after), (nrow(data):1)/nrow(data), log='xy', type='l', panel.first=grid(),
      xlab='Mininum number of clicks', ylab='Fraction of new links')
 frac_1 <- sum(data$num_clicks_after>0)/nrow(data)
 abline(h=frac_1)
 text(1000, frac_1, sprintf('No clicks: %.0f%%', (1-frac_1)*100), pos=3)
 text(1000, frac_1, sprintf('At least one click: %.0f%%', frac_1*100), pos=1)
+if (save_plots) dev.off()
 
 # Now use p_st on the x axis instead. We want everyone to be able to achieve a given low number (1/N),
 # so we restrict ourselves to sources with at least N views. If we also restrict ourselves to the
@@ -155,19 +167,23 @@ text(1000, frac_1, sprintf('At least one click: %.0f%%', frac_1*100), pos=1)
 # TODO: control for p_s, match articles with many and few outlinks, and compare. Alternative hypothesis:
 # stopping prob might vary with p_s.
 #### Get outdegree from link_positions table.
-Min_num_s <- c(1e2, 1e3, 1e4, 1e5)
-for (i in 1:length(Min_num_s)) {
-  min_num_s <- Min_num_s[i]
-  idx <- which(is.finite(data$pst_after) & data$num_source_after >= min_num_s)
+#Min <- c(1e2, 1e3, 1e4, 1e5)
+Min <- quantile(data$outdegree, seq(0,1,0.25), na.rm=TRUE)
+if (save_plots) pdf(sprintf('%s/new_link_pst_ccdf_BY-DEGREE.pdf', PLOTDIR), width=3.2, height=2, pointsize=6,
+                    family='Helvetica', useDingbats=FALSE)
+for (i in 1:(length(Min)-1)) {
+  idx <- which(is.finite(data$pst_after) & data$outdegree >= Min[i] & data$outdegree < Min[i+1])
   if (i == 1) {
     plot(sort(data$pst_after[idx]), (length(idx):1)/length(idx), log='xy', type='l', col=i,
-         panel.first=grid(), xlim=c(1/min_num_s, 1), ylim=c(1e-6, 1),
+         panel.first=grid(), xlim=c(1e-3,1), ylim=c(1e-6, 1),
          xlab='Mininum p_st', ylab='Fraction of new links')
   } else {
     lines(sort(data$pst_after[idx]), (length(idx):1)/length(idx), col=i)
   }
 }
-legend('topright', legend=Min_num_s, lty=1, col=1:length(Min_num_s))
+legend('topright', legend=sprintf('[%s)', paste(Min[-length(Min)], Min[-1], sep=', ')), bty='n',
+       lty=1, col=1:(length(Min)-1))
+if (save_plots) dev.off()
 
 # Once a link is introduced, it accounts for nearly all traffic from s to t.
 hist(data$click_ratio_after, breaks=5, xlab='Direct-click ratio', main='')
@@ -199,8 +215,11 @@ idx <- which(x_wiki==0);  y_wiki[idx] <- y_wiki[idx[sample(length(idx), length(i
 idx <- which(x_ext==0);   y_ext[idx] <- y_ext[idx[sample(length(idx), length(idx))]]
 idx <- which(x_all==0);   y_all[idx] <- y_all[idx[sample(length(idx), length(idx))]]
 
-plot(x_all, y_all, col='#00000005', pch=16, log='xy')
-abline(0,1)
+# Scatter plot: search proportion vs. p_st.
+if (save_plots) pdf(sprintf('%s/psearch_vs_pst.pdf', PLOTDIR), width=2, height=2, pointsize=6, family='Helvetica', useDingbats=FALSE)
+plot(x_all, y_all, col='#00000003', pch=16, log='xy', cex=2, panel.first=abline(0,1),
+     xlab='Search proportion', ylab='p_st')
+if (save_plots) dev.off()
 
 draw_search_rank_vs_usage_smoothed <- function(x, y, type, col) {
   xmax <- 2e4
@@ -230,19 +249,21 @@ plot(sm$x, sm$y, type='l', log='xy')
 # Let's draw the same plots again, but instead of rank, we use the actual value that's used for
 # ranking on the x-axis.
 draw_search_prop_vs_usage_smoothed <- function(x, y, type, col) {
-  smooth <- function(y) ksmooth(1:length(y), y, bandwidth=50, kernel='normal')$y
+  smooth <- function(y) ksmooth(1:length(y), y, bandwidth=70, kernel='normal')$y
   plot(x, smooth(y), type='l', col=col, xlim=c(1e-6, 0.1), ylim=c(1e-6, 0.1), log='xy',
-       main=sprintf('%s as a predictor of link quality', type),
-       xlab='Search proportion (Jan 15)', ylab='Proportion of direct clicks (Mar 15)')
-  rug(x, col='#00000050')
-  abline(0,1)
+       #main=sprintf('%s as a predictor of link quality', type),
+       xlab='Search proportion', ylab='p_st', panel.first=abline(0, 1, col='gray'))
+  #rug(x, col='#00000050')
 #    dens_log <- density(log(x[x>0]))
 #    x_dens <- exp(dens_log$x)
 #    y_dens <- dens_log$y
 #    lines(x_dens, (y_dens-min(y_dens))/(max(y_dens)-min(y_dens))*0.05+0.45)
 }
 
+if (save_plots) pdf(sprintf('%s/psearch_vs_pst.pdf', PLOTDIR), width=2, height=2, pointsize=6, family='Helvetica', useDingbats=FALSE)
 draw_search_prop_vs_usage_smoothed(x_all, y_all, 'Search', 'black')
+if (save_plots) dev.off()
+
 draw_search_prop_vs_usage_smoothed(x_wiki, y_wiki, 'Wiki search', 'green')
 draw_search_prop_vs_usage_smoothed(x_ext, y_ext, 'External search', 'red')
 
@@ -264,23 +285,70 @@ draw_search_rank_vs_avg_usage(x_wiki, y_wiki, 'Wiki search', 'green')
 draw_search_rank_vs_avg_usage(x_ext, y_ext, 'External search', 'red')
 ```
 
+# Plot p_indir vs. p_st
+
+```{r}
+ord <- order(data$p_indir_before, decreasing=TRUE)
+x <- data$p_indir_before[ord]
+y <- data$pst_after[ord]
+
+if (save_plots) pdf(sprintf('%s/pindir_vs_pst.pdf', PLOTDIR), width=2, height=2, pointsize=6, family='Helvetica', useDingbats=FALSE)
+smooth <- function(y) ksmooth(1:length(y), y, bandwidth=70, kernel='normal')$y
+plot(x, smooth(y), type='l', xlim=c(1e-6, .1), ylim=c(1e-6, .1), log='xy',
+     xlab='Probability of indirect path', ylab='p_st', panel.first=abline(0, 1, col='gray'))
+if (save_plots) dev.off()
+```
+
+
 # Plot certain source properties vs. p(st)
 
 ```{r}
-plot_groups <- function(x, y, breaks) {
+plot_groups <- function(x, y, breaks, xlab=NULL, ylab=NULL, errorbars=TRUE) {
   idx <- which(is.finite(x))
   means <- unlist(lapply(split(y[idx], cut(x[idx], breaks=breaks)), function(x) mean(x, na.rm=TRUE)))
+  se <- unlist(lapply(split(y[idx], cut(x[idx], breaks=breaks)), function(x) sd(x, na.rm=TRUE)/sqrt(sum(is.finite(x)))))
   groups <- split(y[idx], cut(x[idx], breaks=breaks))
-  boxplot(groups, outline=FALSE, ylim=c(0, max(means)))
-  lines(means, type='b')
+  #boxplot(groups, outline=FALSE, ylim=c(0, max(means)))
+  #lines(means, type='b')
+  plot(1:length(means), means, type='b', xaxt='n', bty='n', xlab=xlab, ylab=ylab)
+  axis(1, at=1:length(means), labels=names(groups))
+  if (errorbars) dispersion(1:length(means), means, se)
 }
 
-plot_groups(data$rel_link_pos, data$pst_after, quantile(data$rel_link_pos, seq(0,1,0.1), na.rm=TRUE))
-plot_groups(data$outdegree, data$pst_after, quantile(data$outdegree, seq(0,1,0.1), na.rm=TRUE))
-plot_groups(data$source_length, data$pst_after, quantile(data$source_length, seq(0,1,0.1), na.rm=TRUE))
-plot_groups(data$num_source_before, data$pst_after, quantile(data$source_length, seq(0,1,0.1), na.rm=TRUE))
+# Rel link pos vs. p_st.
+if (save_plots) pdf(sprintf('%s/pst_vs_rel_link_position.pdf', PLOTDIR), width=3.2, height=2, pointsize=6,
+                    family='Helvetica', useDingbats=FALSE)
+plot_groups(data$rel_link_pos, data$pst_after, quantile(data$rel_link_pos, seq(0,1,0.1), na.rm=TRUE),
+            'Relative link position', 'p_st', errorbars=FALSE)
+if (save_plots) dev.off()
 
-plot_groups(data$source_length, data$search_prob_all_before, quantile(data$source_length, seq(0,1,0.1), na.rm=TRUE))
+# Src outdeg vs. p_st.
+if (save_plots) pdf(sprintf('%s/pst_vs_src_outdeg.pdf', PLOTDIR), width=3.2, height=2, pointsize=6,
+                    family='Helvetica', useDingbats=FALSE)
+plot_groups(data$outdegree, data$pst_after, quantile(data$outdegree, seq(0,1,0.1), na.rm=TRUE),
+            'Source outdegree', 'p_st', errorbars=FALSE)
+if (save_plots) dev.off()
+
+# Src length vs. p_st.
+if (save_plots) pdf(sprintf('%s/pst_vs_src_length.pdf', PLOTDIR), width=3.2, height=2, pointsize=6,
+                    family='Helvetica', useDingbats=FALSE)
+plot_groups(data$source_length, data$pst_after, quantile(data$source_length, seq(0,1,0.1), na.rm=TRUE),
+            'Source length', 'p_st')
+if (save_plots) dev.off()
+
+# Num src before vs. p_st.
+if (save_plots) pdf(sprintf('%s/pst_vs_num_src_before.pdf', PLOTDIR), width=3.2, height=2, pointsize=6,
+                    family='Helvetica', useDingbats=FALSE)
+plot_groups(data$num_source_before, data$pst_after, quantile(data$source_length, seq(0,1,0.1), na.rm=TRUE),
+            'Source count before addition', 'p_st')
+if (save_plots) dev.off()
+
+# Src length vs. search prob.
+if (save_plots) pdf(sprintf('%s/psearch_vs_src_length.pdf', PLOTDIR), width=3.2, height=2, pointsize=6,
+                    family='Helvetica', useDingbats=FALSE)
+plot_groups(data$source_length, data$search_prob_all_before, quantile(data$source_length, seq(0,1,0.1), na.rm=TRUE),
+            'Source length', 'p_search')
+if (save_plots) dev.off()
 
 # TODO: control for popularity and check for impact of length
 
