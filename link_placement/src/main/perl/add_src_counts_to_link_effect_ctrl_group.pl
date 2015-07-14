@@ -31,7 +31,7 @@ close(IN);
 
 # Load relevant data.
 print STDERR "Loading relevant pairs\n";
-open(IN, "$DATADIR/results/link_addition_effect.tsv") or die $!;
+open(IN, "$DATADIR/link_addition_effect.tsv") or die $!;
 $line = <IN>;
 chomp $line;
 print "$line\tsource_count_before\tsource_count_after\n";
