@@ -62,7 +62,7 @@ public class TreeModelLinkPlacement extends LinkPlacement {
       dir = LinkPlacement.DATADIR_WIKIPEDIA;
     }
     TreeModelLinkPlacement obj = new TreeModelLinkPlacement(dir);
-    obj.placeLinks((int) 1e6, new PrintStream(dir + "/link_placement_results_TREE.tsv"));
+    obj.placeLinks((int) 1e6, new PrintStream(dir + "/link_placement_results_COINS-PAGE.tsv"));
 }
 
 }

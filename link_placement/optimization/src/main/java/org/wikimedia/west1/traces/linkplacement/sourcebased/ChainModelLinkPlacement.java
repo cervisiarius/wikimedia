@@ -66,7 +66,7 @@ public class ChainModelLinkPlacement extends LinkPlacement {
     }
     ChainModelLinkPlacement obj = new ChainModelLinkPlacement(dir);
     //obj.placeLinks((int) 1e3, System.out);
-    obj.placeLinks((int) 1e6, new PrintStream(dir + "/link_placement_results_CHAIN.tsv"));
+    obj.placeLinks((int) 1e6, new PrintStream(dir + "/link_placement_results_DICE.tsv"));
   }
 
 }

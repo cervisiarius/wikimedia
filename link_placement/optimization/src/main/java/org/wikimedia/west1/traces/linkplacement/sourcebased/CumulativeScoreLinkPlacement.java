@@ -51,7 +51,7 @@ public class CumulativeScoreLinkPlacement extends LinkPlacement {
       dir = LinkPlacement.DATADIR_WIKIPEDIA;
     }
     CumulativeScoreLinkPlacement obj = new CumulativeScoreLinkPlacement(dir);
-    obj.placeLinks((int) 1e6, new PrintStream(dir + "/link_placement_results_COINS.tsv"));
+    obj.placeLinks((int) 1e6, new PrintStream(dir + "/link_placement_results_COINS-LINK.tsv"));
   }
 
 }
