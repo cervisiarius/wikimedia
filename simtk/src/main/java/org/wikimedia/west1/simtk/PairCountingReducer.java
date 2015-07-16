@@ -3,6 +3,7 @@ package org.wikimedia.west1.simtk;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.PrintStream;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -23,7 +24,7 @@ import org.json.JSONObject;
 public class PairCountingReducer extends Reducer<Text, Text, Text, NullWritable> {
 
 	private static final int MAX_NUM_EVENTS = 10000;
-	
+
 	private static Pattern QUERY_PATTERN = Pattern.compile("(\\?feature=rec&rank=\\d+&src=\\d+).*");
 
 	private static enum HADOOP_COUNTERS {
@@ -50,11 +51,13 @@ public class PairCountingReducer extends Reducer<Text, Text, Text, NullWritable>
 	}
 
 	private static String normalizePath(URL u) {
-		Matcher m = QUERY_PATTERN.matcher(u.getQuery());
 		String path = u.getPath();
 		path = path.endsWith("/") ? path : path + "/";
-		if (m.matches()) {
-			path = path + m.group(1);
+		if (u.getQuery() != null) {
+			Matcher m = QUERY_PATTERN.matcher(u.getQuery());
+			if (m.matches()) {
+				path = path + m.group(1);
+			}
 		}
 		return path;
 	}
