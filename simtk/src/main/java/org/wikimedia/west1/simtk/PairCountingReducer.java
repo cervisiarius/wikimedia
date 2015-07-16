@@ -55,7 +55,7 @@ public class PairCountingReducer extends Reducer<Text, Text, Text, NullWritable>
 		if (u.getQuery() != null) {
 			Matcher m = QUERY_PATTERN.matcher(u.getQuery());
 			if (m.matches()) {
-				path = path + m.group(1);
+				path = path + '?' + m.group(1);
 			}
 		}
 		return path;
