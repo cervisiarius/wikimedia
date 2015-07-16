@@ -3,7 +3,6 @@ package org.wikimedia.west1.simtk;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.PrintStream;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -25,7 +24,7 @@ public class PairCountingReducer extends Reducer<Text, Text, Text, NullWritable>
 
 	private static final int MAX_NUM_EVENTS = 10000;
 
-	private static Pattern QUERY_PATTERN = Pattern.compile("(\\?feature=rec&rank=\\d+&src=\\d+).*");
+	private static Pattern QUERY_PATTERN = Pattern.compile("(feature=rec&rank=\\d+&src=\\d+).*");
 
 	private static enum HADOOP_COUNTERS {
 		REDUCE_OK_SESSIONS, REDUCE_TOO_MANY_EVENTS, REDUCE_EXCEPTION
