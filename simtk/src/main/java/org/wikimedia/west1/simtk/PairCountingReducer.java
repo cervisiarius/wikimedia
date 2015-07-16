@@ -3,12 +3,15 @@ package org.wikimedia.west1.simtk;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.PrintStream;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.apache.hadoop.io.NullWritable;
 import org.apache.hadoop.io.Text;
@@ -20,6 +23,8 @@ import org.json.JSONObject;
 public class PairCountingReducer extends Reducer<Text, Text, Text, NullWritable> {
 
 	private static final int MAX_NUM_EVENTS = 10000;
+	
+	private static Pattern QUERY_PATTERN = Pattern.compile("(\\?feature=rec&rank=\\d+&src=\\d+).*");
 
 	private static enum HADOOP_COUNTERS {
 		REDUCE_OK_SESSIONS, REDUCE_TOO_MANY_EVENTS, REDUCE_EXCEPTION
@@ -44,13 +49,19 @@ public class PairCountingReducer extends Reducer<Text, Text, Text, NullWritable>
 		out.close();
 	}
 
-	private static String normalizePath(String path) {
-		return path.endsWith("/") ? path : path + "/";
+	private static String normalizePath(URL u) {
+		Matcher m = QUERY_PATTERN.matcher(u.getQuery());
+		String path = u.getPath();
+		path = path.endsWith("/") ? path : path + "/";
+		if (m.matches()) {
+			path = path + m.group(1);
+		}
+		return path;
 	}
 
-	private static String makePairString(String path1, String path2) {
-		path1 = normalizePath(path1);
-		path2 = normalizePath(path2);
+	private static String makePairString(URL u1, URL u2) {
+		String path1 = normalizePath(u1);
+		String path2 = normalizePath(u2);
 		if (path1.equals(path2)) {
 			throw new IllegalArgumentException();
 		}
@@ -68,12 +79,12 @@ public class PairCountingReducer extends Reducer<Text, Text, Text, NullWritable>
 		for (int i = 0; i < session.size(); ++i) {
 			BrowserEvent e1 = session.get(i);
 			Set<String> seenPages = new HashSet<String>();
-			singletons.add(normalizePath(e1.url.getPath()));
+			singletons.add(normalizePath(e1.url));
 			for (int j = 0; j < session.size(); ++j) {
 				BrowserEvent e2 = session.get(j);
 				if (j > i) {
 					try {
-						all.add(makePairString(e1.url.getPath(), e2.url.getPath()));
+						all.add(makePairString(e1.url, e2.url));
 					} catch (IllegalArgumentException e) {
 						// This happens if source equals target.
 					}
@@ -81,7 +92,7 @@ public class PairCountingReducer extends Reducer<Text, Text, Text, NullWritable>
 					if (e2.referer != null && e2.referer.getPath().startsWith("/home/")
 					    && seenPages.contains(e2.referer.getPath())) {
 						try {
-							direct.add(makePairString(e2.referer.getPath(), e2.url.getPath()));
+							direct.add(makePairString(e2.referer, e2.url));
 						} catch (IllegalArgumentException e) {
 							// This happens if source equals target.
 						}
