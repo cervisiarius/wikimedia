@@ -37,8 +37,8 @@ jaccard <- function(s1, s2) length(intersect(s1, s2)) / length(union(s1, s2))
 K <- seq(1,1e4,10)
 jacc_dice_coinslink <- sapply(K, function(i) jaccard(rownames(dice)[1:i], rownames(coins_link)[1:i]))
 jacc_coinspage_coinslink <- sapply(K, function(i) jaccard(rownames(coins_page)[1:i], rownames(coins_link)[1:i]))
-if (save_plots) pdf(sprintf('%s/jaccard_coefficient.pdf', PLOTDIR), width=2, height=1.5, pointsize=6, family='Helvetica', useDingbats=FALSE)
-par(mar=c(3.4, 3.4, 0.8, 0.8))
+if (save_plots) pdf(sprintf('%s/jaccard_coefficient.pdf', PLOTDIR), width=1.68, height=1.68, pointsize=6, family='Helvetica', useDingbats=FALSE)
+par(mar=c(3.4, 3.4, 1.2, 0.8))
 plot(K, jacc_coinspage_coinslink, type='l', ylim=c(0.2,1), xlab='', ylab='', bty='n', col=col$coins_page,
      main='Solution overlap')
 lines(K, jacc_dice_coinslink, col=col$dice)
@@ -50,7 +50,7 @@ if (save_plots) dev.off()
 
 # Compare under dice objective
 K <- 1e4
-if (save_plots) pdf(sprintf('%s/objective_dice.pdf', PLOTDIR), width=2, height=1.5, pointsize=6, family='Helvetica', useDingbats=FALSE)
+if (save_plots) pdf(sprintf('%s/objective_dice.pdf', PLOTDIR), width=1.68, height=1.68, pointsize=6, family='Helvetica', useDingbats=FALSE)
 par(mar=c(3.4, 3.4, 1.2, 0.8))
 # NB: The dice model used to be called "chain model".
 plot(cumsum(dice$chain_marg_gain[1:K]), type='l', xlab='', ylab='', bty='n', col=col$dice,
@@ -64,11 +64,11 @@ if (save_plots) dev.off()
 
 # Compare under coins (page-centric) objective
 K <- 1e4
-if (save_plots) pdf(sprintf('%s/objective_coins-page.pdf', PLOTDIR), width=2, height=1.5, pointsize=6, family='Helvetica', useDingbats=FALSE)
+if (save_plots) pdf(sprintf('%s/objective_coins-page.pdf', PLOTDIR), width=1.68, height=1.68, pointsize=6, family='Helvetica', useDingbats=FALSE)
 par(mar=c(3.4, 3.4, 1.2, 0.8))
 # NB: The page-centric coins model used to be called "tree model".
 plot(cumsum(coins_page$tree_marg_gain[1:K]), type='l', xlab='', ylab='', bty='n', col=col$coins_page,
-     main='Return w.r.t. Coins (page-centric)')
+     main='Return w.r.t. Coins (page)')
 lines(cumsum(coins_link$tree_marg_gain[1:K]), col=col$coins_link, lty=2)
 lines(cumsum(dice$tree_marg_gain[1:K]), col=col$dice)
 mtext(expression(paste('Size of solution ', italic(A))), side=1, line=2.4)
@@ -78,10 +78,10 @@ if (save_plots) dev.off()
 
 # Compare under link-centric coins objective
 K <- 1e4
-if (save_plots) pdf(sprintf('%s/objective_coins-link.pdf', PLOTDIR), width=2, height=1.5, pointsize=6, family='Helvetica', useDingbats=FALSE)
+if (save_plots) pdf(sprintf('%s/objective_coins-link.pdf', PLOTDIR), width=1.68, height=1.68, pointsize=6, family='Helvetica', useDingbats=FALSE)
 par(mar=c(3.4, 3.4, 1.2, 0.8))
 plot(cumsum(coins_page$coins_marg_gain[1:K]), type='l', xlab='', ylab='', bty='n', col=col$coins_page,
-     main='Return w.r.t. Coins (link-centric)')
+     main='Return w.r.t. Coins (link)')
 lines(cumsum(coins_link$coins_marg_gain[1:K]), col=col$coins_link, lty=2)
 lines(cumsum(dice$coins_marg_gain[1:K]), col=col$dice)
 mtext(expression(paste('Size of solution ', italic(A))), side=1, line=2.4)
@@ -95,8 +95,8 @@ K <- 1e4
 uniq_dice <- unique_at_k(dice, K)
 uniq_coinspage <- unique_at_k(coins_page, K)
 uniq_coinslink <- unique_at_k(coins_link, K)
-if (save_plots) pdf(sprintf('%s/num_unique_sources.pdf', PLOTDIR), width=2, height=1.5, pointsize=6, family='Helvetica', useDingbats=FALSE)
-par(mar=c(3.4, 3.4, 0.9, 0.8))
+if (save_plots) pdf(sprintf('%s/num_unique_sources.pdf', PLOTDIR), width=1.68, height=1.68, pointsize=6, family='Helvetica', useDingbats=FALSE)
+par(mar=c(3.4, 3.4, 1.2, 0.8))
 plot(uniq_dice, type='l', xlab='', ylab='', bty='n', col=col$dice,
      main='Solution diversity')
 lines(uniq_coinspage, col=col$coins_page)
@@ -113,8 +113,8 @@ K <- seq(1,1e4,10)
 tgt_per_src_dice <- avg_num_targets_per_source(dice, K)
 tgt_per_src_coinslink <- avg_num_targets_per_source(coins_link, K)
 tgt_per_src_coinspage <- avg_num_targets_per_source(coins_page, K)
-if (save_plots) pdf(sprintf('%s/num_targets_per_source.pdf', PLOTDIR), width=2, height=1.5, pointsize=6, family='Helvetica', useDingbats=FALSE)
-par(mar=c(3.4, 3.4, 0.9, 0.8))
+if (save_plots) pdf(sprintf('%s/num_targets_per_source.pdf', PLOTDIR), width=1.68, height=1.68, pointsize=6, family='Helvetica', useDingbats=FALSE)
+par(mar=c(3.4, 3.4, 1.2, 0.8))
 plot(K, tgt_per_src_coinspage, type='l',  xlab='', ylab='', bty='n', col=col$coins_page,
      main='Solution concentration', ylim=c(1,3))
 lines(K, tgt_per_src_coinslink, col=col$coins_link, lty=2)
@@ -124,15 +124,16 @@ mtext(expression(paste('Targets per source')), side=2, line=2.4)
 add_standard_legend()
 if (save_plots) dev.off()
 
+# Number of pageviews per source.
 avg_src_count_per_source <- function(results, K) sapply(K, function(i) exp(median(results$source_transition_count_before[1:i])))
 K <- seq(1,1e4,100)
 src_count_per_src_dice <- avg_src_count_per_source(dice, K)
 src_count_per_src_coinslink <- avg_src_count_per_source(coins_link, K)
 src_count_per_src_coinspage <- avg_src_count_per_source(coins_page, K)
-if (save_plots) pdf(sprintf('%s/num_pageviews_per_source.pdf', PLOTDIR), width=2, height=1.5, pointsize=6, family='Helvetica', useDingbats=FALSE)
-par(mar=c(3.4, 3.4, 0.9, 0.8))
+if (save_plots) pdf(sprintf('%s/num_pageviews_per_source.pdf', PLOTDIR), width=1.68, height=1.68, pointsize=6, family='Helvetica', useDingbats=FALSE)
+par(mar=c(3.4, 3.4, 1.2, 0.8))
 plot(K, src_count_per_src_coinspage, col=col$coins_page, type='l', xlab='', ylab='', bty='n', ylim=c(0,5000),
-     main='Popularity of sources in solution')
+     main='Popularity of sources in soln.')
 lines(K, src_count_per_src_dice, col=col$dice)
 lines(K, src_count_per_src_coinslink, col=col$coins_link, lty=2)
 mtext(expression(paste('Size of solution ', italic(A))), side=1, line=2.4)

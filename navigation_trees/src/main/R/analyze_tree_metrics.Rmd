@@ -6,7 +6,7 @@ output: html_document
 ```{r load data}
 DATADIR <- sprintf('%s/wikimedia/trunk/data', Sys.getenv('HOME'))
 PLOTDIR <- sprintf('%s/snap-papers/2015/west1-ashwinp-wmf/FIG', Sys.getenv('HOME'))
-data <- read.table(pipe(sprintf('gunzip -c %s/tree_metrics_sample_en.tsv', DATADIR)), header=TRUE)
+data <- read.table(pipe(sprintf('gunzip -c %s/tree_metrics_sample_en.tsv.gz', DATADIR)), header=TRUE)
 
 # Set this to FALSE if you don't want to save plots to PDFs.
 save_plots <- TRUE
@@ -24,6 +24,24 @@ Tree size is defined as the number of nodes in the tree.
 First, a histogram (log-log scales).
 
 ```{r}
+
+if (save_plots) pdf(sprintf('%s/tree_properties.pdf', PLOTDIR), width=1.68, height=1.68, pointsize=6,
+                    family='Helvetica', useDingbats=FALSE)
+par(mar=c(3.4, 3.4, 1.1, 0.6))
+plot(sort(data$size), rev(1:sum(is.finite(data$size)))/sum(is.finite(data$size)), log='xy', type='l', bty='n',
+     xlim=c(1,200), ylim=c(1e-5,1), panel.first=grid(), xlab='', ylab='', col=rgb(.9,.6,0))
+lines(sort(data$degree_mean), rev(1:sum(is.finite(data$degree_mean)))/sum(is.finite(data$degree_mean)))
+mtext('n', side=1, line=2.4)
+mtext(expression(paste('Pr[X >= n]')), side=2, line=2.4)
+legend('topright', legend=c('X = tree size', 'X = avg. node deg.'),
+       col=c(rgb(.9,.6,0), 'black'), lty=1, bty='n')
+par(.default_par)
+if (save_plots) dev.off()
+
+
+
+
+
 metric <- data$size
 # PDF.
 h <- hist(metric, breaks=(min(metric)-1):max(metric), plot=FALSE)
