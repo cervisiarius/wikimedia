@@ -44,7 +44,7 @@ plot(K, jacc_coinspage_coinslink, type='l', ylim=c(0.2,1), xlab='', ylab='', bty
 lines(K, jacc_dice_coinslink, col=col$dice)
 mtext(expression(paste('Size of solution ', italic(A))), side=1, line=2.4)
 mtext(expression(paste('Jaccard coefficient')), side=2, line=2.4)
-legend('bottomright', legend=c('Coins (link) & Dice', 'Coins (link) & Coins (page)'),
+legend('bottomright', legend=c('Coins (link) & Coins (page)', 'Coins (link) & Dice'),
        col=c(col$coins_page, col$dice), lty=1, bty='n')
 if (save_plots) dev.off()
 
