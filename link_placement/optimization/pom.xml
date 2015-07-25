@@ -13,8 +13,8 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <main.class>org.wikimedia.west1.traces.linkplacement.sourcebased.CumulativeScoreLinkPlacement</main.class>
-    <!--main.class>org.wikimedia.west1.traces.linkplacement.sourcebased.ChainModelLinkPlacement</main.class-->
+    <!--main.class>org.wikimedia.west1.traces.linkplacement.sourcebased.CumulativeScoreLinkPlacement</main.class-->
+    <main.class>org.wikimedia.west1.traces.linkplacement.sourcebased.ChainModelLinkPlacement</main.class>
     <!--main.class>org.wikimedia.west1.traces.linkplacement.sourcebased.TreeModelLinkPlacement</main.class-->
   </properties>
 
