@@ -63,8 +63,8 @@ public class TreeModelLinkPlacement extends LinkPlacement {
 		try {
 			dir = args[0];
 		} catch (ArrayIndexOutOfBoundsException e) {
-			// dir = LinkPlacement.DATADIR_WIKIPEDIA;
-			dir = LinkPlacement.DATADIR_SIMTK;
+			dir = LinkPlacement.DATADIR_WIKIPEDIA;
+			// dir = LinkPlacement.DATADIR_SIMTK;
 		}
 		TreeModelLinkPlacement obj = new TreeModelLinkPlacement(dir);
 		obj.placeLinks((int) 1e5, new PrintStream(dir + "/link_placement_results_COINS-PAGE.tsv"));

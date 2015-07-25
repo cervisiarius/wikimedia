@@ -12,16 +12,21 @@ public class ChainModelLinkPlacement extends LinkPlacement {
 		super(datadir);
 	}
 
+	// @Override
+	// protected double getWeight(String src) {
+	// if (datadir.equals(DATADIR_WIKIPEDIA))
+	// // Used in the paper for Wikipedia (more principled).
+	// return srcClickCounts.get(src);
+	// else if (datadir.equals(DATADIR_SIMTK))
+	// // Used in the paper for SimTk, since many sources have no outclicks at all before.
+	// return srcCounts.get(src);
+	// else
+	// throw new IllegalStateException();
+	// }
+
 	@Override
 	protected double getWeight(String src) {
-		if (datadir.equals(DATADIR_WIKIPEDIA))
-			// Used in the paper for Wikipedia (more principled).
-			return srcClickCounts.get(src);
-		else if (datadir.equals(DATADIR_SIMTK))
-			// Used in the paper for SimTk, since many sources have no outclicks at all before.
-			return srcCounts.get(src);
-		else
-			throw new IllegalStateException();
+		return srcCounts.get(src);
 	}
 
 	public double evaluate() {
@@ -73,8 +78,8 @@ public class ChainModelLinkPlacement extends LinkPlacement {
 		try {
 			dir = args[0];
 		} catch (ArrayIndexOutOfBoundsException e) {
-			// dir = LinkPlacement.DATADIR_WIKIPEDIA;
-			dir = LinkPlacement.DATADIR_SIMTK;
+			dir = LinkPlacement.DATADIR_WIKIPEDIA;
+			// dir = LinkPlacement.DATADIR_SIMTK;
 		}
 		ChainModelLinkPlacement obj = new ChainModelLinkPlacement(dir);
 		obj.placeLinks((int) 1e5, new PrintStream(dir + "/link_placement_results_DICE.tsv"));
