@@ -35,10 +35,10 @@ legend('bottomleft', legend=c('Indirect-path probability (empirical)',
 if (save_plots) dev.off()
 
 # Prec@k.
-if (save_plots) pdf(sprintf('%s/prec_at_k.pdf', PLOTDIR), width=1.68, height=1.68, pointsize=6,
+if (save_plots) pdf(sprintf('%s/prec_at_k.pdf', PLOTDIR), width=1.68, height=1.5, pointsize=6,
                     family='Helvetica', useDingbats=FALSE)
 par(mar=c(3.4, 3.4, 0.8, 0.8))
-plot(1:K, top$p_transitive_precision, col='#CC79A7', type='l', log='x', bty='n', ylim=c(0.1,1), xlab='', ylab='')
+plot(1:K, top$p_transitive_precision, col='#CC79A7', type='l', log='x', bty='n', ylim=c(0,1), xlab='', ylab='')
 lines(1:K, top$p_indirect_precision, col='black')
 lines(1:K, top$p_search_precision, col='#009E73')
 mtext(expression(paste('Rank ', italic(k))), side=1, line=2.4)

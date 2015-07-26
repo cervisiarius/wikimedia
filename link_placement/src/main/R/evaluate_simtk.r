@@ -1,3 +1,5 @@
+library(boot)
+
 .default_par <- par(no.readonly=TRUE)
 
 # Set this to FALSE if you don't want to save plots to PDFs.
@@ -59,7 +61,7 @@ y <- pred$p_groundtruth[ord]
 plot(1:length(x), y, log='y')
 
 
-if (save_plots) pdf(sprintf('%s/pindir_vs_pst.pdf', PLOTDIR), width=1.68, height=1.68, pointsize=6, family='Helvetica', useDingbats=FALSE)
+if (save_plots) pdf(sprintf('%s/pindir_vs_pst.pdf', PLOTDIR), width=1.68, height=1.5, pointsize=6, family='Helvetica', useDingbats=FALSE)
 par(mar=c(3.4, 3.4, 1.2, 0.8))
 smooth <- function(y) ksmooth(1:length(y), y, bandwidth=10, kernel='normal')$y
 plot(pred$p_indirect, pred$p_groundtruth, log='xy', col=c('#80808030'), xlim=c(2e-4, .28), ylim=c(2e-4, .28), bty='n',
@@ -100,7 +102,7 @@ add_argmax_legend <- function() {
 }
 
 add_standard_legend <- function(pos='bottomright') {
-  legend(pos, legend=c('Coins (link-centric)', 'Coins (page-centric)', 'Dice'),
+  legend(pos, legend=c('Coins (link-cent.)', 'Coins (page-cent.)', 'Dice'),
          col=c(col$coins_link, col$coins_page, col$dice), lty=c(2,1,1), bty='n')
 }
 
@@ -112,7 +114,7 @@ num_src <- length(unique(dice$src))
 summary(dice[dice$src %in% unique(dice$src)[!(unique(dice$src) %in% unique(dice$src[1:K]))],])
 
 # Compare under dice objective
-if (save_plots) pdf(sprintf('%s/objective_dice.pdf', PLOTDIR), width=1.68, height=1.68, pointsize=6, family='Helvetica', useDingbats=FALSE)
+if (save_plots) pdf(sprintf('%s/objective_dice.pdf', PLOTDIR), width=1.68, height=1.5, pointsize=6, family='Helvetica', useDingbats=FALSE)
 par(mar=c(3.4, 3.4, 1.2, 0.8))
 # NB: The dice model used to be called "chain model".
 plot(cumsum(dice$chain_marg_gain[1:K]), type='l', xlab='', ylab='', bty='n', col=col$dice,
@@ -125,7 +127,7 @@ add_argmax_legend()
 if (save_plots) dev.off()
 
 # Compare under coins (page-centric) objective
-if (save_plots) pdf(sprintf('%s/objective_coins-page.pdf', PLOTDIR), width=1.68, height=1.68, pointsize=6, family='Helvetica', useDingbats=FALSE)
+if (save_plots) pdf(sprintf('%s/objective_coins-page.pdf', PLOTDIR), width=1.68, height=1.5, pointsize=6, family='Helvetica', useDingbats=FALSE)
 par(mar=c(3.4, 3.4, 1.2, 0.8))
 # NB: The page-centric coins model used to be called "tree model".
 plot(cumsum(coins_page$tree_marg_gain[1:K]), type='l', xlab='', ylab='', bty='n', col=col$coins_page,
@@ -142,7 +144,7 @@ unique_at_k <- function(results, K) sapply(1:K, function(i) length(unique(result
 uniq_dice <- unique_at_k(dice, K)
 uniq_coinspage <- unique_at_k(coins_page, K)
 uniq_coinslink <- unique_at_k(coins_link, K)
-if (save_plots) pdf(sprintf('%s/num_unique_sources.pdf', PLOTDIR), width=2, height=1.68, pointsize=6, family='Helvetica', useDingbats=FALSE)
+if (save_plots) pdf(sprintf('%s/num_unique_sources.pdf', PLOTDIR), width=2, height=1.5, pointsize=6, family='Helvetica', useDingbats=FALSE)
 par(mar=c(3.4, 3.4, 1.2, 0.8))
 plot(uniq_dice, type='l', xlab='', ylab='', bty='n', col=col$dice, ylim=c(0,800),
      main='Solution diversity', panel.first=abline(v=num_src, h=num_src, col='gray', lty=3))
@@ -160,7 +162,7 @@ Ks <- seq(1,K,1)
 tgt_per_src_dice <- avg_num_targets_per_source(dice, Ks)
 tgt_per_src_coinslink <- avg_num_targets_per_source(coins_link, Ks)
 tgt_per_src_coinspage <- avg_num_targets_per_source(coins_page, Ks)
-if (save_plots) pdf(sprintf('%s/num_targets_per_source.pdf', PLOTDIR), width=1.68, height=1.68, pointsize=6, family='Helvetica', useDingbats=FALSE)
+if (save_plots) pdf(sprintf('%s/num_targets_per_source.pdf', PLOTDIR), width=1.68, height=1.5, pointsize=6, family='Helvetica', useDingbats=FALSE)
 par(mar=c(3.4, 3.4, 1.2, 0.8))
 plot(Ks, tgt_per_src_coinspage, type='l',  xlab='', ylab='', bty='n', col=col$coins_page,
      main='Solution concentration', ylim=c(1,5), panel.first=abline(v=num_src, col='gray', lty=3))

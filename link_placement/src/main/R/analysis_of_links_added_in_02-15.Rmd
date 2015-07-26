@@ -180,12 +180,15 @@ if (save_plots) dev.off()
 
 # Most clicks are not used at all (66%); among the rest, there's a long tail, with only few links
 # used frequently. Only 1% gets used more than 100 times in the month of March.
-if (save_plots) pdf(sprintf('%s/new_link_usage_ccdf.pdf', PLOTDIR), width=3.2, height=2, pointsize=6,
+if (save_plots) pdf(sprintf('%s/new_link_usage_ccdf.pdf', PLOTDIR), width=2.5, height=1.5, pointsize=6,
                     family='Helvetica', useDingbats=FALSE)
-plot(sort(data$num_clicks_after), (nrow(data):1)/nrow(data), log='xy', type='l', panel.first=grid(),
-     xlab='Mininum number of clicks', ylab='Fraction of new links')
+par(mar=c(3.4, 3.4, 1.2, 0.8))
+plot(sort(data$num_clicks_after), (nrow(data):1)/nrow(data), log='xy', type='l', xlab='', ylab='', bty='n',
+     col='red', lwd=2) #, xlim=c(1,1.1e5))
 frac_1 <- sum(data$num_clicks_after>0)/nrow(data)
-abline(h=frac_1)
+abline(h=frac_1, col='gray', lty=2)
+mtext('Mininum number of clicks', side=1, line=2.4)
+mtext('Fraction of new links', side=2, line=2.4)
 text(1000, frac_1, sprintf('No clicks: %.0f%%', (1-frac_1)*100), pos=3)
 text(1000, frac_1, sprintf('At least one click: %.0f%%', frac_1*100), pos=1)
 if (save_plots) dev.off()
@@ -200,14 +203,14 @@ if (save_plots) dev.off()
 #### Get outdegree from link_positions table.
 #Min <- c(1e2, 1e3, 1e4, 1e5)
 Min <- quantile(data$outdegree, seq(0,1,0.25), na.rm=TRUE)
-if (save_plots) pdf(sprintf('%s/new_link_pst_ccdf_BY-DEGREE.pdf', PLOTDIR), width=1.68, height=1.68, pointsize=6,
+if (save_plots) pdf(sprintf('%s/new_link_pst_ccdf_BY-DEGREE.pdf', PLOTDIR), width=1.68, height=1.5, pointsize=6,
                     family='Helvetica', useDingbats=FALSE)
-par(mar=c(3.4, 3.4, 1.1, 0.6))
+par(mar=c(3.4, 3.4, 1.1, 0.7))
 for (i in 1:(length(Min)-1)) {
   idx <- which(is.finite(data$pst_after) & data$outdegree >= Min[i] & data$outdegree < Min[i+1])
   if (i == 1) {
     plot(sort(data$pst_after[idx]), (length(idx):1)/length(idx), log='xy', type='l', col=i, bty='n',
-         panel.first=grid(), xlim=c(1e-3,1), ylim=c(1e-6, 1),
+         xlim=c(1e-3,1), ylim=c(1e-6, 1),
          xlab='', ylab='')
   } else {
     lines(sort(data$pst_after[idx]), (length(idx):1)/length(idx), col=i)
@@ -215,7 +218,7 @@ for (i in 1:(length(Min)-1)) {
 }
 mtext(expression(paste('Mininum ', italic(p[st]))), side=1, line=2.4)
 mtext('Fraction of new links', side=2, line=2.4)
-legend('bottomleft', legend=sprintf('[%s)', paste(Min[-length(Min)], Min[-1], sep=', ')), bty='n',
+legend('bottomleft', legend=sprintf('Degree [%s)', paste(Min[-length(Min)], Min[-1], sep=', ')), bty='n',
        lty=1, col=1:(length(Min)-1))
 if (save_plots) dev.off()
 
@@ -287,14 +290,14 @@ draw_search_prop_vs_usage_smoothed <- function(x, y, type, col) {
 #   plot(x, smooth(y), type='l', col=col, xlim=c(1e-6, 0.1), ylim=c(1e-6, 0.1), log='xy',
 #        xlab='Search proportion', ylab='', panel.first=abline(0, 1, col='gray'))
   idx <- sample(length(x), 1.5e5)
-  plot(x[idx], y[idx], log='xy', col=c('#80808010'), xlim=c(1e-6, .15), ylim=c(1e-6, .15), bty='n',
+  plot(x[idx], y[idx], log='xy', col=c('#80808010'), xlim=c(2e-6, .15), ylim=c(2e-6, .15), bty='n',
        xlab='', ylab='', panel.first=abline(0, 1, col='gray'))
   lines(x, smooth(y), lwd=1.5)
   mtext('Search proportion', side=1, line=2.4)
   mtext(expression(paste('Ground-truth clickthrough rate ', italic(p[st]))), side=2, line=2.4)
 }
 
-if (save_plots) pdf(sprintf('%s/psearch_vs_pst.pdf', PLOTDIR), width=1.68, height=1.68, pointsize=6, family='Helvetica', useDingbats=FALSE)
+if (save_plots) pdf(sprintf('%s/psearch_vs_pst.pdf', PLOTDIR), width=1.68, height=1.5, pointsize=6, family='Helvetica', useDingbats=FALSE)
 par(mar=c(3.4, 3.4, 1.2, 0.8))
 draw_search_prop_vs_usage_smoothed(x_all, y_all, 'Search', 'black')
 if (save_plots) dev.off()
@@ -327,11 +330,11 @@ ord <- order(data$p_indir_before, decreasing=TRUE)
 x <- data$p_indir_before[ord]
 y <- data$pst_after[ord]
 
-if (save_plots) pdf(sprintf('%s/pindir_vs_pst.pdf', PLOTDIR), width=1.68, height=1.68, pointsize=6, family='Helvetica', useDingbats=FALSE)
+if (save_plots) pdf(sprintf('%s/pindir_vs_pst.pdf', PLOTDIR), width=1.68, height=1.5, pointsize=6, family='Helvetica', useDingbats=FALSE)
 par(mar=c(3.4, 3.4, 1.2, 0.8))
 smooth <- function(y) ksmooth(1:length(y), y, bandwidth=100, kernel='normal')$y
 idx <- sample(nrow(data), 5e4)
-plot(x[idx], y[idx], log='xy', col=c('#80808010'), xlim=c(1e-6, .15), ylim=c(1e-6, .15), bty='n',
+plot(x[idx], y[idx], log='xy', col=c('#80808010'), xlim=c(2e-6, .15), ylim=c(2e-6, .15), bty='n',
      xlab='', ylab='', panel.first=abline(0, 1, col='gray'))
 lines(x, smooth(y), lwd=1.5)
 mtext('Path proportion', side=1, line=2.4)
@@ -343,7 +346,7 @@ if (save_plots) dev.off()
 # Plot certain source properties vs. p(st)
 
 ```{r}
-plot_groups <- function(x, y, breaks, xlab=NULL, ylab=NULL, errorbars=TRUE) {
+plot_groups <- function(x, y, breaks, min_label=NULL, xlab=NULL, ylab=NULL, errorbars=TRUE) {
   idx <- which(is.finite(x))
   means <- unlist(lapply(split(y[idx], cut(x[idx], breaks=breaks)), function(x) mean(x, na.rm=TRUE)))
   se <- unlist(lapply(split(y[idx], cut(x[idx], breaks=breaks)), function(x) sd(x, na.rm=TRUE)/sqrt(sum(is.finite(x)))))
@@ -351,26 +354,28 @@ plot_groups <- function(x, y, breaks, xlab=NULL, ylab=NULL, errorbars=TRUE) {
   #boxplot(groups, outline=FALSE, ylim=c(0, max(means)))
   #lines(means, type='b')
   plot(1:length(means), means, type='b', xaxt='n', bty='n', xlab='', ylab='')
-  axis(1, at=1:length(means), labels=names(groups))
-  mtext(xlab, side=1, line=2.4)
+  labels <- lapply(names(groups), function(s) strsplit(substr(s, 2, nchar(s)), ',')[[1]][1])
+  if (!is.null(min_label)) labels[1] <- min_label
+  axis(1, at=1:length(means), labels=labels, las=3)
+  mtext(xlab, side=1, line=3.4)
   mtext(ylab, side=2, line=2.4)
   if (errorbars) dispersion(1:length(means), means, se)
 }
 
 # Rel link pos vs. p_st.
-if (save_plots) pdf(sprintf('%s/pst_vs_rel_link_position.pdf', PLOTDIR), width=1.68, height=1.68, pointsize=6,
+if (save_plots) pdf(sprintf('%s/pst_vs_rel_link_position.pdf', PLOTDIR), width=1.68, height=1.5, pointsize=6,
                     family='Helvetica', useDingbats=FALSE)
-par(mar=c(3.4, 3.4, 1.1, 0.6))
+par(mar=c(4.4, 3.4, 1.1, 0.6))
 plot_groups(data$rel_link_pos, data$pst_after, quantile(data$rel_link_pos, seq(0,1,0.1), na.rm=TRUE),
-            'Relative link position', expression(italic(p[st])), errorbars=FALSE)
+            min_label=0, 'Relative link position', expression(italic(p[st])), errorbars=FALSE)
 if (save_plots) dev.off()
 
 # Src outdeg vs. p_st.
-if (save_plots) pdf(sprintf('%s/pst_vs_src_outdeg.pdf', PLOTDIR), width=1.68, height=1.68, pointsize=6,
+if (save_plots) pdf(sprintf('%s/pst_vs_src_outdeg.pdf', PLOTDIR), width=1.68, height=1.5, pointsize=6,
                     family='Helvetica', useDingbats=FALSE)
-par(mar=c(3.4, 3.4, 1.1, 0.6))
+par(mar=c(4.4, 3.4, 1.1, 0.6))
 plot_groups(data$outdegree, data$pst_after, quantile(data$outdegree, seq(0,1,0.1), na.rm=TRUE),
-            'Source outdegree', expression(italic(p[st])), errorbars=FALSE)
+            min_label=1, 'Source outdegree', expression(italic(p[st])), errorbars=FALSE)
 if (save_plots) dev.off()
 
 # Src length vs. p_st.

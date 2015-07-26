@@ -24,44 +24,50 @@ breaks_structdeg_delta <- c(rev(-b), 0, b)
 width <- 1.68
 height <- 1.5
 
+crop_labels <- function(labels, min_label=NULL) {
+  labels <- lapply(labels, function(s) strsplit(substr(s, 2, nchar(s)), ',')[[1]][1])
+  if (!is.null(min_label)) labels[1] <- min_label
+  labels
+}
+
 # Stopping prob as fct of struct deg.
 groups <- split(data$pstop_before, cut(data$struct_deg_before, breaks=quant_structdeg_before, right=FALSE))
 if (save_plots) pdf(sprintf('%s/structdeg_vs_pstop.pdf', PLOTDIR), width=width, height=height, pointsize=6, family='Helvetica', useDingbats=FALSE)
-par(mar=c(5, 3.4, 0.8, 0.8))
-boxplot(groups, notch=FALSE, names=names(groups), outline=FALSE, xlab='', ylab='', las=2)
-mtext('Struct. deg.', side=1, line=4)
+par(mar=c(3.4, 3.4, 0.8, 0.8))
+boxplot(groups, notch=FALSE, names=crop_labels(names(groups)), outline=FALSE, xlab='', ylab='', las=2, frame=FALSE)
+mtext('Structural degree', side=1, line=2.4)
 mtext('Stopping probability', side=2, line=2.4)
 if (save_plots) dev.off()
 
 # Nav deg as fct of struct deg (conditioned on nav deg > 0).
 groups <- split(data$navdeg1_before, cut(data$struct_deg_before, breaks=quant_structdeg_before, right=FALSE))
 if (save_plots) pdf(sprintf('%s/structdeg_vs_navdeg.pdf', PLOTDIR), width=width, height=height, pointsize=6, family='Helvetica', useDingbats=FALSE)
-par(mar=c(5, 3.4, 0.8, 0.8))
-boxplot(groups, notch=FALSE, names=names(groups), outline=FALSE, xlab='', ylab='', las=2)
-mtext('Struct. deg.', side=1, line=4)
-mtext('Nav. deg.', side=2, line=2.4)
+par(mar=c(3.4, 3.4, 0.8, 0.8))
+boxplot(groups, notch=FALSE, names=crop_labels(names(groups)), outline=FALSE, xlab='', ylab='', las=2, frame=FALSE)
+mtext('Structural degree', side=1, line=2.4)
+mtext('Navigational degree', side=2, line=2.4)
 if (save_plots) dev.off()
 
 # Stopping prob delta as fct of struct deg delta.
 groups <- split((data$pstop_after - data$pstop_before)/data$pstop_before,
                 cut(data$struct_deg_after - data$struct_deg_before, breaks=breaks_structdeg_delta, right=FALSE))
 if (save_plots) pdf(sprintf('%s/structdeg-delta_vs_pstop-delta.pdf', PLOTDIR), width=width, height=height, pointsize=6, family='Helvetica', useDingbats=FALSE)
-par(mar=c(5, 3.4, 0.8, 0.8))
-boxplot(groups, notch=FALSE, names=names(groups), outline=FALSE, xlab='', ylab='', las=2)
+par(mar=c(4, 3.7, 0.8, 0.8))
+boxplot(groups, notch=FALSE, names=crop_labels(names(groups)), outline=FALSE, xlab='', ylab='', las=2, frame=FALSE)
 abline(h=0, col='red')
-mtext('Struct. deg. diff.', side=1, line=4)
-mtext('Stopping prob. diff.', side=2, line=2.4)
+mtext('Structural-degree difference', side=1, line=3)
+mtext('Stopping-probability difference', side=2, line=2.7)
 if (save_plots) dev.off()
 
 # Nav deg delta as fct of struct deg delta (conditioned on nav deg > 0).
 groups <- split((data$navdeg1_after - data$navdeg1_before)/data$navdeg1_before,
                 cut(data$struct_deg_after - data$struct_deg_before, breaks=breaks_structdeg_delta, right=FALSE))
 if (save_plots) pdf(sprintf('%s/structdeg-delta_vs_navdeg1-delta.pdf', PLOTDIR), width=width, height=height, pointsize=6, family='Helvetica', useDingbats=FALSE)
-par(mar=c(5, 3.4, 0.8, 0.8))
-boxplot(groups, notch=FALSE, names=names(groups), outline=FALSE, xlab='', ylab='', las=2)
+par(mar=c(4, 3.7, 0.8, 0.8))
+boxplot(groups, notch=FALSE, names=crop_labels(names(groups)), outline=FALSE, xlab='', ylab='', las=2, frame=FALSE)
 abline(h=0, col='red')
-mtext('Struct. deg. diff.', side=1, line=4)
-mtext('Nav. deg. diff.', side=2, line=2.4)
+mtext('Structural-degree difference', side=1, line=3)
+mtext('Navigational-degree difference', side=2, line=2.7)
 if (save_plots) dev.off()
 
 
