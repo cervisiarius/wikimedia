@@ -50,7 +50,6 @@ export LIBJARS=$THRIFTJAR
 
 echo "Running hadoop job"
 hadoop jar $TARGET_DIR/TreeExtractor-0.0.1-SNAPSHOT-jar-with-dependencies.jar \
-    -D            mapreduce.job.queuename=priority \
     -D            mapred.child.java.opts="-Xss10m -Xmx3g" \
     -D            mapreduce.output.fileoutputformat.compress=false \
     -D            mapreduce.task.timeout=6000000 \
@@ -64,4 +63,6 @@ hadoop jar $TARGET_DIR/TreeExtractor-0.0.1-SNAPSHOT-jar-with-dependencies.jar \
     -D            org.wikimedia.west1.traces.output=$OUT_DIR \
     -D            org.wikimedia.west1.traces.numReduceTasks=$NUM_REDUCE \
     -libjars      $LIBJARS \
-2>&1 | tee $LOG_DIR/tree_extraction_lang=`echo $LANGUAGE_PATTERN | tr '|' '-'`_date=`echo $DATEDIR | tr '/' '-'`_`date +%Y%m%dT%H%M%S`.log
+2>&1 | tee $LOG_DIR/tree_extraction_lang=`echo $LANGUAGE_PATTERN | tr '|' '-'`_`echo $DATEDIR | tr '/' '_'`_`date +%Y%m%dT%H%M%S`.log
+
+#    -D            mapreduce.job.queuename=priority \
