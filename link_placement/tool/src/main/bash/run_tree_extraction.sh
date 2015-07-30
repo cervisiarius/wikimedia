@@ -3,7 +3,7 @@
 # Specify the date range you want to process, e.g., year=2015/month=7/day=5
 DATEDIR=$1
 
-if [ $DATEDIR == '' ] ; then
+if [ -z "$DATEDIR" ] ; then
     echo 'Please enter a valid DATEDIR' 1>&2
     exit
 fi
