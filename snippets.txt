@@ -6,3 +6,11 @@ ls -l | sed 's/\(.*\)wiki.*/\1/' | tail -n +2 | sed 's/  */\t/g' | cut -f5,9 | s
 # Copy webrequest data.
 hadoop distcp /wmf/data/wmf/webrequest/webrequest_source=text/year=2015/ /user/west1/webrequest_source=text/
 hadoop distcp /wmf/data/wmf/webrequest/webrequest_source=text/year=2015/month=4/day=2[456] /user/west1/webrequest_source=text/year=2015/month=4
+
+# Tool Labs login.
+ssh tools-login.wmflabs.org
+become navlink-recommendation
+
+# Create DB in Tool Labs.
+mysql --defaults-file=replica.my.cnf -h tools.labsdb
+create database s52641__recommendations;
