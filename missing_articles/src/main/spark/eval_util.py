@@ -19,7 +19,7 @@ def split_contributions(contributions, k, l):
 
 
 def contribution_iter(contribution_file, k, l, m, min_bytes=100):
-    assert(k+l <= m)
+    #assert(k+l <= m)
     with open(contribution_file) as f:
         for line in f:
             try:

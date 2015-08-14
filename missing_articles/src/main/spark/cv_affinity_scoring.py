@@ -66,7 +66,7 @@ args['n'] = 40000
 
 args_list = []
 
-ks = [1, 4, 8]
+ks = [1, 4, 8, 16, 32]
 interest_functions = [get_average_interest_vector, get_weighted_average_interest_vector, get_weighted_mediod_interest_vector]
 
 for k in ks:
@@ -93,7 +93,7 @@ def mp_worker(args):
 
 
     
-p = multiprocessing.Pool(9)
+p = multiprocessing.Pool(4)
 time1 = time.time()
 results = p.map(mp_worker, args_list)
 time2 = time.time()
