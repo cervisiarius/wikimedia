@@ -12,7 +12,7 @@ import pandas as pd
 
 
 def split_contributions(contributions, k, l):
-    assert (len(contributions['contributions']) >=(k+l) )
+    #assert (len(contributions['contributions']) >=(k+l) )
     train = {'uid' : contributions['uid'], 'uname' : contributions['uname'], 'contributions' : contributions['contributions'][-(k+l):-l]}
     test = {'uid' : contributions['uid'], 'uname' : contributions['uname'], 'contributions' : contributions['contributions'][-l:]}
     return train, test
