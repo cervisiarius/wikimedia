@@ -4,79 +4,143 @@
 save_plots <- TRUE
 
 DATADIR <- sprintf('%s/wikimedia/trunk/data/link_placement/results/', Sys.getenv('HOME'))
-PLOTDIR <- sprintf('%s/snap-papers/2015/west1-ashwinp-wmf/FIG', Sys.getenv('HOME'))
+PLOTDIR <- sprintf('%s/snap-papers/2015/west1-ashwinp-wmf/FIG/global_opt/', Sys.getenv('HOME'))
 
-results_chain <- read.table(pipe(sprintf('gunzip -c %s/link_placement_results_CHAIN.tsv.gz', DATADIR)),
-                            header=TRUE, sep='\t', comment.char='', encoding='UTF-8', quote='', stringsAsFactors=FALSE)
-rownames(results_chain) <- paste(results_chain$src, results_chain$tgt)
-results_tree <- read.table(pipe(sprintf('gunzip -c %s/link_placement_results_TREE.tsv.gz', DATADIR)),
-                           header=TRUE, sep='\t', comment.char='', encoding='UTF-8', quote='', stringsAsFactors=FALSE)
-rownames(results_tree) <- paste(results_tree$src, results_tree$tgt)
-results_coins <- read.table(pipe(sprintf('gunzip -c %s/link_placement_results_COINS.tsv.gz', DATADIR)),
-                            header=TRUE, sep='\t', comment.char='', encoding='UTF-8', quote='', stringsAsFactors=FALSE)
-rownames(results_coins) <- paste(results_coins$src, results_coins$tgt)
+dice <- read.table(pipe(sprintf('gunzip -c %s/link_placement_results_DICE.tsv.gz', DATADIR)),
+                   header=TRUE, sep='\t', comment.char='', encoding='UTF-8', quote='', stringsAsFactors=FALSE)[1:1e5,]
+rownames(dice) <- paste(dice$src, dice$tgt)
 
-col <- list(tree='red', chain='green', coins='black')
+coins_page <- read.table(pipe(sprintf('gunzip -c %s/link_placement_results_COINS-PAGE.tsv.gz', DATADIR)),
+                         header=TRUE, sep='\t', comment.char='', encoding='UTF-8', quote='', stringsAsFactors=FALSE)[1:1e5,]
+rownames(coins_page) <- paste(coins_page$src, coins_page$tgt)
+
+coins_link <- read.table(pipe(sprintf('gunzip -c %s/link_placement_results_COINS-LINK.tsv.gz', DATADIR)),
+                         header=TRUE, sep='\t', comment.char='', encoding='UTF-8', quote='', stringsAsFactors=FALSE)[1:1e5,]
+rownames(coins_link) <- paste(coins_link$src, coins_link$tgt)
+
+col <- list(coins_page=rgb(.9,.6,0), dice=rgb(0,.45,.7), coins_link='black')
+width <- 1.68
+height <- 1.5
+
+add_argmax_legend <- function(pos='bottomright') {
+  legend(pos, col=c(col$coins_link, col$coins_page, col$dice), lty=c(2,1,1), bty='n',
+         legend=c(expression(paste(italic(A), ' = argmax ', italic(f)[1], '(.)')),
+                  expression(paste(italic(A), ' = argmax ', italic(f)[2], '(.)')),
+                  expression(paste(italic(A), ' = argmax ', italic(f)[3], '(.)'))))
+}
+
+add_standard_legend <- function(pos='bottomright') {
+  legend(pos, legend=c('Coins (link-centric)', 'Coins (page-centric)', 'Dice'),
+         col=c(col$coins_link, col$coins_page, col$dice), lty=c(2,1,1), bty='n')
+}
 
 # Overlap of objectives
 jaccard <- function(s1, s2) length(intersect(s1, s2)) / length(union(s1, s2))
-K <- 1000
-jacc_chain_coins <- sapply(1:K, function(i) jaccard(rownames(results_chain)[1:i], rownames(results_coins)[1:i]))
-jacc_tree_coins <- sapply(1:K, function(i) jaccard(rownames(results_tree)[1:i], rownames(results_coins)[1:i]))
-plot(jacc_tree_coins, type='l', ylim=c(0.2,1), col=col$tree)
-lines(jacc_chain_coins, col=col$chain, ylab='Jaccard coefficient')
-legend('bottomright', legend=c('Tree and coins', 'Chain and coins'), col=c(col$tree, col$chain), lty=1)
+K <- seq(1,1e4,10)
+jacc_dice_coinslink <- sapply(K, function(i) jaccard(rownames(dice)[1:i], rownames(coins_link)[1:i]))
+jacc_coinspage_coinslink <- sapply(K, function(i) jaccard(rownames(coins_page)[1:i], rownames(coins_link)[1:i]))
+if (save_plots) pdf(sprintf('%s/jaccard_coefficient.pdf', PLOTDIR), width=width, height=height, pointsize=6, family='Helvetica', useDingbats=FALSE)
+par(mar=c(3.4, 3.4, 1.2, 0.8))
+plot(K, jacc_coinspage_coinslink, type='l', ylim=c(0.2,1), xlab='', ylab='', bty='n', col=col$coins_page,
+     main='Solution overlap')
+lines(K, jacc_dice_coinslink, col=col$dice)
+mtext(expression(paste('Size of solution ', italic(A))), side=1, line=2.4)
+mtext(expression(paste('Jaccard coefficient')), side=2, line=2.4)
+legend('bottomright', legend=c('Coins (link) & Coins (page)', 'Coins (link) & Dice'),
+       col=c(col$coins_page, col$dice), lty=1, bty='n', seg.len=1)
+if (save_plots) dev.off()
 
-# Compare under chain objective
+# Compare under dice objective
 K <- 1e4
-plot(cumsum(results_chain$chain_marg_gain[1:K]), type='l', col=col$chain, ylab='Value under chain objective')
-lines(cumsum(results_coins$chain_marg_gain[1:K]), col=col$coins)
-legend('bottomright', legend=c('Optimized for chain', 'Optimized for coins'), col=c(col$chain, col$coins), lty=1)
+if (save_plots) pdf(sprintf('%s/objective_dice.pdf', PLOTDIR), width=width, height=height, pointsize=6, family='Helvetica', useDingbats=FALSE)
+par(mar=c(3.4, 3.4, 1.2, 0.8))
+# NB: The dice model used to be called "chain model".
+plot(cumsum(dice$chain_marg_gain[1:K]), type='l', xlab='', ylab='', bty='n', col=col$dice,
+     main='Return w.r.t. Dice')
+lines(cumsum(coins_page$chain_marg_gain[1:K]), col=col$coins_page)
+lines(cumsum(coins_link$chain_marg_gain[1:K]), col=col$coins_link, lty=2)
+mtext(expression(paste('Size of solution ', italic(A))), side=1, line=2.4)
+mtext(expression(paste('Return ', italic(f)[3], '(', italic(A), ')')), side=2, line=2.4)
+add_argmax_legend()
+if (save_plots) dev.off()
 
-# Compare under tree objective
-plot(cumsum(results_tree$tree_marg_gain[1:K]), type='l', col=col$tree, ylab='Value under tree objective')
-lines(cumsum(results_coins$tree_marg_gain[1:K]), col=col$coins)
-legend('bottomright', legend=c('Optimized for tree', 'Optimized for coins'), col=c(col$tree, col$coins), lty=1)
+# Compare under coins (page-centric) objective
+K <- 1e4
+if (save_plots) pdf(sprintf('%s/objective_coins-page.pdf', PLOTDIR), width=width, height=height, pointsize=6, family='Helvetica', useDingbats=FALSE)
+par(mar=c(3.4, 3.4, 1.2, 0.8))
+# NB: The page-centric coins model used to be called "tree model".
+plot(cumsum(coins_page$tree_marg_gain[1:K]), type='l', xlab='', ylab='', bty='n', col=col$coins_page,
+     main='Return w.r.t. Coins (page)')
+lines(cumsum(coins_link$tree_marg_gain[1:K]), col=col$coins_link, lty=2)
+lines(cumsum(dice$tree_marg_gain[1:K]), col=col$dice)
+mtext(expression(paste('Size of solution ', italic(A))), side=1, line=2.4)
+mtext(expression(paste('Return ', italic(f)[2], '(', italic(A), ')')), side=2, line=2.4)
+add_argmax_legend()
+if (save_plots) dev.off()
 
-# Compare under coins objective
-plot(cumsum(results_coins$coins_marg_gain[1:K]), type='l', col=col$coins, ylab='Value under coins objective')
-lines(cumsum(results_tree$coins_marg_gain[1:K]), col=col$tree)
-lines(cumsum(results_chain$coins_marg_gain[1:K]), col=col$chain)
-legend('bottomright', legend=c('Optimized for coins', 'Optimized for tree', 'Optimized for chain'),
-       col=c(col$coins, col$tree, col$chain), lty=1)
+# Compare under link-centric coins objective
+K <- 1e4
+if (save_plots) pdf(sprintf('%s/objective_coins-link.pdf', PLOTDIR), width=width, height=height, pointsize=6, family='Helvetica', useDingbats=FALSE)
+par(mar=c(3.4, 3.4, 1.2, 0.8))
+plot(cumsum(coins_page$coins_marg_gain[1:K]), type='l', xlab='', ylab='', bty='n', col=col$coins_page,
+     main='Return w.r.t. Coins (link)')
+lines(cumsum(coins_link$coins_marg_gain[1:K]), col=col$coins_link, lty=2)
+lines(cumsum(dice$coins_marg_gain[1:K]), col=col$dice)
+mtext(expression(paste('Size of solution ', italic(A))), side=1, line=2.4)
+mtext(expression(paste('Return ', italic(f)[1], '(', italic(A), ')')), side=2, line=2.4)
+add_argmax_legend()
+if (save_plots) dev.off()
 
 # Unique sources among top k.
 unique_at_k <- function(results, K) sapply(1:K, function(i) length(unique(results$src[1:i])))
 K <- 1e4
-uniq_chain <- unique_at_k(results_chain, K)
-uniq_tree <- unique_at_k(results_tree, K)
-uniq_coins <- unique_at_k(results_coins, K)
-plot(uniq_chain, type='l', col=col$chain, panel.first=grid())
-lines(uniq_tree, col=col$tree)
-lines(uniq_coins, col=col$coins)
-legend('bottomright', legend=c('Chain', 'Tree', 'Coins'), col=c(col$chain, col$tree, col$coins), lty=1)
+uniq_dice <- unique_at_k(dice, K)
+uniq_coinspage <- unique_at_k(coins_page, K)
+uniq_coinslink <- unique_at_k(coins_link, K)
+if (save_plots) pdf(sprintf('%s/num_unique_sources.pdf', PLOTDIR), width=width, height=height, pointsize=6, family='Helvetica', useDingbats=FALSE)
+par(mar=c(3.4, 3.4, 1.2, 0.8))
+plot(uniq_dice, type='l', xlab='', ylab='', bty='n', col=col$dice,
+     main='Solution diversity')
+lines(uniq_coinspage, col=col$coins_page)
+lines(uniq_coinslink, col=col$coins_link, lty=2)
+mtext(expression(paste('Size of solution ', italic(A))), side=1, line=2.4)
+mtext(expression(paste('Unique sources')), side=2, line=2.4)
+add_standard_legend()
+if (save_plots) dev.off()
 
+# Number of targets per source.
 avg_num_targets_per_source <- function(results, K)
   sapply(K, function(i) mean(tapply(results$tgt[1:i], results$src[1:i], length)))
+K <- seq(1,1e4,10)
+tgt_per_src_dice <- avg_num_targets_per_source(dice, K)
+tgt_per_src_coinslink <- avg_num_targets_per_source(coins_link, K)
+tgt_per_src_coinspage <- avg_num_targets_per_source(coins_page, K)
+if (save_plots) pdf(sprintf('%s/num_targets_per_source.pdf', PLOTDIR), width=width, height=height, pointsize=6, family='Helvetica', useDingbats=FALSE)
+par(mar=c(3.4, 3.4, 1.2, 0.8))
+plot(K, tgt_per_src_coinspage, type='l',  xlab='', ylab='', bty='n', col=col$coins_page,
+     main='Solution concentration', ylim=c(1,3.2))
+lines(K, tgt_per_src_coinslink, col=col$coins_link, lty=2)
+lines(K, tgt_per_src_dice, col=col$dice)
+mtext(expression(paste('Size of solution ', italic(A))), side=1, line=2.4)
+mtext(expression(paste('Targets per source in ', italic(A))), side=2, line=2.4)
+add_standard_legend('topleft')
+if (save_plots) dev.off()
+
+# Prior navigational degree.
+#avg_src_count_per_source <- function(results, K) sapply(K, function(i) exp(median(results$source_count_before[1:i])))
+avg_src_count_per_source <- function(results, K) sapply(K, function(i) mean((exp(results$source_transition_count_before) /
+                                                                               exp(results$source_count_before))[1:i]))
 K <- seq(1,1e4,100)
-tgt_per_src_chain <- avg_num_targets_per_source(results_chain, K)
-tgt_per_src_coins <- avg_num_targets_per_source(results_coins, K)
-tgt_per_src_tree <- avg_num_targets_per_source(results_tree, K)
-
-plot(K, tgt_per_src_coins, type='l', col=col$coins, panel.first=grid())
-lines(K, tgt_per_src_tree, col=col$tree)
-lines(K, tgt_per_src_chain, col=col$chain)
-legend('bottomright', legend=c('Chain', 'Tree', 'Coins'), col=c(col$chain, col$tree, col$coins), lty=1)
-
-avg_src_count_per_source <- function(results, K)
-  sapply(K, function(i) mean(tapply(results$source_count_before[1:i], results$src[1:i], unique)))
-K <- seq(1,1e4,100)
-src_count_per_src_chain <- avg_src_count_per_source(results_chain, K)
-src_count_per_src_coins <- avg_src_count_per_source(results_coins, K)
-src_count_per_src_tree <- avg_src_count_per_source(results_tree, K)
-
-plot(K, src_count_per_src_chain, type='l', col=col$coins, panel.first=grid())
-lines(K, src_count_per_src_coins, col=col$tree)
-lines(K, src_count_per_src_tree, col=col$chain)
-legend('bottomright', legend=c('Chain', 'Tree', 'Coins'), col=c(col$chain, col$tree, col$coins), lty=1)
-
+src_count_per_src_dice <- avg_src_count_per_source(dice, K)
+src_count_per_src_coinslink <- avg_src_count_per_source(coins_link, K)
+src_count_per_src_coinspage <- avg_src_count_per_source(coins_page, K)
+if (save_plots) pdf(sprintf('%s/prior_cum_clickthrough.pdf', PLOTDIR), width=width, height=height, pointsize=6, family='Helvetica', useDingbats=FALSE)
+par(mar=c(3.4, 3.4, 1.2, 0.95))
+plot(K, src_count_per_src_coinspage, col=col$coins_page, type='l', xlab='', ylab='', bty='n', ylim=c(0.3, 0.8),
+     main='Prior cumulative clickthrough')
+lines(K, src_count_per_src_dice, col=col$dice)
+lines(K, src_count_per_src_coinslink, col=col$coins_link, lty=2)
+mtext(expression(paste('Size of solution ', italic(A))), side=1, line=2.4)
+mtext(expression(paste('Mean prior cumulative clickthrough')), side=2, line=2.4)
+add_standard_legend('right')
+if (save_plots) dev.off()

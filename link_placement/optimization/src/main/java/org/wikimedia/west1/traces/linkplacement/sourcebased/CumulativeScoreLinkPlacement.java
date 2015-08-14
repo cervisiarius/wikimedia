@@ -16,6 +16,11 @@ public class CumulativeScoreLinkPlacement extends LinkPlacement {
     return values.get("pst_indirect");
   }
 
+	@Override
+	protected double getWeight(String src) {
+		return srcCounts.get(src);
+	}
+
   @Override
   protected void initMargGains() {
     // Use as the value of a candidate its score times its source's count.
@@ -48,10 +53,11 @@ public class CumulativeScoreLinkPlacement extends LinkPlacement {
     try {
       dir = args[0];
     } catch (ArrayIndexOutOfBoundsException e) {
-      dir = LinkPlacement.DATADIR_WIKIPEDIA;
+			dir = LinkPlacement.DATADIR_WIKIPEDIA;
+			// dir = LinkPlacement.DATADIR_SIMTK;
     }
     CumulativeScoreLinkPlacement obj = new CumulativeScoreLinkPlacement(dir);
-    obj.placeLinks((int) 1e6, new PrintStream(dir + "/link_placement_results_COINS.tsv"));
+    obj.placeLinks((int) 1e5, new PrintStream(dir + "/link_placement_results_COINS-LINK.tsv"));
   }
 
 }
