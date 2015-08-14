@@ -120,7 +120,7 @@ plt.savefig('trajectories_10.pdf')
 
 
 with open('cv_results.txt', 'w') as outfile:
-    json.dump(data, outfile)
+    json.dump(results, outfile)
 
 
 
