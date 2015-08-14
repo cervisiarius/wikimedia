@@ -13,6 +13,7 @@ matplotlib.use('Agg')
 import matplotlib.pyplot as plt 
 import os,sys,inspect
 from eval_util import *
+import json
 
 universal_dir = 'en_lda'
 translation_dir = 'en_lda'
@@ -118,7 +119,8 @@ for d in results:
 plt.savefig('trajectories_10.pdf')
 
 
-
+with open('cv_results.txt', 'w') as outfile:
+    json.dump(data, outfile)
 
 
 
