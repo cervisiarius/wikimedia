@@ -61,13 +61,13 @@ contribution_file = os.path.join(translation_base_dir, cp.get('eval', 'train'))
 
 
 args = {}
-args['m'] = 9
+args['m'] = 5
 args['l'] = 1
-args['n'] = 40000
+args['n'] = 400
 
 args_list = []
 
-ks = [1, 4, 8, 16, 32]
+ks = [1, 4, 16, 64, 128]
 interest_functions = [get_average_interest_vector, get_weighted_average_interest_vector, get_weighted_mediod_interest_vector]
 
 for k in ks:
@@ -94,7 +94,7 @@ def mp_worker(args):
 
 
     
-p = multiprocessing.Pool(4)
+p = multiprocessing.Pool(8)
 time1 = time.time()
 results = p.map(mp_worker, args_list)
 time2 = time.time()

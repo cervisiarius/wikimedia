@@ -9,6 +9,7 @@ import heapq
 import json
 import numpy as np
 import pandas as pd
+from collections import defaultdict
 
 
 def split_contributions(contributions, k, l):
@@ -27,7 +28,7 @@ def contribution_iter(contribution_file, k, l, m, min_bytes=100):
             except:
                 print "decode error"
                 continue
-            #contributions['contributions'] = [x for x in contributions['contributions'] if int(x['bytes_added']) >= min_bytes]
+            contributions['contributions'] = [x for x in contributions['contributions'] if int(x['bytes_added']) >= min_bytes]
             if len(contributions['contributions']) >= (m):
                 yield split_contributions(contributions, k, l)          
 
@@ -181,7 +182,7 @@ def recommend_and_eval_all(contribution_iter, rdata, num_examples, verbose = Fal
     MAP = 0.0
     avergage_fraction_of_test_items_ranked = 0.0
     avergage_ranking_length = 0.0
-    MAPs = []
+    MAPs = defaultdict(list)
 
     for i, (train, test) in enumerate(contribution_iter):
         time1 = time.time()
@@ -191,11 +192,12 @@ def recommend_and_eval_all(contribution_iter, rdata, num_examples, verbose = Fal
         MAP += AP
         avergage_fraction_of_test_items_ranked += fraction_of_test_items_ranked
         avergage_ranking_length += ranking_length
+        MAPs[len(train)].append(AP)
         
         if not verbose and (i+1) % 500 ==0:
             condition = 'i: %d K: %d f: %s ' % (i, len(train['contributions']), rdata['get_interest_vector'].__name__)
             print_results(i, MAP, avergage_fraction_of_test_items_ranked, avergage_ranking_length, condition = condition)
-            MAPs.append(MAP/ float(i+1))
+            #MAPs.append(MAP/ float(i+1))
 
         if i==num_examples:
             break
