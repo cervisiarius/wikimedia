@@ -15,6 +15,14 @@ import os,sys,inspect
 from eval_util import *
 import json
 import sys
+import argparse
+
+parser = argparse.ArgumentParser()
+parser.add_argument('--m', required = True, help='min edit size' )
+parser.add_argument('--ws', required = True, help='eg 1,2,4,8' )
+parser.add_argument('--n', required = True, help='num editors' )
+args = parser.parse_args()
+
 
 universal_dir = 'en_lda'
 translation_dir = 'en_lda'
@@ -62,13 +70,13 @@ contribution_file = os.path.join(translation_base_dir, cp.get('eval', 'train'))
 
 
 args = {}
-args['m'] = 5
+args['m'] = args['m']
 args['l'] = 1
-args['n'] = sys.argv[1]
+args['n'] = args['n']
 
 args_list = []
 
-ks = [1, 4, 16, 64, 128]
+ks = args['ws'].split(',')
 interest_functions = [get_average_interest_vector, get_weighted_average_interest_vector, get_weighted_mediod_interest_vector]
 
 for k in ks:
