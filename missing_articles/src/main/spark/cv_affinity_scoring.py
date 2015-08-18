@@ -63,7 +63,7 @@ contribution_file = os.path.join(translation_base_dir, cp.get('eval', 'train'))
 args = {}
 args['m'] = 5
 args['l'] = 1
-args['n'] = 40000
+args['n'] = 40
 
 args_list = []
 
