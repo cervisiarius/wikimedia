@@ -54,7 +54,7 @@ rdata['id2index'] = id2index
 rdata['index2id'] = index2id 
 rdata['id2uname'] = id2uname 
 rdata['item_target_importance'] = None 
-rdata['num_to_rank'] = sys.argv[1]
+rdata['num_to_rank'] = 10000
 rdata['min_score'] = 0.5
 
 
@@ -64,7 +64,7 @@ contribution_file = os.path.join(translation_base_dir, cp.get('eval', 'train'))
 args = {}
 args['m'] = 5
 args['l'] = 1
-args['n'] = 150000
+args['n'] = sys.argv[1]
 
 args_list = []
 
