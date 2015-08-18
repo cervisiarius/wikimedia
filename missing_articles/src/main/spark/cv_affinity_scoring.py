@@ -18,9 +18,9 @@ import sys
 import argparse
 
 parser = argparse.ArgumentParser()
-parser.add_argument('--m', required = True, help='min edit size' )
+parser.add_argument('--m', required = True, type = int, help='min edit size' )
 parser.add_argument('--ws', required = True, help='eg 1,2,4,8' )
-parser.add_argument('--n', required = True, help='num editors' )
+parser.add_argument('--n', required = True, type = int, help='num editors' )
 args = parser.parse_args()
 
 
@@ -76,13 +76,13 @@ args['n'] = args['n']
 
 args_list = []
 
-ks = args['ws'].split(',')
+ws = [int(w) for w in args['ws'].split(',')]
 interest_functions = [get_average_interest_vector, get_weighted_average_interest_vector, get_weighted_mediod_interest_vector]
 
-for k in ks:
+for w in ws:
     for f in interest_functions:
         argsd = copy.deepcopy(args)
-        argsd['k'] = k
+        argsd['k'] = w
         argsd['get_interest_vector'] = f
         args_list.append(argsd)
 
