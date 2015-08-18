@@ -23,9 +23,9 @@ parser.add_argument('--ws', required = True, help='eg 1,2,4,8' )
 parser.add_argument('--n', required = True, type = int, help='num editors' )
 cmd_args = parser.parse_args()
 
-m = cmd_args['m']
-ws = [int(w) for w in cmd_args['ws'].split(',')]
-n = cmd_args['n']
+m = cmd_args.m
+ws = [int(w) for w in cmd_args.ws.split(',')]
+n = cmd_args.n
 
 
 universal_dir = 'en_lda'
