@@ -105,6 +105,7 @@ def get_weighted_mediod_interest_vector(M, id2index, item_target_importance, con
     item_indices = [id2index[x['id']] for x in contributions]
     interest_matrix = M[item_indices].toarray()
     average_vector = interest_matrix.T.dot(weights)
+    average_vector = average_vector / np.linalg.norm(average_vector)
     idx = np.array([np.linalg.norm(v) for v in interest_matrix-average_vector]).argmin()
     mediod = interest_matrix[idx]
     return mediod / np.linalg.norm(mediod)
