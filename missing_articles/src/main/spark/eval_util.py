@@ -16,7 +16,7 @@ def split_contributions(contributions, k, l):
     #assert (len(contributions['contributions']) >=(k+l) )
     train = {'uid' : contributions['uid'], 'uname' : contributions['uname'], 'contributions' : contributions['contributions'][-(k+l):-l]}
     test = {'uid' : contributions['uid'], 'uname' : contributions['uname'], 'contributions' : contributions['contributions'][-l:]}
-    return train, test, len(contributions)
+    return train, test, len(contributions['contributions'])
 
 
 def contribution_iter(contribution_file, k, l, m, min_bytes=100):
