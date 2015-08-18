@@ -16,7 +16,7 @@ def split_contributions(contributions, k, l):
     #assert (len(contributions['contributions']) >=(k+l) )
     train = {'uid' : contributions['uid'], 'uname' : contributions['uname'], 'contributions' : contributions['contributions'][-(k+l):-l]}
     test = {'uid' : contributions['uid'], 'uname' : contributions['uname'], 'contributions' : contributions['contributions'][-l:]}
-    return train, test
+    return train, test, len(contributions)
 
 
 def contribution_iter(contribution_file, k, l, m, min_bytes=100):
@@ -184,7 +184,7 @@ def recommend_and_eval_all(contribution_iter, rdata, num_examples, verbose = Fal
     avergage_ranking_length = 0.0
     MAPs = defaultdict(list)
 
-    for i, (train, test) in enumerate(contribution_iter):
+    for i, (train, test, num_edits) in enumerate(contribution_iter):
         time1 = time.time()
         AP, fraction_of_test_items_ranked, ranking_length = recommend_and_eval(train, test, rdata, verbose = verbose)
         time2 = time.time()
@@ -192,7 +192,7 @@ def recommend_and_eval_all(contribution_iter, rdata, num_examples, verbose = Fal
         MAP += AP
         avergage_fraction_of_test_items_ranked += fraction_of_test_items_ranked
         avergage_ranking_length += ranking_length
-        MAPs[len(train)].append(AP)
+        MAPs[num_edits].append(AP)
         
         if not verbose and (i+1) % 500 ==0:
             condition = 'i: %d K: %d f: %s ' % (i, len(train['contributions']), rdata['get_interest_vector'].__name__)
