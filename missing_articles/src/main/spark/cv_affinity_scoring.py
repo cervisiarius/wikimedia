@@ -63,7 +63,7 @@ contribution_file = os.path.join(translation_base_dir, cp.get('eval', 'train'))
 args = {}
 args['m'] = 5
 args['l'] = 1
-args['n'] = 400
+args['n'] = 40
 
 args_list = []
 
@@ -102,7 +102,7 @@ print 'Time: ', (time2-time1)
 pprint(results)
 
 
-
+"""
 fig = plt.figure(figsize=(18,8))
 for d in results:
     plt.plot(d['MAPs'])
@@ -117,7 +117,7 @@ fig = plt.figure(figsize=(18,8))
 for d in results:
     plt.plot(d['MAPs'][-10:])
 plt.savefig('trajectories_10.pdf')
-
+"""
 
 with open('cv_results.txt', 'w') as outfile:
     json.dump(results, outfile)
