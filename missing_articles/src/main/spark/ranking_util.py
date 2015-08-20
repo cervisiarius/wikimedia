@@ -225,16 +225,17 @@ def seq_forw_select(features, max_k, importance_model, print_steps=True):
 
 class ImportanceRegressor:
     
-    def __init__(self, df, y_name, decision_metric, alg ):
+    def __init__(self, df, M, y_name, decision_metric, alg ):
         self.y = df[y_name].astype('float').values
         self.df = df
         self.decision_metric = decision_metric
         self.alg = alg
+        self.M = M
 
          
     def build(self, features, retrain_model = False):
         if 'indx' in features:
-            X = get_X(M, self.df, 'indx', features)
+            X = get_X(self.M, self.df, 'indx', features)
         else:
             X = get_X(None, self.df, 'indx', features)
         scaler = StandardScaler().fit(X)
