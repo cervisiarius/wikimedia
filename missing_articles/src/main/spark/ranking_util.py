@@ -89,7 +89,7 @@ def cv (X, y, folds, alg, param_grid, regression):
     print "\n\n\nDoing Gridsearch\n"
 
     kfold_cv = cross_validation.KFold(X.shape[0], n_folds=folds, shuffle=True)
-    model = grid_search.GridSearchCV(cv  = kfold_cv, estimator = alg, param_grid = param_grid, scoring = scoring) #n_jobs=multiprocessing.cpu_count()
+    model = grid_search.GridSearchCV(cv  = kfold_cv, estimator = alg, param_grid = param_grid, scoring = scoring, n_jobs=4)
     model = model.fit(X,y)
     # model trained on all data
     y_pred = model.predict(X)
