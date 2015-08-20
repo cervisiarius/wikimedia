@@ -58,9 +58,9 @@ def spearman(x, y):
     return sr
 
 def RMSE(y_true,y_pred):
-    rmse = rmse(y_true, y_pred)
-    print 'RMSE: %2.5f' % rmse
-    return rmse
+    rmse_val = rmse(y_true, y_pred)
+    print 'RMSE: %2.5f' % rmse_val
+    return rmse_val
 
 def R2(y_true,y_pred):    
      r2 = r2_score(y_true, y_pred)
