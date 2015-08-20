@@ -246,16 +246,17 @@ class ImportanceRegressor:
         
     
 class ImportanceClassifier:
-    def __init__(self, df, y_name, decision_metric, alg ):
+    def __init__(self, df,M, y_name, decision_metric, alg ):
         self.y = df['in_t'].astype('int').values
         self.df = df
         self.decision_metric = decision_metric
         self.alg = alg
+        self.M = M
          
             
     def build(self, features, retrain_model = False):
         if 'indx' in features:
-            X = get_X(M, self.df, 'indx', features)
+            X = get_X(self.M, self.df, 'indx', features)
         else:
             X = get_X(None, self.df, 'indx', features)
             
