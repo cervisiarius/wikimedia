@@ -24,6 +24,7 @@ parser.add_argument('--ws', required = True, help='eg 1,2,4,8' )
 parser.add_argument('--n', required = True, type = int, help='num editors' )
 parser.add_argument('--c', required = True, type = int, help='num cores' )
 parser.add_argument('--fs', required = True, help='functions to test' )
+parser.add_argument('--exp', required = True, help='name of experiment' )
 
 
 cmd_args = parser.parse_args()
@@ -141,7 +142,7 @@ for d in results:
 plt.savefig('trajectories_10.pdf')
 """
 
-with open('cv_results.txt', 'w') as outfile:
+with open('cv_results_%s.txt' % cmd_args.exp, 'w') as outfile:
     json.dump(results, outfile)
 
 
