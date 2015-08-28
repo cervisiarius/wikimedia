@@ -13,6 +13,7 @@ matplotlib.use('Agg')
 import matplotlib.pyplot as plt 
 import os,sys,inspect
 from eval_util import *
+import eval_util
 import json
 import sys
 import argparse
@@ -22,14 +23,19 @@ parser.add_argument('--m', required = True, type = int, help='min edit size' )
 parser.add_argument('--ws', required = True, help='eg 1,2,4,8' )
 parser.add_argument('--n', required = True, type = int, help='num editors' )
 parser.add_argument('--c', required = True, type = int, help='num cores' )
+parser.add_argument('--fs', required = True, help='functions to test' )
+
 
 cmd_args = parser.parse_args()
-
 m = cmd_args.m
 ws = [int(w) for w in cmd_args.ws.split(',')]
 n = cmd_args.n
 
-interest_functions = [get_average_interest_vector, get_weighted_average_interest_vector, get_weighted_mediod_interest_vector]
+
+methodToCall = getattr(foo, 'bar')
+
+
+interest_functions = [ getattr(eval_util, f) for f in cmd_args.fs.split(',')]
 
 
 
