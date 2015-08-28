@@ -29,6 +29,9 @@ m = cmd_args.m
 ws = [int(w) for w in cmd_args.ws.split(',')]
 n = cmd_args.n
 
+interest_functions = [get_average_interest_vector, get_weighted_average_interest_vector, get_weighted_mediod_interest_vector]
+
+
 
 universal_dir = 'en_lda'
 translation_dir = 'en_lda'
@@ -82,7 +85,6 @@ args['n'] = n
 
 args_list = []
 
-interest_functions = [get_average_interest_vector, get_weighted_average_interest_vector, get_weighted_mediod_interest_vector]
 
 for w in ws:
     for f in interest_functions:
