@@ -21,6 +21,8 @@ parser = argparse.ArgumentParser()
 parser.add_argument('--m', required = True, type = int, help='min edit size' )
 parser.add_argument('--ws', required = True, help='eg 1,2,4,8' )
 parser.add_argument('--n', required = True, type = int, help='num editors' )
+parser.add_argument('--c', required = True, type = int, help='num cores' )
+
 cmd_args = parser.parse_args()
 
 m = cmd_args.m
@@ -106,7 +108,7 @@ def mp_worker(args):
 
 
     
-p = multiprocessing.Pool(8)
+p = multiprocessing.Pool(cmd_args.c)
 time1 = time.time()
 results = p.map(mp_worker, args_list)
 time2 = time.time()
