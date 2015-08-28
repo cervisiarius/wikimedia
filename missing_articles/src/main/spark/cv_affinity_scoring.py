@@ -32,10 +32,6 @@ m = cmd_args.m
 ws = [int(w) for w in cmd_args.ws.split(',')]
 n = cmd_args.n
 
-
-methodToCall = getattr(foo, 'bar')
-
-
 interest_functions = [ getattr(eval_util, f) for f in cmd_args.fs.split(',')]
 
 
