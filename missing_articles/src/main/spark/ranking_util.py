@@ -29,17 +29,17 @@ def get_X(M, df, index_col, feature_cols):
 
 def f1(x, y):
     sr = f1_score(x, y)
-    print 'F1: %2.5f' % sr
+    print ('F1: %2.5f' % sr)
     return sr
 
 def auc(y_true,y_pred):
     roc = roc_auc_score(y_true, y_pred)
-    print 'ROC: %2.5f \n' % roc
+    print ('ROC: %2.5f \n' % roc)
     return roc
 
 def acc(y_true,y_pred):    
      r2 = accuracy_score(y_true, y_pred)
-     print 'Accuracy: %2.5f' % r2
+     print ('Accuracy: %2.5f' % r2)
      return r2
 
 def multi_score_classification(y_true,y_pred):   
@@ -54,17 +54,17 @@ def multi_scorer_classification():
 
 def spearman(x, y):
     sr = spearmanr(x, y)[0]
-    print 'Spearman: %2.5f \n' % sr
+    print ('Spearman: %2.5f \n' % sr)
     return sr
 
 def RMSE(y_true,y_pred):
     rmse_val = rmse(y_true, y_pred)
-    print 'RMSE: %2.5f' % rmse_val
+    print ('RMSE: %2.5f' % rmse_val)
     return rmse_val
 
 def R2(y_true,y_pred):    
      r2 = r2_score(y_true, y_pred)
-     print 'R2: %2.5f' % r2
+     print ('R2: %2.5f' % r2)
      return r2
 
 def multi_score_regression(y_true,y_pred):    
@@ -86,7 +86,7 @@ def cv (X, y, folds, alg, param_grid, regression):
     else:
         scoring = multi_scorer_classification()
         
-    print "\n\n\nDoing Gridsearch\n"
+    print ("\n\n\nDoing Gridsearch\n")
 
     kfold_cv = cross_validation.KFold(X.shape[0], n_folds=folds, shuffle=True)
     model = grid_search.GridSearchCV(cv  = kfold_cv, estimator = alg, param_grid = param_grid, scoring = scoring, n_jobs=4)
@@ -95,19 +95,19 @@ def cv (X, y, folds, alg, param_grid, regression):
     y_pred = model.predict(X)
     
     if regression:
-        print "Best Model Train RMSE: %f" % rmse(y, y_pred)
-        print "Best Model Train Spearman %f" % spearman(y, y_pred)
+        print ("Best Model Train RMSE: %f" % rmse(y, y_pred))
+        print ("Best Model Train Spearman %f" % spearman(y, y_pred))
     else:
-        print "Best Model Train AUC: %f" % roc_auc_score(y, y_pred)
-        print "Best Model Train F1 %f" % f1_score(y, y_pred)
-        print "Best Model Train Accuracy %f" % accuracy_score(y, y_pred)
+        print ("Best Model Train AUC: %f" % roc_auc_score(y, y_pred))
+        print ("Best Model Train F1 %f" % f1_score(y, y_pred))
+        print ("Best Model Train Accuracy %f" % accuracy_score(y, y_pred))
         
 
 
     print("\nBest parameters set found:")
     best_parameters, score, _ = max(model.grid_scores_, key=lambda x: x[1])
     print(best_parameters, score)
-    print "\n"
+    print ("\n")
     print("Grid scores:")
     for params, mean_score, scores in model.grid_scores_:
         print("%0.5f (+/-%0.05f) for %r"
@@ -142,22 +142,22 @@ def evaluate(X, y, alg, regression, decision_metric, retrain_model = False, verb
         
     
     if regression and verbose:
-        print "Train RMSE: %f" % rmse(y_train, y_train_pred)
-        print "Test RMSE: %f" % rmse(y_test, y_test_pred)
+        print ("Train RMSE: %f" % rmse(y_train, y_train_pred))
+        print ("Test RMSE: %f" % rmse(y_test, y_test_pred))
         
-        print "\nTrain Spearman %f" % spearmanr(y_train, y_train_pred)[0]
-        print "Test Spearman %f" % spearmanr(y_test, y_test_pred)[0]
+        print ("\nTrain Spearman %f" % spearmanr(y_train, y_train_pred)[0])
+        print ("Test Spearman %f" % spearmanr(y_test, y_test_pred)[0])
 
     elif not regression and verbose:
         
-        print "Train AUC: %f" % roc_auc_score(y_train, y_train_proba)
-        print "Test AUC: %f" % roc_auc_score(y_test, y_test_proba)
+        print ("Train AUC: %f" % roc_auc_score(y_train, y_train_proba))
+        print ("Test AUC: %f" % roc_auc_score(y_test, y_test_proba))
 
-        print "\nTrain F1 %f" % f1_score(y_train, y_train_pred)
-        print "Test F1 %f" % f1_score(y_test, y_test_pred)
+        print ("\nTrain F1 %f" % f1_score(y_train, y_train_pred))
+        print ("Test F1 %f" % f1_score(y_test, y_test_pred))
 
-        print "\nTrain Accuracy %f" % accuracy_score(y_train, y_train_pred)
-        print "Test Accuracy %f" % accuracy_score(y_test, y_test_pred)
+        print ("\nTrain Accuracy %f" % accuracy_score(y_train, y_train_pred))
+        print ("Test Accuracy %f" % accuracy_score(y_test, y_test_pred))
         
     
     if retrain_model:
