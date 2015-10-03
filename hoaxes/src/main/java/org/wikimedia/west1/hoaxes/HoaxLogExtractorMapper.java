@@ -125,7 +125,7 @@ public class HoaxLogExtractorMapper extends Mapper<LongWritable, Group, Text, Te
 				context.getCounter(HADOOP_COUNTERS.MAP_SKIPPED_BAD_HOST).increment(1);
 				return;
 			}
-			// It must be to an article page or a wiki search.
+			// It must be to a request to an article page.
 			if (!json.getString(JSON_URI_PATH).startsWith("/wiki/")) {
 				context.getCounter(HADOOP_COUNTERS.MAP_SKIPPED_BAD_PATH).increment(1);
 				return;
