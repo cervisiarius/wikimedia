@@ -1,11 +1,11 @@
 #!/bin/bash
 
 # Modify these parameters.
-MONTH=10
+MONTH=8
 
 # The part of the server logs you want to process.
-#IN_DIR=/wmf/data/wmf/webrequest/webrequest_source=text/year=2015/month=$MONTH/*/*/*
-IN_DIR=/wmf/data/wmf/webrequest/webrequest_source=text/year=2015/month=$MONTH/day=1/hour=3/*
+IN_DIR=/wmf/data/wmf/webrequest/webrequest_source=text/year=2015/month=$MONTH/*/*/*
+#IN_DIR=/wmf/data/wmf/webrequest/webrequest_source=text/year=2015/month=$MONTH/day=1/hour=3/*
 # The output directory.
 OUT_DIR=/user/west1/hoax_webrequest_logs/month=$MONTH
 # This is where the JAR file with the Mapper and Reducer code resides.

@@ -3,7 +3,6 @@ package org.wikimedia.west1.hoaxes;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.conf.Configured;
 import org.apache.hadoop.fs.Path;
-import org.apache.hadoop.io.NullWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.mapreduce.Reducer;
@@ -43,9 +42,9 @@ public class HoaxLogExtraction extends Configured implements Tool {
 		job.setJarByClass(getClass());
 		job.setJobName(getClass().getName());
 
-		job.setMapOutputKeyClass(NullWritable.class);
+		job.setMapOutputKeyClass(Text.class);
 		job.setMapOutputValueClass(Text.class);
-		job.setOutputKeyClass(NullWritable.class);
+		job.setOutputKeyClass(Text.class);
 		job.setOutputValueClass(Text.class);
 
     job.setMapperClass(HoaxLogExtractorMapper.class);
