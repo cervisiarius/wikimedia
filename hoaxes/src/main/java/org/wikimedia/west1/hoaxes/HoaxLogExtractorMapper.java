@@ -12,6 +12,7 @@ import java.util.regex.Pattern;
 
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.hadoop.io.LongWritable;
+import org.apache.hadoop.io.NullWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Mapper;
 import org.json.JSONException;
@@ -20,7 +21,7 @@ import org.json.JSONObject;
 import parquet.example.data.Group;
 import ua_parser.Parser;
 
-public class HoaxLogExtractorMapper extends Mapper<LongWritable, Group, Text, Text> {
+public class HoaxLogExtractorMapper extends Mapper<LongWritable, Group, NullWritable, Text> {
 
 	// JSON field names.
 	private static final String JSON_IP = "ip";
@@ -165,7 +166,8 @@ public class HoaxLogExtractorMapper extends Mapper<LongWritable, Group, Text, Te
 				context.getCounter(HADOOP_COUNTERS.MAP_GOOD_TITLE_IN_REFERER).increment(1);
 			}
 			// Only if all those filters were passed do we output the row.
-			context.write(new Text(makeKey(json)), new Text(json.toString()));
+			json.put("uid", makeKey(json));
+			context.write(NullWritable.get(), new Text(json.toString()));
 			context.getCounter(HADOOP_COUNTERS.MAP_OK_REQUEST).increment(1);
 		} catch (JSONException e) {
 			context.getCounter(HADOOP_COUNTERS.MAP_EXCEPTION).increment(1);
