@@ -24,7 +24,7 @@ export HADOOP_CLASSPATH=$HADOOP_CLASSPATH:$THRIFTJAR
 export LIBJARS=$THRIFTJAR
 
 echo "Running hadoop job"
-hadoop jar $TARGET_DIR/TreeExtractor-0.0.1-SNAPSHOT-jar-with-dependencies.jar \
+hadoop jar $TARGET_DIR/HoaxLogExtractor-0.0.1-SNAPSHOT-jar-with-dependencies.jar \
     -D            mapreduce.output.fileoutputformat.compress=false \
     -D            mapreduce.task.timeout=6000000 \
     -D            org.wikimedia.west1.traces.input=$IN_DIR \
