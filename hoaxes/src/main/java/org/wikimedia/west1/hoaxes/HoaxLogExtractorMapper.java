@@ -9,6 +9,7 @@ import java.util.Scanner;
 import java.util.Set;
 import java.util.regex.Pattern;
 
+import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Mapper;
@@ -26,7 +27,6 @@ public class HoaxLogExtractorMapper extends Mapper<LongWritable, Group, Text, Te
 	private static final String JSON_UA = "user_agent";
 	private static final String JSON_HTTP_STATUS = "http_status";
 	private static final String JSON_REFERER = "referer";
-	private static final String JSON_URI_QUERY = "uri_query";
 	private static final String JSON_URI_PATH = "uri_path";
 	private static final String JSON_URI_HOST = "uri_host";
 	private static final String JSON_ACCEPT_LANG = "accept_language";
@@ -37,10 +37,10 @@ public class HoaxLogExtractorMapper extends Mapper<LongWritable, Group, Text, Te
 	    .compile(".*([Bb]ot|[Ss]pider|WordPress|AppEngine|AppleDictionaryService|Python-urllib|python-requests|Google-HTTP-Java-Client|[Ff]acebook|[Yy]ahoo|RockPeaks).*|Java/1\\..*|curl.*|PHP/.*|-|");
 
 	public static final String[] INPUT_FIELDS = { JSON_DT, JSON_IP, JSON_HTTP_STATUS, JSON_URI_HOST,
-	    JSON_URI_PATH, JSON_URI_QUERY, JSON_REFERER, JSON_XFF, JSON_UA, JSON_ACCEPT_LANG };
+	    JSON_URI_PATH, JSON_REFERER, JSON_XFF, JSON_UA, JSON_ACCEPT_LANG };
 
 	private static enum HADOOP_COUNTERS {
-		MAP_SKIPPED_BAD_TITLE, MAP_SKIPPED_BAD_HOST, MAP_SKIPPED_BAD_PATH, MAP_SKIPPED_SPECIAL_PAGE, MAP_SKIPPED_BOT, MAP_SKIPPED_BAD_HTTP_STATUS, MAP_OK_REQUEST, MAP_EXCEPTION
+		MAP_SKIPPED_BAD_TITLE, MAP_SKIPPED_BAD_HOST, MAP_SKIPPED_BAD_PATH, MAP_SKIPPED_SPECIAL_PAGE, MAP_SKIPPED_BOT, MAP_SKIPPED_BAD_HTTP_STATUS, MAP_OK_REQUEST, MAP_EXCEPTION, MAP_GOOD_TITLE_IN_REFERER, MAP_GOOD_TITLE_IN_URL
 	}
 
 	// A parser for determining whether requests come from a bot.
@@ -78,8 +78,7 @@ public class HoaxLogExtractorMapper extends Mapper<LongWritable, Group, Text, Te
 		// If x_forwarded_for contains an IP address, use that address, otherwise use the address from
 		// from the ip field.
 		String ipForKey = (xff == null) ? ip : xff;
-		// Just in case, replace tabs, so we don't mess with the key/value split.
-		return String.format("%s###%s###%s", ipForKey, ua, acceptLang).replace('\t', ' ');
+		return DigestUtils.md5Hex(String.format("%s###%s###%s", ipForKey, ua, acceptLang));
 	}
 
 	// Extract the last IP address from the x_forwarded_for string. If the result doesn't look like
@@ -133,16 +132,24 @@ public class HoaxLogExtractorMapper extends Mapper<LongWritable, Group, Text, Te
 				context.getCounter(HADOOP_COUNTERS.MAP_SKIPPED_BAD_HTTP_STATUS).increment(1);
 				return;
 			}
+			boolean goodTitleInUrl = titles.contains(json.getString(JSON_URI_PATH).substring(6));
 			boolean goodTitleInReferer = false;
 			if (json.getString(JSON_REFERER).startsWith("http://en.wikipedia.org/wiki/")
 			    || json.getString(JSON_REFERER).startsWith("https://en.wikipedia.org/wiki/")) {
 				String[] refererPrefixAndTitle = json.getString(JSON_REFERER).split("\\/wiki\\/", 2);
 				goodTitleInReferer = titles.contains(refererPrefixAndTitle[1]);
 			}
-			String title = json.getString(JSON_URI_PATH).substring(6);
-			if (!titles.contains(title) && !goodTitleInReferer) {
+			if (!goodTitleInUrl && !goodTitleInReferer) {
 				context.getCounter(HADOOP_COUNTERS.MAP_SKIPPED_BAD_TITLE).increment(1);
 				return;
+			}
+			if (goodTitleInUrl) {
+				json.put("hoax_in_url", true);
+				context.getCounter(HADOOP_COUNTERS.MAP_GOOD_TITLE_IN_URL).increment(1);
+			}
+			if (goodTitleInReferer) {
+				json.put("hoax_in_referer", true);
+				context.getCounter(HADOOP_COUNTERS.MAP_GOOD_TITLE_IN_REFERER).increment(1);
 			}
 			// Only if all those filters were passed do we output the row.
 			context.write(new Text(makeKey(json)), new Text(json.toString()));
