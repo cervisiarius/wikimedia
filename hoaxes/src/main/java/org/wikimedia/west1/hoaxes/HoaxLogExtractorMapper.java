@@ -4,6 +4,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintStream;
+import java.net.URLDecoder;
 import java.util.HashSet;
 import java.util.Scanner;
 import java.util.Set;
@@ -106,6 +107,14 @@ public class HoaxLogExtractorMapper extends Mapper<LongWritable, Group, Text, Te
 		return json;
 	}
 
+  protected static final String decode(String s) {
+    try {
+      return URLDecoder.decode(s, "UTF-8");
+    } catch (Exception e) {
+      return s;
+    }
+  }
+
 	@Override
 	public void map(LongWritable key, Group value, Context context) throws IOException,
 	    InterruptedException {
@@ -132,23 +141,27 @@ public class HoaxLogExtractorMapper extends Mapper<LongWritable, Group, Text, Te
 				context.getCounter(HADOOP_COUNTERS.MAP_SKIPPED_BAD_HTTP_STATUS).increment(1);
 				return;
 			}
-			boolean goodTitleInUrl = titles.contains(json.getString(JSON_URI_PATH).substring(6));
+			String titleInUrl = decode(json.getString(JSON_URI_PATH).substring(6));
+			String titleInReferer = null;
+			boolean goodTitleInUrl = titles.contains(titleInUrl);
 			boolean goodTitleInReferer = false;
 			if (json.getString(JSON_REFERER).startsWith("http://en.wikipedia.org/wiki/")
 			    || json.getString(JSON_REFERER).startsWith("https://en.wikipedia.org/wiki/")) {
 				String[] refererPrefixAndTitle = json.getString(JSON_REFERER).split("\\/wiki\\/", 2);
-				goodTitleInReferer = titles.contains(refererPrefixAndTitle[1]);
+				String[] titleAndAnchor = refererPrefixAndTitle[1].split("#");
+				titleInReferer = decode(titleAndAnchor[0]);
+				goodTitleInReferer = titles.contains(titleInReferer);
 			}
 			if (!goodTitleInUrl && !goodTitleInReferer) {
 				context.getCounter(HADOOP_COUNTERS.MAP_SKIPPED_BAD_TITLE).increment(1);
 				return;
 			}
 			if (goodTitleInUrl) {
-				json.put("hoax_in_url", true);
+				json.put("hoax_in_url", titleInUrl);
 				context.getCounter(HADOOP_COUNTERS.MAP_GOOD_TITLE_IN_URL).increment(1);
 			}
 			if (goodTitleInReferer) {
-				json.put("hoax_in_referer", true);
+				json.put("hoax_in_referer", titleInReferer);
 				context.getCounter(HADOOP_COUNTERS.MAP_GOOD_TITLE_IN_REFERER).increment(1);
 			}
 			// Only if all those filters were passed do we output the row.
