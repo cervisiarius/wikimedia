@@ -107,13 +107,13 @@ public class HoaxLogExtractorMapper extends Mapper<LongWritable, Group, Text, Te
 		return json;
 	}
 
-  protected static final String decode(String s) {
-    try {
-      return URLDecoder.decode(s, "UTF-8");
-    } catch (Exception e) {
-      return s;
-    }
-  }
+	protected static final String decode(String s) {
+		try {
+			return URLDecoder.decode(s, "UTF-8");
+		} catch (Exception e) {
+			return s;
+		}
+	}
 
 	@Override
 	public void map(LongWritable key, Group value, Context context) throws IOException,
@@ -147,10 +147,13 @@ public class HoaxLogExtractorMapper extends Mapper<LongWritable, Group, Text, Te
 			boolean goodTitleInReferer = false;
 			if (json.getString(JSON_REFERER).startsWith("http://en.wikipedia.org/wiki/")
 			    || json.getString(JSON_REFERER).startsWith("https://en.wikipedia.org/wiki/")) {
-				String[] refererPrefixAndTitle = json.getString(JSON_REFERER).split("\\/wiki\\/", 2);
-				String[] titleAndAnchor = refererPrefixAndTitle[1].split("#");
-				titleInReferer = decode(titleAndAnchor[0]);
-				goodTitleInReferer = titles.contains(titleInReferer);
+				try {
+					String[] refererPrefixAndTitle = json.getString(JSON_REFERER).split("\\/wiki\\/", 2);
+					String[] titleAndAnchor = refererPrefixAndTitle[1].split("#");
+					titleInReferer = decode(titleAndAnchor[0]);
+					goodTitleInReferer = titles.contains(titleInReferer);
+				} catch (ArrayIndexOutOfBoundsException e) {
+				}
 			}
 			if (!goodTitleInUrl && !goodTitleInReferer) {
 				context.getCounter(HADOOP_COUNTERS.MAP_SKIPPED_BAD_TITLE).increment(1);
