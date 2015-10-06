@@ -11,6 +11,7 @@ if __name__ == '__main__':
     'article',
     'referer',
     'referer_domain',
+    'referer_article',
     'is_hoax_article',
     'is_hoax_referer',
     'date',
