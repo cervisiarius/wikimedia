@@ -1,4 +1,4 @@
-import json, sys, urllib
+import json, sys, urllib, codecs
 from urlparse import urlparse
 
 # We want to print unicode.
