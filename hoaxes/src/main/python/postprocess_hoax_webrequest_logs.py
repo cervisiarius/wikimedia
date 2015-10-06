@@ -20,7 +20,7 @@ if __name__ == '__main__':
     ref_domain = urlparse(pv['referer']).netloc
     if ref_domain.startswith('www.'): ref_domain = ref_domain[4:]
     date = pv['dt'].split('T')[0]
-    art = urllib.unquote(pv['uri_path'].split('/wiki/')[1])#.decode('utf8')
+    art = urllib.unquote(pv['uri_path'].split('/wiki/')[1]).decode('utf8')
     print '\t'.join([
       art
       , pv['referer']
