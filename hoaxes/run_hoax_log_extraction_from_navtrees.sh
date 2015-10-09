@@ -17,6 +17,8 @@ hadoop jar /usr/lib/hadoop-mapreduce/hadoop-streaming.jar \
     -file         $HOME/wikimedia/trunk/hoaxes/src/main/python/detect_hoaxes_in_navtrees_mapper.py \
     -file         $HOME/wikimedia/trunk/hoaxes/data/hoax_titles.txt \
     -mapper       "/usr/bin/python detect_hoaxes_in_navtrees_mapper.py" \
-    -reducer      "/usr/bin/sort -t \$'\\t' -k8,8 -k7,7" \
+    -reducer      "/bin/cat" \
     -numReduceTasks 10
 2>&1 | tee $LOG_DIR/hoax_log_extraction_from_navtrees_month=$MONTH\_`date +%Y%m%dT%H%M%S`.log
+
+#    -reducer      "/usr/bin/sort -t \$'\\t' -k8,8 -k7,7" \
