@@ -47,5 +47,8 @@ def bfs(root):
 if __name__ == '__main__':
 
   for line in sys.stdin:
-    tree = json.loads(line)
-    bfs(tree)
+    try:
+      tree = json.loads(line)
+      bfs(tree)
+    except:
+      print line + u'#########################################'
