@@ -52,3 +52,4 @@ if __name__ == '__main__':
       bfs(tree)
     except:
       print line + u'#########################################'
+      break
