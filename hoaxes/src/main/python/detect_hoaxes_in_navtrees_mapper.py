@@ -5,7 +5,7 @@ from urlparse import urlparse
 sys.stdout = codecs.getwriter('utf8')(sys.stdout)
 sys.stdin = codecs.getreader('utf8')(sys.stdin)
 
-with open('hoax_titles___.txt') as f:
+with open('hoax_titles.txt') as f:
   hoaxes = set([l.strip() for l in f.readlines()])
 
 def bfs(root):
