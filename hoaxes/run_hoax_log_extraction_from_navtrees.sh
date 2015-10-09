@@ -12,6 +12,7 @@ LOG_DIR=$HOME/wikimedia/trunk/data/log
 
 echo "Running hadoop job"
 hadoop jar /usr/lib/hadoop-mapreduce/hadoop-streaming.jar \
+    -D            io.compression.codecs=org.apache.hadoop.io.compress.SnappyCodec \
     -input        $IN_DIR \
     -output       $OUT_DIR \
     -file         $HOME/wikimedia/trunk/hoaxes/src/main/python/detect_hoaxes_in_navtrees_mapper.py \
