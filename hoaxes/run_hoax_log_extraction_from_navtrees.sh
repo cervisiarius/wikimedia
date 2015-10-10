@@ -6,7 +6,7 @@
 # The part of the server logs you want to process.
 IN_DIR=/user/ashwinpp/navigation_trees_WITH-SEARCH/month=*/en/*
 # The output directory.
-OUT_DIR=/user/west1/hoax_webrequest_logs_from_navtrees/month=$MONTH
+OUT_DIR=/user/west1/hoax_webrequest_logs_from_navtrees
 # Logs are written here.
 LOG_DIR=$HOME/wikimedia/trunk/data/log
 
