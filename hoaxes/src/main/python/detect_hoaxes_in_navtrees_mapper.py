@@ -51,4 +51,4 @@ if __name__ == '__main__':
       tree = json.loads(line)
       bfs(tree)
     except:
-      print line + u'###ERROR###'
+      pass
