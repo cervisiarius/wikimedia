@@ -11,8 +11,8 @@ SET mapreduce.output.fileoutputformat.compress false;
 ---------------------------------------------------------------------------------------------------
 
 -- Load the pagecount data.
---Rev = LOAD '/user/west1/revision_history/en' USING PigStorage('\t')
-Rev = LOAD '/tmp/revision_history.tsv' USING PigStorage('\t')
+Rev = LOAD '/user/west1/revision_history/en' USING PigStorage('\t')
+--Rev = LOAD '/tmp/revision_history.tsv' USING PigStorage('\t')
 	AS (rev_id:chararray, page_id:int, text_id:int, user_id:int, user:chararray, timestamp:chararray,
         minor:chararray, deleted:chararray, length:int, parent_id:int, comment:chararray);
 
@@ -28,5 +28,5 @@ Grouped = FOREACH Grouped GENERATE
     MIN(Rev.page_id) AS page_id,
     MIN(Rev.time_rev) AS time_rev;
 
---STORE Grouped INTO '/user/west1/enwiki_first_revision_per_page';
-STORE Grouped INTO '/tmp/enwiki_first_revision_per_page';
+STORE Grouped INTO '/user/west1/enwiki_first_revision_per_page';
+--STORE Grouped INTO '/tmp/enwiki_first_revision_per_page';
