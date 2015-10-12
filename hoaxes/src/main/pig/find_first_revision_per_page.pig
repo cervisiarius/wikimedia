@@ -26,7 +26,7 @@ Rev = FOREACH Rev GENERATE
 Grouped = GROUP Rev BY page_id PARALLEL $PARALLEL;
 Grouped = FOREACH Grouped GENERATE
     MIN(Rev.page_id) AS page_id,
-    MIN(time_rev) AS time_rev;
+    MIN(Rev.time_rev) AS time_rev;
 
 --STORE Grouped INTO '/user/west1/enwiki_first_revision_per_page';
 STORE Grouped INTO '/tmp/enwiki_first_revision_per_page';
