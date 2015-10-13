@@ -11,8 +11,8 @@ SET mapreduce.output.fileoutputformat.compress false;
 ---------------------------------------------------------------------------------------------------
 
 -- Load the revision data.
---Rev = LOAD '/user/west1/enwiki_revisions_with_page_titles' USING PigStorage('\t')
-Rev = LOAD '/tmp/enwiki_revisions_with_page_titles.tsv' USING PigStorage('\t')
+Rev = LOAD '/user/west1/enwiki_metadata/enwiki_revisions_with_page_titles.tsv' USING PigStorage('\t')
+--Rev = LOAD '/tmp/enwiki_revisions_with_page_titles.tsv' USING PigStorage('\t')
 	AS (rev_id:long, page_id:int, page_title:chararray, user_id:int, user:chararray, timestamp:chararray,
         length:int, parent_id:int);
 
@@ -20,7 +20,7 @@ Rev = LOAD '/tmp/enwiki_revisions_with_page_titles.tsv' USING PigStorage('\t')
 Rev = FOREACH Rev GENERATE
     rev_id,
     page_id,
-    page_title,
+    user,
     timestamp;
 
 
@@ -28,8 +28,8 @@ Rev = FOREACH Rev GENERATE
 -- List of relevant revids
 ---------------------------------------------------------------------------------------------------
 
---RevId = LOAD '/user/west1/srijans_revids' USING PigStorage('\t')
-RevId = LOAD '/tmp/srijans_revids.tsv' USING PigStorage('\t')
+RevId = LOAD '/user/west1/hoaxes/srijans_revids.tsv' USING PigStorage('\t')
+--RevId = LOAD '/tmp/srijans_revids.tsv' USING PigStorage('\t')
     AS (rev_id:long);
 
 
@@ -42,7 +42,7 @@ Joined = JOIN Rev BY rev_id, RevId BY rev_id PARALLEL $PARALLEL;
 Joined = FOREACH Joined GENERATE 
     Rev::rev_id AS rev_id,
     Rev::page_id AS page_id,
-    Rev::page_title AS page_title,
+    Rev::user AS user,
     Rev::timestamp AS timestamp;
 
-STORE Joined INTO '/user/west1/srijans_revids_with_pageids_and_timestamps';
+STORE Joined INTO '/user/west1/hoaxes/srijans_revids_with_pageids_and_timestamps';
