@@ -1,4 +1,4 @@
-/*                                                                                               
+/*
 pig \
 -param PARALLEL=10 \
 add_page_title_to_revision_history.pig
