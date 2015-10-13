@@ -1,12 +1,15 @@
 #!/bin/bash
 
-# Modify these parameters.
-#MONTH=1
+# Decide whether you want to extract pageviews of hoaxes or of control nonhoaxes.
+# IMPORTANT: You need to make sure that $HOME/wikimedia/trunk/hoaxes/data/titles.txt
+# is linked to the correct list of article titles (hoaxes or nonhoaxes)!
+# Hoaxes.
+#OUT_DIR=/user/west1/hoax_webrequest_logs_from_navtrees
+# Nonhoaxes.
+OUT_DIR=/user/west1/nonhoax_webrequest_logs_from_navtrees
 
 # The part of the server logs you want to process.
 IN_DIR=/user/ashwinpp/navigation_trees_WITH-SEARCH/month=*/en/*
-# The output directory.
-OUT_DIR=/user/west1/hoax_webrequest_logs_from_navtrees
 # Logs are written here.
 LOG_DIR=$HOME/wikimedia/trunk/data/log
 
@@ -16,8 +19,8 @@ hadoop jar /usr/lib/hadoop-mapreduce/hadoop-streaming.jar \
     -input        $IN_DIR \
     -output       $OUT_DIR \
     -file         $HOME/wikimedia/trunk/hoaxes/src/main/python/detect_hoaxes_in_navtrees_mapper.py \
-    -file         $HOME/wikimedia/trunk/hoaxes/data/hoax_titles.txt \
+    -file         $HOME/wikimedia/trunk/hoaxes/data/titles.txt \
     -mapper       "/usr/bin/python detect_hoaxes_in_navtrees_mapper.py" \
     -reducer      "/bin/cat" \
     -numReduceTasks 10
-2>&1 | tee $LOG_DIR/hoax_log_extraction_from_navtrees_month=$MONTH\_`date +%Y%m%dT%H%M%S`.log
+2>&1 | tee $LOG_DIR/hoax_log_extraction_from_navtrees_`date +%Y%m%dT%H%M%S`.log
