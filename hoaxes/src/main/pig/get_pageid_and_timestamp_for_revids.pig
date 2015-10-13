@@ -11,7 +11,8 @@ SET mapreduce.output.fileoutputformat.compress false;
 ---------------------------------------------------------------------------------------------------
 
 -- Load the revision data.
-Rev = LOAD '/user/west1/enwiki_revisions_with_page_titles' USING PigStorage('\t')
+--Rev = LOAD '/user/west1/enwiki_revisions_with_page_titles' USING PigStorage('\t')
+Rev = LOAD '/tmp/enwiki_revisions_with_page_titles.tsv' USING PigStorage('\t')
 	AS (rev_id:long, page_id:int, page_title:chararray, user_id:int, user:chararray, timestamp:chararray,
         length:int, parent_id:int);
 
