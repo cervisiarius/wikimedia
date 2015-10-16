@@ -12,6 +12,7 @@ model = MLScorerModel.load(open(
 
 datadir = os.environ['HOME'] + '/wikimedia/trunk/hoaxes/data/speedyDeletionWiki/'
 
+print('\t'.join(['type', 'title', 'Stub', 'B', 'C', 'FA', 'Start', 'GA']))
 for t in ['hoax', 'nonhoax']:
   subdir = 'markup_cleaned/' if t == 'hoax' else 'nonhoax_markup_cleaned/'
   for f in os.listdir(datadir + subdir):
