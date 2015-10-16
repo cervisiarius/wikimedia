@@ -10,10 +10,10 @@ import os
 model = MLScorerModel.load(open(
   "/home/west1/github/wikiclass/models/enwiki.wp10.rf.model", "rb"))
 
-datadir = os.environ['HOME'] + '/wikimedia/trunk/hoaxes/data/'
+datadir = os.environ['HOME'] + '/wikimedia/trunk/hoaxes/data/all_relevant_article_creation_content/'
 
 print('\t'.join(['title', 'Stub', 'B', 'C', 'FA', 'Start', 'GA']))
-for f in os.listdir(datadir + 'all_relevant_article_creation_content'):
+for f in os.listdir(datadir):
   if f.endswith(".txt"):
     with open(datadir + f, 'r') as markup_file:
       markup = markup_file.read()
