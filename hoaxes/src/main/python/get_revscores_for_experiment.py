@@ -5,7 +5,7 @@ from revscoring.scorer_models import MLScorerModel
 import requests
 from collections import Counter
 import time
-import os
+import os, json
       
 model = MLScorerModel.load(open(
   "/home/west1/github/wikiclass/models/enwiki.wp10.rf.model", "rb"))
@@ -17,7 +17,9 @@ for f in os.listdir(datadir + 'nonhoax_markup_cleaned/'):
     print(f)
     with open(datadir + 'nonhoax_markup_cleaned/' + f, 'r') as markup_file:
       markup = markup_file.read()
-      print(wikiclass.score(model, markup))
-    out.close()
+      obj = json.loads(wikiclass.score(model, markup))
+      print('{}\t{}\t{}\t{}\t{}\t{}' % obj['probability']['Stub'],
+        obj['probability']['B'], obj['probability']['C'], obj['probability']['FA'],
+        obj['probability']['Start'], obj['probability']['GA'])
   else:
     continue
