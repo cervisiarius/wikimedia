@@ -17,7 +17,7 @@ for f in os.listdir(datadir + 'nonhoax_markup_cleaned/'):
     print(f)
     with open(datadir + 'nonhoax_markup_cleaned/' + f, 'r') as markup_file:
       markup = markup_file.read()
-      obj = json.loads(wikiclass.score(model, markup))
+      obj = wikiclass.score(model, markup)
       print('{}\t{}\t{}\t{}\t{}\t{}' % obj['probability']['Stub'],
         obj['probability']['B'], obj['probability']['C'], obj['probability']['FA'],
         obj['probability']['Start'], obj['probability']['GA'])
