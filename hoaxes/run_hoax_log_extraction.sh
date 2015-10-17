@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Modify these parameters.
-MONTH=9
+MONTH=10
 
 # The part of the server logs you want to process.
 IN_DIR=/wmf/data/wmf/webrequest/webrequest_source=text/year=2015/month=$MONTH/*/*/*
