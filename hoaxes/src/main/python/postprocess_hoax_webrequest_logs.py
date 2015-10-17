@@ -14,6 +14,8 @@ if __name__ == '__main__':
     'referer_article',
     'is_hoax_article',
     'is_hoax_referer',
+    'http_status',
+    'is_bot',
     'date',
     'uid'])
   for line in sys.stdin:
@@ -35,6 +37,8 @@ if __name__ == '__main__':
       , ref_art
       , '1' if 'hoax_in_url' in pv.keys() else '0'
       , '1' if 'hoax_in_referer' in pv.keys() else '0'
+      , pv['http_status'],
+      , '1' if 'is_bot' in pv.keys() else '0'
       , date
       , pv['uid']
       ])
