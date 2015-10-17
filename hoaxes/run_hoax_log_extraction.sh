@@ -1,13 +1,11 @@
 #!/bin/bash
 
 # Modify these parameters.
-MONTH=10
-
 # The part of the server logs you want to process.
-IN_DIR=/wmf/data/wmf/webrequest/webrequest_source=text/year=2015/month=$MONTH/*/*/*
+IN_DIR=/wmf/data/wmf/webrequest/webrequest_source=text/year=2015/month=*[09]/*/*/*
 #IN_DIR=/wmf/data/wmf/webrequest/webrequest_source=text/year=2015/month=$MONTH/day=1/hour=3/*
 # The output directory.
-OUT_DIR=/user/west1/hoax_webrequest_logs_WITH-BOTS-AND-404/month=$MONTH
+OUT_DIR=/user/west1/hoax_webrequest_logs_WITH-BOTS-AND-404/month=9-10
 # This is where the JAR file with the Mapper and Reducer code resides.
 TARGET_DIR=$HOME/wikimedia/trunk/hoaxes/target
 # Logs are written here.
