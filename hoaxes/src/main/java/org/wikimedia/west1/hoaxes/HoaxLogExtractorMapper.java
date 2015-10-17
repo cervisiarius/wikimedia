@@ -41,7 +41,7 @@ public class HoaxLogExtractorMapper extends Mapper<LongWritable, Group, Text, Te
 	    JSON_URI_PATH, JSON_REFERER, JSON_XFF, JSON_UA, JSON_ACCEPT_LANG };
 
 	private static enum HADOOP_COUNTERS {
-		MAP_SKIPPED_BAD_TITLE, MAP_SKIPPED_BAD_HOST, MAP_SKIPPED_BAD_PATH, MAP_SKIPPED_SPECIAL_PAGE, MAP_SKIPPED_BOT, MAP_SKIPPED_BAD_HTTP_STATUS, MAP_OK_REQUEST, MAP_EXCEPTION, MAP_GOOD_TITLE_IN_REFERER, MAP_GOOD_TITLE_IN_URL
+		MAP_SKIPPED_BAD_TITLE, MAP_SKIPPED_BAD_HOST, MAP_SKIPPED_BAD_PATH, MAP_SKIPPED_SPECIAL_PAGE, MAP_BOT, MAP_SKIPPED_BAD_HTTP_STATUS, MAP_OK_REQUEST, MAP_EXCEPTION, MAP_GOOD_TITLE_IN_REFERER, MAP_GOOD_TITLE_IN_URL
 	}
 
 	// A parser for determining whether requests come from a bot.
@@ -130,16 +130,12 @@ public class HoaxLogExtractorMapper extends Mapper<LongWritable, Group, Text, Te
 				context.getCounter(HADOOP_COUNTERS.MAP_SKIPPED_BAD_PATH).increment(1);
 				return;
 			}
-			// It can't be from a bot.
+			// NB: We don't filter on HTTP status anymore! We want to count 404 as well!!!
+			// Mark it as a bot -- but don't remove it! Bots might be our most high-recall indicator of
+			// backlinks!
 			if (isBot(json.getString(JSON_UA))) {
-				context.getCounter(HADOOP_COUNTERS.MAP_SKIPPED_BOT).increment(1);
-				return;
-			}
-			// We only accept HTTP statuses 200 (OK), 304 (Not Modified).
-			if (!json.getString(JSON_HTTP_STATUS).equals("200")
-			    && !json.getString(JSON_HTTP_STATUS).equals("304")) {
-				context.getCounter(HADOOP_COUNTERS.MAP_SKIPPED_BAD_HTTP_STATUS).increment(1);
-				return;
+				json.put("is_bot", true);
+				context.getCounter(HADOOP_COUNTERS.MAP_BOT).increment(1);
 			}
 			String titleInUrl = decode(json.getString(JSON_URI_PATH).substring(6));
 			String titleInReferer = null;
