@@ -31,6 +31,7 @@ def dfs(root, path_to_root):
         p = path_to_root + [root['title']]
       else:
         p = path_to_root
+      # The recursive call.
       tuples = tuples + dfs(ch, p)
   return tuples
 
