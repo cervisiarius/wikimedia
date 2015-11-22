@@ -40,4 +40,4 @@ WithPosMT = FOREACH WithPosMT GENERATE
   WithPosM::pos_list_m AS pos_list_m,
   Pos::pos_list AS pos_list_t;
 
-STORE WithPosM INTO '/tmp/with_pos';
+STORE WithPosMT INTO '/tmp/with_pos';
