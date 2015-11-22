@@ -41,21 +41,20 @@ if __name__ == '__main__':
   for line in sys.stdin:
     try:
       obj = json.loads(line)
+      tuples = dfs(obj, [])
+      lengths = dict()
+      # Find the minimum length for each (s,m,t) triple:
+      for t in tuples:
+        if t[1:] not in lengths or t[0] < lengths[t[1:]]:
+          lengths[t[1:]] = t[0]
+      # Consider only min lengths, and cast to set to discard duplicates.
+      tuples = sorted(set([(lengths[t[1:]], t[1], t[2], t[3]) for t in tuples]))
+      if len(tuples) > 0:
+        tuples = [(obj['id'], str(t[0]), t[1], t[2], t[3]) for t in tuples]
+        print '\n'.join(['\t'.join(t) for t in tuples])
     except ValueError:
-      print line
-      break
-    tuples = dfs(obj, [])
-    lengths = dict()
-    # Find the minimum length for each (s,m,t) triple:
-    for t in tuples:
-      if t[1:] not in lengths or t[0] < lengths[t[1:]]:
-        lengths[t[1:]] = t[0]
-    # Consider only min lengths, and cast to set to discard duplicates.
-    tuples = sorted(set([(lengths[t[1:]], t[1], t[2], t[3]) for t in tuples]))
-    if len(tuples) > 0:
-      tuples = [(obj['id'], str(t[0]), t[1], t[2], t[3]) for t in tuples]
-      print '\n'.join(['\t'.join(t) for t in tuples])
-
+      # Some lines contain corrupted JSON (unterminated lines).
+      pass
 
   # j = """{
   # "title": "Battlefield_Earth_(film)",
