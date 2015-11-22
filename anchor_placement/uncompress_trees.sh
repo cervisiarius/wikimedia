@@ -3,7 +3,7 @@
 MONTH=1
 LANG=en
 
-IN_FILE=/user/ashwinpp/navigation_trees_WITH-SEARCH/month=$MONTH/$LANG/part-00099.snappy
+IN_FILE=/user/ashwinpp/navigation_trees_WITH-SEARCH/month=$MONTH/$LANG
 OUT_DIR=/user/west1/navigation_trees_JAN-FEB-MAR_2015/month=$MONTH/$LANG
 
 echo "Running hadoop job"
