@@ -13,9 +13,6 @@ with gzip.open('links_added_in_02-15_FILTERED.tsv.gz') as f:
     tokens = line.strip().split('\t')
     new_links.add((tokens[0], tokens[1]))
 
-for n in new_links:
-  print n
-
 def dfs(root, path_to_root):
   tuples = []
   l = len(path_to_root)

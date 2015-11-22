@@ -1,7 +1,7 @@
 #!/bin/bash
 
-IN_FILE=/user/ashwinpp/navigation_trees_WITH-SEARCH/month=1/en
-#IN_FILE=/user/west1/navigation_trees_JAN-FEB-MAR_2015/month=1/en
+#IN_FILE=/user/ashwinpp/navigation_trees_WITH-SEARCH/month=1/en
+IN_FILE=/user/west1/navigation_trees_JAN-FEB-MAR_2015/month=1/en/part-00999
 OUT_DIR=/user/west1/anchor_placement/new_links_in_old_trees
 
 echo "Running hadoop job"
