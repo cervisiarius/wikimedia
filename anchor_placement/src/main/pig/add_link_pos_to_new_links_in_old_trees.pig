@@ -9,7 +9,7 @@ add_link_pos_to_new_links_in_old_trees.pig
 SET mapreduce.output.fileoutputformat.compress false;
 
 -- Load the new links in old trees.
-Triples = LOAD '/user/west1/anchor_placement/new_links_in_old_trees' USING PigStorage('\t')
+Triples = LOAD '/user/west1/anchor_placement/new_links_in_old_trees.tsv' USING PigStorage('\t')
 --Triples = LOAD '/afs/cs.stanford.edu/u/west1/wikimedia/trunk/data/anchor_placement/new_links_in_old_trees.tsv' USING PigStorage('\t')
   AS (tree_id:chararray, length_st:int, s:chararray, m:chararray, t:chararray);
 
