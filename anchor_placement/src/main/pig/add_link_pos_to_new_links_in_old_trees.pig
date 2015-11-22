@@ -9,13 +9,13 @@ add_link_pos_to_new_links_in_old_trees.pig
 SET mapreduce.output.fileoutputformat.compress false;
 
 -- Load the new links in old trees.
---Triples = LOAD '/user/west1/anchor_placement/new_links_in_old_trees' USING PigStorage('\t')
-Triples = LOAD '/afs/cs.stanford.edu/u/west1/wikimedia/trunk/data/anchor_placement/new_links_in_old_trees.tsv' USING PigStorage('\t')
+Triples = LOAD '/user/west1/anchor_placement/new_links_in_old_trees' USING PigStorage('\t')
+--Triples = LOAD '/afs/cs.stanford.edu/u/west1/wikimedia/trunk/data/anchor_placement/new_links_in_old_trees.tsv' USING PigStorage('\t')
   AS (tree_id:chararray, length_st:int, s:chararray, m:chararray, t:chararray);
 
 -- Load link positions.
---Pos = LOAD '/user/west1/wiki_parsed/link_positions_20150331000000' USING PigStorage('\t')
-Pos = LOAD '/afs/cs.stanford.edu/u/west1/wikimedia/trunk/data/anchor_placement/link_positions_TEST.tsv' USING PigStorage('\t')
+Pos = LOAD '/user/west1/wiki_parsed/link_positions_20150331000000' USING PigStorage('\t')
+--Pos = LOAD '/afs/cs.stanford.edu/u/west1/wikimedia/trunk/data/anchor_placement/link_positions_TEST.tsv' USING PigStorage('\t')
   AS (s:chararray, t:chararray, num_char:int, pos_list:chararray);
 
 -- Add positions of m.
@@ -40,4 +40,5 @@ WithPosMT = FOREACH WithPosMT GENERATE
   WithPosM::pos_list_m AS pos_list_m,
   Pos::pos_list AS pos_list_t;
 
-STORE WithPosMT INTO '/tmp/with_pos';
+STORE WithPosMT INTO '/user/west1/anchor_placement/new_links_in_old_trees_WITH-LINK-POS';
+--STORE WithPosMT INTO '/tmp/with_pos';
