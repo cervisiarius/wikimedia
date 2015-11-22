@@ -39,7 +39,11 @@ def dfs(root, path_to_root):
 if __name__ == '__main__':
 
   for line in sys.stdin:
-    obj = json.loads(line)
+    try:
+      obj = json.loads(line)
+    except ValueError:
+      print line
+      break
     tuples = dfs(obj, [])
     lengths = dict()
     # Find the minimum length for each (s,m,t) triple:
