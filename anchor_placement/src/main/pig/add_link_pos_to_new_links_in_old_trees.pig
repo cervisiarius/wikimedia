@@ -37,6 +37,7 @@ WithPosMT = FOREACH WithPosMT GENERATE
   WithPosM::m AS m,
   WithPosM::t AS t,
   WithPosM::length_st AS length_st,
+  WithPosM::num_char AS num_char,
   WithPosM::pos_list_m AS pos_list_m,
   Pos::pos_list AS pos_list_t;
 
