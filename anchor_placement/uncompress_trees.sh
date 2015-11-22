@@ -12,4 +12,5 @@ hadoop jar /usr/lib/hadoop-mapreduce/hadoop-streaming.jar \
     -input        $IN_FILE \
     -output       $OUT_DIR \
     -mapper       "/bin/cat" \
-    -numReduceTasks 0
+    -reducer      "/bin/cat" \
+    -numReduceTasks 1000
