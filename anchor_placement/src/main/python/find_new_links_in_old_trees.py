@@ -10,10 +10,11 @@ sys.stderr = codecs.getwriter('utf8')(sys.stderr)
 new_links = set()
 with gzip.open('links_added_in_02-15_FILTERED.tsv.gz') as f:
   for line in f:
-    tokens = line.split('\t')
+    tokens = line.strip().split('\t')
     new_links.add((tokens[0], tokens[1]))
 
-#new_links.add(('Main_Page', 'Witchcraft'))
+for n in new_links:
+  print n
 
 def dfs(root, path_to_root):
   tuples = []
@@ -55,19 +56,3 @@ if __name__ == '__main__':
     except ValueError:
       # Some lines contain corrupted JSON (unterminated lines).
       pass
-
-  # j = """{
-  # "title": "Battlefield_Earth_(film)",
-  # "children": [
-  #   {
-  #     "children": [
-  #       {
-  #         "title": "List_of_box_office_bombs"
-  #       }
-  #     ],
-  #     "title": "List_of_films_considered_the_worst"
-  #   }
-  # ]}"""
-  # obj = json.loads(j)
-  # obj['tuples'] = dfs(obj, [])
-  # print json.dumps(obj)
