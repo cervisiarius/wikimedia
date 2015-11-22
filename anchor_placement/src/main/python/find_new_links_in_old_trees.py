@@ -24,7 +24,7 @@ def dfs(root, path_to_root):
       if 'is_search' not in root:
         s, m, t = path_to_root[i], path_to_root[i+1], root['title']
         # All elements in a triple must be different; also, (s,t) must be a new link.
-        if s != m and s != t and m != t and (s,t) in new_links:
+        if s != m and s != t and m != t: # and (s,t) in new_links:
           tuples = tuples + [(l-i, s, m, t)]
   if 'children' in root:
     for ch in root['children']:
