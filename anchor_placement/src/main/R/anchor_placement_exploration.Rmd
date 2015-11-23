@@ -1,0 +1,211 @@
+---
+title: "Anchor placement"
+author: "Bob West"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+# Research question
+
+In our WSDM'16 paper we show how to use navigation traces to find important missing links.
+We do not discuss, however, how to decide where in the source page to insert those links.
+
+When the source contains appropriate anchor texts for the new link, these anchor texts become the candidate positions for the new link; all that remains to do is to ask a human which anchor text is best-suited.
+
+Things become more interesting when the source contains no anchor text for the new link; here it is far less clear where to insert the link.
+In essence, we have found a topic that is not yet, but should be, mentioned in the source, and the task is not simply to decide which existing anchor text to use, but rather *where* in the page to insert a new anchor text.
+
+Here I try to explore whether it is feasible to use navigation traces for this purpose.
+
+Consider an indirect path from the source $s$ to the target $t$, and consider the page $m$ that follows immediately after $s$ on the path. One or more links to $m$ appear in the source page $s$.
+
+Here is a list of some basic intuitions:
+
+(1) The new link from $s$ to $t$ should appear in the proximity of a link to $m$, since $s$ is connected to $t$ via $m$ on the path (which hints to this being the case also in the user's mind).
+
+(2) The more frequently $m$ is the successor of $s$ on paths to $t$, the more peaked the position distribution should be around $m$.
+
+(3) The shorter the paths from $s$ to $t$ that have $m$ as the immediate successor of $s$, the more peaked the position distribution should be around $m$.
+
+(4) The more frequently $m$ is the successor of $s$ on paths to $t$, the more weight should be given to the proximity of $m$.
+
+In the following, I am empirically validating the above intuitions. I proceed as follows.
+Consider the links $(s,t)$ that were added to Wikipedia in February 2015.
+We compute paths statistics based on the logs from January 2015.
+We determine the positions of the old link $(s,m)$ and the new link $(s,t)$ in $s$ based on the HTML version of $s$ dated March 31, 2015.
+
+Several links to both $m$ and $t$ may appear in $s$.
+We define the distance between $(s,m)$ and $(s,t)$ as the minimum of all pairwise distances.
+Distances are measured in terms of characters in the HTML-tag-stripped plain text of $s$.
+
+The length of paths from $s$ to $t$ via $m$ is summarized by the median.
+
+We also consider only new links $(s,t)$ for which we observed at least 5 indirect paths in January.
+
+# Analysis
+
+```{r, include=FALSE, message=FALSE}
+library(lattice)
+
+.default_par <- par(no.readonly=TRUE)
+
+DATADIR <- sprintf('%s/wikimedia/trunk/data/anchor_placement', Sys.getenv('HOME'))
+
+split_at <- function(str, sep) strsplit(str, sep)[[1]]
+
+new_links <- read.table(pipe(sprintf('gunzip -c %s/new_links_in_old_trees_WITH-LINK-POS.tsv.gz', DATADIR)),
+                        sep='\t', comment.char='', quote='', stringsAsFactors=FALSE,
+                        col.names=c('tree_id', 's', 'm', 't', 'path_length', 'num_char', 'pos_list_m', 'pos_list_t'))
+
+new_links$dist <- apply(new_links, 1, function(r) {
+  pos_m <- as.numeric(split_at(r['pos_list_m'], ','))
+  pos_t <- as.numeric(split_at(r['pos_list_t'], ','))
+  d <- Inf
+  for (m in pos_m) {
+    for (t in pos_t) {
+      d <- min(d, abs(m-t))
+    }
+  }
+  # We add one character to the distance, to avoid d=0, which happens if an anchor text appears
+  # next to an image that has a link.
+  d + 1
+})
+
+dist <- tapply(new_links$dist, paste(new_links$s, new_links$m, new_links$t), unique)
+path_length_mean <- tapply(new_links$path_length, paste(new_links$s, new_links$m, new_links$t), mean)
+path_length_median <- tapply(new_links$path_length, paste(new_links$s, new_links$m, new_links$t), median)
+num_smt <- tapply(new_links$tree_id, paste(new_links$s, new_links$m, new_links$t), length)
+smt_to_st <- sapply(names(num_smt), function(str) paste(split_at(str,' ')[-2], collapse=' '))
+num_st <- tapply(new_links$tree_id, paste(new_links$s, new_links$t), length)[smt_to_st]
+
+aggr <- data.frame(s=sapply(names(num_smt), function(str) split_at(str,' ')[1]),
+                   m=sapply(names(num_smt), function(str) split_at(str,' ')[2]),
+                   t=sapply(names(num_smt), function(str) split_at(str,' ')[3]),
+                   dist=dist,
+                   path_length_mean=path_length_mean,
+                   path_length_median=path_length_median,
+                   num_smt=num_smt,
+                   num_st=num_st,
+                   rel_freq=num_smt/num_st)
+
+# Consider only (s,t) pairs with at least a minimum number of paths.
+a <- aggr[aggr$num_st >= 5,]
+```
+
+First observation:
+The links to $t$ are most likely to appear in the immediate proximity of the links to $m$, as shown by the following histogram.
+
+```{r, include=FALSE, message=FALSE}
+h <- hist(a$dist, breaks='fd', plot=FALSE)
+h <- hist(a$dist, breaks=c(seq(1,1e3,10), h$breaks[h$breaks>1e3]), plot=FALSE)
+plot(h$mids, h$density, log='xy', xlab='Distance between (s,m) and (s,t)', ylab='Density')
+```
+
+Second observation:
+The more frequently $m$ appears as the successor of $s$, the more peaked the distribution is around the position of $(s,m)$.
+For this purpose, we partition the set of all triples $(s,m,t)$ with respect to the relative frequency of $m$ given $s$ and $t$, i.e., $N(s,m,t)/N(s,t)$.
+We consider ten groups defined by the relative-frequency deciles.
+For each group, we draw the CDF of the distance distribution (whereas above we showed the PDF for the unpartitioned data).
+
+Below, the left CDF corresponds to the PDF shown previously.
+In the right panel, there is one curve per relative-frequency decile.
+Clearly, small distances are more likely the more frequent $m$ is.
+(The colors in the legend are in the same order as in the plot, top-down).
+
+```{r, include=FALSE, message=FALSE}
+# CDFs for various relative freqs.
+par(mfrow=c(1,2))
+plot(sort(a$dist), (1:nrow(a))/nrow(a), log='x', type='l', ylim=c(0,1),
+     xlab='Distance d', ylab='Pr[Distance <= d]', main='CDF of distance (all)')
+
+x <- a$dist[floor(10*a$rel_freq)==0]
+plot(sort(x), (1:length(x))/length(x), log='x', type='l', col='white', ylim=c(0,1),
+     xlab='Distance d', ylab='Pr[Distance <= d]', main='CDF of dist. for various m freqs')
+for (f in 0:9) {
+  x <- a$dist[floor(10*a$rel_freq)==f]
+  lines(sort(x), (1:length(x))/length(x), col=f+1)
+}
+legend('topleft', legend=seq(0.9,0,-0.1), col=10:1, lty=1, bty='n')
+par(.default_par)
+```
+
+Third observation:
+The shorter the path from $s$ to $t$ via $m$, the more peaked the distribution is around the position of $(s,m)$.
+
+We stratify the data by path length, and show CDFs for each group, as above.
+
+The effect is less strong than for relative frequency.
+
+```{r, include=FALSE, message=FALSE}
+# CDFs for various path lengths.
+par(mfrow=c(1,2))
+plot(sort(a$dist), (1:nrow(a))/nrow(a), log='x', type='l', ylim=c(0,1),
+     xlab='Distance d', ylab='Pr[Distance <= d]', main='CDF of distance (all)')
+
+x <- a$dist[floor(a$path_length_median)==2]
+plot(sort(x), (1:length(x))/length(x), log='x', type='l', col='white', ylim=c(0,1),
+     xlab='Distance d', ylab='Pr[Distance <= d]', main='CDF of dist. for various path lengths')
+for (l in 2:10) {
+  x <- a$dist[floor(a$path_length_median)==l]
+  lines(sort(x), (1:length(x))/length(x), col=l-1)
+}
+legend('topleft', legend=2:10, col=1:9, lty=1, bty='n')
+par(.default_par)
+```
+
+
+```{r, include=FALSE, message=FALSE}
+tab <- data.frame(rel_freq=cut(a$rel_freq, breaks=seq(0,1,0.1), right=FALSE),
+                  path_length_median=cut(a$path_length_median, breaks=c(2:10,Inf), right=FALSE))
+xtab <- xtabs(~ rel_freq + path_length_median, data=tab)
+rgb.palette <- colorRampPalette(c("white", "red"), space = "rgb")
+levelplot(xtab, main='', xlab='Relative frequency', ylab='Path length', col.regions=rgb.palette(max(xtab)),
+          cuts=100, at=1:max(xtab))
+
+
+#y <- a$dist[a$rel_freq >= 0.1 & a$rel_freq < 0.2]
+y <- a$dist
+h <- hist(y, breaks='fd', plot=FALSE)
+h <- hist(y, breaks=c(seq(1,1e3,10), h$breaks[h$breaks>1e3]), plot=FALSE)
+plot(h$mids, h$density, log='xy', xlim=c(1,5e5), ylim=c(1e-8, 1e-2))
+# Estimate exponential.
+#lambda=1/mean(y)
+#curve(lambda*exp(-lambda*x), add=TRUE, col='red')
+
+# Estimate log-normal.
+m <- mean(log(y))
+s <- sqrt(mean((log(y) - m)^2))
+m; s
+curve(exp(-(log(x)-m)^2/(2*s^2))/(x*s*sqrt(2*pi)), add=TRUE, col='green')
+```
+
+```{r, include=FALSE, message=FALSE}
+# CCDF of path length.
+#plot(sort(a$path_length_median), (1:nrow(a))/nrow(a), log='x', type='l', ylim=c(1e-5,1))
+
+# CCDF of relative frequency.
+#plot(sort(a$rel_freq), rev(1:nrow(a))/nrow(a), log='', type='l', ylim=c(1e-2,1))
+
+# Dist vs. path length.
+# groups_idx_length <- split(1:nrow(a), cut(a$path_length_median, breaks=c(2:10,Inf), right=FALSE))
+# groups_val_length <- lapply(groups_idx_length, function(idx) a$dist[idx])
+# boxplot(groups_val_length, notch=TRUE, names=names(groups_idx_length), outline=FALSE, xlab='Path length', ylab='Dist', ylim=c(100,2e4), log='y')
+
+# Dist vs. rel freq.
+# aa <- a[a$path_length_median < 3,]
+# aa <- a
+# groups_idx_freq <- split(1:nrow(aa), cut(aa$rel_freq, breaks=seq(0,1,0.1), right=FALSE))
+# groups_val_freq <- lapply(groups_idx_freq, function(idx) aa$dist[idx])
+# boxplot(groups_val_freq, notch=TRUE, names=names(groups_idx_freq), outline=FALSE, xlab='Relative frequency', ylab='Dist', ylim=c(50,2e4), log='y')
+
+# Path length vs. rel freq.
+# groups_idx <- split(1:nrow(a), cut(a$rel_freq, breaks=seq(0,1,0.1), right=FALSE))
+# # Using mean here, not median.
+# groups_val <- lapply(groups_idx, function(idx) a$path_length_mean[idx])
+# boxplot(groups_val, notch=TRUE, names=names(groups_idx), outline=FALSE, xlab='Relative frequency', ylab='Path length')
+
+# Rel freq vs. path length.
+# groups_idx <- split(1:nrow(a), cut(a$path_length_median, breaks=c(2:10,Inf), right=FALSE))
+# groups_val <- lapply(groups_idx, function(idx) a$rel_freq[idx])
+# boxplot(groups_val, notch=TRUE, names=names(groups_idx), outline=FALSE, xlab='Path length', ylab='Relative frequency')
+```

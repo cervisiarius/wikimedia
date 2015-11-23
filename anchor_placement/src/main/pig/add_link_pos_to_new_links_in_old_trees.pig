@@ -11,7 +11,7 @@ SET mapreduce.output.fileoutputformat.compress false;
 -- Load the new links in old trees.
 Triples = LOAD '/user/west1/anchor_placement/new_links_in_old_trees.tsv' USING PigStorage('\t')
 --Triples = LOAD '/afs/cs.stanford.edu/u/west1/wikimedia/trunk/data/anchor_placement/new_links_in_old_trees.tsv' USING PigStorage('\t')
-  AS (tree_id:chararray, length_st:int, s:chararray, m:chararray, t:chararray);
+  AS (tree_id:chararray, path_length:int, s:chararray, m:chararray, t:chararray);
 
 -- Load link positions.
 Pos = LOAD '/user/west1/wiki_parsed/link_positions_20150331000000' USING PigStorage('\t')
@@ -25,7 +25,7 @@ WithPosM = FOREACH WithPosM GENERATE
   Triples::s AS s,
   Triples::m AS m,
   Triples::t AS t,
-  Triples::length_st AS length_st,
+  Triples::path_length AS path_length,
   Pos::num_char AS num_char,
   Pos::pos_list AS pos_list_m;
 
@@ -36,7 +36,7 @@ WithPosMT = FOREACH WithPosMT GENERATE
   WithPosM::s AS s,
   WithPosM::m AS m,
   WithPosM::t AS t,
-  WithPosM::length_st AS length_st,
+  WithPosM::path_length AS path_length,
   WithPosM::num_char AS num_char,
   WithPosM::pos_list_m AS pos_list_m,
   Pos::pos_list AS pos_list_t;
