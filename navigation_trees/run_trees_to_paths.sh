@@ -1,10 +1,11 @@
 #!/bin/bash
 
+LANG=en
 MONTH=1
 
 #IN_FILE=/user/ashwinpp/navigation_trees_WITH-SEARCH/month=1/en
-IN_DIR=/user/west1/navigation_trees_JAN-FEB-MAR_2015/month=$MONTH/en
-OUT_DIR=/user/west1/paths_from_trees/month=$MONTH
+IN_DIR=/user/west1/navigation_trees_JAN-FEB-MAR_2015/month=$MONTH/$LANG
+OUT_DIR=/user/west1/paths_from_trees/month=$MONTH/$LANG
 
 echo "Running hadoop job"
 hadoop jar /usr/lib/hadoop-mapreduce/hadoop-streaming.jar \
