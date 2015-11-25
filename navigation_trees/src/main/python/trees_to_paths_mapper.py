@@ -36,8 +36,8 @@ if __name__ == '__main__':
       uid = '_'.join(obj['id'].split('_')[0:2])
       path_strings = ['|'.join(p) for p in dfs(obj, [])]
       # Cast to set to discard duplicates.
-      path_strings = sorted(set(path_strings))
-      # Some trees produce no paths (if the root is a search).
+      # Some paths are empty (if the root is a search); ignore those.
+      path_strings = filter(lambda p: len(p) > 0, set(path_strings))
       if len(path_strings) > 0:
         print '\n'.join(uid + '\t' + p for p in path_strings)
     except ValueError:
