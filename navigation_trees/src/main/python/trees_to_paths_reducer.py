@@ -16,26 +16,26 @@ if __name__ == '__main__':
     line = line.strip()
     # TODO: We should be smarter here: discard path, but still handle uid correctly, if there are too many tabs.
     tokens = line.split('\t')
-    if len(tokens) != 2:
-      sys.stderr.write('@@@@@' + str(len(tokens)) + ': ' + line + '#####\n')
-    try:
-      uid, path = tokens[0:2]
-      if old_uid is not None and uid != old_uid:
-        p_old = ''
-        for p in sorted(paths_for_old_uid, reverse=True):
-          # If the current path is a prefix of the previous one, discard it.
-          # Since paths are sorted in decreasing lexicographical order, this keeps only maximal
-          # paths for the same user.
-          if p_old == p or p_old.startswith(p + '|'):
-            pass
-          else:
-            print '%s\t%s' % (old_uid, p)
-          p_old = p
-        del paths_for_old_uid[:]
-      old_uid = uid
-      paths_for_old_uid.append(path)
-    except ValueError:
-      sys.stderr.write('YYYYY' + line + 'ZZZZZ\n')
+    # if len(tokens) != 2:
+    #   sys.stderr.write('@@@@@' + str(len(tokens)) + ': ' + line + '#####\n')
+    # try:
+    uid, path = tokens[0:2]
+    if old_uid is not None and uid != old_uid:
+      p_old = ''
+      for p in sorted(paths_for_old_uid, reverse=True):
+        # If the current path is a prefix of the previous one, discard it.
+        # Since paths are sorted in decreasing lexicographical order, this keeps only maximal
+        # paths for the same user.
+        if p_old == p or p_old.startswith(p + '|'):
+          pass
+        else:
+          print '%s\t%s' % (old_uid, p)
+        p_old = p
+      del paths_for_old_uid[:]
+    old_uid = uid
+    paths_for_old_uid.append(path)
+    # except ValueError:
+    #   sys.stderr.write('YYYYY' + line + 'ZZZZZ\n')
 
   # Output the last entry.
   p_old = ''
