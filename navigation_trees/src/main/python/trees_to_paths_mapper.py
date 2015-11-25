@@ -15,7 +15,7 @@ def dfs(root, path_to_root):
       # NB: This means that paths may contain transitions that don't correspond to links, e.g.,
       # (A, B, SEARCH, C) will appear as (A, B, C).
       if 'is_search' not in root:
-        p = path_to_root + [root['title']]
+        p = path_to_root + [root['title'].strip()]
       else:
         p = path_to_root
       # The recursive call.
@@ -24,7 +24,7 @@ def dfs(root, path_to_root):
   else:
     # Again, skip nodes representing a search.
     if 'is_search' not in root:
-      return [path_to_root + [root['title']]]
+      return [path_to_root + [root['title'].strip()]]
     else:
       return [path_to_root]
 
