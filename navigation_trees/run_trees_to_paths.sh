@@ -16,4 +16,4 @@ hadoop jar /usr/lib/hadoop-mapreduce/hadoop-streaming.jar \
     -file         $HOME/wikimedia/trunk/navigation_trees/src/main/python/trees_to_paths_reducer.py \
     -mapper       "/usr/bin/python ./trees_to_paths_mapper.py" \
     -reducer      "/usr/bin/python ./trees_to_paths_reducer.py" \
-    -numReduceTasks 10
+    -numReduceTasks 100
