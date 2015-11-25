@@ -17,7 +17,7 @@ if __name__ == '__main__':
     # TODO: We should be smarter here: discard path, but still handle uid correctly, if there are too many tabs.
     tokens = line.split('\t')
     if len(tokens) != 2:
-      sys.stderr.write('@@@@@' + len(tokens) + ': ' + line + '#####\n')
+      sys.stderr.write('@@@@@' + str(len(tokens)) + ': ' + line + '#####\n')
     try:
       uid, path = tokens[0:2]
       if old_uid is not None and uid != old_uid:
