@@ -8,8 +8,9 @@ sys.stdin = codecs.getreader('utf8')(sys.stdin)
 sys.stderr = codecs.getwriter('utf8')(sys.stderr)
 
 # This is to make sure titles have no illegale whitespace, which could screw up the reducer.
+# Also delete control characters.
 def remove_whitespace(s):
-  return re.sub(r'[:cntrl:]', '', re.sub(r'\s', '_', s.strip()))
+  return re.sub(r'[\x00-\x1F\x7F]', '', re.sub(r'\s', '_', s.strip()))
 
 def dfs(root, path_to_root):
   if 'children' in root:
