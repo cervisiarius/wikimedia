@@ -1,0 +1,40 @@
+#!/usr/bin/python
+
+import codecs, sys
+
+# We want to read and write unicode.
+sys.stdout = codecs.getwriter('utf8')(sys.stdout)
+sys.stdin = codecs.getreader('utf8')(sys.stdin)
+sys.stderr = codecs.getwriter('utf8')(sys.stderr)
+
+if __name__ == '__main__':
+
+  old_uid = None
+  paths_for_old_uid = []
+
+  for line in sys.stdin:
+    line = line.strip()
+    uid, path = line.split('\t')
+    if old_uid is not None and uid != old_uid:
+      p_old = ''
+      for p in sorted(paths_for_old_uid, reverse=True):
+        # If the current path is a prefix of the previous one, discard it.
+        # Since paths are sorted in decreasing lexicographical order, this keeps only maximal
+        # paths for the same user.
+        if p_old == p or p_old.startswith(p + '|'):
+          pass
+        else:
+          print '%s\t%s' % (old_uid, p)
+        p_old = p
+      del paths_for_old_uid[:]
+    old_uid = uid
+    paths_for_old_uid.append(path)
+
+  # Output the last entry.
+  p_old = ''
+  for p in sorted(paths_for_old_uid, reverse=True):
+    if p_old == p or p_old.startswith(p + '|'):
+      pass
+    else:
+      print '%s\t%s' % (old_uid, p)
+    p_old = p
