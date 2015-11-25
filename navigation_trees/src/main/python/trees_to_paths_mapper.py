@@ -37,7 +37,9 @@ if __name__ == '__main__':
       path_strings = ['|'.join(p) for p in dfs(obj, [])]
       # Cast to set to discard duplicates.
       path_strings = sorted(set(path_strings))
-      print '\n'.join(uid + '\t' + p for p in path_strings)
+      # Some trees produce no paths (if the root is a search).
+      if len(path_strings) > 0:
+        print '\n'.join(uid + '\t' + p for p in path_strings)
     except ValueError:
       # Some lines contain corrupted JSON (unterminated lines).
       pass
