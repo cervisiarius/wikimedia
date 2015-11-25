@@ -1,8 +1,10 @@
 #!/bin/bash
 
+MONTH=1
+
 #IN_FILE=/user/ashwinpp/navigation_trees_WITH-SEARCH/month=1/en
-IN_FILE=/user/west1/navigation_trees_JAN-FEB-MAR_2015/month=1/en
-OUT_DIR=/user/west1/paths_from_trees
+IN_FILE=/user/west1/navigation_trees_JAN-FEB-MAR_2015/month=$MONTH/en
+OUT_DIR=/user/west1/paths_from_trees/month=$MONTH
 
 echo "Running hadoop job"
 hadoop jar /usr/lib/hadoop-mapreduce/hadoop-streaming.jar \
