@@ -30,9 +30,9 @@ if __name__ == '__main__':
           p_old = p
         del paths_for_old_uid[:]
       old_uid = uid
+      paths_for_old_uid.append(path)
     except ValueError:
       sys.stderr.write('@@@@@' + line + '#####\n')
-    paths_for_old_uid.append(path)
 
   # Output the last entry.
   p_old = ''
