@@ -1,4 +1,5 @@
 library(boot)
+library(xtable)
 
 .default_par <- par(no.readonly=TRUE)
 
@@ -9,8 +10,6 @@ DATADIR <- sprintf('%s/wikimedia/trunk/data/simtk/', Sys.getenv('HOME'))
 PLOTDIR <- sprintf('%s/snap-papers/2015/west1-ashwinp-wmf/FIG/simtk/', Sys.getenv('HOME'))
 
 #### Results table
-
-################### TODO: bootstrap CIs
 
 pred_all <- read.table(sprintf('%s/p_eval_masterfile.tsv', DATADIR), header=TRUE, quote='', sep='\t')
 
@@ -102,7 +101,8 @@ add_argmax_legend <- function() {
 }
 
 add_standard_legend <- function(pos='bottomright') {
-  legend(pos, legend=c('Coins (link-cent.)', 'Coins (page-cent.)', 'Dice'),
+  legend(pos,
+         legend=c(expression(italic(f[1]), italic(f[2]), italic(f[3]))),
          col=c(col$coins_link, col$coins_page, col$dice), lty=c(2,1,1), bty='n')
 }
 
@@ -168,30 +168,29 @@ plot(Ks, tgt_per_src_coinspage, type='l',  xlab='', ylab='', bty='n', col=col$co
      main='Solution concentration', ylim=c(1,5), panel.first=abline(v=num_src, col='gray', lty=3))
 lines(Ks, tgt_per_src_coinslink, col=col$coins_link, lty=2)
 lines(Ks, tgt_per_src_dice, col=col$dice)
-mtext(expression(paste('Size of solution ', italic(A))), side=1, line=2.4)
-mtext(expression(paste('Targets per source')), side=2, line=2.4)
+mtext(expression(paste('Size ', italic(K), ' of solution ', italic(A))), side=1, line=2.4)
+mtext(expression(paste('Targets per source page in ', italic(A))), side=2, line=2.4)
 add_standard_legend('topleft')
 if (save_plots) dev.off()
-
-
-
-# The following aren't used in the paper.
 
 # Overlap of objectives
 jaccard <- function(s1, s2) length(intersect(s1, s2)) / length(union(s1, s2))
 Ks <- seq(1,K,1)
 jacc_dice_coinslink <- sapply(Ks, function(i) jaccard(rownames(dice)[1:i], rownames(coins_link)[1:i]))
 jacc_coinspage_coinslink <- sapply(Ks, function(i) jaccard(rownames(coins_page)[1:i], rownames(coins_link)[1:i]))
-if (save_plots) pdf(sprintf('%s/jaccard_coefficient.pdf', PLOTDIR), width=2, height=1.5, pointsize=6, family='Helvetica', useDingbats=FALSE)
-par(mar=c(3.4, 3.4, 0.8, 0.8))
+if (save_plots) pdf(sprintf('%s/jaccard_coefficient.pdf', PLOTDIR), width=1.68, height=1.5, pointsize=6, family='Helvetica', useDingbats=FALSE)
+par(mar=c(3.4, 3.4, 1.2, 0.8))
 plot(Ks, jacc_coinspage_coinslink, type='l', ylim=c(0,1), xlab='', ylab='', bty='n', col=col$coins_page,
-     main='Solution overlap')
+     main='Solution overlap', panel.first=abline(v=num_src, col='gray', lty=3))
 lines(Ks, jacc_dice_coinslink, col=col$dice)
-mtext(expression(paste('Size of solution ', italic(A))), side=1, line=2.4)
+mtext(expression(paste('Size ', italic(K), ' of solution ', italic(A))), side=1, line=2.4)
 mtext(expression(paste('Jaccard coefficient')), side=2, line=2.4)
-legend('bottomright', legend=c('Coins (link) & Dice', 'Coins (link) & Coins (page)'),
-       col=c(col$coins_page, col$dice), lty=1, bty='n')
+legend('topright', legend=c('Coins (link) & Dice', 'Coins (link) & Coins (page)'),
+       col=c(col$coins_page, col$dice), lty=1, bty='n', seg.len=1)
 if (save_plots) dev.off()
+
+
+# The following aren't used in the paper.
 
 # Compare under link-centric coins objective
 if (save_plots) pdf(sprintf('%s/objective_coins-link.pdf', PLOTDIR), width=2, height=1.5, pointsize=6, family='Helvetica', useDingbats=FALSE)
@@ -200,7 +199,7 @@ plot(cumsum(coins_page$coins_marg_gain[1:K]), type='l', xlab='', ylab='', bty='n
      main='Return w.r.t. Coins (link-centric)', panel.first=abline(v=num_src, col='gray'))
 lines(cumsum(coins_link$coins_marg_gain[1:K]), col=col$coins_link, lty=2)
 lines(cumsum(dice$coins_marg_gain[1:K]), col=col$dice)
-mtext(expression(paste('Size of solution ', italic(A))), side=1, line=2.4)
+mtext(expression(paste('Size ', italic(K), ' of solution ', italic(A))), side=1, line=2.4)
 mtext(expression(paste('Return ', italic(f)[1], '(', italic(A), ')')), side=2, line=2.4)
 add_argmax_legend()
 if (save_plots) dev.off()
@@ -217,7 +216,7 @@ plot(Ks, src_count_per_src_coinspage, col=col$coins_page, type='l', xlab='', yla
      main='Popularity of sources in solution')
 lines(Ks, src_count_per_src_dice, col=col$dice)
 lines(Ks, src_count_per_src_coinslink, col=col$coins_link, lty=2)
-mtext(expression(paste('Size of solution ', italic(A))), side=1, line=2.4)
+mtext(expression(paste('Size ', italic(K), ' of solution ', italic(A))), side=1, line=2.4)
 mtext(expression(paste('Pageviews per source')), side=2, line=2.4)
 add_standard_legend()
 if (save_plots) dev.off()
