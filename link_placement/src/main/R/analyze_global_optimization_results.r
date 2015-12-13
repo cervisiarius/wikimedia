@@ -30,7 +30,8 @@ add_argmax_legend <- function(pos='bottomright') {
 }
 
 add_standard_legend <- function(pos='bottomright') {
-  legend(pos, legend=c('Coins (link-centric)', 'Coins (page-centric)', 'Dice'),
+  legend(pos,
+         legend=c(expression(italic(f[1]), italic(f[2]), italic(f[3]))),
          col=c(col$coins_link, col$coins_page, col$dice), lty=c(2,1,1), bty='n')
 }
 
@@ -41,13 +42,15 @@ jacc_dice_coinslink <- sapply(K, function(i) jaccard(rownames(dice)[1:i], rownam
 jacc_coinspage_coinslink <- sapply(K, function(i) jaccard(rownames(coins_page)[1:i], rownames(coins_link)[1:i]))
 if (save_plots) pdf(sprintf('%s/jaccard_coefficient.pdf', PLOTDIR), width=width, height=height, pointsize=6, family='Helvetica', useDingbats=FALSE)
 par(mar=c(3.4, 3.4, 1.2, 0.8))
-plot(K, jacc_coinspage_coinslink, type='l', ylim=c(0.2,1), xlab='', ylab='', bty='n', col=col$coins_page,
+plot(K, jacc_coinspage_coinslink, type='l', ylim=c(0,1), xlab='', ylab='', bty='n', col=col$coins_page,
      main='Solution overlap')
 lines(K, jacc_dice_coinslink, col=col$dice)
-mtext(expression(paste('Size of solution ', italic(A))), side=1, line=2.4)
+mtext(expression(paste('Size ', italic(K), ' of solution ', italic(A))), side=1, line=2.4)
 mtext(expression(paste('Jaccard coefficient')), side=2, line=2.4)
-legend('bottomright', legend=c('Coins (link) & Coins (page)', 'Coins (link) & Dice'),
-       col=c(col$coins_page, col$dice), lty=1, bty='n', seg.len=1)
+legend('bottomright',
+       legend=c(expression(paste(italic(f[1]), ' vs. ', italic(f[2]))),
+                expression(paste(italic(f[1]), ' vs. ', italic(f[3])))),
+       col=c(col$coins_page, col$dice), lty=1, bty='n')
 if (save_plots) dev.off()
 
 # Compare under dice objective
@@ -59,7 +62,7 @@ plot(cumsum(dice$chain_marg_gain[1:K]), type='l', xlab='', ylab='', bty='n', col
      main='Return w.r.t. Dice')
 lines(cumsum(coins_page$chain_marg_gain[1:K]), col=col$coins_page)
 lines(cumsum(coins_link$chain_marg_gain[1:K]), col=col$coins_link, lty=2)
-mtext(expression(paste('Size of solution ', italic(A))), side=1, line=2.4)
+mtext(expression(paste('Size ', italic(K), ' of solution ', italic(A))), side=1, line=2.4)
 mtext(expression(paste('Return ', italic(f)[3], '(', italic(A), ')')), side=2, line=2.4)
 add_argmax_legend()
 if (save_plots) dev.off()
@@ -73,7 +76,7 @@ plot(cumsum(coins_page$tree_marg_gain[1:K]), type='l', xlab='', ylab='', bty='n'
      main='Return w.r.t. Coins (page)')
 lines(cumsum(coins_link$tree_marg_gain[1:K]), col=col$coins_link, lty=2)
 lines(cumsum(dice$tree_marg_gain[1:K]), col=col$dice)
-mtext(expression(paste('Size of solution ', italic(A))), side=1, line=2.4)
+mtext(expression(paste('Size ', italic(K), ' of solution ', italic(A))), side=1, line=2.4)
 mtext(expression(paste('Return ', italic(f)[2], '(', italic(A), ')')), side=2, line=2.4)
 add_argmax_legend()
 if (save_plots) dev.off()
@@ -86,7 +89,7 @@ plot(cumsum(coins_page$coins_marg_gain[1:K]), type='l', xlab='', ylab='', bty='n
      main='Return w.r.t. Coins (link)')
 lines(cumsum(coins_link$coins_marg_gain[1:K]), col=col$coins_link, lty=2)
 lines(cumsum(dice$coins_marg_gain[1:K]), col=col$dice)
-mtext(expression(paste('Size of solution ', italic(A))), side=1, line=2.4)
+mtext(expression(paste('Size ', italic(K), ' of solution ', italic(A))), side=1, line=2.4)
 mtext(expression(paste('Return ', italic(f)[1], '(', italic(A), ')')), side=2, line=2.4)
 add_argmax_legend()
 if (save_plots) dev.off()
@@ -103,7 +106,7 @@ plot(uniq_dice, type='l', xlab='', ylab='', bty='n', col=col$dice,
      main='Solution diversity')
 lines(uniq_coinspage, col=col$coins_page)
 lines(uniq_coinslink, col=col$coins_link, lty=2)
-mtext(expression(paste('Size of solution ', italic(A))), side=1, line=2.4)
+mtext(expression(paste('Size ', italic(K), ' of solution ', italic(A))), side=1, line=2.4)
 mtext(expression(paste('Unique sources')), side=2, line=2.4)
 add_standard_legend()
 if (save_plots) dev.off()
@@ -121,8 +124,8 @@ plot(K, tgt_per_src_coinspage, type='l',  xlab='', ylab='', bty='n', col=col$coi
      main='Solution concentration', ylim=c(1,3.2))
 lines(K, tgt_per_src_coinslink, col=col$coins_link, lty=2)
 lines(K, tgt_per_src_dice, col=col$dice)
-mtext(expression(paste('Size of solution ', italic(A))), side=1, line=2.4)
-mtext(expression(paste('Targets per source in ', italic(A))), side=2, line=2.4)
+mtext(expression(paste('Size ', italic(K), ' of solution ', italic(A))), side=1, line=2.4)
+mtext(expression(paste('Targets per source page in ', italic(A))), side=2, line=2.4)
 add_standard_legend('topleft')
 if (save_plots) dev.off()
 
@@ -136,11 +139,47 @@ src_count_per_src_coinslink <- avg_src_count_per_source(coins_link, K)
 src_count_per_src_coinspage <- avg_src_count_per_source(coins_page, K)
 if (save_plots) pdf(sprintf('%s/prior_cum_clickthrough.pdf', PLOTDIR), width=width, height=height, pointsize=6, family='Helvetica', useDingbats=FALSE)
 par(mar=c(3.4, 3.4, 1.2, 0.95))
-plot(K, src_count_per_src_coinspage, col=col$coins_page, type='l', xlab='', ylab='', bty='n', ylim=c(0.3, 0.8),
+plot(K, src_count_per_src_coinspage, col=col$coins_page, type='l', xlab='', ylab='', bty='n', ylim=c(0.35, 0.8),
      main='Prior cumulative clickthrough')
 lines(K, src_count_per_src_dice, col=col$dice)
 lines(K, src_count_per_src_coinslink, col=col$coins_link, lty=2)
-mtext(expression(paste('Size of solution ', italic(A))), side=1, line=2.4)
+mtext(expression(paste('Size ', italic(K), ' of solution ', italic(A))), side=1, line=2.4)
 mtext(expression(paste('Mean prior cumulative clickthrough')), side=2, line=2.4)
 add_standard_legend('right')
+if (save_plots) dev.off()
+
+# Click volumes.
+vol_coins_link <- read.table(pipe(sprintf('gunzip -c %s/link_placement_results_COINS-LINK_march_volume.tsv.gz', DATADIR)),
+                             header=TRUE, sep='\t', comment.char='', encoding='UTF-8', quote='', stringsAsFactors=FALSE)[1:1e5,]
+rownames(vol_coins_link) <- paste(vol_coins_link$src, vol_coins_link$tgt)
+
+vol_coins_page <- read.table(pipe(sprintf('gunzip -c %s/link_placement_results_COINS-PAGE_march_volume.tsv.gz', DATADIR)),
+                             header=TRUE, sep='\t', comment.char='', encoding='UTF-8', quote='', stringsAsFactors=FALSE)[1:1e5,]
+rownames(vol_coins_page) <- paste(vol_coins_page$src, vol_coins_page$tgt)
+
+vol_dice <- read.table(pipe(sprintf('gunzip -c %s/link_placement_results_DICE_march_volume.tsv.gz', DATADIR)),
+                             header=TRUE, sep='\t', comment.char='', encoding='UTF-8', quote='', stringsAsFactors=FALSE)[1:1e5,]
+rownames(vol_dice) <- paste(vol_dice$src, vol_dice$tgt)
+
+K <- 1e4
+if (save_plots) pdf(sprintf('%s/cumulative_click_volume.pdf', PLOTDIR), width=width, height=height, pointsize=6, family='Helvetica', useDingbats=FALSE)
+par(mar=c(3.4, 3.4, 1.2, 0.95))
+plot(cumsum(vol_dice$pair_count_march)[1:K], type='l', log='', bty='n', col=col$dice, xlab='', ylab='',
+     main='Cumulative click volume')
+lines(cumsum(vol_coins_page$pair_count_march)[1:K], col=col$coins_page)
+lines(cumsum(vol_coins_link$pair_count_march)[1:K], col=col$coins_link, lty=2)
+mtext(expression(paste('Size ', italic(K), ' of solution ', italic(A))), side=1, line=2.4)
+mtext(expression(paste('Cumulative number of clicks')), side=2, line=2.4)
+add_standard_legend('bottomright')
+if (save_plots) dev.off()
+
+if (save_plots) pdf(sprintf('%s/avg_click_volume.pdf', PLOTDIR), width=width, height=height, pointsize=6, family='Helvetica', useDingbats=FALSE)
+par(mar=c(3.4, 3.4, 1.2, 0.95))
+plot(cumsum(vol_dice$pair_count_march)[1:K]/(1:K), type='l', log='', bty='n', col=col$dice, ylim=c(30,110), xlab='', ylab='',
+     main='Average click volume')
+lines(cumsum(vol_coins_page$pair_count_march)[1:K]/(1:K), col=col$coins_page)
+lines(cumsum(vol_coins_link$pair_count_march)[1:K]/(1:K), col=col$coins_link, lty=2)
+mtext(expression(paste('Size ', italic(K), ' of solution ', italic(A))), side=1, line=2.4)
+mtext(expression(paste('Average number of clicks')), side=2, line=2.4)
+add_standard_legend('topright')
 if (save_plots) dev.off()
