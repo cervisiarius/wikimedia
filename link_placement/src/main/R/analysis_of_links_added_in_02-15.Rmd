@@ -203,23 +203,24 @@ if (save_plots) dev.off()
 #### Get outdegree from link_positions table.
 #Min <- c(1e2, 1e3, 1e4, 1e5)
 Min <- quantile(data$outdegree, seq(0,1,0.25), na.rm=TRUE)
+cols <- c('#CC79A7', 'black', '#E6A300', '#009E73')
 if (save_plots) pdf(sprintf('%s/new_link_pst_ccdf_BY-DEGREE.pdf', PLOTDIR), width=1.68, height=1.5, pointsize=6,
                     family='Helvetica', useDingbats=FALSE)
 par(mar=c(3.4, 3.4, 1.1, 0.7))
 for (i in 1:(length(Min)-1)) {
   idx <- which(is.finite(data$pst_after) & data$outdegree >= Min[i] & data$outdegree < Min[i+1])
   if (i == 1) {
-    plot(sort(data$pst_after[idx]), (length(idx):1)/length(idx), log='xy', type='l', col=i, bty='n',
+    plot(sort(data$pst_after[idx]), (length(idx):1)/length(idx), log='xy', type='l', col=cols[i], bty='n',
          xlim=c(1e-3,1), ylim=c(1e-6, 1),
          xlab='', ylab='')
   } else {
-    lines(sort(data$pst_after[idx]), (length(idx):1)/length(idx), col=i)
+    lines(sort(data$pst_after[idx]), (length(idx):1)/length(idx), col=cols[i])
   }
 }
 mtext(expression(paste('Mininum ', italic(p[st]))), side=1, line=2.4)
 mtext('Fraction of new links', side=2, line=2.4)
-legend('bottomleft', legend=sprintf('Degree [%s)', paste(Min[-length(Min)], Min[-1], sep=', ')), bty='n',
-       lty=1, col=1:(length(Min)-1))
+legend('bottomleft', legend=sprintf('Out-deg. [%s)', paste(Min[-length(Min)], Min[-1], sep=', ')), bty='n',
+       lty=1, col=cols, seg.len=1)
 if (save_plots) dev.off()
 
 # Once a link is introduced, it accounts for nearly all traffic from s to t.
@@ -375,21 +376,21 @@ if (save_plots) pdf(sprintf('%s/pst_vs_src_outdeg.pdf', PLOTDIR), width=1.68, he
                     family='Helvetica', useDingbats=FALSE)
 par(mar=c(4.4, 3.4, 1.1, 0.6))
 plot_groups(data$outdegree, data$pst_after, quantile(data$outdegree, seq(0,1,0.1), na.rm=TRUE),
-            min_label=1, 'Source outdegree', expression(italic(p[st])), errorbars=FALSE)
+            min_label=1, 'Source-page out-degree', expression(italic(p[st])), errorbars=FALSE)
 if (save_plots) dev.off()
 
 # Src length vs. p_st.
 if (save_plots) pdf(sprintf('%s/pst_vs_src_length.pdf', PLOTDIR), width=3.2, height=2, pointsize=6,
                     family='Helvetica', useDingbats=FALSE)
 plot_groups(data$source_length, data$pst_after, quantile(data$source_length, seq(0,1,0.1), na.rm=TRUE),
-            'Source length', 'p_st')
+            'Source-page length', 'p_st')
 if (save_plots) dev.off()
 
 # Num src before vs. p_st.
 if (save_plots) pdf(sprintf('%s/pst_vs_num_src_before.pdf', PLOTDIR), width=3.2, height=2, pointsize=6,
                     family='Helvetica', useDingbats=FALSE)
 plot_groups(data$num_source_before, data$pst_after, quantile(data$source_length, seq(0,1,0.1), na.rm=TRUE),
-            'Source count before addition', 'p_st')
+            'Source-page count before addition', 'p_st')
 if (save_plots) dev.off()
 
 # Src length vs. search prob.
