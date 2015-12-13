@@ -33,8 +33,10 @@ plot(sort(data$size), rev(1:sum(is.finite(data$size)))/sum(is.finite(data$size))
 lines(sort(data$degree_mean), rev(1:sum(is.finite(data$degree_mean)))/sum(is.finite(data$degree_mean)))
 mtext(expression(italic(n)), side=1, line=2.4)
 mtext(expression(Pr(italic(X) >= italic(n))), side=2, line=2.4)
-legend('topright', legend=c(expression(paste(italic(X), ' = tree size')), expression(paste(italic(X), ' = avg. node deg.'))),
-       col=c(rgb(.9,.6,0), 'black'), lty=1, bty='n')
+legend('topright', legend=c(expression(paste(italic(X), ' = tree size')),
+                            expression(paste(italic(X), ' = average degree')),
+                            '       (num. children)'),
+       col=c(rgb(.9,.6,0), 'black', 'white'), lty=c(1,1,0), bty='n', seg.len=1)
 par(.default_par)
 if (save_plots) dev.off()
 
