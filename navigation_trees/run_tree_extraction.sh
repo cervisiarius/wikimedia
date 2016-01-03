@@ -35,6 +35,9 @@ MAX_NUM_EVENTS=10000
 # The number of reducers.
 NUM_REDUCE=100
 
+QUEUE=default
+#QUEUE=priority
+
 # Set some required environment variables (Thrift is needed for reading Parquet).
 if [ -e /opt/cloudera/parcels/CDH ] ; then
     CDH_BASE=/opt/cloudera/parcels/CDH
@@ -47,7 +50,7 @@ export LIBJARS=$THRIFTJAR
 
 echo "Running hadoop job"
 hadoop jar $TARGET_DIR/TreeExtractor-0.0.1-SNAPSHOT-jar-with-dependencies.jar \
-    -D            mapreduce.job.queuename=priority \
+    -D            mapreduce.job.queuename=$QUEUE \
     -D            mapred.child.java.opts="-Xss10m -Xmx3g" \
     -D            mapreduce.output.fileoutputformat.compress=false \
     -D            mapreduce.task.timeout=6000000 \

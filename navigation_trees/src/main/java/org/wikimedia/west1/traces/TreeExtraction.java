@@ -29,8 +29,9 @@ public class TreeExtraction extends Configured implements Tool {
 			if (!field.equals(BrowserEvent.JSON_GEOCODED_DATA)) {
 				schema.append(String.format("optional binary %s;", field));
 			} else if (withGeo) {
-				schema.append("optional group geocoded_data { optional binary country_code; "
-				    + "optional binary city; optional binary latitude; optional binary longitude; }");
+				schema.append("optional group geocoded_data { repeated group map { required binary key; optional binary value; } }");
+//				schema.append("optional group geocoded_data { optional binary country_code; "
+//				    + "optional binary city; optional binary latitude; optional binary longitude; }");
 			}
 		}
 		schema.append("};");
