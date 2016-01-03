@@ -19,12 +19,19 @@ public class TreeExtraction extends Configured implements Tool {
 	private static final String CONF_INPUT = "org.wikimedia.west1.traces.input";
 	private static final String CONF_OUTPUT = "org.wikimedia.west1.traces.output";
 	private static final String CONF_NUM_REDUCE = "org.wikimedia.west1.traces.numReduceTasks";
+	private static final String CONF_INCLUDE_GEOCODED_DATA = "org.wikimedia.west1.traces.includeGeocodedData";
 
-	private String getSchema() {
+	// ////////////////////////////// UNTESTED //////////////////////////////////////
+	private String getSchema(boolean withGeo) {
 		StringBuffer schema = new StringBuffer();
 		schema.append("message webrequest_schema {");
 		for (String field : GroupAndFilterMapper.INPUT_FIELDS) {
-			schema.append(String.format("optional binary %s;", field));
+			if (!field.equals(BrowserEvent.JSON_GEOCODED_DATA)) {
+				schema.append(String.format("optional binary %s;", field));
+			} else if (withGeo) {
+				schema.append("optional group geocoded_data { optional binary country_code; "
+				    + "optional binary city; optional binary latitude; optional binary longitude; }");
+			}
 		}
 		schema.append("};");
 		return schema.toString();
@@ -34,7 +41,7 @@ public class TreeExtraction extends Configured implements Tool {
 
 		Configuration conf = getConf();
 		// Make sure we only read the necessary columns.
-		conf.set("parquet.read.schema", getSchema());
+		conf.set("parquet.read.schema", getSchema(conf.getBoolean(CONF_INCLUDE_GEOCODED_DATA, true)));
 
 		Job job = new Job(conf);
 
@@ -46,8 +53,8 @@ public class TreeExtraction extends Configured implements Tool {
 		job.setOutputKeyClass(Text.class);
 		job.setOutputValueClass(Text.class);
 
-    job.setMapperClass(GroupAndFilterMapper.class);
-    job.setReducerClass(TreeExtractorReducer.class);
+		job.setMapperClass(GroupAndFilterMapper.class);
+		job.setReducerClass(TreeExtractorReducer.class);
 		job.setNumReduceTasks(conf.getInt(CONF_NUM_REDUCE, 1));
 
 		job.setInputFormatClass(ExampleInputFormat.class);

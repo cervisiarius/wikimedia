@@ -32,7 +32,7 @@ public class GroupAndFilterMapper extends Mapper<LongWritable, Group, Text, Text
 	public static final String[] INPUT_FIELDS = { BrowserEvent.JSON_DT, BrowserEvent.JSON_IP,
 	    BrowserEvent.JSON_HTTP_STATUS, BrowserEvent.JSON_URI_HOST, BrowserEvent.JSON_URI_PATH,
 	    BrowserEvent.JSON_URI_QUERY, BrowserEvent.JSON_REFERER, BrowserEvent.JSON_XFF,
-	    BrowserEvent.JSON_UA, BrowserEvent.JSON_ACCEPT_LANG };
+	    BrowserEvent.JSON_UA, BrowserEvent.JSON_ACCEPT_LANG, BrowserEvent.JSON_GEOCODED_DATA };
 
 	private static enum HADOOP_COUNTERS {
 		MAP_SKIPPED_BAD_HOST, MAP_SKIPPED_BAD_PATH, MAP_SKIPPED_SPECIAL_PAGE, MAP_SKIPPED_BOT, MAP_SKIPPED_BAD_HTTP_STATUS, MAP_OK_REQUEST, MAP_EXCEPTION
@@ -61,6 +61,7 @@ public class GroupAndFilterMapper extends Mapper<LongWritable, Group, Text, Text
 		int lastCommaIdx = xff.lastIndexOf(", ");
 		String ip = lastCommaIdx >= 0 ? xff.substring(lastCommaIdx + 2) : xff;
 		// NB: The ":" part is untested.
+		//////////////////////////////// UNTESTED //////////////////////////////////////
 		if (ip.contains(".") || ip.contains(":")) {
 			return ip;
 		} else {

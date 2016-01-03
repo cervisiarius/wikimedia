@@ -165,11 +165,11 @@ K <- 1e4
 if (save_plots) pdf(sprintf('%s/cumulative_click_volume.pdf', PLOTDIR), width=width, height=height, pointsize=6, family='Helvetica', useDingbats=FALSE)
 par(mar=c(3.4, 3.4, 1.2, 0.95))
 plot(cumsum(vol_dice$pair_count_march)[1:K], type='l', log='', bty='n', col=col$dice, xlab='', ylab='',
-     main='Cumulative click volume')
+     main='Total click volume')
 lines(cumsum(vol_coins_page$pair_count_march)[1:K], col=col$coins_page)
 lines(cumsum(vol_coins_link$pair_count_march)[1:K], col=col$coins_link, lty=2)
 mtext(expression(paste('Size ', italic(K), ' of solution ', italic(A))), side=1, line=2.4)
-mtext(expression(paste('Cumulative number of clicks')), side=2, line=2.4)
+mtext(expression(paste('Total number of clicks')), side=2, line=2.4)
 add_standard_legend('bottomright')
 if (save_plots) dev.off()
 
