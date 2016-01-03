@@ -30,7 +30,7 @@ public class TreeExtraction extends Configured implements Tool {
 				schema.append(String.format("optional binary %s;", field));
 			} else if (withGeo) {
 				schema.append("optional group geocoded_data { optional binary country_code; "
-				    + "optional binary city; optional binary latitude; optional binary longitude; };");
+				    + "optional binary city; optional binary latitude; optional binary longitude; }");
 			}
 		}
 		schema.append("};");
