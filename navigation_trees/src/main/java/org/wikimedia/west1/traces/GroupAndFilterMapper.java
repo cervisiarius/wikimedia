@@ -61,7 +61,6 @@ public class GroupAndFilterMapper extends Mapper<LongWritable, Group, Text, Text
 		int lastCommaIdx = xff.lastIndexOf(", ");
 		String ip = lastCommaIdx >= 0 ? xff.substring(lastCommaIdx + 2) : xff;
 		// NB: The ":" part is untested.
-		// ////////////////////////////// UNTESTED //////////////////////////////////////
 		if (ip.contains(".") || ip.contains(":")) {
 			return ip;
 		} else {
