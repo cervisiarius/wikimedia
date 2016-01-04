@@ -70,8 +70,8 @@ public class TreeExtractorReducer extends Reducer<Text, Text, NullWritable, Text
 	// the same tree).
 	private static final Set<String> FIELDS_TO_KEEP_IN_ROOT = new HashSet<String>(Arrays.asList(
 	    BrowserEvent.JSON_UA, BrowserEvent.JSON_REFERER, BrowserEvent.JSON_TREE_ID,
-	    BrowserEvent.JSON_COUNTRY_CODE, BrowserEvent.JSON_CITY, BrowserEvent.JSON_LATITUDE,
-	    BrowserEvent.JSON_LONGITUDE));
+	    BrowserEvent.JSON_COUNTRY, BrowserEvent.JSON_STATE, BrowserEvent.JSON_CITY,
+	    BrowserEvent.JSON_LATLON));
 
 	private static enum HADOOP_COUNTERS {
 		// In order to have an idea what the big reasons are for dismissing trees. Note that these don't

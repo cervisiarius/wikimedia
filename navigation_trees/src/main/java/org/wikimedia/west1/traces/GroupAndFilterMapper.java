@@ -99,17 +99,28 @@ public class GroupAndFilterMapper extends Mapper<LongWritable, Group, Text, Text
 			json.put(field, data.getString(field, 0));
 		}
 		// ////////////////////////////// UNTESTED //////////////////////////////////////
-		if (data.getFieldRepetitionCount(BrowserEvent.JSON_GEOCODED_DATA) > 0) {
-			Group geo = data.getGroup(BrowserEvent.JSON_GEOCODED_DATA, 0);
+		// Add geocoded data (if specified in input schema, cf. TextExtraction.getSchema()).
+		if (data.getFieldRepetitionCount("geocoded_data") > 0) {
+			Group geo = data.getGroup("geocoded_data", 0);
+			String country = null;
+			String state = null;
+			String city = null;
+			String lat = null;
+			String lon = null;
 			for (int i = 0; i < geo.getFieldRepetitionCount("map"); ++i) {
 				Group pair = geo.getGroup("map", i);
 				String key = pair.getString("key", 0);
 				String value = pair.getString("value", 0);
-				if (key.equals(BrowserEvent.JSON_COUNTRY_CODE) || key.equals(BrowserEvent.JSON_CITY)
-				    || key.equals(BrowserEvent.JSON_LATITUDE) || key.equals(BrowserEvent.JSON_LONGITUDE)) {
-					json.put(key, value);
-				}
+				if (key.equals("country_code")) country = value;
+				else if (key.equals("subdivision")) state = value;
+				else if (key.equals("city")) city = value;
+				else if (key.equals("latitude")) lat = value;
+				else if (key.equals("longitude")) lon = value;
 			}
+			json.put(BrowserEvent.JSON_COUNTRY, country);
+			json.put(BrowserEvent.JSON_STATE, state);
+			json.put(BrowserEvent.JSON_CITY, city);
+			json.put(BrowserEvent.JSON_LATLON, String.format("%s,%s", lat, lon));
 		}
 		return json;
 	}

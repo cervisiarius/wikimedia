@@ -32,11 +32,10 @@ public abstract class BrowserEvent {
   public static final String JSON_URI_HOST = "uri_host";
   public static final String JSON_ACCEPT_LANG = "accept_language";
   public static final String JSON_XFF = "x_forwarded_for";
-  public static final String JSON_GEOCODED_DATA = "geocoded_data";
-  public static final String JSON_COUNTRY_CODE = "country_code";
+  public static final String JSON_COUNTRY = "country";
+  public static final String JSON_STATE = "state";
   public static final String JSON_CITY = "city";
-  public static final String JSON_LATITUDE = "latitude";
-  public static final String JSON_LONGITUDE = "longitude";
+  public static final String JSON_LATLON = "latlon";
 
   private static final String UTF8 = "UTF-8";
 
