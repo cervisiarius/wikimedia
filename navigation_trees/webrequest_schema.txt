@@ -1,0 +1,66 @@
+message hive_schema {
+  optional binary hostname (UTF8);
+  optional int64 sequence;
+  optional binary dt (UTF8);
+  optional double time_firstbyte;
+  optional binary ip (UTF8);
+  optional binary cache_status (UTF8);
+  optional binary http_status (UTF8);
+  optional int64 response_size;
+  optional binary http_method (UTF8);
+  optional binary uri_host (UTF8);
+  optional binary uri_path (UTF8);
+  optional binary uri_query (UTF8);
+  optional binary content_type (UTF8);
+  optional binary referer (UTF8);
+  optional binary x_forwarded_for (UTF8);
+  optional binary user_agent (UTF8);
+  optional binary accept_language (UTF8);
+  optional binary x_analytics (UTF8);
+  optional binary range (UTF8);
+  optional boolean is_pageview;
+  optional binary record_version (UTF8);
+  optional binary client_ip (UTF8);
+  optional group geocoded_data (MAP) {
+    repeated group map (MAP_KEY_VALUE) {
+      required binary key (UTF8);
+      optional binary value (UTF8);
+    }
+  }
+  optional binary x_cache (UTF8);
+  optional group user_agent_map (MAP) {
+    repeated group map (MAP_KEY_VALUE) {
+      required binary key (UTF8);
+      optional binary value (UTF8);
+    }
+  }
+  optional group x_analytics_map (MAP) {
+    repeated group map (MAP_KEY_VALUE) {
+      required binary key (UTF8);
+      optional binary value (UTF8);
+    }
+  }
+  optional int96 ts;
+  optional binary access_method (UTF8);
+  optional binary agent_type (UTF8);
+  optional boolean is_zero;
+  optional binary referer_class (UTF8);
+  optional group normalized_host {
+    optional binary project_class (UTF8);
+    optional binary project (UTF8);
+    optional group qualifiers (LIST) {
+      repeated group bag {
+        optional binary array_element (UTF8);
+      }
+    }
+    optional binary tld (UTF8);
+  }
+  optional group pageview_info (MAP) {
+    repeated group map (MAP_KEY_VALUE) {
+      required binary key (UTF8);
+      optional binary value (UTF8);
+    }
+  }
+  optional int32 page_id;
+}
+
