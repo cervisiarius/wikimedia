@@ -365,7 +365,6 @@ public class TreeExtractorReducer extends Reducer<Text, Text, NullWritable, Text
 				root.json.put(BrowserEvent.JSON_TREE_ID,
 				    makeTreeId(lang, uid, root.json.getString(BrowserEvent.JSON_DT), i));
 				// If desired, hash the user agent.
-				// ////////////////////////////// UNTESTED //////////////////////////////////////
 				if (hashUserAgent) {
 					root.json.put(BrowserEvent.JSON_UA, DigestUtils.md5Hex(BrowserEvent.JSON_UA + hashSalt));
 				}

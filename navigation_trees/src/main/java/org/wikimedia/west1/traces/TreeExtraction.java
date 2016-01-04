@@ -21,7 +21,6 @@ public class TreeExtraction extends Configured implements Tool {
 	private static final String CONF_NUM_REDUCE = "org.wikimedia.west1.traces.numReduceTasks";
 	private static final String CONF_INCLUDE_GEOCODED_DATA = "org.wikimedia.west1.traces.includeGeocodedData";
 
-	// ////////////////////////////// UNTESTED //////////////////////////////////////
 	private String getSchema(boolean withGeo) {
 		StringBuffer schema = new StringBuffer();
 		schema.append("message webrequest_schema {");
@@ -39,7 +38,7 @@ public class TreeExtraction extends Configured implements Tool {
 
 		Configuration conf = getConf();
 		// Make sure we only read the necessary columns.
-		conf.set("parquet.read.schema", getSchema(conf.getBoolean(CONF_INCLUDE_GEOCODED_DATA, true)));
+		conf.set("parquet.read.schema", getSchema(conf.getBoolean(CONF_INCLUDE_GEOCODED_DATA, false)));
 
 		Job job = new Job(conf);
 

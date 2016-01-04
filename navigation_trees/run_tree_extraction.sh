@@ -27,6 +27,8 @@ KEEP_SINGLETON_TREES=true
 KEEP_AMBIGUOUS_TREES=true
 # Specify if you want to extract the user's city-level geolocation.
 INCLUDE_GEOCODED_DATA=true
+# Specify if you want the user agent to be salted and hashed.
+HASH_USER_AGENT=false
 # If a user has more than this many events, we ignore her.
 # Having 100K events in a month would mean one every 26 seconds.
 # Having 10K events in a month would mean one every 4 minutes.
@@ -61,6 +63,7 @@ hadoop jar $TARGET_DIR/TreeExtractor-0.0.1-SNAPSHOT-jar-with-dependencies.jar \
     -D            org.wikimedia.west1.traces.hashSalt=df765889fdiiohfjsfughc2387hsvtrvkjjkhgdsfsdlkfhs74uisafjsdbjb \
     -D            org.wikimedia.west1.traces.maxNumEvents=$MAX_NUM_EVENTS \
     -D            org.wikimedia.west1.traces.includeGeocodedData=$INCLUDE_GEOCODED_DATA \
+    -D            org.wikimedia.west1.traces.hashUserAgent=$HASH_USER_AGENT \
     -D            org.wikimedia.west1.traces.input=$IN_DIR \
     -D            org.wikimedia.west1.traces.output=$OUT_DIR \
     -D            org.wikimedia.west1.traces.numReduceTasks=$NUM_REDUCE \

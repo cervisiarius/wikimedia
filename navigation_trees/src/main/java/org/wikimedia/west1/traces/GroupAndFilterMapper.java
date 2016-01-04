@@ -98,9 +98,8 @@ public class GroupAndFilterMapper extends Mapper<LongWritable, Group, Text, Text
 		for (String field : INPUT_FIELDS) {
 			json.put(field, data.getString(field, 0));
 		}
-		// ////////////////////////////// UNTESTED //////////////////////////////////////
 		// Add geocoded data (if specified in input schema, cf. TextExtraction.getSchema()).
-		if (data.getFieldRepetitionCount("geocoded_data") > 0) {
+		if (data.getType().containsField("geocoded_data")) {
 			Group geo = data.getGroup("geocoded_data", 0);
 			String country = null;
 			String state = null;
