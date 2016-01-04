@@ -21,8 +21,6 @@ Rev = LOAD '/user/west1/enwiki_metadata/enwiki_revisions_with_page_titles.tsv' U
 
 -- Remove the unnecessary columns.
 Rev = FOREACH Rev GENERATE
-    --rev_id,
-    --timestamp,
     page_id,
     CONCAT(CONCAT(CONCAT(CONCAT(CONCAT(CONCAT(CONCAT(CONCAT(
         timestamp, '\t'), rev_id), '\t'), page_title), '\t'), user_id), '\t'), user) AS rev_info;
