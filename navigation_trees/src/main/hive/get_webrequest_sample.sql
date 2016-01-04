@@ -14,7 +14,3 @@ WHERE
   AND hour = 1
   AND uri_host = "en.wikipedia.org"
 LIMIT 1000;
-
-
---  , geocoded_data['country_code'] AS country_code,
---  , geocoded_data['city'] AS city

@@ -7,14 +7,15 @@
 LANGUAGE_PATTERN='en'
 #LANGUAGE_PATTERN='es|fr|ru|de|fa|sv|simple|zh|ja'
 #LANGUAGE_PATTERN='sh|pt|ar|nl|it|ceb|war|sr|pl|uk|ca|id|ro|tr|ko|no|fi|uz|cs|hu|vi|he|hy|eo|da|bg|et|lt|el|vo|sk|sl|eu|nn|kk|hr|hi|ms|gl|min'
-MONTH=1
+YEAR=2015
+MONTH=11
 
 # The part of the server logs you want to process.
-#IN_DIR=/wmf/data/wmf/webrequest/webrequest_source=text/year=2015/*/*/*/*
+IN_DIR=/wmf/data/wmf/webrequest/webrequest_source=text/year=$YEAR/month=$MONTH/day=*/hour=*/*
 #IN_DIR=/user/west1/webrequest_source=text/year=2015/month=2/day=6/hour=9/000063_0
-IN_DIR=/user/west1/webrequest_source=text/year=2015/month=$MONTH/day=*/hour=*/*
+#IN_DIR=/user/west1/webrequest_source=text/year=$YEAR/month=$MONTH/day=*/hour=*/*
 # The output directory.
-OUT_DIR=/user/west1/navigation_trees_WITH-SEARCH/month=$MONTH
+OUT_DIR=/user/west1/navigation_trees/year=$YEAR/month=$MONTH
 # This is where the JAR file with the Mapper and Reducer code resides.
 TARGET_DIR=$HOME/wikimedia/trunk/navigation_trees/target
 # Logs are written here.
@@ -60,7 +61,7 @@ hadoop jar $TARGET_DIR/TreeExtractor-0.0.1-SNAPSHOT-jar-with-dependencies.jar \
     -D            org.wikimedia.west1.traces.keepAmbiguousTrees=$KEEP_AMBIGUOUS_TREES \
     -D            org.wikimedia.west1.traces.keepBadTrees=$KEEP_BAD_TREES \
     -D            org.wikimedia.west1.traces.keepSingletonTrees=$KEEP_SINGLETON_TREES \
-    -D            org.wikimedia.west1.traces.hashSalt=df765889fdiiohfjsfughc2387hsvtrvkjjkhgdsfsdlkfhs74uisafjsdbjb \
+    -D            org.wikimedia.west1.traces.hashSalt=`cat hash_salt.txt` \
     -D            org.wikimedia.west1.traces.maxNumEvents=$MAX_NUM_EVENTS \
     -D            org.wikimedia.west1.traces.includeGeocodedData=$INCLUDE_GEOCODED_DATA \
     -D            org.wikimedia.west1.traces.hashUserAgent=$HASH_USER_AGENT \
