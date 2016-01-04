@@ -61,7 +61,7 @@ public class GroupAndFilterMapper extends Mapper<LongWritable, Group, Text, Text
 		int lastCommaIdx = xff.lastIndexOf(", ");
 		String ip = lastCommaIdx >= 0 ? xff.substring(lastCommaIdx + 2) : xff;
 		// NB: The ":" part is untested.
-		//////////////////////////////// UNTESTED //////////////////////////////////////
+		// ////////////////////////////// UNTESTED //////////////////////////////////////
 		if (ip.contains(".") || ip.contains(":")) {
 			return ip;
 		} else {
@@ -98,15 +98,17 @@ public class GroupAndFilterMapper extends Mapper<LongWritable, Group, Text, Text
 		for (String field : INPUT_FIELDS) {
 			json.put(field, data.getString(field, 0));
 		}
-		//////////////////////////////// UNTESTED //////////////////////////////////////
+		// ////////////////////////////// UNTESTED //////////////////////////////////////
 		if (data.getFieldRepetitionCount(BrowserEvent.JSON_GEOCODED_DATA) > 0) {
 			Group geo = data.getGroup(BrowserEvent.JSON_GEOCODED_DATA, 0);
 			for (int i = 0; i < geo.getFieldRepetitionCount("map"); ++i) {
 				Group pair = geo.getGroup("map", i);
-				json.put(BrowserEvent.JSON_COUNTRY_CODE, pair.getString(BrowserEvent.JSON_COUNTRY_CODE, 0));
-				json.put(BrowserEvent.JSON_CITY, pair.getString(BrowserEvent.JSON_CITY, 0));
-				json.put(BrowserEvent.JSON_LATITUDE, pair.getString(BrowserEvent.JSON_LATITUDE, 0));
-				json.put(BrowserEvent.JSON_LONGITUDE, pair.getString(BrowserEvent.JSON_LONGITUDE, 0));
+				String key = pair.getString("key", 0);
+				String value = pair.getString("value", 0);
+				if (key.equals(BrowserEvent.JSON_COUNTRY_CODE) || key.equals(BrowserEvent.JSON_CITY)
+				    || key.equals(BrowserEvent.JSON_LATITUDE) || key.equals(BrowserEvent.JSON_LONGITUDE)) {
+					json.put(key, value);
+				}
 			}
 		}
 		return json;
@@ -124,7 +126,7 @@ public class GroupAndFilterMapper extends Mapper<LongWritable, Group, Text, Text
 			}
 			// It must be to an article page or a wiki search.
 			boolean isArticle = json.getString(BrowserEvent.JSON_URI_PATH).startsWith("/wiki/")
-			    // UNTESTED.
+			// UNTESTED.
 			    && json.getString(BrowserEvent.JSON_URI_QUERY).isEmpty();
 			boolean isWikiSearch = json.getString(BrowserEvent.JSON_URI_PATH).equals("/w/index.php")
 			    && WikiSearch.QUERY_PATTERN.matcher(json.getString(BrowserEvent.JSON_URI_QUERY))
