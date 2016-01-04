@@ -26,13 +26,10 @@ public class TreeExtraction extends Configured implements Tool {
 		StringBuffer schema = new StringBuffer();
 		schema.append("message webrequest_schema {");
 		for (String field : GroupAndFilterMapper.INPUT_FIELDS) {
-			if (!field.equals(BrowserEvent.JSON_GEOCODED_DATA)) {
-				schema.append(String.format("optional binary %s;", field));
-			} else if (withGeo) {
-				schema.append("optional group geocoded_data { repeated group map { required binary key; optional binary value; } }");
-//				schema.append("optional group geocoded_data { optional binary country_code; "
-//				    + "optional binary city; optional binary latitude; optional binary longitude; }");
-			}
+			schema.append(String.format("optional binary %s;", field));
+		}
+		if (withGeo) {
+			schema.append("optional group geocoded_data { repeated group map { required binary key; optional binary value; } }");
 		}
 		schema.append("};");
 		return schema.toString();

@@ -32,7 +32,7 @@ public class GroupAndFilterMapper extends Mapper<LongWritable, Group, Text, Text
 	public static final String[] INPUT_FIELDS = { BrowserEvent.JSON_DT, BrowserEvent.JSON_IP,
 	    BrowserEvent.JSON_HTTP_STATUS, BrowserEvent.JSON_URI_HOST, BrowserEvent.JSON_URI_PATH,
 	    BrowserEvent.JSON_URI_QUERY, BrowserEvent.JSON_REFERER, BrowserEvent.JSON_XFF,
-	    BrowserEvent.JSON_UA, BrowserEvent.JSON_ACCEPT_LANG, BrowserEvent.JSON_GEOCODED_DATA };
+	    BrowserEvent.JSON_UA, BrowserEvent.JSON_ACCEPT_LANG };
 
 	private static enum HADOOP_COUNTERS {
 		MAP_SKIPPED_BAD_HOST, MAP_SKIPPED_BAD_PATH, MAP_SKIPPED_SPECIAL_PAGE, MAP_SKIPPED_BOT, MAP_SKIPPED_BAD_HTTP_STATUS, MAP_OK_REQUEST, MAP_EXCEPTION
@@ -97,6 +97,17 @@ public class GroupAndFilterMapper extends Mapper<LongWritable, Group, Text, Text
 		JSONObject json = new JSONObject();
 		for (String field : INPUT_FIELDS) {
 			json.put(field, data.getString(field, 0));
+		}
+		//////////////////////////////// UNTESTED //////////////////////////////////////
+		if (data.getFieldRepetitionCount(BrowserEvent.JSON_GEOCODED_DATA) > 0) {
+			Group geo = data.getGroup(BrowserEvent.JSON_GEOCODED_DATA, 0);
+			for (int i = 0; i < geo.getFieldRepetitionCount("map"); ++i) {
+				Group pair = geo.getGroup("map", i);
+				json.put(BrowserEvent.JSON_COUNTRY_CODE, pair.getString(BrowserEvent.JSON_COUNTRY_CODE, 0));
+				json.put(BrowserEvent.JSON_CITY, pair.getString(BrowserEvent.JSON_CITY, 0));
+				json.put(BrowserEvent.JSON_LATITUDE, pair.getString(BrowserEvent.JSON_LATITUDE, 0));
+				json.put(BrowserEvent.JSON_LONGITUDE, pair.getString(BrowserEvent.JSON_LONGITUDE, 0));
+			}
 		}
 		return json;
 	}
