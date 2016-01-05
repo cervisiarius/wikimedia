@@ -5,6 +5,7 @@ count_creator_edits_before_creation.pig
 */
 
 SET mapreduce.output.fileoutputformat.compress false;
+SET mapreduce.map.java.opts -Xmx2048m;
 
 -- Load first-revision info (only consider logged-in users, i.e., user_id > 0).
 First = LOAD '/user/west1/enwiki_metadata/enwiki_first_revision_per_page' USING PigStorage('\t')
