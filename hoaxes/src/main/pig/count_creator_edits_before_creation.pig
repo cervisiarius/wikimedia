@@ -1,6 +1,6 @@
 /*
 pig \
--param PARALLEL=10 \
+-param PARALLEL=100 \
 count_creator_edits_before_creation.pig
 */
 
@@ -18,7 +18,7 @@ Rev = LOAD '/user/west1/enwiki_metadata/enwiki_revisions_with_page_titles.tsv' U
 Rev = FILTER Rev BY user_id > 0;
 
 -- Find previous edits by the creator of each page.
-Joined = JOIN First BY user_id, Rev BY user_id PARALLEL $PARALLEL;
+Joined = JOIN Rev BY user_id, First BY user_id USING 'replicated' PARALLEL $PARALLEL;
 Joined = FILTER Joined BY (Rev::timestamp < First::timestamp);
 Joined = FOREACH Joined GENERATE
     First::page_id AS page_id,
