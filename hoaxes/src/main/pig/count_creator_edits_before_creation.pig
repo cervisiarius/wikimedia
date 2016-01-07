@@ -1,8 +1,12 @@
 /*
 pig \
--param PARALLEL=100 \
+-param PARALLEL=300 \
 count_creator_edits_before_creation.pig
 */
+
+---- NB: This script is unused. The join is so inefficient, it creates over
+---- 34TB of intermediate output.
+---- Used instead: sort_revision_files.pig followed by count_creator_edits_before_creation.py
 
 SET mapreduce.output.fileoutputformat.compress false;
 --SET mapreduce.map.java.opts -Xmx2048m;
