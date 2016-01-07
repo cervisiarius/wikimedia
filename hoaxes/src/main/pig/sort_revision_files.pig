@@ -12,7 +12,7 @@ First = LOAD '/user/west1/enwiki_metadata/enwiki_first_revision_per_page' USING 
 First = FILTER First BY user_id > 0;
 
 -- Sort.
-First = ORDER First BY user_id, timestamp;
+First = ORDER First BY user_id, timestamp PARALLEL $PARALLEL;
 
 -- Load the revision data (only consider logged-in users, i.e., user_id > 0).
 Rev = LOAD '/user/west1/enwiki_metadata/enwiki_revisions_with_page_titles.tsv' USING PigStorage('\t')
@@ -21,7 +21,7 @@ Rev = LOAD '/user/west1/enwiki_metadata/enwiki_revisions_with_page_titles.tsv' U
 Rev = FILTER Rev BY user_id > 0;
 
 -- Sort.
-Rev = ORDER Rev BY user_id, timestamp;
+Rev = ORDER Rev BY user_id, timestamp PARALLEL $PARALLEL;
 
 STORE First INTO '/user/west1/enwiki_metadata/enwiki_first_revision_per_page_SORTED-BY-UID+TIME';
 STORE Rev INTO '/user/west1/enwiki_metadata/enwiki_revisions_with_page_titles_SORTED-BY-UID+TIME';
