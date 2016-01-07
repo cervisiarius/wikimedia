@@ -19,5 +19,5 @@ if __name__ == '__main__':
     if uid != prev_uid:
       count = 1
     if is_first:
-      print '\t'.join(tokens[:6] + [count-1])
+      print '\t'.join(tokens[:6] + str([count-1]))
     prev_uid = uid
