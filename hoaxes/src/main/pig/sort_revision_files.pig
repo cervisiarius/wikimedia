@@ -1,6 +1,6 @@
 /*
 pig \
--param PARALLEL=10 \
+-param PARALLEL=200 \
 sort_revision_files.pig
 */
 
@@ -12,7 +12,7 @@ First = LOAD '/user/west1/enwiki_metadata/enwiki_first_revision_per_page' USING 
 First = FILTER First BY user_id > 0;
 
 -- Sort.
-First = ORDER First BY user_id, timestamp PARALLEL $PARALLEL;
+--First = ORDER First BY user_id, timestamp PARALLEL $PARALLEL;
 
 -- Load the revision data (only consider logged-in users, i.e., user_id > 0).
 Rev = LOAD '/user/west1/enwiki_metadata/enwiki_revisions_with_page_titles.tsv' USING PigStorage('\t')
@@ -21,7 +21,16 @@ Rev = LOAD '/user/west1/enwiki_metadata/enwiki_revisions_with_page_titles.tsv' U
 Rev = FILTER Rev BY user_id > 0;
 
 -- Sort.
-Rev = ORDER Rev BY user_id, timestamp PARALLEL $PARALLEL;
+--Rev = ORDER Rev BY user_id, timestamp PARALLEL $PARALLEL;
 
-STORE First INTO '/user/west1/enwiki_metadata/enwiki_first_revision_per_page_SORTED-BY-UID+TIME';
-STORE Rev INTO '/user/west1/enwiki_metadata/enwiki_revisions_with_page_titles_SORTED-BY-UID+TIME';
+Joined = JOIN Rev BY rev_id LEFT OUTER, First BY rev_id PARALLEL $PARALLEL;
+Joined = FOREACH Joined GENERATE
+    Rev::rev_id, Rev::page_id, Rev::page_title, Rev::user_id, Rev::user, Rev::timestamp,
+    (First::rev_id is null ? 0 : 1) AS is_first;
+
+Sorted = ORDER Joined BY user_id, timestamp PARALLEL $PARALLEL;
+
+STORE Sorted INTO '/user/west1/enwiki_metadata/enwiki_revisions_with_page_titles_WITH-FIRST-FLAG_SORTED-BY-UID+TIME';
+
+--STORE First INTO '/user/west1/enwiki_metadata/enwiki_first_revision_per_page_SORTED-BY-UID+TIME';
+--STORE Rev INTO '/user/west1/enwiki_metadata/enwiki_revisions_with_page_titles_SORTED-BY-UID+TIME';
