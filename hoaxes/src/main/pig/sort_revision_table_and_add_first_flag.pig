@@ -1,7 +1,7 @@
 /*
 pig \
--param PARALLEL=200 \
-sort_revision_files.pig
+-param PARALLEL=100 \
+sort_revision_table_and_add_first_flag.pig
 */
 
 SET mapreduce.output.fileoutputformat.compress false;
