@@ -1,5 +1,7 @@
 #!/usr/bin/python
 
+# This script takes the output of sort_revision_table_and_add_first_flag.pig as input.
+
 import sys, codecs
 
 # We want to print unicode.
