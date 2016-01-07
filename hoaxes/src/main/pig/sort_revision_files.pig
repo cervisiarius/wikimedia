@@ -24,4 +24,4 @@ Rev = FILTER Rev BY user_id > 0;
 Rev = ORDER Rev BY user_id, timestamp;
 
 STORE First INTO '/user/west1/enwiki_metadata/enwiki_first_revision_per_page_SORTED-BY-UID+TIME';
-STORE Grouped INTO '/user/west1/enwiki_metadata/enwiki_revisions_with_page_titles_SORTED-BY-UID+TIME';
+STORE Rev INTO '/user/west1/enwiki_metadata/enwiki_revisions_with_page_titles_SORTED-BY-UID+TIME';
