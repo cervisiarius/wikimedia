@@ -1,6 +1,7 @@
 #!/usr/bin/python
 
 # This script takes the output of sort_revision_table_and_add_first_flag.pig as input.
+# Write output to ~/repo/hoaxes/data/num_creator_edits_before_creation.tsv.gz.
 
 import sys, codecs
 
