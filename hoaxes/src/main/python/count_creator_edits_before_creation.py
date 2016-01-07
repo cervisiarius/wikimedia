@@ -1,5 +1,7 @@
 #!/usr/bin/python
 
+import sys, codecs
+
 # We want to print unicode.
 sys.stdout = codecs.getwriter('utf8')(sys.stdout)
 sys.stdin = codecs.getreader('utf8')(sys.stdin)
