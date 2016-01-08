@@ -54,9 +54,10 @@ export LIBJARS=$THRIFTJAR
 echo "Running hadoop job"
 hadoop jar $TARGET_DIR/TreeExtractor-0.0.1-SNAPSHOT-jar-with-dependencies.jar \
     -D            mapreduce.job.queuename=$QUEUE \
-    -D            mapred.child.java.opts="-Xss10m -Xmx3g" \
+    -D            mapred.child.java.opts="-Xss10m -Xmx4g" \
     -D            mapreduce.output.fileoutputformat.compress=false \
     -D            mapreduce.task.timeout=6000000 \
+    -D            dfs.replication=2 \
     -D            org.wikimedia.west1.traces.languagePattern=$LANGUAGE_PATTERN \
     -D            org.wikimedia.west1.traces.keepAmbiguousTrees=$KEEP_AMBIGUOUS_TREES \
     -D            org.wikimedia.west1.traces.keepBadTrees=$KEEP_BAD_TREES \

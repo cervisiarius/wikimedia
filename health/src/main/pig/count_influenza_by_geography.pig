@@ -9,6 +9,8 @@ SET mapreduce.output.fileoutputformat.compress false;
 Trees = LOAD '/user/west1/navigation_trees/year=2015/month=12/en/' USING PigStorage('\t')
     AS (json:chararray);
 
+--Human Flu, Influenza, Influenza A virus, Influenza B virus, Oseltamivir
+
 Data = FOREACH Trees GENERATE
     (json MATCHES '.*\\"title\\":\\"Influenza\\".*' ? 1 : 0) AS contains_influenza,
     REGEX_EXTRACT(json, '.*\\"country\\":\\"(.*?)\\".*', 1) AS country,
