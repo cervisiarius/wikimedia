@@ -1,0 +1,24 @@
+---
+title: "Wikipedia flu"
+author: "Bob West"
+date: "January 8, 2016"
+output: html_document
+---
+
+```{r}
+DATADIR <- sprintf('%s/wikimedia/trunk/data/health/', Sys.getenv('HOME'))
+data <- read.table(sprintf('%s/influenza_per_country_and_state.tsv', DATADIR), sep='\t', quote='')
+colnames(data) <- c('country', 'state', 'all', 'flu')
+
+countries <- data.frame(t(simplify2array(by(data, data$country, function(X) colSums(X[,-(1:2)])))))
+countries$ratio <- countries$flu / countries$all
+
+states <- data[is.finite(data$country) & data$country=='US',]
+states$ratio <- states$flu / states$all
+
+countries[order(countries$ratio, decreasing=TRUE),]
+
+states[order(states$ratio, decreasing=TRUE),]
+
+summary(data)
+```
