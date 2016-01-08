@@ -6,7 +6,7 @@ count_influenza_by_geography.pig
 
 SET mapreduce.output.fileoutputformat.compress false;
 
-Trees = LOAD '/user/west1/navigation_trees/year=2015/month=12/en/part-r-00099' USING PigStorage('\t')
+Trees = LOAD '/user/west1/navigation_trees/year=2015/month=12/en/' USING PigStorage('\t')
     AS (json:chararray);
 
 Data = FOREACH Trees GENERATE
@@ -22,6 +22,6 @@ Counts = FOREACH Grouped GENERATE
     COUNT(Data) AS all_trees,
     SUM(Data.contains_influenza) AS flu_trees;
 
---Counts = ORDER Counts BY country, state;
+Counts = ORDER Counts BY country, state;
 
 STORE Counts INTO '/user/west1/health/influenza_per_country_and_state';
