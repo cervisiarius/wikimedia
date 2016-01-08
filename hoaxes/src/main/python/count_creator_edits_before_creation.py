@@ -11,16 +11,16 @@ sys.stdin = codecs.getreader('utf8')(sys.stdin)
 
 if __name__ == '__main__':
 
-  prev_uid = None
+  prev_user = None
   count = 0
 
   for line in sys.stdin:
     line = line.strip()
     tokens = line.split('\t', 6)
-    (uid, is_first) = (tokens[3], True if tokens[6] == '1' else False)
+    (user, is_first) = (tokens[4], True if tokens[6] == '1' else False)
     count += 1
-    if uid != prev_uid:
+    if user != prev_user:
       count = 1
     if is_first:
       print '\t'.join(tokens[:6] + [str(count-1)])
-    prev_uid = uid
+    prev_user = user
