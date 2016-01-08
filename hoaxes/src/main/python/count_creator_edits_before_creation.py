@@ -15,12 +15,14 @@ if __name__ == '__main__':
   count = 0
 
   for line in sys.stdin:
-    line = line.strip()
-    tokens = line.split('\t', 6)
-    (user, is_first) = (tokens[4], True if tokens[6] == '1' else False)
     count += 1
-    if user != prev_user:
-      count = 1
-    if is_first:
-      print '\t'.join(tokens[:6] + [str(count-1)])
-    prev_user = user
+    tokens = line.strip().split('\t', 6)
+    try:
+      (user, is_first) = (tokens[4], True if tokens[6] == '1' else False)
+      if user != prev_user:
+        count = 1
+      if is_first:
+        print '\t'.join(tokens[:6] + [str(count-1)])
+      prev_user = user
+    except IndexError:
+      pass
