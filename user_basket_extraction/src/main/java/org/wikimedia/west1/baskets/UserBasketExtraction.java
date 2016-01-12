@@ -33,6 +33,7 @@ public class UserBasketExtraction extends Configured implements Tool {
 		job.setOutputValueClass(Text.class);
 
 		job.setMapperClass(TreeFlattenMapper.class);
+		job.setCombinerClass(BasketMergeReducer.class);
 		job.setReducerClass(BasketMergeReducer.class);
 		job.setNumReduceTasks(conf.getInt(CONF_NUM_REDUCE, 1));
 
