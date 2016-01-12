@@ -1,0 +1,6 @@
+About Parquet format:
+https://blog.twitter.com/2013/dremel-made-simple-with-parquet
+
+To find frequent pairs:
+http://grepcode.com/file/repo1.maven.org/maven2/org.apache.mahout/mahout-core/0.9/org/apache/mahout/cf/taste/hadoop/similarity/item/ItemSimilarityJob.java
+http://archive-primary.cloudera.com/cdh4/cdh/4/mahout-0.7-cdh4.3.2/mahout-core/org/apache/mahout/cf/taste/hadoop/similarity/item/ItemSimilarityJob.html
