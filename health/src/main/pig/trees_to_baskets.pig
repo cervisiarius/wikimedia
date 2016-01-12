@@ -25,7 +25,7 @@ Grouped = GROUP Data BY uid PARALLEL $PARALLEL;
 Baskets = FOREACH Grouped GENERATE group AS uid, BagToString(Data.page_list, '|') AS page_list;
 
 -- Remove the duplicates in each user's basket.
-DEFINE uniq `perl -ne 'chomp; ($uid, $pages) = split /\\t/; %hash = map { $_ => 1 } (split /\\|/, $pages); print $uid . "\t" . join("|", keys %hash) . "\n";'` input(stdin using PigStreaming('\t')) output (stdout using PigStreaming('\t'));
+DEFINE uniq `perl -ne 'chomp; (\$uid, \$pages) = split /\\t/; %hash = map { \$_ => 1 } (split /\\|/, \$pages); print \$uid . "\t" . join("|", keys %hash) . "\n";'` input(stdin using PigStreaming('\t')) output (stdout using PigStreaming('\t'));
 Baskets = STREAM Baskets THROUGH uniq AS (uid:chararray, page_set:chararray);
 
 STORE Baskets INTO '/user/west1/pageview_baskets/year=$YEAR/month=$MONTH/$LANG';
