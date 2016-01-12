@@ -2,13 +2,11 @@
 
 # Modify these parameters.
 LANG='en'
-YEAR=2015
-MONTH=11
 
 # The tree data you want to process.
-IN_DIR=/user/west1/navigation_trees/year=$YEAR/month=$MONTH/$LANG
+IN_DIR=/user/west1/navigation_trees/year=2015/month=1[12]/$LANG/*
 # The output directory.
-OUT_DIR=/user/west1/user_baskets/year=$YEAR/month=$MONTH/$LANG
+OUT_DIR=/user/west1/user_baskets/$LANG
 # This is where the JAR file with the Mapper and Reducer code resides.
 TARGET_DIR=$HOME/wikimedia/trunk/user_basket_extraction/target
 # Logs are written here.
@@ -29,4 +27,4 @@ hadoop jar $TARGET_DIR/UserBasketExtractor-0.0.1-SNAPSHOT-jar-with-dependencies.
     -D            org.wikimedia.west1.traces.input=$IN_DIR \
     -D            org.wikimedia.west1.traces.output=$OUT_DIR \
     -D            org.wikimedia.west1.traces.numReduceTasks=$NUM_REDUCE \
-2>&1 | tee $LOG_DIR/basket_extraction_lang=$LANG\_year=$YEAR\_month=$MONTH\_`date +%Y%m%dT%H%M%S`.log
+2>&1 | tee $LOG_DIR/basket_extraction_lang=$LANG\_`date +%Y%m%dT%H%M%S`.log
