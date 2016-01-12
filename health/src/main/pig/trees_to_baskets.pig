@@ -7,6 +7,8 @@ pig \
 trees_to_baskets.pig
 */
 
+---- NB: UNUSED, since it's too slow. Use a bare-bones MapReduce implementation instead.
+
 SET mapreduce.output.fileoutputformat.compress false;
 
 Trees = LOAD '/user/west1/navigation_trees/year=$YEAR/month=$MONTH/$LANG' USING PigStorage('\t')
