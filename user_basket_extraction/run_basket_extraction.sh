@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Modify these parameters.
-LANGUAGE='en'
+LANG='en'
 YEAR=2015
 MONTH=11
 
@@ -20,7 +20,7 @@ QUEUE=default
 #QUEUE=priority
 
 echo "Running hadoop job"
-hadoop jar $TARGET_DIR/TreeExtractor-0.0.1-SNAPSHOT-jar-with-dependencies.jar \
+hadoop jar $TARGET_DIR/UserBasketExtractor-0.0.1-SNAPSHOT-jar-with-dependencies.jar \
     -D            mapreduce.job.queuename=$QUEUE \
     -D            mapred.child.java.opts="-Xss10m -Xmx4g" \
     -D            mapreduce.output.fileoutputformat.compress=false \
@@ -29,4 +29,4 @@ hadoop jar $TARGET_DIR/TreeExtractor-0.0.1-SNAPSHOT-jar-with-dependencies.jar \
     -D            org.wikimedia.west1.traces.input=$IN_DIR \
     -D            org.wikimedia.west1.traces.output=$OUT_DIR \
     -D            org.wikimedia.west1.traces.numReduceTasks=$NUM_REDUCE \
-2>&1 | tee $LOG_DIR/basket_extraction_lang=`$LANGUAGE\_year=$YEAR\_month=$MONTH\_`date +%Y%m%dT%H%M%S`.log
+2>&1 | tee $LOG_DIR/basket_extraction_lang=$LANG\_year=$YEAR\_month=$MONTH\_`date +%Y%m%dT%H%M%S`.log
