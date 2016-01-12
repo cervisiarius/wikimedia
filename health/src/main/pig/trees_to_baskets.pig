@@ -1,12 +1,15 @@
 /*
 pig \
 -param PARALLEL=200 \
+-param YEAR=2015 \
+-param MONTH=11 \
+-param LANG=en \
 trees_to_baskets.pig
 */
 
 SET mapreduce.output.fileoutputformat.compress false;
 
-Trees = LOAD '/user/west1/navigation_trees/year=2015/month=12/en/part-r-00043' USING PigStorage('\t')
+Trees = LOAD '/user/west1/navigation_trees/year=$YEAR/month=$MONTH/$LANG' USING PigStorage('\t')
   AS (json:chararray);
 
 --Trees = LOAD '/tmp/sample.txt' USING PigStorage('\t') AS (json:chararray);
@@ -25,4 +28,4 @@ Baskets = FOREACH Grouped GENERATE group AS uid, BagToString(Data.page_list, '|'
 DEFINE uniq `perl -ne 'chomp; ($uid, $pages) = split /\\t/; %hash = map { $_ => 1 } (split /\\|/, $pages); print $uid . "\t" . join("|", keys %hash) . "\n";'` input(stdin using PigStreaming('\t')) output (stdout using PigStreaming('\t'));
 Baskets = STREAM Baskets THROUGH uniq AS (uid:chararray, page_set:chararray);
 
-STORE Baskets INTO '/user/west1/health/__TEST__';
+STORE Baskets INTO '/user/west1/pageview_baskets/year=$YEAR/month=$MONTH/$LANG';
