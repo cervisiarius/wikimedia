@@ -28,10 +28,13 @@ public class TreeFlattenMapper extends Mapper<LongWritable, Text, Text, Text> {
 		}
 		return buf.toString();
 	}
-	
+
 	private static Set<String> flattenTree(JSONObject root) {
 		Set<String> set = new HashSet<String>();
-		set.add(root.getString("title"));
+		// Discard search queries.
+		if (!root.has("is_search")) {
+			set.add(root.getString("title"));
+		}
 		if (root.has("children")) {
 			JSONArray children = root.getJSONArray("children");
 			for (int i = 0; i < children.length(); ++i) {
@@ -40,7 +43,7 @@ public class TreeFlattenMapper extends Mapper<LongWritable, Text, Text, Text> {
 		}
 		return set;
 	}
-	
+
 	@Override
 	public void map(LongWritable key, Text value, Context context) throws IOException,
 	    InterruptedException {
