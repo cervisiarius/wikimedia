@@ -8,10 +8,12 @@ rank_cooccurrences.pig
 SET mapreduce.output.fileoutputformat.compress false;
 
 %declare TARGET_PAGE 'Electronic_cigarette'
+-- Set to '_DAILY' if you want to consider the baskets that don't span more than a day.
+%declare DAILY_SUFFIX '_DAILY'
 
 --Baskets = LOAD '/tmp/sample.txt' USING PigStorage('\t') AS (uid:chararray, basket:chararray);
 
-Baskets = LOAD '/user/west1/user_baskets_DAILY/$LANG' USING PigStorage('\t')
+Baskets = LOAD '/user/west1/user_baskets$DAILY_SUFFIX/$LANG' USING PigStorage('\t')
   AS (id:chararray, basket:chararray);
 
 -- Discard uid.
@@ -39,4 +41,4 @@ Normalized = FOREACH Normalized GENERATE
   ((double) MatchingCounts::count / Counts::count) AS ratio:double;
 Normalized = ORDER Normalized BY ratio DESC;
 
-STORE Normalized INTO '/user/west1/health/cooccurrences_with_$TARGET_PAGE/$LANG';
+STORE Normalized INTO '/user/west1/health/cooccurrences_with_$TARGET_PAGE$DAILY_SUFFIX/$LANG';
