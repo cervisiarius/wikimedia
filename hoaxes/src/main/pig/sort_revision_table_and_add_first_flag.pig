@@ -9,8 +9,11 @@ sort_revision_table_and_add_first_flag.pig
 SET mapreduce.output.fileoutputformat.compress false;
 
 -- Load first-revision info.
-First = LOAD '/user/west1/enwiki_metadata/enwiki_first_revision_per_page' USING PigStorage('\t')
-    AS (page_id:int, timestamp:chararray, rev_id:long, page_title:chararray, user_id:int, user:chararray);
+First = LOAD '/user/west1/enwiki_metadata/enwiki_first_and_last_revision_per_page' USING PigStorage('\t')
+    AS (page_id:int,
+        timestamp:chararray, rev_id:long, page_title:chararray, user_id:int, user:chararray,
+        last_timestamp:chararray, last_rev_id:long, last_page_title:chararray, last_user_id:int, last_user:chararray);
+First = FOREACH First GENERATE rev_id;
 -- Only consider logged-in users, i.e., user_id > 0.
 --First = FILTER First BY user_id > 0;
 

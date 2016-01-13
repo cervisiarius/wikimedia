@@ -16,7 +16,7 @@ if __name__ == '__main__':
 
   for line in sys.stdin:
     count += 1
-    tokens = line.strip().split('\t', 6)
+    tokens = line.strip().split('\t', 11)
     try:
       (user, is_first) = (tokens[4], True if tokens[6] == '1' else False)
       if user != prev_user:
