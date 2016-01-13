@@ -11,8 +11,8 @@ SET mapreduce.output.fileoutputformat.compress false;
 
 --Baskets = LOAD '/tmp/sample.txt' USING PigStorage('\t') AS (uid:chararray, basket:chararray);
 
-Baskets = LOAD '/user/west1/user_baskets/$LANG' USING PigStorage('\t')
-  AS (uid:chararray, basket:chararray);
+Baskets = LOAD '/user/west1/user_baskets_DAILY/$LANG' USING PigStorage('\t')
+  AS (id:chararray, basket:chararray);
 
 -- Discard uid.
 Baskets = FOREACH Baskets GENERATE basket;
