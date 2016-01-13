@@ -1,7 +1,7 @@
 /*                                                                                               
 pig \
 -param PARALLEL=10 \
-find_first_revision_per_page.pig
+find_first_and_last_revision_per_page.pig
 */
 
 SET mapreduce.output.fileoutputformat.compress false;
@@ -27,8 +27,9 @@ Rev = FOREACH Rev GENERATE
 
 Grouped = GROUP Rev BY page_id PARALLEL $PARALLEL;
 Grouped = FOREACH Grouped GENERATE
-    MIN(Rev.page_id) AS page_id,
-    MIN(Rev.rev_info) AS rev_info;
+    group AS page_id,
+    MIN(Rev.rev_info) AS first_rev_info,
+    MAX(Rev.rev_info) AS last_rev_info;
 
-STORE Grouped INTO '/user/west1/enwiki_metadata/enwiki_first_revision_per_page';
+STORE Grouped INTO '/user/west1/enwiki_metadata/enwiki_first_and_last_revision_per_page';
 --STORE Grouped INTO '/tmp/enwiki_first_revision_per_page';
