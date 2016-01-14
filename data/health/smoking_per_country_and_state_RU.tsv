@@ -47,7 +47,7 @@ AM	Shirak Province	21453	0	0	0	1	0
 AM	Syunik Province	2088	0	0	0	0	0
 AM	Tavush Province	108	0	0	0	0	0
 AM	Unknown	359369	0	12	13	15	0
-AM	Yerevan	1550482	0	35	47	27	8
+AM	Yerevan	1550482	1	35	47	27	8
 AO	Bengo Province	2	0	0	0	0	0
 AO	Benguela	434	0	0	0	0	0
 AO	Cabinda	62	0	0	0	0	0
@@ -182,7 +182,7 @@ BG	Oblast Vratsa	6602	0	0	1	0	0
 BG	Oblast Yambol	6170	0	0	0	0	0
 BG	Pazardzhik	8617	0	0	0	0	2
 BG	Pernik	4995	0	0	0	0	0
-BG	Plovdiv	46141	0	0	0	1	0
+BG	Plovdiv	46141	1	0	0	1	0
 BG	Sofia-Capital	262694	0	1	0	6	7
 BG	Sofiya	5974	0	0	0	0	0
 BG	Unknown	104884	0	4	6	3	3
@@ -257,13 +257,13 @@ BW	North East District	9	0	0	0	0	0
 BW	North West District	2	0	0	0	0	0
 BW	South East District	941	0	0	0	0	0
 BW	Unknown	18	0	0	0	0	0
-BY	Brest	731255	0	23	46	30	8
-BY	Gomel	1194474	0	54	87	43	7
-BY	Grodnenskaya	1556746	0	54	88	31	9
-BY	Minsk	12104310	0	312	687	400	73
-BY	Mogilev	1323003	0	43	101	36	8
-BY	Unknown	1414131	0	58	82	46	4
-BY	Vitebsk	1601504	0	65	104	44	10
+BY	Brest	731255	1	23	46	30	8
+BY	Gomel	1194474	1	54	87	43	7
+BY	Grodnenskaya	1556746	1	54	88	31	9
+BY	Minsk	12104310	16	312	687	400	73
+BY	Mogilev	1323003	1	43	101	36	8
+BY	Unknown	1414131	6	58	82	46	4
+BY	Vitebsk	1601504	1	65	104	44	10
 BZ	Belize District	165	0	0	0	0	0
 BZ	Cayo District	6	0	0	0	0	0
 BZ	Corozal District	7	0	0	0	0	0
@@ -278,9 +278,9 @@ CA	Newfoundland and Labrador	860	0	0	0	0	0
 CA	Northwest Territories	95	0	0	0	0	0
 CA	Nova Scotia	5288	0	0	0	0	0
 CA	Nunavut	10	0	0	0	0	0
-CA	Ontario	354797	0	14	12	9	1
+CA	Ontario	354797	1	14	12	9	1
 CA	Prince Edward Island	485	0	0	0	0	0
-CA	Quebec	535778	0	9	9	4	2
+CA	Quebec	535778	4	9	9	4	2
 CA	Saskatchewan	9308	0	0	0	0	0
 CA	Unknown	18350	0	0	1	0	0
 CA	Yukon	284	0	0	0	0	0
@@ -333,7 +333,7 @@ CL	Region de la Araucania	181	0	0	0	0	0
 CL	Region del Biobio	707	0	0	0	0	0
 CL	Region del Libertador General Bernardo O'Higgins	120	0	0	0	0	0
 CL	Region de Los Rios	582	0	0	0	0	0
-CL	Region de Magallanes y de la Antartica Chilena	202	0	0	0	0	0
+CL	Region de Magallanes y de la Antartica Chilena	202	1	0	0	0	0
 CL	Region de Valparaiso	2146	0	0	0	1	0
 CL	Santiago Metropolitan	11573	0	1	1	0	0
 CL	Tarapacá	170	0	0	0	0	0
@@ -374,7 +374,7 @@ CN	Shanxi Sheng	2334	0	0	0	0	0
 CN	Sichuan Sheng	10663	0	1	0	0	0
 CN	Tianjin Shi	20398	0	1	3	0	0
 CN	Tibet Autonomous Region	23	0	0	0	0	0
-CN	Unknown	119680	0	3	3	2	0
+CN	Unknown	119680	1	3	3	2	0
 CN	Xinjiang Uygur Zizhiqu	27253	0	0	0	0	0
 CN	Yunnan	68780	0	0	0	1	0
 CN	Zhejiang Sheng	1429360	0	1	3	117	0
@@ -450,14 +450,14 @@ DE	Hesse	339922	0	3	12	3	2
 DE	Land Berlin	329914	0	3	8	3	1
 DE	Lower Saxony	221652	0	12	7	2	1
 DE	Mecklenburg-Vorpommern	30121	0	2	0	0	0
-DE	North Rhine-Westphalia	638424	0	21	44	5	4
+DE	North Rhine-Westphalia	638424	2	21	44	5	4
 DE	Rheinland-Pfalz	121783	0	1	11	6	1
 DE	Saarland	25587	0	1	0	0	0
 DE	Saxony	124059	0	7	8	5	0
 DE	Saxony-Anhalt	48516	0	1	4	0	0
 DE	Schleswig-Holstein	49839	0	0	2	1	0
 DE	Thuringia	46383	0	0	1	4	0
-DE	Unknown	2378627	0	68	63	15	11
+DE	Unknown	2378627	2	68	63	15	11
 DJ	Unknown	744	0	0	0	0	0
 DK	Capital Region	39980	0	0	0	0	0
 DK	Central Jutland	15214	0	0	1	0	0
@@ -548,7 +548,7 @@ EC	Provincia de Santa Elena	88	0	0	0	0	0
 EC	Provincia de Santo Domingo de los Tsachilas	191	0	0	0	0	0
 EC	Provincia de Sucumbios	16	0	0	0	0	0
 EC	Unknown	384	0	0	0	0	0
-EE	Harjumaa	870337	0	24	75	23	2
+EE	Harjumaa	870337	1	24	75	23	2
 EE	Hiiumaa	306	0	0	0	0	0
 EE	Ida-Virumaa	278412	0	14	19	9	0
 EE	Järvamaa	2845	0	0	0	0	0
@@ -559,7 +559,7 @@ EE	Pärnumaa	15650	0	1	1	0	0
 EE	Põlvamaa	1010	0	0	0	0	0
 EE	Raplamaa	2218	0	0	0	0	0
 EE	Saare	982	0	0	0	0	0
-EE	Tartu	86135	0	1	4	2	2
+EE	Tartu	86135	1	1	4	2	2
 EE	Unknown	361966	0	51	7	8	0
 EE	Valgamaa	10594	0	1	0	0	1
 EE	Viljandimaa	1963	0	0	0	0	0
@@ -600,7 +600,7 @@ ES	Canary Islands	16743	0	0	2	0	0
 ES	Cantabria	2342	0	0	0	0	0
 ES	Castille and León	5464	0	0	0	0	0
 ES	Castille-La Mancha	4191	0	0	0	0	0
-ES	Catalonia	119792	0	5	3	5	1
+ES	Catalonia	119792	1	5	3	5	1
 ES	Ceuta	106	0	0	0	0	0
 ES	Extremadura	983	0	0	0	0	0
 ES	Galicia	5701	0	0	0	0	0
@@ -890,7 +890,7 @@ IL	Jerusalem	60128	0	2	0	0	0
 IL	Northern District	52135	0	1	0	2	0
 IL	Southern District	66213	0	0	0	1	1
 IL	Tel Aviv	1007880	0	60	24	17	9
-IL	Unknown	281581	0	10	12	2	1
+IL	Unknown	281581	1	10	12	2	1
 IM	Unknown	544	0	0	0	0	0
 IN	Andhra Pradesh	4472	0	0	1	0	0
 IN	Arunachal Pradesh	8	0	0	0	0	0
@@ -1003,7 +1003,7 @@ IT	Sardinia	3839	0	0	0	0	0
 IT	Sicily	9936	0	0	0	0	0
 IT	The Marches	9563	0	0	1	0	0
 IT	Trentino-Alto Adige	11254	0	0	2	0	0
-IT	Tuscany	33741	0	0	1	2	0
+IT	Tuscany	33741	1	0	1	2	0
 IT	Umbria	4180	0	0	0	0	0
 IT	Unknown	53916	0	1	2	0	0
 IT	Veneto	39510	0	1	2	0	0
@@ -1132,23 +1132,23 @@ KW	Al Asimah	4956	0	0	0	0	0
 KW	Muhafazat Hawalli	66	0	0	0	0	0
 KW	Unknown	412	0	0	0	0	0
 KY	Unknown	203	0	0	0	0	0
-KZ	Aktyubinskaya Oblast'	699616	0	18	21	15	3
+KZ	Aktyubinskaya Oblast'	699616	2	18	21	15	3
 KZ	Almaty Oblysy	192815	0	7	9	4	1
-KZ	Almaty Qalasy	4950983	0	155	282	115	29
+KZ	Almaty Qalasy	4950983	4	155	282	115	29
 KZ	Aqmola Oblysy	282215	0	7	8	7	2
 KZ	Astana Qalasy	2059871	0	48	55	27	10
-KZ	Atyrau Oblysy	314182	0	11	5	4	5
+KZ	Atyrau Oblysy	314182	1	11	5	4	5
 KZ	Batys Qazaqstan Oblysy	252753	0	5	9	4	1
 KZ	East Kazakhstan	687443	0	42	26	12	4
 KZ	Mangistauskaya Oblast'	183347	0	4	13	8	0
 KZ	Pavlodar Oblysy	651309	0	13	38	10	6
-KZ	Qaraghandy Oblysy	1369848	0	46	77	31	7
-KZ	Qostanay Oblysy	592844	0	19	21	26	4
+KZ	Qaraghandy Oblysy	1369848	4	46	77	31	7
+KZ	Qostanay Oblysy	592844	4	19	21	26	4
 KZ	Qyzylorda Oblysy	115051	0	5	3	2	0
 KZ	Severo-Kazakhstanskaya Oblast'	358541	0	14	18	6	4
-KZ	Unknown	1592525	0	64	57	24	10
-KZ	Yuzhno-Kazakhstanskaya Oblast'	387060	0	10	15	13	4
-KZ	Zhambyl Oblysy	196421	0	4	6	1	2
+KZ	Unknown	1592525	1	64	57	24	10
+KZ	Yuzhno-Kazakhstanskaya Oblast'	387060	1	10	15	13	4
+KZ	Zhambyl Oblysy	196421	2	4	6	1	2
 LA	Unknown	1432	0	0	0	0	0
 LA	Vientiane	1477	0	0	0	0	0
 LB	Beyrouth	8791	0	1	2	0	0
@@ -1188,8 +1188,8 @@ LT	Siauliu apskritis	22522	0	0	0	0	0
 LT	Taurages apskritis	677	0	0	0	0	0
 LT	Telsiu apskritis	12095	0	1	0	0	0
 LT	Unknown	96937	0	0	3	2	0
-LT	Utenos apskritis	42478	0	2	2	1	0
-LT	Vilnius County	496428	0	8	37	7	2
+LT	Utenos apskritis	42478	1	2	2	1	0
+LT	Vilnius County	496428	1	8	37	7	2
 LU	District de Diekirch	154	0	0	0	0	0
 LU	District de Grevenmacher	381	0	0	0	0	0
 LU	District de Luxembourg	14737	0	0	0	4	0
@@ -1224,7 +1224,7 @@ LV	Jekabpils Municipality	1064	0	0	0	0	0
 LV	Jēkabpils Municipality	3928	0	0	0	0	0
 LV	Jelgava	60160	0	2	6	2	0
 LV	Jelgavas Rajons	1028	0	0	1	0	0
-LV	Jurmala	58606	0	4	3	2	1
+LV	Jurmala	58606	1	4	3	2	1
 LV	Kandava	166	0	0	0	0	0
 LV	Ķegums	332	0	0	0	0	0
 LV	Ķekava	1747	0	0	0	0	0
@@ -1248,7 +1248,7 @@ LV	Ozolnieku Novads	1250	0	0	0	0	0
 LV	Preili Municipality	2625	0	3	0	0	0
 LV	Priekuli Municipality	41	0	0	0	0	0
 LV	Rezekne	56476	0	1	3	0	2
-LV	Riga	1705215	0	35	174	56	6
+LV	Riga	1705215	4	35	174	56	6
 LV	Rojas Novads	433	0	0	0	0	0
 LV	Ropazu Novads	238	0	0	0	0	0
 LV	Rugaju Novads	28	0	0	0	0	0
@@ -1313,7 +1313,7 @@ MD	Laloveni	11627	0	1	1	0	0
 MD	Leova	745	0	0	0	0	0
 MD	Municipiul Balti	95036	0	1	3	6	0
 MD	Municipiul Bender	193376	0	2	7	6	0
-MD	Municipiul Chisinau	2113221	0	56	170	73	10
+MD	Municipiul Chisinau	2113221	3	56	170	73	10
 MD	Nisporeni	1206	0	0	0	0	0
 MD	Orhei	10706	0	0	2	0	0
 MD	Raionul Calarasi	13613	0	0	0	0	0
@@ -1523,7 +1523,7 @@ MX	Nuevo León	1909	0	0	0	0	0
 MX	Oaxaca	319	0	0	0	0	0
 MX	Puebla	1176	0	0	0	0	0
 MX	Querétaro	594	0	0	0	0	0
-MX	Quintana Roo	4882	0	0	1	0	0
+MX	Quintana Roo	4882	1	0	1	0	0
 MX	San Luis Potosí	409	0	0	0	0	0
 MX	Sinaloa	384	0	0	0	0	0
 MX	Sonora	845	0	0	0	0	0
@@ -1625,7 +1625,7 @@ NL	Provincie Overijssel	6873	0	2	0	0	2
 NL	Provincie Utrecht	17212	0	0	0	0	0
 NL	Provincie Zeeland	1974	0	0	0	0	0
 NL	South Holland	52458	0	0	6	6	1
-NL	Unknown	325427	0	7	24	10	6
+NL	Unknown	325427	1	7	24	10	6
 NO	Akershus	8943	0	0	0	0	0
 NO	Aust-Agder	1669	0	0	0	0	0
 NO	Buskerud	5693	0	0	0	1	0
@@ -1754,7 +1754,7 @@ PL	Greater Poland Voivodeship	52381	0	0	5	4	1
 PL	Kujawsko-Pomorskie	46191	0	0	4	1	0
 PL	Lesser Poland Voivodeship	127392	0	1	9	0	2
 PL	Łódź Voivodeship	35586	0	0	4	0	0
-PL	Lower Silesian Voivodeship	79726	0	1	4	5	1
+PL	Lower Silesian Voivodeship	79726	1	1	4	5	1
 PL	Lublin Voivodeship	40197	0	0	5	4	1
 PL	Lubusz	5363	0	2	0	0	0
 PL	Masovian Voivodeship	332314	0	2	30	11	3
@@ -1892,7 +1892,7 @@ RO	Judetul Cluj	6184	0	0	0	0	0
 RO	Judetul Dambovita	788	0	0	0	0	0
 RO	Judetul Galati	2177	0	0	0	0	0
 RO	Judetul Ialomita	375	0	0	0	0	0
-RO	Judetul Iasi	7345	0	0	1	1	0
+RO	Judetul Iasi	7345	1	0	1	1	0
 RO	Judetul Mehedinti	36	0	0	0	0	0
 RO	Judetul Mures	1542	0	0	0	0	0
 RO	Judetul Neamt	1067	0	0	0	0	0
@@ -1913,90 +1913,90 @@ RO	Vrancea	698	0	0	0	0	0
 RS	Central Serbia	103190	0	4	0	0	0
 RS	Unknown	10928	0	0	1	0	0
 RS	Vojvodina	16849	0	0	1	1	0
-RU	Altai Krai	3330795	0	148	238	101	19
+RU	Altai Krai	3330795	4	148	238	101	19
 RU	Amurskaya Oblast'	791822	0	27	18	7	3
-RU	Arkhangelskaya	1970797	0	51	75	55	13
+RU	Arkhangelskaya	1970797	1	51	75	55	13
 RU	Astrakhanskaya Oblast'	1340249	0	75	70	30	5
-RU	Bashkortostan	6846662	0	191	325	181	39
-RU	Belgorodskaya Oblast'	2133777	0	58	134	44	7
-RU	Bryanskaya Oblast'	2984223	0	71	88	28	14
+RU	Bashkortostan	6846662	5	191	325	181	39
+RU	Belgorodskaya Oblast'	2133777	4	58	134	44	7
+RU	Bryanskaya Oblast'	2984223	3	71	88	28	14
 RU	Chechnya	355313	0	6	10	4	1
-RU	Chelyabinsk	7435837	0	212	446	300	49
+RU	Chelyabinsk	7435837	13	212	446	300	49
 RU	Chukotskiy Avtonomnyy Okrug	3212	0	0	0	0	0
-RU	Chuvashia	2137895	0	59	92	61	12
-RU	Dagestan	1171790	0	29	16	21	7
-RU	Irkutskaya Oblast'	4666529	0	160	216	123	26
-RU	Ivanovskaya Oblast'	1529707	0	56	72	27	7
+RU	Chuvashia	2137895	4	59	92	61	12
+RU	Dagestan	1171790	2	29	16	21	7
+RU	Irkutskaya Oblast'	4666529	5	160	216	123	26
+RU	Ivanovskaya Oblast'	1529707	2	56	72	27	7
 RU	Jewish Autonomous Oblast	59403	0	2	7	1	0
-RU	Kabardino-Balkarskaya Respublika	500772	0	33	12	8	1
-RU	Kaliningradskaya Oblast'	2308972	0	58	165	64	16
-RU	Kalmykiya	207737	0	3	6	7	0
-RU	Kaluzhskaya Oblast'	2121657	0	48	111	70	3
+RU	Kabardino-Balkarskaya Respublika	500772	1	33	12	8	1
+RU	Kaliningradskaya Oblast'	2308972	1	58	165	64	16
+RU	Kalmykiya	207737	1	3	6	7	0
+RU	Kaluzhskaya Oblast'	2121657	1	48	111	70	3
 RU	Kamtchatski Kray	156513	0	0	9	19	1
 RU	Karachayevo-Cherkesiya	267290	0	4	11	5	1
-RU	Kemerovskaya Oblast'	4104731	0	93	292	100	23
+RU	Kemerovskaya Oblast'	4104731	4	93	292	100	23
 RU	Khabarovsk Krai	3253635	0	90	177	66	22
-RU	Khanty-Mansiyskiy Avtonomnyy Okrug-Yugra	2981736	0	98	168	90	81
-RU	Kirovskaya Oblast'	2100682	0	74	165	81	13
-RU	Komi Republic	1805898	0	59	309	51	14
+RU	Khanty-Mansiyskiy Avtonomnyy Okrug-Yugra	2981736	2	98	168	90	81
+RU	Kirovskaya Oblast'	2100682	1	74	165	81	13
+RU	Komi Republic	1805898	4	59	309	51	14
 RU	Kostromskaya Oblast'	930880	0	26	41	31	6
-RU	Krasnodarskiy Kray	9357319	0	299	610	222	39
-RU	Krasnoyarskiy Kray	5793534	0	226	280	196	53
-RU	Kurganskaya Oblast'	1171539	0	31	63	35	8
-RU	Kurskaya Oblast'	1574614	0	46	81	31	9
-RU	Leningrad	2106079	0	36	133	46	14
-RU	Lipetskaya Oblast'	1698854	0	58	119	41	26
+RU	Krasnodarskiy Kray	9357319	12	299	610	222	39
+RU	Krasnoyarskiy Kray	5793534	8	226	280	196	53
+RU	Kurganskaya Oblast'	1171539	2	31	63	35	8
+RU	Kurskaya Oblast'	1574614	1	46	81	31	9
+RU	Leningrad	2106079	2	36	133	46	14
+RU	Lipetskaya Oblast'	1698854	2	58	119	41	26
 RU	Magadanskaya Oblast'	60113	0	1	2	2	0
-RU	Moscow	70022186	0	1630	3778	1928	465
-RU	Moscow Oblast	13237870	0	342	649	363	80
-RU	Murmansk	1606908	0	46	89	54	2
-RU	Nenetskiy Avtonomnyy Okrug	54444	0	1	1	3	0
-RU	Nizhegorodskaya Oblast'	7589960	0	193	434	230	45
+RU	Moscow	70022186	71	1630	3778	1928	465
+RU	Moscow Oblast	13237870	10	342	649	363	80
+RU	Murmansk	1606908	2	46	89	54	2
+RU	Nenetskiy Avtonomnyy Okrug	54444	1	1	1	3	0
+RU	Nizhegorodskaya Oblast'	7589960	11	193	434	230	45
 RU	North Ossetia	753487	0	19	26	15	2
 RU	Novgorodskaya Oblast'	1539992	0	44	63	40	9
-RU	Novosibirskaya Oblast'	8560495	0	213	612	335	67
-RU	Omskaya Oblast'	3811226	0	121	263	107	25
-RU	Orenburgskaya Oblast'	2240073	0	69	125	53	15
-RU	Orlovskaya Oblast'	1416501	0	37	99	34	7
+RU	Novosibirskaya Oblast'	8560495	12	213	612	335	67
+RU	Omskaya Oblast'	3811226	5	121	263	107	25
+RU	Orenburgskaya Oblast'	2240073	4	69	125	53	15
+RU	Orlovskaya Oblast'	1416501	2	37	99	34	7
 RU	Penzenskaya Oblast'	1886472	0	63	107	48	9
-RU	Perm Krai	5368397	0	151	303	146	29
-RU	Primorskiy Kray	4003585	0	110	205	81	21
-RU	Pskovskaya Oblast'	914622	0	16	39	20	2
-RU	Republic of Karelia	1449862	0	54	114	39	4
+RU	Perm Krai	5368397	7	151	303	146	29
+RU	Primorskiy Kray	4003585	3	110	205	81	21
+RU	Pskovskaya Oblast'	914622	1	16	39	20	2
+RU	Republic of Karelia	1449862	1	54	114	39	4
 RU	Respublika Adygeya	351874	0	11	12	3	4
 RU	Respublika Altay	113450	0	1	16	1	2
-RU	Respublika Buryatiya	1250113	0	38	38	24	13
+RU	Respublika Buryatiya	1250113	2	38	38	24	13
 RU	Respublika Ingushetiya	79346	0	12	2	0	0
 RU	Respublika Khakasiya	621434	0	11	37	14	3
-RU	Respublika Mariy-El	1004639	0	30	75	34	5
-RU	Respublika Mordoviya	1158108	0	27	91	32	7
+RU	Respublika Mariy-El	1004639	1	30	75	34	5
+RU	Respublika Mordoviya	1158108	1	27	91	32	7
 RU	Respublika Sakha (Yakutiya)	1047218	0	40	32	23	5
-RU	Respublika Tyva	103883	0	2	3	0	0
-RU	Rostov	7713086	0	173	532	194	65
-RU	Ryazanskaya Oblast'	1819284	0	66	109	56	5
+RU	Respublika Tyva	103883	1	2	3	0	0
+RU	Rostov	7713086	9	173	532	194	65
+RU	Ryazanskaya Oblast'	1819284	5	66	109	56	5
 RU	Sakhalinskaya Oblast'	656066	0	20	17	23	5
-RU	Samarskaya Oblast'	9056340	0	298	583	251	44
-RU	Saratovskaya Oblast'	4574436	0	133	400	121	25
-RU	Smolenskaya Oblast'	1255248	0	50	88	37	3
-RU	Stavropol'skiy Kray	3091666	0	77	116	70	16
-RU	St.-Petersburg	31917842	0	708	1800	983	300
-RU	Sverdlovskaya Oblast'	12310101	0	344	922	841	72
-RU	Tambovskaya Oblast'	1237233	0	40	74	36	4
-RU	Tatarstan	7932959	0	462	574	242	48
-RU	Tomskaya Oblast'	3124950	0	76	219	110	17
-RU	Transbaikal Territory	1288139	0	63	39	24	53
-RU	Tul'skaya Oblast'	2904071	0	110	156	67	13
-RU	Tverskaya Oblast'	2069923	0	75	110	36	6
-RU	Tyumenskaya Oblast'	2903024	0	96	151	100	23
-RU	Udmurtskaya Respublika	3002010	0	93	188	103	13
-RU	Ulyanovsk Oblast	2284991	0	87	165	75	8
-RU	Unknown	16950638	0	483	990	395	875
-RU	Vladimirskaya Oblast'	2057917	0	43	101	42	11
-RU	Volgogradskaya Oblast'	3994428	0	110	312	115	27
+RU	Samarskaya Oblast'	9056340	16	298	583	251	44
+RU	Saratovskaya Oblast'	4574436	7	133	400	121	25
+RU	Smolenskaya Oblast'	1255248	1	50	88	37	3
+RU	Stavropol'skiy Kray	3091666	4	77	116	70	16
+RU	St.-Petersburg	31917842	43	708	1800	983	300
+RU	Sverdlovskaya Oblast'	12310101	13	344	922	841	72
+RU	Tambovskaya Oblast'	1237233	2	40	74	36	4
+RU	Tatarstan	7932959	9	462	574	242	48
+RU	Tomskaya Oblast'	3124950	3	76	219	110	17
+RU	Transbaikal Territory	1288139	3	63	39	24	53
+RU	Tul'skaya Oblast'	2904071	3	110	156	67	13
+RU	Tverskaya Oblast'	2069923	1	75	110	36	6
+RU	Tyumenskaya Oblast'	2903024	6	96	151	100	23
+RU	Udmurtskaya Respublika	3002010	6	93	188	103	13
+RU	Ulyanovsk Oblast	2284991	3	87	165	75	8
+RU	Unknown	16950638	16	483	990	395	875
+RU	Vladimirskaya Oblast'	2057917	4	43	101	42	11
+RU	Volgogradskaya Oblast'	3994428	6	110	312	115	27
 RU	Vologodskaya Oblast'	2149537	0	42	79	49	8
-RU	Voronezhskaya Oblast'	5531010	0	143	302	156	22
-RU	Yamalo-Nenetskiy Avtonomnyy Okrug	793333	0	26	46	20	2
-RU	Yaroslavskaya Oblast'	3282570	0	86	132	93	14
+RU	Voronezhskaya Oblast'	5531010	4	143	302	156	22
+RU	Yamalo-Nenetskiy Avtonomnyy Okrug	793333	2	26	46	20	2
+RU	Yaroslavskaya Oblast'	3282570	2	86	132	93	14
 RW	Kigali	1659	0	0	0	0	0
 RW	Unknown	881	0	0	0	0	0
 RW	Western Province	8	0	0	0	0	0
@@ -2488,33 +2488,33 @@ TZ	Tanga	1	0	0	0	0	0
 TZ	Unknown	3727	0	0	0	0	0
 TZ	Zanzibar Urban/West	148	0	0	0	0	0
 UA	Cherkas'ka Oblast'	1064656	0	27	121	38	8
-UA	Chernihiv	804061	0	12	88	9	2
+UA	Chernihiv	804061	1	12	88	9	2
 UA	Chernivtsi	645446	0	10	69	16	6
-UA	Crimea	2870668	0	82	173	40	13
-UA	Dnipropetrovska Oblast'	4665928	0	136	469	107	28
-UA	Donets'ka Oblast'	4249677	0	130	242	95	16
-UA	Ivano-Frankivs'ka Oblast'	383699	0	2	34	5	1
-UA	Kharkivs'ka Oblast'	6052045	0	173	811	191	41
-UA	Khersons'ka Oblast'	1317632	0	32	162	39	8
-UA	Khmel'nyts'ka Oblast'	506398	0	14	49	17	5
-UA	Kirovohrads'ka Oblast'	631792	0	19	67	15	1
-UA	Kyiv City	16408079	0	363	1583	424	97
-UA	Kyiv Oblast	594104	0	16	83	19	2
+UA	Crimea	2870668	2	82	173	40	13
+UA	Dnipropetrovska Oblast'	4665928	5	136	469	107	28
+UA	Donets'ka Oblast'	4249677	5	130	242	95	16
+UA	Ivano-Frankivs'ka Oblast'	383699	1	2	34	5	1
+UA	Kharkivs'ka Oblast'	6052045	5	173	811	191	41
+UA	Khersons'ka Oblast'	1317632	5	32	162	39	8
+UA	Khmel'nyts'ka Oblast'	506398	1	14	49	17	5
+UA	Kirovohrads'ka Oblast'	631792	1	19	67	15	1
+UA	Kyiv City	16408079	17	363	1583	424	97
+UA	Kyiv Oblast	594104	1	16	83	19	2
 UA	Luhans'ka Oblast'	1683451	0	43	135	37	3
-UA	L'vivs'ka Oblast'	2575592	0	48	297	80	11
-UA	Misto Sevastopol'	1054545	0	18	70	27	5
+UA	L'vivs'ka Oblast'	2575592	4	48	297	80	11
+UA	Misto Sevastopol'	1054545	1	18	70	27	5
 UA	Mykolayivs'ka Oblast'	1142645	0	24	121	28	3
-UA	Odessa	4644087	0	102	530	120	23
-UA	Poltavs'ka Oblast'	1490940	0	41	112	31	7
-UA	Rivnens'ka Oblast'	620791	0	11	68	11	1
+UA	Odessa	4644087	1	102	530	120	23
+UA	Poltavs'ka Oblast'	1490940	1	41	112	31	7
+UA	Rivnens'ka Oblast'	620791	1	11	68	11	1
 UA	Sums'ka Oblast'	955107	0	28	75	25	5
 UA	Ternopil's'ka Oblast'	498540	0	6	68	15	3
-UA	Unknown	12683775	0	408	1219	261	67
-UA	Vinnyts'ka Oblast'	899095	0	32	106	28	4
-UA	Volyns'ka Oblast'	430474	0	11	34	7	4
+UA	Unknown	12683775	11	408	1219	261	67
+UA	Vinnyts'ka Oblast'	899095	1	32	106	28	4
+UA	Volyns'ka Oblast'	430474	1	11	34	7	4
 UA	Zakarpattia Oblast	516479	0	19	35	11	9
-UA	Zaporizhia	2527430	0	102	313	92	15
-UA	Zhytomyrs'ka Oblast'	695976	0	15	95	14	2
+UA	Zaporizhia	2527430	4	102	313	92	15
+UA	Zhytomyrs'ka Oblast'	695976	1	15	95	14	2
 UG	Central Region	2733	0	0	0	0	0
 UG	Unknown	830	0	0	0	0	0
 UG	Western Region	10	0	0	0	0	0
@@ -2523,13 +2523,13 @@ US	Alabama	11647	0	1	0	0	0
 US	Alaska	3649	0	0	0	0	0
 US	Arizona	46079	0	0	2	1	0
 US	Arkansas	2171	0	0	0	0	0
-US	California	1093825	0	13	59	24	7
+US	California	1093825	8	13	59	24	7
 US	Colorado	33762	0	2	2	0	1
 US	Connecticut	27370	0	0	1	0	0
 US	Delaware	30051	0	1	0	0	1
 US	District of Columbia	29298	0	3	1	0	0
 US	Florida	139809	0	6	7	3	26
-US	Georgia	53822	0	3	1	1	3
+US	Georgia	53822	1	3	1	1	3
 US	Hawaii	2820	0	1	0	0	0
 US	Idaho	3235	0	0	0	0	0
 US	Illinois	142286	0	5	2	4	0
@@ -2546,28 +2546,28 @@ US	Minnesota	28636	0	2	0	0	0
 US	Mississippi	1459	0	0	0	0	0
 US	Missouri	40083	0	0	1	0	0
 US	Montana	1530	0	1	0	0	0
-US	Nebraska	6402	0	1	0	0	0
-US	Nevada	28760	0	0	4	0	0
+US	Nebraska	6402	1	1	0	0	0
+US	Nevada	28760	1	0	4	0	0
 US	New Hampshire	6206	0	0	0	0	1
 US	New Jersey	128072	0	9	2	1	0
 US	New Mexico	4623	0	0	0	0	0
-US	New York	767857	0	18	27	15	1
+US	New York	767857	5	18	27	15	1
 US	North Carolina	28001	0	0	1	0	0
 US	North Dakota	1671	0	0	0	0	0
 US	Ohio	43773	0	3	0	0	0
-US	Oklahoma	5690	0	3	2	0	0
+US	Oklahoma	5690	1	3	2	0	0
 US	Oregon	46350	0	2	2	2	0
 US	Pennsylvania	80693	0	1	6	0	0
 US	Rhode Island	5699	0	0	0	0	0
 US	South Carolina	10308	0	0	0	1	0
 US	South Dakota	1320	0	0	0	0	0
 US	Tennessee	16341	0	0	0	0	0
-US	Texas	229608	0	5	6	5	0
+US	Texas	229608	3	5	6	5	0
 US	Unknown	162835	0	6	18	1	1
 US	Utah	55464	0	0	0	1	0
 US	Vermont	3112	0	0	1	0	0
-US	Virginia	1256849	0	6	20	9	2
-US	Washington	224905	0	6	11	3	2
+US	Virginia	1256849	2	6	20	9	2
+US	Washington	224905	2	6	11	3	2
 US	West Virginia	2965	0	0	0	0	0
 US	Wisconsin	18762	0	0	0	0	0
 US	Wyoming	3788	0	0	0	0	0
@@ -2586,7 +2586,7 @@ UZ	Fergana	6104	0	0	0	0	0
 UZ	Navoiy Province	623	0	0	0	0	0
 UZ	Qashqadaryo	2209	0	0	0	0	0
 UZ	Samarqand Viloyati	686	0	0	0	0	0
-UZ	Toshkent Shahri	1074399	0	47	52	30	9
+UZ	Toshkent Shahri	1074399	1	47	52	30	9
 UZ	Toshkent Viloyati	11695	0	0	1	0	0
 UZ	Unknown	589494	0	14	33	20	9
 VA	Unknown	30	0	0	0	0	0
