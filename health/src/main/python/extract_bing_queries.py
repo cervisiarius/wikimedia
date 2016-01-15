@@ -1,6 +1,6 @@
 #!/usr/bin/python
 
-import codecs, sys, re
+import codecs, sys, re, json
 
 # We want to read and write unicode.
 sys.stdin = codecs.getwriter('utf8')(sys.stdin)
@@ -15,6 +15,7 @@ for line in sys.stdin:
     ref = tree['referer']
     m = regex.match(ref)
     if m:
-      print '{}\t{}'.format(title, m.group(2))
+      q = m.group(2).replace('+', ' ').replace('%20', ' ')
+      print '{}\t{}'.format(title, q)
   except:
     pass
