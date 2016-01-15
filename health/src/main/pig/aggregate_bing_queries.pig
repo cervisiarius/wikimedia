@@ -4,14 +4,12 @@ pig \
 aggregate_bing_queries.pig
 */
 
-%declare TITLE_REGEX Tobacco|Electronic_cigarette|Lung_cancer|Smoking_cessation|Nicotine|Influenza|Influenza_vaccine
+%declare (TITLE_REGEX Tobacco|Electronic_cigarette|Lung_cancer|Smoking_cessation|Nicotine|Influenza|Influenza_vaccine)
 
 SET mapreduce.output.fileoutputformat.compress false;
 
 Trees = LOAD '/user/west1/navigation_trees/year=2015/month=1[12]/en/' USING PigStorage('\t')
     AS (json:chararray);
-
---Trees = LOAD '/tmp/sample.txt' USING PigStorage('\t') AS (json:chararray);
 
 -- Keep only trees that have a matching page in the root (by first removing children), and whose
 -- referer is a Bing SERP.
