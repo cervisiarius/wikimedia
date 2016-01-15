@@ -1,5 +1,7 @@
 #!/usr/bin/python
 
+# NB: UNUSED. We do everything within Pig now: aggregate_bing_queries.pig
+
 import codecs, sys, re, json, urllib
 
 # We want to read and write unicode.
