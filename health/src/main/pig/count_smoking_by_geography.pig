@@ -11,26 +11,26 @@ count_smoking_by_geography.pig
 %declare NICOTINE 'Nicotin'
 %declare CESSATION 'Tabaksucht'
 
--- %declare LANG 'en'
--- %declare TOBACCO 'Tobacco'
--- %declare LUNGCANCER 'Lung_cancer'
--- %declare ECIGARETTE 'Electronic_cigarette'
--- %declare NICOTINE 'Nicotine'
--- %declare CESSATION 'Smoking_cessation'
+-- %declare LANG en
+-- %declare TOBACCO Tobacco
+-- %declare LUNGCANCER Lung_cancer
+-- %declare ECIGARETTE Electronic_cigarette
+-- %declare NICOTINE Nicotine
+-- %declare CESSATION Smoking_cessation
 
--- %declare LANG 'ru'
--- %declare TOBACCO 'Табак_(сырьё)'
--- %declare LUNGCANCER 'Рак_лёгкого'
--- %declare ECIGARETTE 'Электронная_сигарета'
--- %declare NICOTINE 'Никотин'
--- %declare CESSATION 'Лечение_никотиновой_зависимости'
+-- %declare LANG ru
+-- %declare TOBACCO Табак_\\\\((сырьё|вещество)\\\\)
+-- %declare LUNGCANCER Рак_лёгкого
+-- %declare ECIGARETTE Электронная_сигарета
+-- %declare NICOTINE Никотин
+-- %declare CESSATION Лечение_никотиновой_зависимости
 
--- %declare LANG 'sv'
--- %declare TOBACCO 'Tobak'
--- %declare LUNGCANCER 'Lungcancer'
--- %declare ECIGARETTE 'Elektronisk_cigarett'
--- %declare NICOTINE 'Nikotin'
--- %declare CESSATION 'Rökavvänjning'
+-- %declare LANG sv
+-- %declare TOBACCO Tobak
+-- %declare LUNGCANCER Lungcancer
+-- %declare ECIGARETTE Elektronisk_cigarett
+-- %declare NICOTINE Nikotin
+-- %declare CESSATION Rökavvänjning
 
 SET mapreduce.output.fileoutputformat.compress false;
 

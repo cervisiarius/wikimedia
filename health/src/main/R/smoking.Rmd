@@ -1,0 +1,94 @@
+---
+title: "Wikipedia flu"
+author: "Bob West"
+date: "January 8, 2016"
+output: html_document
+---
+
+```{r}
+library(googleVis)
+
+DATADIR <- sprintf('%s/wikimedia/trunk/data/health/', Sys.getenv('HOME'))
+
+# Load German.
+data_de <- read.table(sprintf('%s/smoking_per_country_and_state_DE.tsv', DATADIR), sep='\t', quote='')
+colnames(data_de) <- c('country', 'state', 'all', 'tobacco', 'lungcancer', 'ecigarette', 'nicotine', 'addiction')
+countries_de <- data.frame(t(simplify2array(by(data_de, data_de$country, function(X) colSums(X[,-(1:2)])))))
+ratios_de <- countries_de[,-1] / countries_de[,1]
+
+# Load Russian.
+data_ru <- read.table(sprintf('%s/smoking_per_country_and_state_RU.tsv', DATADIR), sep='\t', quote='')
+colnames(data_ru) <- c('country', 'state', 'all', 'tobacco', 'lungcancer', 'ecigarette', 'nicotine', 'cessation')
+countries_ru <- data.frame(t(simplify2array(by(data_ru, data_ru$country, function(X) colSums(X[,-(1:2)])))))
+ratios_ru <- countries_ru[,-1] / countries_ru[,1]
+
+# Load Swedish.
+data_sv <- read.table(sprintf('%s/smoking_per_country_and_state_SV.tsv', DATADIR), sep='\t', quote='')
+colnames(data_sv) <- c('country', 'state', 'all', 'tobacco', 'lungcancer', 'ecigarette', 'nicotine', 'cessation')
+countries_sv <- data.frame(t(simplify2array(by(data_sv, data_sv$country, function(X) colSums(X[,-(1:2)])))))
+ratios_sv <- countries_sv[,-1] / countries_sv[,1]
+
+# Load English.
+data_en <- read.table(sprintf('%s/smoking_per_country_and_state_EN.tsv', DATADIR), sep='\t', quote='')
+colnames(data_en) <- c('country', 'state', 'all', 'tobacco', 'lungcancer', 'ecigarette', 'nicotine', 'cessation')
+countries_en <- data.frame(t(simplify2array(by(data_en, data_en$country, function(X) colSums(X[,-(1:2)])))))
+ratios_en <- countries_en[,-1] / countries_en[,1]
+states <- data_en[is.finite(data_en$country) & data_en$country=='US',]
+rownames(states) <- states$state
+ratios_states <- states[,-(1:3)] / states[,3]
+
+ci <- function(data, country, col) {
+  n <- data[country, 'all']
+  y <- data[country, col]
+  ci <- quantile(rbinom(1e6, n, y/n), c(.025,.975)) / n
+  result <- c(ci[1], y/n, ci[2])
+  names(result) <- c('low', 'emp', 'high')
+  result
+}
+
+ratios_de[c('AT','DE','CH'),]
+rbind(
+  ci(countries_de, 'AT', 'ecigarette'),
+  ci(countries_de, 'DE', 'ecigarette'),
+  ci(countries_de, 'CH', 'ecigarette'))
+
+rbind(ratios_sv['SE',], ratios_ru['RU',])
+rbind(
+  ci(countries_sv, 'SE', 'ecigarette'),
+  ci(countries_ru, 'RU', 'ecigarette'))
+
+s <- ratios_states[order(ratios_states$ecigarette, decreasing=TRUE),]
+
+plot(s$ecigarette)
+
+# draw the maps and embed them into an HTML page:
+state_names <- setdiff(rownames(states), 'Unknown')
+col <- '0x006400'
+for (type in colnames(ratios_states)) {
+  html <- paste('<h1>', type, '</h1>')
+  state_stats <- data.frame(state=state_names, stats=ratios_states[state_names,type])
+  geo <- gvisGeoMap(state_stats, locationvar='state', numvar='stats', hovervar='state',
+                          options=list(region='US', colors=sprintf('[0xFFFFFF,%s]', col)))
+  html <- paste(html, geo$html$header, '\n')
+  html <- paste(html, geo$html$chart['jsHeader'], '\n')
+  html <- paste(html, geo$html$chart['jsData'], '\n')
+  html <- paste(html, geo$html$chart['jsDrawChart'], '\n')
+  html <- paste(html, geo$html$chart['jsDisplayChart'], '\n')
+  html <- paste(html, geo$html$chart['jsFooter'], '\n')
+  html <- paste(html, geo$html$chart['jsChart'], '\n')
+  html <- paste(html, geo$html$chart['divChart'], '\n')
+  html <- paste(html, geo$html$footer, '\n')
+  sink(sprintf("/tmp/smoking_US_%s.html", type))
+  cat(html)
+  sink()
+}
+html <- '<html>'
+for (type in colnames(ratios_states)) {
+	html <- paste(html, sprintf('<a href="/tmp/smoking_US_%s.html">%s</a><br/>\n', type, type))
+}
+html <- paste(html, '</html>')
+sink("/tmp/smoking_US_index.html")
+cat(html)
+sink()
+
+```
