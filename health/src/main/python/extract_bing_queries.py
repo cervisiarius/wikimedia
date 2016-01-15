@@ -15,7 +15,8 @@ for line in sys.stdin:
     ref = tree['referer']
     m = regex.match(ref)
     if m:
-      q = urllib.unquote(m.group(2).replace('+', ' ')).decode('utf8')
+      #q = urllib.unquote(m.group(2).replace('+', ' ')).decode('utf8')
+      q = m.group(2).replace('+', ' ')
       print '{}\t{}'.format(title, q)
   except:
     pass
