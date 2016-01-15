@@ -4,7 +4,7 @@ pig \
 aggregate_bing_queries.pig
 */
 
-%declare TITLE_REGEX = Tobacco|Electronic_cigarette|Lung_cancer|Smoking_cessation|Nicotine|Influenza|Influenza_vaccine
+%declare TITLE_REGEX Tobacco|Electronic_cigarette|Lung_cancer|Smoking_cessation|Nicotine|Influenza|Influenza_vaccine
 
 SET mapreduce.output.fileoutputformat.compress false;
 
