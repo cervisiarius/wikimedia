@@ -183,3 +183,47 @@ mtext(expression(paste('Size ', italic(K), ' of solution ', italic(A))), side=1,
 mtext(expression(paste('Average number of clicks')), side=2, line=2.4)
 add_standard_legend('topright')
 if (save_plots) dev.off()
+
+###################################################################################################
+# For talk:
+###################################################################################################
+
+# This has all links added in February.
+added_links <- read.table(pipe(sprintf('gunzip -c %s/../links_added_in_02-15_WITH-STATS.tsv.gz | cut -f1,2,8 | tail -n+2', DATADIR)),
+                           col.names=c('src', 'tgt', 'count'), quote='', comment.char='', sep='\t')
+
+# Find the suggestions that were added by humans in February.
+idx_dice <- which(rownames(vol_dice) %in% paste(added_links$src, added_links$tgt))
+idx_coins_link <- which(rownames(vol_coins_link) %in% paste(added_links$src, added_links$tgt))
+
+# Mean (only including those links that were added and therefore could potentially be clicked).
+suffixes <- c('ONLY-COINS', 'BOTH')
+K <- 1e4
+for (suff in suffixes) {
+  pdf(sprintf('/tmp/avg_click_volume_%s.pdf', suff), width=2, height=2, pointsize=6, family='Helvetica', useDingbats=FALSE)
+  par(mar=c(3.4, 3.4, 1.2, 0.95))
+  plot(cumsum(vol_dice$pair_count_march[idx_dice])[1:K]/(1:K), type='l', log='x', bty='n', col=rgb(0.8,.01,.01), ylim=c(1,300), xlab='', ylab='')
+  if (suff == 'BOTH') lines(cumsum(vol_coins_link$pair_count_march[idx_coins_link])[1:K]/(1:K), col=rgb(.9,.6,0))
+  abline(h=mean(added_links$count), lwd=2, lty=2, col='gray')
+  mtext(expression(paste('Size ', italic(K), ' of solution ', italic(A))), side=1, line=2.4)
+  mtext(expression(paste('Mean number of clicks')), side=2, line=2.4)
+  dev.off()
+}
+
+# Median (NB: this is different from the mean, since I changed the mean computation to only include
+# links that were added in Feb.).
+k <- seq(10,1e4,10)
+cummed_dice <- sapply(k, function(kk) median(vol_dice$pair_count_march[1:kk]))
+cummed_coins_link <- sapply(k, function(kk) median(vol_coins_link$pair_count_march[1:kk]))
+suffixes <- c('ONLY-COINS', 'BOTH')
+for (suff in suffixes) {
+  pdf(sprintf('/tmp/median_click_volume_%s.pdf', suff), width=2, height=2, pointsize=6, family='Helvetica', useDingbats=FALSE)
+  par(mar=c(3.4, 3.4, 1.2, 0.95))
+  plot(k, cummed_dice, type='l', log='', bty='n', col=rgb(0.8,.01,.01), ylim=c(0,60), xlab='', ylab='')
+  if (suff == 'BOTH') lines(k, cummed_coins_link, col=rgb(.9,.6,0))
+  mtext(expression(paste('Size ', italic(K), ' of solution ', italic(A))), side=1, line=2.4)
+  mtext(expression(paste('Median number of clicks')), side=2, line=2.4)
+  abline(h=median(added_links$count), lwd=2, lty=2, col='gray')
+  dev.off()
+}
+

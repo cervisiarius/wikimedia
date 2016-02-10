@@ -341,6 +341,16 @@ lines(x, smooth(y), lwd=1.5)
 mtext('Path proportion', side=1, line=2.4)
 mtext(expression(paste('Ground-truth clickthrough rate ', italic(p[st]))), side=2, line=2.4)
 if (save_plots) dev.off()
+
+# For job talk.
+if (save_plots) pdf('/tmp/pindir_vs_pst.pdf', width=1.68, height=1.5, pointsize=6, family='Helvetica', useDingbats=FALSE)
+par(mar=c(3.4, 3.4, 1.2, 0.8))
+idx <- sample(nrow(data), 5e4)
+plot(x[idx], y[idx], log='xy', col=c('#ff808010'), xlim=c(2e-6, .15), ylim=c(2e-6, .15), bty='n',
+     xlab='', ylab='', panel.first=abline(0, 1, col='gray'))
+mtext('Predicted clickthrough rate', side=1, line=2.4)
+mtext('True clickthrough rate', side=2, line=2.4)
+if (save_plots) dev.off()
 ```
 
 

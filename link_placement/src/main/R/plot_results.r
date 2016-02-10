@@ -47,9 +47,20 @@ legend('bottomleft', legend=c('Path proportion', 'Search proportion', 'Random wa
        lty=1, col=c('black', '#009E73', '#CC79A7'))
 if (save_plots) dev.off()
 
+# Prec@k w/o search proportion (for job talk).
+if (save_plots) pdf('/tmp/prec_at_k.pdf', width=1.68, height=1.5, pointsize=6,
+                    family='Helvetica', useDingbats=FALSE)
+par(mar=c(3.4, 3.4, 0.8, 0.8))
+# plot(1:K, top$p_transitive_precision, col='#CC79A7', type='l', log='x', bty='n', ylim=c(0,1), xlab='', ylab='')
+# lines(1:K, top$p_indirect_precision, col='#009E73')
+plot(1:K, top$p_indirect_precision, col=rgb(0.8,.01,.01), type='l', log='x', bty='n', ylim=c(0,1), xlab='', ylab='')
+mtext(expression(paste('Size ', italic(K), ' of solution ', italic(A))), side=1, line=2.4)
+mtext(expression(paste('Precision@', italic(K))), side=2, line=2.4)
+#legend('bottomleft', legend=c('Indirect paths', 'Random walks'), bty='n', lty=1, col=c('#009E73', '#CC79A7'))
+if (save_plots) dev.off()
+
 # The baseline plot. Too low to make it into the plot in the paper.
 plot(pr$p_baseline_mean_precision, col='green', type='l', log='xy')
-
 
 ####################################################################
 # Mean absolute error etc.

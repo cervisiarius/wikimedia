@@ -7,6 +7,7 @@ output: html_document
 
 ```{r}
 library(googleVis)
+library(plotrix)
 
 DATADIR <- sprintf('%s/wikimedia/trunk/data/health/', Sys.getenv('HOME'))
 
@@ -46,16 +47,33 @@ ci <- function(data, country, col) {
   result
 }
 
-ratios_de[c('AT','DE','CH'),]
-rbind(
-  ci(countries_de, 'AT', 'ecigarette'),
-  ci(countries_de, 'DE', 'ecigarette'),
-  ci(countries_de, 'CH', 'ecigarette'))
+ratios_at_de_ch <- ratios_de[c('AT','DE','CH'),]
+png(sprintf('%s/plots/tobacco_freq_AT-DE-CH.png', DATADIR))
+bp <- barplot(as.matrix(ratios_at_de_ch), beside=TRUE, las=2, ylim=c(0,1.15e-4),
+              names.arg=c('Tabak', 'Bronchial-\nkarzinom', 'Elektrische\nZigarette', 'Nicotin', 'Tabak\nsucht'),
+              legend.text=c('de-wiki (Austria)', 'de-wiki (Germany)', 'de-wiki (Switzerland)'),
+              args.legend=list(bty='n'))
+i <- 1
+for (art in colnames(ratios_at_de_ch)) {
+  CI <- rbind(ci(countries_de, 'AT', art), ci(countries_de, 'DE', art), ci(countries_de, 'CH', art))
+  dispersion(bp[,i], CI[,2], CI[,3], CI[,1], arrow.gap=0, intervals=FALSE)
+  i <- i + 1
+}
+dev.off()
 
-rbind(ratios_sv['SE',], ratios_ru['RU',])
-rbind(
-  ci(countries_sv, 'SE', 'ecigarette'),
-  ci(countries_ru, 'RU', 'ecigarette'))
+ratios_ru_sv <- rbind(ratios_ru['RU',], ratios_sv['SE',])
+png(sprintf('%s/plots/tobacco_freq_RU-SE.png', DATADIR))
+bp <- barplot(as.matrix(ratios_ru_sv), beside=TRUE, las=2, ylim=c(0,7.5e-5),
+              names.arg=c('Tobacco', 'Lung\ncancer', 'Electronic\ncigarette', 'Nicotine', 'Smoking\ncessation'),
+              legend.text=c('ru-wiki (Russia)', 'sv-wiki (Sweden)'), args.legend=list(bty='n'))
+i <- 1
+for (art in colnames(ratios_ru_sv)) {
+  CI <- rbind(ci(countries_ru, 'RU', art), ci(countries_sv, 'SE', art))
+  dispersion(bp[,i], CI[,2], CI[,3], CI[,1], arrow.gap=0, intervals=FALSE)
+  i <- i + 1
+}
+dev.off()
+
 
 s <- ratios_states[order(ratios_states$ecigarette, decreasing=TRUE),]
 
