@@ -175,7 +175,7 @@ if (save_plots) dev.off()
 
 if (save_plots) pdf(sprintf('%s/avg_click_volume.pdf', PLOTDIR), width=width, height=height, pointsize=6, family='Helvetica', useDingbats=FALSE)
 par(mar=c(3.4, 3.4, 1.2, 0.95))
-plot(cumsum(vol_dice$pair_count_march)[1:K]/(1:K), type='l', log='', bty='n', col=col$dice, ylim=c(30,110), xlab='', ylab='',
+plot(cumsum(vol_dice$pair_count_march)[1:K]/(1:K), type='l', log='', bty='n', col=col$dice, ylim=c(0,110), xlab='', ylab='',
      main='Average click volume')
 lines(cumsum(vol_coins_page$pair_count_march)[1:K]/(1:K), col=col$coins_page)
 lines(cumsum(vol_coins_link$pair_count_march)[1:K]/(1:K), col=col$coins_link, lty=2)
