@@ -197,7 +197,7 @@ idx_dice <- which(rownames(vol_dice) %in% paste(added_links$src, added_links$tgt
 idx_coins_link <- which(rownames(vol_coins_link) %in% paste(added_links$src, added_links$tgt))
 
 # Mean (only including those links that were added and therefore could potentially be clicked).
-suffixes <- c('ONLY-COINS', 'BOTH')
+suffixes <- c('ONLY-DICE', 'BOTH')
 K <- 1e4
 for (suff in suffixes) {
   pdf(sprintf('/tmp/avg_click_volume_%s.pdf', suff), width=2, height=2, pointsize=6, family='Helvetica', useDingbats=FALSE)
@@ -215,7 +215,7 @@ for (suff in suffixes) {
 k <- seq(10,1e4,10)
 cummed_dice <- sapply(k, function(kk) median(vol_dice$pair_count_march[1:kk]))
 cummed_coins_link <- sapply(k, function(kk) median(vol_coins_link$pair_count_march[1:kk]))
-suffixes <- c('ONLY-COINS', 'BOTH')
+suffixes <- c('ONLY-DICE', 'BOTH')
 for (suff in suffixes) {
   pdf(sprintf('/tmp/median_click_volume_%s.pdf', suff), width=2, height=2, pointsize=6, family='Helvetica', useDingbats=FALSE)
   par(mar=c(3.4, 3.4, 1.2, 0.95))
