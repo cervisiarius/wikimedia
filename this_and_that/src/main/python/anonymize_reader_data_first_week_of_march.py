@@ -40,7 +40,7 @@ def parse_row(line):
           'dt':                 row[2],
           'time_firstbyte':     row[3], # Delete
           'ip':                 row[4], # Hash
-          'cache_status':       row[5],
+          'cache_status':       row[5], # Delete
           'http_status':        row[6],
           'response_size':      row[7],
           'http_method':        row[8],
@@ -83,7 +83,7 @@ if __name__ == '__main__':
     parser.add_argument('--key', required=True, help='hash key')
     args = parser.parse_args()
 
-    input_dir = '/user/hive/warehouse/traces.db/first_week_of_march/021502_0' ################
+    input_dir = '/user/hive/warehouse/traces.db/first_week_of_march'
     output_dir = '/user/west1/reader_research/anonymized_traces/first_week_of_march'
     key = args.key.strip()
     
@@ -102,7 +102,7 @@ if __name__ == '__main__':
         for k in ['browser_major', 'os_major', 'os_minor']:
           if k in x['user_agent_map']: del x['user_agent_map'][k]
         # Delete some unnecessary fields.
-        for k in ['time_firstbyte', 'x_analytics', 'range', 'x_cache', 'x_analytics_map', \
+        for k in ['time_firstbyte', 'cache_status', 'x_analytics', 'range', 'x_cache', 'x_analytics_map', \
           'ts', 'is_zero', 'normalized_host', 'pageview_info', 'page_id', 'webrequest_source', \
           'year', 'month', 'day', 'hour']:
           if k in x: del x[k]
