@@ -60,14 +60,14 @@ def parse_row(line):
           'geocoded_data':      parse_hive_struct(row[22]), # Prune
           'x_cache':            row[23], # Delete
           'user_agent_map':     parse_hive_struct(row[24]), # Prune
-          'x_analytics_map':    parse_hive_struct(row[25]), # Delete
+          'x_analytics_map':    row[25], # Delete
           'ts':                 row[26], # Delete
           'access_method':      row[27],
           'agent_type':         row[28],
           'is_zero':            row[29], # Delete
           'referer_class':      row[30],
           'normalized_host':    row[31], # Delete
-          'pageview_info':      parse_hive_struct(row[32]), # Delete
+          'pageview_info':      row[32], # Delete
           'page_id':            row[33], # Delete
           'webrequest_source':  row[34], # Delete
           'year':               row[35], # Delete
