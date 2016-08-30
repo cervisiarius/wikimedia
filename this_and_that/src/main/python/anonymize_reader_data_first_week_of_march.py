@@ -12,7 +12,7 @@ spark-submit \
     --driver-memory 1g \
     --master yarn \
     --deploy-mode client \
-    --num-executors 20 \
+    --num-executors 100 \
     --executor-memory 5g \
     --executor-cores 4 \
     --queue priority \
@@ -38,7 +38,7 @@ def parse_row(line):
           'hostname':           row[0],
           'sequence':           row[1],
           'dt':                 row[2],
-          'time_firstbyte':     row[3],
+          'time_firstbyte':     row[3], # Delete
           'ip':                 row[4], # Hash
           'cache_status':       row[5],
           'http_status':        row[6],
@@ -52,31 +52,30 @@ def parse_row(line):
           'x_forwarded_for':    row[14], # Hash
           'user_agent':         row[15], # Hash
           'accept_language':    row[16],
-          'x_analytics':        row[17],
-          'range':              row[18],
+          'x_analytics':        row[17], # Delete
+          'range':              row[18], # Delete
           'is_pageview':        row[19],
           'record_version':     row[20],
           'client_ip':          row[21], # Hash
           'geocoded_data':      parse_hive_struct(row[22]), # Prune
-          'x_cache':            row[23],
+          'x_cache':            row[23], # Delete
           'user_agent_map':     parse_hive_struct(row[24]), # Prune
-          'x_analytics_map':    parse_hive_struct(row[25]),
-          'ts':                 row[26],
+          'x_analytics_map':    parse_hive_struct(row[25]), # Delete
+          'ts':                 row[26], # Delete
           'access_method':      row[27],
           'agent_type':         row[28],
-          'is_zero':            row[29],
+          'is_zero':            row[29], # Delete
           'referer_class':      row[30],
-          'normalized_host':    row[31],
-          'pageview_info':      parse_hive_struct(row[32]),
-          'page_id':            row[33],
-          'webrequest_source':  row[34],
-          'year':               row[35],
-          'month':              row[36],
-          'day':                row[37],
-          'hour':               row[38]
+          'normalized_host':    row[31], # Delete
+          'pageview_info':      parse_hive_struct(row[32]), # Delete
+          'page_id':            row[33], # Delete
+          'webrequest_source':  row[34], # Delete
+          'year':               row[35], # Delete
+          'month':              row[36], # Delete
+          'day':                row[37], # Delete
+          'hour':               row[38]  # Delete
         }
     return d
-
 
 if __name__ == '__main__':
 
@@ -84,7 +83,7 @@ if __name__ == '__main__':
     parser.add_argument('--key', required=True, help='hash key')
     args = parser.parse_args()
 
-    input_dir = '/user/hive/warehouse/traces.db/first_week_of_march/021504_0' ##################
+    input_dir = '/user/hive/warehouse/traces.db/first_week_of_march/021502_0' ################
     output_dir = '/user/west1/reader_research/anonymized_traces/first_week_of_march'
     key = args.key.strip()
     
@@ -102,6 +101,11 @@ if __name__ == '__main__':
         # Prune user_agent_map; keep only wmf_app_version, device_family, browser_family, os_family.
         for k in ['browser_major', 'os_major', 'os_minor']:
           if k in x['user_agent_map']: del x['user_agent_map'][k]
+        # Delete some unnecessary fields.
+        for k in ['time_firstbyte', 'x_analytics', 'range', 'x_cache', 'x_analytics_map', \
+          'ts', 'is_zero', 'normalized_host', 'pageview_info', 'page_id', 'webrequest_source', \
+          'year', 'month', 'day', 'hour']:
+          if k in x: del x[k]
         return x
 
     
