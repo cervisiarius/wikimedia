@@ -5,7 +5,6 @@ import hmac
 import hashlib
 import os
 
-
 """
 Usage: 
 
@@ -82,12 +81,7 @@ def parse_row(line):
 if __name__ == '__main__':
 
     parser = argparse.ArgumentParser()
-
-    parser.add_argument(
-        '--key', required=True, 
-        help='hash key'
-    )
-
+    parser.add_argument('--key', required=True, help='hash key')
     args = parser.parse_args()
 
     input_dir = '/user/hive/warehouse/traces.db/first_week_of_march'
