@@ -1,9 +1,8 @@
 from pyspark import SparkConf, SparkContext
 import json
-import argparse
 import hmac
 import hashlib
-import os
+import os, sys
 
 
 """
@@ -17,8 +16,7 @@ spark-submit \
     --executor-memory 5g \
     --executor-cores 4 \
     --queue priority \
-/home/west1/wikimedia/trunk/this_and_that/src/main/python/anonymize_reader_data_rs3v3.py \
-    --key 
+/home/west1/wikimedia/trunk/this_and_that/src/main/python/anonymize_reader_data_rs3v3.py
 
 """
 
@@ -59,22 +57,17 @@ def parse_requests(requests):
     
 if __name__ == '__main__':
 
-    parser = argparse.ArgumentParser()
-
-    parser.add_argument(
-        '--key', required=True, 
-        help='hash key'
-    )
-
-    args = parser.parse_args()
-
     input_dir = '/user/hive/warehouse/traces.db/rs3v3'
     output_dir = '/user/west1/reader_research/anonymized_traces/rs3v3'
-    key = args.key.strip()
     
     conf = SparkConf()
     conf.set("spark.app.name", 'Anonymize rs3v3')
     sc = SparkContext(conf=conf, pyFiles=[])
+
+    with open('hash_salt.txt') as f:
+        key = f.readlines()[0].strip()
+        print key
+        sys.exit()
 
     def modify_fields(x):
         # Hash ip.
