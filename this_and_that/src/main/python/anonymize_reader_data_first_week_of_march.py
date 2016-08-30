@@ -84,7 +84,7 @@ if __name__ == '__main__':
     parser.add_argument('--key', required=True, help='hash key')
     args = parser.parse_args()
 
-    input_dir = '/user/hive/warehouse/traces.db/first_week_of_march'
+    input_dir = '/user/hive/warehouse/traces.db/first_week_of_march/021504_0' ##################
     output_dir = '/user/west1/reader_research/anonymized_traces/first_week_of_march'
     key = args.key.strip()
     
