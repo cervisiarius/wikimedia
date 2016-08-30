@@ -68,7 +68,7 @@ if __name__ == '__main__':
 
     args = parser.parse_args()
 
-    input_dir = '/user/hive/warehouse/traces.db/rs3v3/000992_0' ###########################
+    input_dir = '/user/hive/warehouse/traces.db/rs3v3'
     output_dir = '/user/west1/reader_research/anonymized_traces/rs3v3'
     key = args.key.strip()
     
