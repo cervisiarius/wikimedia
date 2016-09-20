@@ -12,9 +12,8 @@ python get_clickstream.py \
     --stop  2016-04-30 \
     --table 2016_04_en \
     --lang en \
-    --default
+    --priority
 
-(Adapeted from https://github.com/ewulczyn/wiki-clickstream/blob/master/src/get_clickstream.py)
 """
 
 def get_clickstream(table, lang, start, stop, priority = False, min_count = 10):
@@ -84,7 +83,6 @@ def get_clickstream(table, lang, start, stop, priority = False, min_count = 10):
             WHEN cr.rd_to IS NULL THEN curr
             ELSE cr.rd_to
         END AS curr,
-        curr AS curr_unresolved,
         n
     FROM
         west1.clickstream_%(table)s_temp2
@@ -97,11 +95,11 @@ def get_clickstream(table, lang, start, stop, priority = False, min_count = 10):
     DROP VIEW IF EXISTS west1.clickstream_%(table)s_temp4;
     CREATE VIEW west1.clickstream_%(table)s_temp4 AS
     SELECT
-        curr, curr_unresolved, prev, SUM(n) as n
+        curr, prev, SUM(n) as n
     FROM
         west1.clickstream_%(table)s_temp3
     GROUP BY
-        curr, curr_unresolved, prev
+        curr, prev
     HAVING
         SUM(n) > %(min_count)s;
 
@@ -109,7 +107,7 @@ def get_clickstream(table, lang, start, stop, priority = False, min_count = 10):
     DROP VIEW IF EXISTS west1.clickstream_%(table)s_temp5;
     CREATE VIEW west1.clickstream_%(table)s_temp5 AS
     SELECT 
-        curr, curr_unresolved, prev, n
+        curr, prev, n
     FROM
         west1.clickstream_%(table)s_temp4
     LEFT JOIN
@@ -128,7 +126,6 @@ def get_clickstream(table, lang, start, stop, priority = False, min_count = 10):
     SELECT
         prev,
         curr,
-        curr_unresolved,
         CASE
             WHEN prev  in ('other-empty', 'other-internal', 'other-external', 'other-search', 'other-other') THEN 'external'
             WHEN l.pl_from IS NOT NULL AND l.pl_to IS NOT NULL THEN 'link'
@@ -183,4 +180,5 @@ if __name__ == '__main__':
         sqoop_prod_dbs('clickstream', [args.lang,], ['page', 'redirect', 'pagelinks'])
 
     get_clickstream(args.table, args.lang, args.start, args.stop, priority = args.priority, min_count = args.min_count)
+
 
