@@ -31,7 +31,7 @@ foreach my $lang (@langs) {
     --null-non-string ''                                              \\
     --fields-terminated-by '\\t'                                      \\
     --escaped-by \\\\                                                 \\
-    --username=research --password HGY3DhGoYhxF                       \\
+    --username=research --password [[[look up wd in doc/db_pwd.txt]]]                       \\
     --split-by page_id                                                \\
     --query '
     SELECT
