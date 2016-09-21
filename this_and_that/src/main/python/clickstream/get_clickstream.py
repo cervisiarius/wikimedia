@@ -11,7 +11,6 @@ python get_clickstream.py \
     --start 2016-08-01 \
     --stop  2016-08-01 \
     --table 20160723-20160920_en \
-    --refresh_etl \
     --lang en
 
     --start 2016-07-23 \
@@ -172,8 +171,8 @@ def get_clickstream(table, lang, start, stop, priority = False, min_count = 10):
 if __name__ == '__main__':
 
     parser = argparse.ArgumentParser()
-    parser.add_argument( '--start', required=True,  help='start day')
-    parser.add_argument( '--stop', required=True,help='start day')
+    parser.add_argument('--start', required=True,  help='start day')
+    parser.add_argument('--stop', required=True,help='start day')
     parser.add_argument('--table', required=True, help='hive table')
     parser.add_argument('--lang', required=True, help='e.g. en')
     parser.add_argument('--min_count', default = 10, help='')

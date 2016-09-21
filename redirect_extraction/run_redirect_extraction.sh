@@ -3,6 +3,7 @@
 export LANG=en
 export DATE=20160901
 
+# At WMF.
 echo "Running hadoop job"
 hadoop jar /usr/lib/hadoop-mapreduce/hadoop-streaming.jar \
     -D              org.wikimedia.wikihadoop.previousRevision=false \
