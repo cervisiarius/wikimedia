@@ -8,10 +8,14 @@ from sqoop_utils import sqoop_prod_dbs
 Usage:
 
 python get_clickstream.py \
+    --start 2016-08-01 \
+    --stop  2016-08-01 \
+    --table 20160723-20160920_en \
+    --refresh_etl \
+    --lang en
+
     --start 2016-07-23 \
     --stop  2016-09-20 \
-    --table 20160723-20160920_en \
-    --lang en
 
 (Adapeted from https://github.com/ewulczyn/wiki-clickstream/blob/master/src/get_clickstream.py)
 """
@@ -179,7 +183,8 @@ if __name__ == '__main__':
     args = parser.parse_args()
 
     if args.refresh_etl:
-        sqoop_prod_dbs('clickstream', [args.lang,], ['page', 'redirect', 'pagelinks'])
+        sqoop_prod_dbs('west1', [args.lang,], ['page', 'redirect', 'pagelinks'])
+        # sqoop_prod_dbs('clickstream', [args.lang,], ['page', 'redirect', 'pagelinks'])
 
     get_clickstream(args.table, args.lang, args.start, args.stop, priority = args.priority, min_count = args.min_count)
 
