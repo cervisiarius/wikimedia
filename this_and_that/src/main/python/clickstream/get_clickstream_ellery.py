@@ -7,9 +7,9 @@ from sqoop_utils import sqoop_prod_dbs
 """
 Usage:
 
-python get_clickstream.py \
+python get_clickstream_ellery.py \
     --start 2016-04-01 \
-    --stop  2016-04-30 \
+    --stop  2016-04-01 \
     --table 2016_04_en \
     --lang en \
     --priority
