@@ -10,11 +10,12 @@ Usage:
 python get_clickstream.py \
     --start 2016-08-01 \
     --stop  2016-08-01 \
-    --table 20160723-20160920_en \
+    --table 2016_08_en \
     --lang en
 
     --start 2016-07-23 \
     --stop  2016-09-20 \
+    --table 20160723_20160920_en \
 
 (Adapeted from https://github.com/ewulczyn/wiki-clickstream/blob/master/src/get_clickstream.py)
 """

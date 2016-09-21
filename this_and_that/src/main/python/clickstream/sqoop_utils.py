@@ -24,9 +24,12 @@ SELECT
   a.page_id AS page_id,
   CAST(a.page_title AS CHAR(255) CHARSET utf8) AS page_title
 FROM page a
-WHERE $CONDITIONS AND page_namespace = 0 AND page_is_redirect = 0
+WHERE $CONDITIONS AND page_namespace = 0
 '  
 """                                        
+
+# Ellery's version of the above:
+# WHERE $CONDITIONS AND page_namespace = 0 AND page_is_redirect = 0
 
 # main namespace redirects
 redirect_sqoop_query = """
