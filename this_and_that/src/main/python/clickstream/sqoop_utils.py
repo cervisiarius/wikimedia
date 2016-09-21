@@ -12,7 +12,7 @@ sqoop import                                                        \
   --target-dir /tmp/$(mktemp -u -p '' -t ${USER}_sqoop_XXXXXX)      \
   --delete-target-dir                                               \
   --username research                                               \
-  --password-file /home/west1/wikimedia/trunk/doc/db_pwd.txt        \
+  --password-file /user/west1/db_pwd.txt        \
   --split-by a.page_id                                              \
   --hive-import                                                     \
   --hive-database %(hive_db)s                                       \
@@ -36,7 +36,7 @@ sqoop import                                                        \
   --target-dir /tmp/$(mktemp -u -p '' -t ${USER}_sqoop_1XXXXX)      \
   --delete-target-dir                                               \
   --username research                                               \
-  --password-file /home/west1/wikimedia/trunk/doc/db_pwd.txt        \
+  --password-file /user/west1/db_pwd.txt        \
   --split-by b.rd_from                                              \
   --hive-import                                                     \
   --hive-database %(hive_db)s                                        \
@@ -59,7 +59,7 @@ sqoop import                                                      \
   --target-dir /tmp/$(mktemp -u -p '' -t ${USER}_sqoop_2XXXXX)      \
   --delete-target-dir                                               \
   --username research                                               \
-  --password-file /home/west1/wikimedia/trunk/doc/db_pwd.txt        \
+  --password-file /user/west1/db_pwd.txt        \
   --split-by a.ll_from                                              \
   --hive-import                                                     \
   --hive-database %(hive_db)s                                        \
@@ -84,7 +84,7 @@ sqoop import                                                      \
   --target-dir /tmp/$(mktemp -u -p '' -t ${USER}_sqoop_2XXXXX)      \
   --delete-target-dir                                               \
   --username research                                               \
-  --password-file /home/west1/wikimedia/trunk/doc/db_pwd.txt        \
+  --password-file /user/west1/db_pwd.txt        \
   --split-by rev_parent_id                                              \
   --hive-import                                                     \
   --hive-database %(hive_db)s                                        \
@@ -112,7 +112,7 @@ sqoop import                                                  \
   --target-dir /tmp/$(mktemp -u -p '' -t ${USER}_sqoop_2XXXXX)      \
   --delete-target-dir                                               \
   --username research                                               \
-  --password-file /home/west1/wikimedia/trunk/doc/db_pwd.txt        \
+  --password-file /user/west1/db_pwd.txt        \
   --split-by a.pl_from                                              \
   --hive-import                                                     \
   --hive-database %(hive_db)s                                            \
@@ -137,7 +137,7 @@ sqoop import                                                  \
   --target-dir /tmp/$(mktemp -u -p '' -t ${USER}_sqoop_2XXXXX)      \
   --delete-target-dir                                               \
   --username research                                               \
-  --password-file /home/west1/wikimedia/trunk/doc/db_pwd.txt        \
+  --password-file /user/west1/db_pwd.txt        \
   --split-by a.pp_page                                              \
   --hive-import                                                     \
   --hive-database %(hive_db)s                                            \
