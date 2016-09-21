@@ -92,9 +92,9 @@ def get_clickstream(table, lang, start, stop, priority = False, min_count = 10):
     FROM
         west1.clickstream_%(table)s_temp2
     LEFT JOIN
-        clickstream.%(lang)s_redirect pr ON (prev = pr.rd_from)
+        west1.%(lang)s_redirect pr ON (prev = pr.rd_from)
     LEFT JOIN
-        clickstream.%(lang)s_redirect cr ON (curr = cr.rd_from);
+        west1.%(lang)s_redirect cr ON (curr = cr.rd_from);
 
     -- re-aggregate after resolving redirects and filter out pairs that occur infrequently
     DROP VIEW IF EXISTS west1.clickstream_%(table)s_temp4;
@@ -116,9 +116,9 @@ def get_clickstream(table, lang, start, stop, priority = False, min_count = 10):
     FROM
         west1.clickstream_%(table)s_temp4
     LEFT JOIN
-        clickstream.%(lang)s_page_raw pp ON (prev = pp.page_title)
+        west1.%(lang)s_page_raw pp ON (prev = pp.page_title)
     LEFT JOIN
-        clickstream.%(lang)s_page_raw cp ON (curr = cp.page_title)
+        west1.%(lang)s_page_raw cp ON (curr = cp.page_title)
     WHERE
         cp.page_title is not NULL
         AND ( pp.page_title is NOT NULL
@@ -141,7 +141,7 @@ def get_clickstream(table, lang, start, stop, priority = False, min_count = 10):
     FROM
         west1.clickstream_%(table)s_temp5
     LEFT JOIN
-        clickstream.%(lang)s_pagelinks l ON (prev = l.pl_from AND curr = l.pl_to);
+        west1.%(lang)s_pagelinks l ON (prev = l.pl_from AND curr = l.pl_to);
 
 
     -- create table
