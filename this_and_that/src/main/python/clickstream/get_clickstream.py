@@ -8,9 +8,9 @@ from sqoop_utils import sqoop_prod_dbs
 Usage:
 
 python get_clickstream.py \
-    --start 2016-07-23 \
-    --stop  2016-09-20 \
-    --table 20160723_20160920_en \
+    --start 2016-08-01 \
+    --stop  2016-08-31 \
+    --table 2016_08_en \
     --lang en
 
 (Adapeted from https://github.com/ewulczyn/wiki-clickstream/blob/master/src/get_clickstream.py)
