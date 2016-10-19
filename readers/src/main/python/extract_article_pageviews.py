@@ -32,6 +32,10 @@ BASE_DIR = "/user/west1/"
 infile = BASE_DIR + "pagecounts-2016-03-views-ge-5.txt"
 outfile = BASE_DIR + "pagecounts-2016-03_FIRST-WEEK-OF-MARCH"
 
+# Redirects are from August 2016.
+redirect_file = "/user/hive/warehouse/west1.db/en_redirect"
+# redirect_file = BASE_DIR + "en_redirect.txt"
+
 # Code for English Wikipedia.
 project_code = "en.z"
 
@@ -52,11 +56,18 @@ def get_weekly_count(count_string):
   daily_counts = map(lambda s: sum(int(x) for x in re.split(r"[A-X]", s[2:])), days)
   return sum(daily_counts)
 
+redir = sc.textFile(redirect_file) \
+          .map(lambda line: tuple(line.split("\t", 1)))
+
 data = sc.textFile(infile) \
          .filter(lambda line: not line.startswith("#")) \
          .map(lambda line: tuple(line.strip().split(" "))) \
          .filter(lambda (project, page, monthly_count, hourly_count_string): project == project_code and not PAGE_EXCLUDE_REGEX.match(page)) \
-         .map(lambda (project, page, monthly_count, hourly_count_string): (page.replace(' ', '_'), monthly_count, str(get_weekly_count(hourly_count_string)))) \
-         .map(lambda x: '\t'.join(x))
+         .map(lambda (project, page, monthly_count, hourly_count_string): (page.replace(' ', '_'), (int(monthly_count), get_weekly_count(hourly_count_string)))) \
+         .leftOuterJoin(redir) \
+         .map(lambda (page, ((monthly_count, weekly_count), redir_tgt)): (page if redir_tgt is None else redir_tgt, (monthly_count, weekly_count))) \
+         .reduceByKey(lambda (x1,y1), (x2,y2): (x1+x2, y1+y2)) \
+         .sortByKey(1) \
+         .map(lambda (page, (monthly_count, weekly_count)): '%s\t%d\t%d' % (page, monthly_count, weekly_count))
 
 data.saveAsTextFile(outfile)
