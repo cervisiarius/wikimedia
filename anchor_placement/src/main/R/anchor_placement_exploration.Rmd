@@ -6,6 +6,8 @@ output: html_document
 ---
 
 ```{r prologue, include=FALSE, message=FALSE}
+############### related work: http://www.mathcs.emory.edu/~lxiong/research/pub/gardner09automatic.pdf
+
 library(lattice)
 
 .default_par <- par(no.readonly=TRUE)
