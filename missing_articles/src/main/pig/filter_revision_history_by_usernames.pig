@@ -25,6 +25,6 @@ Rev = STREAM Rev THROUGH hashJoin AS (rev_id:long, page_id:int, text_id:int, use
         timestamp:chararray, minor:chararray, deleted:chararray, length:int, parent_id:int, comment:chararray);
 
 -- Make sure everything by the same user appears sequentially.
-SortedByUser = ORDER GroupedByPair BY user, timestamp PARALLEL $PARALLEL;
+SortedByUser = ORDER Rev BY user, timestamp PARALLEL $PARALLEL;
 
 STORE SortedByUser INTO '/user/west1/revision_history_RfA-ONLY';
