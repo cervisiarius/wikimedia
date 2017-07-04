@@ -27,7 +27,7 @@ Rev = FOREACH Rev GENERATE
     length;
 
 -- Keep only desired users.
-DEFINE hashJoin `./hash_join.pl RfA_unique_users.txt 5 1` ship('/home/west1/wikimedia/trunk/missing_articles/src/main/perl/hash_join.pl', '/home/west1/wikimedia/trunk/data/RfA_unique_users.txt');
+DEFINE hashJoin `./hash_join.pl RfA_unique_users.txt 2 1` ship('/home/west1/wikimedia/trunk/missing_articles/src/main/perl/hash_join.pl', '/home/west1/wikimedia/trunk/data/RfA_unique_users.txt');
 Rev = STREAM Rev THROUGH hashJoin AS (page_id:int, user:chararray, timestamp:chararray, length:int);
 
 -- Make sure everything by the same user appears sequentially.
