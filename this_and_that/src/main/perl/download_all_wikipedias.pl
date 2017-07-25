@@ -1,9 +1,10 @@
 #!/usr/bin/perl
 
 my $links_to_langs = `wget -q -O - 'http://dumps.wikimedia.org/backup-index.html' | grep '<a href=".*wiki/[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]">'`;
+my $HADOOP_HOME = '/user/west';
 
 foreach my $line (split /\n/, $links_to_langs) {
-  if ($line =~ m{<a href="(.*wiki/\d{8})">.*wiki</a>}) {
+  if ($line =~ m{<a href="(.*wiki/\d{8})">[a-z]{2,3}wiki</a>}) {
     my $path = $1;
     download($path);
   }
@@ -21,7 +22,8 @@ sub download {
       my $bz2_full_path = $1;
       my $inflated_file = $2;
       print "  Downloading $1\n";
-      `wget -O - 'http://dumps.wikimedia.org/$bz2_full_path' | bunzip2 | hadoop fs -put - /user/west1/wikipedia_dumps/$inflated_file`;
+      `wget -O - 'http://dumps.wikimedia.org/$bz2_full_path' | bunzip2 | hadoop fs -put - $HADOOP_HOME/wikipedia_dumps/$inflated_file`;
+      #print "wget -O - 'http://dumps.wikimedia.org/$bz2_full_path' | bunzip2 | hadoop fs -put - $HADOOP_HOME/wikipedia_dumps/$inflated_file\n";
     }
   }
   # Dump in progress.
